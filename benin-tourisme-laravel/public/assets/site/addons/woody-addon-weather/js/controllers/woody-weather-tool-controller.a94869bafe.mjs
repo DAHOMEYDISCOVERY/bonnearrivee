@@ -1,0 +1,1 @@
+import r from"woody_library_woody_controller";import{hydrateToolElement as t}from"woody_addon_weather_tool";class e extends r{constructor(o){super(o)}init(o){super.init(o),t(this.el)}}export{e as default};

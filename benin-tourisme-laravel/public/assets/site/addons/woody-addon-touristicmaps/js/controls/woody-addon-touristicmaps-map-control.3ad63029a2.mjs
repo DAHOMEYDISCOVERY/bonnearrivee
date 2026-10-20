@@ -1,0 +1,1 @@
+class e{mapComponent;args;#t=null;constructor(t,o={}){this.#t=Symbol(t),this.args=Object.assign({position:"top-left",lang:"fr"},o)}setMapComponent(t){this.mapComponent=t}getSymbol(){return this.#t}getPosition(){return this.args.position}createPanel(){throw new Error("MapControl - createPanel() - must be overrided")}}export{e as default};

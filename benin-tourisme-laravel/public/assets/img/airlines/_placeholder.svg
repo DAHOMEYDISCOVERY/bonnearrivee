@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a90b8"/>
+      <stop offset="60%" stop-color="#a8c8dc"/>
+      <stop offset="100%" stop-color="#e8ecef"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".85"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity=".25"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#sky)"/>
+  <ellipse cx="130" cy="230" rx="110" ry="26" fill="url(#cloud)"/>
+  <ellipse cx="600" cy="290" rx="140" ry="30" fill="url(#cloud)"/>
+  <ellipse cx="330" cy="330" rx="90" ry="20" fill="url(#cloud)"/>
+  <g transform="translate(400 200)" fill="#233b52">
+    <path d="M-180 0 L120 -6 L180 -3 L120 3 L-180 6 Z"/>
+    <path d="M60 -6 L100 -60 L120 -60 L90 -6 Z"/>
+    <path d="M60 6 L100 60 L120 60 L90 6 Z"/>
+    <path d="M170 -2 L200 -18 L210 -18 L200 2 Z"/>
+    <path d="M170 2 L200 18 L210 18 L200 -2 Z"/>
+  </g>
+</svg>

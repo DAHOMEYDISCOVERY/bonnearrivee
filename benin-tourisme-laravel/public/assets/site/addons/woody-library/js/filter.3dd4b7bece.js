@@ -1,0 +1,1 @@
+var f={filters:{},add:function(t,r){(this.filters[t]||(this.filters[t]=[])).push(r)},apply:function(t,r){if(this.filters[t])for(var e=this.filters[t],i=0;i<e.length;i++)r=e[i](r);return r}},s=f;export{s as default};

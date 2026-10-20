@@ -1,0 +1,6 @@
+
+# Gros fichiers hors repo web (PDF catalogue source, logos sources, dossiers macos)
+Wadunu *.pdf
+*.pdf
+__MACOSX/
+Ajout/

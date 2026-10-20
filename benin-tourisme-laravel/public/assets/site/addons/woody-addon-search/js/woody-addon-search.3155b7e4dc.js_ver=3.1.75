@@ -1,0 +1,1 @@
+(function(n){n.querySelectorAll("woody-search-engine")?.length>0&&import("woody_addon_search_main").then(e=>e.init())})(document);

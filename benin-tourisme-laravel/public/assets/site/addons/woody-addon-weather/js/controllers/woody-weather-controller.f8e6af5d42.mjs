@@ -1,0 +1,1 @@
+import r from"woody_library_woody_controller";import{hydrateBlock as e}from"woody_addon_weather_update";class i extends r{#t;constructor(t){super(t)}init(t){super.init(t),e(this.el),this.#t=o=>{o.target?.closest?.(".woody-component-weather[data-weather-account]")===this.el&&e(this.el)},document.addEventListener("swiperInit",this.#t,!0)}}export{i as default};

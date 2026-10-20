@@ -1,0 +1,572 @@
+<title>Bénin Tourisme, page par page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --papier:#F1F2EF; --papier-2:#E6E8E3; --carte:#FBFBF9;
+  --trait:#D3D6CE; --trait-fort:#B4B9AE;
+  --encre:#171C26; --encre-2:#4A5361; --encre-3:#767F8C;
+  --indigo:#2B4A94; --indigo-pale:#DCE3F4; --indigo-encre:#1B2F5E;
+  --ocre:#9A6013; --ocre-pale:#F4E7D0;
+  --laterite:#A32E27; --laterite-pale:#F6DEDA;
+  --feuille:#2F6B4F; --feuille-pale:#DCEBE2;
+  --ombre:0 1px 2px rgba(23,28,38,.05), 0 8px 24px -12px rgba(23,28,38,.16);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --grot:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --papier:#14181F; --papier-2:#1B212B; --carte:#1A1F28;
+  --trait:#2C3542; --trait-fort:#414C5C;
+  --encre:#EAECEA; --encre-2:#A9B2BF; --encre-3:#7B8593;
+  --indigo:#8CA6E8; --indigo-pale:#232E4A; --indigo-encre:#C3D1F2;
+  --ocre:#D8A248; --ocre-pale:#372A15;
+  --laterite:#E2827A; --laterite-pale:#3A211F;
+  --feuille:#74BF9A; --feuille-pale:#1B2E25;
+  --ombre:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --papier:#14181F; --papier-2:#1B212B; --carte:#1A1F28;
+  --trait:#2C3542; --trait-fort:#414C5C;
+  --encre:#EAECEA; --encre-2:#A9B2BF; --encre-3:#7B8593;
+  --indigo:#8CA6E8; --indigo-pale:#232E4A; --indigo-encre:#C3D1F2;
+  --ocre:#D8A248; --ocre-pale:#372A15;
+  --laterite:#E2827A; --laterite-pale:#3A211F;
+  --feuille:#74BF9A; --feuille-pale:#1B2E25;
+  --ombre:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--papier); color:var(--encre);
+  font-family:var(--serif); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{ outline:2px solid var(--indigo); outline-offset:2px; border-radius:2px; }
+.large{ max-width:1560px; margin:0 auto; padding:0 clamp(16px,3vw,34px); }
+.etroit{ max-width:min(100%,68ch); }
+
+/* ------------------------------------------------------------------ hero */
+.hero{ border-bottom:1px solid var(--trait); background:var(--carte); padding:clamp(38px,7vw,74px) 0 0; }
+.eyebrow{
+  font-family:var(--grot); font-size:11px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.15em; color:var(--indigo); margin:0 0 14px;
+}
+h1{
+  font-family:var(--grot); font-weight:800; font-size:clamp(34px,6vw,62px);
+  letter-spacing:-.032em; line-height:1.04; margin:0 0 20px; text-wrap:balance;
+  max-width:19ch;
+}
+.chapo{ font-size:clamp(18px,2vw,21px); color:var(--encre-2); margin:0; max-width:60ch; }
+.chapo em{ font-style:italic; color:var(--encre); }
+
+.chiffres{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(132px,1fr)); gap:1px;
+  margin:clamp(30px,5vw,52px) 0 0; background:var(--trait);
+  border:1px solid var(--trait); border-bottom:0; border-radius:8px 8px 0 0; overflow:hidden;
+}
+.chiffre{ background:var(--papier-2); padding:14px 17px 16px; display:flex; flex-direction:column; gap:2px; }
+.chiffre b{
+  font-family:var(--grot); font-size:clamp(24px,3vw,31px); font-weight:800;
+  letter-spacing:-.028em; font-variant-numeric:tabular-nums; line-height:1.1;
+}
+.chiffre span{
+  font-family:var(--grot); font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.09em; color:var(--encre-3);
+}
+.chiffre.b b{ color:var(--feuille); } .chiffre.o b{ color:var(--ocre); } .chiffre.r b{ color:var(--laterite); }
+
+/* --------------------------------------------------------------- section */
+section{ padding:clamp(44px,6vw,76px) 0; }
+section + section{ border-top:1px solid var(--trait); }
+h2{
+  font-family:var(--grot); font-weight:800; font-size:clamp(25px,3.4vw,35px);
+  letter-spacing:-.026em; line-height:1.15; margin:0 0 16px; text-wrap:balance;
+}
+h3{
+  font-family:var(--grot); font-weight:600; font-size:17px; letter-spacing:-.012em;
+  margin:0 0 6px; text-wrap:balance;
+}
+p{ margin:0 0 16px; }
+p:last-child{ margin-bottom:0; }
+.legende{
+  font-family:var(--grot); font-size:11px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.14em; color:var(--encre-3); margin:0 0 12px;
+}
+
+/* --------------------------------------------------------------- constat */
+.constats{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:14px; margin-top:30px;
+}
+.constat{
+  background:var(--carte); border:1px solid var(--trait); border-radius:8px;
+  padding:17px 19px 19px; border-top:3px solid var(--ocre);
+}
+.constat.dur{ border-top-color:var(--laterite); }
+.constat.bon{ border-top-color:var(--feuille); }
+.constat .nombre{
+  font-family:var(--grot); font-size:29px; font-weight:800; letter-spacing:-.03em;
+  color:var(--ocre); line-height:1; display:block; margin-bottom:7px;
+  font-variant-numeric:tabular-nums;
+}
+.constat.dur .nombre{ color:var(--laterite); }
+.constat.bon .nombre{ color:var(--feuille); }
+.constat p{ font-size:14.5px; color:var(--encre-2); margin:0; }
+.constat q{
+  display:block; font-family:var(--mono); font-size:12px; quotes:"«\00a0" "\00a0»";
+  background:var(--papier-2); border-radius:5px; padding:8px 10px; margin-top:10px;
+  color:var(--encre-2); line-height:1.45;
+}
+
+/* --------------------------------------------------------------- atlas */
+.outils{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:24px 0 20px; }
+input[type="search"]{
+  font-family:var(--mono); font-size:13px; padding:8px 12px;
+  border:1px solid var(--trait-fort); border-radius:5px;
+  background:var(--carte); color:var(--encre); min-width:240px;
+}
+input[type="search"]::placeholder{ color:var(--encre-3); }
+.filtre{
+  font-family:var(--grot); font-size:12.5px; font-weight:600; cursor:pointer;
+  padding:6px 12px; border:1px solid var(--trait-fort); border-radius:20px;
+  background:transparent; color:var(--encre-2);
+  transition:background .12s,color .12s,border-color .12s;
+}
+.filtre:hover{ border-color:var(--indigo); color:var(--indigo); }
+.filtre[aria-pressed="true"]{ background:var(--indigo); border-color:var(--indigo); color:var(--carte); }
+:root[data-theme="dark"] .filtre[aria-pressed="true"],
+:root:not([data-theme="light"]) .filtre[aria-pressed="true"]{ color:var(--papier); }
+.filtre b{ font-variant-numeric:tabular-nums; opacity:.7; font-weight:600; }
+
+.atlas{ display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:26px; align-items:start; }
+@media (max-width:1080px){ .atlas{ grid-template-columns:1fr; } }
+
+.rubrique{ margin-bottom:22px; }
+.rubrique-titre{
+  font-family:var(--grot); font-size:11px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--encre-3);
+  display:flex; align-items:center; gap:10px; margin:0 0 8px;
+}
+.rubrique-titre::after{ content:""; flex:1; height:1px; background:var(--trait); }
+.rubrique-titre em{ font-style:normal; font-family:var(--mono); font-size:10.5px; letter-spacing:0; }
+.lignes{ display:flex; flex-direction:column; gap:2px; }
+
+.ligne{
+  display:grid; grid-template-columns:3px 1fr auto; gap:0 10px; align-items:center;
+  width:100%; text-align:left; cursor:pointer; font:inherit; color:inherit;
+  background:var(--carte); border:1px solid var(--trait); border-left:0;
+  border-radius:0 5px 5px 0; padding:0; overflow:hidden; transition:border-color .12s;
+}
+.ligne:hover{ border-color:var(--trait-fort); }
+.ligne[aria-current="true"]{ border-color:var(--indigo); background:var(--indigo-pale); }
+.jauge{ align-self:stretch; background:var(--trait); }
+.ligne.etat-vide .jauge{ background:var(--laterite); }
+.ligne.etat-revoir .jauge{ background:var(--ocre); }
+.ligne.etat-ok .jauge{ background:var(--feuille); }
+.ligne-corps{ padding:8px 0 9px; min-width:0; }
+.ligne-titre{
+  font-family:var(--grot); font-weight:600; font-size:14px; letter-spacing:-.008em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ligne-route{
+  font-family:var(--mono); font-size:11px; color:var(--encre-3); margin-top:1px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ligne-manque{
+  font-family:var(--grot); font-size:11.5px; color:var(--ocre); margin-top:3px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ligne.etat-vide .ligne-manque{ color:var(--laterite); }
+.mesures{
+  display:flex; gap:12px; padding-right:12px; font-family:var(--mono);
+  font-size:11px; color:var(--encre-3); font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.mesures i{ font-style:normal; color:var(--encre-2); }
+@media (max-width:600px){ .mesures{ display:none; } }
+
+.fiche{
+  position:sticky; top:18px; background:var(--carte); border:1px solid var(--trait);
+  border-radius:8px; box-shadow:var(--ombre); padding:20px 22px 24px;
+  max-height:calc(100vh - 36px); overflow-y:auto;
+}
+@media (max-width:1080px){ .fiche{ position:static; max-height:none; } }
+.fiche h3{ font-size:21px; font-weight:800; letter-spacing:-.022em; margin:5px 0 9px; line-height:1.2; }
+.fiche-route{
+  font-family:var(--mono); font-size:11.5px; color:var(--encre-2);
+  background:var(--papier-2); border:1px solid var(--trait); border-radius:4px;
+  padding:4px 8px; display:inline-block; word-break:break-all;
+}
+.fiche-extrait{
+  font-size:15px; color:var(--encre-2); margin:14px 0 0;
+  border-left:2px solid var(--trait-fort); padding-left:13px; max-width:60ch;
+}
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:17px 0 0;
+  background:var(--trait); border:1px solid var(--trait); border-radius:6px; overflow:hidden;
+}
+.stat{ background:var(--carte); padding:8px 10px; }
+.stat b{
+  display:block; font-family:var(--grot); font-size:17px; font-weight:800;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+}
+.stat span{
+  font-family:var(--grot); font-size:9.5px; text-transform:uppercase;
+  letter-spacing:.08em; color:var(--encre-3);
+}
+.bloc{ margin-top:18px; }
+.bloc-titre{
+  font-family:var(--grot); font-size:10.5px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--encre-3); margin:0 0 8px;
+}
+.manques{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+.manques li{
+  font-family:var(--grot); font-size:13px; font-weight:500; line-height:1.4;
+  padding:6px 10px; border-radius:5px; border-left:2px solid currentColor;
+  background:var(--ocre-pale); color:var(--ocre);
+}
+.manques li.grave{ background:var(--laterite-pale); color:var(--laterite); }
+.manques li.bien{ background:var(--feuille-pale); color:var(--feuille); }
+.sommaire{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:3px; }
+.sommaire li{ font-size:14.5px; color:var(--encre-2); padding-left:15px; position:relative; }
+.sommaire li::before{
+  content:""; position:absolute; left:2px; top:.65em; width:5px; height:1px; background:var(--trait-fort);
+}
+.liens{ display:flex; flex-wrap:wrap; gap:4px; }
+.lien{
+  font-family:var(--mono); font-size:11px; cursor:pointer; font-weight:400;
+  padding:3px 8px; border:1px solid var(--trait); border-radius:4px;
+  background:var(--papier-2); color:var(--encre-2);
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  transition:border-color .12s,color .12s;
+}
+.lien:hover{ border-color:var(--indigo); color:var(--indigo); }
+.vide{ color:var(--encre-3); font-style:italic; font-size:13.5px; }
+
+/* --------------------------------------------------------------- suite */
+.etapes{ display:flex; flex-direction:column; gap:1px; background:var(--trait);
+  border:1px solid var(--trait); border-radius:8px; overflow:hidden; margin-top:26px; }
+.etape{ background:var(--carte); padding:15px 19px; display:grid;
+  grid-template-columns:auto 1fr auto; gap:16px; align-items:baseline; }
+.etape .rang{
+  font-family:var(--mono); font-size:12px; font-weight:600; color:var(--encre-3);
+  font-variant-numeric:tabular-nums;
+}
+.etape p{ font-size:14.5px; color:var(--encre-2); margin:4px 0 0; }
+.jeton{
+  font-family:var(--grot); font-size:10.5px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.09em; padding:3px 9px; border-radius:20px; white-space:nowrap;
+  background:var(--feuille-pale); color:var(--feuille);
+}
+.jeton.encours{ background:var(--ocre-pale); color:var(--ocre); }
+.jeton.avenir{ background:var(--papier-2); color:var(--encre-3); }
+
+footer{
+  border-top:1px solid var(--trait); padding:30px 0 54px;
+  font-size:14px; color:var(--encre-3);
+}
+footer code{ font-family:var(--mono); font-size:12.5px; color:var(--encre-2); }
+
+@media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
+</style>
+
+<header class="hero">
+  <div class="large">
+    <p class="eyebrow">Audit d'architecture · Août 2026</p>
+    <h1>Bénin&nbsp;Tourisme, page par page</h1>
+    <p class="chapo">Un site de 89&nbsp;pages porté sous Laravel, dont le contenu vient d'ailleurs.
+    L'ossature est saine&nbsp;: aucun lien brisé, aucune page orpheline. Le texte, lui,
+    décrit encore par endroits <em>un autre pays</em>. Voici la carte complète — ce qui tient,
+    ce qui manque, et dans quel ordre le reprendre.</p>
+    <div class="chiffres" id="chiffres"></div>
+  </div>
+</header>
+
+<div class="large">
+
+<section>
+  <p class="legende">D'où vient ce site</p>
+  <div class="etroit">
+    <h2>Un gabarit repris à un office de tourisme, et jamais relu</h2>
+    <p>Le site a été fabriqué en reprenant l'ossature d'un autre office de tourisme —
+    celui de Mayotte — puis en remplaçant les noms de lieux par des noms béninois.
+    L'opération a marché sur la forme&nbsp;: la navigation tient, le style tient, les
+    89&nbsp;pages existent.</p>
+    <p>Elle n'a pas marché sur le fond. Remplacer «&nbsp;Mamoudzou&nbsp;» par
+    «&nbsp;Cotonou&nbsp;» ne déplace pas les mangroves&nbsp;: la page qui présente le Nord
+    du Bénin — l'Atacora, la savane, la Pendjari, à 600&nbsp;km de la mer — parle encore
+    d'îlots, de sable blanc et de snorkeling.</p>
+    <p>La conversion sous Laravel est faite et vérifiée&nbsp;: les 89&nbsp;pages rendent à
+    l'identique. Les services distants morts ont été coupés, les identifiants en clair
+    retirés, et toutes les traces de Mayotte effacées. Ce qui reste est un travail
+    d'écriture, page par page — et c'est ce que cette carte sert à organiser.</p>
+  </div>
+</section>
+
+<section>
+  <p class="legende">Le constat</p>
+  <h2>Quatre problèmes, et une bonne nouvelle</h2>
+  <div class="constats">
+    <div class="constat bon">
+      <span class="nombre">684</span>
+      <h3>Liens internes, tous valides</h3>
+      <p>Aucune page orpheline, aucun lien brisé. Le câblage du site n'a pas besoin d'être refait.</p>
+    </div>
+    <div class="constat dur">
+      <span class="nombre">3</span>
+      <h3>Pages qui décrivent le mauvais endroit</h3>
+      <p>Le vocabulaire maritime du gabarit d'origine survit sur des pages de l'intérieur des terres.</p>
+      <q>La mangrove, rempart contre l'Océan — sur la page du plateau d'Abomey</q>
+    </div>
+    <div class="constat dur">
+      <span class="nombre">9</span>
+      <h3>Pages quasiment vides</h3>
+      <p>Sous 165&nbsp;mots. La plus courte, <i>Safari et randonnée</i>, en compte 47 — alors
+      qu'elle est censée ouvrir sur la Pendjari et le parc&nbsp;W.</p>
+    </div>
+    <div class="constat">
+      <span class="nombre">18</span>
+      <h3>Pages à revoir sur la forme</h3>
+      <p>Trop courtes, sans sous-titre, sans illustration, ou sans description propre.</p>
+    </div>
+    <div class="constat">
+      <span class="nombre">50<span style="font-size:17px">&nbsp;vs&nbsp;6</span></span>
+      <h3>Un déséquilibre révélateur</h3>
+      <p><i>Explorez</i> pèse 50&nbsp;pages et 43&nbsp;000&nbsp;mots&nbsp;; <i>Activités</i>
+      en pèse 6 et 1&nbsp;870 — parce que c'est là que l'API morte devait remplir.</p>
+    </div>
+    <div class="constat dur">
+      <span class="nombre">3</span>
+      <h3>Culs-de-sac</h3>
+      <p>Les trois fiches d'offres ne mènent nulle part&nbsp;: le service qui les alimentait
+      a fermé.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="legende">L'atlas</p>
+  <h2>Les 89&nbsp;pages</h2>
+  <p class="etroit">Clique une page pour voir son extrait réel, son sommaire, et surtout le
+  graphe&nbsp;: ce qu'elle cite, et ce qui la cite. Les routes de la fiche sont cliquables —
+  on circule dans le graphe comme on circulerait dans le site.</p>
+
+  <div class="outils">
+    <input type="search" id="recherche" placeholder="chercher une page, une route…" aria-label="Chercher une page">
+    <button class="filtre" data-filtre="tout" aria-pressed="true">Toutes <b id="n-tout"></b></button>
+    <button class="filtre" data-filtre="revoir" aria-pressed="false">À revoir <b id="n-revoir"></b></button>
+    <button class="filtre" data-filtre="vide" aria-pressed="false">Trop courtes <b id="n-vide"></b></button>
+    <button class="filtre" data-filtre="cul" aria-pressed="false">Culs-de-sac <b id="n-cul"></b></button>
+    <button class="filtre" data-filtre="mer" aria-pressed="false">Contresens géographique <b id="n-mer"></b></button>
+    <button class="filtre" data-filtre="images" aria-pressed="false">Sans illustration <b id="n-images"></b></button>
+  </div>
+
+  <div class="atlas">
+    <div id="arbre"></div>
+    <aside class="fiche" id="fiche" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section>
+  <p class="legende">La suite</p>
+  <h2>Dans quel ordre reprendre</h2>
+  <div class="etapes">
+    <div class="etape"><span class="rang">01</span>
+      <div><h3>Porter le site sous Laravel</h3>
+      <p>89&nbsp;vues Blade, 538&nbsp;cartes et 931&nbsp;figures en composants, rendu vérifié
+      identique page par page.</p></div>
+      <span class="jeton">Fait</span></div>
+    <div class="etape"><span class="rang">02</span>
+      <div><h3>Couper les services morts et les identifiants</h3>
+      <p>Trois services distants hors service, 2,9&nbsp;Mo de résultats vides, et une clé
+      d'API qui n'appartenait pas au projet.</p></div>
+      <span class="jeton">Fait</span></div>
+    <div class="etape"><span class="rang">03</span>
+      <div><h3>Effacer ce qui restait de Mayotte</h3>
+      <p>Adresse, coordonnées, téléphones, codes postaux, passages entiers&nbsp;: 123&nbsp;traces
+      relevées, zéro restante.</p></div>
+      <span class="jeton">Fait</span></div>
+    <div class="etape"><span class="rang">04</span>
+      <div><h3>Écrire le contenu, page par page</h3>
+      <p>Les 9&nbsp;pages vides d'abord, les 3&nbsp;contresens géographiques ensuite, puis la
+      relecture au fond des 77&nbsp;autres.</p></div>
+      <span class="jeton encours">En cours</span></div>
+    <div class="etape"><span class="rang">05</span>
+      <div><h3>Un back-office pour éditer sans toucher au code</h3>
+      <p>Objectif du projet dès le départ&nbsp;: que le contenu soit modifiable par
+      quelqu'un qui n'est pas développeur.</p></div>
+      <span class="jeton avenir">À venir</span></div>
+    <div class="etape"><span class="rang">06</span>
+      <div><h3>Alléger le JavaScript et purger le CSS</h3>
+      <p>Le thème d'origine charge 48&nbsp;modules&nbsp;; le site n'en utilise qu'une
+      fraction.</p></div>
+      <span class="jeton avenir">À venir</span></div>
+  </div>
+</section>
+
+<footer>
+  <p>Relevé automatique, régénérable&nbsp;: <code>python3 tools/architecture.py --json &amp;&amp; python3 tools/atlas.py</code>.
+  Les liens comptés sont ceux du contenu — le menu, l'en-tête et le pied de page sont écartés
+  puisqu'ils sont identiques sur les 89&nbsp;pages. Une page est signalée quand elle compte
+  moins de 150&nbsp;mots, n'a qu'une illustration ou aucune, ne porte aucun sous-titre, ne mène
+  nulle part, ou décrit la mer alors que son sujet est à des centaines de kilomètres de la côte.</p>
+</footer>
+
+</div>
+
+<script>
+const DONNEES = /*DONNÉES*/null;
+const PAGES = DONNEES.pages;
+const PAR_ROUTE = new Map(PAGES.map(p => [p.route, p]));
+
+const NOMS = {
+  accueil:"Accueil", explorez:"Explorez", sejourner:"Séjourner", activites:"Activités",
+  offres:"Offres", actualites:"Actualités", "a-propos-de-lanpt":"À propos de Dahomey Discovery",
+  "credits-photos":"Crédits photos", "mentions-legales":"Mentions légales",
+  "plan-du-site":"Plan du site", "fiche-de-relecture":"Fiche de relecture"
+};
+
+const estVide   = p => p.mots < 150;
+const estCul    = p => p.sortants.length === 0;
+const estMer    = p => p.mer.length > 0;
+const sansImage = p => p.photos <= 1;
+const aRevoir   = p => p.manques.length > 0;
+const CRITERES = { tout:()=>true, revoir:aRevoir, vide:estVide, cul:estCul, mer:estMer, images:sansImage };
+
+let filtre = "tout", recherche = "", choisie = null;
+const nombre = n => n.toLocaleString("fr-FR").replace(/ | |,/g, " ");
+
+function poseLesChiffres(){
+  const mots = PAGES.reduce((t,p)=>t+p.mots,0);
+  const liens = PAGES.reduce((t,p)=>t+p.sortants.length,0);
+  const cases = [
+    ["", PAGES.length, "pages"],
+    ["", nombre(mots), "mots de contenu"],
+    ["b", liens, "liens internes valides"],
+    ["b", PAGES.filter(p=>p.entrants.length===0 && p.route!=="/").length, "page orpheline"],
+    ["o", PAGES.filter(aRevoir).length, "pages à revoir"],
+    ["r", PAGES.filter(estVide).length, "sous 150 mots"],
+    ["r", PAGES.filter(estMer).length, "contresens géographiques"],
+  ];
+  document.getElementById("chiffres").innerHTML = cases.map(
+    ([c,v,l]) => `<div class="chiffre ${c}"><b>${v}</b><span>${l}</span></div>`).join("");
+  for (const [cle,test] of Object.entries(CRITERES)){
+    const cible = document.getElementById("n-"+cle);
+    if (cible) cible.textContent = PAGES.filter(test).length;
+  }
+}
+
+function retenues(){
+  const q = recherche.trim().toLowerCase();
+  return PAGES.filter(p => CRITERES[filtre](p) &&
+    (!q || p.route.toLowerCase().includes(q) || p.titre.toLowerCase().includes(q)));
+}
+const etat = p => (estVide(p)||estCul(p)) ? "etat-vide" : aRevoir(p) ? "etat-revoir" : "etat-ok";
+
+function dessineLArbre(){
+  const lot = retenues();
+  const arbre = document.getElementById("arbre");
+  if (!lot.length){ arbre.innerHTML = `<p class="vide">Aucune page ne correspond.</p>`; return; }
+  const rubriques = [...new Set(PAGES.map(p=>p.rubrique))].filter(r => lot.some(p=>p.rubrique===r));
+
+  arbre.innerHTML = rubriques.map(rub => {
+    const dedans = lot.filter(p=>p.rubrique===rub).sort((a,b)=>a.route.localeCompare(b.route,"fr"));
+    const mots = dedans.reduce((t,p)=>t+p.mots,0);
+    const lignes = dedans.map(p => {
+      const marge = 4 + Math.max(0, p.profondeur-1)*17;
+      const manque = p.manques.length ? `<div class="ligne-manque">${p.manques.join(" · ")}</div>` : "";
+      return `<button class="ligne ${etat(p)}" data-route="${p.route}" aria-current="${p.route===choisie}">
+        <div class="jauge"></div>
+        <div class="ligne-corps" style="padding-left:${marge}px">
+          <div class="ligne-titre">${p.titre}</div>
+          <div class="ligne-route">${p.route}</div>${manque}
+        </div>
+        <div class="mesures">
+          <span><i>${nombre(p.mots)}</i> m</span><span><i>${p.photos}</i> img</span>
+          <span>→<i>${p.sortants.length}</i></span><span>←<i>${p.entrants.length}</i></span>
+        </div></button>`;
+    }).join("");
+    return `<section class="rubrique">
+      <h3 class="rubrique-titre">${NOMS[rub]||rub}<em>${dedans.length} pages · ${nombre(mots)} mots</em></h3>
+      <div class="lignes">${lignes}</div></section>`;
+  }).join("");
+
+  arbre.querySelectorAll(".ligne").forEach(b => b.addEventListener("click", ()=>selectionne(b.dataset.route)));
+}
+
+function pastilles(routes){
+  if (!routes.length) return `<p class="vide">aucun</p>`;
+  return `<div class="liens">` + routes.map(r => {
+    const c = PAR_ROUTE.get(r);
+    return `<button class="lien" data-va="${r}" title="${c?c.titre:r}">${r}</button>`;
+  }).join("") + `</div>`;
+}
+
+function dessineLaFiche(){
+  const fiche = document.getElementById("fiche");
+  if (!choisie || !PAR_ROUTE.has(choisie)){
+    fiche.innerHTML = `<p class="bloc-titre">Fiche</p><h3>Choisis une page</h3>
+      <p class="fiche-extrait">Chaque fiche donne un extrait réel du texte, le sommaire,
+      ce qui manque, et le graphe des liens — ce que la page cite, et ce qui la cite.</p>`;
+    return;
+  }
+  const p = PAR_ROUTE.get(choisie);
+  const graves = new Set(["cul-de-sac : ne mène nulle part","orpheline : aucune page ne la cite"]);
+  const manques = p.manques.length
+    ? `<ul class="manques">` + p.manques.map(m => {
+        const dur = graves.has(m) || m.startsWith("seulement") || m.startsWith("0 illustration");
+        return `<li class="${dur?"grave":""}">${m}</li>`;
+      }).join("") + `</ul>`
+    : `<ul class="manques"><li class="bien">Rien à signaler sur la forme — reste à vérifier le fond.</li></ul>`;
+  const sommaire = p.titres.length
+    ? `<ul class="sommaire">` + p.titres.map(t=>`<li>${t}</li>`).join("") + `</ul>`
+    : `<p class="vide">La page n'a aucun sous-titre.</p>`;
+  const mer = p.mer.length
+    ? `<div class="bloc"><p class="bloc-titre">Vocabulaire de la mer, sur une page de l'intérieur</p>
+       <div class="liens">${p.mer.map(m=>`<span class="lien">${m}</span>`).join("")}</div></div>` : "";
+
+  fiche.innerHTML = `
+    <p class="bloc-titre">${NOMS[p.rubrique]||p.rubrique}</p>
+    <h3>${p.titre}</h3>
+    <p><span class="fiche-route">${p.route}</span></p>
+    <p class="fiche-extrait">${p.extrait || "Cette page ne rédige aucun paragraphe."}${p.extrait?"…":""}</p>
+    <div class="stats">
+      <div class="stat"><b>${nombre(p.mots)}</b><span>mots</span></div>
+      <div class="stat"><b>${p.photos}</b><span>images</span></div>
+      <div class="stat"><b>${p.sortants.length}</b><span>vers</span></div>
+      <div class="stat"><b>${p.entrants.length}</b><span>depuis</span></div>
+    </div>
+    <div class="bloc"><p class="bloc-titre">État</p>${manques}</div>${mer}
+    <div class="bloc"><p class="bloc-titre">Sommaire de la page</p>${sommaire}</div>
+    <div class="bloc"><p class="bloc-titre">Cette page mène à</p>${pastilles(p.sortants)}</div>
+    <div class="bloc"><p class="bloc-titre">On y arrive depuis</p>${pastilles(p.entrants)}</div>`;
+  fiche.querySelectorAll("[data-va]").forEach(b =>
+    b.addEventListener("click", ()=>selectionne(b.dataset.va, true)));
+}
+
+function majFiltres(){
+  document.querySelectorAll(".filtre").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.filtre===filtre)));
+}
+
+function selectionne(route, remonter){
+  choisie = route;
+  if (remonter && !retenues().some(p=>p.route===route)){ filtre = "tout"; majFiltres(); }
+  dessineLArbre(); dessineLaFiche();
+  if (remonter){
+    const ligne = document.querySelector(`.ligne[data-route="${CSS.escape(route)}"]`);
+    if (ligne) ligne.scrollIntoView({ block:"center", behavior:"smooth" });
+  }
+}
+
+document.querySelectorAll(".filtre").forEach(b => b.addEventListener("click", () => {
+  filtre = b.dataset.filtre; majFiltres(); dessineLArbre();
+}));
+document.getElementById("recherche").addEventListener("input", e => {
+  recherche = e.target.value; dessineLArbre();
+});
+
+poseLesChiffres(); dessineLArbre(); dessineLaFiche();
+</script>

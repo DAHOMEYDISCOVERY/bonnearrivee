@@ -1,0 +1,1 @@
+import{timeout as o}from"woody_lib_utils";async function l(t){let e=document.createElement("style");e.textContent=`@import url('${t}');`,document.head.appendChild(e),await o(10),e.sheet.cssRules}export{l as woodyDevEnqueueStyle};

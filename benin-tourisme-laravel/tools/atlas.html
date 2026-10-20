@@ -1,0 +1,530 @@
+<title>Atlas Bénin Tourisme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  /* Papier froid, encre indigo : les tentures appliquées d'Abomey. */
+  --papier:      #F1F2EF;
+  --papier-2:    #E6E8E3;
+  --carte:       #FBFBF9;
+  --trait:       #D3D6CE;
+  --trait-fort:  #B4B9AE;
+  --encre:       #171C26;
+  --encre-2:     #4A5361;
+  --encre-3:     #767F8C;
+
+  --indigo:      #2B4A94;
+  --indigo-pale: #DCE3F4;
+
+  --ocre:        #9A6013;
+  --ocre-pale:   #F4E7D0;
+  --laterite:    #A32E27;
+  --laterite-pale:#F6DEDA;
+  --feuille:     #2F6B4F;
+  --feuille-pale:#DCEBE2;
+
+  --ombre: 0 1px 2px rgba(23,28,38,.05), 0 8px 24px -12px rgba(23,28,38,.16);
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --grot:  "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --mono:  "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papier:      #14181F;
+    --papier-2:    #1B212B;
+    --carte:       #1A1F28;
+    --trait:       #2C3542;
+    --trait-fort:  #414C5C;
+    --encre:       #EAECEA;
+    --encre-2:     #A9B2BF;
+    --encre-3:     #7B8593;
+
+    --indigo:      #8CA6E8;
+    --indigo-pale: #232E4A;
+
+    --ocre:        #D8A248;
+    --ocre-pale:   #372A15;
+    --laterite:    #E2827A;
+    --laterite-pale:#3A211F;
+    --feuille:     #74BF9A;
+    --feuille-pale:#1B2E25;
+
+    --ombre: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --papier:      #14181F;
+  --papier-2:    #1B212B;
+  --carte:       #1A1F28;
+  --trait:       #2C3542;
+  --trait-fort:  #414C5C;
+  --encre:       #EAECEA;
+  --encre-2:     #A9B2BF;
+  --encre-3:     #7B8593;
+
+  --indigo:      #8CA6E8;
+  --indigo-pale: #232E4A;
+
+  --ocre:        #D8A248;
+  --ocre-pale:   #372A15;
+  --laterite:    #E2827A;
+  --laterite-pale:#3A211F;
+  --feuille:     #74BF9A;
+  --feuille-pale:#1B2E25;
+
+  --ombre: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--papier); color:var(--encre);
+  font-family:var(--serif); font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:var(--indigo); }
+:focus-visible{ outline:2px solid var(--indigo); outline-offset:2px; border-radius:2px; }
+
+/* ---------------------------------------------------------------- en-tête */
+.bandeau{
+  border-bottom:1px solid var(--trait); background:var(--carte);
+  padding:26px clamp(16px,3vw,34px) 0;
+}
+.bandeau-haut{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 20px;
+  max-width:1560px; margin:0 auto;
+}
+h1{
+  font-family:var(--grot); font-weight:800; font-size:clamp(23px,3vw,31px);
+  letter-spacing:-.022em; margin:0; text-wrap:balance;
+}
+.sous{ font-family:var(--grot); font-size:13.5px; color:var(--encre-3); font-weight:400; }
+
+.chiffres{
+  display:flex; flex-wrap:wrap; gap:0; max-width:1560px; margin:20px auto 0;
+  border:1px solid var(--trait); border-bottom:0;
+  border-radius:7px 7px 0 0; overflow:hidden; background:var(--papier-2);
+}
+.chiffre{
+  flex:1 1 120px; padding:11px 16px 13px; border-right:1px solid var(--trait);
+  display:flex; flex-direction:column; gap:1px;
+}
+.chiffre:last-child{ border-right:0; }
+.chiffre b{
+  font-family:var(--grot); font-size:23px; font-weight:800; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums; line-height:1.15;
+}
+.chiffre span{
+  font-family:var(--grot); font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.09em; color:var(--encre-3);
+}
+.chiffre.alerte b{ color:var(--ocre); }
+.chiffre.grave  b{ color:var(--laterite); }
+
+.outils{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  max-width:1560px; margin:0 auto; padding:13px 0 15px;
+}
+input[type="search"]{
+  font-family:var(--mono); font-size:13px; padding:7px 11px;
+  border:1px solid var(--trait-fort); border-radius:5px;
+  background:var(--carte); color:var(--encre); min-width:230px;
+}
+input[type="search"]::placeholder{ color:var(--encre-3); }
+.filtre{
+  font-family:var(--grot); font-size:12.5px; font-weight:600; cursor:pointer;
+  padding:6px 12px; border:1px solid var(--trait-fort); border-radius:20px;
+  background:transparent; color:var(--encre-2); transition:background .12s,color .12s,border-color .12s;
+}
+.filtre:hover{ border-color:var(--indigo); color:var(--indigo); }
+.filtre[aria-pressed="true"]{
+  background:var(--indigo); border-color:var(--indigo); color:var(--carte);
+}
+:root[data-theme="dark"] .filtre[aria-pressed="true"],
+:root:not([data-theme="light"]) .filtre[aria-pressed="true"]{ color:var(--papier); }
+.filtre b{ font-variant-numeric:tabular-nums; opacity:.7; font-weight:600; }
+
+/* ---------------------------------------------------------------- corps */
+.corps{
+  max-width:1560px; margin:0 auto; padding:22px clamp(16px,3vw,34px) 60px;
+  display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:26px;
+  align-items:start;
+}
+@media (max-width:1080px){ .corps{ grid-template-columns:1fr; } }
+
+/* ---------------------------------------------------------------- arbre */
+.rubrique{ margin-bottom:22px; }
+.rubrique-titre{
+  font-family:var(--grot); font-size:11px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--encre-3);
+  display:flex; align-items:center; gap:10px; margin:0 0 7px; padding:0 2px;
+}
+.rubrique-titre::after{ content:""; flex:1; height:1px; background:var(--trait); }
+.rubrique-titre em{ font-style:normal; font-family:var(--mono); font-size:10.5px; letter-spacing:0; }
+
+.lignes{ display:flex; flex-direction:column; gap:2px; }
+
+.ligne{
+  display:grid; grid-template-columns:3px 1fr auto; gap:0 10px; align-items:center;
+  width:100%; text-align:left; cursor:pointer;
+  background:var(--carte); border:1px solid var(--trait); border-left:0;
+  border-radius:0 5px 5px 0; padding:0; overflow:hidden;
+  font:inherit; color:inherit; transition:border-color .12s, transform .12s;
+}
+.ligne:hover{ border-color:var(--trait-fort); }
+.ligne[aria-current="true"]{
+  border-color:var(--indigo); background:var(--indigo-pale);
+}
+.jauge{ align-self:stretch; background:var(--trait); }
+.ligne.etat-vide  .jauge{ background:var(--laterite); }
+.ligne.etat-revoir .jauge{ background:var(--ocre); }
+.ligne.etat-ok    .jauge{ background:var(--feuille); }
+
+.ligne-corps{ padding:8px 0 9px; min-width:0; }
+.ligne-titre{
+  font-family:var(--grot); font-weight:600; font-size:14px; letter-spacing:-.008em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ligne-route{
+  font-family:var(--mono); font-size:11px; color:var(--encre-3);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;
+}
+.ligne-manque{
+  font-family:var(--grot); font-size:11.5px; color:var(--ocre); margin-top:3px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ligne.etat-vide .ligne-manque{ color:var(--laterite); }
+
+.mesures{
+  display:flex; gap:12px; padding-right:12px; font-family:var(--mono);
+  font-size:11px; color:var(--encre-3); font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.mesures i{ font-style:normal; color:var(--encre-2); }
+@media (max-width:560px){ .mesures{ display:none; } }
+
+/* ---------------------------------------------------------------- fiche */
+.fiche{
+  position:sticky; top:18px; background:var(--carte); border:1px solid var(--trait);
+  border-radius:8px; box-shadow:var(--ombre); padding:20px 22px 24px;
+  max-height:calc(100vh - 36px); overflow-y:auto;
+}
+@media (max-width:1080px){ .fiche{ position:static; max-height:none; } }
+
+.fiche-eyebrow{
+  font-family:var(--grot); font-size:10.5px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--encre-3);
+}
+.fiche h2{
+  font-family:var(--grot); font-size:22px; font-weight:800; letter-spacing:-.022em;
+  margin:5px 0 8px; text-wrap:balance; line-height:1.2;
+}
+.fiche-route{
+  font-family:var(--mono); font-size:11.5px; color:var(--encre-2);
+  background:var(--papier-2); border:1px solid var(--trait); border-radius:4px;
+  padding:4px 8px; display:inline-block; word-break:break-all;
+}
+.fiche-ouvrir{
+  font-family:var(--grot); font-size:12px; font-weight:600; text-decoration:none;
+  margin-left:7px; white-space:nowrap;
+}
+.fiche-ouvrir:hover{ text-decoration:underline; }
+
+.fiche-chapo{
+  font-size:14.5px; color:var(--encre-2); margin:13px 0 0; max-width:62ch;
+  border-left:2px solid var(--trait-fort); padding-left:12px;
+}
+
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:16px 0 0;
+  background:var(--trait); border:1px solid var(--trait); border-radius:6px; overflow:hidden;
+}
+.stat{ background:var(--carte); padding:8px 10px; }
+.stat b{
+  display:block; font-family:var(--grot); font-size:17px; font-weight:800;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+}
+.stat span{
+  font-family:var(--grot); font-size:9.5px; text-transform:uppercase;
+  letter-spacing:.08em; color:var(--encre-3);
+}
+
+.bloc{ margin-top:18px; }
+.bloc-titre{
+  font-family:var(--grot); font-size:10.5px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--encre-3); margin:0 0 7px;
+}
+.manques{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+.manques li{
+  font-family:var(--grot); font-size:13px; font-weight:500; line-height:1.4;
+  padding:6px 10px; border-radius:5px;
+  background:var(--ocre-pale); color:var(--ocre);
+  border-left:2px solid currentColor;
+}
+.manques li.grave{ background:var(--laterite-pale); color:var(--laterite); }
+.manques li.bien{ background:var(--feuille-pale); color:var(--feuille); }
+
+.sommaire{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:3px; }
+.sommaire li{
+  font-size:14px; color:var(--encre-2); padding-left:15px; position:relative;
+}
+.sommaire li::before{
+  content:""; position:absolute; left:2px; top:.62em;
+  width:5px; height:1px; background:var(--trait-fort);
+}
+
+.liens{ display:flex; flex-wrap:wrap; gap:4px; }
+.lien{
+  font-family:var(--mono); font-size:11px; cursor:pointer;
+  padding:3px 8px; border:1px solid var(--trait); border-radius:4px;
+  background:var(--papier-2); color:var(--encre-2);
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  transition:border-color .12s, color .12s;
+}
+.lien:hover{ border-color:var(--indigo); color:var(--indigo); }
+
+.vide{ color:var(--encre-3); font-style:italic; font-size:13.5px; }
+
+.note{
+  max-width:1560px; margin:0 auto; padding:0 clamp(16px,3vw,34px) 46px;
+  font-size:14px; color:var(--encre-2); max-width:min(1560px,74ch);
+}
+.note b{ font-family:var(--grot); font-weight:600; color:var(--encre); }
+
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+
+<header class="bandeau">
+  <div class="bandeau-haut">
+    <h1>Atlas Bénin Tourisme</h1>
+    <p class="sous">89 pages · l'arborescence, le graphe des liens, et ce qui manque à chacune</p>
+  </div>
+  <div class="chiffres" id="chiffres"></div>
+  <div class="outils">
+    <input type="search" id="recherche" placeholder="chercher une page, une route…" aria-label="Chercher une page">
+    <button class="filtre" data-filtre="tout" aria-pressed="true">Toutes <b id="n-tout"></b></button>
+    <button class="filtre" data-filtre="revoir" aria-pressed="false">À revoir <b id="n-revoir"></b></button>
+    <button class="filtre" data-filtre="vide" aria-pressed="false">Trop courtes <b id="n-vide"></b></button>
+    <button class="filtre" data-filtre="cul" aria-pressed="false">Culs-de-sac <b id="n-cul"></b></button>
+    <button class="filtre" data-filtre="mer" aria-pressed="false">Contresens géographique <b id="n-mer"></b></button>
+    <button class="filtre" data-filtre="images" aria-pressed="false">Sans illustration <b id="n-images"></b></button>
+  </div>
+</header>
+
+<main class="corps">
+  <div id="arbre"></div>
+  <aside class="fiche" id="fiche" aria-live="polite"></aside>
+</main>
+
+<p class="note">
+  Une page est signalée quand elle compte moins de 150&nbsp;mots, n'a qu'une illustration ou
+  aucune, ne porte aucun sous-titre, ne mène nulle part, ou décrit la mer alors que son sujet
+  se trouve à des centaines de kilomètres de la côte — trace du gabarit dont ce site est issu.
+  <b>Les liens de la fiche sont ceux du contenu&nbsp;:</b> le menu, l'en-tête et le pied de page
+  sont écartés, puisqu'ils sont identiques partout.
+</p>
+
+<script>
+const DONNEES = /*DONNÉES*/null;
+const PAGES = DONNEES.pages;
+const PAR_ROUTE = new Map(PAGES.map(p => [p.route, p]));
+const HOTE = "http://127.0.0.1:8010";
+
+const NOMS = {
+  accueil:"Accueil", explorez:"Explorez", sejourner:"Séjourner", activites:"Activités",
+  offres:"Offres", actualites:"Actualités", "a-propos-de-lanpt":"À propos de Dahomey Discovery",
+  "credits-photos":"Crédits photos", "mentions-legales":"Mentions légales",
+  "plan-du-site":"Plan du site", "fiche-de-relecture":"Fiche de relecture"
+};
+
+const estVide   = p => p.mots < 150;
+const estCul    = p => p.sortants.length === 0;
+const estMer    = p => p.mer.length > 0;
+const sansImage = p => p.photos <= 1;
+const aRevoir   = p => p.manques.length > 0;
+
+const CRITERES = {
+  tout:   () => true,
+  revoir: aRevoir,
+  vide:   estVide,
+  cul:    estCul,
+  mer:    estMer,
+  images: sansImage,
+};
+
+let filtre = "tout";
+let recherche = "";
+let choisie = null;
+
+/* ------------------------------------------------------------- chiffres */
+const nombre = n => n.toLocaleString("fr-FR").replace(/ |,/g, " ");
+
+function poseLesChiffres(){
+  const mots = PAGES.reduce((t,p) => t + p.mots, 0);
+  const liens = PAGES.reduce((t,p) => t + p.sortants.length, 0);
+  const cases = [
+    ["", PAGES.length, "pages"],
+    ["", nombre(mots), "mots de contenu"],
+    ["", liens, "liens entre pages"],
+    ["alerte", PAGES.filter(aRevoir).length, "pages à revoir"],
+    ["grave", PAGES.filter(estVide).length, "sous 150 mots"],
+    ["grave", PAGES.filter(estCul).length, "culs-de-sac"],
+    ["", PAGES.filter(p => p.entrants.length === 0 && p.route !== "/").length, "orphelines"],
+  ];
+  document.getElementById("chiffres").innerHTML = cases.map(
+    ([c,v,l]) => `<div class="chiffre ${c}"><b>${v}</b><span>${l}</span></div>`
+  ).join("");
+
+  for (const [cle, test] of Object.entries(CRITERES)){
+    const cible = document.getElementById("n-" + cle);
+    if (cible) cible.textContent = PAGES.filter(test).length;
+  }
+}
+
+/* ---------------------------------------------------------------- arbre */
+function retenues(){
+  const q = recherche.trim().toLowerCase();
+  return PAGES.filter(p =>
+    CRITERES[filtre](p) &&
+    (!q || p.route.toLowerCase().includes(q) || p.titre.toLowerCase().includes(q))
+  );
+}
+
+function etat(p){
+  if (estVide(p) || estCul(p)) return "etat-vide";
+  if (aRevoir(p)) return "etat-revoir";
+  return "etat-ok";
+}
+
+function dessineLArbre(){
+  const lot = retenues();
+  const rubriques = [...new Set(PAGES.map(p => p.rubrique))]
+    .filter(r => lot.some(p => p.rubrique === r));
+
+  const arbre = document.getElementById("arbre");
+  if (!lot.length){
+    arbre.innerHTML = `<p class="vide">Aucune page ne correspond.</p>`;
+    return;
+  }
+
+  arbre.innerHTML = rubriques.map(rub => {
+    const dedans = lot.filter(p => p.rubrique === rub)
+                      .sort((a,b) => a.route.localeCompare(b.route, "fr"));
+    const mots = dedans.reduce((t,p) => t + p.mots, 0);
+    const lignes = dedans.map(p => {
+      const marge = 4 + Math.max(0, p.profondeur - 1) * 17;
+      const manque = p.manques.length
+        ? `<div class="ligne-manque">${p.manques.join(" · ")}</div>` : "";
+      return `<button class="ligne ${etat(p)}" data-route="${p.route}"
+                 aria-current="${p.route === choisie}">
+        <div class="jauge"></div>
+        <div class="ligne-corps" style="padding-left:${marge}px">
+          <div class="ligne-titre">${p.titre}</div>
+          <div class="ligne-route">${p.route}</div>
+          ${manque}
+        </div>
+        <div class="mesures">
+          <span><i>${nombre(p.mots)}</i> m</span>
+          <span><i>${p.photos}</i> img</span>
+          <span>→<i>${p.sortants.length}</i></span>
+          <span>←<i>${p.entrants.length}</i></span>
+        </div>
+      </button>`;
+    }).join("");
+    return `<section class="rubrique">
+      <h2 class="rubrique-titre">${NOMS[rub] || rub}<em>${dedans.length} pages · ${nombre(mots)} mots</em></h2>
+      <div class="lignes">${lignes}</div>
+    </section>`;
+  }).join("");
+
+  arbre.querySelectorAll(".ligne").forEach(b =>
+    b.addEventListener("click", () => selectionne(b.dataset.route)));
+}
+
+/* ---------------------------------------------------------------- fiche */
+function pastilles(routes){
+  if (!routes.length) return `<p class="vide">aucun</p>`;
+  return `<div class="liens">` + routes.map(r => {
+    const cible = PAR_ROUTE.get(r);
+    return `<button class="lien" data-va="${r}" title="${cible ? cible.titre : r}">${r}</button>`;
+  }).join("") + `</div>`;
+}
+
+function dessineLaFiche(){
+  const fiche = document.getElementById("fiche");
+  if (!choisie || !PAR_ROUTE.has(choisie)){
+    fiche.innerHTML = `<p class="fiche-eyebrow">Fiche</p>
+      <h2>Choisis une page</h2>
+      <p class="fiche-chapo">Chaque fiche donne son volume, ses illustrations, ses sous-titres,
+      ce qui lui manque, et surtout&nbsp;: les pages qu'elle cite et celles qui la citent.
+      Les routes sont cliquables — on circule dans le graphe comme dans le site.</p>`;
+    return;
+  }
+  const p = PAR_ROUTE.get(choisie);
+
+  const graves = new Set(["cul-de-sac : ne mène nulle part", "orpheline : aucune page ne la cite"]);
+  const manques = p.manques.length
+    ? `<ul class="manques">` + p.manques.map(m => {
+        const dur = graves.has(m) || m.startsWith("seulement") || m.startsWith("0 illustration");
+        return `<li class="${dur ? "grave" : ""}">${m}</li>`;
+      }).join("") + `</ul>`
+    : `<ul class="manques"><li class="bien">Rien à signaler sur la forme — reste à vérifier le fond.</li></ul>`;
+
+  const sommaire = p.titres.length
+    ? `<ul class="sommaire">` + p.titres.map(t => `<li>${t}</li>`).join("") + `</ul>`
+    : `<p class="vide">La page n'a aucun sous-titre.</p>`;
+
+  const mer = p.mer.length
+    ? `<div class="bloc"><p class="bloc-titre">Vocabulaire de la mer, sur une page de l'intérieur</p>
+       <div class="liens">${p.mer.map(m => `<span class="lien">${m}</span>`).join("")}</div></div>` : "";
+
+  fiche.innerHTML = `
+    <p class="fiche-eyebrow">${NOMS[p.rubrique] || p.rubrique}</p>
+    <h2>${p.titre}</h2>
+    <p><span class="fiche-route">${p.route}</span><a class="fiche-ouvrir" href="${HOTE}${p.route}" target="_blank" rel="noopener">ouvrir&nbsp;↗</a></p>
+    <p class="fiche-chapo">${p.chapo}…</p>
+    <div class="stats">
+      <div class="stat"><b>${nombre(p.mots)}</b><span>mots</span></div>
+      <div class="stat"><b>${p.photos}</b><span>images</span></div>
+      <div class="stat"><b>${p.sortants.length}</b><span>vers</span></div>
+      <div class="stat"><b>${p.entrants.length}</b><span>depuis</span></div>
+    </div>
+    <div class="bloc"><p class="bloc-titre">État</p>${manques}</div>
+    ${mer}
+    <div class="bloc"><p class="bloc-titre">Sommaire de la page</p>${sommaire}</div>
+    <div class="bloc"><p class="bloc-titre">Cette page mène à</p>${pastilles(p.sortants)}</div>
+    <div class="bloc"><p class="bloc-titre">On y arrive depuis</p>${pastilles(p.entrants)}</div>
+  `;
+  fiche.querySelectorAll("[data-va]").forEach(b =>
+    b.addEventListener("click", () => selectionne(b.dataset.va, true)));
+}
+
+function selectionne(route, remonter){
+  choisie = route;
+  dessineLArbre();
+  dessineLaFiche();
+  if (remonter){
+    const ligne = document.querySelector(`.ligne[data-route="${CSS.escape(route)}"]`);
+    if (ligne) ligne.scrollIntoView({ block:"center", behavior:"smooth" });
+    else { filtre = "tout"; majFiltres(); dessineLArbre(); dessineLaFiche(); }
+  }
+}
+
+function majFiltres(){
+  document.querySelectorAll(".filtre").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.filtre === filtre)));
+}
+
+document.querySelectorAll(".filtre").forEach(b => b.addEventListener("click", () => {
+  filtre = b.dataset.filtre; majFiltres(); dessineLArbre();
+}));
+document.getElementById("recherche").addEventListener("input", e => {
+  recherche = e.target.value; dessineLArbre();
+});
+
+poseLesChiffres();
+dessineLArbre();
+dessineLaFiche();
+</script>

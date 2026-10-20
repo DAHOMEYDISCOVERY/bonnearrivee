@@ -1,0 +1,30 @@
+{
+  "name": "Bonne Arrivée",
+  "short_name": "Bonne Arrivée",
+  "description": "Portail du Tourisme et de l'Attractivité au Bénin",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "fr-FR",
+  "background_color": "#ffffff",
+  "theme_color": "#00a05d",
+  "icons": [
+    {
+      "src": "/assets/site/favicon/favicon/apple-touch-icon-180x180.b3960aed9c.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/site/favicon/favicon/apple-touch-icon-152x152.eebce8f45d.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/site/favicon/favicon/apple-touch-icon-1024x1024.459fa43763.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

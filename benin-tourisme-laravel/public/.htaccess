@@ -1,0 +1,107 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compression gzip/deflate : 60 à 80 % en moins sur HTML/CSS/JS/SVG.
+# Les webp/png/jpg sont déjà compressés, on n'y touche pas.
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/rss+xml application/atom+xml
+    AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+    AddOutputFilterByType DEFLATE font/woff2 font/woff application/vnd.ms-fontobject
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Cache navigateur : les assets versionnés (?v=hash ou nom.HASH.ext) peuvent
+# être mis en cache très longtemps ; l'HTML reste sur no-cache pour rester frais.
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML : pas de cache long, l'utilisateur doit voir les évolutions
+    ExpiresByType text/html                     "access plus 0 seconds"
+
+    # Assets versionnés : cache un an
+    ExpiresByType text/css                      "access plus 1 year"
+    ExpiresByType application/javascript        "access plus 1 year"
+    ExpiresByType text/javascript               "access plus 1 year"
+    ExpiresByType application/json              "access plus 1 hour"
+
+    # Images
+    ExpiresByType image/webp                    "access plus 1 year"
+    ExpiresByType image/png                     "access plus 1 year"
+    ExpiresByType image/jpeg                    "access plus 1 year"
+    ExpiresByType image/gif                     "access plus 1 year"
+    ExpiresByType image/svg+xml                 "access plus 1 year"
+    ExpiresByType image/x-icon                  "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon      "access plus 1 year"
+
+    # Polices
+    ExpiresByType font/woff                     "access plus 1 year"
+    ExpiresByType font/woff2                    "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    ExpiresByType application/x-font-ttf        "access plus 1 year"
+
+    # Sitemap & flux : cache court
+    ExpiresByType application/xml               "access plus 1 hour"
+    ExpiresByType application/rss+xml           "access plus 1 hour"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Sécurité de base : entêtes recommandées sans risque
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Empêche l'inclusion du site dans un <iframe> (clickjacking)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Le navigateur respecte le Content-Type déclaré, ne devine plus
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Politique referrer : envoie l'origine (pas le chemin complet) aux tiers
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Bloque certaines APIs par défaut (géoloc/micro/caméra) — le site peut lever
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+
+    # Cache-Control immutable sur TOUT /assets/ (CSS/JS/images) — le navigateur
+    # ne révalide même pas sur F5. On versionne via ?v=events* donc toute MAJ
+    # casse le cache naturellement.
+    <FilesMatch "\.(css|js|mjs|webp|png|jpe?g|gif|svg|ico|woff2?|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Types MIME pour les formats modernes (sécurité si Apache les ignore)
+# ---------------------------------------------------------------------------
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType font/woff2 .woff2
+    AddType application/manifest+json .webmanifest
+</IfModule>

@@ -1,0 +1,1 @@
+const e=async(r,o)=>{let s=`https://nominatim.openstreetmap.org/search.php?q=${r}&limit=1&format=jsonv2`;o&&(s+=`&viewbox=${o}`);const t=await fetch(s);if(!t.ok)throw new Error(`Response status: ${t.status}`);const n=await t.json();if(n[0]===void 0)throw new Error("No result found");return n[0]};export{e as searchLocation};
