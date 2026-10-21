@@ -51,6 +51,16 @@ return [
         'catalog_duration_months' => 6,
     ],
 
+    // Wa Dùnù — catalogue PDF héberge sur Nextcloud (lien de partage prive).
+    // Le serveur authentifie en back-end avec le mot de passe du share, puis
+    // streame le PDF a l'abonne. L'abonne ne voit jamais le mot de passe.
+    // En l'absence de ces variables, le controleur retombe sur le disque local
+    // storage/app/private/wadunu/catalogue.pdf (mode dev).
+    'wadunu' => [
+        'pdf_url'      => env('WADUNU_PDF_URL'),
+        'pdf_password' => env('WADUNU_PDF_PASSWORD'),
+    ],
+
     'aggregator' => [
         // En dev local (WAMP), le bundle de certificats CA est souvent absent :
         // mettre AGG_HTTP_VERIFY=false dans .env pour désactiver la vérification.

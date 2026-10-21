@@ -93,8 +93,9 @@ class WadunuController extends Controller
     /**
      * GET /mes-restos/{token}
      * Verifie le token et affiche le viewer PDF embarque.
-     * Le PDF servi est le fichier courant du disque `wadunu` — mis a jour
-     * par l'admin, tous les abonnes voient la nouvelle version aussitot.
+     * Le PDF est heberge sur Nextcloud (lien de partage protege par mot de
+     * passe). L'admin met a jour le PDF directement sur Nextcloud, tous
+     * les abonnes voient la nouvelle version au prochain refresh.
      */
     public function catalog(Request $request, string $token)
     {
@@ -104,34 +105,36 @@ class WadunuController extends Controller
         }
         $access->markSeen();
 
-        // Renouvellement discret si moins de 5 jours restants
-        if ($access->expires_at && $access->expires_at->diffInDays(now(), false) > -5) {
-            // (garde la logique originale, safe)
-        }
         if ($access->expires_at && now()->diffInDays($access->expires_at, false) < 5 && $access->expires_at->isFuture()) {
             $access->renew(30);
         }
 
-        $disk = Storage::disk('wadunu');
-        $pdfExists = $disk->exists(WadunuCatalogPage::FILENAME);
-        $pdfUpdatedAt = $pdfExists
-            ? \Carbon\Carbon::createFromTimestamp($disk->lastModified(WadunuCatalogPage::FILENAME))
-            : null;
+        // Source du PDF : prioritaire Nextcloud (prod), sinon disque local (dev)
+        $pdfExists = $this->pdfIsAvailable();
+        $pdfUpdatedAt = null;
+        $pdfSizeBytes = 0;
+        if ($pdfExists && !config('services.wadunu.pdf_url')) {
+            $disk = Storage::disk('wadunu');
+            $pdfUpdatedAt = \Carbon\Carbon::createFromTimestamp($disk->lastModified(WadunuCatalogPage::FILENAME));
+            $pdfSizeBytes = $disk->size(WadunuCatalogPage::FILENAME);
+        }
 
         return view('pages.wadunu.viewer', array_merge($this->pageDefaults('Mon catalogue Wa Dùnù'), [
             'token'         => $token,
             'access'        => $access,
             'pdfExists'     => $pdfExists,
             'pdfUpdatedAt'  => $pdfUpdatedAt,
-            'pdfSizeBytes'  => $pdfExists ? $disk->size(WadunuCatalogPage::FILENAME) : 0,
+            'pdfSizeBytes'  => $pdfSizeBytes,
             'expiresAt'     => $access->order->access_expires_at,
         ]));
     }
 
     /**
      * GET /mes-restos/{token}/pdf
-     * Sert le PDF courant en stream, protege par le token.
-     * Utilise pour l'iframe du viewer et le bouton "Telecharger".
+     * Sert le PDF, protege par le token. Deux sources possibles :
+     *  1) Nextcloud (prod) : proxy serveur avec auth du lien partage prive.
+     *     Le mot de passe reste cote serveur, l'abonne ne le voit jamais.
+     *  2) Disque local (dev) : stream du fichier `wadunu/catalogue.pdf`.
      */
     public function catalogPdf(Request $request, string $token)
     {
@@ -139,24 +142,57 @@ class WadunuController extends Controller
         if (!$access) {
             abort(403, 'Lien expire.');
         }
+        $access->markSeen();
 
+        $disposition = $request->query('download') ? 'attachment' : 'inline';
+        $disposition .= '; filename="Wa-Dunu-catalogue.pdf"';
+        $sharedHeaders = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => $disposition,
+            'Cache-Control' => 'private, no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'X-Content-Type-Options' => 'nosniff',
+        ];
+
+        // Priorite Nextcloud si configure
+        $ncUrl = config('services.wadunu.pdf_url');
+        $ncPwd = config('services.wadunu.pdf_password');
+        if ($ncUrl) {
+            try {
+                $response = Http::withBasicAuth('', (string) $ncPwd)
+                    ->timeout(120)
+                    ->withOptions(['stream' => true])
+                    ->get(rtrim($ncUrl, '/') . '/download');
+                if (!$response->successful()) {
+                    abort(502, 'Catalogue momentanement indisponible.');
+                }
+                $body = $response->body();
+                $sharedHeaders['Content-Length'] = (string) strlen($body);
+                return response($body, 200, $sharedHeaders);
+            } catch (\Throwable $e) {
+                \Log::warning('Wadunu PDF proxy error: ' . $e->getMessage());
+                // Fallback vers le disque local
+            }
+        }
+
+        // Fallback : disque local (dev ou absence de config Nextcloud)
         $disk = Storage::disk('wadunu');
         $filename = WadunuCatalogPage::FILENAME;
         if (!$disk->exists($filename)) {
             abort(404, 'Aucun catalogue publie pour le moment.');
         }
+        return response()->file($disk->path($filename), $sharedHeaders);
+    }
 
-        $access->markSeen();
-
-        // Inline si demande (iframe) ; attachment si ?download=1
-        $disposition = $request->query('download') ? 'attachment' : 'inline';
-        return response()->file($disk->path($filename), [
-            'Content-Type'        => 'application/pdf',
-            'Content-Disposition' => $disposition . '; filename="Wa-Dunu-catalogue.pdf"',
-            'Cache-Control'       => 'private, no-cache, no-store, must-revalidate',
-            'Pragma'              => 'no-cache',
-            'X-Content-Type-Options' => 'nosniff',
-        ]);
+    /**
+     * Verifie que le PDF est disponible (Nextcloud ou local).
+     */
+    private function pdfIsAvailable(): bool
+    {
+        if (config('services.wadunu.pdf_url')) {
+            return true;
+        }
+        return Storage::disk('wadunu')->exists(WadunuCatalogPage::FILENAME);
     }
 
     /**
