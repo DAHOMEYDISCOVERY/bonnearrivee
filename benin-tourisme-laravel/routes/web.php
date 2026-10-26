@@ -2,9 +2,26 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\PageAdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
+
+/*
+ * Routes d'administration — login et gestion des pages.
+ */
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('admin.login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/pages', [PageAdminController::class, 'index'])->name('admin.pages.index');
+        Route::get('/pages/{page}/edit', [PageAdminController::class, 'edit'])->name('admin.pages.edit');
+        Route::put('/pages/{page}', [PageAdminController::class, 'update'])->name('admin.pages.update');
+    });
+});
 
 /*
  * Le sitemap est publié avant la route attrape-tout, pour ne pas être avalé
