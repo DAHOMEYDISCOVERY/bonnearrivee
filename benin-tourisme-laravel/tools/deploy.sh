@@ -13,6 +13,9 @@ chmod -R ug+rwx storage bootstrap/cache 2>/dev/null || true
 echo "===> 3. Migrations BDD"
 php artisan migrate --force --no-interaction
 
+echo "===> 3.1. Seeding user admin"
+php artisan db:seed --class=AdminUserSeeder --force --no-interaction
+
 echo "===> 4. Lien symbolique /public/storage -> /storage/app/public"
 php artisan storage:link 2>/dev/null || true
 
