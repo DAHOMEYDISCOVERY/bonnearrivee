@@ -147,7 +147,8 @@ body.fullScrolled .woody-component-headnavs .woody-component-header .menuLogo im
 .woody-component-headnavs.ba-nav-hidden {
     transform: translateY(-100%);
     opacity: 0;
-    pointer-events: none;
+    /* pointer-events retire pour que le clic sur l'icone menu ne soit
+       jamais avale pendant la transition retour-visible. */
 }
 .woody-component-mobilenavs .menuLogo .brand-logo img,
 .mobile-header .brand-logo img{

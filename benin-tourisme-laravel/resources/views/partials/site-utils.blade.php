@@ -156,6 +156,33 @@
 })();
 </script>
 
+{{-- Fallback d'ouverture du menu burger (fiabilise en prod)
+     Woody attache son listener au terme de son JS module defere : si
+     l'utilisateur clique avant que ce listener soit en place (race
+     condition observee en prod sur reseau lent), le clic est perdu.
+     On attache ici un fallback en capture : si Woody a bien gere, on
+     ne fait rien ; sinon on toggle manuellement body.menu-is-open. --}}
+<script>
+(function () {
+    document.addEventListener('click', function (e) {
+        var btn = e.target && e.target.closest
+            ? e.target.closest('.menu-icon, [data-toggle="main-menu"]')
+            : null;
+        if (!btn) return;
+        var wasOpen = document.body.classList.contains('menu-is-open');
+        // 60ms suffit pour que Woody ait fait son toggle s'il est pret.
+        // Si rien n'a change dans ce delai, on toggle nous-memes.
+        window.setTimeout(function () {
+            var isOpen = document.body.classList.contains('menu-is-open');
+            if (isOpen === wasOpen) {
+                document.body.classList.toggle('menu-is-open');
+                btn.classList.toggle('open');
+            }
+        }, 60);
+    }, true);
+})();
+</script>
+
 {{-- Barre de navigation mobile : masquer au scroll vers le bas,
      revenir au scroll vers le haut (meme comportement que le header
      desktop natif Woody). Woody ne pose pas ce comportement sur
