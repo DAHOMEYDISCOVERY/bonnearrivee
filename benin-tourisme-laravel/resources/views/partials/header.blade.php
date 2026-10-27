@@ -184,53 +184,9 @@
 
     </li>
 
-                                                                            
-<li class="submenu-block submenu-block-images-list tpl_07 " data-position="grid-col-start-6 grid-col-end-13 grid-row-start-1 grid-row-end-13" role="menuitem" aria-label="Écosystème Dahomey Discovery">
-    <ul class="submenu-block-content" data-columns="1cols" role="menu">
-        <li class="card overlayedCard submenu-item submenu-item-delay">
-            <a class="card-link isRel bg-black" href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer" aria-label="Dahomey Discovery — agence réceptive" role="menuitem">
-                <figure aria-hidden="true" class="isRel imageObject cardMediaWrapper">
-                    <img class="imageObject-img img-responsive" src="/assets/img/dahomey-discovery-hero.webp" alt="Dahomey Discovery — accueil" loading="lazy" referrerpolicy="no-referrer" />
-                </figure>
-                <div class="card-section submenu-item-section fullcenterbox">
-                    <div class="card-titles"><div class="card-texts has-title has-desc">
-                        <span class="card-title block-span">Dahomey Discovery</span>
-                        <span class="card-subtitle block-span" style="display:block;font-size:.75rem;opacity:.85;margin-top:.25rem">Agence réceptive — circuits, hébergements, transferts</span>
-                    </div></div>
-                </div>
-            </a>
-        </li>
-        <li class="card overlayedCard submenu-item submenu-item-delay">
-            <a class="card-link isRel bg-black" href="https://www.petit-train-cotonou.com" target="_blank" rel="noopener noreferrer" aria-label="Le Petit Train de Cotonou" role="menuitem">
-                <figure aria-hidden="true" class="isRel imageObject cardMediaWrapper">
-                    <img class="imageObject-img img-responsive" src="/assets/img/petit-train-cotonou.webp" alt="Le Petit Train de Cotonou" loading="lazy" />
-                </figure>
-                <div class="card-section submenu-item-section fullcenterbox">
-                    <div class="card-titles"><div class="card-texts has-title has-desc">
-                        <span class="card-title block-span">Le Petit Train de Cotonou</span>
-                        <span class="card-subtitle block-span" style="display:block;font-size:.75rem;opacity:.85;margin-top:.25rem">Balade commentée dans la capitale</span>
-                    </div></div>
-                </div>
-            </a>
-        </li>
-        <li class="card overlayedCard submenu-item submenu-item-delay">
-            <a class="card-link isRel bg-black" href="https://www.wanilo.studio" target="_blank" rel="noopener noreferrer" aria-label="Wanilo Studio" role="menuitem">
-                <figure aria-hidden="true" class="isRel imageObject cardMediaWrapper">
-                    <img class="imageObject-img img-responsive" src="/assets/img/wanilo-studio-hero.webp" alt="Wanilo Studio — accueil" loading="lazy" referrerpolicy="no-referrer" />
-                </figure>
-                <div class="card-section submenu-item-section fullcenterbox">
-                    <div class="card-titles"><div class="card-texts has-title has-desc">
-                        <span class="card-title block-span">Wanilo Studio</span>
-                        <span class="card-subtitle block-span" style="display:block;font-size:.75rem;opacity:.85;margin-top:.25rem">Studio audiovisuel — vidéo, podcast, photo</span>
-                    </div></div>
-                </div>
-            </a>
-        </li>
-    </ul>
-</li>
 
-                                                                            
-                                                                            
+
+
                                                                     </ul>
                             </div>
                                             </li>
