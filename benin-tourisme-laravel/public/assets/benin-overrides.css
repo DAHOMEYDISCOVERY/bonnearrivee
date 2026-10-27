@@ -5760,52 +5760,9 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
 }
 
 
-/* --- Fix : Woody applique "filter: brightness(0) invert(1)" sur le logo
-   pour qu'il contraste avec le hero sombre. Chez nous, le hero desktop
-   est sombre comme chez Mayotte -> on garde le comportement natif Woody
-   sur desktop (logo blanc en haut de page, colore apres scroll). Mais
-   sur mobile, le header n'a pas de hero derriere lui (barre .woody-component-mobilenavs
-   avec fond blanc en permanence) -> le filtre rendait le logo blanc sur blanc,
-   invisible. On desactive donc le filtre UNIQUEMENT sous 992px. */
-@media (max-width: 991px) {
-    .woody-component-headnavs .woody-component-header .is-brand-logo,
-    .woody-component-headnavs .woody-component-header .is-brand-logo img,
-    .woody-component-mobilenavs .is-brand-logo,
-    .woody-component-mobilenavs .is-brand-logo img,
-    .woody-component-mobilenavs .menuLogo img,
-    .mobile-header .brand-logo img {
-        filter: none !important;
-    }
-}
-
-/* --- Fix identique pour l'icone menu (burger) : Woody le met en blanc
-   pour contraster avec le hero sombre, parfait sur desktop. Sur mobile en
-   revanche, le header a un fond blanc en permanence -> burger blanc sur
-   blanc = invisible. On force la palette verte Benin UNIQUEMENT sous 992px,
-   et on laisse Woody gerer la transition native sur desktop. */
-@media (max-width: 991px) {
-    .woody-component-headnavs .woody-component-header .menu-icon .menu-icon-bars-wrapper .menu-icon-bar,
-    .woody-component-mobilenavs .menu-icon .menu-icon-bars-wrapper .menu-icon-bar {
-        background-color: var(--benin-green) !important;
-    }
-    .woody-component-headnavs .woody-component-header .menu-icon .title-bar-title .menu-btn-title,
-    .woody-component-mobilenavs .menu-icon .title-bar-title .menu-btn-title {
-        color: var(--benin-green) !important;
-    }
-    .woody-component-headnavs .woody-component-header .menu-icon,
-    .woody-component-mobilenavs .menu-icon {
-        border-color: var(--benin-green) !important;
-    }
-    /* Etat "open" du burger (apres clic) : vert sombre pour la croix */
-    .woody-component-headnavs .woody-component-header .menu-icon.open .menu-icon-bars-wrapper .menu-icon-bar,
-    .woody-component-mobilenavs .menu-icon.open .menu-icon-bars-wrapper .menu-icon-bar {
-        background-color: var(--benin-dark) !important;
-    }
-    .woody-component-headnavs .woody-component-header .menu-icon.open .title-bar-title .menu-btn-title,
-    .woody-component-mobilenavs .menu-icon.open .title-bar-title .menu-btn-title {
-        color: var(--benin-dark) !important;
-    }
-}
+/* Header mobile : on laisse Woody natif gerer la transition de couleur
+   du logo et de l'icone menu (comme sur mayotte-tourisme.com), aucune
+   regle override cote site. */
 
 
 /* Header : comportement Woody natif restaure (animation d'apparition + sticky
