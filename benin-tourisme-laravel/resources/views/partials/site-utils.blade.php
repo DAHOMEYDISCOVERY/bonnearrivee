@@ -315,7 +315,20 @@
         if (hint) hint.hidden = false;
     }
     openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
-    if (closeBtn) closeBtn.addEventListener('click', function (e) { e.preventDefault(); close(); });
+    // Delegation globale : plus robuste si une icone enfant intercepte
+    // le clic, ou si le bouton est deplace dans le DOM par un autre JS.
+    document.addEventListener('click', function (e) {
+        if (overlay.hidden) return;
+        if (e.target.closest && e.target.closest('[data-ba-search-close]')) {
+            e.preventDefault();
+            close();
+            return;
+        }
+        // Clic sur le fond (le wrapper lui-meme, pas un enfant) -> ferme.
+        if (e.target === overlay) {
+            close();
+        }
+    }, true);
     if (clearBtn) clearBtn.addEventListener('click', function () {
         input.value = '';
         results.innerHTML = '';
