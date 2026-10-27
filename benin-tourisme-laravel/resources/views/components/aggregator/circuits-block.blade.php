@@ -22,8 +22,20 @@
 @php
     $aggregator = app(\App\Services\Aggregator\Aggregator::class);
     $items = $aggregator->circuits($filters, $limit);
-    // Responsive : adapter le nombre de colonnes desktop à ce qu'on a
-    $largeUp = min(max($items->count(), 1), 4);
+    // Equilibre visuel : on choisit un nombre de colonnes qui divise le
+    // nombre de cards (pas de derniere ligne a moitie vide). Ex : 6 items
+    // -> 3 colonnes (2 rangees pleines), 8 items -> 4 colonnes.
+    $count = $items->count();
+    $largeUp = match (true) {
+        $count <= 1       => 1,
+        $count === 2      => 2,
+        $count === 3      => 3,
+        $count === 4      => 4,
+        $count % 4 === 0  => 4,
+        $count % 3 === 0  => 3,
+        $count % 2 === 0  => 2,
+        default           => min($count, 4),
+    };
 @endphp
 @if($items->isNotEmpty())
 <div class="page-section">
