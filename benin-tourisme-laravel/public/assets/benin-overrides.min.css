@@ -1847,16 +1847,25 @@ body.home .content-wrapper > .page-section-5 > .section {
     transition: transform .3s ease, box-shadow .3s ease;
     grid-column: span 4;
 }
-/* Deux lignes forcees : 2 grandes cards en ligne 1 (span 6), 3 cards en ligne 2 (span 4). */
+/* Deux lignes equilibrees : rangee 1 = 2 cards span 6 (12/2), rangee 2 =
+   3 cards span 4 (12/3). La classe --wide est neutralisee dans ce grid
+   pour que la card 5 (Grand Nord) rentre bien sur la 2e ligne. */
 .benin-littoral__card:nth-child(1),
 .benin-littoral__card:nth-child(2) { grid-column: span 6; }
-/* Les cards --wide ne surchargent plus la nouvelle grille (repartition 12 col) */
-.benin-littoral__card--wide { grid-column: span 6; }
+.benin-littoral__card:nth-child(3),
+.benin-littoral__card:nth-child(4),
+.benin-littoral__card:nth-child(5) { grid-column: span 4; }
+.benin-littoral__grid .benin-littoral__card--wide { grid-column: inherit; }
+.benin-littoral__grid .benin-littoral__card:nth-child(1).benin-littoral__card--wide,
+.benin-littoral__grid .benin-littoral__card:nth-child(2).benin-littoral__card--wide { grid-column: span 6; }
 @media (max-width: 780px) {
     .benin-littoral__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
     .benin-littoral__card,
     .benin-littoral__card:nth-child(1),
     .benin-littoral__card:nth-child(2),
+    .benin-littoral__card:nth-child(3),
+    .benin-littoral__card:nth-child(4),
+    .benin-littoral__card:nth-child(5),
     .benin-littoral__card--wide { grid-column: span 1; }
     .benin-littoral__card:nth-child(1) { grid-column: span 2; }
 }
@@ -1865,6 +1874,9 @@ body.home .content-wrapper > .page-section-5 > .section {
     .benin-littoral__card,
     .benin-littoral__card:nth-child(1),
     .benin-littoral__card:nth-child(2),
+    .benin-littoral__card:nth-child(3),
+    .benin-littoral__card:nth-child(4),
+    .benin-littoral__card:nth-child(5),
     .benin-littoral__card--wide { grid-column: span 1; }
 }
 .benin-littoral__card:hover,
