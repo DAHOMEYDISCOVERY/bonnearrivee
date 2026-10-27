@@ -132,24 +132,8 @@ body.fullScrolled .woody-component-headnavs .woody-component-header .menuLogo im
   body.fullScrolled .woody-component-headnavs .woody-component-header .menuLogo img{height:70px}
 }
 
-/* --- Transition slide-up / slide-down du header mobile (comportement
-   Woody natif desktop, absent sur .woody-component-mobilenavs). Le JS
-   dans site-utils.blade.php ajoute/retire .ba-nav-hidden selon le sens
-   du scroll ; on bascule ici la barre entiere en translateY(-100%). */
-.woody-component-mobilenavs,
-.woody-component-headnavs {
-    transition:
-        transform .35s cubic-bezier(.86, 0, .07, 1),
-        opacity   .35s cubic-bezier(.86, 0, .07, 1);
-    will-change: transform;
-}
-.woody-component-mobilenavs.ba-nav-hidden,
-.woody-component-headnavs.ba-nav-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    /* pointer-events retire pour que le clic sur l'icone menu ne soit
-       jamais avale pendant la transition retour-visible. */
-}
+/* Header toujours visible au scroll — on laisse Woody natif gerer
+   entierement le comportement (comme sur mayotte-tourisme.com). */
 .woody-component-mobilenavs .menuLogo .brand-logo img,
 .mobile-header .brand-logo img{
   display:block;
