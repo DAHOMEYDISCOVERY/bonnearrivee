@@ -16,6 +16,30 @@ use Illuminate\Support\Facades\Schema;
  */
 class SearchController extends Controller
 {
+    /**
+     * Endpoint JSON pour l'autocomplete du header (dropdown live).
+     * Retourne les 6-8 meilleurs resultats, a plat, pour une UI legere.
+     */
+    public function suggest(Request $request)
+    {
+        $q = trim((string) $request->query('q', ''));
+        if (mb_strlen($q) < 2) {
+            return response()->json(['q' => $q, 'results' => []]);
+        }
+
+        $flat = array_merge(
+            array_slice($this->searchRestaurants($q), 0, 4),
+            array_slice($this->searchEvents($q), 0, 2),
+            array_slice($this->searchPages($q), 0, 2),
+        );
+
+        return response()->json([
+            'q'       => $q,
+            'results' => array_slice($flat, 0, 8),
+            'moreUrl' => '/recherche?q=' . urlencode($q),
+        ]);
+    }
+
     public function index(Request $request)
     {
         $q = trim((string) $request->query('q', ''));

@@ -28,6 +28,7 @@ Route::get('/sitemap.xml', [SitemapController::class, 'xml'])->name('sitemap');
  * Interroge restaurants, pages editoriales et evenements.
  */
 Route::get('/recherche', [SearchController::class, 'index'])->name('recherche');
+Route::get('/recherche/suggest', [SearchController::class, 'suggest'])->name('recherche.suggest');
 
 /*
  * Vestige WordPress : le script `eskalad-default.js` (analytics du thème) appelle

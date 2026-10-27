@@ -280,3 +280,98 @@
     }, { passive: true, capture: true });
 })();
 </script>
+
+{{-- Recherche live du header : expand input au clic de la loupe,
+     dropdown de resultats via /recherche/suggest (debounce 180ms). --}}
+<script>
+(function () {
+    var root = document.querySelector('[data-live-search]');
+    if (!root) return;
+    var toggle  = root.querySelector('[data-live-search-toggle]');
+    var panel   = root.querySelector('#ba-live-search-panel');
+    var form    = root.querySelector('[data-live-search-form]');
+    var input   = root.querySelector('[data-live-search-input]');
+    var results = root.querySelector('[data-live-search-results]');
+    if (!toggle || !panel || !form || !input || !results) return;
+
+    var timer = null;
+    var currentCtrl = null;
+    var isOpen = false;
+
+    function open() {
+        if (isOpen) return;
+        panel.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        root.classList.add('is-open');
+        isOpen = true;
+        setTimeout(function () { input.focus(); }, 10);
+    }
+    function close() {
+        if (!isOpen) return;
+        panel.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        root.classList.remove('is-open');
+        results.innerHTML = '';
+        isOpen = false;
+    }
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        isOpen ? close() : open();
+    });
+    document.addEventListener('click', function (e) {
+        if (isOpen && !root.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen) { close(); toggle.focus(); }
+    });
+
+    function escapeHtml(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function render(data) {
+        var q = data.q || '';
+        var items = data.results || [];
+        if (!items.length) {
+            results.innerHTML = '<div class="ba-live-search__empty">Aucun résultat pour « ' + escapeHtml(q) + ' ».</div>';
+            return;
+        }
+        var html = '<ul class="ba-live-search__list" role="listbox">';
+        items.forEach(function (it) {
+            html += '<li role="option"><a href="' + escapeHtml(it.url) + '">'
+                 +    '<span class="ba-live-search__item-title">' + escapeHtml(it.title)
+                 +      (it.badge ? ' <em class="ba-live-search__item-badge">' + escapeHtml(it.badge) + '</em>' : '')
+                 +    '</span>'
+                 +    (it.subtitle ? '<span class="ba-live-search__item-sub">' + escapeHtml(it.subtitle) + '</span>' : '')
+                 +  '</a></li>';
+        });
+        html += '</ul>';
+        if (data.moreUrl) {
+            html += '<a class="ba-live-search__more" href="' + escapeHtml(data.moreUrl) + '">Voir tous les résultats →</a>';
+        }
+        results.innerHTML = html;
+    }
+
+    function fetchResults(q) {
+        if (currentCtrl) currentCtrl.abort();
+        currentCtrl = new AbortController();
+        fetch('/recherche/suggest?q=' + encodeURIComponent(q), {
+            headers: { 'Accept': 'application/json' },
+            signal: currentCtrl.signal,
+        })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) { if (data) render(data); })
+        .catch(function () { /* abort ou offline, silence */ });
+    }
+
+    input.addEventListener('input', function () {
+        clearTimeout(timer);
+        var q = input.value.trim();
+        if (q.length < 2) { results.innerHTML = ''; return; }
+        results.innerHTML = '<div class="ba-live-search__loading">Recherche…</div>';
+        timer = setTimeout(function () { fetchResults(q); }, 180);
+    });
+})();
+</script>

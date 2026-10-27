@@ -8803,3 +8803,98 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
     transform: translateY(-100%);
     opacity: 0;
 }
+
+/* ============================================================
+   Recherche live du header : loupe cliquable qui deploie un
+   input + dropdown de resultats (JS dans site-utils.blade.php,
+   endpoint JSON /recherche/suggest).
+   ============================================================ */
+.ba-live-search { position: relative; display: inline-flex; align-items: center; }
+.ba-live-search__toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.5rem; height: 2.5rem;
+    background: transparent; border: 0; cursor: pointer;
+    color: inherit;
+    transition: color .15s ease;
+}
+.ba-live-search__toggle:hover,
+.ba-live-search.is-open .ba-live-search__toggle { color: #008751; }
+.ba-live-search__toggle .wicon { font-size: 1.25rem; }
+
+.ba-live-search__panel {
+    position: absolute; top: calc(100% + .5rem); right: 0;
+    width: min(420px, calc(100vw - 2rem));
+    background: #fff; border: 1px solid #e9e9e2;
+    border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,.12);
+    padding: .75rem; z-index: 1000;
+    animation: baLiveSearchDown .18s ease-out;
+}
+@keyframes baLiveSearchDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.ba-live-search__form {
+    display: flex; gap: .4rem; align-items: stretch;
+    background: #f4f4ef; border-radius: 999px; padding: .25rem;
+}
+.ba-live-search__input {
+    flex: 1 1 auto; min-width: 0;
+    padding: .55rem .9rem; background: transparent; border: 0;
+    font-size: .95rem; color: #222;
+}
+.ba-live-search__input:focus { outline: none; }
+.ba-live-search__submit {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.1rem; height: 2.1rem; border: 0; border-radius: 50%;
+    background: #008751; color: #fff; cursor: pointer;
+    transition: background .15s ease;
+}
+.ba-live-search__submit:hover { background: #006a3f; }
+.ba-live-search__submit .wicon { font-size: 1rem; }
+
+.ba-live-search__results { margin-top: .5rem; max-height: 60vh; overflow-y: auto; }
+.ba-live-search__results:empty { margin-top: 0; }
+.ba-live-search__loading,
+.ba-live-search__empty {
+    padding: .9rem .5rem; color: #777; font-size: .9rem; text-align: center;
+}
+.ba-live-search__list { list-style: none; padding: 0; margin: 0; }
+.ba-live-search__list li { border-bottom: 1px solid #f0f0ea; }
+.ba-live-search__list li:last-child { border-bottom: 0; }
+.ba-live-search__list a {
+    display: block; padding: .6rem .5rem;
+    color: inherit; text-decoration: none; border-radius: 8px;
+    transition: background .12s ease;
+}
+.ba-live-search__list a:hover,
+.ba-live-search__list a:focus { background: #f6f6f1; outline: none; }
+.ba-live-search__item-title {
+    display: flex; align-items: center; gap: .4rem;
+    font-weight: 600; color: #222; font-size: .95rem;
+}
+.ba-live-search__item-badge {
+    font-style: normal; font-size: .68rem; font-weight: 600;
+    padding: .1rem .45rem; background: #e8112d; color: #fff;
+    border-radius: 999px; letter-spacing: .02em;
+}
+.ba-live-search__item-sub {
+    display: block; color: #666; font-size: .82rem; margin-top: .1rem;
+}
+.ba-live-search__more {
+    display: block; margin: .5rem .25rem 0;
+    padding: .55rem .75rem; text-align: center;
+    font-size: .85rem; font-weight: 600;
+    color: #008751; background: #f4f9f5; border-radius: 999px;
+    text-decoration: none; transition: background .12s ease;
+}
+.ba-live-search__more:hover { background: #e5f1e8; }
+
+/* Mobile : le panel sort de l'ecran a droite -> on l'ancre a droite:0
+   et on reduit la largeur. Le header mobile a souvent un conteneur
+   avec padding, donc on cadre proprement. */
+@media (max-width: 640px) {
+    .ba-live-search__panel {
+        right: -.5rem;
+        width: calc(100vw - 1.5rem);
+    }
+}
