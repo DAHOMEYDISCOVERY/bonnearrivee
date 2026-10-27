@@ -8784,3 +8784,22 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
     max-height: 100vh !important;
     min-height: 0 !important;
 }
+
+/* ============================================================
+   HEADER — hide/show au scroll (comme desktop Woody)
+   Au scroll vers le bas : .ba-nav-hidden ajoutee par le JS dans
+   site-utils.blade.php -> le header glisse vers le haut.
+   Au scroll vers le haut : classe retiree -> reapparait.
+   ============================================================ */
+.woody-component-mobilenavs,
+.woody-component-headnavs {
+    transition:
+        transform .35s cubic-bezier(.86, 0, .07, 1),
+        opacity   .35s cubic-bezier(.86, 0, .07, 1);
+    will-change: transform;
+}
+.woody-component-mobilenavs.ba-nav-hidden,
+.woody-component-headnavs.ba-nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}

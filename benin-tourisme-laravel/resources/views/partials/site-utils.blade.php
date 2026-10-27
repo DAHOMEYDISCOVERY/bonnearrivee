@@ -183,10 +183,50 @@
 })();
 </script>
 
-{{-- Header TOUJOURS VISIBLE au scroll (comportement Mayotte-tourisme).
-     On ne cache plus la barre : Woody gere le changement d'apparence
-     (fond, logo) via les classes body.is-scrolled / body.fullScrolled
-     ajoutees automatiquement par le JS Woody natif. Rien a faire ici. --}}
+{{-- Header hide/show au scroll (comme desktop Woody natif).
+     Au scroll vers le bas : on cache le header en ajoutant .ba-nav-hidden
+     (CSS applique translateY(-100%) + opacity 0 avec transition fluide).
+     Au scroll vers le haut, en haut de page ou menu ouvert : on retire. --}}
+<script>
+(function () {
+    var mobileNav  = document.querySelector('.woody-component-mobilenavs');
+    var desktopNav = document.querySelector('.woody-component-headnavs');
+    if (!mobileNav && !desktopNav) return;
+
+    var lastY     = window.pageYOffset || document.documentElement.scrollTop;
+    var ticking   = false;
+    var threshold = 10;
+    var topZone   = 24;
+
+    function update() {
+        ticking = false;
+        var y        = window.pageYOffset || document.documentElement.scrollTop;
+        var delta    = y - lastY;
+        var scrollDn = delta > threshold;
+        var scrollUp = delta < -threshold;
+        var atTop    = y <= topZone;
+        var menuOpen = document.body.classList.contains('menu-is-open');
+
+        [mobileNav, desktopNav].forEach(function (nav) {
+            if (!nav) return;
+            if (menuOpen || atTop || scrollUp) {
+                nav.classList.remove('ba-nav-hidden');
+            } else if (scrollDn) {
+                nav.classList.add('ba-nav-hidden');
+            }
+        });
+
+        if (Math.abs(delta) > threshold) lastY = y;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
+</script>
 
 {{-- Prefetch au survol : des que l'utilisateur survole un lien interne (ou
      commence a toucher sur mobile), on precharge le HTML en arriere-plan.
