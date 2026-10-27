@@ -183,52 +183,10 @@
 })();
 </script>
 
-{{-- Barre de navigation mobile : masquer au scroll vers le bas,
-     revenir au scroll vers le haut (meme comportement que le header
-     desktop natif Woody). Woody ne pose pas ce comportement sur
-     .woody-component-mobilenavs par defaut : on ajoute une classe
-     .ba-nav-hidden qui glisse la barre vers le haut, et on la retire
-     au scroll vers le haut, en haut de page ou menu mobile ouvert. --}}
-<script>
-(function () {
-    var mobileNav  = document.querySelector('.woody-component-mobilenavs');
-    var desktopNav = document.querySelector('.woody-component-headnavs');
-    if (!mobileNav && !desktopNav) return;
-
-    var lastY     = window.pageYOffset || document.documentElement.scrollTop;
-    var ticking   = false;
-    var threshold = 10;          // marge pour eviter les flap autour de 0
-    var topZone   = 24;          // on reste visible dans les 24 premiers px
-
-    function update() {
-        ticking = false;
-        var y        = window.pageYOffset || document.documentElement.scrollTop;
-        var delta    = y - lastY;
-        var scrollDn = delta > threshold;
-        var scrollUp = delta < -threshold;
-        var atTop    = y <= topZone;
-        var menuOpen = document.body.classList.contains('menu-is-open');
-
-        [mobileNav, desktopNav].forEach(function (nav) {
-            if (!nav) return;
-            if (menuOpen || atTop || scrollUp) {
-                nav.classList.remove('ba-nav-hidden');
-            } else if (scrollDn) {
-                nav.classList.add('ba-nav-hidden');
-            }
-        });
-
-        if (Math.abs(delta) > threshold) lastY = y;
-    }
-
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            window.requestAnimationFrame(update);
-            ticking = true;
-        }
-    }, { passive: true });
-})();
-</script>
+{{-- Header TOUJOURS VISIBLE au scroll (comportement Mayotte-tourisme).
+     On ne cache plus la barre : Woody gere le changement d'apparence
+     (fond, logo) via les classes body.is-scrolled / body.fullScrolled
+     ajoutees automatiquement par le JS Woody natif. Rien a faire ici. --}}
 
 {{-- Prefetch au survol : des que l'utilisateur survole un lien interne (ou
      commence a toucher sur mobile), on precharge le HTML en arriere-plan.
