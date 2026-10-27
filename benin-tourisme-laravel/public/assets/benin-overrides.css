@@ -8769,3 +8769,18 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
     .wdp__bar { flex-direction: column; gap: .4rem; padding: 1rem; }
     .wdp__cta { font-size: .9rem; padding: 1rem 1.2rem; }
 }
+
+/* ============================================================
+   SWIPER — boutons prev/next desactives aux extremites
+   Quand Swiper arrive au bord (premiere ou derniere slide),
+   il ajoute automatiquement la classe .swiper-button-disabled.
+   On rend ces boutons visuellement grises et non-cliquables.
+   ============================================================ */
+.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+    opacity: .35 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    filter: grayscale(.5);
+}
