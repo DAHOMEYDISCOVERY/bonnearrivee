@@ -5595,36 +5595,61 @@ body.benin-event-page main {
 
 /* ---- Tablette portrait (<= 900 px) : passage menu + carte en pile ---- */
 @media (max-width: 900px) {
-    .benin-carte-interactive .section-interactive-map .grid-x {
+    /* Override Woody : grid-x row avec height 95vw devient column auto */
+    .benin-carte-interactive .section-interactive-map > .grid-x {
         flex-direction: column;
+        height: auto !important;
     }
     .benin-carte-interactive .cell.map-titles,
     .benin-carte-interactive .cell.map-content {
         width: 100%;
-        flex: 1 1 100%;
+        flex: 1 1 auto !important;
         max-width: 100%;
         padding: 0;
     }
+    /* Les titres passent en liste horizontale compacte */
+    .benin-carte-interactive .cell.map-titles {
+        height: auto !important;
+        box-shadow: none !important;
+    }
     .benin-carte-interactive .cell.map-titles ul {
-        display: flex;
+        display: flex !important;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
         gap: .6rem;
         padding: 1rem 1.2rem;
-        margin: 0 0 1rem;
+        margin: 0;
+        height: auto !important;
+        overflow: visible !important;
     }
     .benin-carte-interactive .map-title {
         flex: 1 1 auto;
         text-align: center;
         padding: .55rem 1rem;
         font-size: .9rem;
+        margin: 0 !important;
     }
+    /* La zone carte prend une hauteur fixe pour que les SVG soient visibles */
     .benin-carte-interactive .cell.map-content {
         padding: 0 .4rem;
+        height: 60vh !important;
+        min-height: 320px;
+        position: relative;
+    }
+    /* Le CSS natif Woody met .zone en position absolute avec height 100% ;
+       on force une hauteur et un affichage visibles sur mobile */
+    .benin-carte-interactive .cell.map-content .zone {
+        position: absolute !important;
+        inset: 0;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100%;
     }
     .benin-carte-interactive svg.zone {
-        width: 100%;
-        max-height: 60vh;
+        display: block;
+        max-width: 100% !important;
+        max-height: 100% !important;
     }
 }
 
