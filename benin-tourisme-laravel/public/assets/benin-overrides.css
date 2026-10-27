@@ -5593,20 +5593,105 @@ body.benin-event-page main {
     .ba-checklist__text { font-size: .88rem; }
 }
 
-/* ---- CARTOGRAPHIE INTERACTIVE (composant partagé) ---------------------- */
-@media (max-width: 700px) {
+/* ============================================================
+   CARTOGRAPHIE INTERACTIVE — Le Bénin en quatre échelles
+   Section .benin-cv-map (titre + lead) + composant partage
+   .benin-carte-interactive (menu 4 onglets + SVG).
+   ============================================================ */
+
+/* Securite SVG : jamais de debordement, scale fluide */
+.benin-carte-interactive svg.zone {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.benin-carte-interactive .section-interactive-map {
+    overflow: hidden;
+}
+
+/* ---- Tablette portrait (<= 900 px) : passage menu + carte en pile ---- */
+@media (max-width: 900px) {
     .benin-carte-interactive .section-interactive-map .grid-x {
         flex-direction: column;
+    }
+    .benin-carte-interactive .cell.map-titles,
+    .benin-carte-interactive .cell.map-content {
+        width: 100%;
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 0;
     }
     .benin-carte-interactive .cell.map-titles ul {
         display: flex;
         flex-wrap: wrap;
-        gap: .5rem;
+        justify-content: center;
+        gap: .6rem;
         padding: 1rem 1.2rem;
+        margin: 0 0 1rem;
     }
     .benin-carte-interactive .map-title {
         flex: 1 1 auto;
         text-align: center;
+        padding: .55rem 1rem;
+        font-size: .9rem;
+    }
+    .benin-carte-interactive .cell.map-content {
+        padding: 0 .4rem;
+    }
+    .benin-carte-interactive svg.zone {
+        width: 100%;
+        max-height: 60vh;
+    }
+}
+
+/* ---- Mobile (<= 640 px) : titres resserres, onglets compact ---- */
+@media (max-width: 640px) {
+    .benin-cv-map {
+        padding: 2rem 1rem;
+    }
+    .benin-cv-map__head {
+        margin-bottom: 1.4rem;
+    }
+    .benin-cv-map__eyebrow {
+        font-size: .7rem;
+        letter-spacing: .18em;
+    }
+    .benin-cv-map__title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        line-height: 1.2;
+    }
+    .benin-cv-map__lead {
+        font-size: .92rem;
+        line-height: 1.55;
+    }
+    .benin-carte-interactive .cell.map-titles ul {
+        gap: .4rem;
+        padding: .8rem .6rem;
+    }
+    .benin-carte-interactive .map-title {
+        flex: 1 1 calc(50% - .4rem);
+        min-width: 0;
+        padding: .5rem .4rem;
+        font-size: .82rem;
+        line-height: 1.25;
+    }
+    .benin-carte-interactive svg.zone {
+        max-height: 56vh;
+    }
+}
+
+/* ---- Mobile serre (<= 420 px) : SVG hauteur reduite, onglets 1 col ---- */
+@media (max-width: 420px) {
+    .benin-carte-interactive .cell.map-titles ul {
+        gap: .3rem;
+    }
+    .benin-carte-interactive .map-title {
+        flex: 1 1 100%;
+        font-size: .85rem;
+        padding: .55rem .6rem;
+    }
+    .benin-carte-interactive svg.zone {
+        max-height: 52vh;
     }
 }
 
