@@ -517,82 +517,73 @@ body.fullScrolled .woody-component-headnavs .woody-component-header .menuLogo im
     .benin-fete-lede { text-align: right; }
 }
 
-/* Grille — CSS-Grid natif. 5 cards (1 large + 4 small) :
-     mobile  -> 1 colonne, cards aspect 16/10
-     tablet  -> 2 colonnes, large card span 2 col
-     desktop -> 3 colonnes avec large card col 1 (span 2 rows),
-                4 small cards occupent les 2 colonnes de droite
-                en grille 2x2 — resultat equilibre sans vide. */
+/* Grille — CSS-Grid natif. 5 cards (1 large + 4 small). On NE crop
+   plus les images : chaque card est un flex-column avec l'image a
+   son ratio naturel en haut (16:10) et un bandeau texte sombre
+   en-dessous. Zero voile par-dessus l'image. */
 .benin-events-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 }
-.benin-events-grid > .benin-event-card { aspect-ratio: 16 / 10; min-height: 220px; }
 @media (min-width: 768px) {
     .benin-events-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: minmax(240px, 1fr);
     }
-    .benin-events-grid > .benin-event-card--large {
-        grid-column: span 2;
-        aspect-ratio: 32 / 10;
-    }
+    .benin-events-grid > .benin-event-card--large { grid-column: span 2; }
 }
 @media (min-width: 1024px) {
     .benin-events-grid {
         grid-template-columns: 1.25fr 1fr 1fr;
-        grid-auto-rows: minmax(260px, 1fr);
         gap: 1.25rem;
-    }
-    .benin-events-grid > .benin-event-card {
-        aspect-ratio: auto;
-        min-height: 260px;
     }
     .benin-events-grid > .benin-event-card--large {
         grid-column: 1;
         grid-row: span 2;
-        aspect-ratio: auto;
-        min-height: 540px;
     }
 }
 
 .benin-event-card {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border-radius: 1.5rem;
     overflow: hidden;
     text-decoration: none;
     color: #fff;
     background: #171717;
-    transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
+    transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s ease;
+    min-height: 100%;
 }
-.benin-event-card:hover { transform: translateY(-4px); }
+.benin-event-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0, 0, 0, .3); }
 .benin-event-card > img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     object-position: center;
     transition: transform .7s cubic-bezier(.2, .7, .2, 1);
-    display: block;
 }
+.benin-event-card--large > img { aspect-ratio: 16 / 11; }
+@media (min-width: 1024px) {
+    .benin-event-card--large > img { flex: 1 1 auto; height: 100%; aspect-ratio: auto; }
+}
+.benin-event-card:hover > img { transform: scale(1.04); }
 .benin-event-card:hover > img { transform: scale(1.06); }
-/* Voile sombre resserre uniquement sur la bande du texte en bas :
-   l'image reste pleinement visible dans la moitie superieure, meme
-   quand la photo est deja sombre (scenes de nuit, Weloveya). */
-.benin-event-card__overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .55) 30%, transparent 55%);
-}
-.benin-event-card--large .benin-event-card__overlay {
-    background: linear-gradient(to top, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .35) 40%, transparent 70%);
-}
+/* Overlay cache : l'image reste nette, le texte vit dans le bandeau en
+   dessous (image + body = frere/soeur dans un flex-column). */
+.benin-event-card__overlay { display: none; }
 .benin-event-card__body {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    padding: 1.5rem;
+    position: relative;
+    padding: 1.25rem 1.5rem 1.5rem;
     color: #fff;
+    background: #171717;
+    display: flex; flex-direction: column; gap: .35rem;
+    flex: 1 1 auto;
 }
-.benin-event-card--large .benin-event-card__body { padding: 1.75rem; }
+.benin-event-card--large .benin-event-card__body { padding: 1.75rem 2rem 2rem; }
 .benin-event-card__date {
     display: flex;
     align-items: baseline;
