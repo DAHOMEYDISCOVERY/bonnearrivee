@@ -34,6 +34,13 @@ class WadunuCatalogPage extends Page implements HasForms
 
     public ?array $data = [];
 
+    /** Reserve aux administrateurs. */
+    public static function canAccess(): bool
+    {
+        $u = \auth()->user();
+        return $u instanceof \App\Models\User && $u->isAdmin();
+    }
+
     public function mount(): void
     {
         $this->form->fill([]);

@@ -51,6 +51,18 @@ final class UserResource extends Resource
                         ->maxLength(255),
                 ]),
 
+            Forms\Components\Section::make('Rôle et permissions')
+                ->description("L'administrateur a accès à tout. L'éditeur ne peut modifier que les pages du site. "
+                    ."Le lecteur peut seulement consulter.")
+                ->schema([
+                    Forms\Components\Select::make('role')
+                        ->label('Rôle')
+                        ->options(User::ROLES)
+                        ->required()
+                        ->default(User::ROLE_EDITOR)
+                        ->native(false),
+                ]),
+
             Forms\Components\Section::make('Mot de passe')
                 ->description('Laisser vide en modification ne change pas le mot de passe existant.')
                 ->schema([
@@ -79,6 +91,16 @@ final class UserResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->copyable(),
+                Tables\Columns\TextColumn::make('role')
+                    ->label('Rôle')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => User::ROLES[$state] ?? $state)
+                    ->color(fn (string $state): string => match ($state) {
+                        User::ROLE_ADMIN  => 'danger',
+                        User::ROLE_EDITOR => 'success',
+                        User::ROLE_VIEWER => 'gray',
+                        default           => 'secondary',
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Créé')
                     ->dateTime('d/m/Y')
@@ -116,5 +138,17 @@ final class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    /** Seuls les administrateurs peuvent gerer les utilisateurs. */
+    public static function canViewAny(): bool { return self::isAdmin(); }
+    public static function canCreate(): bool  { return self::isAdmin(); }
+    public static function canEdit($record): bool   { return self::isAdmin(); }
+    public static function canDelete($record): bool { return self::isAdmin(); }
+
+    private static function isAdmin(): bool
+    {
+        $u = auth()->user();
+        return $u instanceof User && $u->isAdmin();
     }
 }

@@ -6,6 +6,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\PageResource\Pages;
 use App\Models\Page;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -188,5 +189,26 @@ final class PageResource extends Resource
             'create' => Pages\CreatePage::route('/create'),
             'edit' => Pages\EditPage::route('/{record}/edit'),
         ];
+    }
+
+    /**
+     * Autorisation : admins et editeurs peuvent voir et editer les pages.
+     * Seul un admin peut en creer ou en supprimer (sinon un editeur pourrait
+     * casser le registre en ajoutant des rows parasites).
+     */
+    public static function canViewAny(): bool { return self::isEditor(); }
+    public static function canEdit($record): bool { return self::isEditor(); }
+    public static function canCreate(): bool { return self::isAdmin(); }
+    public static function canDelete($record): bool { return self::isAdmin(); }
+
+    private static function isAdmin(): bool
+    {
+        $u = auth()->user();
+        return $u instanceof User && $u->isAdmin();
+    }
+    private static function isEditor(): bool
+    {
+        $u = auth()->user();
+        return $u instanceof User && $u->isEditor();
     }
 }

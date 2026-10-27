@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\RestaurantResource\Pages;
 use App\Models\Restaurant;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -107,5 +108,17 @@ class RestaurantResource extends Resource
             'create' => Pages\CreateRestaurant::route('/create'),
             'edit'   => Pages\EditRestaurant::route('/{record}/edit'),
         ];
+    }
+
+    /** Seuls les admins gerent le catalogue restaurants. */
+    public static function canViewAny(): bool { return self::isAdmin(); }
+    public static function canCreate(): bool  { return self::isAdmin(); }
+    public static function canEdit($record): bool   { return self::isAdmin(); }
+    public static function canDelete($record): bool { return self::isAdmin(); }
+
+    private static function isAdmin(): bool
+    {
+        $u = auth()->user();
+        return $u instanceof User && $u->isAdmin();
     }
 }
