@@ -8784,3 +8784,21 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
     pointer-events: none !important;
     filter: grayscale(.5);
 }
+
+/* ============================================================
+   UNIFORMISATION DES HERO — toutes les sections hero du site
+   ont la meme hauteur que le hero home (woody-component-landswpr).
+   Woody natif home : height:100vw; max-height:100vh (carre max 100vh).
+   On applique le meme comportement a tous les autres hero.
+   ============================================================ */
+.emerv-hero,
+.event-hero,
+.ba-page-hero,
+.benin-page-hero,
+.wd-hero,
+.wd2-hero,
+.wv-hero {
+    height: 100vw !important;
+    max-height: 100vh !important;
+    min-height: 0 !important;
+}
