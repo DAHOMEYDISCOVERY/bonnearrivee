@@ -47,6 +47,44 @@ final class Page extends Model
     }
 
     /**
+     * Importe le registre statique `resources/pages.php` dans la table
+     * `pages` : chaque entree y est inseree si son chemin n'existe pas
+     * encore (firstOrCreate). Les lignes deja presentes ne sont jamais
+     * touchees — un admin peut avoir modifie title/description/override
+     * et on n'ecrase rien.
+     *
+     * Appelee par Filament au mount de la liste des pages, pour que le
+     * back-office « voie » toutes les pages du site sans seeder manuel.
+     *
+     * @return array{created:int, total:int}
+     */
+    public static function syncFromRegistry(): array
+    {
+        $file = resource_path('pages.php');
+        if (!is_file($file)) {
+            return ['created' => 0, 'total' => 0];
+        }
+        $registry = require $file;
+        $created = 0;
+        foreach ($registry as $path => $entry) {
+            $row = self::firstOrCreate(
+                ['path' => (string) $path],
+                [
+                    'view'         => (string) ($entry['view'] ?? ''),
+                    'title'        => (string) ($entry['title'] ?? ''),
+                    'description'  => (string) ($entry['description'] ?? ''),
+                    'active_menu'  => $entry['activeMenu']  ?? null,
+                    'head_profile' => (string) ($entry['headProfile'] ?? 'standard'),
+                    'standalone'   => (bool)   ($entry['standalone'] ?? false),
+                    'use_override' => false,
+                ]
+            );
+            if ($row->wasRecentlyCreated) $created++;
+        }
+        return ['created' => $created, 'total' => count($registry)];
+    }
+
+    /**
      * Rend la page sous la forme attendue par le contrôleur — tableau plutôt
      * qu'objet Eloquent, pour rester interchangeable avec l'ancienne source
      * `resources/pages.php` sans que la vue ne s'en aperçoive.
