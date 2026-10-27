@@ -8,26 +8,9 @@
 @section('content')
 <div class="content-wrapper no-terms">
 
-    <section class="ba-page-hero" aria-label="Recherche">
-        <img src="/assets/img/aeroport-1920x960.webp" alt="" loading="eager" fetchpriority="high">
-        <div class="ba-page-hero__overlay">
-            <nav class="ba-page-hero__breadcrumb" aria-label="Fil d'ariane">
-                <ol>
-                    <li><a href="/">Accueil</a></li>
-                    <li aria-hidden="true">/</li>
-                    <li aria-current="page">Recherche</li>
-                </ol>
-            </nav>
-            <div class="ba-page-hero__center">
-                <p class="ba-page-hero__eyebrow">Trouvez votre adresse</p>
-                <h1 class="ba-page-hero__title">Recherche</h1>
-                <p class="ba-page-hero__lead">Un restaurant, un événement, une page pratique — tapez quelques lettres.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="ba-search">
+    <section class="ba-search ba-search--standalone">
         <div class="ba-search__inner">
+            <h1 class="ba-search__page-title">Recherche</h1>
             <form class="ba-search__form" method="get" action="/recherche" role="search">
                 <label for="ba-search-q" class="sr-only">Que recherchez-vous&nbsp;?</label>
                 <input
@@ -94,6 +77,14 @@
 
 <style>
 .ba-search { padding: clamp(2rem, 4vw, 4rem) 0; background: #fafaf7; }
+.ba-search--standalone { padding-top: clamp(6rem, 12vw, 9rem); min-height: 60vh; }
+.ba-search--standalone h1.sr-only + .ba-search__inner,
+.ba-search--standalone .ba-search__inner { padding-top: 0; }
+.ba-search--standalone .ba-search__page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: #111; margin: 0 0 1.25rem; text-align: center;
+}
 .ba-search__inner { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
 .ba-search__form { display: flex; gap: .5rem; margin-bottom: 1.75rem; }
 .ba-search__form input[type="search"] {
