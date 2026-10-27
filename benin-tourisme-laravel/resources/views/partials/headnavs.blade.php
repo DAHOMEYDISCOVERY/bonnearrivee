@@ -8,11 +8,11 @@
     
                                                 <ul class="tools list-unstyled flex-container align-middle">
                                                                                                                             <li class="search-tool"><div class="search-toggler-wrapper woody-component-esSearch-block">
-    <span role="button" aria-label="Recherche" class="esSearch-button results-toggler" data-label="Recherche" title="Recherche" tabindex="0">
+    <a href="/recherche" aria-label="Recherche" class="esSearch-button" data-label="Recherche" title="Recherche">
         <span class="wicon wicon-053-loupe-par-defaut search-icon"></span>
         <span class="button-label" data-label="Recherche"></span>
         <span class="show-for-sr">Recherche</span>
-    </span>
+    </a>
 </div>
 </li>
                                                                             </ul>

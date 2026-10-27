@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,13 @@ use Illuminate\Support\Facades\Route;
  * par elle. Il liste toutes les pages du registre en une seule requête.
  */
 Route::get('/sitemap.xml', [SitemapController::class, 'xml'])->name('sitemap');
+
+/*
+ * Recherche globale (option B) : moteur Laravel natif qui remplace l'ancien
+ * composant web `<woody-search-engine>` (dependait d'une API Woody externe).
+ * Interroge restaurants, pages editoriales et evenements.
+ */
+Route::get('/recherche', [SearchController::class, 'index'])->name('recherche');
 
 /*
  * Vestige WordPress : le script `eskalad-default.js` (analytics du thème) appelle
