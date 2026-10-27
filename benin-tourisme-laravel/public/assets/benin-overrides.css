@@ -8805,96 +8805,113 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
 }
 
 /* ============================================================
-   Recherche live du header : loupe cliquable qui deploie un
-   input + dropdown de resultats (JS dans site-utils.blade.php,
-   endpoint JSON /recherche/suggest).
+   Overlay recherche (plein ecran) — reprend l'apparence du
+   woody-search-engine mais branche sur /recherche/suggest.
+   Ouvert par la loupe du header, ferme a la croix ou Escape.
    ============================================================ */
-.ba-live-search { position: relative; display: inline-flex; align-items: center; }
-.ba-live-search__toggle {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 2.5rem; height: 2.5rem;
+.search-results-wrapper.overlayed-results[data-ba-search-overlay] {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(255,255,255,.98);
+    backdrop-filter: blur(6px);
+    display: flex; flex-direction: column;
+    padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);
+    overflow-y: auto;
+    animation: baSearchFadeIn .18s ease-out;
+}
+.search-results-wrapper.overlayed-results[hidden] { display: none; }
+@keyframes baSearchFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+body.ba-search-open { overflow: hidden; }
+
+.search-results-wrapper .search-results-close {
+    position: absolute; top: 1rem; right: 1.25rem;
     background: transparent; border: 0; cursor: pointer;
-    color: inherit;
+    display: inline-flex; align-items: center; gap: .35rem;
+    color: #222; font-size: .95rem;
+    padding: .5rem .75rem; border-radius: 999px;
+    transition: background .15s ease;
+}
+.search-results-wrapper .search-results-close:hover { background: #f0f0ea; }
+.search-results-wrapper .search-results-close .wicon { font-size: 1.1rem; }
+
+.search-results-wrapper .search-input-wrapper {
+    max-width: 760px; margin: 2.5rem auto 1.5rem; width: 100%;
+}
+.search-results-wrapper .input-group {
+    display: flex; align-items: stretch;
+    background: #fff; border: 2px solid #008751; border-radius: 999px;
+    padding: .35rem; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    width: 100%;
+}
+.search-results-wrapper .search-input {
+    flex: 1 1 auto; min-width: 0;
+    padding: .9rem 1.25rem;
+    background: transparent; border: 0;
+    font-size: clamp(1rem, 2.4vw, 1.25rem); color: #111;
+}
+.search-results-wrapper .search-input:focus { outline: none; }
+.search-results-wrapper .close-toggler {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.5rem; cursor: pointer; color: #888;
     transition: color .15s ease;
 }
-.ba-live-search__toggle:hover,
-.ba-live-search.is-open .ba-live-search__toggle { color: #008751; }
-.ba-live-search__toggle .wicon { font-size: 1.25rem; }
-
-.ba-live-search__panel {
-    position: absolute; top: calc(100% + .5rem); right: 0;
-    width: min(420px, calc(100vw - 2rem));
-    background: #fff; border: 1px solid #e9e9e2;
-    border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,.12);
-    padding: .75rem; z-index: 1000;
-    animation: baLiveSearchDown .18s ease-out;
-}
-@keyframes baLiveSearchDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-.ba-live-search__form {
-    display: flex; gap: .4rem; align-items: stretch;
-    background: #f4f4ef; border-radius: 999px; padding: .25rem;
-}
-.ba-live-search__input {
-    flex: 1 1 auto; min-width: 0;
-    padding: .55rem .9rem; background: transparent; border: 0;
-    font-size: .95rem; color: #222;
-}
-.ba-live-search__input:focus { outline: none; }
-.ba-live-search__submit {
+.search-results-wrapper .close-toggler:hover { color: #e8112d; }
+.search-results-wrapper .input-group .results-toggler.submit {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 2.1rem; height: 2.1rem; border: 0; border-radius: 50%;
+    width: 3rem; height: 3rem; border: 0; border-radius: 50%;
     background: #008751; color: #fff; cursor: pointer;
     transition: background .15s ease;
 }
-.ba-live-search__submit:hover { background: #006a3f; }
-.ba-live-search__submit .wicon { font-size: 1rem; }
+.search-results-wrapper .input-group .results-toggler.submit:hover { background: #006a3f; }
+.search-results-wrapper .input-group .results-toggler.submit .wicon { font-size: 1.15rem; }
 
-.ba-live-search__results { margin-top: .5rem; max-height: 60vh; overflow-y: auto; }
-.ba-live-search__results:empty { margin-top: 0; }
-.ba-live-search__loading,
-.ba-live-search__empty {
-    padding: .9rem .5rem; color: #777; font-size: .9rem; text-align: center;
+.search-results-wrapper .search-outcome-wrapper {
+    max-width: 1200px; width: 100%; margin: 0 auto;
 }
-.ba-live-search__list { list-style: none; padding: 0; margin: 0; }
-.ba-live-search__list li { border-bottom: 1px solid #f0f0ea; }
-.ba-live-search__list li:last-child { border-bottom: 0; }
-.ba-live-search__list a {
-    display: block; padding: .6rem .5rem;
-    color: inherit; text-decoration: none; border-radius: 8px;
-    transition: background .12s ease;
+.search-results-wrapper .search-hint,
+.search-results-wrapper .search-no-result {
+    padding: 2rem 1rem; text-align: center; color: #777; font-size: 1rem;
 }
-.ba-live-search__list a:hover,
-.ba-live-search__list a:focus { background: #f6f6f1; outline: none; }
-.ba-live-search__item-title {
-    display: flex; align-items: center; gap: .4rem;
-    font-weight: 600; color: #222; font-size: .95rem;
-}
-.ba-live-search__item-badge {
-    font-style: normal; font-size: .68rem; font-weight: 600;
-    padding: .1rem .45rem; background: #e8112d; color: #fff;
-    border-radius: 999px; letter-spacing: .02em;
-}
-.ba-live-search__item-sub {
-    display: block; color: #666; font-size: .82rem; margin-top: .1rem;
-}
-.ba-live-search__more {
-    display: block; margin: .5rem .25rem 0;
-    padding: .55rem .75rem; text-align: center;
-    font-size: .85rem; font-weight: 600;
-    color: #008751; background: #f4f9f5; border-radius: 999px;
-    text-decoration: none; transition: background .12s ease;
-}
-.ba-live-search__more:hover { background: #e5f1e8; }
 
-/* Mobile : le panel sort de l'ecran a droite -> on l'ancre a droite:0
-   et on reduit la largeur. Le header mobile a souvent un conteneur
-   avec padding, donc on cadre proprement. */
+/* Cartes de resultats (grille foundation deja presente) */
+.ba-search-card {
+    display: flex; flex-direction: column;
+    padding: 1rem 1.1rem;
+    background: #fff; border: 1px solid #ececdf; border-radius: 12px;
+    text-decoration: none; color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    position: relative; height: 100%;
+}
+.ba-search-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.08);
+    border-color: #008751;
+}
+.ba-search-card__badge {
+    display: inline-block; align-self: flex-start;
+    font-size: .68rem; font-weight: 700;
+    padding: .2rem .55rem; margin-bottom: .5rem;
+    background: #e8112d; color: #fff;
+    border-radius: 999px; letter-spacing: .03em; text-transform: uppercase;
+}
+.ba-search-card__title { font-weight: 700; color: #111; font-size: 1.05rem; }
+.ba-search-card__sub   { color: #666; font-size: .85rem; margin-top: .15rem; }
+.ba-search-card__excerpt { margin: .5rem 0 0; color: #555; font-size: .88rem; line-height: 1.5; }
+
+.ba-search-loading {
+    padding: 2rem 1rem; text-align: center; color: #008751; font-weight: 600;
+}
+.ba-search-more-wrap { margin-top: 1rem; text-align: center; }
+.ba-search-more {
+    display: inline-block; padding: .7rem 1.4rem;
+    background: #008751; color: #fff; font-weight: 600; text-decoration: none;
+    border-radius: 999px; transition: background .15s ease;
+}
+.ba-search-more:hover { background: #006a3f; color: #fff; }
+
 @media (max-width: 640px) {
-    .ba-live-search__panel {
-        right: -.5rem;
-        width: calc(100vw - 1.5rem);
-    }
+    .search-results-wrapper .search-input-wrapper { margin-top: 3.5rem; }
+    .search-results-wrapper .input-group .results-toggler.submit { width: 2.5rem; height: 2.5rem; }
 }

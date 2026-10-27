@@ -281,48 +281,50 @@
 })();
 </script>
 
-{{-- Recherche live du header : expand input au clic de la loupe,
-     dropdown de resultats via /recherche/suggest (debounce 180ms). --}}
+{{-- Recherche : la loupe du header ouvre l'overlay plein ecran
+     (partials/overlays.blade.php). L'input est live : debounce 180ms
+     puis fetch /recherche/suggest, rendu de cartes dans la grille
+     .search-results-container. Enter envoie sur /recherche?q=... --}}
 <script>
 (function () {
-    var root = document.querySelector('[data-live-search]');
-    if (!root) return;
-    var toggle  = root.querySelector('[data-live-search-toggle]');
-    var panel   = root.querySelector('#ba-live-search-panel');
-    var form    = root.querySelector('[data-live-search-form]');
-    var input   = root.querySelector('[data-live-search-input]');
-    var results = root.querySelector('[data-live-search-results]');
-    if (!toggle || !panel || !form || !input || !results) return;
+    var overlay = document.querySelector('[data-ba-search-overlay]');
+    if (!overlay) return;
+    var openBtn  = document.querySelector('[data-ba-search-open]');
+    var closeBtn = overlay.querySelector('[data-ba-search-close]');
+    var input    = overlay.querySelector('[data-ba-search-input]');
+    var clearBtn = overlay.querySelector('[data-ba-search-clear]');
+    var results  = overlay.querySelector('[data-ba-search-results]');
+    var empty    = overlay.querySelector('[data-ba-search-empty]');
+    var hint     = overlay.querySelector('[data-ba-search-hint]');
+    if (!openBtn || !input || !results) return;
 
     var timer = null;
     var currentCtrl = null;
-    var isOpen = false;
 
     function open() {
-        if (isOpen) return;
-        panel.hidden = false;
-        toggle.setAttribute('aria-expanded', 'true');
-        root.classList.add('is-open');
-        isOpen = true;
-        setTimeout(function () { input.focus(); }, 10);
+        overlay.hidden = false;
+        document.body.classList.add('ba-search-open');
+        setTimeout(function () { input.focus(); }, 20);
     }
     function close() {
-        if (!isOpen) return;
-        panel.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
-        root.classList.remove('is-open');
+        overlay.hidden = true;
+        document.body.classList.remove('ba-search-open');
+        input.value = '';
         results.innerHTML = '';
-        isOpen = false;
+        if (empty) empty.hidden = true;
+        if (hint) hint.hidden = false;
     }
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        isOpen ? close() : open();
-    });
-    document.addEventListener('click', function (e) {
-        if (isOpen && !root.contains(e.target)) close();
+    openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    if (closeBtn) closeBtn.addEventListener('click', function (e) { e.preventDefault(); close(); });
+    if (clearBtn) clearBtn.addEventListener('click', function () {
+        input.value = '';
+        results.innerHTML = '';
+        if (empty) empty.hidden = true;
+        if (hint) hint.hidden = false;
+        input.focus();
     });
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && isOpen) { close(); toggle.focus(); }
+        if (e.key === 'Escape' && !overlay.hidden) { close(); openBtn.focus(); }
     });
 
     function escapeHtml(s) {
@@ -331,25 +333,31 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
 
+    function card(it) {
+        return '<div class="cell">'
+             +   '<a class="ba-search-card" href="' + escapeHtml(it.url) + '">'
+             +     (it.badge ? '<span class="ba-search-card__badge">' + escapeHtml(it.badge) + '</span>' : '')
+             +     '<span class="ba-search-card__title">' + escapeHtml(it.title) + '</span>'
+             +     (it.subtitle ? '<span class="ba-search-card__sub">' + escapeHtml(it.subtitle) + '</span>' : '')
+             +     (it.excerpt  ? '<p class="ba-search-card__excerpt">' + escapeHtml(it.excerpt) + '</p>' : '')
+             +   '</a>'
+             + '</div>';
+    }
+
     function render(data) {
-        var q = data.q || '';
+        if (hint) hint.hidden = true;
         var items = data.results || [];
         if (!items.length) {
-            results.innerHTML = '<div class="ba-live-search__empty">Aucun résultat pour « ' + escapeHtml(q) + ' ».</div>';
+            results.innerHTML = '';
+            if (empty) empty.hidden = false;
             return;
         }
-        var html = '<ul class="ba-live-search__list" role="listbox">';
-        items.forEach(function (it) {
-            html += '<li role="option"><a href="' + escapeHtml(it.url) + '">'
-                 +    '<span class="ba-live-search__item-title">' + escapeHtml(it.title)
-                 +      (it.badge ? ' <em class="ba-live-search__item-badge">' + escapeHtml(it.badge) + '</em>' : '')
-                 +    '</span>'
-                 +    (it.subtitle ? '<span class="ba-live-search__item-sub">' + escapeHtml(it.subtitle) + '</span>' : '')
-                 +  '</a></li>';
-        });
-        html += '</ul>';
+        if (empty) empty.hidden = true;
+        var html = items.map(card).join('');
         if (data.moreUrl) {
-            html += '<a class="ba-live-search__more" href="' + escapeHtml(data.moreUrl) + '">Voir tous les résultats →</a>';
+            html += '<div class="cell small-12 ba-search-more-wrap">'
+                 +    '<a class="ba-search-more" href="' + escapeHtml(data.moreUrl) + '">Voir tous les résultats sur la page recherche →</a>'
+                 +  '</div>';
         }
         results.innerHTML = html;
     }
@@ -363,14 +371,21 @@
         })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (data) { if (data) render(data); })
-        .catch(function () { /* abort ou offline, silence */ });
+        .catch(function () {});
     }
 
     input.addEventListener('input', function () {
         clearTimeout(timer);
         var q = input.value.trim();
-        if (q.length < 2) { results.innerHTML = ''; return; }
-        results.innerHTML = '<div class="ba-live-search__loading">Recherche…</div>';
+        if (q.length < 2) {
+            results.innerHTML = '';
+            if (empty) empty.hidden = true;
+            if (hint) hint.hidden = false;
+            return;
+        }
+        if (hint) hint.hidden = true;
+        if (empty) empty.hidden = true;
+        results.innerHTML = '<div class="cell small-12"><div class="ba-search-loading">Recherche…</div></div>';
         timer = setTimeout(function () { fetchResults(q); }, 180);
     });
 })();
