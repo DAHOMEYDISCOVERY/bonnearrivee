@@ -23,6 +23,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/sitemap.xml', [SitemapController::class, 'xml'])->name('sitemap');
 
 /*
+ * Endpoint d'upload d'images depuis l'editeur HTML du back-office.
+ * Protege par le middleware 'auth' + check du role 'editor' cote controller.
+ */
+Route::middleware(['web', 'auth'])->prefix('admin/media')->name('admin.media.')->group(function () {
+    Route::post('/upload',  [\App\Http\Controllers\Admin\MediaController::class, 'upload'])->name('upload');
+    Route::post('/replace', [\App\Http\Controllers\Admin\MediaController::class, 'replace'])->name('replace');
+    Route::post('/destroy', [\App\Http\Controllers\Admin\MediaController::class, 'destroy'])->name('destroy');
+});
+
+/*
  * Recherche globale (option B) : moteur Laravel natif qui remplace l'ancien
  * composant web `<woody-search-engine>` (dependait d'une API Woody externe).
  * Interroge restaurants, pages editoriales et evenements.

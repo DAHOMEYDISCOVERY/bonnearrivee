@@ -30,13 +30,20 @@
                 _stylesheets: (cfg && cfg.stylesheets) || [],
                 _bodyClass: (cfg && cfg.bodyClass) || 'page prod',
 
+                // Images detectees dans le HTML, pour le panel 'Images de la page'.
+                images: [],
+                uploading: false,
+                uploadError: '',
+
                 init: function () {
                     this.rebuildPreview();
+                    this.detectImages();
                 },
 
                 onCodeInput: function (event) {
                     this.html = event.target.value;
                     this.schedulePreview();
+                    this.detectImages();
                 },
 
                 setHtmlAndSync: function (value) {
@@ -46,6 +53,94 @@
                         this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
                     }
                     this.schedulePreview();
+                    this.detectImages();
+                },
+
+                /** Parse les <img src=".."> du HTML pour alimenter le panel. */
+                detectImages: function () {
+                    var seen = {};
+                    var out = [];
+                    var re = /<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["'][^>]*>/gi;
+                    var m;
+                    while ((m = re.exec(this.html)) !== null) {
+                        var url = m[1];
+                        if (seen[url]) continue;
+                        seen[url] = true;
+                        var isUpload = url.indexOf('/assets/img/uploads/') === 0;
+                        out.push({ url: url, isUpload: isUpload });
+                    }
+                    this.images = out;
+                },
+
+                /**
+                 * Remplace toutes les occurrences d'une URL d'image dans le HTML par
+                 * la nouvelle URL (y compris dans srcset si meme url). L'ancien
+                 * fichier serveur est supprime si c'etait un upload.
+                 */
+                replaceImage: function (oldUrl) {
+                    var self = this;
+                    var input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/jpeg,image/png,image/webp,image/gif';
+                    input.onchange = function (e) {
+                        var file = e.target.files && e.target.files[0];
+                        if (!file) return;
+                        self.uploading = true;
+                        self.uploadError = '';
+                        var fd = new FormData();
+                        fd.append('file', file);
+                        fd.append('old_url', oldUrl);
+                        var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+                        var csrf = csrfMeta ? csrfMeta.getAttribute('content') : '';
+                        fetch('/admin/media/replace', {
+                            method: 'POST',
+                            headers: { 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
+                            body: fd,
+                            credentials: 'same-origin',
+                        })
+                            .then(function (resp) {
+                                if (!resp.ok) return resp.json().then(function (j) { throw new Error(j.error || j.message || ('HTTP ' + resp.status)); });
+                                return resp.json();
+                            })
+                            .then(function (data) {
+                                // Remplace toutes les occurrences de l'URL (src + srcset)
+                                var escaped = oldUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                                var next = self.html.replace(new RegExp(escaped, 'g'), data.url);
+                                self.setHtmlAndSync(next);
+                                self.uploading = false;
+                            })
+                            .catch(function (err) {
+                                self.uploadError = err.message || 'Erreur';
+                                self.uploading = false;
+                                console.error('[baHtmlEditor] replace failed:', err);
+                            });
+                    };
+                    input.click();
+                },
+
+                /** Supprime le tag <img> correspondant du HTML + le fichier serveur si upload. */
+                removeImage: function (url) {
+                    var self = this;
+                    if (!confirm('Supprimer cette image de la page ?')) return;
+                    // Enleve TOUS les <img> dont le src correspond.
+                    var escaped = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    var re = new RegExp('<img\\b[^>]*\\bsrc\\s*=\\s*["\']' + escaped + '["\'][^>]*>', 'gi');
+                    var next = this.html.replace(re, '');
+                    this.setHtmlAndSync(next);
+
+                    // Supprime le fichier serveur si c'etait un upload.
+                    if (url.indexOf('/assets/img/uploads/') === 0) {
+                        var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+                        var csrf = csrfMeta ? csrfMeta.getAttribute('content') : '';
+                        var fd = new FormData();
+                        fd.append('url', url);
+                        fetch('/admin/media/destroy', {
+                            method: 'POST',
+                            headers: { 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
+                            body: fd,
+                            credentials: 'same-origin',
+                        }).catch(function () {});
+                    }
                 },
 
                 schedulePreview: function () {
@@ -132,6 +227,82 @@
                 cycleLayout: function () {
                     this.layout = this.layout === 'split' ? 'preview'
                         : this.layout === 'preview' ? 'code' : 'split';
+                },
+
+                /**
+                 * Ouvre le file picker pour que l'utilisateur selectionne une image.
+                 * Le fichier est uploade vers /admin/media/upload, et le tag <img>
+                 * est insere a la position du curseur dans la textarea.
+                 */
+                triggerImageUpload: function () {
+                    var self = this;
+                    var input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/jpeg,image/png,image/webp,image/gif';
+                    input.onchange = function (e) {
+                        var file = e.target.files && e.target.files[0];
+                        if (file) self.uploadImage(file);
+                    };
+                    input.click();
+                },
+
+                uploadImage: function (file) {
+                    var self = this;
+                    this.uploading = true;
+                    this.uploadError = '';
+                    var formData = new FormData();
+                    formData.append('file', file);
+
+                    var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+                    var csrf = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
+                    fetch('/admin/media/upload', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': csrf,
+                            'Accept': 'application/json',
+                        },
+                        body: formData,
+                        credentials: 'same-origin',
+                    })
+                        .then(function (resp) {
+                            if (!resp.ok) {
+                                return resp.json().then(function (j) {
+                                    throw new Error(j.error || j.message || ('HTTP ' + resp.status));
+                                }).catch(function () {
+                                    throw new Error('Upload a echoue (HTTP ' + resp.status + ')');
+                                });
+                            }
+                            return resp.json();
+                        })
+                        .then(function (data) {
+                            self.insertImageTag(data.url, data.alt || 'image');
+                            self.uploading = false;
+                        })
+                        .catch(function (err) {
+                            self.uploadError = err.message || 'Erreur d upload';
+                            self.uploading = false;
+                            console.error('[baHtmlEditor] upload failed:', err);
+                        });
+                },
+
+                insertImageTag: function (url, alt) {
+                    var ta = this.$refs.codeArea;
+                    if (!ta) return;
+                    var tag = '<img src="' + url + '" alt="' + (alt || '').replace(/"/g, '&quot;')
+                        + '" loading="lazy" decoding="async" />';
+                    var start = ta.selectionStart || 0;
+                    var end = ta.selectionEnd || 0;
+                    var before = this.html.substring(0, start);
+                    var after = this.html.substring(end);
+                    var next = before + tag + after;
+                    this.setHtmlAndSync(next);
+                    // Replace la selection apres le tag insere.
+                    this.$nextTick(function () {
+                        ta.focus();
+                        var pos = start + tag.length;
+                        ta.setSelectionRange(pos, pos);
+                    });
                 },
             };
         });
