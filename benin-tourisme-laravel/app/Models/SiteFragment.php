@@ -44,7 +44,10 @@ final class SiteFragment extends Model
         return Cache::remember($cacheKey, 60, function () use ($slug) {
             $row = self::query()->where('slug', $slug)->first();
             $content = $row?->content;
-            if ($content === null) return null;
+            // Null, string vide ou whitespace -> on retombe sur le HTML en dur
+            // du partial. Un fragment vide ou blanc rendrait un header/footer
+            // inexistant qui casse tout le layout.
+            if ($content === null || trim($content) === '') return null;
             // Garde-fou : si le contenu contient encore une directive de bascule
             // DB (ancien seed corrompu), on ne le sert pas. L'admin doit le
             // resynchroniser depuis /admin/blocs-du-site.

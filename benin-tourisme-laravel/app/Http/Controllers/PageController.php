@@ -37,6 +37,9 @@ final class PageController extends Controller
             'activeMenu' => $page['activeMenu'] ?? null,
             'headProfile' => $page['headProfile'] ?? 'standard',
             'customContent' => $page['customContent'] ?? null,
+            // La vue 'editable-raw' en lit les sections critiques (headGlobals,
+            // headSchema, styles, scripts) pour les reinjecter.
+            'originalView' => $page['originalView'] ?? null,
         ]);
     }
 }

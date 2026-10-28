@@ -117,26 +117,51 @@ final class Page extends Model
      */
     public static function extractContentFromView(string $view): ?string
     {
-        if ($view === '') return null;
+        $sections = self::extractAllSections($view);
+        return $sections['content'] ?? null;
+    }
+
+    /**
+     * Extrait TOUTES les sections nommees de la vue Blade (headGlobals, headSchema,
+     * styles, scripts, afterFooter, content, mainAttributes, bodyClass, ...).
+     *
+     * Utilise par la vue 'editable-raw' pour re-injecter les scripts window.globals
+     * et autres hooks du <head> critiques de la page d'origine quand on la sert
+     * en mode override. Sans ca, les scripts Woody plantent sur ReferenceError.
+     *
+     * @return array<string, string>
+     */
+    public static function extractAllSections(string $view): array
+    {
+        if ($view === '') return [];
         $relative = str_replace('.', DIRECTORY_SEPARATOR, $view) . '.blade.php';
         $path     = resource_path('views' . DIRECTORY_SEPARATOR . $relative);
-        if (!is_file($path)) return null;
+        if (!is_file($path)) return [];
 
         $src = file_get_contents($path);
-        if ($src === false || $src === '') return null;
+        if ($src === false || $src === '') return [];
 
-        // On matche @section('content') ... @endsection (ou @stop). Les quotes
-        // peuvent etre simples ou doubles. On capture le corps interieur.
-        $pattern = "/@section\\(\\s*['\"]content['\"]\\s*\\)(.*?)@(?:endsection|stop)\\b/s";
-        if (!preg_match($pattern, $src, $m)) return null;
-
-        $body = $m[1];
-        // Supprime les @verbatim/@endverbatim : leur HTML interieur est deja pur,
-        // la directive n'a pas de sens dans un champ texte.
-        $body = preg_replace('/@verbatim\\b/', '', $body);
-        $body = preg_replace('/@endverbatim\\b/', '', $body);
-        // Nettoie les sauts de ligne de debut/fin pour un rendu propre dans la textarea.
-        return trim((string) $body, "\r\n");
+        $out = [];
+        // Forme longue : @section('name') ... @endsection|@stop
+        $pattern = "/@section\\(\\s*['\"]([a-zA-Z0-9_-]+)['\"]\\s*\\)(.*?)@(?:endsection|stop)\\b/s";
+        if (preg_match_all($pattern, $src, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $m) {
+                $body = $m[2];
+                $body = preg_replace('/@verbatim\\b/', '', $body) ?? $body;
+                $body = preg_replace('/@endverbatim\\b/', '', $body) ?? $body;
+                $out[$m[1]] = trim((string) $body, "\r\n");
+            }
+        }
+        // Forme courte : @section('name', 'value')
+        $shortPattern = "/@section\\(\\s*['\"]([a-zA-Z0-9_-]+)['\"]\\s*,\\s*['\"]([^'\"]*)['\"]\\s*\\)/";
+        if (preg_match_all($shortPattern, $src, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $m) {
+                if (!isset($out[$m[1]])) {
+                    $out[$m[1]] = $m[2];
+                }
+            }
+        }
+        return $out;
     }
 
     /**
@@ -165,6 +190,10 @@ final class Page extends Model
             // wrap_content=true (legacy)          : enveloppe custom-text + titre.
             $entry['customView']    = $this->wrap_content ? 'pages.editable' : 'pages.editable-raw';
             $entry['customContent'] = $this->content_override;
+            // Vue d'origine : la vue 'editable-raw' en extrait les sections
+            // critiques (headGlobals, styles, scripts) pour que les scripts
+            // Woody ne plantent pas sur window.globals undefined.
+            $entry['originalView']  = $this->view;
         }
 
         return $entry;
