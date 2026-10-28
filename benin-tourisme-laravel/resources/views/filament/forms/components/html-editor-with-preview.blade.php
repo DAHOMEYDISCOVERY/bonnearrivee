@@ -19,8 +19,6 @@
             bodyClass: @js($bodyClass),
             statePath: @js($statePath),
         })"
-        x-init="init()"
-        wire:ignore
         class="ba-html-editor"
     >
         <style>
@@ -169,6 +167,7 @@
                 <textarea
                     x-ref="codeArea"
                     x-on:input="onCodeInput($event)"
+                    wire:model="{{ $statePath }}"
                     rows="{{ $rows }}"
                     spellcheck="false"
                     class="ba-html-editor__codearea"
