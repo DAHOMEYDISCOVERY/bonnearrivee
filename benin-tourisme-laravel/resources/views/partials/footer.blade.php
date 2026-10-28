@@ -4,7 +4,7 @@
     <div class="brand-block align-middle align-center grid-y small-12 medium-6 large-3 padd-all-md">
         <div class="brand-wrapper flex-container align-center">
             <a class="brand-logo isRel" href="/" aria-label="Bonne Arrivée — retour à l'accueil">
-                <img src="/assets/site/img/logo/logo-institutionnel.png" alt="Logo institutionnel">
+                <img src="/assets/site/divers/app/themes/benin/src/img/logo/logo-dark.png" alt="Bonne Arrivée — Portail du tourisme au Bénin">
             </a>
         </div>
         <p class="brand-tagline">Portail du Tourisme et de l'Attractivité au Bénin</p>
