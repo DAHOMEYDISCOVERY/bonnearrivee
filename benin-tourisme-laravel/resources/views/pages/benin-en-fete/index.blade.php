@@ -26,8 +26,11 @@
 
             <div class="benin-events-grid">
                 <a href="/benin-en-fete/vodun-days" class="benin-event-card benin-event-card--large">
-                    <img src="/assets/img/vodun-1200x900.webp"
-                         alt="Vodun Days — ceremonie" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                    <img src="/assets/img/vodun-640x480.webp"
+                         srcset="/assets/img/vodun-640x480.webp 640w, /assets/img/vodun-1200x900.webp 1200w"
+                         sizes="(max-width: 768px) 100vw, (max-width: 1023px) 100vw, 42vw"
+                         width="640" height="480"
+                         alt="Vodun Days — ceremonie" loading="eager" fetchpriority="high" decoding="async" />
                     <div class="benin-event-card__overlay"></div>
                     <div class="benin-event-card__body">
                         <div class="benin-event-card__date">
@@ -41,8 +44,11 @@
                 </a>
 
                 <a href="/benin-en-fete/weloveya" class="benin-event-card">
-                    <img src="/assets/img/danse-1200x900.webp"
-                         alt="Weloveya — danses et musique" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                    <img src="/assets/img/danse-640x480.webp"
+                         srcset="/assets/img/danse-640x480.webp 640w, /assets/img/danse-1200x900.webp 1200w"
+                         sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 29vw"
+                         width="640" height="480"
+                         alt="Weloveya — danses et musique" loading="lazy" decoding="async" />
                     <div class="benin-event-card__overlay"></div>
                     <div class="benin-event-card__body">
                         <div class="benin-event-card__date">
@@ -55,8 +61,11 @@
                 </a>
 
                 <a href="/benin-en-fete/festival-des-masques" class="benin-event-card">
-                    <img src="/assets/img/gelede-1200x675.webp"
-                         alt="Festival des Masques — gelede" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                    <img src="/assets/img/gelede-640x480.webp"
+                         srcset="/assets/img/gelede-640x480.webp 640w, /assets/img/gelede-1200x675.webp 1200w"
+                         sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 29vw"
+                         width="640" height="480"
+                         alt="Festival des Masques — gelede" loading="lazy" decoding="async" />
                     <div class="benin-event-card__overlay"></div>
                     <div class="benin-event-card__body">
                         <div class="benin-event-card__date">
@@ -70,7 +79,9 @@
 
                 <a href="/benin-en-fete/jistna" class="benin-event-card">
                     <img src="/assets/img/jistna-ceremonie-1024x682.webp"
-                         alt="JISTNA" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                         width="1024" height="682"
+                         sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 29vw"
+                         alt="JISTNA" loading="lazy" decoding="async" />
                     <div class="benin-event-card__overlay"></div>
                     <div class="benin-event-card__body">
                         <div class="benin-event-card__date">
@@ -84,7 +95,9 @@
 
                 <a href="/benin-en-fete/la-gaani" class="benin-event-card">
                     <img src="/assets/img/la-gaani-1024x682.jpg"
-                         alt="La Gaani" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                         width="1024" height="682"
+                         sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 29vw"
+                         alt="La Gaani" loading="lazy" decoding="async" />
                     <div class="benin-event-card__overlay"></div>
                     <div class="benin-event-card__body">
                         <div class="benin-event-card__date">
