@@ -51,11 +51,12 @@ final class SiteFragment extends Model
 
     /**
      * Seed les fragments manquants a partir du HTML des partials actuels. Idempotent :
-     * si un slug existe deja, il n'est jamais ecrase (l'admin a pu modifier le contenu).
+     * si un slug existe deja, il n'est jamais ecrase. Appelle extractHtmlFromPartial()
+     * pour isoler le vrai HTML (sans la bascule DB/@if/@else) ajoutee aux partials.
      *
      * @return array{created:int, total:int}
      */
-    public static function seedFromPartials(): array
+    public static function seedFromPartials(bool $force = false): array
     {
         $sources = [
             'header' => resource_path('views/partials/header.blade.php'),
@@ -65,24 +66,48 @@ final class SiteFragment extends Model
         $total   = count(self::KNOWN);
 
         foreach ($sources as $slug => $path) {
-            if (self::query()->where('slug', $slug)->exists()) continue;
+            $existing = self::query()->where('slug', $slug)->first();
+            if ($existing && !$force) continue;
 
-            $html = is_file($path) ? (string) file_get_contents($path) : '';
-            // On enleve le commentaire Blade de debut et les tags @verbatim/@endverbatim
-            // pour ne garder que le HTML brut editable.
-            $html = preg_replace('/\{\{--.*?--\}\}/s', '', $html) ?? $html;
-            $html = str_replace(['@verbatim', '@endverbatim'], '', $html);
-            $html = trim($html);
-
-            self::query()->create([
-                'slug'    => $slug,
-                'label'   => self::KNOWN[$slug],
-                'content' => $html,
-                'notes'   => null,
-            ]);
-            $created++;
+            $html = self::extractHtmlFromPartial($path);
+            if ($existing) {
+                $existing->update(['content' => $html]);
+            } else {
+                self::query()->create([
+                    'slug'    => $slug,
+                    'label'   => self::KNOWN[$slug],
+                    'content' => $html,
+                    'notes'   => null,
+                ]);
+                $created++;
+            }
         }
 
         return ['created' => $created, 'total' => $total];
+    }
+
+    /**
+     * Extrait le HTML pur d'un partial de bascule DB. La convention :
+     *   @php($__dbXxx = ...)
+     *   @if ($__dbXxx !== null) ... @else <HTML ORIGINAL> @endif
+     *
+     * On veut juste <HTML ORIGINAL>. Si pas de bascule (ancien partial), tout
+     * le fichier est renvoye nettoye.
+     */
+    public static function extractHtmlFromPartial(string $path): string
+    {
+        $src = is_file($path) ? (string) file_get_contents($path) : '';
+        if ($src === '') return '';
+
+        // Prefere la branche @else ... @endif si on la trouve (c'est l'HTML original).
+        if (preg_match('/@else\b(.*?)@endif\b/s', $src, $m)) {
+            $src = $m[1];
+        }
+
+        // Enleve commentaires Blade et wrappers verbatim.
+        $src = preg_replace('/\{\{--.*?--\}\}/s', '', $src) ?? $src;
+        $src = str_replace(['@verbatim', '@endverbatim'], '', $src);
+
+        return trim($src);
     }
 }

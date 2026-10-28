@@ -157,13 +157,24 @@
 
                 stripBladeArtefacts: function (html) {
                     if (!html) return html;
-                    // Les commentaires Blade {{-- ... --}} sont normalement supprimes
-                    // au compile, mais ici on injecte le HTML brut dans srcdoc : pas
-                    // de passe Blade. On les enleve manuellement pour que l'apercu
-                    // ne les montre pas en texte.
+                    // L iframe ne passe pas par Blade : les directives s afficheraient
+                    // en texte brut. On les nettoie pour que l apercu reste propre.
+                    // Commentaires {{-- ... --}}
                     html = html.replace(/\{\{--[\s\S]*?--\}\}/g, '');
-                    // Pareil pour les commentaires PHP qui auraient pu glisser.
-                    html = html.replace(/\{\{!!\s*|\s*!!\}\}/g, '');
+                    // Blocs @php(...) et @php...@endphp
+                    html = html.replace(/@php\s*\([^)]*\)/g, '');
+                    html = html.replace(/@php[\s\S]*?@endphp/g, '');
+                    // Blocs conditionnels : on garde le texte interne, on vire les tags
+                    html = html.replace(/@if\s*\([^)]*\)/g, '');
+                    html = html.replace(/@elseif\s*\([^)]*\)/g, '');
+                    html = html.replace(/@(else|endif|endforeach|endfor|endwhile|endswitch|break|continue)\b/g, '');
+                    html = html.replace(/@(foreach|for|while|switch|case)\s*\([^)]*\)/g, '');
+                    // Expressions {!! ... !!} : on evalue partiellement pour les cas simples
+                    // (variable simple du site). Si le texte est non-ascii/complexe, on vide.
+                    html = html.replace(/\{!!\s*[\s\S]*?\s*!!\}/g, '');
+                    // Expressions {{ ... }} : affichees telles quelles donneraient du texte
+                    // bizarre. On vide (dans la vraie page, elles sont rendues par Blade).
+                    html = html.replace(/\{\{\s*[\s\S]*?\s*\}\}/g, '');
                     return html;
                 },
 
