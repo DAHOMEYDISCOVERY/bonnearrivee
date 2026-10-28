@@ -57,12 +57,19 @@ final class SiteFragmentResource extends Resource
 
             Forms\Components\Section::make('Contenu HTML')
                 ->schema([
-                    HtmlEditorWithPreview::make('content')
+                    Forms\Components\Textarea::make('content')
                         ->label('HTML du bloc')
-                        ->helperText("HTML brut tel qu'injecte dans le site. Edite a gauche, visualise a droite. "
-                            ."ATTENTION : un bloc casse peut rendre tout le site inutilisable — teste apres chaque modif.")
+                        ->helperText("HTML brut tel qu'injecte dans le site. ATTENTION : un bloc casse peut "
+                            ."rendre tout le site inutilisable — teste apres chaque modif.")
                         ->required()
                         ->rows(26)
+                        ->autosize(false)
+                        ->extraInputAttributes([
+                            'style' => 'font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; '
+                                     . 'font-size: 13px; line-height: 1.55; white-space: pre; '
+                                     . 'overflow-x: auto; tab-size: 2;',
+                            'spellcheck' => 'false',
+                        ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('notes')
                         ->label('Notes internes')

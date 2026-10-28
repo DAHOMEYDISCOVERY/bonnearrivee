@@ -108,12 +108,18 @@ final class PageResource extends Resource
                         ->label('Envelopper dans le composant "Texte éditorial"')
                         ->helperText('Décoché (défaut) : ton HTML est injecté brut dans la page — classes, structures, grilles préservées. Coché : wrapper titre centré + colonne 10 — pour un simple article texte.')
                         ->default(false),
-                    HtmlEditorWithPreview::make('content_override')
-                        ->label('Contenu de la page')
-                        ->helperText("Edite le HTML a gauche, vois le rendu a droite — ou bascule l'edition visuelle "
-                            ."pour cliquer dans l'apercu et modifier directement, puis renvoie les changements dans "
-                            ."le code source.")
-                        ->rows(26)
+                    Forms\Components\Textarea::make('content_override')
+                        ->label('Contenu HTML de la page')
+                        ->helperText("HTML brut tel que rendu sur le site. Classes CSS, structures, SVG et scripts preserves. "
+                            ."Pre-rempli automatiquement avec le contenu actuel de la page a la premiere ouverture.")
+                        ->rows(28)
+                        ->autosize(false)
+                        ->extraInputAttributes([
+                            'style' => 'font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; '
+                                     . 'font-size: 13px; line-height: 1.55; white-space: pre; '
+                                     . 'overflow-x: auto; tab-size: 2;',
+                            'spellcheck' => 'false',
+                        ])
                         ->columnSpanFull(),
                 ]),
         ]);
