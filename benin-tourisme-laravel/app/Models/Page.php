@@ -103,6 +103,41 @@ final class Page extends Model
     }
 
     /**
+     * Extrait le HTML brut de la section 'content' d'une vue Blade existante,
+     * pour pre-remplir le champ 'content_override' dans l'admin.
+     *
+     * La convention du projet : chaque page a un @section('content') ... @endsection,
+     * souvent entoure d'un @verbatim. On retourne le HTML tel quel pour que
+     * l'editeur de code voie exactement ce que le site rend.
+     *
+     * Retourne null si la vue est introuvable, ou si la section ne peut etre
+     * localisee (ex. layouts speciaux).
+     */
+    public static function extractContentFromView(string $view): ?string
+    {
+        if ($view === '') return null;
+        $relative = str_replace('.', DIRECTORY_SEPARATOR, $view) . '.blade.php';
+        $path     = resource_path('views' . DIRECTORY_SEPARATOR . $relative);
+        if (!is_file($path)) return null;
+
+        $src = file_get_contents($path);
+        if ($src === false || $src === '') return null;
+
+        // On matche @section('content') ... @endsection (ou @stop). Les quotes
+        // peuvent etre simples ou doubles. On capture le corps interieur.
+        $pattern = "/@section\\(\\s*['\"]content['\"]\\s*\\)(.*?)@(?:endsection|stop)\\b/s";
+        if (!preg_match($pattern, $src, $m)) return null;
+
+        $body = $m[1];
+        // Supprime les @verbatim/@endverbatim : leur HTML interieur est deja pur,
+        // la directive n'a pas de sens dans un champ texte.
+        $body = preg_replace('/@verbatim\\b/', '', $body);
+        $body = preg_replace('/@endverbatim\\b/', '', $body);
+        // Nettoie les sauts de ligne de debut/fin pour un rendu propre dans la textarea.
+        return trim((string) $body, "\r\n");
+    }
+
+    /**
      * Rend la page sous la forme attendue par le contrôleur — tableau plutôt
      * qu'objet Eloquent, pour rester interchangeable avec l'ancienne source
      * `resources/pages.php` sans que la vue ne s'en aperçoive.

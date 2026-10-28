@@ -103,15 +103,18 @@ final class PageResource extends Resource
                         ->helperText('Décoché : le site sert la vue Blade historique. Coché : le site sert le contenu édité ci-dessous.')
                         ->default(false)
                         ->live(),
-                    Forms\Components\RichEditor::make('content_override')
-                        ->label('Contenu de la page')
-                        ->helperText("Titres, paragraphes, listes, liens, images — le HTML produit est rendu "
-                            ."dans le gabarit du site (header, footer, styles). Utiliser les URL locales "
-                            ."/assets/img/... pour les images du projet.")
-                        ->toolbarButtons([
-                            'bold', 'italic', 'underline', 'strike', 'link',
-                            'h2', 'h3', 'blockquote', 'bulletList', 'orderedList',
-                            'attachFiles', 'undo', 'redo',
+                    Forms\Components\Textarea::make('content_override')
+                        ->label('Contenu HTML de la page')
+                        ->helperText("HTML brut tel que rendu sur le site. Les classes CSS, structures (section, div), "
+                            ."SVG et scripts sont préservés tels quels. Pré-rempli automatiquement avec le contenu "
+                            ."actuel de la page à la première ouverture — à toi de le modifier.")
+                        ->rows(28)
+                        ->autosize(false)
+                        ->extraInputAttributes([
+                            'style' => 'font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; '
+                                     . 'font-size: 13px; line-height: 1.55; white-space: pre; '
+                                     . 'overflow-x: auto; tab-size: 2;',
+                            'spellcheck' => 'false',
                         ])
                         ->columnSpanFull(),
                 ]),
