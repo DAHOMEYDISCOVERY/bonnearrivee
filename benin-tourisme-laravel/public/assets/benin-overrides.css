@@ -8844,17 +8844,29 @@ body:not(.home) main .content-wrapper > .ba-ecosystem {
    Overlay recherche (plein ecran) — reprend l'apparence du
    woody-search-engine mais branche sur /recherche/suggest.
    Ouvert par la loupe du header, ferme a la croix ou Escape.
-   ============================================================ */
+   IMPORTANT : Woody applique pointer-events:none sur
+   .search-results-wrapper.overlayed-results par defaut. On force
+   pointer-events:auto ici sinon le X et l'input sont inertes. */
 .search-results-wrapper.overlayed-results[data-ba-search-overlay] {
-    position: fixed; inset: 0; z-index: 2000;
-    background: rgba(255,255,255,.98);
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important; left: 0 !important;
+    z-index: 2000;
+    background: rgba(255,255,255,.98) !important;
     backdrop-filter: blur(6px);
-    display: flex; flex-direction: column;
+    display: flex !important;
+    flex-direction: column;
     padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);
     overflow-y: auto;
+    pointer-events: auto !important;
     animation: baSearchFadeIn .18s ease-out;
 }
-.search-results-wrapper.overlayed-results[hidden] { display: none; }
+.search-results-wrapper.overlayed-results[data-ba-search-overlay] * {
+    pointer-events: auto;
+}
+.search-results-wrapper.overlayed-results[data-ba-search-overlay][hidden] {
+    display: none !important;
+}
 @keyframes baSearchFadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -8878,35 +8890,63 @@ body.ba-search-open { overflow: hidden; }
 .search-results-wrapper .search-results-close .show-for-medium { display: none; }
 
 .search-results-wrapper .search-input-wrapper {
-    max-width: 760px; margin: 2.5rem auto 1.5rem; width: 100%;
+    max-width: min(760px, calc(100% - 1rem));
+    margin: 4rem auto 1.5rem;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 .search-results-wrapper .input-group {
-    display: flex; align-items: stretch;
-    background: #fff; border: 2px solid #008751; border-radius: 999px;
-    padding: .35rem; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    display: flex !important;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #008751;
+    border-radius: 999px;
+    padding: .35rem .5rem;
+    box-shadow: 0 6px 24px rgba(0,0,0,.08);
     width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;         /* le contenu colle a la pill, pas de debord */
+    gap: .35rem;
 }
+.search-results-wrapper .input-group .search-input,
 .search-results-wrapper .search-input {
     flex: 1 1 auto; min-width: 0;
-    padding: .9rem 1.25rem;
+    padding: .75rem 1rem;
     background: transparent; border: 0;
-    font-size: clamp(1rem, 2.4vw, 1.25rem); color: #111;
+    font-size: clamp(.95rem, 2.4vw, 1.15rem);
+    color: #111;
+    width: auto;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-appearance: none; appearance: none;
+    border-radius: 999px;
 }
-.search-results-wrapper .search-input:focus { outline: none; }
+.search-results-wrapper .search-input::-webkit-search-cancel-button { display: none; }
 .search-results-wrapper .close-toggler {
+    flex: 0 0 auto;
     display: inline-flex; align-items: center; justify-content: center;
-    width: 2.5rem; cursor: pointer; color: #888;
-    transition: color .15s ease;
+    width: 2.25rem; height: 2.25rem; cursor: pointer; color: #888;
+    border-radius: 50%;
+    transition: color .15s ease, background .15s ease;
 }
-.search-results-wrapper .close-toggler:hover { color: #e8112d; }
+.search-results-wrapper .close-toggler:hover { color: #fff; background: #e8112d; }
 .search-results-wrapper .input-group .results-toggler.submit {
+    flex: 0 0 auto;
     display: inline-flex; align-items: center; justify-content: center;
-    width: 3rem; height: 3rem; border: 0; border-radius: 50%;
+    width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%;
     background: #008751; color: #fff; cursor: pointer;
     transition: background .15s ease;
 }
 .search-results-wrapper .input-group .results-toggler.submit:hover { background: #006a3f; }
-.search-results-wrapper .input-group .results-toggler.submit .wicon { font-size: 1.15rem; }
+.search-results-wrapper .input-group .results-toggler.submit .wicon { font-size: 1.05rem; pointer-events: none; }
+
+@media (max-width: 480px) {
+    .search-results-wrapper .search-input-wrapper { margin-top: 4.5rem; }
+    .search-results-wrapper .input-group .search-input { font-size: 1rem; padding: .6rem .8rem; }
+    .search-results-wrapper .input-group .results-toggler.submit { width: 2.25rem; height: 2.25rem; }
+    .search-results-wrapper .close-toggler { width: 2rem; height: 2rem; }
+}
 
 .search-results-wrapper .search-outcome-wrapper {
     max-width: 1200px; width: 100%; margin: 0 auto;
