@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
             // echapper comme texte par le wrapper Filament/Livewire.
             ->renderHook(
                 PanelsRenderHook::BODY_START,
-                fn (): string => Blade::render('<script src="/assets/admin/ba-html-editor.js?v=1" defer></script>'),
+                fn (): string => Blade::render('<script src="/assets/admin/ba-html-editor.js?v=2" defer></script>'),
             );
     }
 }

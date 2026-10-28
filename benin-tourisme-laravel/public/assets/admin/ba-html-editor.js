@@ -60,7 +60,20 @@
                     this.$nextTick(function () { self.applyEditMode(self.editMode); });
                 },
 
+                stripBladeArtefacts: function (html) {
+                    if (!html) return html;
+                    // Les commentaires Blade {{-- ... --}} sont normalement supprimes
+                    // au compile, mais ici on injecte le HTML brut dans srcdoc : pas
+                    // de passe Blade. On les enleve manuellement pour que l'apercu
+                    // ne les montre pas en texte.
+                    html = html.replace(/\{\{--[\s\S]*?--\}\}/g, '');
+                    // Pareil pour les commentaires PHP qui auraient pu glisser.
+                    html = html.replace(/\{\{!!\s*|\s*!!\}\}/g, '');
+                    return html;
+                },
+
                 buildPreviewHtml: function (body) {
+                    body = this.stripBladeArtefacts(body);
                     var o = this._origin;
                     var links = this._stylesheets.map(function (href) {
                         return '<link rel="stylesheet" href="' + o + href + '" />';
