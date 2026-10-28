@@ -26,9 +26,11 @@
                 previewHtml: '',
                 layout: 'split',
                 _timer: null,
+                _syncTimer: null,
                 _origin: (cfg && cfg.origin) || window.location.origin,
                 _stylesheets: (cfg && cfg.stylesheets) || [],
                 _bodyClass: (cfg && cfg.bodyClass) || 'page prod',
+                _statePath: (cfg && cfg.statePath) || null,
 
                 // Images detectees dans le HTML, pour le panel 'Images de la page'.
                 images: [],
@@ -38,21 +40,42 @@
                 init: function () {
                     this.rebuildPreview();
                     this.detectImages();
+                    // Push initial vers Livewire pour s'assurer que la state est aligne
+                    // sur la valeur extraite de la vue Blade au premier chargement.
+                    this.pushToLivewire();
+                },
+
+                /**
+                 * Pousse 'this.html' vers le state Livewire via $wire.set, avec debounce.
+                 * Appele a chaque modification (frappe, upload image, pull visuel). Garantit
+                 * qu au Save, Livewire a la bonne valeur, independamment du wire:model
+                 * sur la textarea (qu on pouvait pas faire fonctionner de facon fiable
+                 * avec Alpine + modifs programmatiques).
+                 */
+                pushToLivewire: function () {
+                    var self = this;
+                    clearTimeout(this._syncTimer);
+                    this._syncTimer = setTimeout(function () {
+                        if (self._statePath && self.$wire && typeof self.$wire.set === 'function') {
+                            try {
+                                self.$wire.set(self._statePath, self.html, false);
+                            } catch (e) {
+                                console.warn('[baHtmlEditor] $wire.set failed:', e);
+                            }
+                        }
+                    }, 300);
                 },
 
                 onCodeInput: function (event) {
                     this.html = event.target.value;
                     this.schedulePreview();
                     this.detectImages();
+                    this.pushToLivewire();
                 },
 
                 setHtmlAndSync: function (value) {
                     this.html = value;
                     if (this.$refs.codeArea) {
-                        // Utilise le setter natif pour que Livewire detecte le changement.
-                        // Un simple .value = ... bypass les listeners wire:model, ce qui
-                        // fait que la textarea affiche la nouvelle valeur mais Livewire
-                        // garde l'ancienne -> au save, l'ancienne est persistee.
                         var proto = window.HTMLTextAreaElement && window.HTMLTextAreaElement.prototype;
                         var setter = proto && Object.getOwnPropertyDescriptor(proto, 'value');
                         if (setter && setter.set) {
@@ -61,10 +84,10 @@
                             this.$refs.codeArea.value = value;
                         }
                         this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
-                        this.$refs.codeArea.dispatchEvent(new Event('change', { bubbles: true }));
                     }
                     this.schedulePreview();
                     this.detectImages();
+                    this.pushToLivewire();
                 },
 
                 /** Parse les <img src=".."> du HTML pour alimenter le panel. */
