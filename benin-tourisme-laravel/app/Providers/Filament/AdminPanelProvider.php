@@ -10,7 +10,9 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -52,6 +54,13 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            // Charge le JS du composant Alpine 'baHtmlEditor' avant tout DOM
+            // qui en depend. Separe du Blade field pour ne pas se faire
+            // echapper comme texte par le wrapper Filament/Livewire.
+            ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn (): string => Blade::render('<script src="/assets/admin/ba-html-editor.js?v=1" defer></script>'),
+            );
     }
 }
