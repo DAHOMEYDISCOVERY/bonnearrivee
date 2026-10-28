@@ -28,6 +28,22 @@ class EditPage extends EditRecord
         return $data;
     }
 
+    /**
+     * Au Save : si l'editeur contient du HTML, on force use_override=true
+     * pour que le site serve immediatement cette version. Sinon un utilisateur
+     * modifie du contenu, clique Save, et ne voit RIEN changer sur le site
+     * parce que le toggle 'Utiliser le contenu personnalise' etait reste
+     * decoche. Comportement attendu : on edite + save = on publie.
+     */
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $html = trim((string) ($data['content_override'] ?? ''));
+        if ($html !== '') {
+            $data['use_override'] = true;
+        }
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [
