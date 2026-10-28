@@ -3,8 +3,9 @@
      mais fonctionne sur l'endpoint Laravel /recherche/suggest.
      Les filtres par type de page et l'infinite scroll Woody ont ete retires. --}}
 @verbatim<div class="search-results-wrapper overlayed-results" role="dialog" aria-modal="false" aria-live="polite" aria-labelledby="Recherche" aria-describedby="Recherchez un contenu sur le site" data-ba-search-overlay hidden>
-    <button type="button" class="search-results-close flex-container align-middle marg-top-sm marg-right-sm" aria-label="Fermer la recherche" data-ba-search-close>
-        <span class="wicon wicon-029-croix-fermer"></span>
+    <button type="button" class="search-results-close flex-container align-middle marg-top-sm marg-right-sm" aria-label="Fermer la recherche" data-ba-search-close
+            onclick="window.baSearchClose&&window.baSearchClose();return false;">
+        <span class="wicon wicon-029-croix-fermer" aria-hidden="true">&times;</span>
         <span class="show-for-medium">Fermer</span>
     </button>
 
