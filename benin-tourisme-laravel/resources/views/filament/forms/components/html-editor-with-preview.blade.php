@@ -1,99 +1,21 @@
 @php
-    $statePath = $getStatePath();
-    $rows = $getRows();
+    $statePath   = $getStatePath();
+    $rows        = $getRows();
     $stylesheets = $getPreviewStylesheets();
-    $bodyClass = $getPreviewBodyClass();
-    $origin = url('/');
+    $bodyClass   = $getPreviewBodyClass();
+    $origin      = url('/');
+    $state       = (string) ($getState() ?? '');
 @endphp
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div
-        x-data="{
-            html: @js($getState() ?? ''),
-            editMode: false,
-            previewHtml: '',
-            layout: 'split',
-            _timer: null,
-            _origin: @js($origin),
-            _stylesheets: @js($stylesheets),
-            _bodyClass: @js($bodyClass),
-
-            init() {
-                this.schedulePreview();
-            },
-
-            onCodeInput(event) {
-                this.html = event.target.value;
-                this.schedulePreview();
-            },
-
-            setHtmlAndSync(value) {
-                this.html = value;
-                this.$refs.codeArea.value = value;
-                this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
-                this.schedulePreview();
-            },
-
-            schedulePreview() {
-                clearTimeout(this._timer);
-                this._timer = setTimeout(() => this.rebuildPreview(), 350);
-            },
-
-            rebuildPreview() {
-                this.previewHtml = this.buildPreviewHtml(this.html);
-                this.$nextTick(() => this.applyEditMode(this.editMode));
-            },
-
-            buildPreviewHtml(body) {
-                const links = this._stylesheets
-                    .map((href) => `<link rel='stylesheet' href='${this._origin}${href}' />`)
-                    .join('');
-                return `<!doctype html><html lang='fr'><head>
-                    <meta charset='utf-8'>
-                    <base href='${this._origin}/'>
-                    <link rel='preconnect' href='https://fonts.googleapis.com'>
-                    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-                    <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
-                    ${links}
-                    <style>
-                        body { margin: 0; padding: 0; background: #fff; min-height: 100vh; }
-                        [contenteditable='true'] { outline: 2px dashed rgba(234,88,12,.35); outline-offset: 2px; }
-                        [contenteditable='true']:focus-within { outline-color: rgba(234,88,12,.9); }
-                    </style>
-                    </head><body class='${this._bodyClass}'>
-                    <main role='main' class='content-type-page basic_page' id='main-content'>${body}</main>
-                    </body></html>`;
-            },
-
-            applyEditMode(on) {
-                try {
-                    const doc = this.$refs.preview.contentDocument;
-                    if (!doc || !doc.body) return;
-                    doc.designMode = on ? 'on' : 'off';
-                    doc.body.contentEditable = on ? 'true' : 'false';
-                    doc.body.style.cursor = on ? 'text' : '';
-                } catch (e) {}
-            },
-
-            toggleEdit() {
-                this.editMode = !this.editMode;
-                this.applyEditMode(this.editMode);
-            },
-
-            pullVisualToHtml() {
-                try {
-                    const doc = this.$refs.preview.contentDocument;
-                    if (!doc) return;
-                    const main = doc.getElementById('main-content');
-                    const inner = main ? main.innerHTML : doc.body.innerHTML;
-                    this.setHtmlAndSync(inner);
-                } catch (e) {}
-            },
-
-            cycleLayout() {
-                this.layout = this.layout === 'split' ? 'preview' : this.layout === 'preview' ? 'code' : 'split';
-            },
-        }"
+        x-data="baHtmlEditor({
+            initialHtml: @js($state),
+            origin: @js($origin),
+            stylesheets: @js($stylesheets),
+            bodyClass: @js($bodyClass),
+            statePath: @js($statePath),
+        })"
         class="ba-html-editor"
     >
         <style>
@@ -116,7 +38,7 @@
             .dark .ba-html-editor__btn:hover { background: rgb(75 85 99); }
             .ba-html-editor__sep { flex: 1; }
             .ba-html-editor__panels { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-            @media (min-width: 1024px) {
+            @@media (min-width: 1024px) {
                 .ba-html-editor__panels--split { grid-template-columns: 1fr 1fr; }
             }
             .ba-html-editor__panels--preview .ba-html-editor__codepane { display: none; }
@@ -145,32 +67,32 @@
         </style>
 
         <div class="ba-html-editor__toolbar">
-            <button type="button" @click="cycleLayout()" class="ba-html-editor__btn">
-                <span x-text="layout === 'split' ? '↔ Vue cote-a-cote' : layout === 'preview' ? '◉ Visuel plein ecran' : '▭ HTML plein ecran'"></span>
+            <button type="button" x-on:click="cycleLayout()" class="ba-html-editor__btn">
+                <span x-text="layout === 'split' ? '↔ Vue côte-à-côte' : layout === 'preview' ? '◉ Visuel plein écran' : '▭ HTML plein écran'"></span>
             </button>
-            <button type="button" @click="toggleEdit()" :class="editMode ? 'ba-html-editor__btn ba-html-editor__btn--active' : 'ba-html-editor__btn'">
-                <span x-text="editMode ? '● Edition visuelle active' : '○ Edition visuelle'"></span>
+            <button type="button" x-on:click="toggleEdit()" x-bind:class="editMode ? 'ba-html-editor__btn ba-html-editor__btn--active' : 'ba-html-editor__btn'">
+                <span x-text="editMode ? '● Édition visuelle active' : '○ Édition visuelle'"></span>
             </button>
-            <button type="button" @click="pullVisualToHtml()" x-show="editMode" class="ba-html-editor__btn">
+            <button type="button" x-on:click="pullVisualToHtml()" x-show="editMode" class="ba-html-editor__btn">
                 Appliquer visuel → HTML
             </button>
             <div class="ba-html-editor__sep"></div>
-            <button type="button" @click="rebuildPreview()" class="ba-html-editor__btn">
+            <button type="button" x-on:click="rebuildPreview()" class="ba-html-editor__btn">
                 ↻ Actualiser visuel
             </button>
         </div>
 
-        <div :class="'ba-html-editor__panels ba-html-editor__panels--' + layout">
+        <div x-bind:class="'ba-html-editor__panels ba-html-editor__panels--' + layout">
             <div class="ba-html-editor__pane ba-html-editor__codepane">
                 <div class="ba-html-editor__label">HTML brut</div>
                 <textarea
                     x-ref="codeArea"
-                    @input="onCodeInput($event)"
+                    x-on:input="onCodeInput($event)"
                     wire:model.live.debounce.400ms="{{ $statePath }}"
                     rows="{{ $rows }}"
                     spellcheck="false"
                     class="ba-html-editor__codearea"
-                >{{ $getState() }}</textarea>
+                >{{ $state }}</textarea>
                 <div class="ba-html-editor__hint">
                     Classes CSS, structures, SVG et directives Blade sont préservés. Modifier ici met à jour le visuel après 350 ms.
                 </div>
@@ -180,7 +102,7 @@
                 <div class="ba-html-editor__label">Aperçu visuel</div>
                 <iframe
                     x-ref="preview"
-                    :srcdoc="previewHtml"
+                    x-bind:srcdoc="previewHtml"
                     class="ba-html-editor__preview"
                     sandbox="allow-same-origin allow-scripts"
                     style="height: 36rem;"
@@ -191,4 +113,117 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Enregistre le composant Alpine une seule fois par page, meme si plusieurs
+        // instances du HtmlEditor sont presentes dans le formulaire.
+        if (!window.__baHtmlEditorRegistered) {
+            window.__baHtmlEditorRegistered = true;
+            document.addEventListener('alpine:init', function () {
+                window.Alpine.data('baHtmlEditor', function (cfg) {
+                    return {
+                        html: cfg.initialHtml || '',
+                        editMode: false,
+                        previewHtml: '',
+                        layout: 'split',
+                        _timer: null,
+                        _origin: cfg.origin,
+                        _stylesheets: cfg.stylesheets || [],
+                        _bodyClass: cfg.bodyClass || 'page prod',
+
+                        init: function () {
+                            this.rebuildPreview();
+                        },
+
+                        onCodeInput: function (event) {
+                            this.html = event.target.value;
+                            this.schedulePreview();
+                        },
+
+                        setHtmlAndSync: function (value) {
+                            this.html = value;
+                            this.$refs.codeArea.value = value;
+                            this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
+                            this.schedulePreview();
+                        },
+
+                        schedulePreview: function () {
+                            var self = this;
+                            clearTimeout(this._timer);
+                            this._timer = setTimeout(function () { self.rebuildPreview(); }, 350);
+                        },
+
+                        rebuildPreview: function () {
+                            this.previewHtml = this.buildPreviewHtml(this.html);
+                            var self = this;
+                            this.$nextTick(function () { self.applyEditMode(self.editMode); });
+                        },
+
+                        buildPreviewHtml: function (body) {
+                            var o = this._origin;
+                            var links = this._stylesheets.map(function (href) {
+                                return '<link rel="stylesheet" href="' + o + href + '" />';
+                            }).join('');
+                            // URL Google Fonts construite avec @ pour l'arobase, histoire que
+                            // le parser Blade ne la lise pas comme une directive @0,400.
+                            var at = String.fromCharCode(64);
+                            var gf = 'https://fonts.googleapis.com/css2'
+                                + '?family=Playfair+Display:ital,wght' + at + '0,400;0,500;0,700;1,400;1,500'
+                                + '&family=Inter:wght' + at + '300;400;500;600;700'
+                                + '&display=swap';
+                            var emptyNotice = '<p style="padding:2rem;color:#999;font-family:sans-serif;">'
+                                + 'Aperçu vide — ajoute du HTML à gauche.</p>';
+                            return '<!doctype html><html lang="fr"><head>'
+                                + '<meta charset="utf-8">'
+                                + '<base href="' + o + '/">'
+                                + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+                                + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+                                + '<link rel="stylesheet" href="' + gf + '">'
+                                + links
+                                + '<style>'
+                                + 'body{margin:0;padding:0;background:#fff;min-height:100vh;}'
+                                + '[contenteditable="true"]{outline:2px dashed rgba(234,88,12,.35);outline-offset:2px;}'
+                                + '[contenteditable="true"]:focus-within{outline-color:rgba(234,88,12,.9);}'
+                                + '</style>'
+                                + '</head><body class="' + this._bodyClass + '">'
+                                + '<main role="main" class="content-type-page basic_page" id="main-content">'
+                                + (body || emptyNotice)
+                                + '</main>'
+                                + '</body></html>';
+                        },
+
+                        applyEditMode: function (on) {
+                            try {
+                                var doc = this.$refs.preview.contentDocument;
+                                if (!doc || !doc.body) return;
+                                doc.designMode = on ? 'on' : 'off';
+                                doc.body.contentEditable = on ? 'true' : 'false';
+                                doc.body.style.cursor = on ? 'text' : '';
+                            } catch (e) {}
+                        },
+
+                        toggleEdit: function () {
+                            this.editMode = !this.editMode;
+                            this.applyEditMode(this.editMode);
+                        },
+
+                        pullVisualToHtml: function () {
+                            try {
+                                var doc = this.$refs.preview.contentDocument;
+                                if (!doc) return;
+                                var main = doc.getElementById('main-content');
+                                var inner = main ? main.innerHTML : doc.body.innerHTML;
+                                this.setHtmlAndSync(inner);
+                            } catch (e) {}
+                        },
+
+                        cycleLayout: function () {
+                            this.layout = this.layout === 'split' ? 'preview'
+                                : this.layout === 'preview' ? 'code' : 'split';
+                        },
+                    };
+                });
+            });
+        }
+    </script>
 </x-dynamic-component>
