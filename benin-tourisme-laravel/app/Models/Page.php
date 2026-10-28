@@ -53,35 +53,53 @@ final class Page extends Model
      * touchees — un admin peut avoir modifie title/description/override
      * et on n'ecrase rien.
      *
-     * Appelee par Filament au mount de la liste des pages, pour que le
-     * back-office « voie » toutes les pages du site sans seeder manuel.
+     * Shortcut : si le nombre de rows en DB est deja >= au registre, on
+     * saute l'import pour eviter 89 queries a chaque mount Filament.
+     * Le bouton 'Resynchroniser' force quand meme la verif via $force.
      *
      * @return array{created:int, total:int}
      */
-    public static function syncFromRegistry(): array
+    public static function syncFromRegistry(bool $force = false): array
     {
         $file = resource_path('pages.php');
         if (!is_file($file)) {
             return ['created' => 0, 'total' => 0];
         }
         $registry = require $file;
-        $created = 0;
-        foreach ($registry as $path => $entry) {
-            $row = self::firstOrCreate(
-                ['path' => (string) $path],
-                [
-                    'view'         => (string) ($entry['view'] ?? ''),
-                    'title'        => (string) ($entry['title'] ?? ''),
-                    'description'  => (string) ($entry['description'] ?? ''),
-                    'active_menu'  => $entry['activeMenu']  ?? null,
-                    'head_profile' => (string) ($entry['headProfile'] ?? 'standard'),
-                    'standalone'   => (bool)   ($entry['standalone'] ?? false),
-                    'use_override' => false,
-                ]
-            );
-            if ($row->wasRecentlyCreated) $created++;
+        $total    = count($registry);
+
+        // Chemin rapide : si le count correspond, pas de scan ligne par ligne.
+        // Un UPSERT prendrait au minimum $total requetes, c'est ce qu'on evite.
+        if (!$force && self::count() >= $total) {
+            return ['created' => 0, 'total' => $total];
         }
-        return ['created' => $created, 'total' => count($registry)];
+
+        // Charge les chemins deja presents en une seule requete, pour ne
+        // faire un INSERT que sur ceux qui manquent (vs 89 firstOrCreate).
+        $existing = self::query()->pluck('path')->flip();
+        $toInsert = [];
+        $now      = now();
+        foreach ($registry as $path => $entry) {
+            $path = (string) $path;
+            if (isset($existing[$path])) continue;
+            $toInsert[] = [
+                'path'         => $path,
+                'view'         => (string) ($entry['view'] ?? ''),
+                'title'        => (string) ($entry['title'] ?? ''),
+                'description'  => (string) ($entry['description'] ?? ''),
+                'active_menu'  => $entry['activeMenu']  ?? null,
+                'head_profile' => (string) ($entry['headProfile'] ?? 'standard'),
+                'standalone'   => (bool)   ($entry['standalone'] ?? false),
+                'use_override' => false,
+                'created_at'   => $now,
+                'updated_at'   => $now,
+            ];
+        }
+
+        if (!empty($toInsert)) {
+            self::query()->insert($toInsert);
+        }
+        return ['created' => count($toInsert), 'total' => $total];
     }
 
     /**

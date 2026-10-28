@@ -13,11 +13,10 @@ class ListPages extends ListRecords
     protected static string $resource = PageResource::class;
 
     /**
-     * A l'ouverture de l'ecran, on importe automatiquement toutes les
-     * pages du registre `resources/pages.php` dans la table. firstOrCreate
-     * garantit qu'on ne touche jamais aux rows existantes (overrides, titres
-     * modifies). Resultat : le back-office liste directement les ~89 pages
-     * du site sans seeder manuel.
+     * A l'ouverture de l'ecran, on verifie que la table contient les pages
+     * du registre. Le check est tres cheap : COUNT(*) + ne fait rien si
+     * le compte correspond. Pas d'INSERT par ligne. Garantit que le back-
+     * office voit toutes les pages sans ralentir le rendu.
      */
     public function mount(): void
     {
@@ -33,7 +32,7 @@ class ListPages extends ListRecords
                 ->icon('heroicon-o-arrow-path')
                 ->color('gray')
                 ->action(function () {
-                    $r = Page::syncFromRegistry();
+                    $r = Page::syncFromRegistry(force: true);
                     Notification::make()
                         ->title('Registre synchronisé')
                         ->body("{$r['created']} nouvelle(s) page(s) ajoutée(s) sur {$r['total']}.")
