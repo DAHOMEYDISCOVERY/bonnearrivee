@@ -28,11 +28,13 @@ final class Page extends Model
         'standalone',
         'content_override',
         'use_override',
+        'wrap_content',
     ];
 
     protected $casts = [
         'standalone' => 'boolean',
         'use_override' => 'boolean',
+        'wrap_content' => 'boolean',
     ];
 
     /**
@@ -159,7 +161,9 @@ final class Page extends Model
         if ($this->hasCustomContent()) {
             // Le contrôleur préférera cette vue à celle stockée dans `view`,
             // et passera le HTML de `content_override` en variable de vue.
-            $entry['customView'] = 'pages.editable';
+            // wrap_content=false (defaut moderne) : HTML brut injecte dans le layout.
+            // wrap_content=true (legacy)          : enveloppe custom-text + titre.
+            $entry['customView']    = $this->wrap_content ? 'pages.editable' : 'pages.editable-raw';
             $entry['customContent'] = $this->content_override;
         }
 

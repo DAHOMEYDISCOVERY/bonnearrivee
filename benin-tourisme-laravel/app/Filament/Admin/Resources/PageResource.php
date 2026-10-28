@@ -103,6 +103,10 @@ final class PageResource extends Resource
                         ->helperText('Décoché : le site sert la vue Blade historique. Coché : le site sert le contenu édité ci-dessous.')
                         ->default(false)
                         ->live(),
+                    Forms\Components\Toggle::make('wrap_content')
+                        ->label('Envelopper dans le composant "Texte éditorial"')
+                        ->helperText('Décoché (défaut) : ton HTML est injecté brut dans la page — classes, structures, grilles préservées. Coché : wrapper titre centré + colonne 10 — pour un simple article texte.')
+                        ->default(false),
                     Forms\Components\Textarea::make('content_override')
                         ->label('Contenu HTML de la page')
                         ->helperText("HTML brut tel que rendu sur le site. Les classes CSS, structures (section, div), "
