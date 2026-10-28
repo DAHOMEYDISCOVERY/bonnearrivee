@@ -49,8 +49,19 @@
                 setHtmlAndSync: function (value) {
                     this.html = value;
                     if (this.$refs.codeArea) {
-                        this.$refs.codeArea.value = value;
+                        // Utilise le setter natif pour que Livewire detecte le changement.
+                        // Un simple .value = ... bypass les listeners wire:model, ce qui
+                        // fait que la textarea affiche la nouvelle valeur mais Livewire
+                        // garde l'ancienne -> au save, l'ancienne est persistee.
+                        var proto = window.HTMLTextAreaElement && window.HTMLTextAreaElement.prototype;
+                        var setter = proto && Object.getOwnPropertyDescriptor(proto, 'value');
+                        if (setter && setter.set) {
+                            setter.set.call(this.$refs.codeArea, value);
+                        } else {
+                            this.$refs.codeArea.value = value;
+                        }
                         this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
+                        this.$refs.codeArea.dispatchEvent(new Event('change', { bubbles: true }));
                     }
                     this.schedulePreview();
                     this.detectImages();
