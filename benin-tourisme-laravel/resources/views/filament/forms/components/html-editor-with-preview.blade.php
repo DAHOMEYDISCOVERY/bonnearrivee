@@ -7,6 +7,126 @@
     $state       = (string) ($getState() ?? '');
 @endphp
 
+{{-- Enregistre le composant Alpine AVANT que le div x-data ne soit evalue.
+     Si Alpine est deja charge (deuxieme instance sur la page, ou re-render
+     Livewire), on definit directement. Sinon on attend alpine:init. --}}
+<script>
+    (function () {
+        if (window.__baHtmlEditorRegistered) return;
+        window.__baHtmlEditorRegistered = true;
+
+        var define = function () {
+            window.Alpine.data('baHtmlEditor', function (cfg) {
+                return {
+                    html: cfg.initialHtml || '',
+                    editMode: false,
+                    previewHtml: '',
+                    layout: 'split',
+                    _timer: null,
+                    _origin: cfg.origin,
+                    _stylesheets: cfg.stylesheets || [],
+                    _bodyClass: cfg.bodyClass || 'page prod',
+
+                    init: function () {
+                        this.rebuildPreview();
+                    },
+
+                    onCodeInput: function (event) {
+                        this.html = event.target.value;
+                        this.schedulePreview();
+                    },
+
+                    setHtmlAndSync: function (value) {
+                        this.html = value;
+                        this.$refs.codeArea.value = value;
+                        this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
+                        this.schedulePreview();
+                    },
+
+                    schedulePreview: function () {
+                        var self = this;
+                        clearTimeout(this._timer);
+                        this._timer = setTimeout(function () { self.rebuildPreview(); }, 350);
+                    },
+
+                    rebuildPreview: function () {
+                        this.previewHtml = this.buildPreviewHtml(this.html);
+                        var self = this;
+                        this.$nextTick(function () { self.applyEditMode(self.editMode); });
+                    },
+
+                    buildPreviewHtml: function (body) {
+                        var o = this._origin;
+                        var links = this._stylesheets.map(function (href) {
+                            return '<link rel="stylesheet" href="' + o + href + '" />';
+                        }).join('');
+                        var at = String.fromCharCode(64);
+                        var gf = 'https://fonts.googleapis.com/css2'
+                            + '?family=Playfair+Display:ital,wght' + at + '0,400;0,500;0,700;1,400;1,500'
+                            + '&family=Inter:wght' + at + '300;400;500;600;700'
+                            + '&display=swap';
+                        var emptyNotice = '<p style="padding:2rem;color:#999;font-family:sans-serif;">'
+                            + 'Apercu vide - ajoute du HTML a gauche.</p>';
+                        return '<!doctype html><html lang="fr"><head>'
+                            + '<meta charset="utf-8">'
+                            + '<base href="' + o + '/">'
+                            + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+                            + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+                            + '<link rel="stylesheet" href="' + gf + '">'
+                            + links
+                            + '<style>'
+                            + 'body{margin:0;padding:0;background:#fff;min-height:100vh;}'
+                            + '[contenteditable="true"]{outline:2px dashed rgba(234,88,12,.35);outline-offset:2px;}'
+                            + '[contenteditable="true"]:focus-within{outline-color:rgba(234,88,12,.9);}'
+                            + '</style>'
+                            + '</head><body class="' + this._bodyClass + '">'
+                            + '<main role="main" class="content-type-page basic_page" id="main-content">'
+                            + (body || emptyNotice)
+                            + '</main>'
+                            + '</body></html>';
+                    },
+
+                    applyEditMode: function (on) {
+                        try {
+                            var doc = this.$refs.preview.contentDocument;
+                            if (!doc || !doc.body) return;
+                            doc.designMode = on ? 'on' : 'off';
+                            doc.body.contentEditable = on ? 'true' : 'false';
+                            doc.body.style.cursor = on ? 'text' : '';
+                        } catch (e) {}
+                    },
+
+                    toggleEdit: function () {
+                        this.editMode = !this.editMode;
+                        this.applyEditMode(this.editMode);
+                    },
+
+                    pullVisualToHtml: function () {
+                        try {
+                            var doc = this.$refs.preview.contentDocument;
+                            if (!doc) return;
+                            var main = doc.getElementById('main-content');
+                            var inner = main ? main.innerHTML : doc.body.innerHTML;
+                            this.setHtmlAndSync(inner);
+                        } catch (e) {}
+                    },
+
+                    cycleLayout: function () {
+                        this.layout = this.layout === 'split' ? 'preview'
+                            : this.layout === 'preview' ? 'code' : 'split';
+                    },
+                };
+            });
+        };
+
+        if (window.Alpine && window.Alpine.data) {
+            define();
+        } else {
+            document.addEventListener('alpine:init', define);
+        }
+    })();
+</script>
+
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div
         x-data="baHtmlEditor({
@@ -113,117 +233,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Enregistre le composant Alpine une seule fois par page, meme si plusieurs
-        // instances du HtmlEditor sont presentes dans le formulaire.
-        if (!window.__baHtmlEditorRegistered) {
-            window.__baHtmlEditorRegistered = true;
-            document.addEventListener('alpine:init', function () {
-                window.Alpine.data('baHtmlEditor', function (cfg) {
-                    return {
-                        html: cfg.initialHtml || '',
-                        editMode: false,
-                        previewHtml: '',
-                        layout: 'split',
-                        _timer: null,
-                        _origin: cfg.origin,
-                        _stylesheets: cfg.stylesheets || [],
-                        _bodyClass: cfg.bodyClass || 'page prod',
-
-                        init: function () {
-                            this.rebuildPreview();
-                        },
-
-                        onCodeInput: function (event) {
-                            this.html = event.target.value;
-                            this.schedulePreview();
-                        },
-
-                        setHtmlAndSync: function (value) {
-                            this.html = value;
-                            this.$refs.codeArea.value = value;
-                            this.$refs.codeArea.dispatchEvent(new Event('input', { bubbles: true }));
-                            this.schedulePreview();
-                        },
-
-                        schedulePreview: function () {
-                            var self = this;
-                            clearTimeout(this._timer);
-                            this._timer = setTimeout(function () { self.rebuildPreview(); }, 350);
-                        },
-
-                        rebuildPreview: function () {
-                            this.previewHtml = this.buildPreviewHtml(this.html);
-                            var self = this;
-                            this.$nextTick(function () { self.applyEditMode(self.editMode); });
-                        },
-
-                        buildPreviewHtml: function (body) {
-                            var o = this._origin;
-                            var links = this._stylesheets.map(function (href) {
-                                return '<link rel="stylesheet" href="' + o + href + '" />';
-                            }).join('');
-                            // URL Google Fonts construite avec @ pour l'arobase, histoire que
-                            // le parser Blade ne la lise pas comme une directive @0,400.
-                            var at = String.fromCharCode(64);
-                            var gf = 'https://fonts.googleapis.com/css2'
-                                + '?family=Playfair+Display:ital,wght' + at + '0,400;0,500;0,700;1,400;1,500'
-                                + '&family=Inter:wght' + at + '300;400;500;600;700'
-                                + '&display=swap';
-                            var emptyNotice = '<p style="padding:2rem;color:#999;font-family:sans-serif;">'
-                                + 'Aperçu vide — ajoute du HTML à gauche.</p>';
-                            return '<!doctype html><html lang="fr"><head>'
-                                + '<meta charset="utf-8">'
-                                + '<base href="' + o + '/">'
-                                + '<link rel="preconnect" href="https://fonts.googleapis.com">'
-                                + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-                                + '<link rel="stylesheet" href="' + gf + '">'
-                                + links
-                                + '<style>'
-                                + 'body{margin:0;padding:0;background:#fff;min-height:100vh;}'
-                                + '[contenteditable="true"]{outline:2px dashed rgba(234,88,12,.35);outline-offset:2px;}'
-                                + '[contenteditable="true"]:focus-within{outline-color:rgba(234,88,12,.9);}'
-                                + '</style>'
-                                + '</head><body class="' + this._bodyClass + '">'
-                                + '<main role="main" class="content-type-page basic_page" id="main-content">'
-                                + (body || emptyNotice)
-                                + '</main>'
-                                + '</body></html>';
-                        },
-
-                        applyEditMode: function (on) {
-                            try {
-                                var doc = this.$refs.preview.contentDocument;
-                                if (!doc || !doc.body) return;
-                                doc.designMode = on ? 'on' : 'off';
-                                doc.body.contentEditable = on ? 'true' : 'false';
-                                doc.body.style.cursor = on ? 'text' : '';
-                            } catch (e) {}
-                        },
-
-                        toggleEdit: function () {
-                            this.editMode = !this.editMode;
-                            this.applyEditMode(this.editMode);
-                        },
-
-                        pullVisualToHtml: function () {
-                            try {
-                                var doc = this.$refs.preview.contentDocument;
-                                if (!doc) return;
-                                var main = doc.getElementById('main-content');
-                                var inner = main ? main.innerHTML : doc.body.innerHTML;
-                                this.setHtmlAndSync(inner);
-                            } catch (e) {}
-                        },
-
-                        cycleLayout: function () {
-                            this.layout = this.layout === 'split' ? 'preview'
-                                : this.layout === 'preview' ? 'code' : 'split';
-                        },
-                    };
-                });
-            });
-        }
-    </script>
 </x-dynamic-component>
