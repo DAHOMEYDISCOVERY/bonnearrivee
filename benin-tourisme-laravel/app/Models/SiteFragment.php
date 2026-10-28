@@ -30,6 +30,11 @@ final class SiteFragment extends Model
      * Renvoie le HTML du fragment pour ce slug, ou null s'il n'existe pas en
      * base. Mis en cache en memoire pour que header + footer n'ajoutent qu'une
      * seule paire de requetes par rendu de page.
+     *
+     * Si le contenu stocke contient la bascule DB (@php(\$__dbXxx = ...)), on
+     * renvoie null : le partial repart sur son HTML en dur. Evite la recursion
+     * Blade::render -> SiteFragment::html -> Blade::render qui plantait avec
+     * un 500 quand les fragments avaient ete seedes avec le code de bascule.
      */
     public static function html(string $slug): ?string
     {
@@ -38,7 +43,15 @@ final class SiteFragment extends Model
 
         return Cache::remember($cacheKey, 60, function () use ($slug) {
             $row = self::query()->where('slug', $slug)->first();
-            return $row?->content;
+            $content = $row?->content;
+            if ($content === null) return null;
+            // Garde-fou : si le contenu contient encore une directive de bascule
+            // DB (ancien seed corrompu), on ne le sert pas. L'admin doit le
+            // resynchroniser depuis /admin/blocs-du-site.
+            if (preg_match('/@php\s*\(\s*\$__db/', $content)) {
+                return null;
+            }
+            return $content;
         });
     }
 
