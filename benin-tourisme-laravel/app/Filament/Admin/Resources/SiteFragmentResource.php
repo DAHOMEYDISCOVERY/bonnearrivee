@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources;
 
+use App\Filament\Admin\Forms\Components\HtmlEditorWithPreview;
 use App\Filament\Admin\Resources\SiteFragmentResource\Pages;
 use App\Models\SiteFragment;
 use App\Models\User;
@@ -56,20 +57,12 @@ final class SiteFragmentResource extends Resource
 
             Forms\Components\Section::make('Contenu HTML')
                 ->schema([
-                    Forms\Components\Textarea::make('content')
+                    HtmlEditorWithPreview::make('content')
                         ->label('HTML du bloc')
-                        ->helperText("HTML brut tel qu'injecte dans le site. Les classes CSS, structures, SVG et "
-                            ."directives Blade (ex. {{ \$activeMenu }}) sont preserves. ATTENTION : un bloc casse "
-                            ."peut rendre tout le site inutilisable — teste apres chaque modification.")
+                        ->helperText("HTML brut tel qu'injecte dans le site. Edite a gauche, visualise a droite. "
+                            ."ATTENTION : un bloc casse peut rendre tout le site inutilisable — teste apres chaque modif.")
                         ->required()
-                        ->rows(32)
-                        ->autosize(false)
-                        ->extraInputAttributes([
-                            'style' => 'font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; '
-                                     . 'font-size: 13px; line-height: 1.55; white-space: pre; '
-                                     . 'overflow-x: auto; tab-size: 2;',
-                            'spellcheck' => 'false',
-                        ])
+                        ->rows(26)
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('notes')
                         ->label('Notes internes')
