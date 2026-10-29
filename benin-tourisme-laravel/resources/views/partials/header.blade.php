@@ -1,9 +1,20 @@
 {{-- Généré par tools/convert.py — ne pas modifier à la main.
      Si un fragment DB "header" existe (edite depuis /admin), il remplace tout
-     ce fichier. Sinon on retombe sur le HTML en dur ci-dessous. --}}
-@php($__dbHeader = \App\Models\SiteFragment::html('header'))
+     ce fichier. Sinon on retombe sur le HTML en dur ci-dessous.
+     Le contenu DB est injecte en str_replace pour {{ \$activeMenu }} — pas de
+     Blade::render pour eviter les recursions qui plantent la pile. --}}
+@php
+    $__dbHeader = \App\Models\SiteFragment::html('header');
+    if ($__dbHeader !== null) {
+        $__dbHeader = str_replace(
+            ['{{ $activeMenu }}', '{{$activeMenu}}'],
+            [(string) ($activeMenu ?? ''), (string) ($activeMenu ?? '')],
+            $__dbHeader,
+        );
+    }
+@endphp
 @if ($__dbHeader !== null)
-{!! \Illuminate\Support\Facades\Blade::render($__dbHeader, ['activeMenu' => $activeMenu ?? null]) !!}
+{!! $__dbHeader !!}
 @else
 @verbatim<header role="banner" class="woody-component-header menus-v2 site-header woody-burger" >
     <div class="main-menu-wrapper flex-container align-middle align-center">

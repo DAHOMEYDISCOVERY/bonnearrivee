@@ -1,9 +1,10 @@
 {{-- Généré par tools/convert.py — ne pas modifier à la main.
      Si un fragment DB "footer" existe (edite depuis /admin), il remplace tout
-     ce fichier. Sinon on retombe sur le HTML en dur ci-dessous. --}}
+     ce fichier. Sinon on retombe sur le HTML en dur ci-dessous.
+     Pas de Blade::render : le contenu est injecte en HTML brut. --}}
 @php($__dbFooter = \App\Models\SiteFragment::html('footer'))
 @if ($__dbFooter !== null)
-{!! \Illuminate\Support\Facades\Blade::render($__dbFooter) !!}
+{!! $__dbFooter !!}
 @else
 @verbatim<footer role="contentinfo" class="site-footer">
         <div class="woody_footer grid-x">

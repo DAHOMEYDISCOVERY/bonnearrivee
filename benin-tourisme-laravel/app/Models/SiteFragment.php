@@ -31,10 +31,10 @@ final class SiteFragment extends Model
      * base. Mis en cache en memoire pour que header + footer n'ajoutent qu'une
      * seule paire de requetes par rendu de page.
      *
-     * Si le contenu stocke contient la bascule DB (@php(\$__dbXxx = ...)), on
-     * renvoie null : le partial repart sur son HTML en dur. Evite la recursion
-     * Blade::render -> SiteFragment::html -> Blade::render qui plantait avec
-     * un 500 quand les fragments avaient ete seedes avec le code de bascule.
+     * Rejette tout contenu dangereux pour la compilation Blade :
+     *   - @php, @include, @extends, @section -> recursion infinie potentielle
+     *   - @foreach, @for, @while -> peuvent planter Blade::render
+     * Dans ces cas, le partial repart sur son HTML en dur.
      */
     public static function html(string $slug): ?string
     {
@@ -44,14 +44,10 @@ final class SiteFragment extends Model
         return Cache::remember($cacheKey, 60, function () use ($slug) {
             $row = self::query()->where('slug', $slug)->first();
             $content = $row?->content;
-            // Null, string vide ou whitespace -> on retombe sur le HTML en dur
-            // du partial. Un fragment vide ou blanc rendrait un header/footer
-            // inexistant qui casse tout le layout.
             if ($content === null || trim($content) === '') return null;
-            // Garde-fou : si le contenu contient encore une directive de bascule
-            // DB (ancien seed corrompu), on ne le sert pas. L'admin doit le
-            // resynchroniser depuis /admin/blocs-du-site.
-            if (preg_match('/@php\s*\(\s*\$__db/', $content)) {
+            // Garde-fou anti-recursion : refuse les directives Blade dangereuses.
+            // Les fragments DB sont du HTML brut + {{ $activeMenu }} simple.
+            if (preg_match('/@(php|include|extends|section|foreach|for|while|switch)\b/', $content)) {
                 return null;
             }
             return $content;
