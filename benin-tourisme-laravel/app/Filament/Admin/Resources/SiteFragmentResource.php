@@ -114,9 +114,13 @@ final class SiteFragmentResource extends Resource
         ];
     }
 
-    /** Seuls les admins peuvent toucher aux blocs — trop critiques pour les editeurs. */
-    public static function canViewAny(): bool { return self::isAdmin(); }
-    public static function canEdit($record): bool { return self::isAdmin(); }
+    /**
+     * Admins et editeurs peuvent voir et modifier les blocs : header/footer
+     * sont du contenu edito. La creation et la suppression restent admin
+     * (le registre des blocs est fixe).
+     */
+    public static function canViewAny(): bool { return self::isEditor(); }
+    public static function canEdit($record): bool { return self::isEditor(); }
     public static function canCreate(): bool { return self::isAdmin(); }
     public static function canDelete($record): bool { return self::isAdmin(); }
 
@@ -124,5 +128,11 @@ final class SiteFragmentResource extends Resource
     {
         $u = auth()->user();
         return $u instanceof User && $u->isAdmin();
+    }
+
+    private static function isEditor(): bool
+    {
+        $u = auth()->user();
+        return $u instanceof User && $u->isEditor();
     }
 }
