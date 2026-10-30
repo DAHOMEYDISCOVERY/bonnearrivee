@@ -113,6 +113,31 @@ final class PageResource extends Resource
                         ->helperText("Edite le HTML a gauche, vois le rendu a droite. Bascule 'Edition visuelle' "
                             ."pour cliquer dans l'apercu et modifier directement, puis renvoie dans le code source.")
                         ->rows(26)
+                        ->rules([
+                            // Interdit les directives Blade qui feraient
+                            // sauter la compilation (stack overflow sur
+                            // recursion) et vider la page a l'affichage.
+                            static function () {
+                                return static function (string $attribute, $value, \Closure $fail): void {
+                                    $v = (string) $value;
+                                    if ($v === '') return;
+                                    $patterns = [
+                                        '/@php\b/i', '/@endphp\b/i',
+                                        '/@include\b/i', '/@extends\b/i',
+                                        '/@section\b/i', '/@yield\b/i',
+                                        '/@foreach\b/i', '/@for\s*\(/i',
+                                        '/@while\b/i', '/@switch\b/i',
+                                        '/@if\s*\(/i', '/@elseif\b/i',
+                                    ];
+                                    foreach ($patterns as $p) {
+                                        if (preg_match($p, $v)) {
+                                            $fail("Le contenu contient une directive Blade interdite (ex. @php, @include, @section) qui casserait la page. Retire-la pour sauvegarder.");
+                                            return;
+                                        }
+                                    }
+                                };
+                            },
+                        ])
                         ->columnSpanFull(),
                 ]),
         ]);

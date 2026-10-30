@@ -38,14 +38,27 @@ final class Page extends Model
     ];
 
     /**
-     * La page a-t-elle un contenu personnalisé actif ? Le back-office édite
-     * `content_override` (HTML) et bascule `use_override` : le contrôleur ne
-     * rend la vue générique qu'à ces deux conditions réunies, sinon il garde
+     * La page a-t-elle un contenu personnalise actif ? Le back-office edite
+     * `content_override` (HTML) et bascule `use_override` : le controleur ne
+     * rend la vue generique qu'a ces deux conditions reunies, sinon il garde
      * la vue Blade d'origine.
+     *
+     * On considere "actif" uniquement si quelque chose VISUELLE va s'afficher
+     * sur la page : du texte apres strip_tags, OU une balise media (<img>,
+     * <video>, <iframe>, <svg>). Un contenu reduit a des commentaires HTML
+     * ou a des balises vides (`<p></p>`) retombe sur la vue d'origine, sinon
+     * le visiteur ne verrait que header + footer.
      */
     public function hasCustomContent(): bool
     {
-        return $this->use_override && trim((string) $this->content_override) !== '';
+        if (!$this->use_override) return false;
+        $html = (string) $this->content_override;
+        if ($html === '') return false;
+        $noComments = preg_replace('/<!--.*?-->/s', '', $html) ?? $html;
+        $noComments = preg_replace('/\{\{--.*?--\}\}/s', '', $noComments) ?? $noComments;
+        $plain = trim(strip_tags($noComments));
+        if ($plain !== '') return true;
+        return (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $html);
     }
 
     /**

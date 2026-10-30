@@ -29,17 +29,35 @@ class EditPage extends EditRecord
     }
 
     /**
-     * Au Save : si l'editeur contient du HTML, on force use_override=true
-     * pour que le site serve immediatement cette version. Sinon un utilisateur
-     * modifie du contenu, clique Save, et ne voit RIEN changer sur le site
-     * parce que le toggle 'Utiliser le contenu personnalise' etait reste
-     * decoche. Comportement attendu : on edite + save = on publie.
+     * Au Save : use_override est pilote DETERMINISTE par le contenu de
+     * l'editeur. Jamais d'etat "use_override=true + contenu vide" en DB,
+     * qui provoquait des pages blanches (header + footer visibles mais
+     * <main> vide) quand la textarea etait videe par un sync Alpine rate
+     * ou par un stripBladeArtefacts trop agressif.
+     *
+     * Regle : contenu non vide (apres strip des commentaires HTML et des
+     * balises vides) -> use_override=true (on publie). Sinon -> use_override
+     * =false (on retombe sur la vue Blade historique) ET on remet content
+     * _override a null pour ne pas garder un fantome en DB.
      */
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $html = trim((string) ($data['content_override'] ?? ''));
-        if ($html !== '') {
+        $html = (string) ($data['content_override'] ?? '');
+        // On considere un HTML "vide" s'il ne reste rien de visible apres
+        // suppression des commentaires HTML/Blade et des espaces.
+        $cleaned = preg_replace('/<!--.*?-->/s', '', $html) ?? $html;
+        $cleaned = preg_replace('/\{\{--.*?--\}\}/s', '', $cleaned) ?? $cleaned;
+        $cleaned = trim(strip_tags($cleaned));
+        // On autorise un HTML qui n'a que des images / medias (strip_tags
+        // le viderait a tort) : si le brut contient au moins un <img|<video
+        // |<iframe|<svg, c'est considere non vide.
+        $hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $html);
+
+        if ($cleaned !== '' || $hasMedia) {
             $data['use_override'] = true;
+        } else {
+            $data['use_override'] = false;
+            $data['content_override'] = null;
         }
         return $data;
     }

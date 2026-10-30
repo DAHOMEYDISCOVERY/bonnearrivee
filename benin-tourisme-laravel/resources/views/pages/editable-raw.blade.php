@@ -16,5 +16,19 @@
 @endsection
 
 @section('content')
-{!! $customContent ?? '' !!}
+@php($__ba_html = (string) ($customContent ?? ''))
+@php($__ba_plain = trim(strip_tags(preg_replace('/<!--.*?-->/s', '', $__ba_html) ?? $__ba_html)))
+@php($__ba_hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $__ba_html))
+@if ($__ba_plain !== '' || $__ba_hasMedia)
+{!! $__ba_html !!}
+@else
+<div class="grid-container padd-top-lg padd-bottom-lg">
+    <div class="grid-x grid-padding-x align-center">
+        <div class="cell large-10 text-center" style="padding:40px 20px;background:#fff8e1;border:1px solid #ffd54f;border-radius:8px;">
+            <h2 style="margin:0 0 10px;color:#8a6d3b;">Contenu en cours de redaction</h2>
+            <p style="margin:0;color:#6b5c20;">Cette page est actuellement sans contenu. Rendez-vous dans le back-office pour la completer, ou desactivez l'interrupteur "Utiliser le contenu personnalise" pour retrouver la version historique.</p>
+        </div>
+    </div>
+</div>
+@endif
 @endsection
