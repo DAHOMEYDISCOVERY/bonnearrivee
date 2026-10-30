@@ -6,11 +6,38 @@
 @php
     $__dbHeader = \App\Models\SiteFragment::html('header');
     if ($__dbHeader !== null) {
+        $__am = (string) ($activeMenu ?? '');
+        // 1) Expressions ternaires du type :
+        //    {{ $activeMenu === 'XXX' ? ' is-active' : '' }}
+        //    On evalue pour chaque occurrence et on remplace par la bonne valeur.
+        $__dbHeader = preg_replace_callback(
+            '/\{\{\s*\$activeMenu\s*===\s*([\'"])([^\'"]*)\1\s*\?\s*([\'"])([^\'"]*)\3\s*:\s*([\'"])([^\'"]*)\5\s*\}\}/',
+            static function (array $m) use ($__am): string {
+                return $__am === $m[2] ? $m[4] : $m[6];
+            },
+            $__dbHeader,
+        ) ?? $__dbHeader;
+        // 2) Expressions `!==` symetriques.
+        $__dbHeader = preg_replace_callback(
+            '/\{\{\s*\$activeMenu\s*!==\s*([\'"])([^\'"]*)\1\s*\?\s*([\'"])([^\'"]*)\3\s*:\s*([\'"])([^\'"]*)\5\s*\}\}/',
+            static function (array $m) use ($__am): string {
+                return $__am !== $m[2] ? $m[4] : $m[6];
+            },
+            $__dbHeader,
+        ) ?? $__dbHeader;
+        // 3) Interpolation simple : {{ $activeMenu }}.
         $__dbHeader = str_replace(
             ['{{ $activeMenu }}', '{{$activeMenu}}'],
-            [(string) ($activeMenu ?? ''), (string) ($activeMenu ?? '')],
+            [$__am, $__am],
             $__dbHeader,
         );
+        // 4) Filet de secours : s'il reste des `{{ ... }}` dans l'HTML
+        //    (expressions non supportees), on les retire pour qu'ils ne
+        //    polluent pas les attributs HTML (colles a une classe, ils
+        //    cassent les selecteurs CSS/JS : la classe devient
+        //    'is-submenu-parent{{', les scripts Woody ne trouvent plus
+        //    les sous-menus a ouvrir).
+        $__dbHeader = preg_replace('/\{\{[^}]*\}\}/', '', $__dbHeader) ?? $__dbHeader;
     }
 @endphp
 @if ($__dbHeader !== null)
