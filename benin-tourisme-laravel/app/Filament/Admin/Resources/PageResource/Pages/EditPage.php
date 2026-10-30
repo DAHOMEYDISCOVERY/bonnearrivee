@@ -43,18 +43,23 @@ class EditPage extends EditRecord
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $html = (string) ($data['content_override'] ?? '');
-        // On considere un HTML "vide" s'il ne reste rien de visible apres
-        // suppression des commentaires HTML/Blade et des espaces.
+        // 1) Nettoyage AUTOMATIQUE des directives Blade residuelles. Un copier
+        //    /coller depuis une vue d'origine aurait du @if/@foreach/{{ $x }}
+        //    dedans — on les retire pour que la compilation Blade ne plante
+        //    jamais et que la page ne devienne jamais blanche.
+        $html = Page::stripBladeArtefacts($html);
+
+        // 2) On considere un HTML "vide" s'il ne reste rien de visible apres
+        //    suppression des commentaires HTML et des espaces.
         $cleaned = preg_replace('/<!--.*?-->/s', '', $html) ?? $html;
-        $cleaned = preg_replace('/\{\{--.*?--\}\}/s', '', $cleaned) ?? $cleaned;
         $cleaned = trim(strip_tags($cleaned));
         // On autorise un HTML qui n'a que des images / medias (strip_tags
-        // le viderait a tort) : si le brut contient au moins un <img|<video
-        // |<iframe|<svg, c'est considere non vide.
+        // le viderait a tort).
         $hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $html);
 
         if ($cleaned !== '' || $hasMedia) {
             $data['use_override'] = true;
+            $data['content_override'] = $html;
         } else {
             $data['use_override'] = false;
             $data['content_override'] = null;

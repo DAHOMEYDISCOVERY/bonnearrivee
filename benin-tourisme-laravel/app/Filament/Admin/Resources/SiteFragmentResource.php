@@ -59,34 +59,10 @@ final class SiteFragmentResource extends Resource
                 ->schema([
                     HtmlEditorWithPreview::make('content')
                         ->label('HTML du bloc')
-                        ->helperText("Edite a gauche, apercu visuel a droite. ATTENTION : un bloc casse peut "
-                            ."rendre tout le site inutilisable — teste apres chaque modif.")
+                        ->helperText("Edite a gauche, apercu visuel a droite. Les directives Blade residuelles "
+                            ."(@if, {{ \$var }}, @include, ...) sont nettoyees automatiquement au save.")
                         ->required()
                         ->rows(26)
-                        ->rules([
-                            // Interdit toute directive Blade qui ferait
-                            // sauter la compilation et vider le site.
-                            static function () {
-                                return static function (string $attribute, $value, \Closure $fail): void {
-                                    $v = (string) $value;
-                                    if ($v === '') return;
-                                    $patterns = [
-                                        '/@php\b/i', '/@endphp\b/i',
-                                        '/@include\b/i', '/@extends\b/i',
-                                        '/@section\b/i', '/@yield\b/i',
-                                        '/@foreach\b/i', '/@for\s*\(/i',
-                                        '/@while\b/i', '/@switch\b/i',
-                                        '/@if\s*\(/i', '/@elseif\b/i',
-                                    ];
-                                    foreach ($patterns as $p) {
-                                        if (preg_match($p, $v)) {
-                                            $fail("Le contenu contient une directive Blade interdite (ex. @php, @include, @section). Retire-la pour sauvegarder.");
-                                            return;
-                                        }
-                                    }
-                                };
-                            },
-                        ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('notes')
                         ->label('Notes internes')

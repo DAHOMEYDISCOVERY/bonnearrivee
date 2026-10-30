@@ -122,8 +122,10 @@ final class Page extends Model
      * pour pre-remplir le champ 'content_override' dans l'admin.
      *
      * La convention du projet : chaque page a un @section('content') ... @endsection,
-     * souvent entoure d'un @verbatim. On retourne le HTML tel quel pour que
-     * l'editeur de code voie exactement ce que le site rend.
+     * souvent entoure d'un @verbatim. On retourne le HTML DEBARRASSE des directives
+     * Blade residuelles (@if, @foreach, {{ $x }}, @include, etc.) pour que l'editeur
+     * de code voie du HTML pur, sans quoi le save se ferait rejeter par la
+     * validation serveur ou pire, planterait la compilation Blade sur recursion.
      *
      * Retourne null si la vue est introuvable, ou si la section ne peut etre
      * localisee (ex. layouts speciaux).
@@ -131,7 +133,62 @@ final class Page extends Model
     public static function extractContentFromView(string $view): ?string
     {
         $sections = self::extractAllSections($view);
-        return $sections['content'] ?? null;
+        $html = $sections['content'] ?? null;
+        return $html === null ? null : self::stripBladeArtefacts($html);
+    }
+
+    /**
+     * Nettoie un HTML des directives Blade residuelles. Appele a l'extract pour
+     * que le back-office recoive un HTML pur, et a chaque save si besoin.
+     *
+     *  - commentaires Blade  {{-- ... --}}         supprimes
+     *  - sections dangereuses @if/@foreach/@for/@while/@switch/@section/@include
+     *    @extends/@yield : la directive est retiree, le contenu interne garde
+     *  - interpolations {{ $x }} / {!! $x !!}      remplacees par chaine vide
+     *  - verbatim                                   supprime (balise seule)
+     */
+    public static function stripBladeArtefacts(string $html): string
+    {
+        $out = $html;
+        // Commentaires Blade et HTML : on les laisse ; les commentaires HTML
+        // peuvent avoir du sens editorial (<!-- noindex -->). Les commentaires
+        // Blade par contre, on les gomme : ils sont invisibles sur le site de
+        // toute facon et le visiteur n'a rien a faire d'un {{-- note interne --}}.
+        $out = preg_replace('/\{\{--.*?--\}\}/s', '', $out) ?? $out;
+        // Balises de bloc Blade (sans leur contenu interne) : on retire la
+        // directive d'ouverture/fermeture seule, le HTML interne reste visible.
+        $blockDirectives = [
+            'if', 'elseif', 'else', 'endif',
+            'foreach', 'endforeach',
+            'for', 'endfor',
+            'forelse', 'empty', 'endforelse',
+            'while', 'endwhile',
+            'switch', 'case', 'break', 'default', 'endswitch',
+            'section', 'endsection', 'show', 'stop', 'append', 'overwrite',
+            'yield', 'parent',
+            'include', 'includeIf', 'includeWhen', 'includeFirst', 'each',
+            'extends',
+            'php', 'endphp',
+            'verbatim', 'endverbatim',
+            'push', 'endpush', 'stack',
+            'auth', 'endauth', 'guest', 'endguest',
+            'can', 'endcan', 'cannot', 'endcannot',
+            'isset', 'endisset', 'empty', 'endempty',
+            'csrf', 'method',
+        ];
+        foreach ($blockDirectives as $d) {
+            // Avec arguments entre parentheses : @if ($x > 0)
+            $out = preg_replace('/@' . preg_quote($d, '/') . '\s*\([^)]*\)/i', '', $out) ?? $out;
+            // Sans arguments : @else, @endif
+            $out = preg_replace('/@' . preg_quote($d, '/') . '\b/i', '', $out) ?? $out;
+        }
+        // Interpolations : {{ $title }}, {!! $html !!}, {{{ $raw }}} -> vide.
+        $out = preg_replace('/\{\{\{.*?\}\}\}/s', '', $out) ?? $out;
+        $out = preg_replace('/\{\{.*?\}\}/s', '', $out) ?? $out;
+        $out = preg_replace('/\{!!.*?!!\}/s', '', $out) ?? $out;
+        // Lignes qui ne contiennent plus que du blanc apres nettoyage.
+        $out = preg_replace("/^[ \t]*\r?\n/m", '', $out) ?? $out;
+        return trim($out, "\r\n");
     }
 
     /**
