@@ -9003,35 +9003,31 @@ body.ba-search-open { overflow: hidden; }
 .swiper-slide .landswprMediaWrapper.hero-img-contain { background: #000; }
 .swiper-slide .landswprMediaWrapper.hero-img-contain .imageObject-img { object-fit: contain !important; width: 100%; height: 100%; }
 
-/* Carrousel .woody-component-basic-swiper (section Explorer les 5 regions) :
-   les boutons prev/next etaient en position:absolute, top:45% et tombaient
-   pile sur card-title + card-subtitle au centre des cards.
-   Solution definitive : on sort .swiper-controls du flow absolute pour
-   le poser SOUS le carrousel, dans le flow normal. Les boutons prev/next
-   deviennent alors deux pastilles cote a cote, centrees horizontalement
-   sous les cards. Plus aucun chevauchement, quelle que soit la longueur
-   du titre. Les 3 couches visuelles (anneau ::after, fond ::before,
-   icone wicon) restent intactes graphiquement. */
-.woody-component-basic-swiper.tpl_01 .swiper-controls {
-    position: relative !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 24px;
-    pointer-events: none;
-}
-.woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-nav {
-    display: flex;
-    gap: 48px;
-    align-items: center;
-    pointer-events: auto;
-}
-.woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-prev,
-.woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-next {
-    position: relative !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
+/* Carrousel .woody-component-basic-swiper (section Explorer les 5 regions
+   et ailleurs) : les boutons prev/next etaient positionnes a left/right:25px
+   et tombaient donc en plein sur card-title + card-subtitle. On les ancre
+   hors du cadre des cards (-80px), AVEC !important et spécificité +haute
+   pour battre les regles media-queries empilees de main_chunk_1/3 Woody
+   qui redeclarent sans cesse .swiper-button-prev{left:XXXpx}. Les 3
+   couches visuelles (anneau outline ::after, fond rond ::before, wicon)
+   suivent le conteneur, intactes.
+   On ajoute aussi un ecart entre les cards (spaceBetween equivalent) via
+   margin lateral sur chaque slide pour que les cards voisines ne touchent
+   plus les boutons eux-memes. */
+.woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-prev {
+    left: -80px !important;
     right: auto !important;
-    margin-top: 0 !important;
+}
+.woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-next {
+    right: -80px !important;
+    left: auto !important;
+}
+/* Petit tampon lateral sur les cards du basic-swiper pour creer un
+   couloir visuel entre les cards et les boutons prev/next, qu'importe
+   la longueur du titre (ex. "Les Collines, la pepite du Benin"). */
+.woody-component-basic-swiper.tpl_01 .swiper-wrapper .swiper-slide { padding: 0 8px; box-sizing: border-box; }
+@media (min-width: 1024px) {
+    .woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-prev { left: -100px !important; }
+    .woody-component-basic-swiper.tpl_01 .swiper-controls .swiper-button-next { right: -100px !important; }
+    .woody-component-basic-swiper.tpl_01 .swiper-wrapper .swiper-slide { padding: 0 12px; }
 }
