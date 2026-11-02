@@ -9002,31 +9002,3 @@ body.ba-search-open { overflow: hidden; }
    pour habiller les bandes qui apparaissent sur les cotes. */
 .swiper-slide .landswprMediaWrapper.hero-img-contain { background: #000; }
 .swiper-slide .landswprMediaWrapper.hero-img-contain .imageObject-img { object-fit: contain !important; width: 100%; height: 100%; }
-
-/* Section "Explorer les 5 regions" : decale les boutons prev/next du
-   swiper vers l'exterieur du cadre des cards pour qu'ils ne chevauchent
-   plus le titre et le subtitle au centre de chaque card. */
-.woody-component-basic-swiper .swiper-controls .swiper-nav { pointer-events: none; }
-.woody-component-basic-swiper .swiper-controls .swiper-button-prev,
-.woody-component-basic-swiper .swiper-controls .swiper-button-next {
-    pointer-events: auto;
-    width: 44px;
-    height: 44px;
-    background: rgba(0,0,0,0.55);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    z-index: 20;
-}
-.woody-component-basic-swiper .swiper-controls .swiper-button-prev { left: 12px; right: auto; }
-.woody-component-basic-swiper .swiper-controls .swiper-button-next { right: 12px; left: auto; }
-@media (min-width: 640px) {
-    .woody-component-basic-swiper .swiper-controls .swiper-button-prev { left: 24px; }
-    .woody-component-basic-swiper .swiper-controls .swiper-button-next { right: 24px; }
-}
-@media (min-width: 1024px) {
-    .woody-component-basic-swiper .swiper-controls .swiper-button-prev { left: 40px; }
-    .woody-component-basic-swiper .swiper-controls .swiper-button-next { right: 40px; }
-}
