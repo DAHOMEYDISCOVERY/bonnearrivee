@@ -62,16 +62,14 @@
     title="Le Grand Nord"
 >
     <x-media.figure
-    src="/assets/img/atacora-640x360.webp"
-    alt="Les paysages de l’Atacora"
+    src="/assets/img/grand-nord-benin.webp"
+    alt="Cavaliers en tenue traditionnelle du Grand Nord, Bénin"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/atacora-360x203.webp 360w, /assets/img/atacora-640x360.webp 640w, /assets/img/atacora-1200x675.webp 1200w, /assets/img/atacora-1920x1080.webp 1920w"
     classes="isRel imageObject 1 cardMediaWrapper"
     :ariaHidden="true"
-    published="2021-12-14 16:20:27"
-    description="Les paysages de l’Atacora"
-    caption="Les paysages de l’Atacora"
-    author="KOUAGOU Damien / CC BY-SA 4.0 — Wikimedia Commons"
+    published="2026-11-02 15:17:49"
+    description="Cavaliers en tenue traditionnelle du Grand Nord, Bénin"
+    caption="Le Grand Nord"
     :captionHidden="true"
     :nosnippet="true"
 />
