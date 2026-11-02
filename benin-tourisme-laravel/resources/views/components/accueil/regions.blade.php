@@ -13,16 +13,14 @@
     subtitle="Cap sur Ouidah !"
 >
     <x-media.figure
-    src="/assets/img/plage-grand-popo-640x360.webp"
-    alt="La plage de Grand-Popo"
+    src="/assets/img/foret-sacree-kpasse-ouidah.jpg"
+    alt="Forêt sacrée de Kpassè, Ouidah"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/plage-grand-popo-360x203.webp 360w, /assets/img/plage-grand-popo-640x360.webp 640w, /assets/img/plage-grand-popo-1200x675.webp 1200w, /assets/img/plage-grand-popo-1920x1080.webp 1920w"
     classes="isRel imageObject 1 cardMediaWrapper"
     :ariaHidden="true"
-    published="2021-12-14 11:20:20"
-    description="La plage de Grand-Popo"
-    caption="La plage de Grand-Popo"
-    author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
+    published="2026-11-02 14:51:00"
+    description="Forêt sacrée de Kpassè, Ouidah — Kpasse's Sacred Forest"
+    caption="Forêt sacrée de Kpassè, Ouidah"
     :captionHidden="true"
     :nosnippet="true"
 />
