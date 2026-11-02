@@ -88,16 +88,14 @@
     subtitle="Soyez les bienvenus dans les Collines !"
 >
     <x-media.figure
-    src="/assets/img/atacora-640x360.webp"
-    alt="Les paysages de l’Atacora"
+    src="/assets/img/collines-benin.webp"
+    alt="Les Collines, la pépite du Bénin"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/atacora-360x203.webp 360w, /assets/img/atacora-640x360.webp 640w, /assets/img/atacora-1200x675.webp 1200w, /assets/img/atacora-1920x1080.webp 1920w"
     classes="isRel imageObject 1 cardMediaWrapper"
     :ariaHidden="true"
-    published="2021-12-14 16:55:11"
-    description="Les paysages de l’Atacora"
-    caption="Les paysages de l’Atacora"
-    author="KOUAGOU Damien / CC BY-SA 4.0 — Wikimedia Commons"
+    published="2026-11-02 15:00:00"
+    description="Les Collines, la pépite du Bénin"
+    caption="Les Collines"
     :captionHidden="true"
     :nosnippet="true"
 />
