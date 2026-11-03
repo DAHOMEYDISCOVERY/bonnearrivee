@@ -9040,6 +9040,23 @@ body.ba-search-open { overflow: hidden; }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next:hover {
     transform: translateY(-50%) translateX(102px) !important;
 }
+/* Menu hamburger ouvert : on etend le ::before NATIF du #main-menu Woody
+   (qui est deja un fond blanc 100%x100% du menu) pour qu'il couvre tout
+   le viewport. Comme ce ::before vit dans le stacking context du menu
+   lui-meme, il n'est pas masque par les transforms des wrappers parents
+   (contrairement a un overlay sur body::before). Les sous-menus actifs
+   (z-index:1 via .menu-item.is-active) restent au-dessus. */
+body.menu-is-open #main-menu.sliding-menu::before {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #fff !important;
+    z-index: -1;
+}
+body.menu-is-open { overflow: hidden; }
+
 /* L'overlay .swiper-controls doit matcher EXACTEMENT les paddings du
    swiper-container pour que left:0 des boutons coincide avec le bord
    de la card active. Les paddings natifs Woody tpl_131 sont :
