@@ -124,9 +124,6 @@
         const accroche = document.querySelector(ACCROCHE);
         if (accroche) rendreContinu(accroche);
 
-        const régions = document.querySelector(RÉGIONS);
-        if (régions) rendreRégionsContinu(régions);
-
         if (mouvementRéduit()) return;
 
         document.querySelectorAll('.swiper').forEach((element) => {
