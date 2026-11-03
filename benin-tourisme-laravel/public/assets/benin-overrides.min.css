@@ -9057,19 +9057,6 @@ body.menu-is-open #main-menu.sliding-menu::before {
 }
 body.menu-is-open { overflow: hidden; }
 
-/* Fix data-equalizer Foundation : si le JS n'a pas calcule les hauteurs
-   (bug observe sur sections tpl_121, tpl_321 avec woody-mobile-swiper),
-   les cards se retrouvent avec height:0 inline -> invisibles. On force
-   height:auto a ces elements sans style inline Foundation, et on garde
-   leur comportement normal si equalizer tourne. */
-[data-equalizer-watch][style*="height: 0"],
-[data-equalizer-watch]:not([style]) {
-    height: auto !important;
-    min-height: 0 !important;
-}
-.woody-component-focus .woody-mobile-swiper .card,
-.woody-component-focus .woody-mobile-swiper .cell { min-height: 0; }
-
 /* L'overlay .swiper-controls doit matcher EXACTEMENT les paddings du
    swiper-container pour que left:0 des boutons coincide avec le bord
    de la card active. Les paddings natifs Woody tpl_131 sont :
