@@ -85,6 +85,12 @@
 
 @section('content')
 @php($__ba_html = (string) ($customContent ?? ''))
+{{-- Nettoyage defensif : certaines pages ont ete sauvees AVANT le
+     stripBladeArtefacts du save. Leur content_override contient encore
+     des commentaires Blade {{-- ... --}}, des interpolations {{ $x }}
+     ou des directives qui s'affichent comme du texte via {!! !!}. On
+     les retire ici au render. --}}
+@php($__ba_html = \App\Models\Page::stripBladeArtefacts($__ba_html))
 @php($__ba_plain = trim(strip_tags(preg_replace('/<!--.*?-->/s', '', $__ba_html) ?? $__ba_html)))
 @php($__ba_hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $__ba_html))
 @if ($__ba_plain !== '' || $__ba_hasMedia)
