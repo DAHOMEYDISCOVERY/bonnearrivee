@@ -9027,25 +9027,25 @@ body.ba-search-open { overflow: hidden; }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-prev {
     left: 0 !important;
     right: auto !important;
-    transform: translateY(-50%) translateX(-60px) !important;
+    transform: translateY(-50%) translateX(-100px) !important;
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next {
     right: 0 !important;
     left: auto !important;
-    transform: translateY(-50%) translateX(60px) !important;
+    transform: translateY(-50%) translateX(100px) !important;
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-prev:hover {
-    transform: translateY(-50%) translateX(-62px) !important;
+    transform: translateY(-50%) translateX(-102px) !important;
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next:hover {
-    transform: translateY(-50%) translateX(62px) !important;
+    transform: translateY(-50%) translateX(102px) !important;
 }
-/* L'overlay .swiper-controls doit EXCLURE les 200px (mobile) / 380px
-   (desktop) de padding gauche/droite du swiper-container, sans quoi
-   les boutons ancres a left:0 se retrouvent au bord de la fenetre et
-   translateX(-60px) les sort hors ecran. Donc on fait coincider les
-   bords de .swiper-controls avec la zone utile (entre les deux
-   paddings) = pile au bord de la card active. */
+/* L'overlay .swiper-controls doit matcher EXACTEMENT les paddings du
+   swiper-container pour que left:0 des boutons coincide avec le bord
+   de la card active. Les paddings natifs Woody tpl_131 sont :
+     - 200px (par defaut)
+     - 380px (a partir de 90em = 1440px)
+   Decouvert via inspection CSS : @media screen and (min-width:90em). */
 .woody-component-focus.tpl_131 .woody-component-basic-swiper.tpl_01 { position: relative; }
 .woody-component-focus.tpl_131 .swiper-controls {
     position: absolute !important;
@@ -9056,7 +9056,7 @@ body.ba-search-open { overflow: hidden; }
     pointer-events: none;
     z-index: 10;
 }
-@media (min-width: 1024px) {
+@media screen and (min-width: 90em) {
     .woody-component-focus.tpl_131 .swiper-controls {
         left: 380px !important;
         right: 380px !important;
