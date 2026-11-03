@@ -26,6 +26,8 @@
     };
 
     const ACCROCHE = '.woody-component-landswpr .woody-landing-swiper';
+    const RÉGIONS = '.woody-component-focus.tpl_131 .swiper-container';
+    const FACTEUR_DE_DUPLICATION = 3; // 5 slides -> 15 slides après duplication
 
     // Le thème initialise ses carrousels de façon asynchrone : on attend qu'ils
     // existent, sans attendre indéfiniment si la page n'en contient aucun.
@@ -59,6 +61,55 @@
     }
 
     /**
+     * Rend le carrousel des 5 régions vraiment continu dans les deux sens.
+     *
+     * Swiper 11 avec slidesPerView:'auto' + loop:true ne clone PAS les slides
+     * dans le DOM (changement v10 -> v11). Résultat : 5 slides, le wrapper
+     * finit avant le bord droit du swiper-container -> blanc visible dans
+     * le padding droit au repos, et saut à la jointure fin -> début.
+     *
+     * Solution : on duplique 2 fois les slides originales dans le DOM
+     * (15 au total) puis on recrée l'instance Swiper. Les clones sont
+     * invisibles côté CMS ; seul le JS les voit.
+     */
+    function rendreRégionsContinu(element) {
+        const ancien = element.swiper;
+        if (!ancien) return false;
+        const wrapper = element.querySelector('.swiper-wrapper');
+        if (!wrapper) return false;
+
+        // On ne duplique qu'une seule fois par chargement : si le wrapper
+        // a déjà été étendu, on sort.
+        if (wrapper.dataset.baDupliqué === '1') return false;
+
+        const originales = [...wrapper.querySelectorAll(':scope > .swiper-slide:not(.swiper-slide-duplicate)')];
+        if (originales.length < 2) return false;
+
+        const { el, init, ...paramètres } = ancien.passedParams;
+        const indexInitial = ancien.realIndex || 0;
+        ancien.destroy(true, true);
+
+        // On ajoute (FACTEUR - 1) jeux complets de clones après les originales.
+        // Pour FACTEUR=3 : 5 originales + 10 clones = 15 slides.
+        for (let tour = 1; tour < FACTEUR_DE_DUPLICATION; tour++) {
+            originales.forEach((slide) => {
+                const clone = slide.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.classList.add('ba-slide-clone');
+                wrapper.appendChild(clone);
+            });
+        }
+        wrapper.dataset.baDupliqué = '1';
+
+        new window.Swiper(element, {
+            ...paramètres,
+            loop: true,
+            initialSlide: indexInitial,
+        });
+        return true;
+    }
+
+    /**
      * Fait défiler un carrousel qui boucle déjà.
      */
     function faireDéfiler(swiper) {
@@ -72,6 +123,9 @@
     function appliquer() {
         const accroche = document.querySelector(ACCROCHE);
         if (accroche) rendreContinu(accroche);
+
+        const régions = document.querySelector(RÉGIONS);
+        if (régions) rendreRégionsContinu(régions);
 
         if (mouvementRéduit()) return;
 
