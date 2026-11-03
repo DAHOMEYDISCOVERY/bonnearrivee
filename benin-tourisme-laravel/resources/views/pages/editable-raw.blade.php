@@ -84,10 +84,13 @@
 @endsection
 
 @section('content')
-@php($__ba_html = (string) ($customContent ?? ''))
-@php($__ba_html = \App\Models\Page::stripBladeArtefacts($__ba_html))
-@php($__ba_plain = trim(strip_tags(preg_replace('/<!--.*?-->/s', '', $__ba_html) ?? $__ba_html)))
-@php($__ba_hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $__ba_html))
+@php
+    $__ba_html = (string) ($customContent ?? '');
+    $__ba_html = \App\Models\Page::stripBladeArtefacts($__ba_html);
+    $__ba_noc = preg_replace('/<!--.*?-->/s', '', $__ba_html);
+    $__ba_plain = trim(strip_tags($__ba_noc !== null ? $__ba_noc : $__ba_html));
+    $__ba_hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $__ba_html);
+@endphp
 @if ($__ba_plain !== '' || $__ba_hasMedia)
 {!! $__ba_html !!}
 @else
