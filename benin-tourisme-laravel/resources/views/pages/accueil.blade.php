@@ -12,7 +12,7 @@
 @section('scripts')@verbatim
 
     <script src="/assets/benin-atlas.js?v=7fb8e61e"></script>
-    <script src="/assets/benin-carrousels.js?v=d2e4f8c3"></script>
+    <script src="/assets/benin-carrousels.js?v=e5f6a0d4"></script>
 @endverbatim@endsection
 @section('styles')@verbatim<link rel='stylesheet' id='benin-atlas-css' href='/assets/benin-atlas.css?v=ed180f70' media='all' />@endverbatim@endsection
 @section('content')
