@@ -9070,28 +9070,25 @@ body.ba-search-open { overflow: hidden; }
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div { pointer-events: auto; }
 
-/* Menu hamburger ouvert : le #main-menu.sliding-menu Woody natif n'a pas de
-   hauteur explicite, il prend celle de son contenu -> sur un ecran haut, le
-   bas de la page reste visible derriere le menu.
-   Fix : hauteur = 100vh + background opaque + overflow pour scroll si menu
-   plus haut que le viewport. Le .submenu-wrapper (cards sous-menu) passe
-   aussi a 100vh pour couvrir tout l'ecran a droite des rubriques. */
+/* Menu hamburger ouvert : on preserve l'affichage Woody natif (rubriques
+   a gauche + sous-menus a droite). On ajoute juste un overlay blanc
+   fixe plein ecran DERRIERE le menu via un pseudo sur body.menu-is-open,
+   pour masquer le contenu de la page qui apparaissait autrement en bas
+   et a droite. Le scroll de la page est bloque pendant que le menu est
+   ouvert. */
 body.menu-is-open { overflow: hidden; }
-body.menu-is-open #main-menu.sliding-menu {
-    height: 100vh !important;
-    max-height: 100vh !important;
-    top: 0 !important;
-    overflow-y: auto !important;
-    background: #fff !important;
+body.menu-is-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 999;
+    pointer-events: none;
 }
-body.menu-is-open #main-menu.sliding-menu::before {
-    height: 100vh !important;
-}
-body:not(.admin-bar) .woody-component-headnavs .sliding-menu .submenu-wrapper,
-body.menu-is-open #main-menu.sliding-menu .submenu-wrapper {
-    height: 100vh !important;
-    max-height: 100vh !important;
-    top: 0 !important;
-    background: #fff !important;
-}
+/* Le menu et ses sous-menus doivent passer devant notre overlay blanc. */
+body.menu-is-open #main-menu.sliding-menu,
+body.menu-is-open #main-menu.sliding-menu .submenu-wrapper { z-index: 1000; }
 
