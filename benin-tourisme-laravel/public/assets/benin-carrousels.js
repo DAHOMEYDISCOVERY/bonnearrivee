@@ -68,9 +68,20 @@
      * finit avant le bord droit du swiper-container -> blanc visible dans
      * le padding droit au repos, et saut à la jointure fin -> début.
      *
-     * Solution : on duplique 2 fois les slides originales dans le DOM
-     * (15 au total) puis on recrée l'instance Swiper. Les clones sont
-     * invisibles côté CMS ; seul le JS les voit.
+     * Solution : on construit un wrapper de FACTEUR cycles complets, mais
+     * chaque cycle est une PERMUTATION CIRCULAIRE différente des 5 slides.
+     * Garantie : jamais deux copies identiques côte à côte, quelle que soit
+     * la fenêtre visible du carrousel.
+     *
+     * Exemple avec 5 slides [A,B,C,D,E] et FACTEUR=3 :
+     *   cycle 0 (offset 0) : A B C D E
+     *   cycle 1 (offset 2) : C D E A B
+     *   cycle 2 (offset 4) : E A B C D
+     * Résultat : A B C D E C D E A B E A B C D
+     * Transitions : E→C, B→E, D→A (loop). Pas de doublon côte à côte.
+     *
+     * Les clones portent aria-hidden="true" pour que le CMS et les lecteurs
+     * d'écran les ignorent.
      */
     function rendreRégionsContinu(element) {
         const ancien = element.swiper;
@@ -78,26 +89,29 @@
         const wrapper = element.querySelector('.swiper-wrapper');
         if (!wrapper) return false;
 
-        // On ne duplique qu'une seule fois par chargement : si le wrapper
-        // a déjà été étendu, on sort.
+        // On ne duplique qu'une seule fois par chargement.
         if (wrapper.dataset.baDupliqué === '1') return false;
 
         const originales = [...wrapper.querySelectorAll(':scope > .swiper-slide:not(.swiper-slide-duplicate)')];
-        if (originales.length < 2) return false;
+        const n = originales.length;
+        if (n < 2) return false;
 
         const { el, init, ...paramètres } = ancien.passedParams;
         const indexInitial = ancien.realIndex || 0;
         ancien.destroy(true, true);
 
-        // On ajoute (FACTEUR - 1) jeux complets de clones après les originales.
-        // Pour FACTEUR=3 : 5 originales + 10 clones = 15 slides.
+        // On garde le cycle 0 intact (les originales sont déjà dans le DOM).
+        // Pour chaque cycle supplémentaire on applique un décalage circulaire
+        // de 2*tour pour casser l'alignement avec la fin du cycle précédent.
         for (let tour = 1; tour < FACTEUR_DE_DUPLICATION; tour++) {
-            originales.forEach((slide) => {
-                const clone = slide.cloneNode(true);
+            const décalage = (tour * 2) % n;
+            for (let i = 0; i < n; i++) {
+                const source = originales[(i + décalage) % n];
+                const clone = source.cloneNode(true);
                 clone.setAttribute('aria-hidden', 'true');
                 clone.classList.add('ba-slide-clone');
                 wrapper.appendChild(clone);
-            });
+            }
         }
         wrapper.dataset.baDupliqué = '1';
 
@@ -123,6 +137,9 @@
     function appliquer() {
         const accroche = document.querySelector(ACCROCHE);
         if (accroche) rendreContinu(accroche);
+
+        const régions = document.querySelector(RÉGIONS);
+        if (régions) rendreRégionsContinu(régions);
 
         if (mouvementRéduit()) return;
 
