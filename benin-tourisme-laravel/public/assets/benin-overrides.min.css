@@ -9071,28 +9071,16 @@ body.ba-search-open { overflow: hidden; }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div { pointer-events: auto; }
 
 /* Menu hamburger ouvert : on preserve l'affichage Woody natif (rubriques
-   a gauche + sous-menus a droite). On ajoute juste un overlay blanc
-   fixe plein ecran DERRIERE le menu via un pseudo sur body.menu-is-open,
-   pour masquer le contenu de la page qui apparaissait autrement en bas
-   et a droite. Le scroll de la page est bloque pendant que le menu est
-   ouvert. */
-body.menu-is-open { overflow: hidden; }
-body.menu-is-open::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #fff;
-    z-index: 999;
-    pointer-events: none;
-}
-/* Le menu et ses sous-menus doivent passer devant notre overlay blanc.
-   Les .submenu-wrapper ont z-index:-1 par defaut Woody (ils sont caches
-   derriere le header a l'etat ferme) -> il faut les forcer bien au-dessus
-   de l'overlay. */
-body.menu-is-open #main-menu.sliding-menu { z-index: 1000 !important; }
-body.menu-is-open #main-menu.sliding-menu .submenu-wrapper { z-index: 1001 !important; }
-body.menu-is-open #main-menu.sliding-menu .menu-item.is-active .submenu-wrapper { z-index: 1002 !important; }
+   a gauche + sous-menus a droite). Pour masquer le contenu de la page
+   qui apparait autrement en bas et a droite du menu, on ne tente plus
+   un overlay par-dessus (les stacking contexts crees par les transforms
+   des wrappers empechaient de superposer proprement) ; on cache
+   directement le contenu de la page via visibility:hidden.
+   Scroll de la page bloque pendant que le menu est ouvert. */
+body.menu-is-open { overflow: hidden; background: #fff !important; }
+body.menu-is-open .site-content,
+body.menu-is-open .site-footer,
+body.menu-is-open .site-footer-container,
+body.menu-is-open #main-content,
+body.menu-is-open footer[role="contentinfo"] { visibility: hidden !important; }
 
