@@ -9040,18 +9040,27 @@ body.ba-search-open { overflow: hidden; }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next:hover {
     transform: translateY(-50%) translateX(62px) !important;
 }
-/* Important : .swiper-controls doit etre en relative (ancre des boutons
-   absolute). On s'assure qu'il englobe bien le swiper-container en lui
-   donnant position:absolute+pleine couverture du composant basic-swiper. */
+/* L'overlay .swiper-controls doit EXCLURE les 200px (mobile) / 380px
+   (desktop) de padding gauche/droite du swiper-container, sans quoi
+   les boutons ancres a left:0 se retrouvent au bord de la fenetre et
+   translateX(-60px) les sort hors ecran. Donc on fait coincider les
+   bords de .swiper-controls avec la zone utile (entre les deux
+   paddings) = pile au bord de la card active. */
 .woody-component-focus.tpl_131 .woody-component-basic-swiper.tpl_01 { position: relative; }
 .woody-component-focus.tpl_131 .swiper-controls {
     position: absolute !important;
     top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    left: 200px !important;
+    right: 200px !important;
     bottom: 0 !important;
     pointer-events: none;
     z-index: 10;
+}
+@media (min-width: 1024px) {
+    .woody-component-focus.tpl_131 .swiper-controls {
+        left: 380px !important;
+        right: 380px !important;
+    }
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav {
     position: relative;
