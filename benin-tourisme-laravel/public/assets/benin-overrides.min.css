@@ -9070,17 +9070,4 @@ body.ba-search-open { overflow: hidden; }
 }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div { pointer-events: auto; }
 
-/* Menu hamburger ouvert : on preserve l'affichage Woody natif (rubriques
-   a gauche + sous-menus a droite). Pour masquer le contenu de la page
-   qui apparait autrement en bas et a droite du menu, on ne tente plus
-   un overlay par-dessus (les stacking contexts crees par les transforms
-   des wrappers empechaient de superposer proprement) ; on cache
-   directement le contenu de la page via visibility:hidden.
-   Scroll de la page bloque pendant que le menu est ouvert. */
-body.menu-is-open { overflow: hidden; background: #fff !important; }
-body.menu-is-open .site-content,
-body.menu-is-open .site-footer,
-body.menu-is-open .site-footer-container,
-body.menu-is-open #main-content,
-body.menu-is-open footer[role="contentinfo"] { visibility: hidden !important; }
 
