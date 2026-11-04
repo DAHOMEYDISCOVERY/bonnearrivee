@@ -30,7 +30,7 @@
                     <div class="grid-container padd-top-md padd-bottom-md">
                         <div class="grid-x grid-padding-x align-center">
                             <div class="cell large-10">
-                                {!! $customContent !!}
+                                {!! \App\Support\OverrideHtml::render((string) $customContent, ['title' => $title, 'description' => $description ?? null, 'activeMenu' => $activeMenu ?? null]) !!}
                             </div>
                         </div>
                     </div>

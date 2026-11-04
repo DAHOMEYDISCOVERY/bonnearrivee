@@ -7,7 +7,7 @@
 <html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fiche de relecture — Bonne Arrivée</title>
-<link rel="icon" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-carte-32.png?v=carte1">
 <meta name="robots" content="noindex, nofollow">
 <style>
  :root{--green:#008751;--yellow:#fcd116;--red:#e8112d;--ink:#0b3d2c;--muted:#606060;--line:#e3e3e3}

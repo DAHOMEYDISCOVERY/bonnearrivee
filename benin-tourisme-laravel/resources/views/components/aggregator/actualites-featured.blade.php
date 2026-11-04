@@ -43,7 +43,7 @@
             <div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y">
                 <div class="cell xmedium-down-order-9">
                     <div class="woody_base_grid_wrapper">
-                        <div class="woody_list_grid tpl_203 grid-x large-up-2 grid-padding-x grid-padding-y" role="list">
+                        <div class="woody_list_grid tpl_203 grid-x large-up-2 grid-padding-x grid-padding-y" role="list" data-ba-dynamique>
                             @foreach($items as $row)
                                 @php
                                     $it = $row['it'];

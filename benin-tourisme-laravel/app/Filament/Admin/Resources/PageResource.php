@@ -174,6 +174,10 @@ final class PageResource extends Resource
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->url(fn (Page $record): string => url($record->path))
                     ->openUrlInNewTab(),
+                Tables\Actions\Action::make('textes')
+                    ->label('Textes et images')
+                    ->icon('heroicon-o-pencil-square')
+                    ->url(fn (Page $record): string => \App\Filament\Admin\Pages\PageContentEditor::getUrl(['chemin' => $record->path])),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

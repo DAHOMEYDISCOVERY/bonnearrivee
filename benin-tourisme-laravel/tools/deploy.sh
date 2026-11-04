@@ -13,8 +13,9 @@ chmod -R ug+rwx storage bootstrap/cache 2>/dev/null || true
 echo "===> 3. Migrations BDD"
 php artisan migrate --force --no-interaction
 
-echo "===> 3.1. Seeding user admin"
-php artisan db:seed --class=AdminUserSeeder --force --no-interaction
+# 3.1. (retiré — audit BUG-18) Le compte administrateur ne se crée plus à
+# chaque déploiement. Pour une installation neuve seulement, une fois :
+#   ADMIN_INITIAL_PASSWORD='…' php artisan db:seed --class=AdminUserSeeder --force
 
 echo "===> 4. Lien symbolique /public/storage -> /storage/app/public"
 php artisan storage:link 2>/dev/null || true
@@ -33,6 +34,10 @@ fi
 
 echo "===> 7. Queue restart (pour la file de mails magic link)"
 php artisan queue:restart 2>/dev/null || true
+
+echo "===> 8. Pré-chargement des blocs partenaires et index de recherche"
+php artisan aggregator:warm --quiet-summary || true
+php artisan search:index || true
 
 echo ""
 echo "Deploiement termine. N'oublie pas :"

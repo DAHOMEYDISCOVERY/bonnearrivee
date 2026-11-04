@@ -9101,3 +9101,492 @@ body.menu-is-open { overflow: hidden; }
 .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div { pointer-events: auto; }
 
 
+
+/* Header mobile et tablette (< 75em / 1200 px) — correctif du 4 novembre 2026.
+   Le thème Woody décale le bouton « Menu » de left: 5rem; top: 32px
+   (.woody-component-headnavs .woody-component-header .menu-icon), un décalage
+   prévu pour un bouton en position: absolute — ce que le thème n'applique
+   qu'à partir de 75em. En dessous, le bouton restait dans le flux, centré avec
+   le logo, puis décalé de 80 px : il passait sous le logo et un tap au centre
+   ouvrait l'accueil. On le sort du flux à gauche, la loupe à droite, centrés
+   verticalement dans le header. Le rendu desktop (>= 75em) est inchangé.
+   Vérifié à 320, 360, 375, 414, 768, 1024, 1366 et 1920 px. */
+@media screen and (max-width: 74.9375em) {
+  .woody-component-headnavs .woody-component-header button.menu-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+  }
+  .woody-component-headnavs .tools {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+
+/* ============================================================
+   Responsive — correctifs du 4 novembre 2026 (lot 5)
+   ============================================================ */
+
+/* 1. Héros Woody (tpl_01, tpl_02…) : même hauteur que tous les autres héros
+      du site et que le diaporama de l'accueil — 100vw, plafonnée à 100vh
+      (voir « UNIFORMISATION DES HERO » plus haut). Avant : 180 px / 90 px
+      sur mobile, 638 px / 342 px sur desktop, titre qui débordait.
+      L'image remplit le cadre, le titre reste centré par-dessus (centrage du thème conservé). */
+/* body:not(#…) : le thème plafonne ces héros à 50vw avec un sélecteur à six
+   :not() (main_chunk_2) ; l'identifiant fictif suffit à passer devant. */
+body:not(#ba-hero-uniforme) .woody-component-hero {
+    height: 100vw !important;
+    max-height: 100vh !important;
+    min-height: 0 !important;
+    overflow: hidden;
+}
+.woody-component-hero > .hero-bg,
+.woody-component-hero > .hero-bg > figure {
+    height: 100% !important;
+}
+.woody-component-hero > .hero-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+/* 1 bis. Exception : un héros dont le contenu ne tient pas dans ce cadre (le
+      héros Restaurants sur petit mobile : fil d'Ariane, titre, texte, deux
+      boutons) s'allonge juste assez pour tout montrer au lieu de déborder sous
+      le header. Les héros dont le contenu tient gardent la hauteur commune. */
+.emerv-hero,
+.event-hero,
+.ba-page-hero,
+.benin-page-hero,
+.wd-hero,
+.wd2-hero,
+.wv-hero {
+    min-height: fit-content !important;
+}
+
+/* 2. Bande blanche sous le header (mobile et tablette) : le thème dessine le
+      fond du header avec un ::before de 150 px, la hauteur du header desktop.
+      Sous 75em le header ne fait que 90 à 110 px : les 40 à 60 px restants
+      recouvraient le haut du héros. Le fond suit maintenant la hauteur réelle. */
+@media screen and (max-width: 74.9375em) {
+    .woody-component-headnavs .woody-component-header::before {
+        height: 100%;
+    }
+}
+
+/* 3. (Remplacé par le point 8 : l'accueil mobile reprend désormais, comme
+      toutes les pages à héros, le header blanc posé sur l'image.) */
+
+/* 4. Menu ouvert sur mobile (< 768 px) : le thème affiche les sous-menus à
+      droite de la liste, comme sur desktop ; il restait 88 px pour les cartes.
+      Sur mobile le sous-menu s'ouvre en accordéon, pleine largeur, sous
+      l'entrée touchée ; cartes sur deux colonnes ; le menu défile. */
+@media screen and (max-width: 47.9375em) {
+    .woody-component-headnavs #main-menu.sliding-menu {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: calc(100vh - 90px);
+        height: calc(100dvh - 90px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 24px 20px 40px !important;
+        align-items: flex-start !important;
+    }
+    .woody-component-headnavs #main-menu .main-menu-list { width: 100%; }
+    .woody-component-headnavs #main-menu .menu-item.is-submenu-parent { flex-wrap: wrap; width: 100%; }
+    .woody-component-headnavs #main-menu .submenu-wrapper {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+        z-index: auto !important;
+        display: none !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-wrapper.submenu-active { display: block !important; }
+    .woody-component-headnavs #main-menu .submenu-grid {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        gap: 20px;
+        width: 100% !important;
+        height: auto !important;
+        padding: 4px 0 20px !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-block {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-block-images-list .submenu-block-content {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-block-images-list .card {
+        width: auto !important;
+        height: 130px !important;
+        min-height: 0 !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-block-images-list .card .card-link {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .woody-component-headnavs #main-menu .submenu-block-images-list .card .card-section { padding: 10px !important; }
+    .woody-component-headnavs #main-menu .submenu-block-images-list .card .card-title { font-size: 1rem !important; line-height: 1.2 !important; }
+}
+
+/* 5. Boutons précédent / suivant du carrousel « point cardinal » (focus
+      tpl_131) sous 1024 px. La règle plus haut (left: 200px, ±100 px au survol)
+      cale les boutons sur les marges de 200 px que le thème ne donne au
+      carrousel qu'à partir de 64em. En dessous, la carte occupe toute la
+      largeur et les boutons tombaient en plein sur le titre. Ils passent sous
+      le carrousel, centrés ; l'anneau décoratif du survol desktop est masqué. */
+@media screen and (max-width: 63.9375em) {
+    .woody-component-focus.tpl_131 .swiper-controls {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        height: auto !important;
+        margin-top: 16px;
+        pointer-events: auto;
+    }
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        height: auto !important;
+    }
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-prev,
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next,
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-prev:hover,
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav .swiper-button-next:hover {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 0 !important;
+    }
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div > i::before { color: #00a05d !important; }
+    .woody-component-focus.tpl_131 .swiper-controls .swiper-nav > div > i::after { display: none !important; }
+}
+
+/* 6. Accueil : vignette de défilement (titres des diapositives, trait qui se
+      remplit pendant le défilement automatique, rond vert sur la diapositive
+      affichée) aussi sur mobile et tablette. Le thème la remplace sous 64em
+      par des points qu'il masque aussitôt ; benin-carrousels.js produit
+      désormais les mêmes vignettes à toutes les largeurs. Version compacte :
+      trois titres côte à côte en bas du héros. */
+@media screen and (max-width: 63.9375em) {
+    .woody-component-landswpr.tpl_03 .swiper-pagination {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        position: absolute !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 6px !important;
+        padding: 0 10px !important;
+        transform: none !important;
+    }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .swiper-pagination-item {
+        display: flex !important;
+        flex: 1 1 0 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        min-width: 0;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none !important;
+        border-radius: 0 !important;
+        text-align: center;
+    }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .pagination-title {
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+        white-space: normal !important;
+        max-width: 100%;
+    }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .pagination-separator,
+    .woody-component-landswpr.tpl_03 .swiper-pagination .pagination-separator-loader {
+        height: 24px !important;
+    }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .pagination-separator { margin-top: 10px !important; }
+    /* Le texte de la diapositive se centre au-dessus des vignettes. */
+    .woody-component-landswpr.tpl_03 .landswpr-titles-wrapper > .grid-container {
+        box-sizing: border-box !important;
+        padding-bottom: 72px !important;
+    }
+    .woody-component-landswpr.tpl_03 .landswpr-texts { padding-bottom: 14px !important; }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .swiper-pagination-item:not(.active) .pagination-separator::before { top: -4px !important; }
+    .woody-component-landswpr.tpl_03 .swiper-pagination .swiper-pagination-item.active .pagination-separator::before {
+        width: 34px !important;
+        height: 34px !important;
+        top: -42px !important;
+        transform: translateX(-17px) !important;
+    }
+}
+@media screen and (max-width: 22.4375em) {
+    .woody-component-landswpr.tpl_03 .landswpr-pretitle { font-size: 12px !important; line-height: 1.4 !important; }
+    .woody-component-landswpr.tpl_03 .landswpr-title { font-size: 22px !important; line-height: 1.2 !important; }
+}
+
+/* 7. Recherche plein écran — correctifs mobile et desktop.
+      - fond blanc plein : la page restait visible en transparence ;
+      - le champ occupe toute la largeur disponible (il n'en prenait que 65 %) ;
+      - la croix d'effacement et la loupe restent dans la pilule (le thème les
+        place en position absolue) ; loupe blanche sur le rond vert ;
+      - bouton « Fermer » fixe en haut à droite, une seule croix blanche ;
+      - le bouton des cookies est masqué tant que la recherche est ouverte. */
+[data-ba-search-overlay].search-results-wrapper.overlayed-results {
+    background: #fff !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    padding: 16px clamp(16px, 5vw, 4rem) 32px !important;
+}
+[data-ba-search-overlay] .search-results-close {
+    position: fixed !important;
+    top: 16px !important;
+    right: 16px !important;
+    margin: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    color: #fff !important;
+}
+[data-ba-search-overlay] .search-results-close .wicon {
+    color: #fff !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+}
+[data-ba-search-overlay] .search-results-close .wicon::before {
+    font-size: 20px !important;
+    color: #fff !important;
+}
+[data-ba-search-overlay] .search-results-close .show-for-medium { display: none !important; }
+[data-ba-search-overlay] .search-input-wrapper {
+    display: block !important;
+    margin: 64px auto 24px !important;
+    max-width: 760px !important;
+}
+[data-ba-search-overlay] .search-input-wrapper > form.input-group {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    flex-wrap: nowrap !important;
+}
+[data-ba-search-overlay] .input-group .close-toggler,
+[data-ba-search-overlay] .input-group .results-toggler.submit {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+}
+[data-ba-search-overlay] .input-group .close-toggler { opacity: 1 !important; }
+[data-ba-search-overlay] .input-group .results-toggler.submit,
+[data-ba-search-overlay] .input-group .results-toggler.submit .wicon,
+[data-ba-search-overlay] .input-group .results-toggler.submit .wicon::before {
+    color: #fff !important;
+}
+body.ba-search-open .ba-consent-btn {
+    visibility: hidden !important;
+}
+
+/* 8. En-tête « comme l'accueil » sur toutes les pages qui commencent par un
+      héros : le header est posé sur l'image, transparent (léger dégradé pour
+      la lisibilité), logo et boutons en blanc ; dès qu'on remonte la page, que
+      l'on a fait défiler jusqu'en bas ou que le menu est ouvert, il reprend le
+      fond blanc et les couleurs (classes posées par le thème sur <body>).
+      Détection en CSS (:has) : aucune page à déclarer, aucun clignotement au
+      chargement. Une page sans héros garde le header blanc habituel.
+      Les fils d'Ariane placés en haut du héros descendent de la hauteur du
+      header pour ne pas passer dessous. */
+:root { --ba-header-h: 90px; }
+@media screen and (min-width: 48em) { :root { --ba-header-h: 110px; } }
+@media screen and (min-width: 64em) { :root { --ba-header-h: 130px; } }
+
+body.home,
+body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child) {
+    padding-top: 0 !important;
+}
+
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .woody-component-header::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .45), rgba(0, 0, 0, 0)) !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .woody-component-header .is-brand-logo {
+    filter: brightness(0) invert(1) !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .woody-component-header .menu-icon {
+    border-color: #fff !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .woody-component-header .menu-icon .menu-btn-title {
+    color: #fff !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .woody-component-header .menu-icon .menu-icon-bar {
+    background-color: #fff !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .tools .woody-component-esSearch-block {
+    border-color: #fff !important;
+}
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .tools .esSearch-button .wicon,
+:is(body.home, body:has(main .content-wrapper > :is(.woody-component-hero, .emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child)):not(.is-scrolled):not(.fullScrolled):not(.menu-is-open) .woody-component-headnavs .tools .esSearch-button::before {
+    color: #fff !important;
+}
+
+/* Fils d'Ariane en haut des héros : sous le header, pas derrière. */
+body:has(main .content-wrapper > :is(.emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero):first-child) main .content-wrapper > :first-child :is([class*="__breadcrumb"], [class*="__crumbs"]) {
+    margin-top: var(--ba-header-h) !important;
+}
+
+/* Pages sans héros, de 768 à 1199 px : le thème ne réserve que 83 px en haut
+   de page pour un header de 110 à 130 px ; le fil d'Ariane passait dessous.
+   (Les pages à héros sont réglées à 0 par le point 8, plus spécifique.) */
+@media screen and (min-width: 48em) and (max-width: 74.9375em) {
+    body:not(.home) { padding-top: var(--ba-header-h) !important; }
+}
+
+/* 9. Héros sous le header transparent : le header recouvre désormais le haut
+      du héros ; chaque héros s'allonge de la hauteur du header (90 à 130 px)
+      pour que la partie visible sous le header reste celle d'avant, toujours
+      plafonnée à la hauteur de l'écran. Tous les héros gardent la même taille
+      entre eux. Sur l'accueil, les diapositives suivent cette hauteur et leur
+      texte se centre entre le header et les vignettes. */
+body:not(#ba-hero-sous-header) main .content-wrapper > :is(.emerv-hero, .event-hero, .ba-page-hero, .benin-page-hero, .wd-hero, .wd2-hero, .wv-hero, .woody-component-hero, .woody-component-landswpr):first-child,
+body.home:not(#ba-hero-sous-header) .woody-component-landswpr {
+    height: calc(100vw + var(--ba-header-h)) !important;
+    max-height: 100vh !important;
+}
+body.home .woody-component-landswpr .woody-landing-swiper,
+body.home .woody-component-landswpr .swiper-wrapper,
+body.home .woody-component-landswpr .swiper-slide {
+    height: 100% !important;
+}
+@media screen and (max-width: 63.9375em) {
+    body.home .woody-component-landswpr.tpl_03 .landswpr-titles-wrapper > .grid-container {
+        padding-top: var(--ba-header-h) !important;
+    }
+}
+
+/* Liens du menu « Où manger » (audit BUG-16) : chaque catégorie de la page
+   Restaurants a son ancre ; elle s'arrête sous le header fixe, pas dessous. */
+.wd-cat[id] { scroll-margin-top: calc(var(--ba-header-h, 90px) + 24px); }
+
+/* Fiches « Bénin en Fête » : section « signature », propre à chaque
+   événement (resources/data/benin-events-identite.php). Quatre mises en
+   forme pour que les fiches ne se ressemblent pas. */
+.event-signature {
+    max-width: 1160px;
+    margin: 0 auto 3.5rem;
+    padding: 0 1.5rem;
+}
+.event-signature__list { margin: 0; padding: 0; list-style: none; }
+.event-signature__item h3,
+.event-signature__item dt {
+    margin: 0 0 .45rem;
+    font-size: 1.12rem; font-weight: 700; line-height: 1.25;
+    color: var(--benin-dark, #1d1d1b);
+}
+.event-signature__item p,
+.event-signature__item dd { margin: 0; font-size: .95rem; line-height: 1.6; color: #4a4a48; }
+.event-signature__num {
+    display: block; margin-bottom: .6rem;
+    font-size: .8rem; font-weight: 700; letter-spacing: .18em;
+    color: var(--event-color, var(--benin-green));
+}
+
+/* Cartes (Vodun Days) */
+.event-signature--cartes .event-signature__list {
+    display: grid; gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+.event-signature--cartes .event-signature__item {
+    padding: 1.5rem 1.4rem;
+    background: color-mix(in srgb, var(--event-color, #00844d) 6%, #fff);
+    border-radius: 14px;
+    border-top: 4px solid var(--event-color, var(--benin-green));
+}
+
+/* Frise (Weloveya) : une ligne horizontale qui défile sur mobile */
+.event-signature--frise .event-signature__list {
+    display: grid; grid-auto-flow: column;
+    grid-auto-columns: minmax(240px, 1fr);
+    gap: 0; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: .5rem;
+}
+.event-signature--frise .event-signature__item {
+    position: relative; scroll-snap-align: start;
+    padding: 2.2rem 1.4rem 0 0;
+    border-top: 3px solid color-mix(in srgb, var(--event-color, #00844d) 35%, #fff);
+}
+.event-signature--frise .event-signature__item::before {
+    content: ""; position: absolute; top: -9px; left: 0;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--event-color, var(--benin-green));
+    box-shadow: 0 0 0 4px #fff;
+}
+
+/* Glossaire (Festival des Masques, La Gaani) : terme à gauche, sens à droite */
+.event-signature--glossaire .event-signature__list { max-width: 900px; margin: 0 auto; }
+.event-signature--glossaire .event-signature__item {
+    display: grid; grid-template-columns: minmax(130px, 210px) 1fr; gap: .4rem 2rem;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid #e6e3dc;
+}
+.event-signature--glossaire .event-signature__item:first-child { border-top: 1px solid #e6e3dc; }
+.event-signature--glossaire dt {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.45rem; font-weight: 400; font-style: italic;
+    color: var(--event-color, var(--benin-green));
+}
+@media (max-width: 47.9375em) {
+    .event-signature--glossaire .event-signature__item { grid-template-columns: 1fr; }
+}
+
+/* Carnet (JISTNA) : notes sur fond papier, numéros en marge */
+.event-signature--carnet .event-signature__list {
+    max-width: 980px; margin: 0 auto;
+    display: grid; gap: 1.2rem 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    padding: 2rem;
+    background: #faf6ec;
+    border-radius: 6px;
+    border-left: 6px solid var(--event-color, var(--benin-green));
+}
+.event-signature--carnet .event-signature__item {
+    display: grid; grid-template-columns: 2.6rem 1fr; column-gap: .6rem;
+}
+.event-signature--carnet .event-signature__num {
+    grid-row: span 2; margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.9rem; font-weight: 400; letter-spacing: 0; line-height: 1;
+}
+@media (max-width: 47.9375em) {
+    .event-signature--carnet .event-signature__list { padding: 1.3rem; }
+}
+
+/* Fiches « Bénin en Fête » : sur-titre du héros lisible quelle que soit la
+   photo (la couleur de l'événement, éclaircie, avec une ombre portée). */
+.event-hero__eyebrow {
+    color: color-mix(in srgb, var(--event-color, #fcd116) 55%, #fff);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .65);
+}

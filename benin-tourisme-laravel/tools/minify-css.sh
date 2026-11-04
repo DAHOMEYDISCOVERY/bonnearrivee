@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
-# Minifie benin-overrides.css -> benin-overrides.min.css
-# A relancer apres chaque edit du CSS.
+# Publie benin-overrides.css -> benin-overrides.min.css
+#
+# On édite UNIQUEMENT benin-overrides.css ; le .min est le fichier servi
+# (partials/head/*.blade.php) et ne doit jamais être modifié à la main.
+#
+# Pourquoi une copie et non une vraie minification : l'ancien script (regex)
+# supprimait les espaces autour de « + » et « > ». Il cassait ainsi les
+# calc(var(--i, 0) * 90ms + 80ms) du fichier (un calc() exige des espaces
+# autour de +/-). Apache compresse déjà le CSS en gzip (.htaccess), le gain
+# d'une minification serait marginal.
 set -e
 cd "$(dirname "$0")/.."
-python << 'PY'
-import re
-with open("public/assets/benin-overrides.css", encoding='utf-8') as f: css=f.read()
-css = re.sub(r'/\*.*?\*/', '', css, flags=re.DOTALL)
-css = re.sub(r'\s+', ' ', css)
-css = re.sub(r'\s*([{}:;,>+~])\s*', r'\1', css)
-css = re.sub(r';}', '}', css)
-css = re.sub(r'(?<=[\s:(])0(?:px|em|rem|%|vh|vw|svh|svw|pt)(?=[\s,;)])', '0', css)
-css = re.sub(r'(?<=[\s:(,])0\.(\d)', r'.\1', css)
-with open("public/assets/benin-overrides.min.css", 'w', encoding='utf-8') as f: f.write(css.strip())
-PY
-echo "benin-overrides.min.css regenere"
+cp public/assets/benin-overrides.css public/assets/benin-overrides.min.css
+echo "benin-overrides.min.css mis à jour depuis benin-overrides.css"

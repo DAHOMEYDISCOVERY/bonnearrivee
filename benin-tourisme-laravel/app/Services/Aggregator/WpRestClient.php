@@ -30,6 +30,8 @@ final class WpRestClient
     private const TIMEOUT     = 12;      // secondes — laisser le temps aux réponses _embed
     private const FRESH_FOR   = 21600;   // 6 h — au-delà, on tente un refresh en arrière-plan
     private const STORE_FOR   = 604800;  // 7 j  — durée maximale de conservation du dernier bon résultat
+    private const CONNECT_TIMEOUT = 4;   // secondes — un hôte injoignable est abandonné vite
+    private const FAILED_FOR  = 600;     // 10 min — après un échec sans cache, on ne retente pas à chaque visite
 
     public function __construct(
         private readonly string $baseUrl,
@@ -68,6 +70,13 @@ final class WpRestClient
             return $data;
         }
 
+        // Échec récent sans donnée en cache : on ne refait pas attendre chaque
+        // visiteur (jusqu'à TIMEOUT secondes par bloc) ; nouvel essai après
+        // FAILED_FOR secondes.
+        if (Cache::has($cacheKey . ':failed')) {
+            return [];
+        }
+
         // Premier chargement : on paie l'appel synchrone une seule fois.
         return $this->fetchAndStore($cacheKey, $stampKey, $path, $query);
     }
@@ -86,6 +95,7 @@ final class WpRestClient
 
         try {
             $request = Http::timeout(self::TIMEOUT)
+                ->connectTimeout(self::CONNECT_TIMEOUT)
                 ->acceptJson()
                 ->withUserAgent('BonneArriveePortal/1.0 (+https://bonnearrivee.bj)')
                 ->withOptions(['verify' => $this->verifySsl]);
@@ -99,7 +109,7 @@ final class WpRestClient
             if (! $response->successful()) {
                 Log::warning('Aggregator: réponse non-2xx', ['url' => $url, 'status' => $response->status()]);
 
-                return Cache::get($cacheKey, []); // conserve le dernier bon résultat
+                return $this->lastGoodOrMarkFailed($cacheKey); // conserve le dernier bon résultat
             }
 
             $json = $response->json();
@@ -107,17 +117,37 @@ final class WpRestClient
 
             Cache::put($cacheKey, $data, self::STORE_FOR);
             Cache::put($stampKey, time() + self::FRESH_FOR, self::STORE_FOR);
+            Cache::forget($cacheKey . ':failed');
 
             return $data;
         } catch (ConnectionException $e) {
             Log::info('Aggregator: source injoignable', ['url' => $url, 'msg' => $e->getMessage()]);
 
-            return Cache::get($cacheKey, []);
+            return $this->lastGoodOrMarkFailed($cacheKey);
         } catch (Throwable $e) {
             Log::warning('Aggregator: erreur imprévue', ['url' => $url, 'msg' => $e->getMessage()]);
 
-            return Cache::get($cacheKey, []);
+            return $this->lastGoodOrMarkFailed($cacheKey);
         }
+    }
+
+    /**
+     * Après un échec : renvoie le dernier bon résultat s'il existe ; sinon
+     * mémorise l'échec quelques minutes pour que les visites suivantes ne
+     * subissent pas le même délai.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function lastGoodOrMarkFailed(string $cacheKey): array
+    {
+        $data = Cache::get($cacheKey);
+        if (is_array($data)) {
+            return $data;
+        }
+
+        Cache::put($cacheKey . ':failed', 1, self::FAILED_FOR);
+
+        return [];
     }
 
     /**

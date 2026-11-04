@@ -60,6 +60,20 @@ return [
             'report' => false,
         ],
 
+        /*
+         * Images du site (public/assets/img), utilisées par le formulaire
+         * « En-tête et pied de page » : les images existantes s'y affichent
+         * en aperçu, les nouvelles sont déposées dans uploads/menu.
+         */
+        'site_images' => [
+            'driver' => 'local',
+            'root' => public_path('assets/img'),
+            'url' => '/assets/img',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

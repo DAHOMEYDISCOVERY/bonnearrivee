@@ -38,6 +38,28 @@ final class Page extends Model
     ];
 
     /**
+     * Journal des enregistrements faits au back-office et index de recherche
+     * à jour (audit, section J : « journaliser chaque enregistrement admin »).
+     */
+    protected static function booted(): void
+    {
+        static::saved(static function (self $page): void {
+            if (! $page->wasChanged(['content_override', 'use_override', 'title', 'description']) && ! $page->wasRecentlyCreated) {
+                return;
+            }
+            \Illuminate\Support\Facades\Log::info('Back-office : page enregistrée', [
+                'page' => $page->path,
+                'contenu_personnalise' => (bool) $page->use_override,
+                'avant' => $page->getOriginal('use_override') === null ? null : (bool) $page->getOriginal('use_override'),
+                'utilisateur' => auth()->id(),
+            ]);
+            if (! $page->wasRecentlyCreated) {
+                \App\Support\SearchIndex::refresh((string) $page->path);
+            }
+        });
+    }
+
+    /**
      * La page a-t-elle un contenu personnalise actif ? Le back-office edite
      * `content_override` (HTML) et bascule `use_override` : le controleur ne
      * rend la vue generique qu'a ces deux conditions reunies, sinon il garde

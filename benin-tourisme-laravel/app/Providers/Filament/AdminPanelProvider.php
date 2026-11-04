@@ -27,9 +27,16 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->path('admin')
-            ->login()
+            // Connexion aux couleurs du site (photo + formulaire, en français) ;
+            // « Mot de passe oublié ? » envoie un lien de réinitialisation.
+            ->login(\App\Filament\Admin\Auth\Login::class)
+            ->passwordReset(\App\Filament\Admin\Auth\RequestPasswordReset::class, \App\Filament\Admin\Auth\ResetPassword::class)
+            ->brandName('Bonne Arrivée')
+            ->brandLogo('/assets/site/divers/app/themes/benin/src/img/logo/logo.png')
+            ->brandLogoHeight('2.75rem')
+            ->favicon('/assets/favicon-carte-32.png')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#00a05d'),
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
@@ -51,6 +58,11 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                // Français partout dans le back-office, session fermée après
+                // inactivité, en-têtes de sécurité (pas d'iframe, pas d'index).
+                \App\Http\Middleware\AdminLocale::class,
+                \App\Http\Middleware\AdminIdleTimeout::class,
+                \App\Http\Middleware\AdminSecurityHeaders::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
@@ -58,6 +70,10 @@ class AdminPanelProvider extends PanelProvider
             // Charge le JS du composant Alpine 'baHtmlEditor' avant tout DOM
             // qui en depend. Separe du Blade field pour ne pas se faire
             // echapper comme texte par le wrapper Filament/Livewire.
+            ->renderHook(
+                PanelsRenderHook::HEAD_START,
+                fn (): string => '<meta name="robots" content="noindex, nofollow">',
+            )
             ->renderHook(
                 PanelsRenderHook::BODY_START,
                 fn (): string => Blade::render('<script src="/assets/admin/ba-html-editor.js?v=7" defer></script>'),

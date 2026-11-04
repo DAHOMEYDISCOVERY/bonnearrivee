@@ -53,7 +53,7 @@
                     </div>
                 </div>
             @endif
-            <div class="grid-x grid-margin-x grid-margin-y small-up-1 medium-up-2 large-up-{{ $largeUp }} align-stretch">
+            <div class="grid-x grid-margin-x grid-margin-y small-up-1 medium-up-2 large-up-{{ $largeUp }} align-stretch" data-ba-dynamique>
                 @foreach($items as $item)
                     @php
                         $imgSrc = $item->image ?: $fallbacks[crc32($item->id) % count($fallbacks)];

@@ -74,16 +74,13 @@ Route::view('/carte-du-benin', 'pages.carte-du-benin', [
 /*
  * Page « Bénin en Fête » : agenda des grands événements culturels
  * (Vodun Days, Festival des Masques, JISTNA, La Gaani, Weloveya).
- * Route explicite parce que le contenu vient d'un fichier vue fourni
- * hors du registre — même modèle que /carte-du-benin.
+ * Elle figure aussi au registre des pages (back-office « Pages ») : la route
+ * passe donc par PageController, sans quoi elle masquait la version enregistrée
+ * au back-office. Même vue, même titre, même description qu'avant.
  */
-Route::view('/benin-en-fete', 'pages.benin-en-fete.index', [
-    'title' => 'Bénin en Fête | Bonne Arrivée',
-    'description' => 'L\'agenda des grands rendez-vous culturels du Bénin : Vodun Days, Festival des Masques, La Gaani, JISTNA, Weloveya.',
-    'activeMenu' => null,
-    'headProfile' => 'standard',
-    'customContent' => null,
-])->name('benin-en-fete');
+Route::get('/benin-en-fete', [PageController::class, 'show'])
+    ->defaults('path', '/benin-en-fete')
+    ->name('benin-en-fete');
 
 /*
  * Fiches détaillées d'un événement de « Bénin en Fête ». Le slug est
@@ -93,6 +90,13 @@ Route::get('/benin-en-fete/{slug}', function (string $slug) {
     $events = require resource_path('data/benin-events.php');
     abort_unless(isset($events[$slug]), 404, "Aucun événement pour « {$slug} ».");
     $e = $events[$slug];
+    // Identité propre de la fiche : ordre, titres, section « signature »,
+    // photos (resources/data/benin-events-identite.php).
+    $identites = is_file(resource_path('data/benin-events-identite.php')) ? require resource_path('data/benin-events-identite.php') : [];
+    $identite = $identites[$slug] ?? [];
+    $e = array_replace_recursive($e, $identite['remplace'] ?? []);
+    unset($identite['remplace']);
+    $e = array_replace($e, $identite);
 
     return view('pages.benin-en-fete.event', [
         'title' => $e['title'] . ' | Bonne Arrivée',
@@ -147,9 +151,15 @@ Route::get('/sejourner/restaurants', function () {
 })->name('restaurants');
 
 // Wa Dùnù — flow commande + magic link + catalogue prive
+// Limites de débit : 10 commandes et 30 validations par minute et par visiteur,
+// pour empêcher le remplissage de la table des commandes et les essais en série.
 Route::post('/restaurants/order', [\App\Http\Controllers\WadunuController::class, 'createOrder'])
+    ->middleware('throttle:10,1')
     ->name('wadunu.order.create');
-Route::post('/restaurants/paid/{order}', [\App\Http\Controllers\WadunuController::class, 'paidCallback'])
+// GET : redirection de KKiaPay vers l'URL `callback` après paiement ;
+// POST : appel AJAX de la page à l'événement « success » du widget.
+Route::match(['get', 'post'], '/restaurants/paid/{order}', [\App\Http\Controllers\WadunuController::class, 'paidCallback'])
+    ->middleware('throttle:30,1')
     ->name('wadunu.paid.callback');
 Route::get('/mes-restos/{token}', [\App\Http\Controllers\WadunuController::class, 'catalog'])
     ->name('wadunu.catalog');

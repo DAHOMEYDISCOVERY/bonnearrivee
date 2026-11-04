@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Garde-fou de l'audit (BUG-03) : refuse un commit où la feuille servie
+# (benin-overrides.min.css) n'est pas la copie exacte de sa source
+# (benin-overrides.css). Correction : bash tools/minify-css.sh, puis git add.
+#
+# Activation, une fois, depuis la racine du dépôt :
+#   git config core.hooksPath benin-tourisme-laravel/tools/git-hooks
+set -e
+root="$(git rev-parse --show-toplevel)"
+app="$root"
+[ -f "$app/artisan" ] || app="$root/benin-tourisme-laravel"
+src="$app/public/assets/benin-overrides.css"
+min="$app/public/assets/benin-overrides.min.css"
+
+if [ -f "$src" ] && [ -f "$min" ] && ! cmp -s "$src" "$min"; then
+    echo "✗ benin-overrides.min.css diffère de benin-overrides.css."
+    echo "  Ne modifiez que benin-overrides.css, puis lancez : bash tools/minify-css.sh"
+    exit 1
+fi
+
+if git diff --cached --name-only | grep -q 'public/opcache-reset.php'; then
+    if [ -f "$app/public/opcache-reset.php" ] && grep -q 'opcache_reset' "$app/public/opcache-reset.php"; then
+        echo "✗ public/opcache-reset.php exécute opcache_reset() : ce script ne doit pas être publié."
+        exit 1
+    fi
+fi
+exit 0

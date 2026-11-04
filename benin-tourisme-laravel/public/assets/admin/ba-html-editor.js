@@ -94,7 +94,9 @@
                 detectImages: function () {
                     var seen = {};
                     var out = [];
-                    var re = /<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["'][^>]*>/gi;
+                    // <img src> et composants <x-media.figure src> (images d'en-tete,
+                    // figures) : un non-technicien peut ainsi remplacer toutes les images.
+                    var re = /<(?:img|x-media\.figure)\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']/gi;
                     var m;
                     while ((m = re.exec(this.html)) !== null) {
                         var url = m[1];
@@ -140,6 +142,7 @@
                                 // Remplace toutes les occurrences de l'URL (src + srcset)
                                 var escaped = oldUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                                 var next = self.html.replace(new RegExp(escaped, 'g'), data.url);
+                                next = self.dropStaleSrcset(next, data.url);
                                 self.setHtmlAndSync(next);
                                 self.uploading = false;
                             })
@@ -212,8 +215,137 @@
                     return html;
                 },
 
+                /**
+                 * Composants Blade (<x-...>) : le navigateur ne sait pas les lire
+                 * (il ignore leur /> et met leurs attributs en minuscules). Dans
+                 * l'apercu, chacun est remplace par une vignette non modifiable,
+                 * encadree de deux commentaires ; au retour vers le code
+                 * (pullVisualToHtml), la vignette est remplacee par le source
+                 * d'origine du composant, octet pour octet.
+                 */
+                protectComponents: function (html) {
+                    var parts = [];
+                    var out = '';
+                    var i = 0;
+                    while (i < html.length) {
+                        var start = html.indexOf('<x-', i);
+                        if (start === -1) { out += html.slice(i); break; }
+                        var end = this.componentEnd(html, start);
+                        if (end === -1) { out += html.slice(i); break; }
+                        var src = html.slice(start, end);
+                        var n = parts.length;
+                        parts.push(src);
+                        out += html.slice(i, start)
+                            + '<!--ba-c:' + n + '-->' + this.componentPreview(src) + '<!--/ba-c:' + n + '-->';
+                        i = end;
+                    }
+                    return { html: out, parts: parts };
+                },
+
+                /** Fin (exclue) du composant qui commence a `start`, -1 si illisible. */
+                componentEnd: function (html, start) {
+                    var nameMatch = /^<(x-[a-zA-Z0-9.\-:]+)/.exec(html.slice(start, start + 80));
+                    if (!nameMatch) return -1;
+                    var name = nameMatch[1];
+                    var tagEnd = this.tagEnd(html, start);
+                    if (tagEnd === -1) return -1;
+                    if (html.charAt(tagEnd - 2) === '/') return tagEnd; // <x-... />
+                    var depth = 1, pos = tagEnd;
+                    var open = '<' + name, close = '</' + name + '>';
+                    while (depth > 0) {
+                        var nextOpen = html.indexOf(open, pos);
+                        var nextClose = html.indexOf(close, pos);
+                        if (nextClose === -1) return -1;
+                        if (nextOpen !== -1 && nextOpen < nextClose && /[\s>\/]/.test(html.charAt(nextOpen + open.length))) {
+                            var e = this.tagEnd(html, nextOpen);
+                            if (e === -1) return -1;
+                            if (html.charAt(e - 2) !== '/') depth++;
+                            pos = e;
+                        } else {
+                            depth--;
+                            pos = nextClose + close.length;
+                        }
+                    }
+                    return pos;
+                },
+
+                /** Position juste apres le '>' qui ferme la balise ouvrante, guillemets respectes. */
+                tagEnd: function (html, start) {
+                    var quote = null;
+                    for (var k = start + 1; k < html.length; k++) {
+                        var c = html.charAt(k);
+                        if (quote) { if (c === quote) quote = null; continue; }
+                        if (c === '"' || c === "'") { quote = c; continue; }
+                        if (c === '>') return k + 1;
+                    }
+                    return -1;
+                },
+
+                componentPreview: function (src) {
+                    var esc = function (s) {
+                        return String(s).replace(/[&<>"]/g, function (ch) {
+                            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch];
+                        });
+                    };
+                    var attr = function (name, text) {
+                        var m = new RegExp('\\s' + name + '\\s*=\\s*"([^"]*)"').exec(text);
+                        return m ? m[1] : '';
+                    };
+                    var open = src.slice(0, this.tagEnd(src, 0));
+                    var name = /^<x-([a-zA-Z0-9.\-:]+)/.exec(open)[1];
+                    var labels = {
+                        'media.figure': 'Image',
+                        'card': 'Carte',
+                        'carte-du-benin': 'Carte interactive du Bénin',
+                        'aggregator.circuits-block': 'Circuits de Dahomey Discovery',
+                        'aggregator.accommodations-block': 'Hébergements de Dahomey Discovery',
+                        'aggregator.accommodations-tab': 'Hébergements de Dahomey Discovery',
+                        'aggregator.attractions-block': 'Sites à visiter',
+                        'aggregator.vehicles-transfers-block': 'Véhicules et transferts',
+                        'aggregator.petit-train-block': 'Petit Train de Cotonou',
+                        'aggregator.dahomey-articles-block': 'Articles Dahomey Mag',
+                        'aggregator.wanilo-articles-block': 'Actualités Wanilo',
+                        'aggregator.actualites-featured': 'Actualités à la une',
+                        'aggregator.ecosysteme-block': 'Bloc « Un portail, trois marques »',
+                        'aggregator.gallery-block': 'Galerie'
+                    };
+                    var label = labels[name] || ('Bloc ' + name);
+                    var title = attr('title', open) || attr('alt', open);
+                    var img = attr('src', src);
+                    var box = 'display:block;margin:12px 0;padding:10px 12px;border:1px dashed #94a3b8;'
+                        + 'border-radius:8px;background:#f8fafc;color:#334155;font:13px/1.4 sans-serif;'
+                        + 'user-select:none;';
+                    return '<div class="ba-component" contenteditable="false" style="' + box + '">'
+                        + '<strong>' + esc(label) + '</strong>'
+                        + (title ? ' — ' + esc(title) : '')
+                        + (name.indexOf('aggregator.') === 0 ? ' <em>(mis à jour automatiquement)</em>' : '')
+                        + (img ? '<br><img src="' + esc(img) + '" alt="" style="max-width:100%;max-height:220px;margin-top:8px;border-radius:6px;">' : '')
+                        + '<br><span style="color:#64748b;">Bloc protégé : il se modifie dans le code HTML (colonne de gauche) ; ses images se remplacent dans le panneau « Images ».</span>'
+                        + '</div>';
+                },
+
+                /** Remet le source des composants a la place de leurs vignettes. */
+                restoreComponents: function (html) {
+                    var parts = this._componentParts || [];
+                    html = html.replace(/<!--ba-c:(\d+)-->[\s\S]*?<!--\/ba-c:\1-->/g, function (all, n) {
+                        return parts[+n] !== undefined ? parts[+n] : '';
+                    });
+                    // Marqueur orphelin (vignette en partie effacee) : on le retire.
+                    return html.replace(/<!--\/?ba-c:\d+-->/g, '');
+                },
+
+                /** Un composant dont l'image a change perd son srcset (anciennes variantes). */
+                dropStaleSrcset: function (html, url) {
+                    var escaped = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    var re = new RegExp('(<x-media\\.figure\\b[^>]*?\\bsrc\\s*=\\s*"' + escaped + '"[^>]*?)\\s+srcset\\s*=\\s*"[^"]*"', 'g');
+                    var re2 = new RegExp('(<x-media\\.figure\\b[^>]*?)\\s+srcset\\s*=\\s*"[^"]*"([^>]*?\\bsrc\\s*=\\s*"' + escaped + '")', 'g');
+                    return html.replace(re, '$1').replace(re2, '$1$2');
+                },
+
                 buildPreviewHtml: function (body) {
-                    body = this.stripBladeArtefacts(body);
+                    var protectedBody = this.protectComponents(body || '');
+                    this._componentParts = protectedBody.parts;
+                    body = this.stripBladeArtefacts(protectedBody.html);
                     var o = this._origin;
                     var links = this._stylesheets.map(function (href) {
                         return '<link rel="stylesheet" href="' + o + href + '" />';
@@ -265,7 +397,7 @@
                         if (!doc) return;
                         var main = doc.getElementById('main-content');
                         var inner = main ? main.innerHTML : doc.body.innerHTML;
-                        this.setHtmlAndSync(inner);
+                        this.setHtmlAndSync(this.restoreComponents(inner));
                     } catch (e) {}
                 },
 

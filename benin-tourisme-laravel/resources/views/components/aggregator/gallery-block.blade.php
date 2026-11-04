@@ -24,7 +24,7 @@
                         <div class="gallery-wrapper">
                             <div class="woodyGallery grid-x small-up-2 medium-up-5" itemscope itemtype="http://schema.org/ImageGallery">
                                 <div class="swiper swiper-container swResp woody-swiper has-navigation" data-options='{"spaceBetween":10}'>
-                                    <div class="swiper-wrapper swRespW" role="list">
+                                    <div class="swiper-wrapper swRespW" role="list" data-ba-dynamique>
                                         @foreach($photos as $p)
                                             <div class="swiper-slide swRespS" role="listitem">
                                                 <span class="mediaCard tpl_01" title="{{ $p['caption'] ?? '' }}">

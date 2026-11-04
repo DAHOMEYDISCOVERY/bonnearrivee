@@ -35,10 +35,10 @@ class EditPage extends EditRecord
      * <main> vide) quand la textarea etait videe par un sync Alpine rate
      * ou par un stripBladeArtefacts trop agressif.
      *
-     * Regle : contenu non vide (apres strip des commentaires HTML et des
-     * balises vides) -> use_override=true (on publie). Sinon -> use_override
-     * =false (on retombe sur la vue Blade historique) ET on remet content
-     * _override a null pour ne pas garder un fantome en DB.
+     * Regle : l'interrupteur use_override decide de la publication (voir
+     * l'etape 3 ci-dessous). Un contenu vide (apres strip des commentaires
+     * HTML et des balises vides) n'est jamais publie : use_override=false et
+     * content_override=null, pour ne pas garder un fantome en DB.
      */
     protected function mutateFormDataBeforeSave(array $data): array
     {
@@ -57,12 +57,29 @@ class EditPage extends EditRecord
         // le viderait a tort).
         $hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $html);
 
-        if ($cleaned !== '' || $hasMedia) {
+        $hasContent = $cleaned !== '' || $hasMedia;
+
+        // 3) L'interrupteur « Utiliser le contenu personnalisé » decide seul de
+        //    la publication. Auparavant, tout contenu non vide activait
+        //    use_override : comme l'editeur est pre-rempli avec le source de la
+        //    vue, corriger un simple titre figeait la page en HTML brut.
+        //    - interrupteur coche + contenu  -> publie
+        //    - interrupteur coche sans contenu -> refuse (pas de page blanche)
+        //    - interrupteur decoche          -> la vue d'origine reste servie ;
+        //      le brouillon est conserve, sauf s'il n'est qu'une copie de la vue.
+        $wantsOverride = (bool) ($data['use_override'] ?? false);
+
+        if (! $hasContent) {
+            $data['use_override'] = false;
+            $data['content_override'] = null;
+        } elseif ($wantsOverride) {
             $data['use_override'] = true;
             $data['content_override'] = $html;
         } else {
             $data['use_override'] = false;
-            $data['content_override'] = null;
+            $data['content_override'] = \App\Support\OverrideHtml::isPristine($html, (string) ($data['view'] ?? $this->record->view))
+                ? null
+                : $html;
         }
         return $data;
     }

@@ -41,9 +41,13 @@ final class WaniloSource implements Source
     private function fetchArticles(int $limit, array $filters): Collection
     {
         unset($filters);
-        $urls = Cache::remember('agg:wanilo:sitemap', self::CACHE_TTL, function (): array {
-            return $this->parseSitemap();
-        });
+        // Un sitemap vide (site injoignable) n'est gardé que 10 minutes : sinon
+        // le bloc restait masqué 6 h après une simple coupure.
+        $urls = Cache::get('agg:wanilo:sitemap');
+        if (! is_array($urls)) {
+            $urls = $this->parseSitemap();
+            Cache::put('agg:wanilo:sitemap', $urls, $urls === [] ? 600 : self::CACHE_TTL);
+        }
 
         // On garde les URLs sous /actualites/... (sauf l'index /actualites lui-même)
         $urls = array_values(array_filter(
@@ -100,6 +104,7 @@ final class WaniloSource implements Source
         $data = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($url): ?array {
             try {
                 $html = Http::timeout(self::TIMEOUT)
+                    ->connectTimeout(self::TIMEOUT)
                     ->withUserAgent('BonneArriveePortal/1.0 (+https://bonnearrivee.bj)')
                     ->withOptions(['verify' => (bool) config('services.aggregator.verify_ssl', true)])
                     ->get($url)

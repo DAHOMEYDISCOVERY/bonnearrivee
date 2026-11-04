@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Crédits — Bonne Arrivée</title>
 <meta name="description" content="Crédits photos et cartographie du portail Bonne Arrivée — sources Wikimedia Commons, geoBoundaries, OpenStreetMap, Natural Earth.">
-<link rel="icon" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-carte-32.png?v=carte1">
 @endverbatim<link rel="canonical" href="{{ url()->current() }}">@verbatim
 <style>
   :root{--green:#008751;--yellow:#fcd116;--red:#e8112d;--ink:#0b3d2c;

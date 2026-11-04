@@ -8,6 +8,12 @@
 
 @section('content')
 <div class="content-wrapper no-terms">
+@if (request('paiement') === 'echec')
+    {{-- Retour navigateur depuis KKiaPay quand la validation a échoué. --}}
+    <div role="alert" style="max-width:720px;margin:24px auto;padding:16px 20px;border-radius:12px;background:#fdecea;color:#7a1f16;">
+        Votre paiement n'a pas pu être validé automatiquement. Si vous avez été débité, écrivez-nous en indiquant votre adresse e-mail : nous vous enverrons votre lien personnel.
+    </div>
+@endif
 
     {{-- ============================================================ --}}
     {{-- HERO CINEMATIQUE                                              --}}
@@ -134,7 +140,7 @@
                 'international' => '/assets/img/restos-inter-640x480.webp',
             ];
         @endphp
-        <div class="wd-preview__grid">
+        <div class="wd-preview__grid" data-ba-dynamique>
             @foreach($previewRestos as $r)
                 <article class="wd-card" style="--i: {{ $loop->index }}">
                     @if($r->coup_de_coeur)
@@ -193,7 +199,7 @@
                     du catalogue. Débloquez pour découvrir chaque fiche complète : adresse, contact,
                     spécialité, budget, horaires et le conseil personnalisé de nos guides.
                 </p>
-                <ul class="wd-locked__names" aria-hidden="true">
+                <ul class="wd-locked__names" aria-hidden="true" data-ba-dynamique>
                     @foreach($previewNames as $name)
                         <li>{{ $name }}</li>
                     @endforeach
@@ -252,7 +258,7 @@
             <h2 class="wd-section__title">Cinq univers gourmands</h2>
         </div>
         <div class="wd-cats__grid">
-            <article class="wd-cat">
+            <article class="wd-cat" id="gastronomique">
                 <div class="wd-cat__ic">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v18M5 3s3 1 3 5-3 5-3 5"/><path d="M19 3v18M17 3v7a2 2 0 002 2h0a2 2 0 002-2V3"/></svg>
                 </div>
@@ -260,7 +266,7 @@
                 <p>Les tables signature de Cotonou et Porto-Novo — chefs béninois, cuisine du monde, expériences en salle.</p>
                 <span class="wd-cat__count">{{ \App\Models\Restaurant::where('categorie', 'gastronomique')->count() }} adresses</span>
             </article>
-            <article class="wd-cat">
+            <article class="wd-cat" id="maquis">
                 <div class="wd-cat__ic">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c2-1 3-1 5 0s3 1 5 0 3-1 5 0 3 1 3 1"/><path d="M12 3c2 3 2 6 0 9M8 5c1 2 1 4 0 6M16 5c1 2 1 4 0 6"/><path d="M4 18h16"/></svg>
                 </div>
@@ -268,7 +274,7 @@
                 <p>Poisson braisé, akassa, wagassi, ablo, atchèkè : la vraie cuisine béninoise, populaire et savoureuse.</p>
                 <span class="wd-cat__count">{{ \App\Models\Restaurant::where('categorie', 'maquis')->count() }} adresses</span>
             </article>
-            <article class="wd-cat">
+            <article class="wd-cat" id="cafes-bars">
                 <div class="wd-cat__ic">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="5"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="14" y1="2" x2="14" y2="5"/></svg>
                 </div>
@@ -595,6 +601,15 @@
                     if (r.ok && j.ok) {
                         setStatus('C\'est validé ! Consultez votre boîte email — vous venez d\'y recevoir votre lien personnel Wa Dùnù.', 'success');
                         form.hidden = true;
+                        // Lien direct, au cas où l'email tarderait.
+                        if (j.url) {
+                            const link = document.createElement('a');
+                            link.href = j.url;
+                            link.className = 'button primary';
+                            link.textContent = 'Ouvrir mon catalogue maintenant';
+                            link.style.marginTop = '12px';
+                            form.insertAdjacentElement('afterend', link);
+                        }
                     } else {
                         setStatus('Paiement reçu mais validation échouée. Écrivez-nous — nous traiterons manuellement.', 'error');
                     }

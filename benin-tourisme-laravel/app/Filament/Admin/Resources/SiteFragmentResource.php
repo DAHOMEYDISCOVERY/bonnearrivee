@@ -29,7 +29,16 @@ final class SiteFragmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
 
-    protected static ?string $navigationLabel = 'Blocs du site';
+    protected static ?string $navigationLabel = 'Blocs HTML (archive)';
+
+    /**
+     * Depuis le 4 novembre 2026, l'en-tête et le pied de page se modifient
+     * dans « En-tête et pied de page » (contenu structuré). Ces blocs HTML ne
+     * sont plus servis sur le site ; ils sont conservés en archive (et repris
+     * automatiquement à la migration) mais retirés du menu de l'admin pour ne
+     * pas laisser croire qu'ils agissent encore.
+     */
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $modelLabel = 'bloc';
 

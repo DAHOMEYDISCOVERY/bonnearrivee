@@ -39,7 +39,7 @@
                 <div class="cell xmedium-down-order-9">
                     <div class="woody-component woody-component-focus tpl_316 swiperOut isRel no-sessions" data-equalizer="data-equalizer">
                         <div class="swiper swiper-container swResp woody-swiper has-navigation" data-options="{{ $swiperOptions }}">
-                            <div class="swiper-wrapper swRespW swRespGrid" role="list">
+                            <div class="swiper-wrapper swRespW swRespGrid" role="list" data-ba-dynamique>
                                 @foreach($items as $item)
                                     <div class="swiper-slide swRespS swRespGridS" role="listitem">
                                         <div class="card basicCard tpl_01 isRel ratio_square">

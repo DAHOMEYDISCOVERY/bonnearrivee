@@ -38,7 +38,7 @@
                 <div class="woody-component woody-component-focus tpl_304 swiperOut isRel no-sessions" data-equalizer="data-equalizer">
                     <div class="woody-component-basic-swiper tpl_01 isRel is-swResp">
                         <div class="swiper swiper-container swResp woody-swiper has-navigation" data-options="{{ $swiperOptions }}">
-                            <div class="swiper-wrapper swRespW swRespGrid" role="list">
+                            <div class="swiper-wrapper swRespW swRespGrid" role="list" data-ba-dynamique>
                                 @foreach($items as $item)
                                     @php
                                         // Description enrichie : excerpt API si présent, sinon phrase

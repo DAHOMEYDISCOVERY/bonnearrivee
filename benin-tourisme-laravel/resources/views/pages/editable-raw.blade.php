@@ -92,7 +92,7 @@
     $__ba_hasMedia = (bool) preg_match('/<(img|video|iframe|svg|picture|source|audio)\b/i', $__ba_html);
 @endphp
 @if ($__ba_plain !== '' || $__ba_hasMedia)
-{!! $__ba_html !!}
+{!! \App\Support\OverrideHtml::render($__ba_html, ['title' => $title, 'description' => $description ?? null, 'activeMenu' => $activeMenu ?? null]) !!}
 @else
 <div class="grid-container padd-top-lg padd-bottom-lg">
     <div class="grid-x grid-padding-x align-center">

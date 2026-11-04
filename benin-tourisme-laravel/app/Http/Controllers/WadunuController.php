@@ -63,40 +63,106 @@ class WadunuController extends Controller
      * Callback JS du widget KKiaPay : verifie la transaction cote serveur
      * via l'API KKiaPay, marque la commande "paid" et envoie le magic link.
      */
+    /**
+     * Validation d'un paiement KKiaPay, appelée de deux façons :
+     *  - en AJAX (POST) par la page, à l'événement « success » du widget ;
+     *  - en redirection (GET) par KKiaPay vers l'URL `callback` passée au widget.
+     * Les deux peuvent arriver presque en même temps : le traitement est donc
+     * idempotent (verrou sur la commande, une seule émission de lien).
+     *
+     * Contrôles : transaction vérifiée côté serveur auprès de KKiaPay, statut
+     * réussi, montant payé >= montant de la commande, transaction jamais
+     * utilisée pour une autre commande, commande pas déjà payée par une autre
+     * transaction.
+     */
     public function paidCallback(Request $request, RestoOrder $order)
     {
-        $transactionId = $request->query('transaction_id');
-        if (!$transactionId) {
-            return response()->json(['ok' => false, 'error' => 'no_transaction_id'], 400);
+        $transactionId = trim((string) ($request->query('transaction_id') ?? $request->input('transaction_id', '')));
+        if ($transactionId === '' || strlen($transactionId) > 100 || ! preg_match('/^[A-Za-z0-9_.:-]+$/', $transactionId)) {
+            return $this->paymentResult($request, false, 'no_transaction_id', 400);
+        }
+
+        // Déjà payée : même transaction -> succès sans nouveau lien ; autre
+        // transaction -> refus.
+        if ($order->status === 'paid') {
+            return $order->kkiapay_transaction_id === $transactionId
+                ? $this->paymentResult($request, true, null, 200, $order)
+                : $this->paymentResult($request, false, 'already_paid', 409);
+        }
+
+        if (RestoOrder::query()->where('kkiapay_transaction_id', $transactionId)->whereKeyNot($order->getKey())->exists()) {
+            \Log::warning('Wa Dunu : transaction KKiaPay deja utilisee', ['order' => $order->id, 'transaction' => $transactionId]);
+
+            return $this->paymentResult($request, false, 'transaction_already_used', 409);
         }
 
         // Verification serveur via KKiaPay
         $verified = $this->verifyKkiapayTransaction($transactionId);
-        if (!$verified['ok']) {
-            $order->update(['status' => 'failed']);
-            return response()->json(['ok' => false, 'error' => 'verification_failed'], 402);
+        if (! $verified['ok']) {
+            $order->update(['status' => 'failed', 'kkiapay_payload' => $verified['payload']]);
+
+            return $this->paymentResult($request, false, 'verification_failed', 402);
         }
 
-        $order->kkiapay_transaction_id = $transactionId;
-        $order->markPaid($verified['payload']);
+        $paidAmount = (int) round((float) ($verified['payload']['amount'] ?? 0));
+        if ($paidAmount < (int) $order->amount_xof) {
+            \Log::warning('Wa Dunu : montant paye insuffisant', ['order' => $order->id, 'paid' => $paidAmount, 'expected' => $order->amount_xof]);
+            $order->update(['status' => 'failed', 'kkiapay_payload' => $verified['payload']]);
 
-        $token = RestoAccessToken::issueFor($order, 30);
+            return $this->paymentResult($request, false, 'amount_mismatch', 402);
+        }
 
-        Mail::to($order->email)->queue(new WadunuMagicLink($token));
+        $token = \Illuminate\Support\Facades\DB::transaction(function () use ($order, $transactionId, $verified) {
+            /** @var RestoOrder $locked */
+            $locked = RestoOrder::query()->lockForUpdate()->findOrFail($order->getKey());
+            if ($locked->status === 'paid') {
+                return null; // traitée entre-temps par l'autre appel
+            }
+            $locked->kkiapay_transaction_id = $transactionId;
+            $locked->markPaid($verified['payload']);
 
-        return response()->json([
-            'ok'      => true,
-            'message' => 'Paiement validé, lien envoyé par email.',
-        ]);
+            return RestoAccessToken::issueFor($locked, 30);
+        });
+
+        $order->refresh();
+        if ($token === null) {
+            return $order->kkiapay_transaction_id === $transactionId
+                ? $this->paymentResult($request, true, null, 200, $order)
+                : $this->paymentResult($request, false, 'already_paid', 409);
+        }
+
+        // Envoi immediat ; la file d'attente ne sert que de secours (sans
+        // worker actif, un mail mis en file ne partirait jamais).
+        try {
+            Mail::to($order->email)->send(new WadunuMagicLink($token));
+        } catch (\Throwable $e) {
+            \Log::warning('Wa Dunu : envoi direct du lien impossible, mise en file', ['order' => $order->id, 'error' => $e->getMessage()]);
+            Mail::to($order->email)->queue(new WadunuMagicLink($token));
+        }
+
+        return $this->paymentResult($request, true, null, 200, $order, $token);
     }
 
     /**
-     * GET /mes-restos/{token}
-     * Verifie le token et affiche le viewer PDF embarque.
-     * Le PDF est heberge sur Nextcloud (lien de partage protege par mot de
-     * passe). L'admin met a jour le PDF directement sur Nextcloud, tous
-     * les abonnes voient la nouvelle version au prochain refresh.
+     * Réponse commune : JSON pour l'appel AJAX de la page, redirection vers la
+     * page restaurants pour le retour navigateur depuis KKiaPay.
      */
+    private function paymentResult(Request $request, bool $ok, ?string $error, int $status, ?RestoOrder $order = null, ?RestoAccessToken $token = null)
+    {
+        $token ??= $ok && $order ? $order->accessTokens()->latest('id')->first() : null;
+        $url = $token ? route('wadunu.catalog', $token->token) : null;
+
+        if ($request->isMethod('get') && ! $request->expectsJson()) {
+            return $url
+                ? redirect()->to($url)
+                : redirect()->to('/sejourner/restaurants?paiement='.($ok ? 'valide' : 'echec'));
+        }
+
+        return response()->json($ok
+            ? ['ok' => true, 'message' => 'Paiement validé, lien envoyé par email.', 'url' => $url]
+            : ['ok' => false, 'error' => $error], $status);
+    }
+
     public function catalog(Request $request, string $token)
     {
         $access = $this->resolveValidToken($token);
@@ -166,9 +232,19 @@ class WadunuController extends Controller
                 if (!$response->successful()) {
                     abort(502, 'Catalogue momentanement indisponible.');
                 }
-                $body = $response->body();
-                $sharedHeaders['Content-Length'] = (string) strlen($body);
-                return response($body, 200, $sharedHeaders);
+                // Diffusion par blocs : le PDF (plus de 100 Mo) n'est jamais
+                // charge entierement en memoire, contrairement a ->body().
+                $stream = $response->toPsrResponse()->getBody();
+                $length = $response->header('Content-Length');
+                if ($length !== '') {
+                    $sharedHeaders['Content-Length'] = $length;
+                }
+                return response()->stream(function () use ($stream): void {
+                    while (! $stream->eof()) {
+                        echo $stream->read(1024 * 256);
+                        flush();
+                    }
+                }, 200, $sharedHeaders);
             } catch (\Throwable $e) {
                 \Log::warning('Wadunu PDF proxy error: ' . $e->getMessage());
                 // Fallback vers le disque local

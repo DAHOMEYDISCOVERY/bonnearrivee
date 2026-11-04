@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Support\OverrideHtml;
 use App\Support\PageRepository;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,6 +31,15 @@ final class PageController extends Controller
         // vue Blade historique : le dépôt le signale via `customView` et joint
         // le HTML sous `customContent`.
         $view = $page['customView'] ?? $page['view'];
+
+        // Une copie du contenu identique à la vue d'origine (pré-remplissage du
+        // back-office enregistré sans modification) est servie par la vue
+        // elle-même : composants compilés, gabarit et classes d'origine.
+        if (isset($page['customView'])
+            && OverrideHtml::isPristine($page['customContent'] ?? null, $page['originalView'] ?? null)) {
+            $view = $page['view'];
+            $page['customContent'] = null;
+        }
 
         return view($view, [
             'title' => $page['title'],

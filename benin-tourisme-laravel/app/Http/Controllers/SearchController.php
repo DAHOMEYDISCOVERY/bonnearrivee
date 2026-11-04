@@ -8,6 +8,7 @@ use App\Models\Page;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 /**
  * Recherche globale du site : interroge restaurants, pages statiques et
@@ -96,6 +97,23 @@ class SearchController extends Controller
 
     private function searchPages(string $q): array
     {
+        // Index plein texte (texte réellement affiché de chaque page) quand il
+        // a été construit ; les fiches événements ont leur propre rubrique.
+        if (\App\Support\SearchIndex::exists()) {
+            $hits = array_filter(
+                \App\Support\SearchIndex::search($q, 20),
+                static fn (array $h) => ! str_starts_with($h['path'], '/benin-en-fete/'),
+            );
+
+            return array_values(array_map(static fn (array $h) => [
+                'title'    => $h['title'],
+                'subtitle' => null,
+                'excerpt'  => $h['excerpt'],
+                'url'      => $h['path'],
+                'badge'    => null,
+            ], array_slice($hits, 0, 10)));
+        }
+
         if (!class_exists(Page::class) || !Schema::hasTable('pages')) {
             return [];
         }
@@ -105,9 +123,9 @@ class SearchController extends Controller
             ->limit(10)
             ->get(['id', 'path', 'title', 'description'])
             ->map(fn ($p) => [
-                'title'    => $p->title,
+                'title'    => self::titre((string) $p->title),
                 'subtitle' => null,
-                'excerpt'  => mb_substr(strip_tags((string) ($p->description ?? '')), 0, 160),
+                'excerpt'  => self::extrait($p->description),
                 'url'      => '/' . ltrim((string) $p->path, '/'),
                 'badge'    => null,
             ])->all();
@@ -132,9 +150,9 @@ class SearchController extends Controller
             );
             if (mb_strpos($haystack, $qLower) !== false) {
                 $hits[] = [
-                    'title'    => $e['title'] ?? $slug,
+                    'title'    => self::titre((string) ($e['title'] ?? $slug)),
                     'subtitle' => $e['subtitle'] ?? ($e['lieu'] ?? null),
-                    'excerpt'  => mb_substr(strip_tags((string) ($e['description'] ?? '')), 0, 160),
+                    'excerpt'  => self::extrait($e['description'] ?? null),
                     'url'      => '/benin-en-fete/' . $slug,
                     'badge'    => 'Événement',
                 ];
@@ -142,5 +160,25 @@ class SearchController extends Controller
             if (count($hits) >= 10) break;
         }
         return $hits;
+    }
+
+    /**
+     * Titre affiché dans un résultat : sans le suffixe « | Bonne Arrivée »
+     * hérité de la balise <title>, inutile dans une liste du même site.
+     */
+    private static function titre(string $titre): string
+    {
+        return trim((string) preg_replace('/\s*[|–—-]\s*Bonne\s+Arriv[ée]e\s*$/iu', '', $titre)) ?: $titre;
+    }
+
+    /**
+     * Extrait de 160 caractères au plus, coupé entre deux mots, avec « … »
+     * quand le texte continue.
+     */
+    private static function extrait(?string $texte): string
+    {
+        $propre = Str::squish(html_entity_decode(strip_tags((string) $texte), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+
+        return Str::limit($propre, 160, '…', preserveWords: true);
     }
 }

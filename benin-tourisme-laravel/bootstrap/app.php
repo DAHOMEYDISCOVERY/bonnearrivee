@@ -17,6 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
         // AuthenticationException que Laravel tente de rediriger vers route('login')
         // — laquelle n'existe pas ici, d'où un 500. On redirige vers /admin/login.
         $middleware->redirectGuestsTo(fn () => route('filament.admin.auth.login'));
+
+        // Une seule version, calculée, pour les CSS/JS du projet sur toutes les
+        // pages (voir VersionProjectAssets).
+        $middleware->web(append: [\App\Http\Middleware\VersionProjectAssets::class]);
+
+        // « Textes et images » : publie sur chaque page les textes, photos et
+        // liens modifiés au back-office (voir ContentLayer).
+        $middleware->web(append: [\App\Http\Middleware\ApplyContentLayer::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

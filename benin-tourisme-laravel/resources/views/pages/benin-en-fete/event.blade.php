@@ -47,6 +47,10 @@
     );
 
     $allEvents = require resource_path('data/benin-events.php');
+    // Cartes « À combiner avec » : même photo d'en-tête que la fiche visée.
+    foreach ((is_file(resource_path('data/benin-events-identite.php')) ? require resource_path('data/benin-events-identite.php') : []) as $__slug => $__id) {
+        if (isset($allEvents[$__slug], $__id['hero'])) { $allEvents[$__slug]['hero'] = $__id['hero']; }
+    }
 
     // Mapping label -> SVG icone (stroke, 24x24, style Lucide/Feather).
     // Remplace les emojis dans surPlace et tips par une iconographie coherente.
@@ -74,7 +78,7 @@
 @section('headImageOg'){!! '<meta property="og:image" content="' . e($event['hero']) . '"/>' !!}@endsection
 
 @section('content')
-<div class="content-wrapper no-terms">
+<div class="content-wrapper no-terms event-page event-page--{{ $slug }}" style="--event-color: {{ $event['accent'] ?? $event['themeCouleur'] }}">
 
     {{-- HERO --}}
     <div class="event-hero" style="--event-color: {{ $event['themeCouleur'] }}">
@@ -116,260 +120,15 @@
         <p>{{ $event['chapo'] }}</p>
     </section>
 
-    {{-- STATS EN CHIFFRES --}}
-    @if(!empty($event['stats']))
-    <section class="event-stats" data-anim-reveal aria-label="En chiffres">
-        @foreach($event['stats'] as $i => $s)
-            <div class="event-stat" style="--i: {{ $i }}">
-                <span class="event-stat__nb">{{ $s['nb'] }}</span>
-                <span class="event-stat__label">{{ $s['label'] }}</span>
-            </div>
-        @endforeach
-    </section>
-    @endif
-
-    {{-- BLOCS ÉDITORIAUX --}}
-    <section class="event-blocks">
-        @foreach($event['blocks'] as $i => $b)
-            <article class="event-block" data-anim-reveal style="--i: {{ $i }}">
-                <span class="event-block__num">{{ str_pad((string)($i+1), 2, '0', STR_PAD_LEFT) }}</span>
-                <div class="event-block__body">
-                    <h2>{{ $b['titre'] }}</h2>
-                    <p>{{ $b['texte'] }}</p>
-                </div>
-            </article>
-        @endforeach
-    </section>
-
-    {{-- AMBIANCE --}}
-    @if(!empty($event['ambiance']))
-    <section class="event-ambiance" data-anim-reveal aria-label="L'ambiance">
-        <div class="event-ambiance__grid">
-            <div class="event-ambiance__body">
-                <p class="event-section-eyebrow">L'ambiance</p>
-                <h2>{{ $event['ambiance']['titre'] }}</h2>
-                <p class="event-ambiance__lead">{{ $event['ambiance']['texte'] }}</p>
-                <ul class="event-ambiance__points">
-                    @foreach($event['ambiance']['points'] as $p)
-                        <li>{{ $p }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="event-ambiance__gallery">
-                @foreach($event['ambiance']['photos'] as $i => $ph)
-                    <img src="{{ $ph }}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="--i: {{ $i }}">
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-
-    {{-- LIEUX EMBLÉMATIQUES --}}
-    @if(!empty($event['lieux']))
-    <section class="event-lieux" data-anim-reveal aria-label="Les lieux emblématiques">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Les scènes</p>
-            <h2 class="event-section-title">Les lieux emblématiques</h2>
-            <p class="event-section-lead">Chaque événement respire dans des lieux précis. Les connaître, c'est déjà commencer à comprendre le déroulé.</p>
-        </div>
-        <div class="event-lieux__grid">
-            @foreach($event['lieux'] as $i => $l)
-                <article class="event-lieu" data-anim-reveal style="--i: {{ $i }}">
-                    <div class="event-lieu__media">
-                        <img src="{{ $l['photo'] }}" alt="{{ $l['nom'] }}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                    </div>
-                    <div class="event-lieu__body">
-                        <h3>{{ $l['nom'] }}</h3>
-                        <p>{{ $l['desc'] }}</p>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- TEMPS FORTS (vagues de programmation) --}}
-    @if(!empty($event['tempsForts']))
-    <section class="event-vagues" data-anim-reveal aria-label="Les temps forts">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Les vagues de programmation</p>
-            <h2 class="event-section-title">Les temps forts</h2>
-            <p class="event-section-lead">Chaque édition suit un fil narratif similaire — voici les cinq vagues qui structurent l'expérience.</p>
-        </div>
-        <div class="event-vagues__list">
-            @foreach($event['tempsForts'] as $i => $v)
-                <article class="event-vague" data-anim-reveal style="--i: {{ $i }}">
-                    <span class="event-vague__index">{{ str_pad((string)($i+1), 2, '0', STR_PAD_LEFT) }}</span>
-                    <div class="event-vague__body">
-                        <span class="event-vague__sous">{{ $v['sous'] }}</span>
-                        <h3>{{ $v['titre'] }}</h3>
-                        <p>{{ $v['texte'] }}</p>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- PROGRAMME TIMELINE --}}
-    @if(!empty($event['programme']))
-    <section class="event-programme" id="programme" data-anim-reveal aria-label="Programme type">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Le déroulé</p>
-            <h2 class="event-section-title">Programme type</h2>
-            <p class="event-section-lead">Un aperçu de ce qui vous attend jour après jour. Le programme officiel varie chaque année — vérifiez la date exacte sur le site du festival.</p>
-        </div>
-        <ol class="event-timeline">
-            @foreach($event['programme'] as $i => $p)
-                <li class="event-timeline__item" data-anim-reveal style="--i: {{ $i }}">
-                    <div class="event-timeline__marker" aria-hidden="true">
-                        <span class="event-timeline__dot"></span>
-                    </div>
-                    <div class="event-timeline__body">
-                        <div class="event-timeline__meta">
-                            <span class="event-timeline__day">{{ $p['jour'] }}</span>
-                            <span class="event-timeline__lieu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>{{ $p['lieu'] }}</span>
-                        </div>
-                        <h3 class="event-timeline__title">{{ $p['titre'] }}</h3>
-                        <p class="event-timeline__desc">{{ $p['texte'] }}</p>
-                    </div>
-                </li>
-            @endforeach
-        </ol>
-    </section>
-    @endif
-
-    {{-- BON À SAVOIR / TIPS --}}
-    @if(!empty($event['tips']))
-    <section class="event-tips" data-anim-reveal aria-label="Bon à savoir">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Bon à savoir</p>
-            <h2 class="event-section-title">Les conseils de nos guides</h2>
-            <p class="event-section-lead">Ces règles évitent les faux pas et rendent le séjour plus fluide. Notre équipe les rappelle systématiquement à chaque groupe.</p>
-        </div>
-        <div class="event-tips__grid">
-            @foreach($event['tips'] as $i => $t)
-                <div class="event-tips__card" data-anim-reveal style="--i: {{ $i }}">
-                    <span class="event-tips__ic" aria-hidden="true">{!! $eventIcons[$t['label']] ?? $eventIconFallback !!}</span>
-                    <div>
-                        <span class="event-tips__label">{{ $t['label'] }}</span>
-                        <p class="event-tips__text">{{ $t['texte'] }}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- COMBINER AVEC (cross-liens) --}}
-    @if(!empty($event['combinerAvec']))
-    <section class="event-combine" data-anim-reveal aria-label="Combiner avec d'autres événements">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Prolonger le voyage</p>
-            <h2 class="event-section-title">À combiner avec</h2>
-            <p class="event-section-lead">Ces rendez-vous s'inscrivent dans la même saison ou la même thématique. Ils gagnent à être vécus dans le même voyage.</p>
-        </div>
-        <div class="event-combine__grid">
-            @foreach($event['combinerAvec'] as $i => $c)
-                @php $target = $allEvents[$c['slug']] ?? null; @endphp
-                @if($target)
-                    <a class="event-combine__card" href="/benin-en-fete/{{ $c['slug'] }}" data-anim-reveal style="--i: {{ $i }}; --event-color: {{ $target['themeCouleur'] }}">
-                        <img src="{{ $target['hero'] }}" alt="{{ $c['titre'] }}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                        <div class="event-combine__body">
-                            <span class="event-combine__lieu">{{ $target['lieu'] }} · {{ $target['dates'] }}</span>
-                            <h3>{{ $c['titre'] }}</h3>
-                            <p>{{ $c['note'] }}</p>
-                            <span class="event-combine__arrow" aria-hidden="true">Découvrir →</span>
-                        </div>
-                    </a>
-                @endif
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- HISTOIRE --}}
-    @if(!empty($event['histoire']))
-    <section class="event-histoire" data-anim-reveal aria-label="Comment est né l'événement">
-        <div class="event-histoire__grid">
-            <aside class="event-histoire__aside">
-                <p class="event-section-eyebrow">L'origine</p>
-                <p class="event-histoire__annee">{{ $event['dates'] }}</p>
-                <p class="event-histoire__lieu">{{ $event['lieu'] }}</p>
-            </aside>
-            <div class="event-histoire__body">
-                <h2>{{ $event['histoire']['titre'] }}</h2>
-                @foreach($event['histoire']['paragraphs'] as $p)
-                    <p>{{ $p }}</p>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-
-    {{-- AUTOUR DE L'ÉVÉNEMENT --}}
-    @if(!empty($event['autour']))
-    <section class="event-autour" data-anim-reveal aria-label="Autour de l'événement">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">À faire à côté</p>
-            <h2 class="event-section-title">{{ $event['autour']['titre'] }}</h2>
-            <p class="event-section-lead">Étirez votre séjour d'une journée ou deux — voici les visites qui prolongent l'expérience.</p>
-        </div>
-        <div class="event-autour__grid">
-            @foreach($event['autour']['points'] as $i => $a)
-                <article class="event-autour__card" data-anim-reveal style="--i: {{ $i }}">
-                    <span class="event-autour__num" aria-hidden="true">{{ str_pad((string)($i+1), 2, '0', STR_PAD_LEFT) }}</span>
-                    <div>
-                        <h3>{{ $a['t'] }}</h3>
-                        <p>{{ $a['d'] }}</p>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- SUR PLACE --}}
-    @if(!empty($event['surPlace']))
-    <section class="event-surplace" data-anim-reveal aria-label="Sur place">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Repères pratiques</p>
-            <h2 class="event-section-title">{{ $event['surPlace']['titre'] }}</h2>
-        </div>
-        <div class="event-surplace__grid">
-            @foreach($event['surPlace']['points'] as $i => $s)
-                <div class="event-surplace__item" data-anim-reveal style="--i: {{ $i }}">
-                    <span class="event-surplace__ic" aria-hidden="true">{!! $eventIcons[$s['label']] ?? $eventIconFallback !!}</span>
-                    <div>
-                        <span class="event-surplace__label">{{ $s['label'] }}</span>
-                        <p class="event-surplace__text">{{ $s['texte'] }}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
-    @endif
-
-    {{-- FAQ --}}
-    @if(!empty($event['faq']))
-    <section class="event-faq" data-anim-reveal aria-label="Questions fréquentes">
-        <div class="event-section-head">
-            <p class="event-section-eyebrow">Vous nous demandez souvent</p>
-            <h2 class="event-section-title">Les questions fréquentes</h2>
-        </div>
-        <div class="event-faq__list">
-            @foreach($event['faq'] as $i => $qa)
-                <details class="event-faq__item" data-anim-reveal style="--i: {{ $i }}">
-                    <summary>
-                        <span>{{ $qa['q'] }}</span>
-                        <span class="event-faq__chevron" aria-hidden="true">+</span>
-                    </summary>
-                    <p>{{ $qa['r'] }}</p>
-                </details>
-            @endforeach
-        </div>
-    </section>
-    @endif
+    {{-- SECTIONS : ordre et titres propres à chaque événement (benin-events-identite.php) ;
+         sans réglage, l'ordre d'origine. Section « signature » : contenu propre à l'événement. --}}
+    @php
+        $__ordre = $event['ordre'] ?? ['stats', 'blocks', 'ambiance', 'lieux', 'tempsForts', 'programme', 'tips', 'combine', 'histoire', 'autour', 'surPlace', 'faq'];
+        if (! empty($event['signature']) && ! in_array('signature', $__ordre, true)) { array_unshift($__ordre, 'signature'); }
+    @endphp
+    @foreach ($__ordre as $__section)
+        @includeIf('pages.benin-en-fete.sections.' . $__section, ['t' => $event['titres'][$__section] ?? []])
+    @endforeach
 
     {{-- CTA FINALE --}}
     <section class="event-cta" data-anim-reveal>
