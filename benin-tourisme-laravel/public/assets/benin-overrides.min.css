@@ -9590,3 +9590,14 @@ body.home .woody-component-landswpr .swiper-slide {
     color: color-mix(in srgb, var(--event-color, #fcd116) 55%, #fff);
     text-shadow: 0 1px 3px rgba(0, 0, 0, .65);
 }
+
+/* Héros de l'accueil, mobile et tablette : pas de flèches précédent / suivant
+   (elles chevauchaient les titres des diapositives) ; le défilement
+   automatique et le balayage du doigt restent actifs. */
+@media screen and (max-width: 63.9375em) {
+    body.home .woody-component-landswpr .swiper-navigation,
+    body.home .woody-component-landswpr .swiper-button-prev,
+    body.home .woody-component-landswpr .swiper-button-next {
+        display: none !important;
+    }
+}

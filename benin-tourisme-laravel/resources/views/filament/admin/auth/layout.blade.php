@@ -49,7 +49,6 @@
                 <div>
                     <div class="ba-login__flag"><span style="background:#00a05d"></span><span style="background:#fcd116"></span><span style="background:#e8112d"></span></div>
                     <p class="ba-login__brand-title">Bonne Arrivée</p>
-                    <p class="ba-login__brand-text">Le portail du tourisme au Bénin. Mettez à jour les pages, le menu et les adresses : chaque enregistrement est publié aussitôt.</p>
                 </div>
             </div>
         </aside>
