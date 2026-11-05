@@ -10,14 +10,14 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="ATACORA RANDO"
+    title="Ouidah, cité de la mémoire"
     town="Ouidah"
 >
     <x-media.figure
-    src="/assets/img/pendjari-buffle-640x854.webp"
-    alt="Troupeau de buffles dans la Pendjari"
+    src="/assets/img/act-ouidah-640x854.webp"
+    alt="Une place pavée bordée de boulets de canon, à Ouidah"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/pendjari-buffle-360x180.webp 360w, /assets/img/pendjari-buffle-640x320.webp 640w, /assets/img/pendjari-buffle-1200x600.webp 1200w"
+    srcset="/assets/img/act-ouidah-360x480.webp 360w, /assets/img/act-ouidah-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -31,14 +31,14 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="HAPPY SAFARI"
+    title="Natitingou, porte de l’Atacora"
     town="Natitingou"
 >
     <x-media.figure
-    src="/assets/img/marche-640x854.webp"
-    alt="Le marché Dantokpa à Cotonou"
+    src="/assets/img/act-natitingou-640x854.webp"
+    alt="Un monument aux toits coniques, à Natitingou"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/marche-360x90.webp 360w, /assets/img/marche-640x160.webp 640w, /assets/img/marche-1200x300.webp 1200w"
+    srcset="/assets/img/act-natitingou-360x480.webp 360w, /assets/img/act-natitingou-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -52,14 +52,14 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="LES ROUTES DU DAHOMEY"
+    title="Les routes du Dahomey"
     town="Sèmè-Podji"
 >
     <x-media.figure
-    src="/assets/img/zangbeto-640x854.webp"
-    alt="Danseurs zangbeto"
+    src="/assets/img/act-dahomey-640x854.webp"
+    alt="Une stèle ornée d’un emblème, sur la route du Dahomey"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/zangbeto-360x180.webp 360w, /assets/img/zangbeto-640x320.webp 640w, /assets/img/zangbeto-1200x600.webp 1200w"
+    srcset="/assets/img/act-dahomey-360x480.webp 360w, /assets/img/act-dahomey-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -73,14 +73,14 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="GANVIE CLUB"
-    town="Sèmè-Podji"
+    title="Ganvié, la cité lacustre"
+    town="Sô-Ava"
 >
     <x-media.figure
-    src="/assets/img/ananas-640x854.webp"
-    alt="Champ d'ananas au Bénin"
+    src="/assets/img/act-ganvie-640x854.webp"
+    alt="Les maisons sur pilotis de Ganvié"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/ananas-360x180.webp 360w, /assets/img/ananas-640x320.webp 640w, /assets/img/ananas-1200x600.webp 1200w"
+    srcset="/assets/img/act-ganvie-360x480.webp 360w, /assets/img/act-ganvie-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -94,39 +94,18 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="PENDJARI SAFARI TOURS"
+    title="Grand-Popo, entre lagune et océan"
     town="Grand-Popo"
 >
     <x-media.figure
-    src="/assets/img/danse-640x854.webp"
-    alt="Danseurs traditionnels béninois"
+    src="/assets/img/act-grand-popo-640x854.webp"
+    alt="Un cocotier dans la lagune de Grand-Popo"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/danse-360x180.webp 360w, /assets/img/danse-640x320.webp 640w, /assets/img/danse-1200x600.webp 1200w"
+    srcset="/assets/img/act-grand-popo-360x480.webp 360w, /assets/img/act-grand-popo-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
 </x-card>@verbatim</div></div></div><div class="swiper-controls "><div class="swiper-nav"><div class="swiper-button-prev"><i aria-hidden="true" class="wicon wicon-026-precedent"></i></div><div class="swiper-button-next"><i aria-hidden="true" class="wicon wicon-025-suivant"></i></div></div></div></div></div></div></div></div><div class="tabs-panel tabs-alignment-align-middle" id="tabs-6a8c584639c08"><div class="grid_1col_tpl_01 grid-x grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_311 swiperOut isRel no-sessions" data-equalizer="data-equalizer"><div class="woody-component-basic-swiper tpl_01  isRel is-swResp"><div class="swiper swiper-container  swResp woody-swiper  zoomActive   has-navigation" data-options="&#x7B;&quot;slidesPerView&quot;&#x3A;1,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0,&quot;spaceBetween&quot;&#x3A;30,&quot;breakpoints&quot;&#x3A;&#x7B;&quot;1024&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;3,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0&#x7D;,&quot;767&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;2,&quot;centeredSlides&quot;&#x3A;false&#x7D;&#x7D;&#x7D;" ><div class="swiper-wrapper swRespW swRespGrid" role="list"><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
-    classes="card overlayedCard isRel tpl_03 ratio_3_4"
-    sheetId="3380481"
-    postId="219"
-    cardPath="overlayed_card/tpl_03"
-    displayOptions="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;sheet_town&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"
-    href="/activites"
-    target="_self"
-    sectionClasses="card-section fcbCol fullcenterbox"
-    textsClasses="card-texts has-title"
-    title="HAPPY SAFARI"
-    town="Natitingou"
->
-    <x-media.figure
-    src="/assets/img/marche-640x854.webp"
-    alt="Le marché Dantokpa à Cotonou"
-    placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/marche-360x90.webp 360w, /assets/img/marche-640x160.webp 640w, /assets/img/marche-1200x300.webp 1200w"
-    classes="isRel imageObject cardMediaWrapper"
-    :ariaHidden="true"
-/>
-</x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card overlayedCard isRel tpl_03 ratio_3_4"
     sheetId="3335372"
     postId="142"
@@ -136,7 +115,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="JOLLY ROGER 229"
+    title="Sortie en mer au large de Ouidah"
     town="Ouidah"
 >
     <x-media.figure
@@ -149,27 +128,6 @@
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card overlayedCard isRel tpl_03 ratio_3_4"
-    sheetId="3392625"
-    postId="233"
-    cardPath="overlayed_card/tpl_03"
-    displayOptions="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;sheet_town&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"
-    href="/activites"
-    target="_self"
-    sectionClasses="card-section fcbCol fullcenterbox"
-    textsClasses="card-texts has-title"
-    title="GANVIE CLUB"
-    town="Sèmè-Podji"
->
-    <x-media.figure
-    src="/assets/img/ananas-640x854.webp"
-    alt="Champ d'ananas au Bénin"
-    placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/ananas-360x180.webp 360w, /assets/img/ananas-640x320.webp 640w, /assets/img/ananas-1200x600.webp 1200w"
-    classes="isRel imageObject cardMediaWrapper"
-    :ariaHidden="true"
-/>
-</x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
-    classes="card overlayedCard isRel tpl_03 ratio_3_4"
     sheetId="3392626"
     postId="234"
     cardPath="overlayed_card/tpl_03"
@@ -178,7 +136,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="PENDJARI SAFARI TOURS"
+    title="Les plages de Grand-Popo"
     town="Grand-Popo"
 >
     <x-media.figure
@@ -186,27 +144,6 @@
     alt="Danseurs traditionnels béninois"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
     srcset="/assets/img/danse-360x180.webp 360w, /assets/img/danse-640x320.webp 640w, /assets/img/danse-1200x600.webp 1200w"
-    classes="isRel imageObject cardMediaWrapper"
-    :ariaHidden="true"
-/>
-</x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
-    classes="card overlayedCard isRel tpl_03 ratio_3_4"
-    sheetId="3392627"
-    postId="235"
-    cardPath="overlayed_card/tpl_03"
-    displayOptions="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;sheet_town&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"
-    href="/activites"
-    target="_self"
-    sectionClasses="card-section fcbCol fullcenterbox"
-    textsClasses="card-texts has-title"
-    title="SAVANE ATACORA"
-    town="Possotomé"
->
-    <x-media.figure
-    src="/assets/img/mariage-640x854.webp"
-    alt="Cérémonie de mariage au Bénin"
-    placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/mariage-360x180.webp 360w, /assets/img/mariage-640x320.webp 640w, /assets/img/mariage-1200x600.webp 1200w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -224,10 +161,10 @@
     town="Atacora"
 >
     <x-media.figure
-    src="/assets/img/pendjari-buffle-640x854.webp"
-    alt="Troupeau de buffles dans la Pendjari"
+    src="/assets/img/act-pendjari-640x854.webp"
+    alt="L’entrée du parc national de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/pendjari-buffle-360x180.webp 360w, /assets/img/pendjari-buffle-640x320.webp 640w, /assets/img/pendjari-buffle-1200x600.webp 1200w"
+    srcset="/assets/img/act-pendjari-360x480.webp 360w, /assets/img/act-pendjari-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -244,10 +181,10 @@
     town="Natitingou"
 >
     <x-media.figure
-    src="/assets/img/atacora-640x854.webp"
-    alt="Les collines de l'Atacora"
+    src="/assets/img/act-atacora-640x854.webp"
+    alt="Vue sur les collines de l’Atacora"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/atacora-360x180.webp 360w, /assets/img/atacora-640x320.webp 640w, /assets/img/atacora-1200x600.webp 1200w"
+    srcset="/assets/img/act-atacora-360x480.webp 360w, /assets/img/act-atacora-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -264,10 +201,10 @@
     town="Atacora"
 >
     <x-media.figure
-    src="/assets/img/chutes-tanougou-640x854.webp"
+    src="/assets/img/act-tanougou-640x854.webp"
     alt="Les chutes de Tanougou"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/chutes-tanougou-360x180.webp 360w, /assets/img/chutes-tanougou-640x320.webp 640w, /assets/img/chutes-tanougou-1200x600.webp 1200w"
+    srcset="/assets/img/act-tanougou-360x480.webp 360w, /assets/img/act-tanougou-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
