@@ -159,6 +159,54 @@
     }
 
     /**
+     * Pas de carte en double à l'écran.
+     *
+     * Un carrousel de cartes en boucle qui a moins de cartes que de places à
+     * l'écran (onglets « En mer », « Sur terre » de l'accueil) montrait la
+     * même carte deux fois côte à côte. Dans ce cas, la boucle est retirée, les
+     * copies sont supprimées et les cartes restantes sont centrées.
+     */
+    function sansDoublon(element) {
+        const ancien = element.swiper;
+        if (!ancien || !ancien.params.loop || element.dataset.baBoucle) return false;
+        if (!element.closest('.woody-component-basic-swiper')) return false;
+
+        const wrapper = element.querySelector('.swiper-wrapper');
+        const cartes = () => [...wrapper.children].filter((c) => c.classList.contains('swiper-slide'));
+        const clé = (c) => {
+            const lien = c.querySelector('a[href]');
+            const titre = c.querySelector('.card-title, [class*="title"]');
+            return (lien ? lien.getAttribute('href') : '') + '|' + (titre ? titre.textContent : c.textContent).trim().replace(/\s+/g, ' ');
+        };
+        const uniques = new Set(cartes().map(clé)).size;
+        const places = Math.ceil(typeof ancien.params.slidesPerView === 'number'
+            ? ancien.params.slidesPerView
+            : ancien.slidesPerViewDynamic());
+        if (uniques === 0 || uniques > places) return false;
+
+        const { el, init, ...paramètres } = ancien.passedParams;
+        ancien.destroy(true, true);
+
+        const numéro = (c) => Number(c.getAttribute('data-swiper-slide-index') ?? 0);
+        const vues = new Set();
+        cartes().sort((x, y) => numéro(x) - numéro(y)).forEach((carte) => {
+            const k = clé(carte);
+            if (vues.has(k)) { carte.remove(); return; }
+            vues.add(k);
+            wrapper.appendChild(carte);
+            carte.removeAttribute('data-swiper-slide-index');
+            carte.removeAttribute('style');
+            carte.removeAttribute('aria-hidden');
+            carte.classList.remove('swiper-slide-active', 'swiper-slide-next', 'swiper-slide-prev',
+                'swiper-slide-visible', 'swiper-slide-fully-visible', 'swiper-slide-duplicate');
+        });
+
+        element.dataset.baBoucle = '0';
+        new window.Swiper(element, { ...paramètres, loop: false, autoplay: false, centerInsufficientSlides: true });
+        return true;
+    }
+
+    /**
      * Fait défiler un carrousel qui boucle déjà.
      */
     function faireDéfiler(swiper) {
@@ -174,6 +222,7 @@
         if (accroche) rendreContinu(accroche);
 
         document.querySelectorAll('.woody-component-focus .swiper').forEach(boucleSansFin);
+        document.querySelectorAll('.woody-component-basic-swiper .swiper').forEach(sansDoublon);
 
         // Le traitement dédié au carrousel des régions (rendreRégionsContinu)
         // a été retiré le 3/11 ; son appel restait ici et levait une
@@ -183,6 +232,7 @@
 
         document.querySelectorAll('.swiper').forEach((element) => {
             if (element.closest('.woody-component-landswpr')) return;
+            if (element.dataset.baBoucle === '0') return; // toutes les cartes sont visibles
             faireDéfiler(element.swiper);
         });
     }

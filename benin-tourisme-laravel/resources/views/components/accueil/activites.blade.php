@@ -10,7 +10,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Ouidah, cité de la mémoire"
+    title="La cité de la mémoire"
     town="Ouidah"
 >
     <x-media.figure
@@ -31,7 +31,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Natitingou, porte de l’Atacora"
+    title="La porte de l’Atacora"
     town="Natitingou"
 >
     <x-media.figure
@@ -53,7 +53,7 @@
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
     title="Les routes du Dahomey"
-    town="Sèmè-Podji"
+    town="Abomey"
 >
     <x-media.figure
     src="/assets/img/act-dahomey-640x854.webp"
@@ -73,8 +73,8 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Ganvié, la cité lacustre"
-    town="Sô-Ava"
+    title="La cité lacustre du lac Nokoué"
+    town="Ganvié"
 >
     <x-media.figure
     src="/assets/img/act-ganvie-640x854.webp"
@@ -94,7 +94,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Grand-Popo, entre lagune et océan"
+    title="Entre lagune et océan"
     town="Grand-Popo"
 >
     <x-media.figure
@@ -115,7 +115,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Sortie en mer au large de Ouidah"
+    title="Sortie en mer"
     town="Ouidah"
 >
     <x-media.figure
@@ -136,7 +136,7 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="Les plages de Grand-Popo"
+    title="Plages et cocotiers"
     town="Grand-Popo"
 >
     <x-media.figure
@@ -158,7 +158,7 @@
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
     title="Safari dans la Pendjari"
-    town="Atacora"
+    town="Tanguiéta"
 >
     <x-media.figure
     src="/assets/img/act-pendjari-640x854.webp"
@@ -198,7 +198,7 @@
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
     title="Chutes de Tanougou"
-    town="Atacora"
+    town="Tanguiéta"
 >
     <x-media.figure
     src="/assets/img/act-tanougou-640x854.webp"
