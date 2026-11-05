@@ -28,20 +28,20 @@
                         data-target="_blank"><strong>Instagram #visitbenin</strong></p></div></div><div class="description marg-top-sm"><p>Le joyau du lac Nokoué : la cité lacustre de Ganvié 🇧🇯 !
 
 #visitbenin #benin #tourisme #dahomeydiscovery #benin229 #terredevodun #paysduvodun #golfedeguinee #nature #soleil #plage #animaux #environnement #beninrevele #ilovebenin</p></div></div></div></div></div><div class="cell small-6"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #visitbenin" data-toggle="media-zoom-6a8c5846e2049-1" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-chambre-640x640.webp"
-    alt="Une chambre d'hôtel au Bénin"
+    src="/assets/img/ba-zangbeto-640x640.webp"
+    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-chambre-360x360.webp 360w, /assets/img/ba-chambre-640x640.webp 640w, /assets/img/ba-chambre-714x714.webp 714w"
+    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
     classes="isRel imageObject socialwall is_instagram"
     published="2026-11-04 14:45:12"
     author="Bonne Arrivée"
     :nosnippet="true"
     :instagram="true"
 />@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-1" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #visitbenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-chambre-640x640.webp"
-    alt="Une chambre d'hôtel au Bénin"
+    src="/assets/img/ba-zangbeto-640x640.webp"
+    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-chambre-360x360.webp 360w, /assets/img/ba-chambre-640x640.webp 640w, /assets/img/ba-chambre-714x714.webp 714w"
+    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
     classes="isRel imageObject socialwall is_instagram"
     :focusable="true"
     published="2026-11-04 14:45:12"
@@ -85,20 +85,20 @@
 .
 .
 #sunsetlovers #sunsetphotography #sunset🌅  #travelphotography #travel #photography #communedelokossa #centredubenin #lokossamaville #sunsetbenin #sunset #lokossa #benincentre #nch70 #villedelokossa #tou</p></div></div></div></div></div></div></div></div><div class="cell medium-6 large-4 middle-column mobile-order-first"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #dahomeydiscovery" data-toggle="media-zoom-6a8c5846e2049-3" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-pilotis-640x640.webp"
-    alt="Maisons sur pilotis et pirogue au bord du lac"
+    src="/assets/img/ba-papillon-640x640.webp"
+    alt="Une danseuse costumée en papillon lors d’un défilé"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-pilotis-360x360.webp 360w, /assets/img/ba-pilotis-640x640.webp 640w, /assets/img/ba-pilotis-720x720.webp 720w"
+    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
     classes="isRel imageObject socialwall is_instagram"
     published="2026-11-04 15:12:40"
     author="Bonne Arrivée"
     :nosnippet="true"
     :instagram="true"
 />@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-3" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #dahomeydiscovery" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-pilotis-640x640.webp"
-    alt="Maisons sur pilotis et pirogue au bord du lac"
+    src="/assets/img/ba-papillon-640x640.webp"
+    alt="Une danseuse costumée en papillon lors d’un défilé"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-pilotis-360x360.webp 360w, /assets/img/ba-pilotis-640x640.webp 640w, /assets/img/ba-pilotis-720x720.webp 720w"
+    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
     classes="isRel imageObject socialwall is_instagram"
     :focusable="true"
     published="2026-11-04 15:12:40"

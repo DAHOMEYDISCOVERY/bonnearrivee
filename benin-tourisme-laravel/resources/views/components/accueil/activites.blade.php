@@ -118,10 +118,10 @@
     town="Cotonou"
 >
     <x-media.figure
-    src="/assets/img/plage-fidjrosse-640x854.webp"
-    alt="La plage de Fidjrossè, à Cotonou"
+    src="/assets/img/act-cotonou-640x854.webp"
+    alt="La plage de Cotonou vue du ciel"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/plage-fidjrosse-640x854.webp 640w"
+    srcset="/assets/img/act-cotonou-360x480.webp 360w, /assets/img/act-cotonou-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -139,10 +139,10 @@
     town="Ouidah"
 >
     <x-media.figure
-    src="/assets/img/paysage-640x854.webp"
-    alt="Paysage de l’Atacora"
+    src="/assets/img/act-ouidah-mer-640x854.webp"
+    alt="La côte de Ouidah et son arène, vue du ciel"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/paysage-360x90.webp 360w, /assets/img/paysage-640x160.webp 640w, /assets/img/paysage-1200x300.webp 1200w"
+    srcset="/assets/img/act-ouidah-mer-360x480.webp 360w, /assets/img/act-ouidah-mer-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -160,10 +160,10 @@
     town="Grand-Popo"
 >
     <x-media.figure
-    src="/assets/img/danse-640x854.webp"
-    alt="Danseurs traditionnels béninois"
+    src="/assets/img/act-grand-popo-mer-640x854.webp"
+    alt="La plage de Grand-Popo et ses pirogues, vue du ciel"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/danse-360x180.webp 360w, /assets/img/danse-640x320.webp 640w, /assets/img/danse-1200x600.webp 1200w"
+    srcset="/assets/img/act-grand-popo-mer-360x480.webp 360w, /assets/img/act-grand-popo-mer-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
@@ -180,10 +180,10 @@
     town="Possotomé"
 >
     <x-media.figure
-    src="/assets/img/lac-aheme-640x854.webp"
-    alt="Le lac Ahémé, à Possotomé"
+    src="/assets/img/act-possotome-640x854.webp"
+    alt="Paillotes et pirogue sur la rive, à Possotomé"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
-    srcset="/assets/img/lac-aheme-640x854.webp 640w"
+    srcset="/assets/img/act-possotome-360x480.webp 360w, /assets/img/act-possotome-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
