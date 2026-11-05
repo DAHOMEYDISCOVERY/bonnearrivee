@@ -17,8 +17,4 @@
 
     {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::AUTH_LOGIN_FORM_AFTER, scopes: $this->getRenderHookScopes()) }}
 
-    <p class="ba-login__note">
-        Accès réservé à l’équipe de Bonne Arrivée. Les tentatives sont limitées et
-        la session se ferme après une période d’inactivité.
-    </p>
 </x-filament-panels::page.simple>
