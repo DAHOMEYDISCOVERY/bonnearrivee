@@ -114,6 +114,28 @@ final class PublishGuardTest extends TestCase
         $this->get(self::PATH)->assertOk()->assertSee('Ajout validé par le garde-fou', false);
     }
 
+    public function test_le_code_php_ne_passe_jamais_dans_le_contenu_personnalise(): void
+    {
+        $html = Page::stripBladeArtefacts("<p>Avant</p>\n@php\n\$x = ['a' => 1];\n@endphp\n<p>Après</p>");
+
+        $this->assertStringNotContainsString('$x', $html);
+        $this->assertStringContainsString('Après', $html);
+    }
+
+    public function test_une_page_construite_par_du_code_ne_peut_pas_etre_figee(): void
+    {
+        $this->assertTrue(Page::isDynamicView('pages.sejourner.toutes-les-infos-pratiques.comment-venir.index'));
+        $this->assertFalse(Page::isDynamicView(self::VIEW));
+    }
+
+    public function test_du_code_affiche_en_texte_est_signale(): void
+    {
+        $content = (string) Page::extractContentFromView(self::VIEW);
+        $this->page(true, $content."\n<p>\$airlines = ['name' => 'Air France'];</p>");
+
+        $this->assertNotNull(PublishGuard::problem(self::PATH));
+    }
+
     public function test_la_commande_de_controle_passe_sur_le_site(): void
     {
         $this->artisan('site:verifier')->assertExitCode(0);

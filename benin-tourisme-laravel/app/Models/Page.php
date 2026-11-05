@@ -176,6 +176,19 @@ final class Page extends Model
      *  - interpolations {{ $x }} / {!! $x !!}      remplacees par chaine vide
      *  - verbatim                                   supprime (balise seule)
      */
+    /**
+     * La section « content » de la vue est-elle construite par du code (boucles,
+     * calculs, variables) ? Son HTML ne peut alors pas être recopié tel quel
+     * dans le contenu personnalisé : les listes y seraient vides et le code
+     * apparaîtrait en texte.
+     */
+    public static function isDynamicView(?string $view): bool
+    {
+        $content = self::extractAllSections((string) $view)['content'] ?? '';
+
+        return (bool) preg_match('/@(php|foreach|forelse|for|while|if|isset|switch)\b|\{\{\s*\$|\{!!/', $content);
+    }
+
     public static function stripBladeArtefacts(string $html): string
     {
         $out = $html;
@@ -184,6 +197,9 @@ final class Page extends Model
         // Blade par contre, on les gomme : ils sont invisibles sur le site de
         // toute facon et le visiteur n'a rien a faire d'un {{-- note interne --}}.
         $out = preg_replace('/\{\{--.*?--\}\}/s', '', $out) ?? $out;
+        // Blocs de code @php … @endphp : retires en entier. Ne retirer que les
+        // directives laissait le code PHP s'afficher en texte sur la page.
+        $out = preg_replace('/@php\b(?!\s*\().*?@endphp\b/s', '', $out) ?? $out;
         // Balises de bloc Blade (sans leur contenu interne) : on retire la
         // directive d'ouverture/fermeture seule, le HTML interne reste visible.
         $blockDirectives = [

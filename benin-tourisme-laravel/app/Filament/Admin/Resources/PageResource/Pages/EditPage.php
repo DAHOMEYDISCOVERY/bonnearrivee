@@ -72,6 +72,18 @@ class EditPage extends EditRecord
         //      le brouillon est conserve, sauf s'il n'est qu'une copie de la vue.
         $wantsOverride = (bool) ($data['use_override'] ?? false);
 
+        // Garde-fou : une page construite par du code (listes de compagnies,
+        // agenda…) ne peut pas être remplacée par une copie figée de son HTML.
+        if ($wantsOverride && $hasContent && Page::isDynamicView((string) ($data['view'] ?? $this->record->view))) {
+            Notification::make()
+                ->title('Modification non publiée')
+                ->body('Cette page est construite automatiquement (listes, calculs) : son contenu ne peut pas être remplacé en bloc ici, il s’afficherait en code. Modifiez ses textes et ses images dans « Textes et images ». Le site affiche toujours la version précédente.')
+                ->danger()
+                ->persistent()
+                ->send();
+            $this->halt();
+        }
+
         if (! $hasContent) {
             $data['use_override'] = false;
             $data['content_override'] = null;

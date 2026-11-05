@@ -55,6 +55,14 @@ final class PublishGuard
             return self::fail($path, 'le bloc « '.$m[0].'> » est resté en code au lieu de s’afficher');
         }
 
+        // Du code PHP ou Blade affiché en texte dans la page.
+        $start = stripos($body, '<main');
+        $end = strripos($body, '</main>');
+        $texte = html_entity_decode(strip_tags($start !== false ? substr($body, $start, ($end ?: strlen($body)) - $start) : $body), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        if (preg_match('/\$[A-Za-z_]\w*\s*(=|\(|->)|=>\s*[\'"\[$]|<\?php|@(foreach|endforeach|php|endphp|if|endif)\b|\{\{\s*\$/', $texte, $m)) {
+            return self::fail($path, 'du code s’affiche en texte sur la page (« '.trim($m[0]).' »)');
+        }
+
         return null;
     }
 
