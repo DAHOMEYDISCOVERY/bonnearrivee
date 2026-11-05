@@ -43,7 +43,21 @@ final class OverrideHtml
         }
 
         try {
-            return Blade::render($html, $data, deleteCachedView: false);
+            // Rendu dans une copie de la fabrique de vues : si un composant
+            // échoue, Laravel vide l'état de la fabrique qui a rendu la vue
+            // (sections en cours comprises). Sur la fabrique partagée, la page
+            // entière tombait alors en erreur 500 (« Cannot end a section
+            // without first starting one ») au lieu de servir le HTML brut.
+            $dir = storage_path('framework/cache/override-views');
+            if (! is_dir($dir)) {
+                @mkdir($dir, 0775, true);
+            }
+            $file = $dir.'/'.md5($html).'.blade.php';
+            if (! is_file($file)) {
+                file_put_contents($file, $html, LOCK_EX);
+            }
+
+            return (clone app('view'))->file($file, $data)->render();
         } catch (\Throwable $e) {
             Log::warning('Contenu personnalisé : compilation des composants impossible, HTML brut servi', [
                 'error' => $e->getMessage(),

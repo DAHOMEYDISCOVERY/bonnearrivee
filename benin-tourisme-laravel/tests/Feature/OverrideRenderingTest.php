@@ -73,6 +73,19 @@ final class OverrideRenderingTest extends TestCase
         $response->assertSee('/assets/img/vodun-1920x480.webp', false);
     }
 
+    public function test_un_composant_en_erreur_ne_fait_pas_tomber_la_page(): void
+    {
+        // Composant inconnu : sa compilation échoue. La page doit rester en
+        // ligne (HTML brut servi) au lieu d'une erreur 500.
+        $content = (string) Page::extractContentFromView(self::VIEW);
+        $this->pageWithOverride($content."\n<x-composant-qui-n-existe-pas />\n<p>Texte gardé</p>");
+
+        $response = $this->get(self::PATH);
+
+        $response->assertOk();
+        $response->assertSee('Texte gardé', false);
+    }
+
     public function test_les_pages_hors_gabarit_definissent_window_globals(): void
     {
         foreach (['/quand-partir', '/agenda', '/checklist', '/convertisseur', '/timeline-benin', '/guide-conversation'] as $path) {
