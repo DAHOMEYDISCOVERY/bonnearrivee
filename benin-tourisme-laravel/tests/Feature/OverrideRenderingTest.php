@@ -86,6 +86,21 @@ final class OverrideRenderingTest extends TestCase
         $response->assertSee('Texte gardé', false);
     }
 
+    public function test_un_attribut_encode_par_l_editeur_est_repare(): void
+    {
+        // L'éditeur du back-office écrit « =&gt; » au lieu de « => » dans
+        // :filters ; la page doit s'afficher avec ses composants compilés.
+        $content = (string) Page::extractContentFromView(self::VIEW);
+        $this->pageWithOverride($content."\n<x-aggregator.circuits-block :filters=\"['tourism_type' =&gt; 'safari']\" :limit=\"6\" />\n<p>Après le bloc</p>");
+
+        $response = $this->get(self::PATH);
+
+        $response->assertOk();
+        $response->assertSee('Après le bloc', false);
+        $response->assertDontSee('<x-aggregator', false);
+        $response->assertDontSee('<x-media.figure', false);
+    }
+
     public function test_les_pages_hors_gabarit_definissent_window_globals(): void
     {
         foreach (['/quand-partir', '/agenda', '/checklist', '/convertisseur', '/timeline-benin', '/guide-conversation'] as $path) {

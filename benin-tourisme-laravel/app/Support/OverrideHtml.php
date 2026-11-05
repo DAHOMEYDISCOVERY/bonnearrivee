@@ -42,6 +42,8 @@ final class OverrideHtml
             return $html;
         }
 
+        $html = self::repairBoundAttributes($html);
+
         try {
             // Rendu dans une copie de la fabrique de vues : si un composant
             // échoue, Laravel vide l'état de la fabrique qui a rendu la vue
@@ -65,6 +67,31 @@ final class OverrideHtml
 
             return $html;
         }
+    }
+
+    /**
+     * L'éditeur HTML du back-office encode les caractères des attributs :
+     * `:filters="['type' => 'safari']"` y devient `:filters="['type' =&gt;
+     * 'safari']"`, que PHP ne sait plus lire (« syntax error, unexpected token
+     * "=" »). Dans les attributs calculés (`:nom="…"`) des composants
+     * `<x-…>`, on rend leurs caractères aux expressions. `&quot;` reste
+     * encodé : il fermerait l'attribut.
+     */
+    public static function repairBoundAttributes(string $html): string
+    {
+        return (string) preg_replace_callback(
+            '/<x-[\w.:-]+\b[^>]*>/',
+            static fn (array $tag): string => (string) preg_replace_callback(
+                '/(\s:[\w.-]+=")([^"]*)(")/',
+                static fn (array $a): string => $a[1].str_replace(
+                    ['&gt;', '&lt;', '&#039;', '&#39;', '&apos;', '&amp;'],
+                    ['>', '<', "'", "'", "'", '&'],
+                    $a[2],
+                ).$a[3],
+                $tag[0],
+            ),
+            $html,
+        );
     }
 
     /**
