@@ -48,6 +48,9 @@ class EditPage extends EditRecord
         //    dedans — on les retire pour que la compilation Blade ne plante
         //    jamais et que la page ne devienne jamais blanche.
         $html = Page::stripBladeArtefacts($html);
+        // L'éditeur encode « => » en « =&gt; » dans les réglages des blocs :
+        // on les rétablit avant d'enregistrer.
+        $html = \App\Support\OverrideHtml::repairBoundAttributes($html);
 
         // 2) On considere un HTML "vide" s'il ne reste rien de visible apres
         //    suppression des commentaires HTML et des espaces.
@@ -82,6 +85,38 @@ class EditPage extends EditRecord
                 : $html;
         }
         return $data;
+    }
+
+    /** État de la page avant l'enregistrement, pour l'annuler si besoin. */
+    private array $avantEnregistrement = [];
+
+    protected function beforeSave(): void
+    {
+        $this->avantEnregistrement = $this->record->only(['title', 'description', 'active_menu', 'head_profile', 'standalone', 'use_override', 'wrap_content', 'content_override']);
+    }
+
+    /**
+     * Garde-fou : la page est affichée comme un visiteur la verrait. Si elle
+     * ne s'affiche plus, l'enregistrement est annulé et l'éditeur voit
+     * pourquoi ; le site garde la version d'avant.
+     */
+    protected function afterSave(): void
+    {
+        $problem = \App\Support\PublishGuard::problem((string) $this->record->path);
+        if ($problem === null) {
+            return;
+        }
+
+        $this->record->forceFill($this->avantEnregistrement)->save();
+
+        Notification::make()
+            ->title('Modification non publiée')
+            ->body($problem.' Le site affiche toujours la version précédente. Corrigez le contenu, ou cliquez sur « Recharger depuis la vue d\'origine ».')
+            ->danger()
+            ->persistent()
+            ->send();
+
+        $this->halt();
     }
 
     protected function getHeaderActions(): array

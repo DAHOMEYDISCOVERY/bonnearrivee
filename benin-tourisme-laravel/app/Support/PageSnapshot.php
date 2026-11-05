@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Facade;
  */
 final class PageSnapshot
 {
+    /** Raison du dernier échec de html(), pour le garde-fou de publication. */
+    public static ?string $lastError = null;
+
     public static function html(string $path): ?string
     {
         $path = ContentLayer::normalisePath($path);
@@ -45,12 +48,15 @@ final class PageSnapshot
 
             $response = Router::toResponse($request, $route->run());
             if ($response->getStatusCode() !== 200) {
+                self::$lastError = 'réponse HTTP '.$response->getStatusCode();
+
                 return null;
             }
             $html = (string) $response->getContent();
 
             return stripos($html, '<html') !== false ? $html : null;
         } catch (\Throwable $e) {
+            self::$lastError = $e->getMessage();
             report($e);
 
             return null;

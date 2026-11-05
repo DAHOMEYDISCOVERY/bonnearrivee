@@ -227,8 +227,30 @@ class SiteLayoutPage extends Page implements HasForms
         $footer['socials'] = array_values($footer['socials'] ?? []);
         $footer['buttons'] = array_values($footer['buttons'] ?? []);
 
-        SiteSetting::write(SiteLayout::HEADER_KEY, $header);
-        SiteSetting::write(SiteLayout::FOOTER_KEY, $footer);
+        // Garde-fou : publiés seulement si les pages s'affichent encore.
+        $avantHeader = SiteSetting::read(SiteLayout::HEADER_KEY);
+        $avantFooter = SiteSetting::read(SiteLayout::FOOTER_KEY);
+        $problem = \App\Support\PublishGuard::attempt(
+            function () use ($header, $footer): void {
+                SiteSetting::write(SiteLayout::HEADER_KEY, $header);
+                SiteSetting::write(SiteLayout::FOOTER_KEY, $footer);
+            },
+            function () use ($avantHeader, $avantFooter): void {
+                is_array($avantHeader) ? SiteSetting::write(SiteLayout::HEADER_KEY, $avantHeader) : SiteSetting::forgetKey(SiteLayout::HEADER_KEY);
+                is_array($avantFooter) ? SiteSetting::write(SiteLayout::FOOTER_KEY, $avantFooter) : SiteSetting::forgetKey(SiteLayout::FOOTER_KEY);
+            },
+            ['/', '/quand-partir'],
+        );
+        if ($problem !== null) {
+            Notification::make()
+                ->title('Modifications non publiées')
+                ->body($problem.' Le site affiche toujours l’en-tête et le pied de page précédents.')
+                ->danger()
+                ->persistent()
+                ->send();
+
+            return;
+        }
 
         Notification::make()
             ->title('En-tête et pied de page publiés')

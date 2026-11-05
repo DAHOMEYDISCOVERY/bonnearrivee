@@ -31,6 +31,31 @@ Artisan::command('search:index', function () {
 })->purpose('Construit l\'index de recherche à partir du texte affiché de chaque page');
 
 /*
+ * Contrôle de toutes les pages du site, telles qu'un visiteur les voit
+ * (modifications du back-office comprises). Lancé au déploiement et chaque
+ * nuit ; toute page en défaut est notée dans le journal (niveau erreur).
+ */
+Artisan::command('site:verifier', function () {
+    $pages = \App\Support\SitePages::all();
+    $problems = [];
+    foreach ($pages as $page) {
+        $problem = \App\Support\PublishGuard::problem($page['path']);
+        if ($problem !== null) {
+            $problems[] = $problem;
+            $this->error('  ✗ '.$problem);
+        }
+    }
+    if ($problems === []) {
+        $this->info(count($pages).' pages vérifiées : toutes s\'affichent correctement.');
+
+        return 0;
+    }
+    $this->warn(count($problems).' page(s) en défaut sur '.count($pages).'.');
+
+    return 1;
+})->purpose('Vérifie que chaque page du site s\'affiche, modifications du back-office comprises');
+
+/*
  * Tâches planifiées. Nécessite, sur le serveur, la tâche cron Laravel :
  *   * * * * * cd /chemin/du/site && php artisan schedule:run >> /dev/null 2>&1
  * Le rafraîchissement en tâche de fond des blocs partenaires dépend de
@@ -39,3 +64,4 @@ Artisan::command('search:index', function () {
  */
 \Illuminate\Support\Facades\Schedule::command('aggregator:warm --quiet-summary')->dailyAt('04:30')->withoutOverlapping();
 \Illuminate\Support\Facades\Schedule::command('search:index')->dailyAt('05:00')->withoutOverlapping();
+\Illuminate\Support\Facades\Schedule::command('site:verifier')->dailyAt('05:30')->withoutOverlapping();

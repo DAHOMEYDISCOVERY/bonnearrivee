@@ -208,7 +208,22 @@ class PageContentEditor extends Page
             }
         }
 
-        PageContentStore::save($this->chemin, $edits);
+        // Garde-fou : publiée seulement si la page s'affiche encore.
+        $problem = \App\Support\PublishGuard::attempt(
+            fn () => PageContentStore::save($this->chemin, $edits),
+            fn () => PageContentStore::save($this->chemin, $previous),
+            [$this->chemin],
+        );
+        if ($problem !== null) {
+            Notification::make()
+                ->title('Modifications non publiées')
+                ->body($problem.' Le site affiche toujours la version précédente.')
+                ->danger()
+                ->persistent()
+                ->send();
+
+            return;
+        }
         $this->load();
 
         Notification::make()

@@ -38,6 +38,12 @@ final class DatabasePageRepository implements PageRepository
         return $this->pages;
     }
 
+    /** Oublie la liste en mémoire : la prochaine lecture relit la base. */
+    public function flush(): void
+    {
+        $this->pages = null;
+    }
+
     private function normalise(string $path): string
     {
         $trimmed = trim($path, '/');

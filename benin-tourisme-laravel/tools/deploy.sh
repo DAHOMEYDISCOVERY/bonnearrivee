@@ -39,6 +39,9 @@ echo "===> 8. Pré-chargement des blocs partenaires et index de recherche"
 php artisan aggregator:warm --quiet-summary || true
 php artisan search:index || true
 
+echo "===> 9. Controle de toutes les pages (modifications du back-office comprises)"
+php artisan site:verifier || echo "ATTENTION : au moins une page est en defaut, voir la liste ci-dessus."
+
 echo ""
 echo "Deploiement termine. N'oublie pas :"
 echo "  - Verifier .env (APP_ENV=production, APP_DEBUG=false)"

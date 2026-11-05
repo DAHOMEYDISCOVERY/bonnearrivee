@@ -44,6 +44,13 @@ final class Page extends Model
     protected static function booted(): void
     {
         static::saved(static function (self $page): void {
+            // Le dépôt des pages garde la liste en mémoire pour la requête en
+            // cours : on l'oublie pour que la page soit relue telle
+            // qu'enregistrée (garde-fou de publication, index de recherche).
+            $repository = app(\App\Support\PageRepository::class);
+            if ($repository instanceof \App\Support\DatabasePageRepository) {
+                $repository->flush();
+            }
             if (! $page->wasChanged(['content_override', 'use_override', 'title', 'description']) && ! $page->wasRecentlyCreated) {
                 return;
             }

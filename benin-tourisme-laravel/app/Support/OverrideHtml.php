@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Log;
  */
 final class OverrideHtml
 {
+    /** Dernière erreur de compilation, lue par le garde-fou de publication. */
+    public static ?string $lastError = null;
+
     /**
      * Compile les composants Blade présents dans le contenu personnalisé.
      *
@@ -61,7 +64,8 @@ final class OverrideHtml
 
             return (clone app('view'))->file($file, $data)->render();
         } catch (\Throwable $e) {
-            Log::warning('Contenu personnalisé : compilation des composants impossible, HTML brut servi', [
+            self::$lastError = $e->getMessage();
+            Log::error('Contenu personnalisé : compilation des composants impossible, HTML brut servi', [
                 'error' => $e->getMessage(),
             ]);
 
