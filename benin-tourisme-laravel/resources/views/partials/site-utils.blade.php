@@ -406,3 +406,34 @@
     });
 })();
 </script>
+
+{{-- Héros plein écran des pages intérieures : les pages déclarent un bandeau
+     très allongé (format 4:1, ex. -1920x480) alors que le héros occupe tout
+     l'écran ; la photo était fortement agrandie et recadrée (têtes coupées,
+     image floue). On charge la même photo dans un format plus haut (2:1, ou à
+     défaut 16:9) quand il existe ; sinon le bandeau d'origine reste affiché.
+     Une photo remplacée au back-office (/storage/…) n'est jamais touchée. --}}
+<script>
+(function () {
+    'use strict';
+    var BANDEAU = /^(.*\/assets\/img\/.+)-(\d+)x(\d+)\.(webp|jpe?g|png)$/i;
+    function plusHaut(img) {
+        var m = (img.getAttribute('src') || '').match(BANDEAU);
+        if (!m || Number(m[2]) < Number(m[3]) * 3) return;
+        var besoin = Math.min((window.innerWidth || 1366) * (window.devicePixelRatio || 1), 1920);
+        var l = besoin > 1200 ? 1920 : (besoin > 640 ? 1200 : 640);
+        var formats = [[l, l / 2], [l, Math.round(l * 9 / 16)]];
+        if (l !== 1920) formats.push([1920, 960], [1920, 1080]);
+        var i = 0;
+        (function essai() {
+            if (i >= formats.length) return;
+            var f = formats[i++], url = m[1] + '-' + f[0] + 'x' + f[1] + '.' + m[4];
+            var test = new Image();
+            test.onload = function () { img.removeAttribute('srcset'); img.removeAttribute('sizes'); img.src = url; };
+            test.onerror = essai;
+            test.src = url;
+        })();
+    }
+    document.querySelectorAll('.hero-bg img').forEach(plusHaut);
+})();
+</script>

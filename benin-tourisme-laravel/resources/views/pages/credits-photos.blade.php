@@ -95,10 +95,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/aeroport-640x480.webp" alt="L&#x27;aéroport de Cotonou" loading="lazy"></td>
-      <td><strong>L&#x27;aéroport de Cotonou</strong><br><span class="file">File:Cadjehoun Airport 7822.jpg</span></td>
-      <td>GuillaumeG</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/cadjehoun-airport-7822.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>L&#x27;aéroport de Cotonou</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/bouche-du-roy-640x480.webp" alt="Le lever du jour sur la Bouche du Roy" loading="lazy"></td>
@@ -123,10 +123,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/dassa-collines-640x480.webp" alt="Les collines de Dassa-Zoumè" loading="lazy"></td>
-      <td><strong>Les collines de Dassa-Zoumè</strong><br><span class="file">File:Vue de Dassa depuis la colline de Kamaté.jpg</span></td>
-      <td>Padonou Dotou</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/vue-de-dassa-depuis-la-colline-de-kamate.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Les collines de Dassa-Zoumè</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/ecole-640x480.webp" alt="Écoliers sur le chemin de l&#x27;école" loading="lazy"></td>
@@ -137,10 +137,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/egungun-640x480.webp" alt="Des Egungun en procession" loading="lazy"></td>
-      <td><strong>Des Egungun en procession</strong><br><span class="file">File:Dans folklorique de Kouvitô (Egungun) au Bénin 03.jpg</span></td>
-      <td>DoussFrance</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/dans-folklorique-de-kouvito-egungun-au-benin-03.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Des Egungun en procession</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/foret-kpasse-640x480.webp" alt="La forêt sacrée de Kpassè" loading="lazy"></td>
@@ -179,10 +179,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/grand-popo2-640x480.webp" alt="La plage de Grand-Popo" loading="lazy"></td>
-      <td><strong>La plage de Grand-Popo</strong><br><span class="file">File:Mono river estuary in Avloh, Grand-Popo, Benin.jpg</span></td>
-      <td>Kulttuurinavigaattori</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/mono-river-estuary-in-avloh-grand-popo-benin.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La plage de Grand-Popo</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/hebergement-640x480.webp" alt="Un écolodge au Bénin" loading="lazy"></td>
@@ -207,10 +207,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/nikki-640x480.webp" alt="La Gaani à cheval, à Nikki" loading="lazy"></td>
-      <td><strong>La Gaani à cheval, à Nikki</strong><br><span class="file">File:Plaisir d&#x27;un équestre au Benin. 05.jpg</span></td>
-      <td>FiossifrejusduBénin</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/plaisir-d-un-equestre-au-benin-05.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La Gaani à cheval, à Nikki</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/ouidah-musee-640x480.webp" alt="Le musée d&#x27;histoire de Ouidah" loading="lazy"></td>
@@ -221,10 +221,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/parc-w-640x480.webp" alt="La Mékrou dans le parc national du W" loading="lazy"></td>
-      <td><strong>La Mékrou dans le parc national du W</strong><br><span class="file">File:Mekrou river in W-National Park MS 6380.JPG</span></td>
-      <td>Marco Schmidt</td>
-      <td><span class="lic">CC BY-SA 3.0</span></td>
-      <td><a href="/assets/img/wikimedia/mekrou-river-in-w-national-park-ms-6380.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La Mékrou dans le parc national du W</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/piment-640x480.webp" alt="Piments sur un étal" loading="lazy"></td>
@@ -270,10 +270,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/amazone-360x203.webp" alt="Les Amazones du Dahomey" loading="lazy"></td>
-      <td><strong>Les Amazones du Dahomey</strong><br><span class="file">File:Dahomey Amazons 1793.png</span></td>
-      <td>Dalziel, Archibald (1740–1811)</td>
-      <td><span class="lic">Public domain</span></td>
-      <td><a href="/assets/img/wikimedia/dahomey-amazons-1793.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Les Amazones du Dahomey</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/ananas-360x203.webp" alt="L’ananas du Bénin" loading="lazy"></td>
@@ -284,17 +284,17 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/artisanat-360x203.webp" alt="Artisanat traditionnel béninois" loading="lazy"></td>
-      <td><strong>Artisanat traditionnel béninois</strong><br><span class="file">File:Tissage de filets de pêche artisanale.jpg</span></td>
-      <td>Sunday Berlioz KAKPO</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/tissage-de-filets-de-peche-artisanale.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Artisanat traditionnel béninois</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/atacora-360x203.webp" alt="Les paysages de l’Atacora" loading="lazy"></td>
-      <td><strong>Les paysages de l’Atacora</strong><br><span class="file">File:ATACORA.jpg</span></td>
-      <td>KOUAGOU Damien</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/atacora.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Les paysages de l’Atacora</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/cajou-360x203.webp" alt="L’anacarde, l’or jaune du Bénin" loading="lazy"></td>
@@ -305,24 +305,24 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/chutes-kota-360x203.webp" alt="Les chutes de Kota" loading="lazy"></td>
-      <td><strong>Les chutes de Kota</strong><br><span class="file">File:Chute de Kota 2024.jpg</span></td>
-      <td>Line 1921</td>
-      <td><span class="lic">CC0</span></td>
-      <td><a href="/assets/img/wikimedia/chute-de-kota-2024.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Les chutes de Kota</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/chutes-tanougou-360x203.webp" alt="Les chutes de Tanougou" loading="lazy"></td>
-      <td><strong>Les chutes de Tanougou</strong><br><span class="file">File:Chutes de Tanougou (2).jpg</span></td>
-      <td>Ji-Elle</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/chutes-de-tanougou-2.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Les chutes de Tanougou</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/cotonou-360x203.webp" alt="Une rue de Cotonou" loading="lazy"></td>
-      <td><strong>Une rue de Cotonou</strong><br><span class="file">File:Lever de soleil sur l&#x27;Esplanade de l&#x27;amazone à Co</span></td>
-      <td>Fawaz.tairou</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/lever-de-soleil-sur-l-esplanade-de-l-amazone-a-cotonou.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Une rue de Cotonou</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/cuisine-360x203.webp" alt="La cuisine béninoise" loading="lazy"></td>
@@ -333,10 +333,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/danse-360x203.webp" alt="Danseurs traditionnels béninois" loading="lazy"></td>
-      <td><strong>Danseurs traditionnels béninois</strong><br><span class="file">File:Benin Art Fair 2025 traditional dancers 07.jpg</span></td>
-      <td>Dappasolomon001</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/benin-art-fair-2025-traditional-dancers-07.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Danseurs traditionnels béninois</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/dassa-360x203.webp" alt="Les collines de Dassa-Zoumè" loading="lazy"></td>
@@ -361,10 +361,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/ganvie-360x203.webp" alt="Ganvié, la cité lacustre du lac Nokoué" loading="lazy"></td>
-      <td><strong>Ganvié, la cité lacustre du lac Nokoué</strong><br><span class="file">File:The village of Ganvié on Lake Nokoué.jpg</span></td>
-      <td>Dr. Ondřej Havelka (cestovatel)</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/the-village-of-ganvie-on-lake-nokoue.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Ganvié, la cité lacustre du lac Nokoué</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/gelede-360x203.webp" alt="Masque Gèlèdè" loading="lazy"></td>
@@ -375,10 +375,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/hotel-360x203.webp" alt="Hébergement au Bénin" loading="lazy"></td>
-      <td><strong>Hébergement au Bénin</strong><br><span class="file">File:FRONT VIEW OF HOTEL MARIE STELLA IN COTONOU, BENIN.jpg</span></td>
-      <td>Adoscam</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/front-view-of-hotel-marie-stella-in-cotonou-benin.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Hébergement au Bénin</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/karite-360x203.webp" alt="Le karité" loading="lazy"></td>
@@ -389,10 +389,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/lac-aheme-360x203.webp" alt="Le lac Ahémé" loading="lazy"></td>
-      <td><strong>Le lac Ahémé</strong><br><span class="file">File:Lac aheme à Guezin.jpg</span></td>
-      <td>Rachad sanoussi</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/lac-aheme-a-guezin.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Le lac Ahémé</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/mangrove-360x203.webp" alt="La mangrove du fleuve Mono" loading="lazy"></td>
@@ -417,10 +417,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/natitingou-360x203.webp" alt="Natitingou, porte de l’Atacora" loading="lazy"></td>
-      <td><strong>Natitingou, porte de l’Atacora</strong><br><span class="file">File:Benin Natitingou.JPG</span></td>
-      <td>Baliola</td>
-      <td><span class="lic">CC BY-SA 3.0</span></td>
-      <td><a href="/assets/img/wikimedia/benin-natitingou.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Natitingou, porte de l’Atacora</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/oiseau-360x203.webp" alt="Faune sauvage du Bénin" loading="lazy"></td>
@@ -487,10 +487,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/pendjari-elephant-360x203.webp" alt="Éléphant du parc national de la Pendjari" loading="lazy"></td>
-      <td><strong>Éléphant du parc national de la Pendjari</strong><br><span class="file">File:Eléphants in Pendjari.jpg</span></td>
-      <td>Farid AMADOU BAHLEMAN</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/elephants-in-pendjari.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Éléphant du parc national de la Pendjari</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/pendjari-hippo-360x203.webp" alt="Hippopotames de la Pendjari" loading="lazy"></td>
@@ -501,10 +501,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/pendjari-lion-360x203.webp" alt="Lion du parc national de la Pendjari" loading="lazy"></td>
-      <td><strong>Lion du parc national de la Pendjari</strong><br><span class="file">File:Lion, Pendjari National Park (49039087968).jpg</span></td>
-      <td>Raini Svensson</td>
-      <td><span class="lic">Public domain</span></td>
-      <td><a href="/assets/img/wikimedia/lion-pendjari-national-park-49039087968.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Lion du parc national de la Pendjari</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/pendjari-savane-360x203.webp" alt="Savane du parc national de la Pendjari" loading="lazy"></td>
@@ -529,24 +529,24 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/plage-fidjrosse-360x203.webp" alt="La plage de Fidjrossè à Cotonou" loading="lazy"></td>
-      <td><strong>La plage de Fidjrossè à Cotonou</strong><br><span class="file">File:Fidjrossè Plage (Cotonou).jpg</span></td>
-      <td>Rofik Adam</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/fidjrosse-plage-cotonou.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La plage de Fidjrossè à Cotonou</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/plage-grand-popo-360x203.webp" alt="La plage de Grand-Popo" loading="lazy"></td>
-      <td><strong>La plage de Grand-Popo</strong><br><span class="file">File:Mono river estuary in Avloh, Grand-Popo, Benin.jpg</span></td>
-      <td>Kulttuurinavigaattori</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/mono-river-estuary-in-avloh-grand-popo-benin.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La plage de Grand-Popo</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/porto-novo-360x203.webp" alt="La Grande Mosquée de Porto-Novo" loading="lazy"></td>
-      <td><strong>La Grande Mosquée de Porto-Novo</strong><br><span class="file">File:Grande Mosquee Porto-Novo Benin Joseph Herve Ahissou.jpg</span></td>
-      <td>GBETONGNINOUGBO JOSEPH HERVE AHISSOU</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/grande-mosquee-porto-novo-benin-joseph-herve-ahissou.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>La Grande Mosquée de Porto-Novo</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/restaurant-360x203.webp" alt="Table béninoise" loading="lazy"></td>
@@ -564,10 +564,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/tata-somba-360x203.webp" alt="Une tata somba du pays Betammaribe" loading="lazy"></td>
-      <td><strong>Une tata somba du pays Betammaribe</strong><br><span class="file">File:Tata somba, la maison traditionnelle à étage.jpg</span></td>
-      <td>Justin ABADJAYE</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/tata-somba-la-maison-traditionnelle-a-etage.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Une tata somba du pays Betammaribe</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/vodun-360x203.webp" alt="La fête du Vodoun à Ouidah" loading="lazy"></td>
@@ -578,10 +578,10 @@
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/zangbeto-360x203.webp" alt="Rituel de Zangbéto" loading="lazy"></td>
-      <td><strong>Rituel de Zangbéto</strong><br><span class="file">File:Zangbeto on board.jpg</span></td>
-      <td>GBETONGNINOUGBO JOSEPH HERVE AHISSOU</td>
-      <td><span class="lic">CC BY-SA 4.0</span></td>
-      <td><a href="/assets/img/wikimedia/zangbeto-on-board.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+      <td><strong>Rituel de Zangbéto</strong><br><span class="file">Photo fournie par Bonne Arrivée</span></td>
+      <td>Bonne Arrivée</td>
+      <td><span class="lic">Tous droits réservés</span></td>
+      <td>—</td>
     </tr>
     <tr>
       <td class="thumb"><img src="/assets/img/zemidjan-360x203.webp" alt="Zémidjan, le taxi-moto de Cotonou" loading="lazy"></td>
