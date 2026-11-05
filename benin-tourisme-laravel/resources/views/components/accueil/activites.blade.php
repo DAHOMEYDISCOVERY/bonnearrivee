@@ -73,8 +73,8 @@
     target="_self"
     sectionClasses="card-section fcbCol fullcenterbox"
     textsClasses="card-texts has-title"
-    title="La cité lacustre du lac Nokoué"
-    town="Ganvié"
+    title="La cité lacustre de Ganvié"
+    town="Sô-Ava"
 >
     <x-media.figure
     src="/assets/img/act-ganvie-640x854.webp"
@@ -106,6 +106,26 @@
     :ariaHidden="true"
 />
 </x-card>@verbatim</div></div></div><div class="swiper-controls "><div class="swiper-nav"><div class="swiper-button-prev"><i aria-hidden="true" class="wicon wicon-026-precedent"></i></div><div class="swiper-button-next"><i aria-hidden="true" class="wicon wicon-025-suivant"></i></div></div></div></div></div></div></div></div><div class="tabs-panel tabs-alignment-align-middle" id="tabs-6a8c584639c08"><div class="grid_1col_tpl_01 grid-x grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_311 swiperOut isRel no-sessions" data-equalizer="data-equalizer"><div class="woody-component-basic-swiper tpl_01  isRel is-swResp"><div class="swiper swiper-container  swResp woody-swiper  zoomActive   has-navigation" data-options="&#x7B;&quot;slidesPerView&quot;&#x3A;1,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0,&quot;spaceBetween&quot;&#x3A;30,&quot;breakpoints&quot;&#x3A;&#x7B;&quot;1024&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;3,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0&#x7D;,&quot;767&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;2,&quot;centeredSlides&quot;&#x3A;false&#x7D;&#x7D;&#x7D;" ><div class="swiper-wrapper swRespW swRespGrid" role="list"><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
+    classes="card overlayedCard isRel tpl_03 ratio_3_4"
+    postId="142"
+    cardPath="overlayed_card/tpl_03"
+    displayOptions="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;sheet_town&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"
+    href="/activites"
+    target="_self"
+    sectionClasses="card-section fcbCol fullcenterbox"
+    textsClasses="card-texts has-title"
+    title="La plage de Fidjrossè"
+    town="Cotonou"
+>
+    <x-media.figure
+    src="/assets/img/plage-fidjrosse-640x854.webp"
+    alt="La plage de Fidjrossè, à Cotonou"
+    placeholder="/assets/site/img/blank/ratio_3_4.webp"
+    srcset="/assets/img/plage-fidjrosse-640x854.webp 640w"
+    classes="isRel imageObject cardMediaWrapper"
+    :ariaHidden="true"
+/>
+</x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card overlayedCard isRel tpl_03 ratio_3_4"
     sheetId="3335372"
     postId="142"
@@ -144,6 +164,26 @@
     alt="Danseurs traditionnels béninois"
     placeholder="/assets/site/img/blank/ratio_3_4.webp"
     srcset="/assets/img/danse-360x180.webp 360w, /assets/img/danse-640x320.webp 640w, /assets/img/danse-1200x600.webp 1200w"
+    classes="isRel imageObject cardMediaWrapper"
+    :ariaHidden="true"
+/>
+</x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
+    classes="card overlayedCard isRel tpl_03 ratio_3_4"
+    postId="142"
+    cardPath="overlayed_card/tpl_03"
+    displayOptions="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;sheet_town&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"
+    href="/activites"
+    target="_self"
+    sectionClasses="card-section fcbCol fullcenterbox"
+    textsClasses="card-texts has-title"
+    title="Les rives du lac Ahémé"
+    town="Possotomé"
+>
+    <x-media.figure
+    src="/assets/img/lac-aheme-640x854.webp"
+    alt="Le lac Ahémé, à Possotomé"
+    placeholder="/assets/site/img/blank/ratio_3_4.webp"
+    srcset="/assets/img/lac-aheme-640x854.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
