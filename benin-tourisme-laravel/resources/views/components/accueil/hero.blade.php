@@ -7,10 +7,10 @@
 
                                                 <div class="home-slider">
                         <div class="woody-component-landswpr isRel tpl_03 bg-black" ><div class="swiper swiper-container woody-landing-swiper" data-options="&#x7B;&quot;loop&quot;&#x3A;true,&quot;autoplay&quot;&#x3A;&#x7B;&quot;delay&quot;&#x3A;5500,&quot;disableOnInteraction&quot;&#x3A;false&#x7D;,&quot;speed&quot;&#x3A;900,&quot;effect&quot;&#x3A;&quot;fade&quot;,&quot;fadeEffect&quot;&#x3A;&#x7B;&quot;crossFade&quot;&#x3A;true&#x7D;&#x7D;"><div class="swiper-wrapper"><div class="swiper-slide slide-1 media-op90 slide-type-img">@endverbatim<x-media.figure
-    src="/assets/img/cotonou-1920x1080.webp"
+    src="/assets/img/cotonou-1920x1080.webp?v=amazone-2026-11-06"
     alt="Cotonou, la vitrine moderne du Bénin"
     loading="eager"
-    srcset="/assets/img/cotonou-360x203.webp 360w, /assets/img/cotonou-640x360.webp 640w, /assets/img/cotonou-1200x675.webp 1200w, /assets/img/cotonou-1920x1080.webp 1920w"
+    srcset="/assets/img/cotonou-360x203.webp?v=amazone-2026-11-06 360w, /assets/img/cotonou-640x360.webp?v=amazone-2026-11-06 640w, /assets/img/cotonou-1200x675.webp?v=amazone-2026-11-06 1200w, /assets/img/cotonou-1920x1080.webp?v=amazone-2026-11-06 1920w"
     classes="isRel imageObject landswprMediaWrapper"
     published="2021-04-15 07:25:57"
     description="Cotonou, la vitrine moderne du Bénin"
