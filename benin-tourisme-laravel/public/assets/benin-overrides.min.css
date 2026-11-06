@@ -9609,3 +9609,12 @@ body.home .woody-component-landswpr .swiper-slide {
 :is(.woody-component-hero,.emerv-hero,.event-hero,.ba-page-hero,.benin-page-hero,.wd-hero,.wd2-hero,.wv-hero) img.imageObject-img,
 .ba-page-hero > img{filter:brightness(.6) saturate(1.03)}
 /* === fin ba-hero-dark === */
+
+/* === ba-menu-cards-dark : voile sombre sur les cards images du menu ============
+   Rend lisible le texte centré sur les vignettes des sous-menus à images.
+   Le bloc « Écosystème Dahomey Discovery » a déjà son propre voile : exclu. */
+.submenu-block-images-list:not([aria-label="Écosystème Dahomey Discovery"]) .card.overlayedCard .cardMediaWrapper::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,.30));
+}
+/* === fin ba-menu-cards-dark === */

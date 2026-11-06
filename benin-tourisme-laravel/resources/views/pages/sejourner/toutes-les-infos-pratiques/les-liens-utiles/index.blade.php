@@ -201,9 +201,9 @@
 .ba-dir__card.is-hidden{display:none;}
 
 .ba-dir__top{display:flex;gap:14px;align-items:flex-start;}
-.ba-dir__avatar{flex:0 0 auto;width:58px;height:58px;border-radius:14px;overflow:hidden;display:grid;place-items:center;
+.ba-dir__avatar{position:relative;flex:0 0 auto;width:58px;height:58px;border-radius:14px;overflow:hidden;display:grid;place-items:center;
   border:1px solid var(--line);background:var(--paper);}
-.ba-dir__avatar img{width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;}
+.ba-dir__logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;}
 .ba-dir__mono{width:100%;height:100%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;
   font-size:1.26rem;color:#fff;letter-spacing:.02em;}
 .ba-dir__mono--rec{background:linear-gradient(135deg,#00a05d,#0b3d2c);}
@@ -302,7 +302,7 @@
   {{-- INTRO --}}
   <section class="ba-intro">
     <p class="ba-intro__eyebrow">Agences agréées au Bénin</p>
-    <h2 class="ba-intro__title">Réservez auprès d&rsquo;une agence officiellement reconnue</h2>
+    <h2 class="ba-intro__title">Réservez auprès des agences agréées par l&rsquo;État béninois</h2>
     <p class="ba-intro__lead">Le Ministère du Tourisme, de la Culture et des Arts délivre une licence d&rsquo;exploitation aux agences de voyages et de tourisme. Ce répertoire reprend, telles qu&rsquo;elles figurent à l&rsquo;arrêté du 21 janvier 2026, les agences titulaires de cette licence &mdash; votre meilleure garantie de sérieux pour préparer un séjour au Bénin.</p>
   </section>
 
@@ -355,11 +355,8 @@
                  data-type="{{ $isOnline ? 'en ligne' : 'agence physique' }}" data-search="{{ $blob }}">
           <div class="ba-dir__top">
             <span class="ba-dir__avatar">
-              @if ($logo)
-                <img src="{{ $logo }}" alt="Logo {{ $nom }}" loading="lazy" decoding="async">
-              @else
-                <span class="ba-dir__mono ba-dir__mono--{{ $cat }}">{{ $__initials($nom) }}</span>
-              @endif
+              <span class="ba-dir__mono ba-dir__mono--{{ $cat }}">{{ $__initials($nom) }}</span>
+              @if ($logo)<img class="ba-dir__logo" src="{{ $logo }}" alt="Logo {{ $nom }}" loading="lazy" decoding="async" onerror="this.remove()">@endif
             </span>
             <div class="ba-dir__id">
               <h3 class="ba-dir__name">{{ $nom }}</h3>
