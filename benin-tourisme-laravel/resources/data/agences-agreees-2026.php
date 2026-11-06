@@ -9,9 +9,12 @@ declare(strict_types=1);
  *          Ministère du Tourisme, de la Culture et des Arts (article 1er et annexe).
  * Indicatif +229 non repris dans les numéros de téléphone.
  *
- * MISE À JOUR : à chaque nouvel arrêté, régénérer ce fichier depuis le tableur
- * officiel. Ce sont des données de référence (≈ annuelles), volontairement tenues
- * dans un fichier versionné plutôt qu'en base : lecture simple, pas de migration.
+ * LOGO (facultatif) : pour afficher le vrai logo d’une agence dans sa carte,
+ *   1) déposez l’image dans public/assets/img/agences/ (format carré, fond clair, .webp ou .png) ;
+ *   2) renseignez la clé 'logo' ci-dessous, ex. 'logo' => '/assets/img/agences/dahomey-discovery.webp'.
+ *   Laissée vide, la carte affiche un monogramme (initiales) coloré par catégorie.
+ *
+ * MISE À JOUR : à chaque nouvel arrêté, régénérer ce fichier depuis le tableur officiel.
  */
 
 return [
@@ -29,6 +32,7 @@ return [
         'adresse' => '',
         'tel1' => '01 67 54 74 79',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 2,
@@ -44,6 +48,7 @@ return [
         'adresse' => 'Gbènan nord',
         'tel1' => '01 97 34 44 76',
         'tel2' => '01 97 96 32 69',
+        'logo' => '',
     ],
     [
         'n' => 3,
@@ -59,6 +64,7 @@ return [
         'adresse' => 'Vodjè',
         'tel1' => '01 59 25 93 33',
         'tel2' => '01 91 30 18 98',
+        'logo' => '',
     ],
     [
         'n' => 4,
@@ -74,6 +80,7 @@ return [
         'adresse' => 'Ganvié 2, Amoussougaho',
         'tel1' => '01 97 24 90 35',
         'tel2' => '01 95 50 32 05',
+        'logo' => '',
     ],
     [
         'n' => 5,
@@ -89,6 +96,7 @@ return [
         'adresse' => 'Aïdjèdo',
         'tel1' => '01 60 02 02 20',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 6,
@@ -104,6 +112,7 @@ return [
         'adresse' => 'Boulevard Marina, en face du Sofitel',
         'tel1' => '01 64 41 55 86',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 7,
@@ -119,6 +128,7 @@ return [
         'adresse' => 'Sèmè',
         'tel1' => '01 67 59 76 37',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 8,
@@ -134,6 +144,7 @@ return [
         'adresse' => 'Agbalilamè',
         'tel1' => '01 61 32 47 26',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 9,
@@ -149,6 +160,7 @@ return [
         'adresse' => 'Carrefour Caboma',
         'tel1' => '01 48 72 00 20',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 10,
@@ -164,6 +176,7 @@ return [
         'adresse' => 'Mènontin',
         'tel1' => '01 63 15 62 62',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 11,
@@ -179,6 +192,7 @@ return [
         'adresse' => 'Les Cocotiers',
         'tel1' => '01 51 00 11 11',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 12,
@@ -194,6 +208,7 @@ return [
         'adresse' => 'Gounsoédji',
         'tel1' => '01 96 96 75 72',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 13,
@@ -209,6 +224,7 @@ return [
         'adresse' => 'Adjagbo',
         'tel1' => '01 69 34 55 11',
         'tel2' => '01 96 67 86 07',
+        'logo' => '',
     ],
     [
         'n' => 14,
@@ -224,6 +240,7 @@ return [
         'adresse' => 'Camp Guézo',
         'tel1' => '01 91 20 34 56',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 15,
@@ -239,6 +256,7 @@ return [
         'adresse' => 'Gbéto',
         'tel1' => '01 90 43 06 61',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 16,
@@ -254,6 +272,7 @@ return [
         'adresse' => 'Vodjè',
         'tel1' => '01 96 01 00 18',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 17,
@@ -269,6 +288,7 @@ return [
         'adresse' => 'Wologuèdè',
         'tel1' => '01 97 34 34 87',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 18,
@@ -284,6 +304,7 @@ return [
         'adresse' => '',
         'tel1' => '01 94 85 52 09',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 19,
@@ -299,6 +320,7 @@ return [
         'adresse' => 'Zongo Résidentiel',
         'tel1' => '01 97 08 90 00',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 20,
@@ -314,6 +336,7 @@ return [
         'adresse' => 'Hlacomey',
         'tel1' => '01 67 11 02 20',
         'tel2' => '',
+        'logo' => '/assets/img/agences/dahomey-discovery.png',
     ],
     [
         'n' => 21,
@@ -329,6 +352,7 @@ return [
         'adresse' => 'Ayibatin Kpota',
         'tel1' => '01 42 22 07 61',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 22,
@@ -344,6 +368,7 @@ return [
         'adresse' => 'Ayélawadjè',
         'tel1' => '01 97 63 93 76',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 23,
@@ -359,6 +384,7 @@ return [
         'adresse' => 'Gbéto',
         'tel1' => '01 97 38 57 73',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 24,
@@ -374,6 +400,7 @@ return [
         'adresse' => 'Dégakon',
         'tel1' => '01 53 26 26 25',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 25,
@@ -389,6 +416,7 @@ return [
         'adresse' => 'Hlogou',
         'tel1' => '01 96 10 01 53',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 26,
@@ -404,6 +432,7 @@ return [
         'adresse' => 'Donaten',
         'tel1' => '01 95 96 93 10',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 27,
@@ -419,6 +448,7 @@ return [
         'adresse' => 'Ste Rita',
         'tel1' => '01 97 97 07 62',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 28,
@@ -434,6 +464,7 @@ return [
         'adresse' => 'Tokpa Hoho',
         'tel1' => '01 61 14 81 76',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 29,
@@ -449,6 +480,7 @@ return [
         'adresse' => 'Sikècodji',
         'tel1' => '01 65 71 41 41',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 30,
@@ -464,6 +496,7 @@ return [
         'adresse' => 'Vodjè',
         'tel1' => '01 97 31 25 18',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 31,
@@ -479,6 +512,7 @@ return [
         'adresse' => 'Sikècodji',
         'tel1' => '01 96 08 10 12',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 32,
@@ -494,6 +528,7 @@ return [
         'adresse' => 'St Jean',
         'tel1' => '01 96 16 51 11',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 33,
@@ -509,6 +544,7 @@ return [
         'adresse' => 'Akpakpa Dégakon',
         'tel1' => '01 61 15 65 47',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 34,
@@ -524,6 +560,7 @@ return [
         'adresse' => 'Atakè',
         'tel1' => '01 96 61 18 32',
         'tel2' => '01 97 71 40 79',
+        'logo' => '',
     ],
     [
         'n' => 35,
@@ -539,6 +576,7 @@ return [
         'adresse' => 'Jéricho',
         'tel1' => '01 58 99 35 33',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 36,
@@ -554,6 +592,7 @@ return [
         'adresse' => 'Wloguèdè',
         'tel1' => '01 95 96 07 08',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 37,
@@ -569,6 +608,7 @@ return [
         'adresse' => 'Vèdoko',
         'tel1' => '01 95 60 44 32',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 38,
@@ -584,6 +624,7 @@ return [
         'adresse' => 'Ayélawadjè',
         'tel1' => '01 62 71 17 71',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 39,
@@ -599,6 +640,7 @@ return [
         'adresse' => 'Maro militaire',
         'tel1' => '01 94 16 81 83',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 40,
@@ -614,6 +656,7 @@ return [
         'adresse' => 'Wologuèdè',
         'tel1' => '01 97 50 71 24',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 41,
@@ -629,6 +672,7 @@ return [
         'adresse' => 'Pahou, Bazounkpa',
         'tel1' => '01 95 74 59 94',
         'tel2' => '01 96 82 86 55',
+        'logo' => '',
     ],
     [
         'n' => 42,
@@ -644,6 +688,7 @@ return [
         'adresse' => 'St Michel Gbèdomidji',
         'tel1' => '01 96 36 18 18',
         'tel2' => '',
+        'logo' => '',
     ],
     [
         'n' => 43,
@@ -659,5 +704,6 @@ return [
         'adresse' => 'Bar Tito',
         'tel1' => '01 96 78 17 28',
         'tel2' => '',
+        'logo' => '',
     ],
 ];

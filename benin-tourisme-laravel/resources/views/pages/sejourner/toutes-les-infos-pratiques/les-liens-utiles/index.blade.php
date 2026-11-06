@@ -71,22 +71,26 @@
                                         @endverbatim
 {{-- BEGIN agences agréées & espace partenaires --}}
 @php
-    // Répertoire officiel (fichier de données versionné) + campagnes partenaires (base).
     $agencesAgreees = [];
-    try {
-        $__f = resource_path('data/agences-agreees-2026.php');
-        if (is_file($__f)) { $agencesAgreees = require $__f; }
-    } catch (\Throwable $e) { $agencesAgreees = []; }
+    try { $__f = resource_path('data/agences-agreees-2026.php'); if (is_file($__f)) { $agencesAgreees = require $__f; } }
+    catch (\Throwable $e) { $agencesAgreees = []; }
 
     $adCampaigns = collect();
-    try {
-        if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) {
-            $adCampaigns = \App\Models\AdCampaign::visible()->get();
-        }
-    } catch (\Throwable $e) { $adCampaigns = collect(); }
+    try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $adCampaigns = \App\Models\AdCampaign::visible()->get(); } }
+    catch (\Throwable $e) { $adCampaigns = collect(); }
 
     $__communes = collect($agencesAgreees)->pluck('commune')->filter()->unique()->sort()->values();
     $__badge = ['Agence réceptive' => 'rec', 'Voyagiste' => 'voy', 'Billettiste' => 'bil'];
+    $__counts = ['Agence réceptive' => 0, 'Voyagiste' => 0, 'Billettiste' => 0];
+    foreach ($agencesAgreees as $__a) { if (isset($__counts[$__a['categorie']])) { $__counts[$__a['categorie']]++; } }
+    $__initials = function (string $name): string {
+        $words = preg_split('/[\s\-]+/u', $name, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        $skip = ['ET','AND','DE','DU','LA','LE','DES','SARL','BENIN'];
+        $w = array_values(array_filter($words, fn ($x) => !in_array(mb_strtoupper($x), $skip, true)));
+        if (!$w) { $w = $words; }
+        if (count($w) >= 2) { return mb_strtoupper(mb_substr($w[0], 0, 1) . mb_substr($w[1], 0, 1)); }
+        return mb_strtoupper(mb_substr($name, 0, 2));
+    };
 @endphp
 
 @verbatim
@@ -186,28 +190,53 @@
   font-weight:500;cursor:pointer;transition:background .2s,color .2s;}
 .ba-dir__reset:hover{background:var(--cream);color:var(--ink);}
 
-.ba-dir__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:clamp(14px,1.8vw,20px);}
-.ba-dir__card{display:flex;flex-direction:column;gap:9px;background:var(--white);border:1px solid var(--line);
-  border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);transition:transform .22s,box-shadow .22s,border-color .22s;}
-.ba-dir__card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(11,61,44,.12);border-color:#d7cfbd;}
+.ba-dir__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(14px,1.8vw,20px);}
+.ba-dir__card{position:relative;display:flex;flex-direction:column;gap:10px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden;}
+.ba-dir__card::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--accent,var(--green));opacity:.9;}
+.ba-dir__card--rec{--accent:linear-gradient(90deg,#00a05d,#0b3d2c);}
+.ba-dir__card--voy{--accent:linear-gradient(90deg,#f0b429,#b9892a);}
+.ba-dir__card--bil{--accent:linear-gradient(90deg,#3f6fc0,#2b4a86);}
+.ba-dir__card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(11,61,44,.13);border-color:#d7cfbd;}
 .ba-dir__card.is-hidden{display:none;}
-.ba-dir__cardhead{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
-.ba-dir__badge{font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
+
+.ba-dir__top{display:flex;gap:14px;align-items:flex-start;}
+.ba-dir__avatar{flex:0 0 auto;width:58px;height:58px;border-radius:14px;overflow:hidden;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--paper);}
+.ba-dir__avatar img{width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;}
+.ba-dir__mono{width:100%;height:100%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;
+  font-size:1.26rem;color:#fff;letter-spacing:.02em;}
+.ba-dir__mono--rec{background:linear-gradient(135deg,#00a05d,#0b3d2c);}
+.ba-dir__mono--voy{background:linear-gradient(135deg,#f0b429,#9a6f1e);}
+.ba-dir__mono--bil{background:linear-gradient(135deg,#4f7fcf,#2b4a86);}
+.ba-dir__id{min-width:0;flex:1;}
+.ba-dir__name{margin:0;font-family:var(--serif);font-weight:600;font-size:1.2rem;line-height:1.2;color:var(--ink);}
+.ba-dir__legal{margin:3px 0 0;font-size:.78rem;color:var(--muted);}
+
+.ba-dir__meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+.ba-dir__badge{font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
 .ba-dir__badge--rec{background:var(--green-l);color:#06603a;}
 .ba-dir__badge--voy{background:#fef4d6;color:#8a6a06;}
 .ba-dir__badge--bil{background:#e9eef7;color:#2f4b86;}
-.ba-dir__type{margin-left:auto;font-size:.68rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px;}
+.ba-dir__type{font-size:.66rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px;}
 .ba-dir__type--online{color:#06603a;border-color:#bfe0cd;background:#f1f9f4;}
-.ba-dir__name{margin:2px 0 0;font-family:var(--serif);font-weight:600;font-size:1.22rem;line-height:1.22;color:var(--ink);}
-.ba-dir__legal{margin:0;font-size:.78rem;color:var(--muted);}
-.ba-dir__loc{margin:2px 0 0;display:flex;align-items:center;gap:6px;font-size:.9rem;color:var(--soft);}
-.ba-dir__loc svg{flex:0 0 auto;color:var(--green);}
-.ba-dir__presta{margin:4px 0 0;font-size:.9rem;line-height:1.5;color:var(--soft);
+.ba-dir__loc{margin:0;display:flex;align-items:flex-start;gap:6px;font-size:.9rem;color:var(--soft);}
+.ba-dir__loc svg{flex:0 0 auto;margin-top:2px;color:var(--green);}
+.ba-dir__presta{margin:0;font-size:.9rem;line-height:1.5;color:var(--soft);
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .ba-dir__foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--cream);display:flex;flex-wrap:wrap;gap:8px 16px;}
 .ba-dir__tel{display:inline-flex;align-items:center;gap:6px;font-size:.9rem;font-weight:500;color:var(--green-d);text-decoration:none;}
 .ba-dir__tel svg{color:var(--green);}
 .ba-dir__tel:hover{color:var(--green);text-decoration:underline;}
+
+/* chips de filtre rapide par catégorie */
+.ba-dir__chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+.ba-chip{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--soft);
+  border-radius:999px;padding:8px 15px;font-size:.88rem;font-weight:500;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.ba-chip:hover{border-color:var(--green);color:var(--green-d);}
+.ba-chip__n{font-size:.76rem;font-weight:700;background:var(--cream);color:var(--muted);border-radius:999px;padding:1px 8px;}
+.ba-chip[aria-pressed="true"]{background:var(--green-d);border-color:var(--green-d);color:#fff;}
+.ba-chip[aria-pressed="true"] .ba-chip__n{background:rgba(255,255,255,.2);color:#fff;}
 
 .ba-dir__noresult{text-align:center;color:var(--soft);padding:40px 16px;font-size:1.02rem;}
 .ba-linkbtn,.ba-dir__morebtn{font:inherit;cursor:pointer;}
@@ -236,13 +265,9 @@
 
 <div class="ba-wrap">
 
-  {{-- ESPACE PUBLICITAIRE — partenaires. Distinct du répertoire officiel. --}}
+  {{-- ESPACE PUBLICITAIRE --}}
   <section class="ba-ads" data-ba-dynamique aria-label="Espace partenaires">
-    <div class="ba-ads__top">
-      <p class="ba-ads__eyebrow">Espace partenaires</p>
-      <span class="ba-ads__tag">Publicité</span>
-    </div>
-
+    <div class="ba-ads__top"><p class="ba-ads__eyebrow">Espace partenaires</p><span class="ba-ads__tag">Publicité</span></div>
     @if ($adCampaigns->count())
       <div class="ba-ads__viewport">
         <div class="ba-ads__track">
@@ -254,9 +279,7 @@
                 @if ($c->advertiser)<p class="ba-ads__advertiser">{{ $c->advertiser }}</p>@endif
                 <h3 class="ba-ads__title">{{ $c->title }}</h3>
                 @if ($c->description)<p class="ba-ads__desc">{{ $c->description }}</p>@endif
-                @if ($c->url)
-                  <a class="ba-ads__btn" href="{{ $c->url }}" target="_blank" rel="noopener sponsored">{{ $c->button_label ?: 'En savoir plus' }}<span class="ba-ads__arrow" aria-hidden="true">&rarr;</span></a>
-                @endif
+                @if ($c->url)<a class="ba-ads__btn" href="{{ $c->url }}" target="_blank" rel="noopener sponsored">{{ $c->button_label ?: 'En savoir plus' }}<span class="ba-ads__arrow" aria-hidden="true">&rarr;</span></a>@endif
               </div>
             </div>
           @endforeach
@@ -266,9 +289,7 @@
           <button class="ba-ads__nav ba-ads__nav--next" type="button" aria-label="Annonce suivante">&rsaquo;</button>
         @endif
       </div>
-      @if ($adCampaigns->count() > 1)
-        <div class="ba-ads__dots" role="tablist" aria-label="Choisir une annonce"></div>
-      @endif
+      @if ($adCampaigns->count() > 1)<div class="ba-ads__dots" role="tablist" aria-label="Choisir une annonce"></div>@endif
     @else
       <div class="ba-ads__empty">
         <h3>Cet espace accueille les campagnes de nos partenaires</h3>
@@ -278,7 +299,7 @@
     @endif
   </section>
 
-  {{-- INTRO éditoriale --}}
+  {{-- INTRO --}}
   <section class="ba-intro">
     <p class="ba-intro__eyebrow">Agences agréées au Bénin</p>
     <h2 class="ba-intro__title">Réservez auprès d&rsquo;une agence officiellement reconnue</h2>
@@ -287,44 +308,33 @@
 
   {{-- CONSEIL DE SÉCURITÉ --}}
   <aside class="ba-safety" role="note">
-    <div class="ba-safety__icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg>
-    </div>
-    <div class="ba-safety__body">
-      <h3 class="ba-safety__title">Vérifiez toujours l&rsquo;agrément avant de payer</h3>
-      <p>Une publicité ou une belle vitrine ne valent pas agrément. Avant tout acompte, retrouvez l&rsquo;agence dans le répertoire ci-dessous, demandez son numéro de licence, et privilégiez un paiement traçable. En cas de doute, contactez la Direction du Développement touristique.</p>
-    </div>
+    <div class="ba-safety__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg></div>
+    <div class="ba-safety__body"><h3 class="ba-safety__title">Vérifiez toujours l&rsquo;agrément avant de payer</h3>
+      <p>Une publicité ou une belle vitrine ne valent pas agrément. Avant tout acompte, retrouvez l&rsquo;agence dans le répertoire ci-dessous, demandez son numéro de licence, et privilégiez un paiement traçable. En cas de doute, contactez la Direction du Développement touristique.</p></div>
   </aside>
 
-  {{-- RÉPERTOIRE : recherche, filtres, grille, « voir plus » --}}
+  {{-- RÉPERTOIRE --}}
   <section class="ba-dir" data-ba-dynamique aria-label="Répertoire des agences agréées">
     <header class="ba-dir__head">
       <h2 class="ba-dir__h2">Répertoire des agences agréées</h2>
       <p class="ba-dir__count"><span id="ba-count">{{ count($agencesAgreees) }}</span> agences recensées &mdash; arrêté du 21 janvier 2026</p>
     </header>
 
+    <div class="ba-dir__chips">
+      <button class="ba-chip" type="button" data-cat="" aria-pressed="true">Toutes<span class="ba-chip__n">{{ count($agencesAgreees) }}</span></button>
+      <button class="ba-chip" type="button" data-cat="Agence réceptive" aria-pressed="false">Agences réceptives<span class="ba-chip__n">{{ $__counts['Agence réceptive'] }}</span></button>
+      <button class="ba-chip" type="button" data-cat="Voyagiste" aria-pressed="false">Voyagistes<span class="ba-chip__n">{{ $__counts['Voyagiste'] }}</span></button>
+      <button class="ba-chip" type="button" data-cat="Billettiste" aria-pressed="false">Billettistes<span class="ba-chip__n">{{ $__counts['Billettiste'] }}</span></button>
+    </div>
+
     <div class="ba-dir__toolbar">
       <div class="ba-dir__searchwrap">
         <svg class="ba-dir__searchicon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="m21 20-4.3-4.3a8 8 0 1 0-1.4 1.4L20 21zM4 10a6 6 0 1 1 12 0 6 6 0 0 1-12 0z"/></svg>
         <input id="ba-q" type="search" class="ba-dir__search" placeholder="Rechercher une agence, une commune, une prestation&hellip;" aria-label="Rechercher une agence">
       </div>
-      <select id="ba-cat" class="ba-dir__select" aria-label="Filtrer par catégorie">
-        <option value="">Toutes catégories</option>
-        <option value="Agence réceptive">Agence réceptive</option>
-        <option value="Voyagiste">Voyagiste</option>
-        <option value="Billettiste">Billettiste</option>
-      </select>
-      <select id="ba-com" class="ba-dir__select" aria-label="Filtrer par commune">
-        <option value="">Toutes communes</option>
-        @foreach ($__communes as $commune)
-          <option value="{{ $commune }}">{{ $commune }}</option>
-        @endforeach
-      </select>
-      <select id="ba-typ" class="ba-dir__select" aria-label="Filtrer par type">
-        <option value="">Tous types</option>
-        <option value="agence physique">Agence physique</option>
-        <option value="en ligne">En ligne</option>
-      </select>
+      <select id="ba-cat" class="ba-dir__select" aria-label="Filtrer par catégorie"><option value="">Toutes catégories</option><option value="Agence réceptive">Agence réceptive</option><option value="Voyagiste">Voyagiste</option><option value="Billettiste">Billettiste</option></select>
+      <select id="ba-com" class="ba-dir__select" aria-label="Filtrer par commune"><option value="">Toutes communes</option>@foreach ($__communes as $commune)<option value="{{ $commune }}">{{ $commune }}</option>@endforeach</select>
+      <select id="ba-typ" class="ba-dir__select" aria-label="Filtrer par type"><option value="">Tous types</option><option value="agence physique">Agence physique</option><option value="en ligne">En ligne</option></select>
       <button id="ba-reset" class="ba-dir__reset" type="button">Réinitialiser</button>
     </div>
 
@@ -338,24 +348,32 @@
           $loc = trim($a['commune'] . ($a['adresse'] ? ' · ' . $a['adresse'] : ''), ' ·');
           $blob = mb_strtolower(implode(' ', [$nom, $a['raison_sociale'], $a['commune'], $a['adresse'], $a['prestations'], $a['gerant'], $a['categorie'], $a['type']]));
           $tels = array_values(array_filter([$a['tel1'] ?? '', $a['tel2'] ?? '']));
+          $logo = trim($a['logo'] ?? '');
         @endphp
-        <article class="ba-dir__card"
-                 data-cat="{{ $a['categorie'] }}"
-                 data-commune="{{ $a['commune'] }}"
-                 data-type="{{ $isOnline ? 'en ligne' : 'agence physique' }}"
-                 data-search="{{ $blob }}">
-          <div class="ba-dir__cardhead">
+        <article class="ba-dir__card ba-dir__card--{{ $cat }}"
+                 data-cat="{{ $a['categorie'] }}" data-commune="{{ $a['commune'] }}"
+                 data-type="{{ $isOnline ? 'en ligne' : 'agence physique' }}" data-search="{{ $blob }}">
+          <div class="ba-dir__top">
+            <span class="ba-dir__avatar">
+              @if ($logo)
+                <img src="{{ $logo }}" alt="Logo {{ $nom }}" loading="lazy" decoding="async">
+              @else
+                <span class="ba-dir__mono ba-dir__mono--{{ $cat }}">{{ $__initials($nom) }}</span>
+              @endif
+            </span>
+            <div class="ba-dir__id">
+              <h3 class="ba-dir__name">{{ $nom }}</h3>
+              <p class="ba-dir__legal">{{ $legal ? $legal . ' · ' . $a['forme'] : $a['forme'] }}</p>
+            </div>
+          </div>
+          <div class="ba-dir__meta">
             <span class="ba-dir__badge ba-dir__badge--{{ $cat }}">{{ $a['categorie'] }}</span>
             <span class="ba-dir__type{{ $isOnline ? ' ba-dir__type--online' : '' }}">{{ $isOnline ? 'En ligne' : 'Agence physique' }}</span>
           </div>
-          <h3 class="ba-dir__name">{{ $nom }}</h3>
-          <p class="ba-dir__legal">{{ $legal ? $legal . ' · ' . $a['forme'] : $a['forme'] }}</p>
           @if ($loc)
             <p class="ba-dir__loc"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>{{ $loc }}</p>
           @endif
-          @if ($a['prestations'])
-            <p class="ba-dir__presta">{{ $a['prestations'] }}</p>
-          @endif
+          @if ($a['prestations'])<p class="ba-dir__presta">{{ $a['prestations'] }}</p>@endif
           @if (count($tels))
             <div class="ba-dir__foot">
               @foreach ($tels as $t)
@@ -469,6 +487,13 @@
   if (reset) reset.addEventListener('click', clearAll);
   if (emptyReset) emptyReset.addEventListener('click', clearAll);
   if (moreBtn) moreBtn.addEventListener('click', function () { shown += STEP; apply(false); });
+
+  // chips de catégorie -> pilotent le select catégorie
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.ba-chip'));
+  function syncChips(){ chips.forEach(function(c){ c.setAttribute('aria-pressed', (c.dataset.cat||'')===fCat.value ? 'true':'false'); }); }
+  chips.forEach(function(c){ c.addEventListener('click', function(){ fCat.value = c.dataset.cat||''; apply(true); syncChips(); }); });
+  var _apply = apply;
+  apply = function(r){ _apply(r); syncChips(); };
 
   apply(true);
 })();
