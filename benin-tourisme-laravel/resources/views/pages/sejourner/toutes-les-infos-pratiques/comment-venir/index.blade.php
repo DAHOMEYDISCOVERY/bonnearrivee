@@ -132,6 +132,50 @@
                     @endforeach
 @verbatim
                 </div>
+@endverbatim
+@php
+    $__airAds = collect();
+    try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $__airAds = \App\Models\AdCampaign::visible()->where('placement', 'compagnies')->get(); } }
+    catch (\Throwable $e) { $__airAds = collect(); }
+@endphp
+@if ($__airAds->count())
+                <aside class="ba-air-ads" data-ba-dynamique aria-label="Espace partenaires">
+                    <span class="ba-air-ads__tag">Publicité</span>
+                    <div class="ba-air-ads__viewport"><div class="ba-air-ads__track">
+                        @foreach ($__airAds as $c)
+                        <div class="ba-air-ads__slide">
+                            <div class="ba-air-ads__media"><img src="{{ $c->image_url }}" alt="{{ $c->image_alt ?: $c->title }}" loading="lazy" decoding="async"></div>
+                            <div class="ba-air-ads__body">
+                                @if ($c->advertiser)<p class="ba-air-ads__advertiser">{{ $c->advertiser }}</p>@endif
+                                <h3 class="ba-air-ads__title">{{ $c->title }}</h3>
+                                @if ($c->description)<p class="ba-air-ads__desc">{{ $c->description }}</p>@endif
+                                @if ($c->url)<a class="ba-air-ads__btn" href="{{ $c->url }}" target="_blank" rel="noopener sponsored">{{ $c->button_label ?: 'En savoir plus' }} &rarr;</a>@endif
+                            </div>
+                        </div>
+                        @endforeach
+                    </div></div>
+                    @if ($__airAds->count() > 1)<div class="ba-air-ads__dots" role="tablist" aria-label="Choisir une annonce"></div>@endif
+                </aside>
+@endif
+@verbatim
+<script>
+(function(){
+  var ads=document.querySelector('.ba-air-ads'); if(!ads) return;
+  var track=ads.querySelector('.ba-air-ads__track');
+  var slides=track?Array.prototype.slice.call(track.children):[];
+  var dotsWrap=ads.querySelector('.ba-air-ads__dots');
+  if(slides.length<2||!dotsWrap) return;
+  var i=0,timer=null,paused=false,reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function(_,n){var d=document.createElement('button');d.className='ba-air-ads__dot';d.type='button';d.setAttribute('role','tab');d.setAttribute('aria-label','Annonce '+(n+1));d.addEventListener('click',function(){go(n);restart();});dotsWrap.appendChild(d);});
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+  function go(n){i=(n+slides.length)%slides.length;track.style.transform='translateX('+(-i*100)+'%)';dots.forEach(function(d,k){d.setAttribute('aria-selected',k===i?'true':'false');});}
+  function next(){go(i+1);}function start(){if(reduce||paused)return;timer=setInterval(next,6000);}function stop(){if(timer){clearInterval(timer);timer=null;}}function restart(){stop();start();}
+  ['mouseenter','focusin'].forEach(function(e){ads.addEventListener(e,function(){paused=true;stop();});});
+  ['mouseleave','focusout'].forEach(function(e){ads.addEventListener(e,function(){paused=false;start();});});
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+  go(0);start();
+})();
+</script>
             </article>
         </section>
     </div>

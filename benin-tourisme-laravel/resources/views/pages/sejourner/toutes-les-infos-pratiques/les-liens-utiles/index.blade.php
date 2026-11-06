@@ -76,7 +76,7 @@
     catch (\Throwable $e) { $agencesAgreees = []; }
 
     $adCampaigns = collect();
-    try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $adCampaigns = \App\Models\AdCampaign::visible()->get(); } }
+    try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $adCampaigns = \App\Models\AdCampaign::visible()->where('placement', 'agences')->get(); } }
     catch (\Throwable $e) { $adCampaigns = collect(); }
 
     $__communes = collect($agencesAgreees)->pluck('commune')->filter()->unique()->sort()->values();

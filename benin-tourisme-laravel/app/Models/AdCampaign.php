@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 final class AdCampaign extends Model
 {
     protected $fillable = [
-        'title', 'advertiser', 'image_path', 'image_alt', 'description',
+        'title', 'advertiser', 'placement', 'image_path', 'image_alt', 'description',
         'button_label', 'url', 'starts_at', 'ends_at', 'is_active', 'sort_order',
     ];
 

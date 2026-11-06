@@ -6,11 +6,11 @@ use App\Models\AdCampaign;
 use Illuminate\Database\Seeder;
 
 /**
- * Campagnes de l'espace publicitaire de la page Liens utiles.
+ * Campagnes de l'espace publicitaire.
  *
- * Entreprises réelles (compagnie aérienne nationale du Bénin et agence
- * réceptive éditrice du portail) : vraies campagnes, non fictives. Idempotent —
- * calé sur l'annonceur : relancer met à jour sans créer de doublon.
+ * Entreprises réelles. Idempotent (calé sur l'annonceur) : relancer met à jour.
+ * Emplacements : 'agences' (carrousel Liens utiles) / 'compagnies' (bannière
+ * latérale de la page Comment venir).
  *
  *   php artisan db:seed --class=Database\\Seeders\\AdCampaignSeeder
  */
@@ -21,10 +21,11 @@ class AdCampaignSeeder extends Seeder
         AdCampaign::updateOrCreate(
             ['advertiser' => 'Amazone Airlines'],
             [
-                'title'        => 'Amazone Airlines — les Ailes du Bénin',
-                'image_path'   => '/assets/img/cotonou-1920x1080.webp',
-                'image_alt'    => 'Cotonou, porte d’entrée du Bénin',
-                'description'  => 'La compagnie aérienne nationale du Bénin. Envolez-vous au départ et à destination de Cotonou.',
+                'placement'    => 'compagnies',
+                'title'        => 'Les Ailes du Bénin',
+                'image_path'   => '/assets/img/amazone-airlines-banner.webp',
+                'image_alt'    => 'Avion Amazone Airlines au chargement au coucher du soleil',
+                'description'  => 'La compagnie aérienne nationale du Bénin.',
                 'button_label' => 'Réserver un vol',
                 'url'          => 'https://flyamazoneair.bj',
                 'is_active'    => true,
@@ -35,6 +36,7 @@ class AdCampaignSeeder extends Seeder
         AdCampaign::updateOrCreate(
             ['advertiser' => 'Dahomey Discovery'],
             [
+                'placement'    => 'agences',
                 'title'        => 'Découvrez le Bénin avec sens sur Dahomey Discovery',
                 'image_path'   => '/assets/img/dahomey-discovery-banner.webp',
                 'image_alt'    => 'Village lacustre du Bénin au coucher du soleil',
@@ -42,7 +44,7 @@ class AdCampaignSeeder extends Seeder
                 'button_label' => 'Découvrir les circuits',
                 'url'          => 'https://dahomeydiscovery.com',
                 'is_active'    => true,
-                'sort_order'   => 1,
+                'sort_order'   => 0,
             ]
         );
     }

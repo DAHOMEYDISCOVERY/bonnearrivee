@@ -70,6 +70,13 @@ class AdCampaignResource extends Resource
                     ->label('Fin de diffusion')->native(false)
                     ->after('starts_at')
                     ->helperText('Laisser vide pour une diffusion sans date de fin.'),
+                Forms\Components\Select::make('placement')
+                    ->label('Emplacement')
+                    ->options([
+                        'agences'    => 'Carrousel « Liens utiles » (agences agréées)',
+                        'compagnies' => 'Bannière latérale « Comment venir » (compagnies)',
+                    ])
+                    ->default('agences')->required()->native(false),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Active')->default(true),
                 Forms\Components\TextInput::make('sort_order')
@@ -85,6 +92,8 @@ class AdCampaignResource extends Resource
                 Tables\Columns\ImageColumn::make('image_path')->label('Visuel')->disk('public'),
                 Tables\Columns\TextColumn::make('title')->label('Titre')->searchable()->sortable()->wrap(),
                 Tables\Columns\TextColumn::make('advertiser')->label('Annonceur')->searchable()->toggleable(),
+                Tables\Columns\TextColumn::make('placement')->label('Emplacement')->badge()
+                    ->formatStateUsing(fn (string $state): string => $state === 'compagnies' ? 'Compagnies' : 'Agences'),
                 Tables\Columns\TextColumn::make('starts_at')->label('Début')->date('d/m/Y')->placeholder('—'),
                 Tables\Columns\TextColumn::make('ends_at')->label('Fin')->date('d/m/Y')->placeholder('—'),
                 Tables\Columns\IconColumn::make('is_active')->label('Active')->boolean(),
