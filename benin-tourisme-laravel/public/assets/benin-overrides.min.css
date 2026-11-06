@@ -9601,3 +9601,4 @@ body.home .woody-component-landswpr .swiper-slide {
         display: none !important;
     }
 }
+/* ba-hero-blur */:is(.woody-component-hero,.emerv-hero,.event-hero,.ba-page-hero,.benin-page-hero,.wd-hero,.wd2-hero,.wv-hero) img.imageObject-img,.ba-page-hero>img{filter:blur(2px) brightness(.9) saturate(1.03);transform:scale(1.04)}:is(.woody-component-hero,.emerv-hero,.event-hero,.ba-page-hero,.benin-page-hero,.wd-hero,.wd2-hero,.wv-hero) figure{overflow:hidden}
