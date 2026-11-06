@@ -9602,11 +9602,10 @@ body.home .woody-component-landswpr .swiper-slide {
     }
 }
 
-/* === ba-hero-blur : lisibilité des titres sur les hero de pages internes =====
-   Léger flou + voile discret sur l'image de fond des hero (toutes les pages
-   SAUF le slider de la page d'accueil, qui est .woody-component-landswpr et
-   n'est donc pas ciblé ici). Ajouté le 2026-11-06. */
+/* === ba-hero-dark : voile sombre sur l'image des hero de pages internes =======
+   Assombrit l'image de fond des hero (SANS flou : l'image reste nette et
+   visible) pour que les titres blancs ressortent. Ne cible PAS le slider de la
+   page d'accueil (.woody-component-landswpr). Ajouté le 2026-11-06. */
 :is(.woody-component-hero,.emerv-hero,.event-hero,.ba-page-hero,.benin-page-hero,.wd-hero,.wd2-hero,.wv-hero) img.imageObject-img,
-.ba-page-hero > img{filter:blur(2px) brightness(.9) saturate(1.03);transform:scale(1.04)}
-:is(.woody-component-hero,.emerv-hero,.event-hero,.ba-page-hero,.benin-page-hero,.wd-hero,.wd2-hero,.wv-hero) figure{overflow:hidden}
-/* === fin ba-hero-blur === */
+.ba-page-hero > img{filter:brightness(.6) saturate(1.03)}
+/* === fin ba-hero-dark === */
