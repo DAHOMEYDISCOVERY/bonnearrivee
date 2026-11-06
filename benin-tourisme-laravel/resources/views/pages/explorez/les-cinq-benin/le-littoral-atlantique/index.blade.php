@@ -21,10 +21,10 @@
     class="woody-component woody-component-hero has-title    tpl_01 hero-full-height isRel bgimg-op90  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                                                                                                                     @endverbatim<x-media.figure
-    src="/assets/img/mangrove-1920x960.webp"
+    src="/assets/img/littoral-atlantique-hero-2026-11-06-1920x960.webp"
     alt="La mangrove du fleuve Mono"
     loading="eager"
-    srcset="/assets/img/mangrove-360x180.webp 360w, /assets/img/mangrove-640x320.webp 640w, /assets/img/mangrove-1200x600.webp 1200w, /assets/img/mangrove-1920x960.webp 1920w"
+    srcset="/assets/img/littoral-atlantique-hero-2026-11-06-360x180.webp 360w, /assets/img/littoral-atlantique-hero-2026-11-06-640x320.webp 640w, /assets/img/littoral-atlantique-hero-2026-11-06-1200x600.webp 1200w, /assets/img/littoral-atlantique-hero-2026-11-06-1920x960.webp 1920w"
     published="2021-12-15 11:06:43"
     description="La mangrove du fleuve Mono"
     caption="La mangrove du fleuve Mono"
@@ -66,10 +66,10 @@
     </div>
                                         <div class="cell medium-6 large-5 flex-container align-middle media-wrapper page-teaser-media">
                                     @endverbatim<x-media.figure
-    src="/assets/img/cotonou-640x480.webp"
+    src="/assets/img/littoral-atlantique-sub-2026-11-06-640x480.webp"
     alt="Une rue de Cotonou"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
-    srcset="/assets/img/cotonou-360x270.webp 360w, /assets/img/cotonou-640x480.webp 640w, /assets/img/cotonou-1200x900.webp 1200w, /assets/img/cotonou-1920x1440.webp 1920w"
+    srcset="/assets/img/littoral-atlantique-sub-2026-11-06-360x270.webp 360w, /assets/img/littoral-atlantique-sub-2026-11-06-640x480.webp 640w, /assets/img/littoral-atlantique-sub-2026-11-06-1200x900.webp 1200w, /assets/img/littoral-atlantique-sub-2026-11-06-1920x1440.webp 1920w"
     classes="isRel imageObject pageTeaserMedia"
     published="2021-12-15 11:12:22"
     description="Une rue de Cotonou"

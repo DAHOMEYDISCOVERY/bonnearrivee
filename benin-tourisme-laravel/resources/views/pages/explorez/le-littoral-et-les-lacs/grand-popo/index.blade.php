@@ -21,10 +21,10 @@
     class="woody-component woody-component-hero has-title has-pretitle   tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
-    src="/assets/img/plage-grand-popo-1920x480.webp"
+    src="/assets/img/grand-popo-hero-2026-11-06-1920x480.webp"
     alt="La plage de Grand-Popo"
     loading="eager"
-    srcset="/assets/img/plage-grand-popo-360x90.webp 360w, /assets/img/plage-grand-popo-640x160.webp 640w, /assets/img/plage-grand-popo-1200x300.webp 1200w, /assets/img/plage-grand-popo-1920x480.webp 1920w"
+    srcset="/assets/img/grand-popo-hero-2026-11-06-360x90.webp 360w, /assets/img/grand-popo-hero-2026-11-06-640x160.webp 640w, /assets/img/grand-popo-hero-2026-11-06-1200x300.webp 1200w, /assets/img/grand-popo-hero-2026-11-06-1920x480.webp 1920w"
     published="2021-12-16 15:42:17"
     description="Pêcheurs sur le lac Nokoué"
     caption="La plage de Grand-Popo"

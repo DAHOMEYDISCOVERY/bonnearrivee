@@ -121,7 +121,7 @@
                 <p>Cotonou, Ganvié, Fidjrossè</p>
             </a>
             <a class="benin-regions__card" href="/explorez/les-cinq-benin/le-plateau-royal">
-                <img src="/assets/img/abomey-palais-640x480.webp" alt="Le plateau royal">
+                <img src="/assets/img/explorez-plateau-royal-2026-11-06-640x480.webp" alt="Le plateau royal">
                 <h3>Le plateau royal</h3>
                 <p>Abomey, Porto-Novo, Kétou</p>
             </a>
@@ -149,7 +149,7 @@
             </div>
         </a>
         <a class="benin-themes__card benin-themes__card--traditions" href="/explorez/terre-de-traditions">
-            <img src="/assets/img/vodun-1200x900.webp" alt="Terre de traditions">
+            <img src="/assets/img/explorez-terre-de-traditions-2026-11-06-1200x900.webp" alt="Terre de traditions">
             <div>
                 <span>Culture & vodun</span>
                 <h2>Terre de traditions</h2>

@@ -21,10 +21,10 @@
     class="woody-component woody-component-hero has-title has-pretitle   tpl_01 hero-full-height isRel bgimg-op90  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                                                                                                                     @endverbatim<x-media.figure
-    src="/assets/img/plage-grand-popo-1920x960.webp"
+    src="/assets/img/cote-memorielle-hero-2026-11-06-1920x960.webp"
     alt="La plage de Grand-Popo"
     loading="eager"
-    srcset="/assets/img/plage-grand-popo-360x180.webp 360w, /assets/img/plage-grand-popo-640x320.webp 640w, /assets/img/plage-grand-popo-1200x600.webp 1200w, /assets/img/plage-grand-popo-1920x960.webp 1920w"
+    srcset="/assets/img/cote-memorielle-hero-2026-11-06-360x180.webp 360w, /assets/img/cote-memorielle-hero-2026-11-06-640x320.webp 640w, /assets/img/cote-memorielle-hero-2026-11-06-1200x600.webp 1200w, /assets/img/cote-memorielle-hero-2026-11-06-1920x960.webp 1920w"
     published="2021-12-14 11:20:20"
     description="La plage de Grand-Popo"
     caption="La plage de Grand-Popo"
@@ -66,10 +66,10 @@
     </div>
                                         <div class="cell medium-6 large-5 flex-container align-middle media-wrapper page-teaser-media">
                                     @endverbatim<x-media.figure
-    src="/assets/img/dassa-640x480.webp"
+    src="/assets/img/cote-memorielle-sub-2026-11-06-640x480.webp"
     alt="Les collines de Dassa-Zoumè"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
-    srcset="/assets/img/dassa-360x270.webp 360w, /assets/img/dassa-640x480.webp 640w, /assets/img/dassa-1200x900.webp 1200w, /assets/img/dassa-1920x1440.webp 1920w"
+    srcset="/assets/img/cote-memorielle-sub-2026-11-06-360x270.webp 360w, /assets/img/cote-memorielle-sub-2026-11-06-640x480.webp 640w, /assets/img/cote-memorielle-sub-2026-11-06-1200x900.webp 1200w, /assets/img/cote-memorielle-sub-2026-11-06-1920x1440.webp 1920w"
     classes="isRel imageObject pageTeaserMedia"
     published="2021-12-13 16:15:58"
     description="Les collines de Dassa-Zoumè"
