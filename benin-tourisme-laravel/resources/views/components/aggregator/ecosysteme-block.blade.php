@@ -85,11 +85,14 @@
     function apply(){
       ticking = false;
       if (isMobile()) {
-        // Ancré tout en bas du document : pas de flottement par-dessus le footer.
+        // Ancré au bas du footer (pas de flottement par-dessus les liens, pas de
+        // dépassement sous le footer).
+        var fEl = document.querySelector('footer.site-footer') || document.querySelector('.site-footer') || fallback;
+        var footerBottomDoc = fEl.getBoundingClientRect().bottom + window.pageYOffset;
         el.style.position = 'absolute';
         el.style.bottom = 'auto';
         el.style.transform = 'none';
-        el.style.top = (document.documentElement.scrollHeight - el.offsetHeight - 16) + 'px';
+        el.style.top = Math.round(footerBottomDoc - el.offsetHeight - 18) + 'px';
       } else {
         el.style.position = '';
         el.style.top = '';
