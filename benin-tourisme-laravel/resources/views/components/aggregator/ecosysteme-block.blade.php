@@ -1,82 +1,84 @@
-{{-- Bloc « Notre écosystème » — design editorial moderne, inspire des sections
-     partenaires premium (Airbnb, Klook, Wander) : grille de 3 cards avec media
-     en pleine hauteur, overlay degrade, badge marque, contenu et CTA anime. --}}
+{{-- Écosystème « Bonne Arrivée » — lanceur flottant : trois boutons empilés à
+     droite (vert / jaune / rouge, couleurs du Bénin) qui ouvrent les sites des
+     trois marques. Remplace l'ancienne section « Un portail, trois marques ».
+     Rendu en position fixe, visible sur toute la page. --}}
 @php
-    $ecoCards = [
+    $ecoLinks = [
         [
-            'href'    => 'https://dahomeydiscovery.com',
-            'brand'   => '#00844d',
-            'image'   => '/assets/img/ecosysteme/dahomey-discovery.webp',
-            'imageAlt'=> 'Dahomey Discovery — accueil',
-            'badge'   => 'Agence réceptive',
-            'eyebrow' => 'Depuis 2018',
-            'title'   => 'Dahomey Discovery',
-            'text'    => 'Circuits sur mesure, hébergements, transferts, immersions culturelles. L\'agence fondée par Zoulfati Hassan Derby édite ce portail Bonne Arrivée.',
-            'cta'     => 'dahomeydiscovery.com',
+            'href'  => 'https://dahomeydiscovery.com',
+            'brand' => '#00844d',   // vert
+            'ink'   => '#ffffff',
+            'title' => 'Dahomey Discovery',
+            'sub'   => 'Agence réceptive',
+            'icon'  => 'compass',
         ],
         [
-            'href'    => 'https://www.petit-train-cotonou.com',
-            'brand'   => '#e8112d',
-            'image'   => '/assets/img/petit-train-cotonou.webp',
-            'imageAlt'=> 'Le Petit Train de Cotonou',
-            'badge'   => 'Loisirs urbains',
-            'eyebrow' => 'Trois circuits',
-            'title'   => 'Le Petit Train de Cotonou',
-            'text'    => 'Trois parcours commentés (15 min, 30 min, 1 h) au cœur de la capitale. Départs depuis le Rond-point Akpakpa, en famille, en groupe ou en privatisation.',
-            'cta'     => 'petit-train-cotonou.com',
+            'href'  => 'https://www.wanilo.studio',
+            'brand' => '#fcd116',   // jaune
+            'ink'   => '#1a1405',
+            'title' => 'Wanilo Studio',
+            'sub'   => 'Studio créatif',
+            'icon'  => 'camera',
         ],
         [
-            'href'    => 'https://www.wanilo.studio',
-            'brand'   => '#fcd116',
-            'image'   => '/assets/img/ecosysteme/wanilo-studio.webp',
-            'imageAlt'=> 'Wanilo Studio — accueil',
-            'badge'   => 'Studio créatif',
-            'eyebrow' => 'Cotonou · Bénin',
-            'title'   => 'Wanilo Studio',
-            'text'    => 'Production vidéo, podcast, photo, décors et équipe technique locale. Le studio béninois qui signe l\'image de nos séjours et de ce portail.',
-            'cta'     => 'wanilo.studio',
+            'href'  => 'https://www.petit-train-cotonou.com',
+            'brand' => '#e8112d',   // rouge
+            'ink'   => '#ffffff',
+            'title' => 'Le Petit Train de Cotonou',
+            'sub'   => 'Loisirs urbains',
+            'icon'  => 'train',
         ],
+    ];
+
+    $ecoIcons = [
+        'compass' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+        'camera'  => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+        'train'   => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M9 3v8m6-8v8"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/><path d="M6.5 21l2-3m9 3-2-3"/></svg>',
     ];
 @endphp
 
-<section class="ba-ecosystem" aria-labelledby="ecosysteme-titre">
-    <div class="ba-ecosystem__container">
-        <header class="ba-ecosystem__head">
-            <p class="ba-ecosystem__eyebrow">Notre écosystème</p>
-            <h2 id="ecosysteme-titre" class="ba-ecosystem__title">Un portail, trois marques</h2>
-            <p class="ba-ecosystem__lead">Bonne Arrivée n'est pas un site isolé — c'est la vitrine d'une famille de marques béninoises qui font vivre le tourisme au Bénin au quotidien.</p>
-        </header>
+<nav class="ba-ecolaunch" aria-label="Notre écosystème">
+    @foreach($ecoLinks as $l)
+        <a class="ba-ecolaunch__btn"
+           href="{{ $l['href'] }}"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="--brand: {{ $l['brand'] }}; --ink: {{ $l['ink'] }};"
+           aria-label="{{ $l['title'] }} — {{ $l['sub'] }} (nouvel onglet)">
+            <span class="ba-ecolaunch__ic" aria-hidden="true">{!! $ecoIcons[$l['icon']] !!}</span>
+            <span class="ba-ecolaunch__label">{{ $l['title'] }}<span class="ba-ecolaunch__sub">{{ $l['sub'] }}</span></span>
+            <span class="ba-ecolaunch__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </a>
+    @endforeach
+</nav>
 
-        <div class="ba-ecosystem__grid">
-            @foreach($ecoCards as $i => $c)
-                <a class="ba-eco-card"
-                   href="{{ $c['href'] }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   style="--brand: {{ $c['brand'] }}; --i: {{ $i }}"
-                   aria-label="{{ $c['title'] }} — {{ $c['badge'] }}">
-                    <div class="ba-eco-card__media">
-                        <img src="{{ $c['image'] }}"
-                             alt="{{ $c['imageAlt'] }}"
-                             loading="lazy"
-                             decoding="async"
-                             referrerpolicy="no-referrer">
-                        <span class="ba-eco-card__badge">{{ $c['badge'] }}</span>
-                        <span class="ba-eco-card__scrim" aria-hidden="true"></span>
-                    </div>
-                    <div class="ba-eco-card__body">
-                        <span class="ba-eco-card__eyebrow">{{ $c['eyebrow'] }}</span>
-                        <h3 class="ba-eco-card__title">{{ $c['title'] }}</h3>
-                        <p class="ba-eco-card__text">{{ $c['text'] }}</p>
-                        <span class="ba-eco-card__cta">
-                            <span class="ba-eco-card__cta-label">{{ $c['cta'] }}</span>
-                            <span class="ba-eco-card__cta-arrow" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                            </span>
-                        </span>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    </div>
-</section>
+<script>
+/* Le lanceur reste flottant puis « s'accroche » juste au-dessus du widget Bénin
+   (bloc carte) du pied de page : il atteint le footer mais ne le recouvre pas. */
+(function(){
+  function init(){
+    var el = document.querySelector('.ba-ecolaunch');
+    if (!el) return;
+    var target = document.querySelector('.site-footer .map-block')
+              || document.querySelector('.map-block')
+              || document.querySelector('footer.site-footer')
+              || document.querySelector('footer');
+    if (!target) return;
+
+    var GAP = 16, ticking = false;
+    function update(){
+      ticking = false;
+      var bottomPx = parseFloat(getComputedStyle(el).bottom) || 24;
+      var launcherBottomY = window.innerHeight - bottomPx;   // bas du lanceur (px depuis le haut)
+      var limitY = target.getBoundingClientRect().top - GAP; // ne pas dépasser le widget
+      var push = Math.max(0, launcherBottomY - limitY);
+      el.style.transform = 'translateY(-' + push + 'px)';
+    }
+    function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+  if (document.readyState !== 'loading') { init(); } else { document.addEventListener('DOMContentLoaded', init); }
+})();
+</script>

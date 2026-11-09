@@ -9693,3 +9693,16 @@ body.home .woody-component-landswpr .swiper-slide {
 .tools .lang-tool .ba-lang__code{color:#00844d;letter-spacing:.04em;}
 .tools .lang-tool .ba-lang__caret{color:#fcd116;}
 /* === fin retouches 2026-11 === */
+
+/* === Écosystème : lanceur flottant de marques (vert/jaune/rouge) === */
+.ba-ecolaunch{position:fixed;right:clamp(10px,1.2vw,20px);bottom:clamp(18px,4.5vh,38px);z-index:1100;display:flex;flex-direction:column;gap:9px;font-family:"Inter",sans-serif;}
+.ba-ecolaunch__btn{display:flex;align-items:center;gap:8px;min-width:156px;padding:9px 12px;border-radius:14px;background:var(--brand);color:var(--ink,#fff);text-decoration:none;font-weight:700;font-size:.82rem;line-height:1.1;box-shadow:0 6px 18px rgba(11,20,16,.20);border:1px solid rgba(255,255,255,.14);transition:box-shadow .18s,filter .18s;}
+.ba-ecolaunch__btn:hover,.ba-ecolaunch__btn:focus-visible{box-shadow:0 12px 28px rgba(11,20,16,.30);filter:brightness(1.06);}
+.ba-ecolaunch__ic{flex:0 0 auto;display:grid;place-items:center;}
+.ba-ecolaunch__ic svg{width:18px;height:18px;display:block;}
+.ba-ecolaunch__label{flex:1 1 auto;}
+.ba-ecolaunch__sub{display:block;font-weight:500;font-size:.66rem;opacity:.86;margin-top:1px;}
+.ba-ecolaunch__go{flex:0 0 auto;opacity:.9;}
+.ba-ecolaunch__go svg{width:17px;height:17px;display:block;}
+@media (max-width:820px){.ba-ecolaunch{top:auto;bottom:clamp(14px,4vh,26px);right:12px;gap:8px;}.ba-ecolaunch__btn{min-width:0;padding:11px;border-radius:50%;}.ba-ecolaunch__label,.ba-ecolaunch__go{display:none;}}
+/* === fin écosystème lanceur === */
