@@ -53,31 +53,59 @@
 </nav>
 
 <script>
-/* Le lanceur reste flottant puis « s'accroche » juste au-dessus du widget Bénin
-   (bloc carte) du pied de page : il atteint le footer mais ne le recouvre pas. */
+/* Desktop : le lanceur flotte et s'arrête juste au-dessus du repère « BÉNIN »
+   (intégré au SVG world-benin, viewBox 598.8 x 510.2, marqueur ~y=345 ; on tient
+   compte du cadrage xMidYMid meet).
+   Mobile : il ne flotte pas par-dessus le contenu — il est ancré tout en bas de
+   la page (position absolute) pour ne jamais recouvrir les liens du footer. */
 (function(){
+  var VB_W = 598.8, VB_H = 510.2, MARK_Y = 332, GAP = 12, MOBILE = 820;
   function init(){
     var el = document.querySelector('.ba-ecolaunch');
     if (!el) return;
-    var target = document.querySelector('.site-footer .map-block')
-              || document.querySelector('.map-block')
-              || document.querySelector('footer.site-footer')
-              || document.querySelector('footer');
-    if (!target) return;
+    // Rattaché au <body> : positionnement fiable (pas de parent en overflow/transform).
+    try { if (el.parentNode !== document.body) document.body.appendChild(el); } catch (e) {}
+    var img = document.querySelector('.site-footer .world-map-footer') || document.querySelector('.world-map-footer');
+    var fallback = document.querySelector('.site-footer .map-block') || document.querySelector('footer.site-footer') || document.querySelector('footer');
+    if (!img && !fallback) return;
 
-    var GAP = 16, ticking = false;
-    function update(){
-      ticking = false;
-      var bottomPx = parseFloat(getComputedStyle(el).bottom) || 24;
-      var launcherBottomY = window.innerHeight - bottomPx;   // bas du lanceur (px depuis le haut)
-      var limitY = target.getBoundingClientRect().top - GAP; // ne pas dépasser le widget
-      var push = Math.max(0, launcherBottomY - limitY);
-      el.style.transform = 'translateY(-' + push + 'px)';
+    var ticking = false;
+    function isMobile(){ return window.matchMedia('(max-width:' + MOBILE + 'px)').matches; }
+    function stopLineY(){
+      if (img) {
+        var r = img.getBoundingClientRect();
+        if (r.height > 0 && r.width > 0) {
+          var scale = Math.min(r.width / VB_W, r.height / VB_H);
+          var offY = (r.height - VB_H * scale) / 2;
+          return r.top + offY + MARK_Y * scale;
+        }
+      }
+      return fallback.getBoundingClientRect().top;
     }
-    function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    update();
+    function apply(){
+      ticking = false;
+      if (isMobile()) {
+        // Ancré tout en bas du document : pas de flottement par-dessus le footer.
+        el.style.position = 'absolute';
+        el.style.bottom = 'auto';
+        el.style.transform = 'none';
+        el.style.top = (document.documentElement.scrollHeight - el.offsetHeight - 16) + 'px';
+      } else {
+        el.style.position = '';
+        el.style.top = '';
+        el.style.bottom = '';
+        var bottomPx = parseFloat(getComputedStyle(el).bottom) || 24;
+        var push = Math.max(0, (window.innerHeight - bottomPx) - (stopLineY() - GAP));
+        el.style.transform = 'translateY(-' + push + 'px)';
+      }
+    }
+    function onChange(){ if (!ticking){ ticking = true; requestAnimationFrame(apply); } }
+    window.addEventListener('scroll', onChange, { passive: true });
+    window.addEventListener('resize', onChange, { passive: true });
+    window.addEventListener('load', onChange);
+    if (img) img.addEventListener('load', onChange);
+    setTimeout(apply, 600); // recalage après chargement des images du footer
+    apply();
   }
   if (document.readyState !== 'loading') { init(); } else { document.addEventListener('DOMContentLoaded', init); }
 })();
