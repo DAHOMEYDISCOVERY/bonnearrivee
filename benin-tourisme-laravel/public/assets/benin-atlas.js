@@ -632,6 +632,17 @@ const SITES  = [
 "when": "Toute l’année. Le port ne se visite pas librement : il se regarde depuis la Marina."
 }
 ];
+/* ---------- traduction anglaise des donnees (dictionnaire injecte sur /en) ---------- */
+var __ATLAS_EN = /^en/i.test((document.documentElement.getAttribute('lang')||''));
+var __ATLAS_D  = (typeof window!=='undefined' && window.__ATLAS_I18N) ? window.__ATLAS_I18N : null;
+function TR(s){ return (__ATLAS_EN && __ATLAS_D && typeof s==='string' && __ATLAS_D[s]) ? __ATLAS_D[s] : s; }
+if (__ATLAS_EN && __ATLAS_D){
+  try{
+    Object.keys(CATS).forEach(function(k){ if(CATS[k]&&CATS[k].label) CATS[k].label=TR(CATS[k].label); });
+    ROUTES.forEach(function(r){ r.title=TR(r.title); r.court=TR(r.court); r.sub=TR(r.sub); });
+    SITES.forEach(function(s){ if(s.desc)s.desc=TR(s.desc); if(s.when)s.when=TR(s.when); if(s.cap)s.cap=TR(s.cap); if(Array.isArray(s.see))s.see=s.see.map(TR); });
+  }catch(e){}
+}
 const PHOTOS = {"grand-popo": {"src": "grand-popo-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Cocotier au bord de l’eau à Grand-Popo"}, "ouidah": {"src": "ouidah-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Un visiteur au Temple des Pythons de Ouidah"}, "cotonou": {"src": "cotonou-lagune-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Pirogues sur la plage de Cotonou vue du ciel"}, "ganvie": {"src": "ganvie-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Ganvié vu du ciel, sur le lac Nokoué"}, "porto-novo": {"src": "porto-novo-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Une rue de Porto-Novo"}, "aheme": {"src": "aheme-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Le lac Ahémé entre les rives boisées"}, "ketou": {"src": "ketou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Dignitaires en tenue de cérémonie à Kétou"}, "lama": {"src": "lama-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Un sentier dans la forêt de la Lama"}, "abomey": {"src": "abomey-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Statue monumentale à Abomey"}, "dassa": {"src": "dassa-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Les collines de Dassa"}, "parakou": {"src": "parakou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Le monument de Parakou"}, "nikki": {"src": "nikki-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Cavaliers en tenue d’apparat à Nikki"}, "djougou": {"src": "djougou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Fresque et case traditionnelle à Djougou"}, "kota": {"src": "kota-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Les chutes de Kota"}, "boukoumbe": {"src": "boukoumbe.webp", "author": "Justin ABADJAYE", "license": "CC BY-SA 4.0", "page": "/assets/img/wikimedia/tata-somba-la-maison-traditionnelle-a-etage.webp", "title": "Tata somba, la maison traditionnelle à étage.jpg", "ko": 69.5}, "natitingou": {"src": "natitingou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Coucher de soleil sur les collines de Natitingou"}, "tanougou": {"src": "tanougou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Les chutes de Tanougou"}, "pendjari": {"src": "pendjari.webp", "author": "Farid AMADOU BAHLEMAN", "license": "CC BY-SA 4.0", "page": "/assets/img/wikimedia/elephants-in-pendjari.webp", "title": "Eléphants in Pendjari.jpg", "ko": 90.1}, "parc-w": {"src": "parc-w-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Savane et point d’eau dans le parc W"}, "malanville": {"src": "malanville-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Coucher de soleil sur le fleuve Niger à Malanville"}, "allada": {"src": "allada-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Une statue sur une place d'Allada"}, "dogbo": {"src": "dogbo-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Des galeries creusées dans la roche à Dogbo"}, "savalou": {"src": "savalou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "L'arche d'entrée du palais royal de Savalou"}, "save": {"src": "save-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Les collines de Savè vues du ciel"}, "tchaourou": {"src": "tchaourou-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "La route principale de Tchaourou et ses collines"}, "taneka": {"src": "taneka-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "L'entrée du village de Tanéka Béri"}, "tanguieta": {"src": "tanguieta-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "La route entre les falaises, vers Tanguiéta"}, "aeroport": {"src": "aeroport-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "L’aéroport international de Cotonou"}, "port": {"src": "port-ba.webp", "author": "Bonne Arrivée", "license": "Tous droits réservés", "page": "", "title": "Les conteneurs du port autonome de Cotonou"}};
 /* Photos propres à un fil : un lieu présent dans deux fils (Cotonou, dans
    « L'eau et le sel » et « Du port au fleuve ») y montre une photo différente. */
@@ -866,8 +877,8 @@ function responsive(){
      cinq pixels et le doigt ne peut pas les viser. */
   SITES.forEach(s => s._ech.setAttribute('transform', c
     ? `translate(${s.x},${s.y}) scale(1.75) translate(${-s.x},${-s.y})` : ''));
-  hint.textContent = c ? 'Touchez un repère pour ouvrir la fiche du lieu'
-                       : 'Cliquez un repère pour ouvrir la fiche du lieu';
+  hint.textContent = c ? TR('Touchez un repère pour ouvrir la fiche du lieu')
+                       : TR('Cliquez un repère pour ouvrir la fiche du lieu');
   layoutTags(c ? 30 : 14);
   carState();
 }
@@ -921,7 +932,7 @@ SITES.forEach(s => {
   b.type = 'button';
   b.dataset.id = s.id;
   b.style.setProperty('--ba-k', CATS[s.cat].k);
-  b.setAttribute('aria-label', s.name + " — ouvrir la fiche sur la carte");
+  b.setAttribute('aria-label', s.name + TR(" — ouvrir la fiche sur la carte"));
   b.innerHTML =
     `${ph ? `<span class="fig">
        <img src="${urlPhoto(ph)}" alt="${s.name} — ${ph.title.replace(/\.[a-z]+$/i,'')}" loading="lazy" decoding="async">
@@ -933,7 +944,7 @@ SITES.forEach(s => {
          <span class="dept">${s.dept}</span>
          <span class="ttl">${s.name}</span>
          <span class="txt">${s.desc}</span>
-         <span class="go">Voir sur la carte
+         <span class="go">${TR('Voir sur la carte')}
            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
          </span>
        </span>
@@ -976,7 +987,7 @@ function carState(){
   progFill.style.width = n > 1 ? (i / (n - 1) * 100) + '%' : '100%';
   progress.setAttribute('aria-valuenow', i + 1);
   progress.setAttribute('aria-valuemax', Math.max(n, 1));
-  progress.setAttribute('aria-valuetext', n ? `Fiche ${i + 1} sur ${n}` : 'aucune fiche');
+  progress.setAttribute('aria-valuetext', n ? `Fiche ${i + 1} sur ${n}` : TR('aucune fiche'));
 }
 
 /* La barre est aussi une commande : on peut y viser une fiche, glisser le
@@ -1096,7 +1107,7 @@ function select(id){
   card.style.setProperty('--ba-k', CATS[s.cat].k);
   const ph = photoDe(s);
   card.innerHTML =
-    `<button class="pc-close" type="button" aria-label="Fermer la fiche">&times;</button>
+    `<button class="pc-close" type="button" aria-label="${TR('Fermer la fiche')}">&times;</button>
      ${ph ? `<figure class="pc-fig"><img src="${urlPhoto(ph)}" alt="${s.name}"></figure>` : ''}
      <div class="pc-kicker">${glyphSVG(s.cat)}<span>${CATS[s.cat].label}</span></div>
      <h3>${s.name}</h3>

@@ -10,34 +10,35 @@
 
     <section class="ba-search ba-search--standalone">
         <div class="ba-search__inner">
-            <h1 class="ba-search__page-title">Recherche</h1>
+            <h1 class="ba-search__page-title">{{ __('messages.search_page.title') }}</h1>
             <form class="ba-search__form" method="get" action="/recherche" role="search">
-                <label for="ba-search-q" class="sr-only">Que recherchez-vous&nbsp;?</label>
+                <label for="ba-search-q" class="sr-only">{{ __('messages.search_page.label') }}</label>
                 <input
                     type="search"
                     id="ba-search-q"
                     name="q"
                     value="{{ $q }}"
-                    placeholder="Un restaurant, un lieu, un événement…"
+                    placeholder="{{ __('messages.search_page.placeholder') }}"
                     autocomplete="off"
                     autofocus
                     minlength="2"
                     required>
-                <button type="submit">Rechercher</button>
+                <button type="submit">{{ __('messages.search_page.submit') }}</button>
             </form>
 
+            @php($__q = '<strong>«&nbsp;'.e($q).'&nbsp;»</strong>')
             @if ($q === '')
-                <p class="ba-search__hint">Essayez par exemple&nbsp;: <a href="/recherche?q=cotonou">Cotonou</a>, <a href="/recherche?q=vodun">Vodun</a>, <a href="/recherche?q=maquis">maquis</a>.</p>
+                <p class="ba-search__hint">{{ __('messages.search_page.try') }} <a href="/recherche?q=cotonou">Cotonou</a>, <a href="/recherche?q=vodun">Vodun</a>, <a href="/recherche?q=maquis">maquis</a>.</p>
             @elseif ($total === 0)
-                <p class="ba-search__empty">Aucun résultat pour <strong>«&nbsp;{{ $q }}&nbsp;»</strong>. Essayez un autre mot-clé.</p>
+                <p class="ba-search__empty">{!! __('messages.search_page.empty', ['q' => $__q]) !!}</p>
             @else
-                <p class="ba-search__count">{{ $total }} résultat{{ $total > 1 ? 's' : '' }} pour <strong>«&nbsp;{{ $q }}&nbsp;»</strong>.</p>
+                <p class="ba-search__count">{!! trans_choice('messages.search_page.count', $total, ['n' => $total, 'q' => $__q]) !!}</p>
             @endif
 
             @foreach ([
-                'restaurants' => ['Restaurants', 'wicon-071-couverts'],
-                'evenements'  => ['Événements', 'wicon-032-calendrier'],
-                'pages'       => ['Pages', 'wicon-073-article'],
+                'restaurants' => [__('messages.search_page.group_restaurants'), 'wicon-071-couverts'],
+                'evenements'  => [__('messages.search_page.group_events'), 'wicon-032-calendrier'],
+                'pages'       => [__('messages.search_page.group_pages'), 'wicon-073-article'],
             ] as $key => $meta)
                 @php([$label, $icon] = $meta)
                 @if (!empty($results[$key]))

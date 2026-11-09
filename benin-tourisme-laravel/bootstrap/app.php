@@ -12,6 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Langue de la requête (FR par défaut, /en pour l'anglais). Global,
+        // donc exécuté AVANT le routage pour réécrire le chemin /en -> FR.
+        $middleware->prepend(\App\Http\Middleware\SetLocale::class);
+
         // Le site est éditorial ; le seul espace authentifié est /admin (Filament).
         // Sans cette redirection, une visite non authentifiée sur /admin lève
         // AuthenticationException que Laravel tente de rediriger vers route('login')

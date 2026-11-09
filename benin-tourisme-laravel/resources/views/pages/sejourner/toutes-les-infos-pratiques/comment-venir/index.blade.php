@@ -98,6 +98,7 @@
                         ];
                     @endphp
                     @foreach($airlines as $a)
+                        @continue($a['name'] === 'Air Côte d’Ivoire')
                         <div class="cell small-down-order-9">
                             <div class="woody-component woody-component-cta tpl_01 border-secondary bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions benin-airline-cta" data-equalizer="data-equalizer">
                                 <img class="benin-airline-cta__bg" src="{{ $a['img'] }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
@@ -138,6 +139,10 @@
     try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $__airAds = \App\Models\AdCampaign::visible()->where('placement', 'compagnies')->get(); } }
     catch (\Throwable $e) { $__airAds = collect(); }
 @endphp
+@php
+    $__ciAirline = collect($airlines)->firstWhere('name', 'Air Côte d’Ivoire');
+@endphp
+                <div class="ba-air-sidebar">
 @if ($__airAds->count())
                 <aside class="ba-air-ads" data-ba-dynamique aria-label="Espace partenaires">
                     <span class="ba-air-ads__tag">Publicité</span>
@@ -157,6 +162,40 @@
                     @if ($__airAds->count() > 1)<div class="ba-air-ads__dots" role="tablist" aria-label="Choisir une annonce"></div>@endif
                 </aside>
 @endif
+@if ($__ciAirline)
+                    <div class="ba-air-sidebar__card">
+                        <div class="woody-component woody-component-cta tpl_01 border-secondary bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions benin-airline-cta">
+                            <img class="benin-airline-cta__bg" src="{{ $__ciAirline['img'] }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                            <div class="benin-airline-cta__inner">
+                                <div class="generic-block-header marg-bottom-sm">
+                                    <div class="generic-block-titles flex-container flex-dir-column align-center text-left">
+                                        <div class="generic-block-texts has-pretitle">
+                                            <span class="generic-block-pretitle block-span">{{ $__ciAirline['name'] }}</span>
+                                            <span class="benin-airline-cta__route">{{ $__ciAirline['route'] }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-x grid-padding-x">
+                                    <div class="cell medium-8 cta-desc flex-container flex-dir-column"></div>
+                                    <div class="cell medium-4 cta-actions flex-container flex-dir-column align-center">
+                                        <ul class="list-unstyled flex-container align-right align-middle wrap grid-gap-sm">
+                                            <li class="list-item">
+                                                <div class="woody-component-button padd-top-sm">
+                                                    <a class="woody-component-button button primary small has-icon" href="{{ $__ciAirline['url'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $__ciAirline['name'] }} (nouvel onglet)">
+                                                        <span class="wicon wicon-042-lien"></span>
+                                                        <span class="button-label" data-label="{{ $__ciAirline['name'] }}">{{ $__ciAirline['name'] }}</span>
+                                                        <span class="button-arrow"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+@endif
+                </div>{{-- /ba-air-sidebar --}}
 @verbatim
 <script>
 (function(){

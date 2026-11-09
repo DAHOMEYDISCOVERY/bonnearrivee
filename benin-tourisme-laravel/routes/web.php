@@ -229,6 +229,23 @@ Route::view('/a-propos', 'pages.a-propos.index', [
 Route::redirect('/a-propos-de-lanpt', '/a-propos', 301);
 
 /*
+ * Bascule de langue : mémorise le choix dans un cookie (1 an) puis redirige
+ * vers la page demandée dans la bonne langue. Permet notamment de revenir au
+ * français même si le cookie « anglais » est actif (voir SetLocale).
+ */
+Route::get('/langue/{loc}', function (string $loc) {
+    $loc = in_array($loc, ['fr', 'en'], true) ? $loc : 'fr';
+    $to = (string) request()->query('to', '/');
+    $to = '/'.ltrim($to, '/');
+    if (! preg_match('#^/[A-Za-z0-9/_\-.]*$#', $to)) {
+        $to = '/';
+    }
+    $target = $loc === 'en' ? '/en'.($to === '/' ? '' : $to) : $to;
+
+    return redirect($target)->withCookie(cookie('ba_locale', $loc, 525600));
+})->where('loc', 'fr|en')->name('langue');
+
+/*
  * Le site est entièrement éditorial : une route unique résout n'importe quel
  * chemin auprès du registre des pages. Les URL du miroir sont conservées à
  * l'identique, sans « index.html » ni extension.

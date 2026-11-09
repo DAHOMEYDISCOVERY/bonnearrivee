@@ -28,17 +28,30 @@ class SearchController extends Controller
             return response()->json(['q' => $q, 'results' => []]);
         }
 
+        $locale = $this->locale($request);
+        $prefix = $locale === 'en' ? '/en' : '';
+
         $flat = array_merge(
-            array_slice($this->searchRestaurants($q), 0, 4),
-            array_slice($this->searchEvents($q), 0, 2),
-            array_slice($this->searchPages($q), 0, 2),
+            array_slice($this->searchRestaurants($q, $locale), 0, 4),
+            array_slice($this->searchEvents($q, $locale), 0, 2),
+            array_slice($this->searchPages($q, $locale), 0, 2),
         );
 
         return response()->json([
             'q'       => $q,
             'results' => array_slice($flat, 0, 8),
-            'moreUrl' => '/recherche?q=' . urlencode($q),
+            'moreUrl' => $prefix . '/recherche?q=' . urlencode($q),
         ]);
+    }
+
+    /**
+     * Langue de la recherche : anglais si la page courante est en anglais
+     * (app locale) ou si l'utilisateur a choisi l'anglais (cookie) — ce dernier
+     * cas couvre l'appel AJAX /recherche/suggest, servi sans préfixe /en.
+     */
+    private function locale(Request $request): string
+    {
+        return (app()->getLocale() === 'en' || $request->cookie('ba_locale') === 'en') ? 'en' : 'fr';
     }
 
     public function index(Request $request)
@@ -52,16 +65,17 @@ class SearchController extends Controller
         $total = 0;
 
         if (mb_strlen($q) >= 2) {
-            $results['restaurants'] = $this->searchRestaurants($q);
-            $results['pages']       = $this->searchPages($q);
-            $results['evenements']  = $this->searchEvents($q);
+            $locale                 = $this->locale($request);
+            $results['restaurants'] = $this->searchRestaurants($q, $locale);
+            $results['pages']       = $this->searchPages($q, $locale);
+            $results['evenements']  = $this->searchEvents($q, $locale);
             $total = count($results['restaurants'])
                    + count($results['pages'])
                    + count($results['evenements']);
         }
 
         return view('pages.recherche', [
-            'title'         => $q !== '' ? "Recherche : « {$q} » | Bonne Arrivée" : 'Recherche | Bonne Arrivée',
+            'title'         => $q !== '' ? __('messages.search_page.title')." : « {$q} » | Bonne Arrivée" : __('messages.search_page.title').' | Bonne Arrivée',
             'description'   => "Recherchez une adresse, un lieu, un evenement ou une info pratique sur Bonne Arrivée.",
             'activeMenu'    => null,
             'headProfile'   => 'standard',
@@ -72,8 +86,20 @@ class SearchController extends Controller
         ]);
     }
 
-    private function searchRestaurants(string $q): array
+    /** Libellés de catégorie en anglais (le nom et la ville restent tels quels). */
+    private const CATEGORIES_EN = [
+        'gastronomique' => 'Fine dining',
+        'maquis'        => 'Local eatery & cuisine',
+        'cafe_bar'      => 'Café / bar',
+        'fast_food'     => 'Fast food',
+        'international'  => 'International',
+    ];
+
+    private function searchRestaurants(string $q, string $locale = 'fr'): array
     {
+        $en = $locale === 'en';
+        $prefix = $en ? '/en' : '';
+
         return Restaurant::published()
             ->where(function ($w) use ($q) {
                 $w->where('nom', 'like', "%{$q}%")
@@ -86,22 +112,36 @@ class SearchController extends Controller
             ->orderBy('sort_order')
             ->limit(10)
             ->get(['id', 'nom', 'sous_titre', 'ville', 'categorie', 'coup_de_coeur'])
-            ->map(fn ($r) => [
-                'title'    => $r->nom,
-                'subtitle' => $r->sous_titre,
-                'excerpt'  => ($r->ville ?: '') . ($r->categorie ? ' · ' . (Restaurant::CATEGORIES[$r->categorie] ?? $r->categorie) : ''),
-                'url'      => '/sejourner/restaurants',
-                'badge'    => $r->coup_de_coeur ? 'Coup de cœur' : null,
-            ])->all();
+            ->map(function ($r) use ($en, $prefix) {
+                $cat = $r->categorie
+                    ? ($en ? (self::CATEGORIES_EN[$r->categorie] ?? $r->categorie) : (Restaurant::CATEGORIES[$r->categorie] ?? $r->categorie))
+                    : '';
+
+                // Le sous-titre est du texte libre en base : en anglais, on
+                // réutilise sa traduction déjà faite sur la page restaurants.
+                $subtitle = $en
+                    ? \App\Support\PageTextMap::translate('en', '/sejourner/restaurants', $r->sous_titre)
+                    : $r->sous_titre;
+
+                return [
+                    'title'    => $r->nom,
+                    'subtitle' => $subtitle,
+                    'excerpt'  => ($r->ville ?: '') . ($cat ? ' · ' . $cat : ''),
+                    'url'      => $prefix . '/sejourner/restaurants',
+                    'badge'    => $r->coup_de_coeur ? ($en ? 'Top pick' : 'Coup de cœur') : null,
+                ];
+            })->all();
     }
 
-    private function searchPages(string $q): array
+    private function searchPages(string $q, string $locale = 'fr'): array
     {
         // Index plein texte (texte réellement affiché de chaque page) quand il
         // a été construit ; les fiches événements ont leur propre rubrique.
-        if (\App\Support\SearchIndex::exists()) {
+        // En anglais, on interroge l'index anglais (repli fr automatique).
+        if (\App\Support\SearchIndex::exists($locale) || \App\Support\SearchIndex::exists()) {
+            $prefix = $locale === 'en' ? '/en' : '';
             $hits = array_filter(
-                \App\Support\SearchIndex::search($q, 20),
+                \App\Support\SearchIndex::search($q, 20, $locale),
                 static fn (array $h) => ! str_starts_with($h['path'], '/benin-en-fete/'),
             );
 
@@ -109,7 +149,7 @@ class SearchController extends Controller
                 'title'    => $h['title'],
                 'subtitle' => null,
                 'excerpt'  => $h['excerpt'],
-                'url'      => $h['path'],
+                'url'      => $prefix . $h['path'],
                 'badge'    => null,
             ], array_slice($hits, 0, 10)));
         }
@@ -131,8 +171,28 @@ class SearchController extends Controller
             ])->all();
     }
 
-    private function searchEvents(string $q): array
+    private function searchEvents(string $q, string $locale = 'fr'): array
     {
+        $en = $locale === 'en';
+
+        // En anglais, les fiches événements traduites viennent de l'index
+        // anglais (titres et extraits déjà traduits), avec repli sur les
+        // données françaises si l'index anglais n'existe pas encore.
+        if ($en && \App\Support\SearchIndex::exists('en')) {
+            $hits = array_filter(
+                \App\Support\SearchIndex::search($q, 10, 'en'),
+                static fn (array $h) => str_starts_with($h['path'], '/benin-en-fete/'),
+            );
+
+            return array_values(array_map(static fn (array $h) => [
+                'title'    => $h['title'],
+                'subtitle' => null,
+                'excerpt'  => $h['excerpt'],
+                'url'      => '/en' . $h['path'],
+                'badge'    => 'Event',
+            ], array_slice($hits, 0, 10)));
+        }
+
         $file = resource_path('data/benin-events.php');
         if (!is_file($file)) {
             return [];
@@ -153,8 +213,8 @@ class SearchController extends Controller
                     'title'    => self::titre((string) ($e['title'] ?? $slug)),
                     'subtitle' => $e['subtitle'] ?? ($e['lieu'] ?? null),
                     'excerpt'  => self::extrait($e['description'] ?? null),
-                    'url'      => '/benin-en-fete/' . $slug,
-                    'badge'    => 'Événement',
+                    'url'      => ($en ? '/en' : '') . '/benin-en-fete/' . $slug,
+                    'badge'    => $en ? 'Event' : 'Événement',
                 ];
             }
             if (count($hits) >= 10) break;

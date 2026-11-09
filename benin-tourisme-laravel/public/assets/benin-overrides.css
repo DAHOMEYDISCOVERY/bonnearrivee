@@ -9647,3 +9647,49 @@ body.home .woody-component-landswpr .swiper-slide {
 @media (prefers-reduced-motion:reduce){ .ba-air-ads__track{transition:none;} }
 
 /* === fin ba-air-ads === */
+
+/* === ba-lang : sélecteur de langue FR/EN (header) ============================ */
+.ba-lang{position:fixed;top:clamp(12px,1.6vw,22px);right:clamp(70px,8vw,120px);z-index:1200;font-family:"Inter",sans-serif;}
+.ba-lang--in-tools{position:static;top:auto;right:auto;z-index:auto;}
+.ba-lang__toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:1px solid rgba(255,255,255,.55);
+  background:rgba(11,61,44,.55);backdrop-filter:blur(6px);color:#fff;border-radius:999px;padding:6px 12px;font:inherit;
+  font-size:.82rem;font-weight:600;line-height:1;transition:background .2s,border-color .2s;}
+.ba-lang__toggle:hover{background:rgba(11,61,44,.8);border-color:#fff;}
+.ba-lang__flag{font-size:1rem;}
+.ba-lang__caret{font-size:.7rem;transition:transform .2s;}
+.ba-lang.is-open .ba-lang__caret{transform:rotate(180deg);}
+.ba-lang__menu{list-style:none;margin:8px 0 0;padding:6px;position:absolute;right:0;min-width:160px;background:#fff;
+  border:1px solid #e6e1d4;border-radius:12px;box-shadow:0 12px 30px rgba(11,61,44,.16);opacity:0;visibility:hidden;
+  transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s;}
+.ba-lang.is-open .ba-lang__menu{opacity:1;visibility:visible;transform:translateY(0);}
+.ba-lang__item{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#141a16;font-size:.9rem;font-weight:500;}
+.ba-lang__item:hover{background:#f3eee2;}
+.ba-lang__item.is-active{color:#00844d;font-weight:700;}
+/* Dans la barre d'outils du header (à côté de la recherche) */
+.tools .lang-tool{display:flex;align-items:center;}
+.tools .lang-tool .ba-lang__toggle{background:transparent;border-color:currentColor;color:inherit;}
+.tools .lang-tool .ba-lang__toggle:hover{background:rgba(0,0,0,.06);}
+.tools .lang-tool .ba-lang__menu{color:#141a16;}
+@media (max-width:640px){
+  .ba-lang{top:10px;right:64px;}
+  .ba-lang__code{display:inline;}
+}
+/* === fin ba-lang === */
+
+/* === Retouches 2026-11 : bannière pub pleine hauteur + carte pleine largeur + sélecteur de langue plus visible === */
+#pageSection-airlines .section-layout-wrapper{align-items:stretch;}
+#pageSection-airlines .ba-air-sidebar{flex:0 0 clamp(260px,24vw,320px);display:flex;flex-direction:column;gap:16px;min-width:0;}
+#pageSection-airlines .ba-air-ads{flex:1 1 auto;align-self:auto;position:static;top:auto;display:flex;flex-direction:column;}
+#pageSection-airlines .ba-air-ads__viewport{flex:1 1 auto;display:flex;flex-direction:column;}
+#pageSection-airlines .ba-air-ads__track{flex:1 1 auto;}
+#pageSection-airlines .ba-air-ads__slide{flex-direction:column;}
+#pageSection-airlines .ba-air-ads__body{flex:1 1 auto;justify-content:center;}
+@media (max-width:900px){#pageSection-airlines .ba-air-sidebar{flex-basis:auto;}#pageSection-airlines .ba-air-ads{flex:0 0 auto;}}
+.benin-cv-map{max-width:none;padding-left:0;padding-right:0;}
+.benin-cv-map__head{padding-left:1.5rem;padding-right:1.5rem;}
+.tools .lang-tool{margin-right:16px;padding-right:16px;border-right:1px solid rgba(255,255,255,.4);}
+.tools .lang-tool .ba-lang__toggle{background:#fff;border-color:#fff;color:#0b3d2c;font-weight:700;box-shadow:0 2px 10px rgba(11,61,44,.20);}
+.tools .lang-tool .ba-lang__toggle:hover{background:#fff;border-color:#fcd116;box-shadow:0 4px 16px rgba(11,61,44,.30);}
+.tools .lang-tool .ba-lang__code{color:#00844d;letter-spacing:.04em;}
+.tools .lang-tool .ba-lang__caret{color:#fcd116;}
+/* === fin retouches 2026-11 === */

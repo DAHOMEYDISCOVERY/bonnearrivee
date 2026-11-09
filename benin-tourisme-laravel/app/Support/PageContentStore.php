@@ -61,6 +61,11 @@ final class PageContentStore
             'utilisateur' => auth()->id(),
         ]);
         SearchIndex::refresh($path);
+
+        // Met l'anglais à jour juste après la réponse (aucun worker requis).
+        if ((string) config('services.deepl.key') !== '') {
+            \App\Jobs\TranslatePageJob::dispatchAfterResponse($path);
+        }
     }
 
     public static function count(string $path): int

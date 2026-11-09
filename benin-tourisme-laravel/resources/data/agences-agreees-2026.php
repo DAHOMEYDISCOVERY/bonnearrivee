@@ -32,7 +32,7 @@ return [
         'adresse' => '',
         'tel1' => '01 67 54 74 79',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/addotour-229.webp',
     ],
     [
         'n' => 2,
@@ -48,7 +48,7 @@ return [
         'adresse' => 'Gbènan nord',
         'tel1' => '01 97 34 44 76',
         'tel2' => '01 97 96 32 69',
-        'logo' => '',
+        'logo' => '/assets/img/agences/assiba-tour.webp',
     ],
     [
         'n' => 3,
@@ -80,7 +80,7 @@ return [
         'adresse' => 'Ganvié 2, Amoussougaho',
         'tel1' => '01 97 24 90 35',
         'tel2' => '01 95 50 32 05',
-        'logo' => '',
+        'logo' => '/assets/img/agences/ganvie-benin-ecotourisme.webp',
     ],
     [
         'n' => 5,
@@ -96,7 +96,7 @@ return [
         'adresse' => 'Aïdjèdo',
         'tel1' => '01 60 02 02 20',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/grace-divine-ayihadji.webp',
     ],
     [
         'n' => 6,
@@ -144,7 +144,7 @@ return [
         'adresse' => 'Agbalilamè',
         'tel1' => '01 61 32 47 26',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/inas-travel.webp',
     ],
     [
         'n' => 9,
@@ -160,7 +160,7 @@ return [
         'adresse' => 'Carrefour Caboma',
         'tel1' => '01 48 72 00 20',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/itcom.webp',
     ],
     [
         'n' => 10,
@@ -176,7 +176,7 @@ return [
         'adresse' => 'Mènontin',
         'tel1' => '01 63 15 62 62',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/kiblistours.webp',
     ],
     [
         'n' => 11,
@@ -192,7 +192,7 @@ return [
         'adresse' => 'Les Cocotiers',
         'tel1' => '01 51 00 11 11',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/kooabo.webp',
     ],
     [
         'n' => 12,
@@ -208,7 +208,7 @@ return [
         'adresse' => 'Gounsoédji',
         'tel1' => '01 96 96 75 72',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/nokoue-tour.webp',
     ],
     [
         'n' => 13,
@@ -240,7 +240,7 @@ return [
         'adresse' => 'Camp Guézo',
         'tel1' => '01 91 20 34 56',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/soluxe-international.webp',
     ],
     [
         'n' => 15,
@@ -272,7 +272,7 @@ return [
         'adresse' => 'Vodjè',
         'tel1' => '01 96 01 00 18',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/travel-and-tourism-agency.webp',
     ],
     [
         'n' => 17,
@@ -304,7 +304,7 @@ return [
         'adresse' => '',
         'tel1' => '01 94 85 52 09',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/wademba-travel.webp',
     ],
     [
         'n' => 19,
@@ -320,7 +320,7 @@ return [
         'adresse' => 'Zongo Résidentiel',
         'tel1' => '01 97 08 90 00',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/arcs-tours.webp',
     ],
     [
         'n' => 20,
@@ -352,7 +352,7 @@ return [
         'adresse' => 'Ayibatin Kpota',
         'tel1' => '01 42 22 07 61',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/diwe-travel.webp',
     ],
     [
         'n' => 22,
@@ -368,7 +368,7 @@ return [
         'adresse' => 'Ayélawadjè',
         'tel1' => '01 97 63 93 76',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/wa-africa.webp',
     ],
     [
         'n' => 23,
@@ -384,7 +384,7 @@ return [
         'adresse' => 'Gbéto',
         'tel1' => '01 97 38 57 73',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/aero-services.webp',
     ],
     [
         'n' => 24,
@@ -400,7 +400,7 @@ return [
         'adresse' => 'Dégakon',
         'tel1' => '01 53 26 26 25',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/africa-paradis.webp',
     ],
     [
         'n' => 25,
@@ -448,7 +448,7 @@ return [
         'adresse' => 'Ste Rita',
         'tel1' => '01 97 97 07 62',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/cova-tour-events.webp',
     ],
     [
         'n' => 28,
@@ -480,7 +480,7 @@ return [
         'adresse' => 'Sikècodji',
         'tel1' => '01 65 71 41 41',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/emmanuel-voyages-tourisme.webp',
     ],
     [
         'n' => 30,
@@ -512,7 +512,7 @@ return [
         'adresse' => 'Sikècodji',
         'tel1' => '01 96 08 10 12',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/floris-negoces.webp',
     ],
     [
         'n' => 32,
@@ -528,7 +528,7 @@ return [
         'adresse' => 'St Jean',
         'tel1' => '01 96 16 51 11',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/international-golden-travels.webp',
     ],
     [
         'n' => 33,
@@ -544,7 +544,7 @@ return [
         'adresse' => 'Akpakpa Dégakon',
         'tel1' => '01 61 15 65 47',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/jesunan-travel.webp',
     ],
     [
         'n' => 34,
@@ -576,7 +576,7 @@ return [
         'adresse' => 'Jéricho',
         'tel1' => '01 58 99 35 33',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/miles-travel.webp',
     ],
     [
         'n' => 36,
@@ -608,7 +608,7 @@ return [
         'adresse' => 'Vèdoko',
         'tel1' => '01 95 60 44 32',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/omega-voyages-business.webp',
     ],
     [
         'n' => 38,
@@ -688,7 +688,7 @@ return [
         'adresse' => 'St Michel Gbèdomidji',
         'tel1' => '01 96 36 18 18',
         'tel2' => '',
-        'logo' => '',
+        'logo' => '/assets/img/agences/senan-ecotours.webp',
     ],
     [
         'n' => 43,

@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 final class ApplyContentLayer
 {
-    private const EXCLUDED = ['admin', 'admin/*', 'livewire/*', 'filament/*', 'storage/*', 'mes-restos/*', 'restaurants/*', 'recherche*', 'sitemap.xml'];
+    private const EXCLUDED = ['admin', 'admin/*', 'livewire/*', 'filament/*', 'storage/*', 'mes-restos/*', 'restaurants/*', 'recherche/suggest', 'sitemap.xml'];
 
     public function handle(Request $request, Closure $next): Response
     {
@@ -41,7 +41,34 @@ final class ApplyContentLayer
             return $response;
         }
 
-        $edits = PageContentStore::edits($request->getPathInfo());
+        $path = $request->getPathInfo();
+        $locale = app()->getLocale();
+
+        // Version traduite : la traduction s'applique sur TOUTE la page
+        // (en-tête, pied et blocs dynamiques inclus) via le mode « traduction »
+        // de ContentLayer, indépendamment des modifications FR du back-office.
+        if ($locale !== 'fr') {
+            $translations = \App\Support\TranslationStore::get($locale, $path);
+            if ($translations === []) {
+                return $response;
+            }
+
+            $html = (string) $response->getContent();
+            if (stripos($html, '<html') === false) {
+                return $response;
+            }
+
+            try {
+                $response->setContent(ContentLayer::apply($html, $translations, true));
+            } catch (\Throwable $e) {
+                report($e);
+            }
+
+            return $response;
+        }
+
+        // Version française : modifications « Textes et images » uniquement.
+        $edits = PageContentStore::edits($path);
         if ($edits === []) {
             return $response;
         }

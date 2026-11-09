@@ -17,7 +17,7 @@
 --}}
 <!doctype html>
 <html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>@include('partials.head.' . $headProfile)</head>
+<head>@include('partials.head.' . $headProfile)<link rel="alternate" hreflang="fr" href="{{ url($baUrlFr ?? '/') }}"><link rel="alternate" hreflang="en" href="{{ url($baUrlEn ?? '/en') }}"><link rel="alternate" hreflang="x-default" href="{{ url($baUrlFr ?? '/') }}"></head>
 <body class="@yield('bodyClass')">@verbatim
             
         
@@ -25,7 +25,7 @@
     
     @endverbatim<div class="main-wrapper flex-container flex-dir-column">@verbatim
                                 @endverbatim@include('partials.headnavs')
-@include('partials.header')@verbatim
+@include('partials.header')@include('partials.lang-switcher')@verbatim
 
             </div>
 

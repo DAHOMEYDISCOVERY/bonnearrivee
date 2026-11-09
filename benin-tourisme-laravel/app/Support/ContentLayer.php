@@ -65,9 +65,9 @@ final class ContentLayer
      *
      * @return list<array{key:string,type:string,start:int,end:int,raw:string,value:string,alt?:string,group:string,label?:string,tag?:string}>
      */
-    public static function extract(string $html): array
+    public static function extract(string $html, bool $forTranslation = false): array
     {
-        $items = array_merge(self::extractHead($html), self::extractBody($html));
+        $items = array_merge(self::extractHead($html), self::extractBody($html, $forTranslation));
         usort($items, static fn (array $a, array $b) => $a['start'] <=> $b['start']);
 
         return $items;
@@ -78,14 +78,14 @@ final class ContentLayer
      *
      * @param  array<string, array<string, mixed>>  $edits  clé => ['value' => …, 'alt' => …]
      */
-    public static function apply(string $html, array $edits): string
+    public static function apply(string $html, array $edits, bool $forTranslation = false): string
     {
         if ($edits === []) {
             return $html;
         }
 
         $replacements = [];
-        foreach (self::extract($html) as $item) {
+        foreach (self::extract($html, $forTranslation) as $item) {
             $edit = $edits[$item['key']] ?? null;
             if (! is_array($edit)) {
                 continue;
@@ -203,14 +203,14 @@ final class ContentLayer
 
     // ------------------------------------------------------------------ body
 
-    private static function extractBody(string $html): array
+    private static function extractBody(string $html, bool $forTranslation = false): array
     {
-        [$from, $to] = self::mainRange($html);
+        [$from, $to] = self::mainRange($html, $forTranslation);
         if ($from === null) {
             return [];
         }
 
-        $blocked = self::blockedRanges($html, $from, $to);
+        $blocked = self::blockedRanges($html, $from, $to, $forTranslation);
         $isBlocked = static function (int $pos) use (&$blocked): bool {
             foreach ($blocked as [$s, $e]) {
                 if ($pos >= $s && $pos < $e) {
@@ -340,8 +340,19 @@ final class ContentLayer
     }
 
     /** @return array{0:int|null,1:int|null} */
-    private static function mainRange(string $html): array
+    private static function mainRange(string $html, bool $forTranslation = false): array
     {
+        if ($forTranslation) {
+            // Traduction : toute la page visible (en-tête + corps + pied).
+            if (preg_match('#<body\b[^>]*>#i', $html, $mb, PREG_OFFSET_CAPTURE)) {
+                $bstart = $mb[0][1] + strlen($mb[0][0]);
+                $bend = strripos($html, '</body>');
+
+                return [$bstart, $bend !== false && $bend > $bstart ? $bend : strlen($html)];
+            }
+
+            return [0, strlen($html)];
+        }
         if (preg_match('#<main\b[^>]*>#i', $html, $m, PREG_OFFSET_CAPTURE)) {
             $start = $m[0][1] + strlen($m[0][0]);
             $end = strripos($html, '</main>');
@@ -359,7 +370,7 @@ final class ContentLayer
     }
 
     /** @return list<array{0:int,1:int}> */
-    private static function blockedRanges(string $html, int $from, int $to): array
+    private static function blockedRanges(string $html, int $from, int $to, bool $forTranslation = false): array
     {
         $ranges = [];
         $region = substr($html, $from, $to - $from);
@@ -376,8 +387,9 @@ final class ContentLayer
                 $ranges[] = [$from + $offset, $from + $offset + strlen($text)];
             }
         }
-        // Blocs alimentés par la base ou les sites partenaires.
-        if (preg_match_all('#<([a-z][a-z0-9]*)\b[^>]*\bdata-ba-dynamique\b[^>]*>#i', $region, $mm, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+        // Blocs alimentés par la base ou les sites partenaires : exclus de
+        // l'édition, mais inclus en traduction (scripts/SVG restent masqués).
+        if (! $forTranslation && preg_match_all('#<([a-z][a-z0-9]*)\b[^>]*\bdata-ba-dynamique\b[^>]*>#i', $region, $mm, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
             foreach ($mm as $m) {
                 $start = $from + $m[0][1];
                 $end = self::closingTagEnd($html, strtolower($m[1][0]), $start + strlen($m[0][0]), $to);

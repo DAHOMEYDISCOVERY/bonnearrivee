@@ -22,13 +22,22 @@ Artisan::command('inspire', function () {
  */
 Artisan::command('search:index', function () {
     $start = microtime(true);
-    $count = \App\Support\SearchIndex::build(null, function (string $path, bool $ok) {
-        if (! $ok) {
-            $this->warn("  page illisible : {$path}");
+    foreach (\App\Support\SearchIndex::LOCALES as $loc) {
+        // L'index anglais n'est construit que si des traductions existent ;
+        // il reprend le texte affiché une fois traduit (TranslationStore).
+        if ($loc !== 'fr' && \App\Support\TranslationStore::paths($loc) === []) {
+            $this->line("  [{$loc}] aucune traduction : index ignoré.");
+            continue;
         }
-    });
-    $this->info(sprintf('%d pages indexées en %.1f s.', $count, microtime(true) - $start));
-})->purpose('Construit l\'index de recherche à partir du texte affiché de chaque page');
+        $count = \App\Support\SearchIndex::build(null, function (string $path, bool $ok) use ($loc) {
+            if (! $ok) {
+                $this->warn("  [{$loc}] page illisible : {$path}");
+            }
+        }, $loc);
+        $this->info(sprintf('[%s] %d pages indexées.', $loc, $count));
+    }
+    $this->info(sprintf('Terminé en %.1f s.', microtime(true) - $start));
+})->purpose('Construit l\'index de recherche (fr + langues traduites) à partir du texte affiché');
 
 /*
  * Contrôle de toutes les pages du site, telles qu'un visiteur les voit
@@ -63,5 +72,14 @@ Artisan::command('site:verifier', function () {
  * le pré-chargement de nuit garantit des blocs à jour dans tous les cas.
  */
 \Illuminate\Support\Facades\Schedule::command('aggregator:warm --quiet-summary')->dailyAt('04:30')->withoutOverlapping();
-\Illuminate\Support\Facades\Schedule::command('search:index')->dailyAt('05:00')->withoutOverlapping();
 \Illuminate\Support\Facades\Schedule::command('site:verifier')->dailyAt('05:30')->withoutOverlapping();
+// L'index de recherche passe APRÈS la traduction (trad:sync 05:45) pour que
+// l'index anglais reflète les traductions du jour même, pas de la veille.
+\Illuminate\Support\Facades\Schedule::command('search:index')->dailyAt('06:15')->withoutOverlapping();
+
+/*
+ * Traductions : chaque nuit, les nouveaux contenus sont traduits (DeepL) et
+ * publiés dans les langues cibles. Incrémental ; ne fait rien si DEEPL_API_KEY
+ * est absente (le contenu non traduit retombe simplement sur le français).
+ */
+\Illuminate\Support\Facades\Schedule::command('trad:sync')->dailyAt('05:45')->withoutOverlapping();

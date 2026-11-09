@@ -63,6 +63,10 @@ final class Page extends Model
             if (! $page->wasRecentlyCreated) {
                 \App\Support\SearchIndex::refresh((string) $page->path);
             }
+            // Met l'anglais à jour juste après la réponse (aucun worker requis).
+            if ((string) config('services.deepl.key') !== '') {
+                \App\Jobs\TranslatePageJob::dispatchAfterResponse((string) $page->path);
+            }
         });
     }
 
