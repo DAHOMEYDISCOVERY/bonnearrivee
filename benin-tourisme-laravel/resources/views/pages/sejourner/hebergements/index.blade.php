@@ -8,8 +8,8 @@
 @section('headGlobals')@verbatim<script>window.globals={"ancestors":{"chapter1":"Organisez","chapter2":"H\u00e9bergements","chapter3":null},"context":"website","current_lang":"fr","current_locale":"fr","current_locale_region":"fr_FR","env":"prod","languages":["fr","nl"],"page_type":"page-hub","post_id":797,"post_image":"","post_title":"H\u00e9bergements","post_type":"page","post_modified":"2023-04-12 12:48:41+02:00","site_key":"benin","tags":{"places":[],"seasons":[],"themes":[],"targets":[]},"woody_options_pages":{"search_url":2043,"weather_url":0},"woody_timezone":"Europe\/Paris","search":{"api":{"uri":"","args":{"size":15,"threshold":0.5}}},"sheet_bordereaux_with_dates":[],"short_date_bordereaux":["FMA","ASC"],"tmaps":{"url_api":"","url_api_lazy":""},"hawwwai":{"sheet_options":{"nearby_distance_max":5000}}}</script>@endverbatim@endsection
 @section('headDataLayer')@verbatim<script>window.dataLayer=window.dataLayer?window.dataLayer:[];window.dataLayer.push({"event":"globals","data":{"env":"prod","site_key":"benin","page":{"id_page":797,"name":"H\u00e9bergements","page_type":"page-hub","tags":{"places":[],"seasons":[],"themes":[],"targets":[]}},"lang":"fr"}});</script>@endverbatim@endsection
 @section('headSchema')@verbatim<script type="application/ld+json" class="benin-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","url":"https:\/\/www.bonnearrivee.bj","name":"Bonne Arrivée","description":"Bienvenue sur le site de l’Agence Attractivit\u00e9 &amp; Tourisme Bénin. Ici, la vie s’\u00e9merveille, et mille surprises vous attendent.","potentialAction":[{"@type":"SearchAction","target":"https:\/\/www.bonnearrivee.bj\/rechercher\/?query={search_term_string}","query-input":"required name=search_term_string"}]},{"@type":"WebPage","url":"https:\/\/www.bonnearrivee.bj\/sejourner\/hebergements\/","headline":"H\u00e9bergements | Bonne Arrivée","inLanguage":"fr-FR","datePublished":"2021-12-07 10:13:09","dateModified":"2023-04-12 10:48:41","description":"Envie de se r\u00e9veiller les pieds dans l\u2019eau, de boire un verre devant un coucher de soleil magique ? Trouvez votre h\u00e9bergement \u00e0 le Bénin et r\u00e9alisez","image":[]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https:\/\/www.bonnearrivee.bj\/"},{"@type":"ListItem","position":2,"name":"Organisez","item":"https:\/\/www.bonnearrivee.bj\/sejourner\/"},{"@type":"ListItem","position":3,"name":"H\u00e9bergements","item":"https:\/\/www.bonnearrivee.bj\/sejourner\/hebergements\/"}]}]}</script>@endverbatim@endsection
-@section('headImageOg')@verbatim<meta property="og:image" content="/assets/img/ouidah-route-1920x960.webp"/>@endverbatim@endsection
-@section('headImageTwitter')@verbatim<meta property="twitter:image" content="/assets/img/ouidah-route-1920x960.webp"/>@endverbatim@endsection
+@section('headImageOg')@verbatim<meta property="og:image" content="/assets/img/hero-hebergements-1920x960.webp"/>@endverbatim@endsection
+@section('headImageTwitter')@verbatim<meta property="twitter:image" content="/assets/img/hero-hebergements-1920x960.webp"/>@endverbatim@endsection
 @section('scripts')@verbatim
 
         <script src="/assets/benin-carrousels.js?v=a043a557"></script>
@@ -21,14 +21,14 @@
     class="woody-component woody-component-hero has-title has-pretitle   tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
-    src="/assets/img/ouidah-route-1920x480.webp"
-    alt="La Route de l’Esclave à Ouidah"
+    src="/assets/img/hero-hebergements-1920x480.webp"
+    alt="Façade d’un hôtel illuminée de nuit"
     loading="eager"
-    srcset="/assets/img/ouidah-route-360x90.webp 360w, /assets/img/ouidah-route-640x160.webp 640w, /assets/img/ouidah-route-1200x300.webp 1200w, /assets/img/ouidah-route-1920x480.webp 1920w"
-    published="2021-12-27 15:46:44"
-    description="La Route de l’Esclave à Ouidah"
-    caption="La Route de l’Esclave à Ouidah"
-    author="Hinnou Gontran Serge / CC BY-SA 4.0 — Wikimedia Commons"
+    srcset="/assets/img/hero-hebergements-360x90.webp 360w, /assets/img/hero-hebergements-640x160.webp 640w, /assets/img/hero-hebergements-1200x300.webp 1200w, /assets/img/hero-hebergements-1920x480.webp 1920w"
+    published="2026-11-17 16:00:00"
+    description="Façade d’un hôtel illuminée de nuit"
+    caption="Façade d’un hôtel illuminée de nuit"
+    author="Bonne Arrivée / Tous droits réservés"
     :nosnippet="true"
 />@verbatim                
                         </div>
