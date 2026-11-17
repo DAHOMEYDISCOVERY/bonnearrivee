@@ -60,7 +60,8 @@ final class RenderedHtmlTest extends TestCase
 
         $this->assertStringContainsString('href="/sejourner/hebergements/chambres-dhotes"', $html);
         $this->assertStringContainsString('href="/sejourner/hebergements/gites-et-lodges"', $html);
-        $this->assertStringContainsString('href="/sejourner/restaurants#maquis"', $html);
+        $this->assertStringContainsString('href="/sejourner/hebergements/hotels"', $html);
+        $this->assertStringContainsString('href="/sejourner/restaurants"', $html);
         $this->get('/sejourner/restaurants')->assertOk()->assertSee('id="maquis"', false);
     }
 

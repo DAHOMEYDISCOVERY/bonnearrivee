@@ -53,13 +53,12 @@
 </nav>
 
 <script>
-/* Desktop : le lanceur flotte et s'arrête juste au-dessus du repère « BÉNIN »
-   (intégré au SVG world-benin, viewBox 598.8 x 510.2, marqueur ~y=345 ; on tient
-   compte du cadrage xMidYMid meet).
-   Mobile : il ne flotte pas par-dessus le contenu — il est ancré tout en bas de
-   la page (position absolute) pour ne jamais recouvrir les liens du footer. */
+/* Ordinateur et mobile (même comportement) : le lanceur flotte en bas à droite
+   et s'arrête juste au-dessus du repère « BÉNIN » du footer (intégré au SVG
+   world-benin, viewBox 598.8 x 510.2, marqueur ~y=345 ; on tient compte du
+   cadrage xMidYMid meet). */
 (function(){
-  var VB_W = 598.8, VB_H = 510.2, MARK_Y = 332, GAP = 12, MOBILE = 820;
+  var VB_W = 598.8, VB_H = 510.2, MARK_Y = 332, GAP = 12;
   function init(){
     var el = document.querySelector('.ba-ecolaunch');
     if (!el) return;
@@ -70,7 +69,6 @@
     if (!img && !fallback) return;
 
     var ticking = false;
-    function isMobile(){ return window.matchMedia('(max-width:' + MOBILE + 'px)').matches; }
     function stopLineY(){
       if (img) {
         var r = img.getBoundingClientRect();
@@ -84,16 +82,7 @@
     }
     function apply(){
       ticking = false;
-      if (isMobile()) {
-        // Ancré au bas du footer (pas de flottement par-dessus les liens, pas de
-        // dépassement sous le footer).
-        var fEl = document.querySelector('footer.site-footer') || document.querySelector('.site-footer') || fallback;
-        var footerBottomDoc = fEl.getBoundingClientRect().bottom + window.pageYOffset;
-        el.style.position = 'absolute';
-        el.style.bottom = 'auto';
-        el.style.transform = 'none';
-        el.style.top = Math.round(footerBottomDoc - el.offsetHeight - 18) + 'px';
-      } else {
+      {
         el.style.position = '';
         el.style.top = '';
         el.style.bottom = '';

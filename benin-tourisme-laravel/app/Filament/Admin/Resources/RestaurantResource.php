@@ -30,7 +30,8 @@ class RestaurantResource extends Resource
                 Forms\Components\Select::make('categorie')
                     ->options(Restaurant::CATEGORIES)->required()->default('maquis'),
                 Forms\Components\Toggle::make('coup_de_coeur')
-                    ->label('Coup de cœur Dahomey Discovery'),
+                    ->label('Testé par Dahomey Discovery (étoile ★ sur le site)')
+                    ->helperText('Cochez si l’équipe a testé ce restaurant : il est mis en avant en haut de la page « Où manger ».'),
                 Forms\Components\Toggle::make('published')->default(true),
             ])->columns(2),
 
@@ -79,7 +80,7 @@ class RestaurantResource extends Resource
                 Tables\Columns\TextColumn::make('categorie')
                     ->formatStateUsing(fn ($state) => Restaurant::CATEGORIES[$state] ?? $state)
                     ->badge(),
-                Tables\Columns\IconColumn::make('coup_de_coeur')->boolean(),
+                Tables\Columns\IconColumn::make('coup_de_coeur')->label('Testé ★')->boolean(),
                 Tables\Columns\IconColumn::make('published')->boolean(),
                 Tables\Columns\TextColumn::make('sort_order')->sortable(),
             ])
@@ -87,7 +88,7 @@ class RestaurantResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('ville'),
                 Tables\Filters\SelectFilter::make('categorie')->options(Restaurant::CATEGORIES),
-                Tables\Filters\TernaryFilter::make('coup_de_coeur'),
+                Tables\Filters\TernaryFilter::make('coup_de_coeur')->label('Testé par l’agence'),
                 Tables\Filters\TernaryFilter::make('published'),
             ])
             ->actions([

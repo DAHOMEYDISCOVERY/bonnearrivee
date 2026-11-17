@@ -33,11 +33,11 @@ final class SiteLayoutTest extends TestCase
     {
         $html = $this->get('/quand-partir')->assertOk()->getContent();
 
-        foreach (['Découvrez', 'Vivez', 'Organisez', 'Les cinq Bénin', 'Où dormir ?', 'Toutes les infos pratiques'] as $label) {
+        foreach (['Découvrez', 'Vivez', 'Organisez', 'Les cinq Bénin', 'Où dormir ?', 'Infos pratiques'] as $label) {
             $this->assertStringContainsString($label, $html);
         }
-        $this->assertStringContainsString('aria-label="Cafés et bars"', $html);
-        $this->assertStringContainsString('data-srcset="/assets/img/pirogue-360x180.webp 360w', $html);
+        $this->assertStringContainsString('aria-label="Gîtes et lodges"', $html);
+        $this->assertStringContainsString('data-srcset="/assets/img/menu-ou-dormir-360x180.webp 360w', $html);
         $this->assertStringContainsString('<a href="tel:+2290167110220"', $html);
         $this->assertStringContainsString('reservations@dahomeydiscovery.com', $html);
         $this->assertStringNotContainsString('{{', $html);

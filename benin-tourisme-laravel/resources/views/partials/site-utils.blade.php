@@ -437,3 +437,5 @@
     document.querySelectorAll('.hero-bg img').forEach(plusHaut);
 })();
 </script>
+
+<script src="/assets/benin-zoom-galerie.js?v=1" defer></script>

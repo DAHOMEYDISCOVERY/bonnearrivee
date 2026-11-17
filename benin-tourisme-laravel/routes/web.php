@@ -128,25 +128,26 @@ Route::view('/explorez/la-vie-semerveille-au-benin', 'pages.explorez.la-vie-seme
 ])->name('la-vie-semerveille');
 
 Route::get('/sejourner/restaurants', function () {
+    // Répertoire libre (plus de paiement sur cette page) : toutes les fiches
+    // publiées, les adresses testées par Dahomey Discovery en premier.
+    $restos = collect();
+    try {
+        $restos = \App\Models\Restaurant::published()
+            ->orderByDesc('coup_de_coeur')
+            ->orderBy('sort_order')
+            ->orderBy('nom')
+            ->get();
+    } catch (\Throwable $e) {
+        report($e);
+    }
+
     return view('pages.sejourner.restaurants', [
-        'title' => 'Où manger au Bénin — Catalogue restaurants | Bonne Arrivée',
-        'description' => 'Un annuaire éditorial vivant des meilleures adresses gastronomiques, maquis, cafés et bars du Bénin. Accès abonné, mises à jour automatiques, lien personnel.',
+        'title' => 'Où manger au Bénin — restaurants, maquis, cafés | Bonne Arrivée',
+        'description' => 'Le répertoire gratuit des restaurants, maquis, cafés et bars du Bénin. Les adresses marquées d’une étoile ont été testées par Dahomey Discovery.',
         'activeMenu' => null,
         'headProfile' => 'standard',
         'customContent' => null,
-        // Aperçu : 6 coups de cœur (ou 6 premiers si moins de coups de cœur)
-        'previewRestos' => \App\Models\Restaurant::published()
-            ->orderByDesc('coup_de_coeur')
-            ->orderBy('sort_order')
-            ->take(6)
-            ->get(),
-        'totalRestos'    => \App\Models\Restaurant::published()->count(),
-        'totalVilles'    => \App\Models\Restaurant::published()->distinct('ville')->count('ville'),
-        'previewNames'   => \App\Models\Restaurant::published()
-            ->orderBy('sort_order')
-            ->skip(6)->take(30)
-            ->pluck('nom')
-            ->toArray(),
+        'restos' => $restos,
     ]);
 })->name('restaurants');
 
