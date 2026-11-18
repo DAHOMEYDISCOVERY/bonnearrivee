@@ -95,7 +95,9 @@ final class PageResource extends Resource
                 ->description("Réécrire le corps de la page depuis le back-office. Quand l'interrupteur "
                     ."ci-dessous est activé et que du contenu est rédigé, le site sert cette version "
                     ."à la place de la vue Blade d'origine — sans la perdre : il suffit de désactiver "
-                    ."l'interrupteur pour retrouver le contenu historique.")
+                    ."l'interrupteur pour retrouver le contenu historique. "
+                    ."Pour changer simplement une image ou un texte, utilisez plutôt « Textes et images » "
+                    ."(bouton dans la liste des pages) : la page garde sa mise en page et ses mises à jour.")
                 ->collapsible()
                 ->collapsed(fn ($record) => ! ($record && $record->use_override))
                 ->schema([

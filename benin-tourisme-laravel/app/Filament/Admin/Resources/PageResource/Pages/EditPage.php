@@ -84,6 +84,19 @@ class EditPage extends EditRecord
             $this->halt();
         }
 
+        // Garde-fou : l'option « Envelopper » ajoute un titre centré et une
+        // colonne étroite ; sur une page complète (héros, sections), elle
+        // casse la mise en page. On la désactive et on prévient.
+        if (! empty($data['wrap_content']) && $hasContent && Page::isFullLayout($html)) {
+            $data['wrap_content'] = false;
+            Notification::make()
+                ->title('Option « Envelopper » désactivée')
+                ->body('Cette page a déjà sa propre mise en page (image principale, sections) : l’envelopper la casserait. Pour changer une image ou un texte, utilisez plutôt « Textes et images ».')
+                ->warning()
+                ->persistent()
+                ->send();
+        }
+
         if (! $hasContent) {
             $data['use_override'] = false;
             $data['content_override'] = null;

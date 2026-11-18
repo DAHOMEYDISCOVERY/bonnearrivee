@@ -290,6 +290,18 @@ final class Page extends Model
      *
      * @return array<string, mixed>
      */
+    /**
+     * Le HTML est-il une page complète avec sa propre mise en page (héros,
+     * sections, composants Woody) plutôt qu'un simple article texte ?
+     * Une telle page ne peut pas être enveloppée dans « Texte éditorial ».
+     */
+    public static function isFullLayout(string $html): bool
+    {
+        return (bool) preg_match('/class="[^"]*\b(woody-component|page-section|page-hero|content-wrapper|hero-bg)\b/i', $html)
+            || str_contains($html, '<x-media.figure')
+            || str_contains($html, '<x-aggregator.');
+    }
+
     public function toRegistryEntry(): array
     {
         $entry = [
@@ -307,7 +319,11 @@ final class Page extends Model
             // et passera le HTML de `content_override` en variable de vue.
             // wrap_content=false (defaut moderne) : HTML brut injecte dans le layout.
             // wrap_content=true (legacy)          : enveloppe custom-text + titre.
-            $entry['customView']    = $this->wrap_content ? 'pages.editable' : 'pages.editable-raw';
+            // Garde-fou : une page complète (héros, sections Woody) n'est jamais
+            // enveloppée — le titre centré et la colonne étroite de l'enveloppe
+            // cassaient sa mise en page.
+            $wrap = $this->wrap_content && ! self::isFullLayout((string) $this->content_override);
+            $entry['customView']    = $wrap ? 'pages.editable' : 'pages.editable-raw';
             $entry['customContent'] = $this->content_override;
             // Vue d'origine : la vue 'editable-raw' en extrait les sections
             // critiques (headGlobals, styles, scripts) pour que les scripts
