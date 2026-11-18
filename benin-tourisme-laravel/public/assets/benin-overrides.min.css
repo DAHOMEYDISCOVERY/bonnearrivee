@@ -9706,3 +9706,25 @@ body.home .woody-component-landswpr .swiper-slide {
 .ba-ecolaunch__go svg{width:17px;height:17px;display:block;}
 @media (max-width:820px){.ba-ecolaunch{right:10px;gap:7px;}.ba-ecolaunch__btn{min-width:0;padding:8px 11px;font-size:.76rem;gap:7px;border-radius:13px;}.ba-ecolaunch__sub{font-size:.62rem;}.ba-ecolaunch__ic svg{width:17px;height:17px;}.ba-ecolaunch__go svg{width:15px;height:15px;}}
 /* === fin écosystème lanceur === */
+
+/* === Accueil — « Découvrir son point cardinal » (5 régions) : survol sans voile ===
+   Le thème d'origine recouvre la photo d'un dégradé jaune-vert au survol. Ici :
+   zoom lent de la photo, couleurs ravivées, reflet de lumière en diagonale ; un
+   léger dégradé sombre permanent garde le titre lisible sans masquer l'image. */
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject{overflow:hidden}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject::before,
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:hover .imageObject::before{background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(6,16,11,.34) 0%,rgba(6,16,11,0) 72%),linear-gradient(180deg,rgba(6,16,11,0) 55%,rgba(6,16,11,.38) 100%);opacity:1;transition:opacity .8s ease}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:hover .imageObject::before{opacity:.7}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject-img{transform:scale(1.001);transition:transform 1.6s cubic-bezier(.16,.84,.24,1),filter 1s ease;will-change:transform}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:hover .imageObject-img,
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:focus-visible .imageObject-img{transform:scale(1.12);filter:saturate(1.15) contrast(1.05) brightness(1.04)}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.26) 47%,rgba(255,255,255,.08) 53%,rgba(255,255,255,0) 66%);transform:translateX(-110%);transition:transform 0s}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:hover .imageObject::after,
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link:focus-visible .imageObject::after{transform:translateX(110%);transition:transform 1.15s cubic-bezier(.4,0,.2,1)}
+[data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-title{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+@media (prefers-reduced-motion:reduce){
+  [data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject-img,
+  [data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject::after{transition:none}
+  [data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject::after{display:none}
+}
+/* === fin 5 régions === */

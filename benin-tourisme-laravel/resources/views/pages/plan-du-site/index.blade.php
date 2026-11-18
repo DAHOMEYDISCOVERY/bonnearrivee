@@ -41,7 +41,7 @@
                                 <div class="shares-wrapper flex-container align-middle ">
                 <ul class="sharing-links list-unstyled flex-container align-middle wrap">
                             <li class="sharing-item">
-                <div class="obf sharing-button__link facebook no-ext" title="Partager sur Facebook (nouvel onglet)" data-obf="aHR0cHM6Ly9mYWNlYm9vay5jb20vc2hhcmVyL3NoYXJlci5waHA/dT1odHRwczovL3d3dy5tYXlvdHRlLXRvdXJpc21lLmNvbS9wbGFuLWR1LXNpdGUv" data-target="_blank" aria-label="Partager sur Facebook (nouvel onglet)">
+                <div class="obf sharing-button__link facebook no-ext" title="Partager sur Facebook (nouvel onglet)" data-obf="aHR0cHM6Ly9mYWNlYm9vay5jb20vc2hhcmVyL3NoYXJlci5waHA/dT1odHRwcyUzQSUyRiUyRnd3dy5ib25uZWFycml2ZWUuYmolMkZwbGFuLWR1LXNpdGU=" data-target="_blank" aria-label="Partager sur Facebook (nouvel onglet)">
                     <div class="sharing-button sharing-button--facebook">
                         <div aria-hidden="true" class="sharing-button__icon sharing-button__icon--solid">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
@@ -51,7 +51,7 @@
                 </div>
             </li>
                     <li class="sharing-item">
-                <div class="obf sharing-button__link twitter no-ext" title="Partager sur Twitter (nouvel onglet)" data-obf="aHR0cHM6Ly90d2l0dGVyLmNvbS9pbnRlbnQvdHdlZXQvP3VybD1odHRwczovL3d3dy5tYXlvdHRlLXRvdXJpc21lLmNvbS9wbGFuLWR1LXNpdGUv" data-target="_blank" aria-label="Partager sur Twitter (nouvel onglet)">
+                <div class="obf sharing-button__link twitter no-ext" title="Partager sur Twitter (nouvel onglet)" data-obf="aHR0cHM6Ly90d2l0dGVyLmNvbS9pbnRlbnQvdHdlZXQvP3VybD1odHRwcyUzQSUyRiUyRnd3dy5ib25uZWFycml2ZWUuYmolMkZwbGFuLWR1LXNpdGU=" data-target="_blank" aria-label="Partager sur Twitter (nouvel onglet)">
                     <div class="sharing-button sharing-button--twitter">
                         <div aria-hidden="true" class="sharing-button__icon sharing-button__icon--solid">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,7 @@
                 </div>
             </li>
                     <li class="sharing-item">
-                <div class="obf sharing-button__link linkedin no-ext" title="Partager sur LinkedIn (nouvel onglet)" data-obf="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL3NoYXJlQXJ0aWNsZT9taW5pPXRydWUmdXJsPWh0dHBzOi8vd3d3Lm1heW90dGUtdG91cmlzbWUuY29tL3BsYW4tZHUtc2l0ZS8=" data-target="_blank" aria-label="Partager sur LinkedIn (nouvel onglet)">
+                <div class="obf sharing-button__link linkedin no-ext" title="Partager sur LinkedIn (nouvel onglet)" data-obf="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL3NoYXJlQXJ0aWNsZT9taW5pPXRydWUmdXJsPWh0dHBzJTNBJTJGJTJGd3d3LmJvbm5lYXJyaXZlZS5iaiUyRnBsYW4tZHUtc2l0ZQ==" data-target="_blank" aria-label="Partager sur LinkedIn (nouvel onglet)">
                     <div class="sharing-button sharing-button--linkedin">
                         <div aria-hidden="true" class="sharing-button__icon sharing-button__icon--solid">
                             <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><g transform="translate(3.995 0)"><path d="m.725887 14.017622h8.687782v27.946652h-8.687782z"/><path d="m5.06977823 10.1995707c-2.03833886.0011559-3.87655884-1.22597292-4.65713137-3.10893154-.78057254-1.88295862-.34969502-4.05073223 1.09162844-5.4920557 1.44132347-1.44132346 3.60909708-1.87220098 5.4920557-1.09162844 1.88295861.78057254 3.1100874 2.61879251 3.1089316 4.65713137.0007587 1.33572593-.52952038 2.61696197-1.47402137 3.561463-.94450103.944501-2.22573707 1.47478011-3.561463 1.47402131z"/><path d="m41.9499857 41.9642748h-8.6820667v-13.5918068c0-3.2407714-.0571564-7.4103353-4.5125027-7.4103353-4.5210762 0-5.2098115 3.5351272-5.2098115 7.1788517v13.8232904h-8.6849245v-27.9466524h8.3305544v3.8209096h.1200286c1.1431292-2.197666 4.0009523-4.5125027 8.2162415-4.5125027 8.7963796 0 10.4196231 5.784234 10.4196231 13.3088823z"/></g></svg>
@@ -73,7 +73,7 @@
                 </div>
             </li>
                     <li class="sharing-item">
-                <div class="obf sharing-button__link pinterest no-ext" title="Partager sur Pinterest (nouvel onglet)" data-obf="aHR0cHM6Ly9waW50ZXJlc3QuY29tL3Bpbi9jcmVhdGUvYnV0dG9uLz91cmw9aHR0cHM6Ly93d3cubWF5b3R0ZS10b3VyaXNtZS5jb20vcGxhbi1kdS1zaXRlLw==" data-target="_blank" aria-label="Partager sur Pinterest (nouvel onglet)">
+                <div class="obf sharing-button__link pinterest no-ext" title="Partager sur Pinterest (nouvel onglet)" data-obf="aHR0cHM6Ly9waW50ZXJlc3QuY29tL3Bpbi9jcmVhdGUvYnV0dG9uLz91cmw9aHR0cHMlM0ElMkYlMkZ3d3cuYm9ubmVhcnJpdmVlLmJqJTJGcGxhbi1kdS1zaXRl" data-target="_blank" aria-label="Partager sur Pinterest (nouvel onglet)">
                     <div class="sharing-button sharing-button--pinterest">
                         <div aria-hidden="true" class="sharing-button__icon sharing-button__icon--solid">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M12.14.5C5.86.5 2.7 5 2.7 8.75c0 2.27.86 4.3 2.7 5.05.3.12.57 0 .66-.33l.27-1.06c.1-.32.06-.44-.2-.73-.52-.62-.86-1.44-.86-2.6 0-3.33 2.5-6.32 6.5-6.32 3.55 0 5.5 2.17 5.5 5.07 0 3.8-1.7 7.02-4.2 7.02-1.37 0-2.4-1.14-2.07-2.54.4-1.68 1.16-3.48 1.16-4.7 0-1.07-.58-1.98-1.78-1.98-1.4 0-2.55 1.47-2.55 3.42 0 1.25.43 2.1.43 2.1l-1.7 7.2c-.5 2.13-.08 4.75-.04 5 .02.17.22.2.3.1.14-.18 1.82-2.26 2.4-4.33.16-.58.93-3.63.93-3.63.45.88 1.8 1.65 3.22 1.65 4.25 0 7.13-3.87 7.13-9.05C20.5 4.15 17.18.5 12.14.5z"/></svg>
@@ -83,7 +83,7 @@
                 </div>
             </li>
                     <li class="sharing-item">
-                <div class="obf sharing-button__link mail no-ext" title="Partager par e-mail (nouvel onglet)" data-obf="bWFpbHRvOj9ib2R5PWh0dHBzOi8vd3d3Lm1heW90dGUtdG91cmlzbWUuY29tL3BsYW4tZHUtc2l0ZS8=" data-target="_blank" aria-label="Partager par e-mail (nouvel onglet)">
+                <div class="obf sharing-button__link mail no-ext" title="Partager par e-mail (nouvel onglet)" data-obf="bWFpbHRvOj9ib2R5PWh0dHBzOi8vd3d3LmJvbm5lYXJyaXZlZS5iai9wbGFuLWR1LXNpdGU=" data-target="_blank" aria-label="Partager par e-mail (nouvel onglet)">
                     <div class="sharing-button sharing-button--mail">
                         <div aria-hidden="true" class="sharing-button__icon sharing-button__icon--solid">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>

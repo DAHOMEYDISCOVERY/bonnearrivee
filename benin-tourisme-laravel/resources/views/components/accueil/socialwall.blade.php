@@ -1,285 +1,216 @@
-{{-- Généré par tools/convert.py — ne pas modifier à la main. --}}
-@verbatim<div class="page-section page-section-5" id="pageSection-5">
-            <section data-uuid="ea19f00a-7532-4494-b021-59e424cbdc80" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none is-full-width" ><article class="section-layout-wrapper"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-socialwall isRel tpl_03   "><div class="gallery-wrapper"><div class="woodyGallery grid-x grid-padding-x grid-padding-y" itemscope="itemscope" itemtype="http://schema.org/ImageGallery" role="list"><div class="cell medium-6 large-4"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #visitbenin" data-toggle="media-zoom-6a8c5846e2049-0" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-vannerie-640x640.webp"
-    alt="Une artisane et ses paniers tressés"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-vannerie-360x360.webp 360w, /assets/img/ba-vannerie-640x640.webp 640w, /assets/img/ba-vannerie-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:45:46"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-0" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #visitbenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-vannerie-640x640.webp"
-    alt="Une artisane et ses paniers tressés"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-vannerie-360x360.webp 360w, /assets/img/ba-vannerie-640x640.webp 640w, /assets/img/ba-vannerie-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:45:46"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqOXBpeUdxYkVWLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 4 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqOXBpeUdxYkVWLw=="
-                        data-target="_blank"><strong>Instagram #visitbenin</strong></p></div></div><div class="description marg-top-sm"><p>Le joyau du lac Nokoué : la cité lacustre de Ganvié 🇧🇯 !
-
-#visitbenin #benin #tourisme #dahomeydiscovery #benin229 #terredevodun #paysduvodun #golfedeguinee #nature #soleil #plage #animaux #environnement #beninrevele #ilovebenin</p></div></div></div></div></div><div class="cell small-6"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #visitbenin" data-toggle="media-zoom-6a8c5846e2049-1" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-zangbeto-640x640.webp"
-    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:45:12"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-1" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #visitbenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-zangbeto-640x640.webp"
-    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:45:12"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqN1pXN3JxR3pfLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 4 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqN1pXN3JxR3pfLw=="
-                        data-target="_blank"><strong>Instagram #visitbenin</strong></p></div></div><div class="description marg-top-sm"><p>L'un des plus gros animaux emblématiques du pays, et de la savane 🐘
-
-#visitbenin #benin #tourisme #dahomeydiscovery #benin229 #terredevodun #paysduvodun #golfedeguinee #nature #soleil #plage #animaux #environnement #beninrevele</p></div></div></div></div></div></div><div class="cell small-6"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #dahomeydiscovery" data-toggle="media-zoom-6a8c5846e2049-2" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-tata-somba-640x640.webp"
-    alt="Tata somba, les maisons-forteresses de l'Atacora"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-tata-somba-360x360.webp 360w, /assets/img/ba-tata-somba-640x640.webp 640w, /assets/img/ba-tata-somba-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:46:06"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-2" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #dahomeydiscovery" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-tata-somba-640x640.webp"
-    alt="Tata somba, les maisons-forteresses de l'Atacora"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-tata-somba-360x360.webp 360w, /assets/img/ba-tata-somba-640x640.webp 640w, /assets/img/ba-tata-somba-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:46:06"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhpelVMM1R5Lw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhpelVMM1R5Lw=="
-                        data-target="_blank"><strong>Instagram #dahomeydiscovery</strong></p></div></div><div class="description marg-top-sm"><p>📸 😍❤️ #sunset
-.
-.
-.
-.
-#sunsetlovers #sunsetphotography #sunset🌅  #travelphotography #travel #photography #communedelokossa #centredubenin #lokossamaville #sunsetbenin #sunset #lokossa #benincentre #nch70 #villedelokossa #tou</p></div></div></div></div></div></div></div></div><div class="cell medium-6 large-4 middle-column mobile-order-first"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #dahomeydiscovery" data-toggle="media-zoom-6a8c5846e2049-3" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-papillon-640x640.webp"
-    alt="Une danseuse costumée en papillon lors d’un défilé"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 15:12:40"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-3" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #dahomeydiscovery" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-papillon-640x640.webp"
-    alt="Une danseuse costumée en papillon lors d’un défilé"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 15:12:40"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhvaWdMUTlCLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhvaWdMUTlCLw=="
-                        data-target="_blank"><strong>Instagram #dahomeydiscovery</strong></p></div></div><div class="description marg-top-sm"><p>📸 😍❤️ #sunset
-.
-.
-.
-.
-#sunsetlovers #sunsetphotography #sunset🌅  #travelphotography #travel #photography #communedelokossa #centredubenin #lokossamaville #sunsetbenin #sunset #lokossa #benincentre #nch70 #villedelokossa #tou</p></div></div></div></div></div><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-4" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-danse-640x640.webp"
-    alt="Une danse traditionnelle devant le public"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-danse-360x360.webp 360w, /assets/img/ba-danse-640x640.webp 640w, /assets/img/ba-danse-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:45:25"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-4" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-danse-640x640.webp"
-    alt="Une danse traditionnelle devant le public"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-danse-360x360.webp 360w, /assets/img/ba-danse-640x640.webp 640w, /assets/img/ba-danse-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:45:25"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblNzbmJCV2NXLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblNzbmJCV2NXLw=="
-                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Les lagunes du Bénin 
-#benin #beninrevele🌴🌞terredevodun #beninrevele #voyageaubenin #drone #dronestagram #dronelife #dronelifestyle #mavicair #blue #bluewater #pirogue #ganvie #ganviephotography</p></div></div></div></div></div><div class="cell flex-container align-center align-middle header-wrapper mobile-order-first"><div class="block-header padd-all-md"><div class="socialwall-titles flex-container flex-dir-column align-middle align-center text-center"><div class="socialwall-texts has-title"><span class="socialwall-title block-span">#bonnearrivee</span></div></div></div></div><div class="cell small-6"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-5" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-statues-640x640.webp"
-    alt="Un groupe de statues de bronze"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-statues-360x360.webp 360w, /assets/img/ba-statues-640x640.webp 640w, /assets/img/ba-statues-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:50:45"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-5" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-statues-640x640.webp"
-    alt="Un groupe de statues de bronze"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-statues-360x360.webp 360w, /assets/img/ba-statues-640x640.webp 640w, /assets/img/ba-statues-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:50:45"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblR3RnZoUWxILw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblR3RnZoUWxILw=="
-                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>La Bouche du Roy au Bénin, un lieu incroyable pour la pirogue ! Alors à votre avis pourquoi cette forme ?
-#benin #beninrevele🌴🌞terredevodun #beninrevele #voyageaubenin #drone #dronestagram #dronelife #dronelifestyle #mavicai</p></div></div></div></div></div><div class="cell small-6"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-6" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-rocher-640x640.webp"
-    alt="Un rocher au coucher du soleil, au-dessus de la forêt"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-rocher-360x360.webp 360w, /assets/img/ba-rocher-640x640.webp 640w, /assets/img/ba-rocher-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 15:12:55"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-6" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-rocher-640x640.webp"
-    alt="Un rocher au coucher du soleil, au-dessus de la forêt"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-rocher-360x360.webp 360w, /assets/img/ba-rocher-640x640.webp 640w, /assets/img/ba-rocher-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 15:12:55"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbnk0ZkVyVllXLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbnk0ZkVyVllXLw=="
-                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Vestiges de l'ancienne fabrique d'huile de palme 🔗⚙️
-
-📍Natitingou ( Fidjrossè)
-
-____________________________
-#beninrevele #beninrevele🌴🌞terredevodun❤️🇧🇯❤️ #benin229 #beninrevele #benin🇧🇯 #beninrevele🌴 #229 #usine #usineabando</p></div></div></div></div></div></div></div><div class="cell large-4 hide-for-medium-only"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-7" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-elephants-640x640.webp"
-    alt="Des éléphants au point d'eau"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-elephants-360x360.webp 360w, /assets/img/ba-elephants-640x640.webp 640w, /assets/img/ba-elephants-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:46:35"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-7" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-elephants-640x640.webp"
-    alt="Des éléphants au point d'eau"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-elephants-360x360.webp 360w, /assets/img/ba-elephants-640x640.webp 640w, /assets/img/ba-elephants-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:46:35"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbjAtc3NMbDMzLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbjAtc3NMbDMzLw=="
-                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Moulin a trois roues ( pour la presse de l'huile
-
-📍Natitingou ( Fidjrossè)
-
-____________________________
-#beninrevele #beninrevele🌴🌞terredevodun❤️🇧🇯❤️ #benin229 #beninrevele #benin🇧🇯 #beninrevele🌴 #229 #usine #usineabandonnée </p></div></div></div></div></div><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #ilovebenin" data-toggle="media-zoom-6a8c5846e2049-8" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-cavalier-640x640.webp"
-    alt="Un cavalier en tenue d'apparat"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-cavalier-360x360.webp 360w, /assets/img/ba-cavalier-640x640.webp 640w, /assets/img/ba-cavalier-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:56:21"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-8" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #ilovebenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-cavalier-640x640.webp"
-    alt="Un cavalier en tenue d'apparat"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-cavalier-360x360.webp 360w, /assets/img/ba-cavalier-640x640.webp 640w, /assets/img/ba-cavalier-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:56:21"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb1ZQcXhoZVhMLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb1ZQcXhoZVhMLw=="
-                        data-target="_blank"><strong>Instagram #ilovebenin</strong></p></div></div><div class="description marg-top-sm"><p>"L'espoir est un fluide nécessaire à l'homme comme l'eau à la terre, il déclenche des forces insoupçonnées de la nature humaine." Lauréanne Harvey 
-💦🌳🌱 
-#cascade #waterfalls #water #waterfall #river #benin #beninlagune #benin</p></div></div></div></div></div><div class="cell"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-9" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
-    src="/assets/img/ba-portrait-640x640.webp"
-    alt="Une femme au visage peint, une bougie sur la tête"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-portrait-360x360.webp 360w, /assets/img/ba-portrait-640x640.webp 640w, /assets/img/ba-portrait-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    published="2026-11-04 14:49:45"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-9" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
-    src="/assets/img/ba-portrait-640x640.webp"
-    alt="Une femme au visage peint, une bougie sur la tête"
-    placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ba-portrait-360x360.webp 360w, /assets/img/ba-portrait-640x640.webp 640w, /assets/img/ba-portrait-714x714.webp 714w"
-    classes="isRel imageObject socialwall is_instagram"
-    :focusable="true"
-    published="2026-11-04 14:49:45"
-    author="Bonne Arrivée"
-    :nosnippet="true"
-    :instagram="true"
-/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
-                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb2dtdm5ycnNyLw=="
-                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
-                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb2dtdm5ycnNyLw=="
-                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>#beninrevele🌴🌞îleauxparfum❤️#beninrevele#instantshoot</p></div></div></div></div></div></div></div></div></div></div></div></div></article></section>
+{{-- Galerie #bonnearrivee de la page d'accueil (section avant le pied de page).
+     Disposition d'origine de Bonne Arrivée (deux grandes tuiles, titre dans la
+     grille), l'artisane au centre. Au défilement, la galerie reste à l'écran :
+     l'artisane grandit jusqu'à remplir l'écran pendant que les autres photos
+     glissent vers elle et s'effacent ; un titre apparaît en fin de zoom.
+     Photos de Bonne Arrivée uniquement, servies par le site, sans aucun lien.
+     L'ancien mur Instagram est conservé dans socialwall-instagram-ancien.blade.php
+     (non affiché). Ce fichier n'est plus généré par tools/convert.py. --}}
+@php
+    // [image, texte alternatif, légende, classe de placement]
+    $bag = [
+        ['/assets/img/ba-papillon-640x640.webp', 'Danseuse en costume de papillon aux couleurs vives', 'Costumes de fête', 'p1'],
+        ['/assets/img/ba-danse-640x640.webp', 'Danseuse en jupe de raphia', 'Danses traditionnelles', 'p2'],
+        ['/assets/img/ba-elephants-640x640.webp', 'Éléphants au point d’eau', 'Parc de la Pendjari', 'p3'],
+        ['/assets/img/ba-cavalier-640x640.webp', 'Cavalier en tenue d’apparat', 'Cavaliers du Nord', 'p4'],
+        ['/assets/img/ba-portrait-714x714.webp', 'Portrait au visage peint, une bougie sur la tête', 'Cérémonie', 'p5'],
+        ['/assets/img/artisanat-1200x1200.webp', 'Une artisane et sa fille tressent des paniers', 'Vannerie', 'centre'],
+        ['/assets/img/ba-zangbeto-640x640.webp', 'Sortie de zangbeto, gardien de la nuit', 'Zangbeto', 'p6'],
+        ['/assets/img/ba-tata-somba-640x640.webp', 'Tata somba sous les arbres', 'Tata somba', 'p7'],
+        ['/assets/img/ba-statues-640x640.webp', 'Statues de bronze sur une place', 'Mémoire', 'p8'],
+        ['/assets/img/ba-rocher-640x640.webp', 'Rocher au coucher du soleil', 'Collines', 'p9'],
+    ];
+@endphp
+<div class="page-section page-section-5" id="pageSection-5">
+<section data-uuid="ea19f00a-7532-4494-b021-59e424cbdc80" class="section marg-top-none marg-bottom-none is-full-width bag" aria-labelledby="bag-titre">
+  <div class="bag__piste" data-bag>
+    <div class="bag__scene">
+      <div class="bag__grille">
+        <div class="bag__titre-cell">
+          <p class="bag__surtitre">Le Bénin en images</p>
+          <h2 class="bag__titre" id="bag-titre">#bonnearrivee</h2>
+          <span class="bag__filet" aria-hidden="true"><i></i><i></i><i></i></span>
         </div>
-                        
+        @foreach ($bag as [$src, $alt, $leg, $pos])
+          <figure class="bag__tuile bag__tuile--{{ $pos }}{{ $pos === 'centre' ? ' is-centre' : '' }}">
+            <img src="{{ $src }}" alt="{{ $alt }}" loading="{{ $pos === 'centre' ? 'eager' : 'lazy' }}" decoding="async">
+            @if ($pos === 'centre')<img class="bag__hd" src="" data-src="/assets/img/artisanat-1920x1080.webp" alt="" aria-hidden="true" decoding="async">@endif
+            <figcaption>{{ $leg }}</figcaption>
+          </figure>
+        @endforeach
+      </div>
+      <div class="bag__final" aria-hidden="true">
+        <p class="bag__final-sur">#bonnearrivee</p>
+        <p class="bag__final-titre">Bonne arrivée<br><em>au Bénin</em></p>
+        <p class="bag__final-sous">Des savoir-faire, des visages, une terre à vivre.</p>
+      </div>
+      <div class="bag__progres" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+</section>
+</div>
+
+@verbatim
+<style>
+/* ===== Galerie #bonnearrivee — styles scopés .bag ===== */
+.bag{--bag-gap:18px;--bag-r:22px;background:linear-gradient(180deg,#fff 0%,#f7f6f1 55%,#fff 100%);padding:0;overflow:visible}
+.bag__piste{position:relative;overflow:hidden;overflow:clip}
+.bag__piste.is-zoom .bag__tuile figcaption{opacity:0!important;transform:translateY(6px)!important}
+.bag__piste.is-zoom .bag__tuile:hover img{transform:none}
+.bag__scene{position:relative;padding:72px 0;will-change:transform}
+.bag__grille{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--bag-gap);max-width:1400px;margin:0 auto;padding:0 24px}
+.bag__tuile{position:relative;margin:0;aspect-ratio:1/1;border-radius:var(--bag-r);overflow:hidden;background:#e9ece6;box-shadow:0 1px 2px rgba(20,32,26,.06),0 18px 40px -26px rgba(11,61,44,.45);transform-origin:50% 50%;will-change:transform,opacity;isolation:isolate}
+.bag__tuile img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.bag__tuile .bag__hd{opacity:0;transition:opacity .4s ease}
+.bag__tuile figcaption{position:absolute;left:12px;bottom:12px;z-index:2;padding:7px 12px;border-radius:999px;font-size:.74rem;font-weight:600;letter-spacing:.02em;color:#fff;background:rgba(12,20,16,.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.bag__tuile:hover img{transform:scale(1.06)}
+.bag__tuile:hover figcaption{opacity:1;transform:none}
+.bag__tuile::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);pointer-events:none}
+/* Placement (6 colonnes x 3 rangées) — l'artisane au centre */
+.bag__titre-cell{grid-column:3/5;grid-row:1/2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;will-change:transform,opacity}
+.bag__tuile--p1{grid-column:1/2;grid-row:1/2}
+.bag__tuile--p2{grid-column:2/3;grid-row:1/2}
+.bag__tuile--p3{grid-column:5/6;grid-row:1/2}
+.bag__tuile--p4{grid-column:6/7;grid-row:1/2}
+.bag__tuile--p5{grid-column:1/3;grid-row:2/4;aspect-ratio:auto}
+.bag__tuile--centre{grid-column:3/5;grid-row:2/4;z-index:5;aspect-ratio:auto}
+.bag__tuile--p6{grid-column:5/6;grid-row:2/3}
+.bag__tuile--p7{grid-column:6/7;grid-row:2/3}
+.bag__tuile--p8{grid-column:5/6;grid-row:3/4}
+.bag__tuile--p9{grid-column:6/7;grid-row:3/4}
+.bag__surtitre{margin:0 0 10px;font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--benin-green,#00a05d)}
+.bag__titre{margin:0;font-family:"Playfair Display",Georgia,serif;font-weight:500;font-style:italic;font-size:clamp(2rem,3.6vw,3.6rem);line-height:1;letter-spacing:-.01em;color:#14201a}
+.bag__filet{display:flex;gap:4px;margin-top:16px}
+.bag__filet i{display:block;width:26px;height:3px;border-radius:2px;background:var(--benin-green,#00a05d)}
+.bag__filet i:nth-child(2){background:var(--benin-yellow,#fcd116)}
+.bag__filet i:nth-child(3){background:var(--benin-red,#e8112d)}
+/* Titre final, sur la photo plein écran */
+.bag__final{position:absolute;left:0;right:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;opacity:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 50%,rgba(6,14,10,.48),rgba(6,14,10,0) 70%)}
+.bag__final-sur{margin:0 0 14px;font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--benin-yellow,#fcd116)}
+.bag__final-titre{margin:0;font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(2.6rem,7vw,6.4rem);line-height:.98;letter-spacing:-.015em;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.bag__final-titre em{font-style:italic;color:#fff}
+.bag__final-sous{margin:18px 0 0;font-size:clamp(.95rem,1.3vw,1.15rem);color:rgba(255,255,255,.88)}
+.bag__progres{position:absolute;left:50%;z-index:21;width:min(220px,40vw);height:3px;border-radius:3px;background:rgba(20,32,26,.12);overflow:hidden;transform:translateX(-50%);opacity:0}
+.bag__progres span{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--benin-green,#00a05d) 0 33.3%,var(--benin-yellow,#fcd116) 33.3% 66.6%,var(--benin-red,#e8112d) 66.6%)}
+/* Tablette et téléphone : même disposition, resserrée (4 colonnes) */
+@media (max-width:900px){
+  .bag{--bag-gap:8px;--bag-r:14px}
+  .bag__scene{padding:48px 0}
+  .bag__grille{grid-template-columns:repeat(4,1fr);padding:0 16px}
+  .bag__titre-cell{grid-column:1/5;grid-row:1/2;padding:6px 0 10px}
+  .bag__tuile--p1{grid-column:1/2;grid-row:2/3}
+  .bag__tuile--p2{grid-column:2/3;grid-row:2/3}
+  .bag__tuile--p3{grid-column:3/4;grid-row:2/3}
+  .bag__tuile--p4{grid-column:4/5;grid-row:2/3}
+  .bag__tuile--p6{grid-column:1/2;grid-row:3/4}
+  .bag__tuile--p7{grid-column:1/2;grid-row:4/5}
+  .bag__tuile--centre{grid-column:2/4;grid-row:3/5}
+  .bag__tuile--p8{grid-column:4/5;grid-row:3/4}
+  .bag__tuile--p9{grid-column:4/5;grid-row:4/5}
+  .bag__tuile--p5{grid-column:1/5;grid-row:5/6;aspect-ratio:auto}
+  .bag__tuile--p5{aspect-ratio:2/1}
+  .bag__tuile figcaption{display:none}
+}
+@media (prefers-reduced-motion:reduce){.bag *{transition:none!important}}
+</style>
+<script>
+/* Galerie #bonnearrivee : la galerie reste à l'écran pendant que l'artisane
+   grandit jusqu'au plein écran ; les autres photos glissent vers elle en
+   grandissant et s'effacent (même transition que le Petit Train de Cotonou).
+   La scène est maintenue à l'écran en JS : position:sticky ne fonctionne pas
+   sur cette page. Désactivé si l'internaute demande moins d'animations. */
+(function () {
+  'use strict';
+  var piste = document.querySelector('[data-bag]');
+  if (!piste) return;
+  var scene = piste.querySelector('.bag__scene');
+  var centre = scene.querySelector('.bag__tuile.is-centre');
+  var autres = Array.prototype.slice.call(scene.querySelectorAll('.bag__tuile:not(.is-centre), .bag__titre-cell'));
+  var hd = centre && centre.querySelector('.bag__hd');
+  var fin = scene.querySelector('.bag__final');
+  var barre = scene.querySelector('.bag__progres');
+  var barreIn = barre && barre.querySelector('span');
+  if (!centre) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var m = null, attente = false;
+  function raz() {
+    scene.style.transform = '';
+    centre.style.transform = ''; centre.style.borderRadius = '';
+    autres.forEach(function (el) { el.style.transform = ''; el.style.opacity = ''; });
+  }
+  function mesurer() {
+    raz();
+    piste.style.height = '';
+    var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var rs = scene.getBoundingClientRect();
+    var H = rs.height;
+    var course = Math.round(vh * 1.8);
+    // Moment où la galerie se fige : centrée à l'écran (ou calée en haut si plus haute).
+    var debut = H <= vh ? (vh - H) / 2 : Math.min(0, (vh - H) / 2);
+    // La zone de la galerie couvre tout l'écran jusqu'à la fin du zoom : la photo
+    // agrandie y reste contenue et ne passe jamais par-dessus le pied de page.
+    piste.style.height = (course + Math.max(H, vh - debut)) + 'px';
+    var rc = centre.getBoundingClientRect();
+    var cx = rc.left + rc.width / 2, cy = rc.top - rs.top + rc.height / 2; // dans la scène
+    var cible = function (el) {
+      var r = el.getBoundingClientRect();
+      return { dx: cx - (r.left + r.width / 2), dy: cy - (r.top - rs.top + r.height / 2), s: rc.width / Math.max(1, r.width) };
+    };
+    m = {
+      vw: vw, vh: vh, H: H, debut: debut, course: course,
+      // la photo centrale vient au centre de l'écran et le couvre entièrement
+      cdx: vw / 2 - cx, cdy: (vh / 2 - debut) - cy,
+      cs: Math.max(vw / rc.width, vh / rc.height) * 1.02,
+      autres: autres.map(cible)
+    };
+    if (fin) { fin.style.top = (-debut) + 'px'; fin.style.height = vh + 'px'; }
+    if (barre) { barre.style.top = (vh - debut - 34) + 'px'; }
+  }
+  function maj() {
+    attente = false;
+    if (!m) return;
+    if (Math.abs(scene.getBoundingClientRect().height - m.H) > 2 && !scene.style.transform) { mesurer(); }
+    var haut = piste.getBoundingClientRect().top;
+    var decale = Math.min(m.course, Math.max(0, m.debut - haut));
+    var p = decale / m.course;
+    piste.classList.toggle('is-zoom', p > 0);
+    scene.style.transform = decale ? 'translate3d(0,' + decale.toFixed(1) + 'px,0)' : '';
+    // Les autres photos : glissent vers l'artisane et s'effacent (60 % premiers du parcours).
+    var q = Math.min(1, p / 0.6), qe = 1 - Math.pow(1 - q, 2);
+    autres.forEach(function (el, i) {
+      var t = m.autres[i];
+      if (!p) { el.style.transform = ''; el.style.opacity = ''; return; }
+      el.style.transform = 'translate3d(' + (t.dx * qe).toFixed(1) + 'px,' + (t.dy * qe).toFixed(1) + 'px,0) scale(' + (1 + (t.s - 1) * qe).toFixed(4) + ')';
+      el.style.opacity = Math.max(0, 1 - q * 1.15).toFixed(3);
+    });
+    // L'artisane : accélère jusqu'au plein écran.
+    var e = p * p * p;
+    centre.style.transform = p ? 'translate3d(' + (m.cdx * e).toFixed(1) + 'px,' + (m.cdy * e).toFixed(1) + 'px,0) scale(' + (1 + (m.cs - 1) * e).toFixed(4) + ')' : '';
+    centre.style.borderRadius = p ? (22 * (1 - e) / (1 + (m.cs - 1) * e)).toFixed(2) + 'px' : '';
+    if (hd) {
+      if (!hd.getAttribute('src') && haut < m.vh * 2.5) hd.setAttribute('src', hd.getAttribute('data-src'));
+      hd.style.opacity = (e > 0.04 && hd.complete && hd.naturalWidth) ? '1' : '0';
+    }
+    if (fin) {
+      var f = Math.min(1, Math.max(0, (p - 0.82) / 0.14));
+      fin.style.opacity = f.toFixed(3);
+      fin.style.transform = 'translate3d(0,' + ((1 - f) * 24).toFixed(1) + 'px,0)';
+    }
+    if (barre) {
+      barre.style.opacity = (p > 0 && p < 1) ? '1' : '0';
+      barreIn.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    }
+  }
+  function demande() { if (!attente) { attente = true; window.requestAnimationFrame(maj); } }
+  var tRes;
+  window.addEventListener('scroll', demande, { passive: true });
+  window.addEventListener('resize', function () { clearTimeout(tRes); tRes = setTimeout(function () { mesurer(); maj(); }, 150); });
+  window.addEventListener('load', function () { mesurer(); maj(); });
+  if (hd) hd.addEventListener('load', demande);
+  mesurer(); maj();
+})();
+</script>
+@endverbatim
+
                     </div>
-    @endverbatim

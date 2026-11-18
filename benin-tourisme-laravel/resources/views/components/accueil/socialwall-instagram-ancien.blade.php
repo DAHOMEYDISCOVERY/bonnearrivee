@@ -1,0 +1,286 @@
+{{-- ANCIENNE galerie #bonnearrivee (mur Instagram), remplacée le 18/11/2026 par la galerie animée de socialwall.blade.php. Conservée pour mémoire : elle n’est plus affichée. --}}
+{{-- Généré par tools/convert.py — ne pas modifier à la main. --}}
+@verbatim<div class="page-section page-section-5" id="pageSection-5">
+            <section data-uuid="ea19f00a-7532-4494-b021-59e424cbdc80" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none is-full-width" ><article class="section-layout-wrapper"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-socialwall isRel tpl_03   "><div class="gallery-wrapper"><div class="woodyGallery grid-x grid-padding-x grid-padding-y" itemscope="itemscope" itemtype="http://schema.org/ImageGallery" role="list"><div class="cell medium-6 large-4"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #visitbenin" data-toggle="media-zoom-6a8c5846e2049-0" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-vannerie-640x640.webp"
+    alt="Une artisane et ses paniers tressés"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-vannerie-360x360.webp 360w, /assets/img/ba-vannerie-640x640.webp 640w, /assets/img/ba-vannerie-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:45:46"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-0" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #visitbenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-vannerie-640x640.webp"
+    alt="Une artisane et ses paniers tressés"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-vannerie-360x360.webp 360w, /assets/img/ba-vannerie-640x640.webp 640w, /assets/img/ba-vannerie-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:45:46"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqOXBpeUdxYkVWLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 4 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqOXBpeUdxYkVWLw=="
+                        data-target="_blank"><strong>Instagram #visitbenin</strong></p></div></div><div class="description marg-top-sm"><p>Le joyau du lac Nokoué : la cité lacustre de Ganvié 🇧🇯 !
+
+#visitbenin #benin #tourisme #dahomeydiscovery #benin229 #terredevodun #paysduvodun #golfedeguinee #nature #soleil #plage #animaux #environnement #beninrevele #ilovebenin</p></div></div></div></div></div><div class="cell small-6"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #visitbenin" data-toggle="media-zoom-6a8c5846e2049-1" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-zangbeto-640x640.webp"
+    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:45:12"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-1" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #visitbenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-zangbeto-640x640.webp"
+    alt="Un zangbéto, gardien de la nuit, lors d’un festival"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-zangbeto-360x360.webp 360w, /assets/img/ba-zangbeto-640x640.webp 640w, /assets/img/ba-zangbeto-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:45:12"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqN1pXN3JxR3pfLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 4 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NqN1pXN3JxR3pfLw=="
+                        data-target="_blank"><strong>Instagram #visitbenin</strong></p></div></div><div class="description marg-top-sm"><p>L'un des plus gros animaux emblématiques du pays, et de la savane 🐘
+
+#visitbenin #benin #tourisme #dahomeydiscovery #benin229 #terredevodun #paysduvodun #golfedeguinee #nature #soleil #plage #animaux #environnement #beninrevele</p></div></div></div></div></div></div><div class="cell small-6"><div class="cell" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #dahomeydiscovery" data-toggle="media-zoom-6a8c5846e2049-2" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-tata-somba-640x640.webp"
+    alt="Tata somba, les maisons-forteresses de l'Atacora"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-tata-somba-360x360.webp 360w, /assets/img/ba-tata-somba-640x640.webp 640w, /assets/img/ba-tata-somba-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:46:06"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-2" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #dahomeydiscovery" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-tata-somba-640x640.webp"
+    alt="Tata somba, les maisons-forteresses de l'Atacora"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-tata-somba-360x360.webp 360w, /assets/img/ba-tata-somba-640x640.webp 640w, /assets/img/ba-tata-somba-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:46:06"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhpelVMM1R5Lw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhpelVMM1R5Lw=="
+                        data-target="_blank"><strong>Instagram #dahomeydiscovery</strong></p></div></div><div class="description marg-top-sm"><p>📸 😍❤️ #sunset
+.
+.
+.
+.
+#sunsetlovers #sunsetphotography #sunset🌅  #travelphotography #travel #photography #communedelokossa #centredubenin #lokossamaville #sunsetbenin #sunset #lokossa #benincentre #nch70 #villedelokossa #tou</p></div></div></div></div></div></div></div></div><div class="cell medium-6 large-4 middle-column mobile-order-first"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #dahomeydiscovery" data-toggle="media-zoom-6a8c5846e2049-3" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-papillon-640x640.webp"
+    alt="Une danseuse costumée en papillon lors d’un défilé"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 15:12:40"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-3" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #dahomeydiscovery" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-papillon-640x640.webp"
+    alt="Une danseuse costumée en papillon lors d’un défilé"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-papillon-360x360.webp 360w, /assets/img/ba-papillon-640x640.webp 640w, /assets/img/ba-papillon-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 15:12:40"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhvaWdMUTlCLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbFhvaWdMUTlCLw=="
+                        data-target="_blank"><strong>Instagram #dahomeydiscovery</strong></p></div></div><div class="description marg-top-sm"><p>📸 😍❤️ #sunset
+.
+.
+.
+.
+#sunsetlovers #sunsetphotography #sunset🌅  #travelphotography #travel #photography #communedelokossa #centredubenin #lokossamaville #sunsetbenin #sunset #lokossa #benincentre #nch70 #villedelokossa #tou</p></div></div></div></div></div><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-4" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-danse-640x640.webp"
+    alt="Une danse traditionnelle devant le public"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-danse-360x360.webp 360w, /assets/img/ba-danse-640x640.webp 640w, /assets/img/ba-danse-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:45:25"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-4" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-danse-640x640.webp"
+    alt="Une danse traditionnelle devant le public"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-danse-360x360.webp 360w, /assets/img/ba-danse-640x640.webp 640w, /assets/img/ba-danse-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:45:25"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblNzbmJCV2NXLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblNzbmJCV2NXLw=="
+                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Les lagunes du Bénin 
+#benin #beninrevele🌴🌞terredevodun #beninrevele #voyageaubenin #drone #dronestagram #dronelife #dronelifestyle #mavicair #blue #bluewater #pirogue #ganvie #ganviephotography</p></div></div></div></div></div><div class="cell flex-container align-center align-middle header-wrapper mobile-order-first"><div class="block-header padd-all-md"><div class="socialwall-titles flex-container flex-dir-column align-middle align-center text-center"><div class="socialwall-texts has-title"><span class="socialwall-title block-span">#bonnearrivee</span></div></div></div></div><div class="cell small-6"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-5" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-statues-640x640.webp"
+    alt="Un groupe de statues de bronze"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-statues-360x360.webp 360w, /assets/img/ba-statues-640x640.webp 640w, /assets/img/ba-statues-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:50:45"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-5" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-statues-640x640.webp"
+    alt="Un groupe de statues de bronze"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-statues-360x360.webp 360w, /assets/img/ba-statues-640x640.webp 640w, /assets/img/ba-statues-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:50:45"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblR3RnZoUWxILw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRblR3RnZoUWxILw=="
+                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>La Bouche du Roy au Bénin, un lieu incroyable pour la pirogue ! Alors à votre avis pourquoi cette forme ?
+#benin #beninrevele🌴🌞terredevodun #beninrevele #voyageaubenin #drone #dronestagram #dronelife #dronelifestyle #mavicai</p></div></div></div></div></div><div class="cell small-6"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-6" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-rocher-640x640.webp"
+    alt="Un rocher au coucher du soleil, au-dessus de la forêt"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-rocher-360x360.webp 360w, /assets/img/ba-rocher-640x640.webp 640w, /assets/img/ba-rocher-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 15:12:55"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-6" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-rocher-640x640.webp"
+    alt="Un rocher au coucher du soleil, au-dessus de la forêt"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-rocher-360x360.webp 360w, /assets/img/ba-rocher-640x640.webp 640w, /assets/img/ba-rocher-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 15:12:55"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbnk0ZkVyVllXLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbnk0ZkVyVllXLw=="
+                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Vestiges de l'ancienne fabrique d'huile de palme 🔗⚙️
+
+📍Natitingou ( Fidjrossè)
+
+____________________________
+#beninrevele #beninrevele🌴🌞terredevodun❤️🇧🇯❤️ #benin229 #beninrevele #benin🇧🇯 #beninrevele🌴 #229 #usine #usineabando</p></div></div></div></div></div></div></div><div class="cell large-4 hide-for-medium-only"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-7" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-elephants-640x640.webp"
+    alt="Des éléphants au point d'eau"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-elephants-360x360.webp 360w, /assets/img/ba-elephants-640x640.webp 640w, /assets/img/ba-elephants-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:46:35"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-7" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-elephants-640x640.webp"
+    alt="Des éléphants au point d'eau"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-elephants-360x360.webp 360w, /assets/img/ba-elephants-640x640.webp 640w, /assets/img/ba-elephants-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:46:35"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbjAtc3NMbDMzLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRbjAtc3NMbDMzLw=="
+                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>Moulin a trois roues ( pour la presse de l'huile
+
+📍Natitingou ( Fidjrossè)
+
+____________________________
+#beninrevele #beninrevele🌴🌞terredevodun❤️🇧🇯❤️ #benin229 #beninrevele #benin🇧🇯 #beninrevele🌴 #229 #usine #usineabandonnée </p></div></div></div></div></div><div class="cell small-6" role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #ilovebenin" data-toggle="media-zoom-6a8c5846e2049-8" aria-controls="media-zoom-1" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-cavalier-640x640.webp"
+    alt="Un cavalier en tenue d'apparat"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-cavalier-360x360.webp 360w, /assets/img/ba-cavalier-640x640.webp 640w, /assets/img/ba-cavalier-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:56:21"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-8" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #ilovebenin" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-cavalier-640x640.webp"
+    alt="Un cavalier en tenue d'apparat"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-cavalier-360x360.webp 360w, /assets/img/ba-cavalier-640x640.webp 640w, /assets/img/ba-cavalier-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:56:21"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb1ZQcXhoZVhMLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb1ZQcXhoZVhMLw=="
+                        data-target="_blank"><strong>Instagram #ilovebenin</strong></p></div></div><div class="description marg-top-sm"><p>"L'espoir est un fluide nécessaire à l'homme comme l'eau à la terre, il déclenche des forces insoupçonnées de la nature humaine." Lauréanne Harvey 
+💦🌳🌱 
+#cascade #waterfalls #water #waterfall #river #benin #beninlagune #benin</p></div></div></div></div></div><div class="cell"  role="listitem"><button class="media-zoom-button full-width flex-container" aria-label="Agrandir l'image Instagram #beninrevele" data-toggle="media-zoom-6a8c5846e2049-9" aria-controls="media-zoom-0" aria-haspopup="dialog" tabindex="0">@endverbatim<x-media.figure
+    src="/assets/img/ba-portrait-640x640.webp"
+    alt="Une femme au visage peint, une bougie sur la tête"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-portrait-360x360.webp 360w, /assets/img/ba-portrait-640x640.webp 640w, /assets/img/ba-portrait-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    published="2026-11-04 14:49:45"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim</button><div class="tiny reveal media-zoom" id="media-zoom-6a8c5846e2049-9" data-reveal role="dialog" aria-modal="true" aria-label="Vue agrandie de l'image : Instagram #beninrevele" tabindex="0"><button class="close-button" data-close aria-label="Fermer" type="button"><span aria-hidden="true">&times;</span></button><div class="media-zoom-wrapper">@endverbatim<x-media.figure
+    src="/assets/img/ba-portrait-640x640.webp"
+    alt="Une femme au visage peint, une bougie sur la tête"
+    placeholder="/assets/site/img/blank/ratio_square.webp"
+    srcset="/assets/img/ba-portrait-360x360.webp 360w, /assets/img/ba-portrait-640x640.webp 640w, /assets/img/ba-portrait-714x714.webp 714w"
+    classes="isRel imageObject socialwall is_instagram"
+    :focusable="true"
+    published="2026-11-04 14:49:45"
+    author="Bonne Arrivée"
+    :nosnippet="true"
+    :instagram="true"
+/>@verbatim<div class="media-button-wrapper"><div class="obf button no-ext"
+                data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb2dtdm5ycnNyLw=="
+                data-target="_blank"><p class="spanned">Ouvrir ce post sur Instagram</p></div></div><div class="cell media-zoom-texts padd-all-md"><div class="created"><p class="spanned"><small>il y a 5 ans</small></p></div><div class="author"><div class="instagram-user"><p class="spanned obf no-ext text-black"
+                        data-obf="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wL0NRb2dtdm5ycnNyLw=="
+                        data-target="_blank"><strong>Instagram #beninrevele</strong></p></div></div><div class="description marg-top-sm"><p>#beninrevele🌴🌞îleauxparfum❤️#beninrevele#instantshoot</p></div></div></div></div></div></div></div></div></div></div></div></div></article></section>
+        </div>
+                        
+                    </div>
+    @endverbatim
