@@ -9728,3 +9728,34 @@ body.home .woody-component-landswpr .swiper-slide {
   [data-uuid="ddd15198-c496-486f-bc01-ed61bb60c0f4"] .card.overlayedCard .card-link .imageObject::after{display:none}
 }
 /* === fin 5 régions === */
+
+/* === Toutes les cartes à image — survol sans voile (même effet que les 5 régions) ===
+   Le thème recouvre la photo d'un dégradé jaune-vert au survol (0,5 sur les cartes
+   simples, 0,84 sur les cartes à titre incrusté) et, dans certaines sections, d'un
+   filigrane. Ici, comme sur « Découvrir son point cardinal » : zoom lent de la photo,
+   couleurs ravivées, reflet de lumière en diagonale. Sur les cartes à titre incrusté,
+   un léger dégradé sombre permanent garde le titre lisible sans masquer l'image.
+   Limité au contenu des pages (<main>) : le menu n'est pas concerné. */
+main .card-link .imageObject{overflow:hidden}
+main .card-link .imageObject::before,
+main .card-link:hover .imageObject::before,
+main .card-link:focus-visible .imageObject::before{opacity:0}
+main .card.overlayedCard .card-link .imageObject::before,
+main .card.overlayedCard .card-link:hover .imageObject::before{background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(6,16,11,.34) 0%,rgba(6,16,11,0) 72%),linear-gradient(180deg,rgba(6,16,11,0) 55%,rgba(6,16,11,.38) 100%);opacity:1;transition:opacity .8s ease}
+main .card.overlayedCard .card-link:hover .imageObject::before{opacity:.7}
+main .card-link .imageObject-img{transform:scale(1.001);transition:transform 1.6s cubic-bezier(.16,.84,.24,1),filter 1s ease;will-change:transform}
+main .card-link:hover .imageObject-img,
+main .card-link:focus-visible .imageObject-img{transform:scale(1.12);filter:saturate(1.15) contrast(1.05) brightness(1.04)}
+main .card-link .imageObject::after,
+main .section.card-anim-filigrane .card.overlayedCard .card-link .imageObject::after{content:"";position:absolute;inset:0;z-index:1;display:block;pointer-events:none;-webkit-mask-image:none;mask-image:none;opacity:1;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.26) 47%,rgba(255,255,255,.08) 53%,rgba(255,255,255,0) 66%);transform:translateX(-110%);transition:transform 0s}
+main .card-link:hover .imageObject::after,
+main .card-link:focus-visible .imageObject::after,
+main .section.card-anim-filigrane .card.overlayedCard .card-link:hover .imageObject::after{opacity:1;transform:translateX(110%);transition:transform 1.15s cubic-bezier(.4,0,.2,1)}
+main .card.overlayedCard .card-link .card-title{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+@media (prefers-reduced-motion:reduce){
+  main .card-link .imageObject-img,
+  main .card-link .imageObject::after{transition:none}
+  main .card-link .imageObject::after,
+  main .section.card-anim-filigrane .card.overlayedCard .card-link .imageObject::after{display:none}
+}
+/* === fin cartes à image === */
