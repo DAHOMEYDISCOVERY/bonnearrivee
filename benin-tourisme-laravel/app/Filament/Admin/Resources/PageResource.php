@@ -23,6 +23,19 @@ use Filament\Tables\Table;
  */
 final class PageResource extends Resource
 {
+    /**
+     * Éditeur « Contenu personnalisé » (HTML de la page, option « Envelopper »).
+     * Masqué : il figeait une copie de la page, qui ne recevait plus les mises
+     * à jour du code et pouvait casser sa mise en page. Images et textes se
+     * modifient dans « Textes et images ». Rien n'est supprimé : le réglage
+     * `admin.contenu_personnalise` à true réaffiche l'éditeur ; les contenus
+     * déjà enregistrés restent intacts.
+     */
+    public static function contenuPersonnalise(): bool
+    {
+        return (bool) config('admin.contenu_personnalise', false);
+    }
+
     protected static ?string $model = Page::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
@@ -48,11 +61,17 @@ final class PageResource extends Resource
                         ->required()
                         ->unique(ignoreRecord: true)
                         ->prefix(url('/'))
-                        ->placeholder('/exemple/page'),
+                        ->placeholder('/exemple/page')
+                        // Verrouillé après création : le changer casse les liens vers la page.
+                        ->disabled(fn ($record) => $record !== null)
+                        ->helperText(fn ($record) => $record !== null ? 'Non modifiable ici : le changer casserait les liens vers la page.' : null),
                     Forms\Components\TextInput::make('view')
                         ->label('Vue Blade')
                         ->required()
-                        ->placeholder('pages.accueil'),
+                        ->placeholder('pages.accueil')
+                        // Verrouillé après création : une vue erronée rend la page introuvable.
+                        ->disabled(fn ($record) => $record !== null)
+                        ->helperText(fn ($record) => $record !== null ? 'Non modifiable ici : géré par le code du site.' : null),
                 ]),
 
             Forms\Components\Section::make('Métadonnées')
@@ -92,6 +111,7 @@ final class PageResource extends Resource
                 ]),
 
             Forms\Components\Section::make('Contenu personnalisé')
+                ->visible(fn (): bool => self::contenuPersonnalise())
                 ->description("Réécrire le corps de la page depuis le back-office. Quand l'interrupteur "
                     ."ci-dessous est activé et que du contenu est rédigé, le site sert cette version "
                     ."à la place de la vue Blade d'origine — sans la perdre : il suffit de désactiver "
@@ -180,7 +200,8 @@ final class PageResource extends Resource
                     ->label('Textes et images')
                     ->icon('heroicon-o-pencil-square')
                     ->url(fn (Page $record): string => \App\Filament\Admin\Pages\PageContentEditor::getUrl(['chemin' => $record->path])),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Titre et référencement'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

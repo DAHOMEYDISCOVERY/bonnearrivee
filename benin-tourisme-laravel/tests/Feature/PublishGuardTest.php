@@ -66,6 +66,7 @@ final class PublishGuardTest extends TestCase
 
     public function test_un_enregistrement_qui_casserait_la_page_n_est_pas_publie(): void
     {
+        config(['admin.contenu_personnalise' => true]);
         Filament::setCurrentPanel(Filament::getPanel('admin'));
         $editor = User::query()->create([
             'name' => 'Éditrice',
@@ -91,6 +92,7 @@ final class PublishGuardTest extends TestCase
 
     public function test_un_enregistrement_correct_est_publie(): void
     {
+        config(['admin.contenu_personnalise' => true]);
         Filament::setCurrentPanel(Filament::getPanel('admin'));
         $editor = User::query()->create([
             'name' => 'Éditrice',
@@ -112,6 +114,37 @@ final class PublishGuardTest extends TestCase
 
         $this->assertTrue((bool) $page->refresh()->use_override);
         $this->get(self::PATH)->assertOk()->assertSee('Ajout validé par le garde-fou', false);
+    }
+
+    public function test_editeur_masque_un_enregistrement_ne_touche_pas_au_contenu_personnalise(): void
+    {
+        Filament::setCurrentPanel(Filament::getPanel('admin'));
+        $editor = User::query()->create([
+            'name' => 'Éditrice',
+            'email' => 'editrice@example.test',
+            'password' => bcrypt('secret-test'),
+            'role' => User::ROLE_EDITOR,
+        ]);
+        $page = $this->page(false, '<p>Brouillon conservé</p>');
+
+        Livewire::actingAs($editor)
+            ->test(EditPage::class, ['record' => $page->getRouteKey()])
+            ->assertFormFieldIsHidden('content_override')
+            ->fillForm(['title' => 'Le vodun, nouveau titre | Bonne Arrivée'])
+            ->call('save')
+            ->assertHasNoFormErrors();
+
+        $page->refresh();
+        $this->assertSame('Le vodun, nouveau titre | Bonne Arrivée', $page->title);
+        $this->assertSame('<p>Brouillon conservé</p>', $page->content_override, 'Le brouillon existant ne doit pas être effacé.');
+        $this->assertSame(self::PATH, $page->path);
+        $this->assertSame(self::VIEW, $page->view);
+    }
+
+    public function test_une_page_complete_n_est_jamais_enveloppee(): void
+    {
+        $this->assertTrue(Page::isFullLayout('<div class="woody-component woody-component-hero">x</div>'));
+        $this->assertFalse(Page::isFullLayout('<h2>Titre</h2><p>Un simple article.</p>'));
     }
 
     public function test_le_code_php_ne_passe_jamais_dans_le_contenu_personnalise(): void

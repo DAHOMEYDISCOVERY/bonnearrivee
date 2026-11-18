@@ -42,6 +42,15 @@ class EditPage extends EditRecord
      */
     protected function mutateFormDataBeforeSave(array $data): array
     {
+        // Éditeur « Contenu personnalisé » masqué (PageResource) : ses champs
+        // ne sont pas envoyés par le formulaire. On ne les touche pas, pour ne
+        // rien effacer de ce qui est déjà enregistré.
+        if (! PageResource::contenuPersonnalise()) {
+            unset($data['use_override'], $data['wrap_content'], $data['content_override']);
+
+            return $data;
+        }
+
         $html = (string) ($data['content_override'] ?? '');
         // 1) Nettoyage AUTOMATIQUE des directives Blade residuelles. Un copier
         //    /coller depuis une vue d'origine aurait du @if/@foreach/{{ $x }}
@@ -148,6 +157,7 @@ class EditPage extends EditRecord
     {
         return [
             Actions\Action::make('reloadFromBlade')
+                ->visible(fn (): bool => PageResource::contenuPersonnalise())
                 ->label('Recharger depuis la vue d\'origine')
                 ->icon('heroicon-o-arrow-uturn-left')
                 ->color('gray')
