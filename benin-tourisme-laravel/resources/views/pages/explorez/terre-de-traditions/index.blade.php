@@ -69,41 +69,96 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Le Bénin est le berceau du vodun, la terre des royaumes du Danxomè et de Hogbonu, le pays des masques gèlèdè et zangbéto. Rien de tout cela n'est un musée : ce sont des pratiques vivantes, avec leurs règles, leurs interdits et leurs prêtres.</p></div></div></div></div></article></section></div>
-<div class="page-section tdt-traditions"><style>
-.tdt-traditions .tdt{max-width:1180px;margin:0 auto;padding:3.5rem 1.25rem 2.5rem}
-.tdt-traditions .tdt-head{max-width:760px;margin:0 auto 2.75rem;text-align:center}
-.tdt-traditions .tdt-pre{display:block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#00a05d;font-weight:600;margin-bottom:.6rem}
-.tdt-traditions .tdt-h2{margin:0 0 1rem;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;color:#10261a}
-.tdt-traditions .tdt-bar{display:block;width:72px;height:4px;margin:0 auto 1.4rem;background:linear-gradient(90deg,#00a05d 0 33%,#fcd116 33% 66%,#e8112d 66%);border-radius:2px}
-.tdt-traditions .tdt-intro{font-size:1.08rem;line-height:1.75;color:#333;margin:0}
-.tdt-traditions .tdt-bloc{margin-top:2.5rem}
-.tdt-traditions .tdt-h3{display:flex;align-items:center;gap:.75rem;margin:0 0 .5rem;font-size:1.35rem;color:#10261a}
-.tdt-traditions .tdt-h3::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--tdt-c,#00a05d)}
-.tdt-traditions .tdt-lead{margin:0 0 1.25rem;color:#555;line-height:1.7;max-width:70ch}
-.tdt-traditions .tdt-grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.tdt-traditions .tdt-card{background:#fff;border-radius:14px;padding:1.4rem 1.4rem 1.3rem;box-shadow:0 1px 2px rgba(16,38,26,.06),0 8px 24px rgba(16,38,26,.07);border-top:4px solid var(--tdt-c,#00a05d);transition:transform .35s ease,box-shadow .35s ease}
-.tdt-traditions .tdt-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(16,38,26,.08),0 16px 36px rgba(16,38,26,.12)}
-.tdt-traditions .tdt-card h4{margin:0 0 .2rem;font-size:1.08rem;color:#10261a}
-.tdt-traditions .tdt-card .tdt-sous{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tdt-c,#00a05d);font-weight:600;margin-bottom:.6rem}
-.tdt-traditions .tdt-card p{margin:0;line-height:1.65;color:#444;font-size:.97rem}
-.tdt-traditions .tdt-spi{--tdt-c:#00a05d}.tdt-traditions .tdt-fete{--tdt-c:#e8a400}
-@media (prefers-reduced-motion:reduce){.tdt-traditions .tdt-card{transition:none}}
-</style><section class="section padd-top-none padd-bottom-none marg-top-none marg-bottom-none"><article class="tdt">
-<div class="tdt-head"><span class="tdt-pre">Un patrimoine vivant</span><h2 class="tdt-h2">Les traditions au Bénin</h2><span class="tdt-bar" aria-hidden="true"></span><p class="tdt-intro">Les traditions locales du Bénin s'appuient sur un héritage culturel et spirituel extrêmement riche, sculpté par l'histoire des anciens royaumes et la grande variété de ses peuples. Ce patrimoine vivant s'exprime au jour le jour à travers des cultes ancestraux, des arts royaux, des fêtes identitaires ainsi qu'un artisanat transmis de siècle en siècle.</p></div>
-<div class="tdt-bloc tdt-spi"><h3 class="tdt-h3">La spiritualité et les cultes ancestraux</h3><p class="tdt-lead">La vie culturelle du pays est fortement rythmée par des pratiques spirituelles qui connectent les vivants, les ancêtres et la nature.</p>
-<div class="tdt-grid">
-<div class="tdt-card"><h4>Les Egungun</h4><span class="tdt-sous">Les Revenants</span><p>Issus de la tradition yoruba, ce sont des personnages masqués et vêtus de costumes qui symbolisent le retour momentané des esprits ancestraux parmi les vivants.</p></div>
-<div class="tdt-card"><h4>Le Zangbeto</h4><span class="tdt-sous">Le Gardien de la nuit</span><p>Faisant office de sentinelles nocturnes et de force de police traditionnelle, les Zangbetos protègent la communauté, préservent l'ordre et éloignent les entités maléfiques ou les actions nuisibles. Ils affichent une présence marquée dans le sud du pays, particulièrement ancrés à Porto-Novo ainsi que dans les secteurs côtiers et lagunaires de Ouidah, de Grand-Popo ou autour du lac Ahémé.</p></div>
-<div class="tdt-card"><h4>Le Guèlèdè</h4><span class="tdt-sous">Patrimoine de l'UNESCO</span><p>Il s'agit d'une cérémonie traditionnelle associant masques, chants et danses au sein des communautés Yoruba-Nago, notamment ancrées à Kétou, Pobè et Savè. Cette pratique est d'ailleurs inscrite sur la liste représentative du patrimoine culturel immatériel de l'humanité par l'UNESCO.</p></div>
+<div class="page-section tdt-traditions" id="traditions-au-benin"><style>
+.tdt-traditions{--vert:#00a05d;--jaune:#fcd116;--rouge:#e8112d;--encre:#10261a;--doux:#5a6b61;overflow:hidden}
+.tdt-traditions *{box-sizing:border-box}
+/* Bandeau d'ouverture */
+.tdt-traditions .tdt-hero{position:relative;overflow:hidden;min-height:min(78vh,640px);display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem;isolation:isolate;color:#fff}
+.tdt-traditions .tdt-hero-bg{position:absolute;inset:-6% 0;z-index:-2;background:#10261a}
+.tdt-traditions .tdt-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;transform:scale(1.08);animation:tdtKen 26s ease-in-out infinite alternate}
+.tdt-traditions .tdt-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 70% at 50% 55%,rgba(8,20,13,.35),rgba(8,20,13,.78)),linear-gradient(180deg,rgba(8,20,13,.25),rgba(8,20,13,.6))}
+.tdt-traditions .tdt-hero-in{max-width:780px;text-align:center}
+.tdt-traditions .tdt-pre{display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--jaune);margin-bottom:.9rem}
+.tdt-traditions .tdt-h2{margin:0 0 1.1rem;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;font-weight:700;color:#fff;letter-spacing:-.01em}
+.tdt-traditions .tdt-bar{display:block;width:84px;height:4px;margin:0 auto 1.5rem;border-radius:2px;background:linear-gradient(90deg,var(--vert) 0 33%,var(--jaune) 33% 66%,var(--rouge) 66%)}
+.tdt-traditions .tdt-intro{margin:0;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.8;color:rgba(255,255,255,.92)}
+.tdt-traditions .tdt-scroll{position:absolute;left:50%;bottom:1.5rem;width:22px;height:36px;margin-left:-11px;border:2px solid rgba(255,255,255,.6);border-radius:12px}
+.tdt-traditions .tdt-scroll::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:tdtScroll 1.8s ease-in-out infinite}
+/* Blocs */
+.tdt-traditions .tdt-wrap{max-width:1200px;margin:0 auto;padding:4.5rem 1.25rem 1rem}
+.tdt-traditions .tdt-bloc-head{display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;align-items:center;margin-bottom:2.25rem;max-width:760px}
+.tdt-traditions .tdt-num{grid-row:span 2;font-size:3.2rem;line-height:1;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--c,var(--vert))}
+.tdt-traditions .tdt-h3{margin:0;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;color:var(--encre);line-height:1.15}
+.tdt-traditions .tdt-lead{margin:0;color:var(--doux);line-height:1.7}
+/* Spiritualité : lignes alternées */
+.tdt-traditions .tdt-row{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.tdt-traditions .tdt-row:nth-child(even) .tdt-media{order:2}
+.tdt-traditions .tdt-media{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 60px -20px rgba(16,38,26,.45)}
+.tdt-traditions .tdt-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.12);transition:transform 1.8s cubic-bezier(.16,.84,.24,1)}
+.tdt-traditions .tdt-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.22) 48%,rgba(255,255,255,0) 62%);transform:translateX(-120%)}
+.tdt-traditions .tdt-row:hover .tdt-media img{transform:scale(1.06)}
+.tdt-traditions .tdt-row:hover .tdt-media::after{transform:translateX(120%);transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
+.tdt-traditions .tdt-tag{position:absolute;left:1rem;bottom:1rem;z-index:1;padding:.4rem .8rem;border-radius:999px;background:rgba(255,255,255,.92);color:var(--encre);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(6px)}
+.tdt-traditions .tdt-txt h4{margin:0 0 .3rem;font-size:clamp(1.35rem,2.4vw,1.8rem);font-weight:700;color:var(--encre)}
+.tdt-traditions .tdt-sous{display:block;margin-bottom:1rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--c,var(--vert))}
+.tdt-traditions .tdt-txt p{margin:0;font-size:1.02rem;line-height:1.8;color:#3d4a42}
+.tdt-traditions .tdt-txt::before{content:"";display:block;width:44px;height:3px;border-radius:2px;margin-bottom:1.1rem;background:var(--c,var(--vert))}
+/* Fêtes : cartes photo */
+.tdt-traditions .tdt-fetes{background:linear-gradient(180deg,#fff 0,#f6f4ec 18%,#f6f4ec 100%)}
+.tdt-traditions .tdt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;padding-bottom:4.5rem}
+.tdt-traditions .tdt-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(16,38,26,.06),0 12px 32px -12px rgba(16,38,26,.22);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease}
+.tdt-traditions .tdt-card:hover{transform:translateY(-8px);box-shadow:0 2px 4px rgba(16,38,26,.08),0 26px 50px -16px rgba(16,38,26,.35)}
+.tdt-traditions .tdt-card-img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.tdt-traditions .tdt-card-img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.001);transition:transform 1.6s cubic-bezier(.16,.84,.24,1),filter 1s ease}
+.tdt-traditions .tdt-card:hover .tdt-card-img img{transform:scale(1.12);filter:saturate(1.15) contrast(1.05)}
+.tdt-traditions .tdt-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.35))}
+.tdt-traditions .tdt-chip{position:absolute;top:.9rem;left:.9rem;z-index:1;padding:.35rem .7rem;border-radius:999px;background:var(--jaune);color:#111;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tdt-traditions .tdt-card-body{padding:1.25rem 1.3rem 1.4rem}
+.tdt-traditions .tdt-card-body h4{margin:0 0 .3rem;font-size:1.12rem;font-weight:700;color:var(--encre);line-height:1.3}
+.tdt-traditions .tdt-card-body .tdt-sous{margin-bottom:.7rem;font-size:.72rem;color:#b07d00}
+.tdt-traditions .tdt-card-body p{margin:0;font-size:.95rem;line-height:1.7;color:#4a564f}
+/* Apparition au défilement (seulement si le JS tourne) */
+.tdt-traditions.tdt-js .tdt-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+.tdt-traditions.tdt-js .tdt-rv.is-in{opacity:1;transform:none}
+.tdt-traditions.tdt-js .tdt-media.tdt-rv{clip-path:inset(12% 12% 12% 12% round 20px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1),clip-path 1.3s cubic-bezier(.2,.8,.2,1)}
+.tdt-traditions.tdt-js .tdt-media.tdt-rv.is-in{clip-path:inset(0 0 0 0 round 20px)}
+.tdt-traditions.tdt-js .tdt-media.tdt-rv.is-in img{transform:scale(1.001)}
+.tdt-traditions.tdt-js .tdt-row:hover .tdt-media.is-in img{transform:scale(1.07)}
+@keyframes tdtKen{from{transform:scale(1.08) translate3d(0,0,0)}to{transform:scale(1.18) translate3d(-2%,-1.5%,0)}}
+@keyframes tdtScroll{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+@media (max-width:1024px){.tdt-traditions .tdt-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.tdt-traditions .tdt-row{grid-template-columns:1fr;gap:1.25rem}.tdt-traditions .tdt-row:nth-child(even) .tdt-media{order:0}.tdt-traditions .tdt-grid{grid-template-columns:1fr}.tdt-traditions .tdt-hero{min-height:520px}.tdt-traditions .tdt-num{font-size:2.4rem}}
+@media (prefers-reduced-motion:reduce){.tdt-traditions *,.tdt-traditions *::after{animation:none!important;transition:none!important}.tdt-traditions.tdt-js .tdt-rv{opacity:1;transform:none;clip-path:none}}
+</style><section class="section padd-top-none padd-bottom-none marg-top-none marg-bottom-none">
+<div class="tdt-hero"><div class="tdt-hero-bg" aria-hidden="true"><img src="/assets/img/traditions-locales-hero-1920x1080.webp" srcset="/assets/img/traditions-locales-hero-640x360.webp 640w, /assets/img/traditions-locales-hero-1200x675.webp 1200w, /assets/img/traditions-locales-hero-1920x1080.webp 1920w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
+<div class="tdt-hero-in tdt-rv"><span class="tdt-pre">Un patrimoine vivant</span><h2 class="tdt-h2">Les traditions au Bénin</h2><span class="tdt-bar" aria-hidden="true"></span><p class="tdt-intro">Les traditions locales du Bénin s'appuient sur un héritage culturel et spirituel extrêmement riche, sculpté par l'histoire des anciens royaumes et la grande variété de ses peuples. Ce patrimoine vivant s'exprime au jour le jour à travers des cultes ancestraux, des arts royaux, des fêtes identitaires ainsi qu'un artisanat transmis de siècle en siècle.</p></div><span class="tdt-scroll" aria-hidden="true"></span></div>
+<div class="tdt-wrap" style="--c:#00a05d">
+<div class="tdt-bloc-head tdt-rv"><span class="tdt-num" aria-hidden="true">01</span><h3 class="tdt-h3">La spiritualité et les cultes ancestraux</h3><p class="tdt-lead">La vie culturelle du pays est fortement rythmée par des pratiques spirituelles qui connectent les vivants, les ancêtres et la nature.</p></div>
+<div class="tdt-rows">
+<div class="tdt-row"><div class="tdt-media tdt-rv"><img src="/assets/img/egungun-640x480.webp" srcset="/assets/img/egungun-640x480.webp 640w, /assets/img/egungun-1200x1200.webp 1200w" sizes="(max-width:760px) 100vw, 55vw" alt="Egungun en costumes brodés lors d'une sortie" loading="lazy" decoding="async"><span class="tdt-tag">Tradition yoruba</span></div><div class="tdt-txt tdt-rv"><h4>Les Egungun</h4><span class="tdt-sous">Les Revenants</span><p>Issus de la tradition yoruba, ce sont des personnages masqués et vêtus de costumes qui symbolisent le retour momentané des esprits ancestraux parmi les vivants.</p></div></div>
+<div class="tdt-row"><div class="tdt-media tdt-rv"><img src="/assets/img/zangbeto-1200x900.webp" alt="Zangbeto, gardien de la nuit, en costume de raphia coloré" loading="lazy" decoding="async"><span class="tdt-tag">Porto-Novo · Ouidah · Grand-Popo</span></div><div class="tdt-txt tdt-rv"><h4>Le Zangbeto</h4><span class="tdt-sous">Le Gardien de la nuit</span><p>Faisant office de sentinelles nocturnes et de force de police traditionnelle, les Zangbetos protègent la communauté, préservent l'ordre et éloignent les entités maléfiques ou les actions nuisibles. Ils affichent une présence marquée dans le sud du pays, particulièrement ancrés à Porto-Novo ainsi que dans les secteurs côtiers et lagunaires de Ouidah, de Grand-Popo ou autour du lac Ahémé.</p></div></div>
+<div class="tdt-row"><div class="tdt-media tdt-rv"><img src="/assets/img/gelede-1200x675.webp" alt="Masque guèlèdè sculpté" loading="lazy" decoding="async"><span class="tdt-tag">Patrimoine de l'UNESCO</span></div><div class="tdt-txt tdt-rv"><h4>Le Guèlèdè</h4><span class="tdt-sous">Kétou · Pobè · Savè</span><p>Il s'agit d'une cérémonie traditionnelle associant masques, chants et danses au sein des communautés Yoruba-Nago, notamment ancrées à Kétou, Pobè et Savè. Cette pratique est d'ailleurs inscrite sur la liste représentative du patrimoine culturel immatériel de l'humanité par l'UNESCO.</p></div></div>
 </div></div>
-<div class="tdt-bloc tdt-fete"><h3 class="tdt-h3">Les fêtes identitaires et célébrations</h3><p class="tdt-lead">Tout au long de l'année, divers rassemblements communautaires renforcent les liens de famille tout en célébrant l'histoire et les récoltes.</p>
+<div class="tdt-fetes"><div class="tdt-wrap" style="--c:#e8a400">
+<div class="tdt-bloc-head tdt-rv"><span class="tdt-num" aria-hidden="true">02</span><h3 class="tdt-h3">Les fêtes identitaires et célébrations</h3><p class="tdt-lead">Tout au long de l'année, divers rassemblements communautaires renforcent les liens de famille tout en célébrant l'histoire et les récoltes.</p></div>
 <div class="tdt-grid">
-<div class="tdt-card"><h4>La Gaani de Nikki</h4><span class="tdt-sous">Nord-est · Baatombou et Boo</span><p>Événement traditionnel annuel incontournable des peuples Baatombou (Bariba) et Boo situés dans le nord-est béninois, cette fête a été instituée il y a plus de sept cents ans par Sunon Séro pour incarner la victoire, la cohésion et la paix retrouvée.</p></div>
-<div class="tdt-card"><h4>La fête de l’Igname à Savalou</h4><span class="tdt-sous">Vers le 15 août · Peuple Mahi</span><p>Grande célébration à la fois culturelle, agraire et spirituelle du peuple Mahi, elle se déroule chaque année aux alentours du 15 août. Elle célèbre l'arrivée des nouvelles récoltes, en particulier la variété laboco, l'igname y étant considérée comme un don sacré associé à un cycle comparable à la gestation humaine.</p></div>
-<div class="tdt-card"><h4>Le festival des Masques</h4><span class="tdt-sous">Chaque année · Porto-Novo</span><p>Organisé chaque année à Porto-Novo, cet événement met à l'honneur les traditions des masques, le patrimoine immatériel du pays ainsi que divers courants artistiques d'Afrique et d'ailleurs.</p></div>
-<div class="tdt-card"><h4>La fête de Nonvitcha à Grand-Popo</h4><span class="tdt-sous">Communautés Xwla et Xwéda</span><p>Ce grand rendez-vous annuel rassemble les communautés Xwla et Xwéda autour des valeurs de fraternité et de solidarité.</p></div>
-</div></div>
-</article></section></div>@endverbatim
+<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/nikki-640x480.webp" alt="Cavaliers baatonu en tenue d'apparat lors de la Gaani" loading="lazy" decoding="async"><span class="tdt-chip">Nikki</span></div><div class="tdt-card-body"><h4>La Gaani de Nikki</h4><span class="tdt-sous">Nord-est · Baatombou et Boo</span><p>Événement traditionnel annuel incontournable des peuples Baatombou (Bariba) et Boo situés dans le nord-est béninois, cette fête a été instituée il y a plus de sept cents ans par Sunon Séro pour incarner la victoire, la cohésion et la paix retrouvée.</p></div></article>
+<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/vodun-1200x900.webp" alt="Assemblée en tenue traditionnelle lors d'une célébration" loading="lazy" decoding="async"><span class="tdt-chip">Vers le 15 août</span></div><div class="tdt-card-body"><h4>La fête de l’Igname à Savalou</h4><span class="tdt-sous">Savalou · Peuple Mahi</span><p>Grande célébration à la fois culturelle, agraire et spirituelle du peuple Mahi, elle se déroule chaque année aux alentours du 15 août. Elle célèbre l'arrivée des nouvelles récoltes, en particulier la variété laboco, l'igname y étant considérée comme un don sacré associé à un cycle comparable à la gestation humaine.</p></div></article>
+<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/fete-masques-640x480.webp" srcset="/assets/img/fete-masques-640x480.webp 640w, /assets/img/fete-masques-1200x900.webp 1200w" sizes="(max-width:760px) 100vw, 25vw" alt="Masque et costume au festival des Masques de Porto-Novo" loading="lazy" decoding="async"><span class="tdt-chip">Porto-Novo</span></div><div class="tdt-card-body"><h4>Le festival des Masques</h4><span class="tdt-sous">Chaque année</span><p>Organisé chaque année à Porto-Novo, cet événement met à l'honneur les traditions des masques, le patrimoine immatériel du pays ainsi que divers courants artistiques d'Afrique et d'ailleurs.</p></div></article>
+<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/plage-grand-popo-1200x675.webp" alt="Plage de Grand-Popo bordée de cocotiers" loading="lazy" decoding="async"><span class="tdt-chip">Grand-Popo</span></div><div class="tdt-card-body"><h4>La fête de Nonvitcha à Grand-Popo</h4><span class="tdt-sous">Communautés Xwla et Xwéda</span><p>Ce grand rendez-vous annuel rassemble les communautés Xwla et Xwéda autour des valeurs de fraternité et de solidarité.</p></div></article>
+</div></div></div>
+</section><script>
+(function(){var r=document.querySelector('.tdt-traditions');if(!r)return;
+var calme=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(calme||!('IntersectionObserver' in window))return;
+r.classList.add('tdt-js');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-grid');if(g){el.style.transitionDelay=(Array.prototype.indexOf.call(g.children,el)*120)+'ms';}io.observe(el);});
+var bg=r.querySelector('.tdt-hero-bg'),hero=r.querySelector('.tdt-hero'),tic=false;
+function par(){tic=false;var b=hero.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)return;var p=(b.top+b.height/2-innerHeight/2)/innerHeight;bg.style.transform='translate3d(0,'+(p*-40).toFixed(1)+'px,0)';}
+addEventListener('scroll',function(){if(!tic){tic=true;requestAnimationFrame(par);}},{passive:true});par();
+})();
+</script></div>@endverbatim
 {{-- BEGIN aggregator top --}}
 <x-aggregator.circuits-block
     pretitle="Vivre la culture, pas juste la voir"
