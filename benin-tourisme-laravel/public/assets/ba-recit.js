@@ -122,6 +122,7 @@
     function k(t) { for (var i = 0; i < kws.length; i++) if (low(t).indexOf(low(kws[i].k)) > -1) return kws[i]; return null; }
     var h = '<div class="bar-in">';
     if (c.sauter) bs = bs.slice(c.sauter);
+    if (c.exclure) { var rx = new RegExp(c.exclure, 'i'); bs = bs.filter(function (b) { return !rx.test(b.titre); }); }
     bs.forEach(function (b, bi) {
       var intro = [], cartes = [];
       b.p.forEach(function (p) {
@@ -140,6 +141,7 @@
       }).join('') + '</div>';
       h += '</section>';
     });
+    if (c.renvoi) { var r = c.renvoi; h += '<a class="bar-renvoi bar-rv" href="' + esc(r.lien) + '">' + (r.img ? '<img src="' + esc(r.img) + '" alt="" loading="lazy" decoding="async">' : '') + '<span><small>' + esc(r.kick || '') + '</small><b>' + esc(r.titre) + '</b><em>' + esc(r.texte) + '</em><i>' + esc(r.label || 'Découvrir') + ' →</i></span></a>'; }
     return h + '</div>';
   };
 

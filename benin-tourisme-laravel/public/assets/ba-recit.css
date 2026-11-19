@@ -170,3 +170,13 @@
  .bar-t-terre .bar-inv .bar-fiche-tete{margin-left:0;text-align:left}
 }
 @media (prefers-reduced-motion:reduce){.bar *{transition:none!important;animation:none!important}.bar-js .bar .bar-rv{opacity:1;transform:none}.bar-lacs .bar-jauge i{width:var(--w)}}
+
+/* Renvoi vers une autre page (ex. Bénin en fête) */
+.bar .bar-renvoi{position:relative;display:block;margin-top:clamp(2.5rem,5vw,3.5rem);min-height:240px;border-radius:26px;overflow:hidden;text-decoration:none!important;color:#fff;background:#5a2410}
+.bar .bar-renvoi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:transform 1.6s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.bar .bar-renvoi:hover img{transform:scale(1.06);opacity:.7}
+.bar .bar-renvoi span{position:relative;display:flex;flex-direction:column;gap:.5rem;max-width:640px;padding:clamp(1.6rem,4vw,2.6rem)}
+.bar .bar-renvoi small{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f3b45a}
+.bar .bar-renvoi b{font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.15;font-weight:800}
+.bar .bar-renvoi em{font-style:normal;font-size:1rem;line-height:1.6;color:#f6e3d2}
+.bar .bar-renvoi i{font-style:normal;align-self:flex-start;margin-top:.4rem;padding:.6rem 1.1rem;border-radius:99px;background:#f3b45a;color:#3a1608;font-weight:800;font-size:.9rem}
