@@ -72,18 +72,22 @@
 <div class="page-section tdt-traditions" id="traditions-au-benin"><style>
 .tdt-traditions{--vert:#00a05d;--jaune:#fcd116;--rouge:#e8112d;--encre:#10261a;--doux:#5a6b61;overflow:hidden}
 .tdt-traditions *{box-sizing:border-box}
-/* Bandeau d'ouverture */
-.tdt-traditions .tdt-hero{position:relative;overflow:hidden;min-height:min(78vh,640px);display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem;isolation:isolate;color:#fff}
-.tdt-traditions .tdt-hero-bg{position:absolute;inset:-6% 0;z-index:-2;background:#10261a}
-.tdt-traditions .tdt-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;transform:scale(1.08);animation:tdtKen 26s ease-in-out infinite alternate}
-.tdt-traditions .tdt-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 70% at 50% 55%,rgba(8,20,13,.35),rgba(8,20,13,.78)),linear-gradient(180deg,rgba(8,20,13,.25),rgba(8,20,13,.6))}
-.tdt-traditions .tdt-hero-in{max-width:780px;text-align:center}
-.tdt-traditions .tdt-pre{display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--jaune);margin-bottom:.9rem}
-.tdt-traditions .tdt-h2{margin:0 0 1.1rem;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;font-weight:700;color:#fff;letter-spacing:-.01em}
-.tdt-traditions .tdt-bar{display:block;width:84px;height:4px;margin:0 auto 1.5rem;border-radius:2px;background:linear-gradient(90deg,var(--vert) 0 33%,var(--jaune) 33% 66%,var(--rouge) 66%)}
-.tdt-traditions .tdt-intro{margin:0;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.8;color:rgba(255,255,255,.92)}
-.tdt-traditions .tdt-scroll{position:absolute;left:50%;bottom:1.5rem;width:22px;height:36px;margin-left:-11px;border:2px solid rgba(255,255,255,.6);border-radius:12px}
-.tdt-traditions .tdt-scroll::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:tdtScroll 1.8s ease-in-out infinite}
+/* Ouverture : typographique, fond clair animé (sans photo) */
+.tdt-traditions .tdt-hero{position:relative;overflow:hidden;isolation:isolate;padding:clamp(4rem,8vw,6.5rem) 1.25rem clamp(3.5rem,7vw,5.5rem);background:#f6f4ec}
+.tdt-traditions .tdt-hero::before,.tdt-traditions .tdt-hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
+.tdt-traditions .tdt-hero::before{width:min(46vw,520px);height:min(46vw,520px);left:-8%;top:-30%;background:radial-gradient(circle,rgba(0,160,93,.55),rgba(0,160,93,0) 70%);animation:tdtFlotte 18s ease-in-out infinite alternate}
+.tdt-traditions .tdt-hero::after{width:min(40vw,460px);height:min(40vw,460px);right:-6%;bottom:-35%;background:radial-gradient(circle,rgba(252,209,22,.6),rgba(232,17,45,.18) 55%,rgba(232,17,45,0) 72%);animation:tdtFlotte 22s ease-in-out infinite alternate-reverse}
+.tdt-traditions .tdt-hero-in{position:relative;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.tdt-traditions .tdt-pre{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--vert);margin-bottom:1rem}
+.tdt-traditions .tdt-pre::before{content:"";width:28px;height:2px;background:var(--vert)}
+.tdt-traditions .tdt-h2{margin:0 0 1.2rem;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.02;font-weight:800;color:var(--encre);letter-spacing:-.02em}
+.tdt-traditions .tdt-h2 em{font-style:normal;background:linear-gradient(90deg,var(--vert),#0b7d4b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tdt-traditions .tdt-bar{display:block;width:84px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--vert) 0 33%,var(--jaune) 33% 66%,var(--rouge) 66%)}
+.tdt-traditions .tdt-intro{margin:0;font-size:clamp(1.02rem,1.5vw,1.14rem);line-height:1.85;color:#38463e;padding-left:1.4rem;border-left:3px solid rgba(0,160,93,.25)}
+.tdt-traditions .tdt-piliers{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0;padding:0;list-style:none}
+.tdt-traditions .tdt-piliers li{padding:.55rem 1rem;border-radius:999px;background:#fff;color:var(--encre);font-size:.86rem;font-weight:600;box-shadow:0 1px 2px rgba(16,38,26,.06),0 6px 18px -8px rgba(16,38,26,.25);border:1px solid rgba(16,38,26,.06)}
+.tdt-traditions .tdt-piliers li::before{content:"";display:inline-block;width:8px;height:8px;margin-right:.5rem;border-radius:50%;background:var(--p,var(--vert));vertical-align:middle;transform:translateY(-1px)}
+.tdt-traditions .tdt-piliers li:nth-child(2){--p:var(--jaune)}.tdt-traditions .tdt-piliers li:nth-child(3){--p:var(--rouge)}.tdt-traditions .tdt-piliers li:nth-child(4){--p:#0b7d4b}
 /* Blocs */
 .tdt-traditions .tdt-wrap{max-width:1200px;margin:0 auto;padding:4.5rem 1.25rem 1rem}
 .tdt-traditions .tdt-bloc-head{display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;align-items:center;margin-bottom:2.25rem;max-width:760px}
@@ -103,20 +107,33 @@
 .tdt-traditions .tdt-sous{display:block;margin-bottom:1rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--c,var(--vert))}
 .tdt-traditions .tdt-txt p{margin:0;font-size:1.02rem;line-height:1.8;color:#3d4a42}
 .tdt-traditions .tdt-txt::before{content:"";display:block;width:44px;height:3px;border-radius:2px;margin-bottom:1.1rem;background:var(--c,var(--vert))}
-/* Fêtes : cartes photo */
-.tdt-traditions .tdt-fetes{background:linear-gradient(180deg,#fff 0,#f6f4ec 18%,#f6f4ec 100%)}
-.tdt-traditions .tdt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;padding-bottom:4.5rem}
-.tdt-traditions .tdt-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(16,38,26,.06),0 12px 32px -12px rgba(16,38,26,.22);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease}
-.tdt-traditions .tdt-card:hover{transform:translateY(-8px);box-shadow:0 2px 4px rgba(16,38,26,.08),0 26px 50px -16px rgba(16,38,26,.35)}
-.tdt-traditions .tdt-card-img{position:relative;aspect-ratio:4/3;overflow:hidden}
-.tdt-traditions .tdt-card-img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.001);transition:transform 1.6s cubic-bezier(.16,.84,.24,1),filter 1s ease}
-.tdt-traditions .tdt-card:hover .tdt-card-img img{transform:scale(1.12);filter:saturate(1.15) contrast(1.05)}
-.tdt-traditions .tdt-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.35))}
-.tdt-traditions .tdt-chip{position:absolute;top:.9rem;left:.9rem;z-index:1;padding:.35rem .7rem;border-radius:999px;background:var(--jaune);color:#111;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.tdt-traditions .tdt-card-body{padding:1.25rem 1.3rem 1.4rem}
-.tdt-traditions .tdt-card-body h4{margin:0 0 .3rem;font-size:1.12rem;font-weight:700;color:var(--encre);line-height:1.3}
-.tdt-traditions .tdt-card-body .tdt-sous{margin-bottom:.7rem;font-size:.72rem;color:#b07d00}
-.tdt-traditions .tdt-card-body p{margin:0;font-size:.95rem;line-height:1.7;color:#4a564f}
+/* 02 — Arts royaux et savoir-faire : mosaïque photo */
+.tdt-traditions .tdt-arts{background:linear-gradient(180deg,#fff 0,#f6f4ec 18%,#f6f4ec 100%)}
+.tdt-traditions .tdt-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(200px,22vw,270px);gap:1.1rem}
+.tdt-traditions .tdt-tuile{position:relative;display:block;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none;isolation:isolate;box-shadow:0 18px 44px -20px rgba(16,38,26,.5)}
+.tdt-traditions .tdt-tuile--a{grid-column:span 2;grid-row:span 2}
+.tdt-traditions .tdt-tuile--b{grid-column:span 2}
+.tdt-traditions .tdt-tuile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.001);transition:transform 1.6s cubic-bezier(.16,.84,.24,1),filter 1s ease}
+.tdt-traditions .tdt-tuile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,20,13,0) 30%,rgba(8,20,13,.82) 100%);transition:opacity .6s ease}
+.tdt-traditions .tdt-tuile::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.22) 48%,rgba(255,255,255,0) 62%);transform:translateX(-120%)}
+.tdt-traditions .tdt-tuile:hover img,.tdt-traditions .tdt-tuile:focus-visible img{transform:scale(1.1);filter:saturate(1.15) contrast(1.05)}
+.tdt-traditions .tdt-tuile:hover::after,.tdt-traditions .tdt-tuile:focus-visible::after{transform:translateX(120%);transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
+.tdt-traditions .tdt-tuile-txt{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1.5rem 1.5rem}
+.tdt-traditions .tdt-tuile .tdt-sous{color:var(--jaune);margin-bottom:.4rem}
+.tdt-traditions .tdt-tuile h4{margin:0;font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:700;line-height:1.2;color:#fff}
+.tdt-traditions .tdt-tuile--a h4{font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.tdt-traditions .tdt-tuile p{margin:.55rem 0 0;font-size:.95rem;line-height:1.6;color:rgba(255,255,255,.9);max-height:0;opacity:0;overflow:hidden;transition:max-height .7s ease,opacity .6s ease}
+.tdt-traditions .tdt-tuile--a p{max-height:10rem;opacity:1}
+.tdt-traditions .tdt-tuile:hover p,.tdt-traditions .tdt-tuile:focus-visible p{max-height:10rem;opacity:1}
+.tdt-traditions .tdt-fleche{display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem;font-size:.85rem;font-weight:600;color:#fff}
+.tdt-traditions .tdt-fleche::after{content:"→";transition:transform .4s ease}
+.tdt-traditions .tdt-tuile:hover .tdt-fleche::after{transform:translateX(5px)}
+.tdt-traditions .tdt-cta{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:2.5rem 0 4.5rem;padding:1.6rem 1.8rem;border-radius:20px;background:#10261a;color:#fff;position:relative;overflow:hidden}
+.tdt-traditions .tdt-cta::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--vert) 0 33%,var(--jaune) 33% 66%,var(--rouge) 66%)}
+.tdt-traditions .tdt-cta p{margin:0;max-width:62ch;line-height:1.6;color:rgba(255,255,255,.88)}
+.tdt-traditions .tdt-cta strong{color:#fff}
+.tdt-traditions .tdt-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;background:var(--jaune);color:#111;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .3s ease,box-shadow .3s ease}
+.tdt-traditions .tdt-btn:hover,.tdt-traditions .tdt-btn:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(252,209,22,.7)}
 /* Apparition au défilement (seulement si le JS tourne) */
 .tdt-traditions.tdt-js .tdt-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
 .tdt-traditions.tdt-js .tdt-rv.is-in{opacity:1;transform:none}
@@ -124,14 +141,16 @@
 .tdt-traditions.tdt-js .tdt-media.tdt-rv.is-in{clip-path:inset(0 0 0 0 round 20px)}
 .tdt-traditions.tdt-js .tdt-media.tdt-rv.is-in img{transform:scale(1.001)}
 .tdt-traditions.tdt-js .tdt-row:hover .tdt-media.is-in img{transform:scale(1.07)}
-@keyframes tdtKen{from{transform:scale(1.08) translate3d(0,0,0)}to{transform:scale(1.18) translate3d(-2%,-1.5%,0)}}
-@keyframes tdtScroll{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
-@media (max-width:1024px){.tdt-traditions .tdt-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:760px){.tdt-traditions .tdt-row{grid-template-columns:1fr;gap:1.25rem}.tdt-traditions .tdt-row:nth-child(even) .tdt-media{order:0}.tdt-traditions .tdt-grid{grid-template-columns:1fr}.tdt-traditions .tdt-hero{min-height:520px}.tdt-traditions .tdt-num{font-size:2.4rem}}
-@media (prefers-reduced-motion:reduce){.tdt-traditions *,.tdt-traditions *::after{animation:none!important;transition:none!important}.tdt-traditions.tdt-js .tdt-rv{opacity:1;transform:none;clip-path:none}}
+@keyframes tdtFlotte{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(8%,12%,0) scale(1.15)}}
+@media (max-width:1024px){.tdt-traditions .tdt-bento{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.tdt-traditions .tdt-row{grid-template-columns:1fr;gap:1.25rem}.tdt-traditions .tdt-row:nth-child(even) .tdt-media{order:0}.tdt-traditions .tdt-bento{grid-template-columns:1fr;grid-auto-rows:auto}.tdt-traditions .tdt-tuile{min-height:340px;display:flex;align-items:flex-end}.tdt-traditions .tdt-tuile-txt{position:relative;padding-top:6rem}.tdt-traditions .tdt-tuile--a,.tdt-traditions .tdt-tuile--b{grid-column:auto;grid-row:auto}.tdt-traditions .tdt-tuile p{max-height:10rem;opacity:1}.tdt-traditions .tdt-hero-in{grid-template-columns:1fr;gap:1.5rem}.tdt-traditions .tdt-num{font-size:2.4rem}}
+@media (prefers-reduced-motion:reduce){.tdt-traditions *,.tdt-traditions *::before,.tdt-traditions *::after{animation:none!important;transition:none!important}.tdt-traditions.tdt-js .tdt-rv{opacity:1;transform:none;clip-path:none}}
 </style><section class="section padd-top-none padd-bottom-none marg-top-none marg-bottom-none">
-<div class="tdt-hero"><div class="tdt-hero-bg" aria-hidden="true"><img src="/assets/img/traditions-locales-hero-1920x1080.webp" srcset="/assets/img/traditions-locales-hero-640x360.webp 640w, /assets/img/traditions-locales-hero-1200x675.webp 1200w, /assets/img/traditions-locales-hero-1920x1080.webp 1920w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
-<div class="tdt-hero-in tdt-rv"><span class="tdt-pre">Un patrimoine vivant</span><h2 class="tdt-h2">Les traditions au Bénin</h2><span class="tdt-bar" aria-hidden="true"></span><p class="tdt-intro">Les traditions locales du Bénin s'appuient sur un héritage culturel et spirituel extrêmement riche, sculpté par l'histoire des anciens royaumes et la grande variété de ses peuples. Ce patrimoine vivant s'exprime au jour le jour à travers des cultes ancestraux, des arts royaux, des fêtes identitaires ainsi qu'un artisanat transmis de siècle en siècle.</p></div><span class="tdt-scroll" aria-hidden="true"></span></div>
+<div class="tdt-hero"><div class="tdt-hero-in">
+<div class="tdt-rv"><span class="tdt-pre">Un patrimoine vivant</span><h2 class="tdt-h2">Les traditions au Bénin</h2><span class="tdt-bar" aria-hidden="true"></span></div>
+<div class="tdt-rv"><p class="tdt-intro">Les traditions locales du Bénin s'appuient sur un héritage culturel et spirituel extrêmement riche, sculpté par l'histoire des anciens royaumes et la grande variété de ses peuples. Ce patrimoine vivant s'exprime au jour le jour à travers des cultes ancestraux, des arts royaux, des fêtes identitaires ainsi qu'un artisanat transmis de siècle en siècle.</p>
+<ul class="tdt-piliers" aria-label="Les piliers des traditions"><li>Cultes ancestraux</li><li>Arts royaux</li><li>Fêtes identitaires</li><li>Artisanat</li></ul></div>
+</div></div>
 <div class="tdt-wrap" style="--c:#00a05d">
 <div class="tdt-bloc-head tdt-rv"><span class="tdt-num" aria-hidden="true">01</span><h3 class="tdt-h3">La spiritualité et les cultes ancestraux</h3><p class="tdt-lead">La vie culturelle du pays est fortement rythmée par des pratiques spirituelles qui connectent les vivants, les ancêtres et la nature.</p></div>
 <div class="tdt-rows">
@@ -139,24 +158,23 @@
 <div class="tdt-row"><div class="tdt-media tdt-rv"><img src="/assets/img/zangbeto-1200x900.webp" alt="Zangbeto, gardien de la nuit, en costume de raphia coloré" loading="lazy" decoding="async"><span class="tdt-tag">Porto-Novo · Ouidah · Grand-Popo</span></div><div class="tdt-txt tdt-rv"><h4>Le Zangbeto</h4><span class="tdt-sous">Le Gardien de la nuit</span><p>Faisant office de sentinelles nocturnes et de force de police traditionnelle, les Zangbetos protègent la communauté, préservent l'ordre et éloignent les entités maléfiques ou les actions nuisibles. Ils affichent une présence marquée dans le sud du pays, particulièrement ancrés à Porto-Novo ainsi que dans les secteurs côtiers et lagunaires de Ouidah, de Grand-Popo ou autour du lac Ahémé.</p></div></div>
 <div class="tdt-row"><div class="tdt-media tdt-rv"><img src="/assets/img/gelede-1200x675.webp" alt="Masque guèlèdè sculpté" loading="lazy" decoding="async"><span class="tdt-tag">Patrimoine de l'UNESCO</span></div><div class="tdt-txt tdt-rv"><h4>Le Guèlèdè</h4><span class="tdt-sous">Kétou · Pobè · Savè</span><p>Il s'agit d'une cérémonie traditionnelle associant masques, chants et danses au sein des communautés Yoruba-Nago, notamment ancrées à Kétou, Pobè et Savè. Cette pratique est d'ailleurs inscrite sur la liste représentative du patrimoine culturel immatériel de l'humanité par l'UNESCO.</p></div></div>
 </div></div>
-<div class="tdt-fetes"><div class="tdt-wrap" style="--c:#e8a400">
-<div class="tdt-bloc-head tdt-rv"><span class="tdt-num" aria-hidden="true">02</span><h3 class="tdt-h3">Les fêtes identitaires et célébrations</h3><p class="tdt-lead">Tout au long de l'année, divers rassemblements communautaires renforcent les liens de famille tout en célébrant l'histoire et les récoltes.</p></div>
-<div class="tdt-grid">
-<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/nikki-640x480.webp" alt="Cavaliers baatonu en tenue d'apparat lors de la Gaani" loading="lazy" decoding="async"><span class="tdt-chip">Nikki</span></div><div class="tdt-card-body"><h4>La Gaani de Nikki</h4><span class="tdt-sous">Nord-est · Baatombou et Boo</span><p>Événement traditionnel annuel incontournable des peuples Baatombou (Bariba) et Boo situés dans le nord-est béninois, cette fête a été instituée il y a plus de sept cents ans par Sunon Séro pour incarner la victoire, la cohésion et la paix retrouvée.</p></div></article>
-<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/vodun-1200x900.webp" alt="Assemblée en tenue traditionnelle lors d'une célébration" loading="lazy" decoding="async"><span class="tdt-chip">Vers le 15 août</span></div><div class="tdt-card-body"><h4>La fête de l’Igname à Savalou</h4><span class="tdt-sous">Savalou · Peuple Mahi</span><p>Grande célébration à la fois culturelle, agraire et spirituelle du peuple Mahi, elle se déroule chaque année aux alentours du 15 août. Elle célèbre l'arrivée des nouvelles récoltes, en particulier la variété laboco, l'igname y étant considérée comme un don sacré associé à un cycle comparable à la gestation humaine.</p></div></article>
-<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/fete-masques-640x480.webp" srcset="/assets/img/fete-masques-640x480.webp 640w, /assets/img/fete-masques-1200x900.webp 1200w" sizes="(max-width:760px) 100vw, 25vw" alt="Masque et costume au festival des Masques de Porto-Novo" loading="lazy" decoding="async"><span class="tdt-chip">Porto-Novo</span></div><div class="tdt-card-body"><h4>Le festival des Masques</h4><span class="tdt-sous">Chaque année</span><p>Organisé chaque année à Porto-Novo, cet événement met à l'honneur les traditions des masques, le patrimoine immatériel du pays ainsi que divers courants artistiques d'Afrique et d'ailleurs.</p></div></article>
-<article class="tdt-card tdt-rv"><div class="tdt-card-img"><img src="/assets/img/plage-grand-popo-1200x675.webp" alt="Plage de Grand-Popo bordée de cocotiers" loading="lazy" decoding="async"><span class="tdt-chip">Grand-Popo</span></div><div class="tdt-card-body"><h4>La fête de Nonvitcha à Grand-Popo</h4><span class="tdt-sous">Communautés Xwla et Xwéda</span><p>Ce grand rendez-vous annuel rassemble les communautés Xwla et Xwéda autour des valeurs de fraternité et de solidarité.</p></div></article>
-</div></div></div>
+<div class="tdt-arts"><div class="tdt-wrap" style="--c:#e8a400">
+<div class="tdt-bloc-head tdt-rv"><span class="tdt-num" aria-hidden="true">02</span><h3 class="tdt-h3">Arts royaux et savoir-faire</h3><p class="tdt-lead">Des palais des rois du Danxomè aux maisons-forteresses de l'Atacora, le patrimoine béninois se lit aussi dans la pierre, la terre, le fil et la fibre.</p></div>
+<div class="tdt-bento">
+<a class="tdt-tuile tdt-tuile--a tdt-rv" href="/explorez/terre-de-traditions/les-palais-royaux-dabomey"><img src="/assets/img/abomey-palais-1200x675.webp" alt="Cour des palais royaux d'Abomey" loading="lazy" decoding="async"><div class="tdt-tuile-txt"><span class="tdt-sous">Abomey · Patrimoine mondial de l'UNESCO</span><h4>Les palais royaux d'Abomey</h4><p>Capitale du royaume du Danxomè, Abomey conserve les palais de ses rois. Leurs bas-reliefs racontent les règnes, les victoires et les symboles de chaque souverain.</p><span class="tdt-fleche">Découvrir</span></div></a>
+<a class="tdt-tuile tdt-tuile--b tdt-rv" href="/explorez/terre-de-traditions/le-pays-betammaribe"><img src="/assets/img/tata-somba-1200x900.webp" alt="Tata somba en terre dans l'Atacora" loading="lazy" decoding="async"><div class="tdt-tuile-txt"><span class="tdt-sous">Atacora · Pays betammaribè</span><h4>Les tata somba</h4><p>Dans l'Atacora, les Betammaribè bâtissent des maisons-forteresses en terre, à étages et coiffées de greniers : une architecture unique au nord du Bénin.</p><span class="tdt-fleche">Découvrir</span></div></a>
+<div class="tdt-tuile tdt-rv" tabindex="0"><img src="/assets/img/artisanat-1200x900.webp" alt="Artisanes au travail dans un atelier de vannerie" loading="lazy" decoding="async"><div class="tdt-tuile-txt"><span class="tdt-sous">Ateliers et marchés</span><h4>Vannerie et artisanat</h4><p>Paniers, corbeilles, poteries, sculptures : dans les ateliers, les artisans transmettent des gestes appris en famille.</p></div></div>
+<a class="tdt-tuile tdt-rv" href="/explorez/terre-de-traditions/le-pagne-et-le-tissage"><img src="/assets/img/pagne-640x640.webp" alt="Chemise en pagne béninois" loading="lazy" decoding="async"><div class="tdt-tuile-txt"><span class="tdt-sous">Le fil et la couleur</span><h4>Le pagne et le tissage</h4><p>Tissé à la main ou imprimé, le pagne habille les grands moments de la vie ; à Abomey, les tentures appliquées perpétuent les symboles des rois.</p><span class="tdt-fleche">Découvrir</span></div></a>
+</div>
+<div class="tdt-cta tdt-rv"><p><strong>Et les grandes fêtes ?</strong> La Gaani, les Vodun Days, le festival des Masques… retrouvez tout l'agenda des célébrations du pays sur Bénin en fête.</p><a class="tdt-btn" href="/benin-en-fete">Voir l'agenda Bénin en fête</a></div>
+</div></div>
 </section><script>
 (function(){var r=document.querySelector('.tdt-traditions');if(!r)return;
 var calme=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(calme||!('IntersectionObserver' in window))return;
 r.classList.add('tdt-js');
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
-r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-grid');if(g){el.style.transitionDelay=(Array.prototype.indexOf.call(g.children,el)*120)+'ms';}io.observe(el);});
-var bg=r.querySelector('.tdt-hero-bg'),hero=r.querySelector('.tdt-hero'),tic=false;
-function par(){tic=false;var b=hero.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)return;var p=(b.top+b.height/2-innerHeight/2)/innerHeight;bg.style.transform='translate3d(0,'+(p*-40).toFixed(1)+'px,0)';}
-addEventListener('scroll',function(){if(!tic){tic=true;requestAnimationFrame(par);}},{passive:true});par();
+r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-bento');if(g){el.style.transitionDelay=(Array.prototype.indexOf.call(g.children,el)*120)+'ms';}io.observe(el);});
 })();
 </script></div>@endverbatim
 {{-- BEGIN aggregator top --}}
