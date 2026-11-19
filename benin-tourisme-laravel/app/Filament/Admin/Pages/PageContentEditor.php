@@ -100,7 +100,9 @@ class PageContentEditor extends Page
         $found = [];
         $this->items = $this->values = $this->alts = $this->uploads = $this->restored = [];
 
-        foreach (ContentLayer::extract($html) as $i => $item) {
+        // Les éléments verrouillés (fil d'Ariane) ne sont pas proposés.
+        $editable = array_values(array_filter(ContentLayer::extract($html), static fn (array $it): bool => empty($it['locked'])));
+        foreach ($editable as $i => $item) {
             $edit = $edits[$item['key']] ?? null;
             $found[$item['key']] = true;
             $this->items[$i] = [

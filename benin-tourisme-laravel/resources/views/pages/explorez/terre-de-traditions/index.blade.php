@@ -68,7 +68,42 @@
             
             
                                         
-                                        <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Le Bénin est le berceau du vodun, la terre des royaumes du Danxomè et de Hogbonu, le pays des masques gèlèdè et zangbéto. Rien de tout cela n'est un musée : ce sont des pratiques vivantes, avec leurs règles, leurs interdits et leurs prêtres.</p></div></div></div></div></article></section></div>@endverbatim
+                                        <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Le Bénin est le berceau du vodun, la terre des royaumes du Danxomè et de Hogbonu, le pays des masques gèlèdè et zangbéto. Rien de tout cela n'est un musée : ce sont des pratiques vivantes, avec leurs règles, leurs interdits et leurs prêtres.</p></div></div></div></div></article></section></div>
+<div class="page-section tdt-traditions"><style>
+.tdt-traditions .tdt{max-width:1180px;margin:0 auto;padding:3.5rem 1.25rem 2.5rem}
+.tdt-traditions .tdt-head{max-width:760px;margin:0 auto 2.75rem;text-align:center}
+.tdt-traditions .tdt-pre{display:block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#00a05d;font-weight:600;margin-bottom:.6rem}
+.tdt-traditions .tdt-h2{margin:0 0 1rem;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;color:#10261a}
+.tdt-traditions .tdt-bar{display:block;width:72px;height:4px;margin:0 auto 1.4rem;background:linear-gradient(90deg,#00a05d 0 33%,#fcd116 33% 66%,#e8112d 66%);border-radius:2px}
+.tdt-traditions .tdt-intro{font-size:1.08rem;line-height:1.75;color:#333;margin:0}
+.tdt-traditions .tdt-bloc{margin-top:2.5rem}
+.tdt-traditions .tdt-h3{display:flex;align-items:center;gap:.75rem;margin:0 0 .5rem;font-size:1.35rem;color:#10261a}
+.tdt-traditions .tdt-h3::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--tdt-c,#00a05d)}
+.tdt-traditions .tdt-lead{margin:0 0 1.25rem;color:#555;line-height:1.7;max-width:70ch}
+.tdt-traditions .tdt-grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tdt-traditions .tdt-card{background:#fff;border-radius:14px;padding:1.4rem 1.4rem 1.3rem;box-shadow:0 1px 2px rgba(16,38,26,.06),0 8px 24px rgba(16,38,26,.07);border-top:4px solid var(--tdt-c,#00a05d);transition:transform .35s ease,box-shadow .35s ease}
+.tdt-traditions .tdt-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(16,38,26,.08),0 16px 36px rgba(16,38,26,.12)}
+.tdt-traditions .tdt-card h4{margin:0 0 .2rem;font-size:1.08rem;color:#10261a}
+.tdt-traditions .tdt-card .tdt-sous{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tdt-c,#00a05d);font-weight:600;margin-bottom:.6rem}
+.tdt-traditions .tdt-card p{margin:0;line-height:1.65;color:#444;font-size:.97rem}
+.tdt-traditions .tdt-spi{--tdt-c:#00a05d}.tdt-traditions .tdt-fete{--tdt-c:#e8a400}
+@media (prefers-reduced-motion:reduce){.tdt-traditions .tdt-card{transition:none}}
+</style><section class="section padd-top-none padd-bottom-none marg-top-none marg-bottom-none"><article class="tdt">
+<div class="tdt-head"><span class="tdt-pre">Un patrimoine vivant</span><h2 class="tdt-h2">Les traditions au Bénin</h2><span class="tdt-bar" aria-hidden="true"></span><p class="tdt-intro">Les traditions locales du Bénin s'appuient sur un héritage culturel et spirituel extrêmement riche, sculpté par l'histoire des anciens royaumes et la grande variété de ses peuples. Ce patrimoine vivant s'exprime au jour le jour à travers des cultes ancestraux, des arts royaux, des fêtes identitaires ainsi qu'un artisanat transmis de siècle en siècle.</p></div>
+<div class="tdt-bloc tdt-spi"><h3 class="tdt-h3">La spiritualité et les cultes ancestraux</h3><p class="tdt-lead">La vie culturelle du pays est fortement rythmée par des pratiques spirituelles qui connectent les vivants, les ancêtres et la nature.</p>
+<div class="tdt-grid">
+<div class="tdt-card"><h4>Les Egungun</h4><span class="tdt-sous">Les Revenants</span><p>Issus de la tradition yoruba, ce sont des personnages masqués et vêtus de costumes qui symbolisent le retour momentané des esprits ancestraux parmi les vivants.</p></div>
+<div class="tdt-card"><h4>Le Zangbeto</h4><span class="tdt-sous">Le Gardien de la nuit</span><p>Faisant office de sentinelles nocturnes et de force de police traditionnelle, les Zangbetos protègent la communauté, préservent l'ordre et éloignent les entités maléfiques ou les actions nuisibles. Ils affichent une présence marquée dans le sud du pays, particulièrement ancrés à Porto-Novo ainsi que dans les secteurs côtiers et lagunaires de Ouidah, de Grand-Popo ou autour du lac Ahémé.</p></div>
+<div class="tdt-card"><h4>Le Guèlèdè</h4><span class="tdt-sous">Patrimoine de l'UNESCO</span><p>Il s'agit d'une cérémonie traditionnelle associant masques, chants et danses au sein des communautés Yoruba-Nago, notamment ancrées à Kétou, Pobè et Savè. Cette pratique est d'ailleurs inscrite sur la liste représentative du patrimoine culturel immatériel de l'humanité par l'UNESCO.</p></div>
+</div></div>
+<div class="tdt-bloc tdt-fete"><h3 class="tdt-h3">Les fêtes identitaires et célébrations</h3><p class="tdt-lead">Tout au long de l'année, divers rassemblements communautaires renforcent les liens de famille tout en célébrant l'histoire et les récoltes.</p>
+<div class="tdt-grid">
+<div class="tdt-card"><h4>La Gaani de Nikki</h4><span class="tdt-sous">Nord-est · Baatombou et Boo</span><p>Événement traditionnel annuel incontournable des peuples Baatombou (Bariba) et Boo situés dans le nord-est béninois, cette fête a été instituée il y a plus de sept cents ans par Sunon Séro pour incarner la victoire, la cohésion et la paix retrouvée.</p></div>
+<div class="tdt-card"><h4>La fête de l’Igname à Savalou</h4><span class="tdt-sous">Vers le 15 août · Peuple Mahi</span><p>Grande célébration à la fois culturelle, agraire et spirituelle du peuple Mahi, elle se déroule chaque année aux alentours du 15 août. Elle célèbre l'arrivée des nouvelles récoltes, en particulier la variété laboco, l'igname y étant considérée comme un don sacré associé à un cycle comparable à la gestation humaine.</p></div>
+<div class="tdt-card"><h4>Le festival des Masques</h4><span class="tdt-sous">Chaque année · Porto-Novo</span><p>Organisé chaque année à Porto-Novo, cet événement met à l'honneur les traditions des masques, le patrimoine immatériel du pays ainsi que divers courants artistiques d'Afrique et d'ailleurs.</p></div>
+<div class="tdt-card"><h4>La fête de Nonvitcha à Grand-Popo</h4><span class="tdt-sous">Communautés Xwla et Xwéda</span><p>Ce grand rendez-vous annuel rassemble les communautés Xwla et Xwéda autour des valeurs de fraternité et de solidarité.</p></div>
+</div></div>
+</article></section></div>@endverbatim
 {{-- BEGIN aggregator top --}}
 <x-aggregator.circuits-block
     pretitle="Vivre la culture, pas juste la voir"

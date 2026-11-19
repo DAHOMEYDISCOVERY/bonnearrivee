@@ -31,3 +31,7 @@ Thumbs.db
 /public/assets/atlas-photos/_src
 /tools/captures
 /tools/screenshots
+
+# Images envoyées depuis l’admin (« Textes et images ») : elles vivent sur le
+# serveur de prod uniquement. Ignorées pour que git (pull, clean) n’y touche jamais.
+/public/assets/img/uploads/

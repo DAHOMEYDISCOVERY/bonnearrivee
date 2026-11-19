@@ -90,6 +90,9 @@ final class ContentLayer
             if (! is_array($edit)) {
                 continue;
             }
+            if (! empty($item['locked'])) {
+                continue; // zone verrouillée (fil d'Ariane) : jamais modifiée
+            }
             foreach (self::replacementsFor($html, $item, $edit) as $r) {
                 $replacements[] = $r;
             }
@@ -325,6 +328,26 @@ final class ContentLayer
             }
         }
 
+        // Zones verrouillées : le fil d'Ariane (« Accueil / … / Page ») est généré
+        // à partir du titre de la page ; y coller un texte le cassait. Ses éléments
+        // gardent leur clé (les rangs des autres éléments ne bougent pas, aucune
+        // modification existante n'est perdue) mais ne sont ni proposés à
+        // l'édition ni modifiés. Ils restent traduits normalement.
+        if (! $forTranslation) {
+            $locked = self::lockedRanges($html, $from, $to);
+            if ($locked !== []) {
+                foreach ($items as &$item) {
+                    foreach ($locked as [$s, $e]) {
+                        if ($item['start'] >= $s && $item['start'] < $e) {
+                            $item['locked'] = true;
+                            break;
+                        }
+                    }
+                }
+                unset($item);
+            }
+        }
+
         // Rubriques : chaque titre ouvre un groupe dans le formulaire.
         usort($items, static fn (array $a, array $b) => $a['start'] <=> $b['start']);
         $group = 'Début de la page';
@@ -394,6 +417,26 @@ final class ContentLayer
                 $start = $from + $m[0][1];
                 $end = self::closingTagEnd($html, strtolower($m[1][0]), $start + strlen($m[0][0]), $to);
                 $ranges[] = [$start, $end];
+            }
+        }
+
+        return $ranges;
+    }
+
+    /**
+     * Zones affichées mais non modifiables depuis « Textes et images » :
+     * le fil d'Ariane.
+     *
+     * @return list<array{0:int,1:int}>
+     */
+    private static function lockedRanges(string $html, int $from, int $to): array
+    {
+        $ranges = [];
+        $region = substr($html, $from, $to - $from);
+        if (preg_match_all('#<([a-z][a-z0-9]*)\b[^>]*\bclass="[^"]*\b(?:woody-component-breadcrumb|breadcrumb-wrapper)\b[^"]*"[^>]*>#i', $region, $mm, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+            foreach ($mm as $m) {
+                $start = $from + $m[0][1];
+                $ranges[] = [$start, self::closingTagEnd($html, strtolower($m[1][0]), $start + strlen($m[0][0]), $to)];
             }
         }
 
