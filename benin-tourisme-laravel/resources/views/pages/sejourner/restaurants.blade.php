@@ -303,14 +303,7 @@
     <div class="rs-wrap">
       <div class="rs-hero__grid">
         <div>
-          <nav aria-label="Fil d'Ariane">
-            <ol class="rs-crumb">
-              <li><a href="/">Accueil</a></li><li aria-hidden="true">/</li>
-              <li><a href="/sejourner">Organisez</a></li><li aria-hidden="true">/</li>
-              <li aria-current="page">Où manger</li>
-            </ol>
-          </nav>
-          <p class="rs-eyebrow">Guide gourmand · Édition 2026</p>
+<p class="rs-eyebrow">Guide gourmand · Édition 2026</p>
           <h1 class="rs-hero__title" id="rs-title">Où manger <em>au Bénin</em></h1>
           <p class="rs-hero__lead">Restaurants, maquis, cafés et bars&nbsp;: toutes nos adresses, en accès libre. Celles marquées d’une étoile <span class="rs-star">{!! $svgStar !!}</span> ont été testées sur place par l’équipe de Bonne Arrivée.</p>
           <div class="rs-ctas">
@@ -331,6 +324,14 @@
       </div>
     </div>
   </section>
+  @verbatim<style>.rs-crumbbar{background:#fff;border-bottom:1px solid #e7e9e4;padding:.9rem 0}.rs-crumbbar .rs-crumb{justify-content:center;margin:0!important;color:#5d6b64!important;font-size:.82rem}.rs-crumbbar .rs-crumb a{color:#3d4a43!important}.rs-crumbbar .rs-crumb [aria-current]{color:var(--rs-green,#00a05d)!important}</style>@endverbatim
+  <div class="rs-crumbbar"><div class="rs-wrap"><nav aria-label="Fil d'Ariane">
+            <ol class="rs-crumb">
+              <li><a href="/">Accueil</a></li><li aria-hidden="true">/</li>
+              <li><a href="/sejourner">Organisez</a></li><li aria-hidden="true">/</li>
+              <li aria-current="page">Où manger</li>
+            </ol>
+          </nav></div></div>
 
   @verbatim<style>
 .rs-ads{background:var(--rs-paper,#f7f6f1);padding:40px 0 44px}

@@ -299,3 +299,13 @@
 .boi .boi-rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease var(--d,0ms),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
 .boi .boi-rv.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.boi .boi-rv{opacity:1;transform:none;transition:none}.boi-cta>img{transform:none!important}}
+
+/* Fil d'Ariane sous le héros (pages « emerv ») */
+.bao .emerv-hero__breadcrumb{display:none}
+.bao .bao-crumbbar .emerv-hero__breadcrumb{display:block;position:static!important;inset:auto!important;transform:none!important;margin:0 auto;max-width:1180px;padding:0 1.25rem}
+.bao .bao-crumbbar{border-bottom:1px solid rgba(0,0,0,.08);background:#fff;padding:.9rem 0}
+.bao .bao-crumbbar ol{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;margin:0;padding:0;list-style:none;font-size:.82rem;color:#5d6b64}
+.bao .bao-crumbbar li{margin:0}
+.bao .bao-crumbbar a{color:#3d4a43!important;text-decoration:none!important}
+.bao .bao-crumbbar a:hover{color:#00844d!important}
+.bao .bao-crumbbar [aria-current]{color:#00844d}

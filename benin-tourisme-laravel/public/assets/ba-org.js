@@ -29,6 +29,15 @@
     if (!main || document.body.classList.contains('bao')) return;
     document.body.classList.add('bao');
 
+    /* 0. Le fil d'Ariane ne reste pas sur la photo du héros : il passe juste dessous. */
+    $$('.emerv-hero').forEach(function (hero) {
+      var bc = hero.querySelector('.emerv-hero__breadcrumb');
+      if (!bc) return;
+      var bar = el('div', 'bao-crumbbar');
+      bar.appendChild(bc);
+      hero.parentNode.insertBefore(bar, hero.nextSibling);
+    });
+
     /* 1. Sections de texte titrées consécutives -> étapes éditoriales */
     var secs = $$('.page-section', main).filter(function (s) { return s.parentElement && !s.closest('.bao-steps'); });
     function estTexte(s) {

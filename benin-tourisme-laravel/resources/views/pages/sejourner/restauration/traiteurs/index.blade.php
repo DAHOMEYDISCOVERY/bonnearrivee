@@ -53,10 +53,7 @@
                         <div class="cell texts-wrapper has-desc large-centered text-center xlarge-8">
                 
 
-    <div class="page-main-description-wrapper">
-        <div class="page-main-description"><p>Le <strong>Bénin</strong> s’étire du golfe de Guinée aux collines de l’<strong>Atacora</strong>. Palais royaux d’Abomey, cité lacustre de Ganvié, parcs du Nord inscrits au <strong>patrimoine mondial</strong> : le pays réunit sur un territoire étroit une <strong>diversité</strong> rare en Afrique de l’Ouest.</p>
-</div>
-    </div>
+    <div class="page-main-description-wrapper"></div>
 
 
 
@@ -202,5 +199,5 @@
                         
                     </div>
     @endverbatim
-@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119c"><script src="/assets/ba-org.js?v=20261119c" defer></script>@endverbatim
+@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119d"><script src="/assets/ba-org.js?v=20261119d" defer></script>@endverbatim
 @endsection
