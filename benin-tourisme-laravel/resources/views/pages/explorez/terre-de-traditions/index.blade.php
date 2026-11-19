@@ -177,14 +177,7 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-bento');if(g){el.style.transitionDelay=(Array.prototype.indexOf.call(g.children,el)*120)+'ms';}io.observe(el);});
 })();
 </script></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Vivre la culture, pas juste la voir"
-    title="Immersions et circuits culturels au Bénin"
-    description="Nos immersions Dahomey Discovery vous ouvrent les portes des cérémonies vodun, des palais royaux d'Abomey, des ateliers d'artisans (bronze, pagne, tissage) et des grandes fêtes annuelles comme les Vodun Days. Guides locaux, familles d'accueil et rencontres réelles — pas de folklore de vitrine."
-    :filters="['tourism_type' => 'immersion']"
-    :limit="6" />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 <x-aggregator.dahomey-articles-block
     pretitle="Lire pour comprendre"
     title="Le Bénin culturel, décrypté par notre agence"
@@ -440,9 +433,18 @@ Les siècles précédant...</div></div></div></div></div></a></div></div><div cl
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Vivre la culture, pas juste la voir"
+    title="Immersions et circuits culturels au Bénin"
+    description="Nos immersions Dahomey Discovery vous ouvrent les portes des cérémonies vodun, des palais royaux d'Abomey, des ateliers d'artisans (bronze, pagne, tissage) et des grandes fêtes annuelles comme les Vodun Days. Guides locaux, familles d'accueil et rencontres réelles — pas de folklore de vitrine."
+    :filters="['tourism_type' => 'immersion']"
+    :limit="6" />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
+@verbatim<link rel="stylesheet" href="/assets/ba-recit.css?v=20261119c"><script type="application/json" class="ba-recit-cfg">[{"v": "manifeste", "src": ".page-main-description p", "hide": ".page-main-description-wrapper", "at": "avant-main", "min": 900, "kick": "Ce qui fonde les traditions", "piliers": [{"t": "Le Vodun", "kw": ["Vodun Days", "Vodun", "couvents", "rituels"], "img": "/assets/img/vodun-640x480.webp"}, {"t": "Les masques", "kw": ["Gèlèdè", "Egungun", "Zangbeto"], "img": "/assets/img/gelede-640x480.webp"}, {"t": "Royaumes et chefferies", "kw": ["Danxomè", "Abomey", "Porto-Novo", "Bariba", "Otammari", "Gaani"], "img": "/assets/img/abomey-palais-640x480.webp"}, {"t": "La parole transmise", "kw": ["transmission orale", "chants", "panégyriques", "ako", "contes"], "img": "/assets/img/danse-640x480.webp"}, {"t": "Arts et architectures", "kw": ["tapisseries d'Abomey", "Tata Somba"], "img": "/assets/img/tata-somba-640x480.webp"}]}]</script><script src="/assets/ba-recit.js?v=20261119c" defer></script>@endverbatim
 @endsection

@@ -1,0 +1,172 @@
+/* Bonne Arrivée — mise en forme des longs textes (voir ba-recit.js) */
+.bar-cache{display:none!important}
+.bar{position:relative;overflow:hidden;font-family:Montserrat,Helvetica,sans-serif}
+.bar *{box-sizing:border-box}
+.bar .bar-in{max-width:1200px;margin:0 auto;padding:clamp(3.5rem,7vw,6rem) 1.25rem}
+.bar p{margin:0 0 1rem;line-height:1.75;font-size:clamp(.97rem,1.05vw,1.04rem)}
+.bar h2,.bar h3,.bar h4{text-transform:none;letter-spacing:-.01em;margin:0}
+.bar h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.1;font-weight:800;margin-bottom:1.2rem}
+.bar h3{font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.15;font-weight:800;margin-bottom:.9rem}
+.bar h4{font-size:1.15rem;line-height:1.25;font-weight:800;margin-bottom:.5rem}
+.bar .bar-kick{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.9rem;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--k,#c8862b)}
+.bar .bar-kick::before{content:"";width:28px;height:2px;background:currentColor}
+.bar .bar-lead{font-size:clamp(1.08rem,1.4vw,1.24rem)!important;line-height:1.6!important;font-weight:600}
+.bar .bar-grand{font-size:clamp(1.5rem,2.9vw,2.4rem)!important;line-height:1.3!important;font-weight:700;letter-spacing:-.01em;margin:0}
+.bar mark{background:linear-gradient(transparent 60%,rgba(240,180,76,.45) 0);color:inherit;font-weight:700;padding:0 .08em}
+.bar details{margin-top:1.4rem;border-top:1px solid rgba(127,127,127,.25);padding-top:1rem}
+.bar summary{cursor:pointer;font-weight:700;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;list-style:none;display:inline-flex;align-items:center;gap:.5rem;color:var(--k,#c8862b)}
+.bar summary::-webkit-details-marker{display:none}
+.bar summary::before{content:"+";display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;border:1.5px solid currentColor;font-size:1rem;line-height:1;transition:transform .3s}
+.bar details[open] summary::before{content:"–"}
+.bar details p{margin-top:1rem}
+.bar .bar-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0}
+.bar .bar-tags span{padding:.4rem .8rem;border-radius:99px;font-size:.8rem;font-weight:600;background:rgba(127,127,127,.1);border:1px solid rgba(127,127,127,.2)}
+.bar-js .bar .bar-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease var(--d,0ms),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+.bar-js .bar .bar-rv.is-in{opacity:1;transform:none}
+
+/* ===== 1. Parcours (Les cinq Bénin) : du Sahel à l'océan ===== */
+.bar-parcours{background:linear-gradient(180deg,#f6ead2 0%,#f3efe4 45%,#e6f1f2 100%);color:#2a2116;--k:#b0621e}
+.bar-parcours .bar-intro{max-width:880px;margin:0 auto 4rem;text-align:center}
+.bar-parcours .bar-intro .bar-kick{justify-content:center}
+.bar-parcours .bar-intro h2{color:#3a1f0a}
+.bar-parcours .bar-km{display:inline-flex;align-items:baseline;gap:.8rem;margin-top:1.2rem;padding:1rem 1.6rem;border-radius:999px;background:#3a1f0a;color:#fff}
+.bar-parcours .bar-km b{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;color:#f0b44c}
+.bar-parcours .bar-km span{font-size:.85rem;opacity:.85;text-align:left}
+.bar-parcours .bar-route{display:grid;grid-template-columns:200px 1fr;gap:clamp(1.5rem,4vw,3.5rem)}
+.bar-parcours .bar-rail{position:sticky;top:110px;align-self:start;list-style:none;margin:0;padding:0 0 0 22px}
+.bar-parcours .bar-rail::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:4px;border-radius:4px;background:linear-gradient(180deg,#c8862b,#8a9a3c,#2f8a5a,#1f7a9a,#0f5a7a)}
+.bar-parcours .bar-rail li{position:relative;padding:.55rem 0;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8b7b66;transition:color .4s}
+.bar-parcours .bar-rail li i{position:absolute;left:-21px;top:.7rem;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #b9a88f;transition:transform .4s,border-color .4s,background .4s}
+.bar-parcours .bar-rail li.on{color:#3a1f0a}
+.bar-parcours .bar-rail li.on i{transform:scale(1.3);border-color:#c8862b;background:#f0b44c}
+.bar-parcours .bar-etapes{display:grid;gap:clamp(1.5rem,3vw,2.4rem)}
+.bar-parcours .bar-etape{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -40px rgba(58,31,10,.55);border-top:5px solid var(--c)}
+.bar-parcours .bar-etape:nth-child(even){grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.bar-parcours .bar-etape:nth-child(even) figure{order:2}
+.bar-parcours .bar-etape figure{position:relative;margin:0;min-height:280px}
+.bar-parcours .bar-etape figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.bar-parcours .bar-etape:hover figure img{transform:scale(1.07)}
+.bar-parcours .bar-etape figcaption{position:absolute;left:.8rem;bottom:.8rem;padding:.3rem .7rem;border-radius:99px;background:rgba(20,14,8,.65);color:#fff;font-size:.72rem;font-weight:600}
+.bar-parcours .bar-etape-t{padding:clamp(1.5rem,3vw,2.4rem)}
+.bar-parcours .bar-etape .bar-kick{color:var(--c)}
+.bar-parcours .bar-etape h3 small{display:block;line-height:1.35;margin-top:.45rem;font-size:.58em;font-weight:600;color:#7a6650}
+.bar-parcours .bar-etape .bar-lead{color:#3a1f0a}
+
+/* ===== 2. Manifeste (Terre de traditions) : nuit indigo et or ===== */
+.bar-manifeste{background:radial-gradient(ellipse at 15% 0%,#2b1f55 0%,#15102e 55%,#0d0a1f 100%);color:#e9e3f7;--k:#f0c45a}
+.bar-manifeste::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(240,196,90,.18),transparent 40%),radial-gradient(circle at 10% 90%,rgba(140,111,208,.25),transparent 45%);pointer-events:none}
+.bar-manifeste .bar-in{position:relative}
+.bar-manifeste .bar-mani-tete{max-width:900px;margin-bottom:3rem}
+.bar-manifeste .bar-grand{color:#fff}
+.bar-manifeste .bar-piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.bar-manifeste .bar-pilier{position:relative;min-height:230px;border-radius:22px;overflow:hidden;display:flex;align-items:flex-end;border:1px solid rgba(240,196,90,.28);background:#1d1640}
+.bar-manifeste .bar-pilier img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:transform 1.4s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.bar-manifeste .bar-pilier:hover img{transform:scale(1.08);opacity:.75}
+.bar-manifeste .bar-pilier::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,10,31,0) 25%,rgba(13,10,31,.92))}
+.bar-manifeste .bar-pilier div{position:relative;z-index:1;padding:1.2rem}
+.bar-manifeste .bar-pilier b{display:block;font-size:1.15rem;color:#fff;margin-bottom:.4rem}
+.bar-manifeste .bar-pilier span{font-size:.82rem;line-height:1.5;color:#f0c45a}
+.bar-manifeste details{border-color:rgba(255,255,255,.15)}
+.bar-manifeste details p{color:#cfc6e6}
+.bar-manifeste .bar-roles{margin-top:3.5rem}
+.bar-manifeste .bar-roles h3{color:#fff;max-width:760px}
+.bar-manifeste .bar-roles ol{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.bar-manifeste .bar-roles li{display:flex;gap:1rem;padding:1.3rem;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .4s,border-color .4s}
+.bar-manifeste .bar-roles li:hover{background:rgba(240,196,90,.1);border-color:rgba(240,196,90,.45)}
+.bar-manifeste .bar-roles li span{flex:0 0 auto;font-size:1.6rem;font-weight:800;line-height:1;color:#f0c45a}
+.bar-manifeste .bar-roles li p{margin:0;color:#e9e3f7}
+
+/* ===== 3. Chiffres (Naturellement sauvage) : savane au crépuscule ===== */
+.bar-chiffres{background:linear-gradient(160deg,#16261a 0%,#1f3a22 55%,#2e4a1e 100%);color:#e6efdc;--k:#d9c25a}
+.bar-chiffres::after{content:"";position:absolute;right:-180px;bottom:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(217,194,90,.22),transparent 62%);pointer-events:none}
+.bar-chiffres .bar-in{position:relative;z-index:1}
+.bar-chiffres h2{color:#fff}
+.bar-chiffres .bar-chif-tete{max-width:860px;margin-bottom:2.6rem}
+.bar-chiffres .bar-lead{color:#e6efdc}
+.bar-chiffres .bar-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:22px;overflow:hidden}
+.bar-chiffres .bar-stat{padding:1.5rem 1.3rem;background:#1b301e;transition:background .4s}
+.bar-chiffres .bar-stat:hover{background:#26422a}
+.bar-chiffres .bar-stat b{display:block;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;line-height:1.05;color:#d9c25a}
+.bar-chiffres .bar-stat-l b{font-size:clamp(1.3rem,2vw,1.7rem)}
+.bar-chiffres .bar-stat span{display:block;margin-top:.4rem;font-size:.84rem;line-height:1.4;color:#c4d3b6}
+.bar-chiffres .bar-menaces{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:2rem;padding:1.1rem 1.2rem;border-radius:18px;background:rgba(200,90,40,.14);border:1px solid rgba(230,120,60,.4)}
+.bar-chiffres .bar-menaces b{margin-right:.5rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#f0a070}
+.bar-chiffres .bar-menaces span{padding:.35rem .75rem;border-radius:99px;background:rgba(0,0,0,.25);font-size:.8rem;font-weight:600;color:#f6dccb}
+.bar-chiffres details{border-color:rgba(255,255,255,.15)}
+.bar-chiffres details p{color:#c4d3b6}
+
+/* ===== 4. Fiches ===== */
+.bar-fiches{background:#f6f3ea;color:#20261f;--k:#2f7d4f}
+.bar-fiches .bar-fiche-ouv{max-width:920px;margin:0 auto 3rem;text-align:center}
+.bar-fiches .bar-fiche{margin-top:clamp(2.5rem,5vw,4rem)}
+.bar-fiches .bar-fiche:first-child{margin-top:0}
+.bar-fiches .bar-fiche-tete{max-width:860px;margin-bottom:1.6rem}
+.bar-fiches .bar-num{display:block;font-size:clamp(3rem,7vw,5rem);font-weight:800;line-height:.9;color:var(--k);opacity:.22;margin-bottom:.4rem}
+.bar-fiches .bar-cartes{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.bar-fiches .bar-carte{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 24px 44px -34px rgba(0,0,0,.45);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.bar-fiches .bar-carte:hover{transform:translateY(-6px);box-shadow:0 30px 54px -32px rgba(0,0,0,.5)}
+.bar-fiches .bar-carte figure{margin:0;aspect-ratio:16/10;overflow:hidden}
+.bar-fiches .bar-carte figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar-fiches .bar-carte:hover figure img{transform:scale(1.08)}
+.bar-fiches .bar-carte>div{padding:1.3rem 1.3rem 1.2rem}
+.bar-fiches .bar-carte .bar-lead{font-size:.97rem!important;font-weight:500}
+.bar-fiches .bar-carte p{font-size:.95rem}
+.bar-fiches .bar-ic{display:block;width:3rem;height:3rem;margin:1.3rem 1.3rem 0;border-radius:14px;background:var(--k)}
+/* thème « savane » (Naturellement sauvage, faune et flore) */
+.bar-t-savane{background:linear-gradient(180deg,#eef3e4,#f7f5ec);--k:#4f7a2a}
+.bar-t-savane .bar-carte{border-top:4px solid #8fae4a}
+/* thème « terre » (Traditions locales) */
+.bar-t-terre{background:linear-gradient(180deg,#fbf1e6,#f6e7d8);--k:#b4552d}
+.bar-t-terre .bar-fiche-ouv .bar-grand{color:#5a2410}
+.bar-t-terre .bar-carte{background:#fffaf4}
+.bar-t-terre .bar-inv .bar-fiche-tete{margin-left:auto;text-align:right}
+.bar-t-terre .bar-carte h4{color:#7a2f12}
+.bar-ic{-webkit-mask:var(--i) center/58% no-repeat;mask:var(--i) center/58% no-repeat}
+.bar-ic-elephant{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 18v-6a7 7 0 0 1 7-7h3a6 6 0 0 1 6 6v7M8 18v-3M15 18v-3M20 11c1.5 0 2 1.5 2 3'/%3E%3Ccircle cx='16' cy='10' r='1'/%3E%3C/svg%3E")}
+.bar-ic-oiseau{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 14c4 0 6-2 8-6 1 3 4 5 8 5l2 2-4 1c-2 3-6 4-10 3'/%3E%3Ccircle cx='17' cy='11' r='.5'/%3E%3C/svg%3E")}
+.bar-ic-arbre{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 22v-8M5 10a7 4 0 0 1 14 0c0 2-3 4-7 4s-7-2-7-4zM9 14l3 2 3-2'/%3E%3C/svg%3E")}
+.bar-ic-feuille{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 19c0-9 5-14 15-14 0 10-5 15-14 15M5 19l7-7'/%3E%3C/svg%3E")}
+.bar-ic-singe{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='11' r='6'/%3E%3Ccircle cx='4.5' cy='10' r='2'/%3E%3Ccircle cx='19.5' cy='10' r='2'/%3E%3Cpath d='M10 13c1 1 3 1 4 0M10 9.5h.01M14 9.5h.01'/%3E%3C/svg%3E")}
+
+/* ===== 5. Lacs (Séjour sur le lac) : eau et lumière ===== */
+.bar-lacs{background:linear-gradient(180deg,#e7f4f6 0%,#d2ecef 100%);color:#0f2d36;--k:#137a8a}
+.bar-lacs .bar-lacs-tete{max-width:820px;margin-bottom:2.4rem}
+.bar-lacs .bar-lacs-tete h2{color:#0b3a46}
+.bar-lacs .bar-lacs-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
+.bar-lacs .bar-lac{display:flex;flex-direction:column;border-radius:26px;overflow:hidden;background:rgba(255,255,255,.75);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 60px -40px rgba(10,60,80,.6);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.bar-lacs .bar-lac:hover{transform:translateY(-6px)}
+.bar-lacs .bar-lac figure{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden}
+.bar-lacs .bar-lac figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.bar-lacs .bar-lac:hover figure img{transform:scale(1.07)}
+.bar-lacs .bar-surf{position:absolute;right:.9rem;bottom:.9rem;padding:.45rem .85rem;border-radius:99px;background:var(--c);color:#fff;font-weight:800;font-size:.95rem;box-shadow:0 10px 20px -10px rgba(0,0,0,.5)}
+.bar-lacs .bar-lac-t{padding:1.4rem 1.4rem 1.3rem}
+.bar-lacs .bar-lac .bar-kick{color:var(--c)}
+.bar-lacs .bar-sous{margin:-.4rem 0 .8rem;font-weight:600;color:#3c6670}
+.bar-lacs .bar-jauge{height:6px;border-radius:6px;background:rgba(19,122,138,.15);margin:0 0 1rem;overflow:hidden}
+.bar-lacs .bar-jauge i{display:block;height:100%;width:0;border-radius:6px;background:var(--c);transition:width 1.6s cubic-bezier(.2,.8,.2,1) .3s}
+.bar-lacs .is-in .bar-jauge i{width:var(--w)}
+.bar-lacs .bar-lac .bar-lead{font-size:1rem!important}
+.bar-lacs .bar-tags span{background:rgba(19,122,138,.08);border-color:rgba(19,122,138,.2);color:#0f4a56}
+.bar-lacs summary{color:var(--c)}
+
+/* ===== 6. Atouts (Safari : Avant de partir vers le Nord) ===== */
+.bar-atouts{margin-top:.4rem}
+.bar-atouts .bar-lead{font-size:1.08rem!important;margin-bottom:1rem}
+.bar-atouts-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem}
+.bar-atouts-g div{padding:.9rem 1rem;border-radius:14px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.08)}
+.bar-atouts-g b{display:block;font-size:1.35rem;font-weight:800;line-height:1.1;color:#8a4a12}
+.bar-atouts-g span{display:block;margin-top:.25rem;font-size:.8rem;line-height:1.35}
+.bar-atouts .bar-note{margin:1rem 0 0;padding:.8rem 1rem;border-radius:12px;background:rgba(200,60,30,.08);border-left:4px solid #c8452b;font-size:.92rem}
+.bar-atouts details{margin-top:1rem}
+.bar-atouts summary{color:#8a4a12}
+
+@media (max-width:900px){
+ .bar-chiffres .bar-stats{grid-template-columns:repeat(2,1fr)}
+ .bar-parcours .bar-route{grid-template-columns:1fr}
+ .bar-parcours .bar-rail{display:none}
+ .bar-parcours .bar-etape,.bar-parcours .bar-etape:nth-child(even){grid-template-columns:1fr}
+ .bar-parcours .bar-etape:nth-child(even) figure{order:0}
+ .bar-parcours .bar-etape figure{min-height:220px}
+ .bar-t-terre .bar-inv .bar-fiche-tete{margin-left:0;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.bar *{transition:none!important;animation:none!important}.bar-js .bar .bar-rv{opacity:1;transform:none}.bar-lacs .bar-jauge i{width:var(--w)}}

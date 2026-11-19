@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Observer les oiseaux au Bénin</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Naturellement sauvage</span><h1 class="hero-title">Observer les oiseaux au Bénin</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="Sur place"
-    title="Activités et rencontres nature"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Deux mondes en une journée de route : les lagunes et le lac Nokoué au sud, la savane soudanienne au nord. Entre les deux, des espèces qu'on ne voit nulle part en Europe.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Le sud : lagunes, lac Nokoué et delta de l'Ouémé</h2></div></div></div><div class="woody-component-text"><p>Le grand ensemble humide du sud est un site Ramsar, qui associe la basse vallée de l'Ouémé, la lagune de Porto-Novo et le lac Nokoué, porté à 652 760 hectares lors de son extension en 2018. La fiche descriptive Ramsar y recense environ 215 espèces d'oiseaux, et identifie le lac Nokoué comme zone importante pour la conservation des oiseaux.</p><p>Concrètement, cela se visite en pirogue, tôt. On longe les acadja et les berges, on observe hérons, aigrettes, martins-pêcheurs et limicoles. Le même site abrite aussi le lamantin d'Afrique de l'Ouest et quatre espèces de tortues marines.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Le nord : savane, mares et grands planeurs</h2></div></div></div><div class="woody-component-text"><p>Dans l'Atacora et l'extrême nord, deux sites Ramsar structurent l'observation : la zone humide de la rivière Pendjari, 483 366 hectares après extension en 2018, et le site du complexe W, où la fiche officielle signale des effectifs notables d'oiseaux d'eau.</p><p>Les espèces dont la présence au Bénin est documentée par des enregistrements d'occurrence incluent la grue couronnée noire, le jabiru d'Afrique, le pluvian fluviatile, le guêpier à gorge rouge, le touraco violet et le vautour charognard. La liste nationale de BirdLife International signale plusieurs vautours parmi les espèces menacées à l'échelle mondiale.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Quand venir, et comment s'y prendre</h2></div></div></div><div class="woody-component-text"><p>La bonne fenêtre combine deux choses : la saison sèche, qui concentre les oiseaux sur les mares résiduelles et rend les pistes praticables, et la présence des migrateurs paléarctiques hivernants, entre novembre et mars. Sur cette période, un même circuit permet d'enchaîner lagunes du sud et savane du nord.</p><p>Prévoyez des jumelles personnelles : elles ne sont pas systématiquement fournies. Le lever du jour est déterminant, au sud comme au nord. Sur le lac Nokoué, la lumière et l'activité des oiseaux tombent vite après neuf heures.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/oiseau-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="Sur place"
+    title="Activités et rencontres nature"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

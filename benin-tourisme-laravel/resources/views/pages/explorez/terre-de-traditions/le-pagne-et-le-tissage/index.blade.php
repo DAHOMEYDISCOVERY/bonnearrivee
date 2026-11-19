@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le pagne, du wax aux tentures d'Abomey</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Terre de traditions</span><h1 class="hero-title">Le pagne, du wax aux tentures d'Abomey</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="S'immerger avec un guide"
-    title="Immersions culturelles"
-    :filters="['tourism_type' => 'immersion']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Le wax n'est pas né en Afrique, et c'est pourtant en Afrique de l'Ouest qu'il est devenu une langue. Au Bénin, on l'achète, on le nomme, on le porte.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Un tissu venu de Java, devenu ouest-africain</h2></div></div></div><div class="woody-component-text"><p>La technique du wax est celle de la réserve à la cire : on couvre de cire les zones que la teinture ne doit pas atteindre. Ce procédé est le batik, pratiqué de longue date en Indonésie, avec des centres majeurs dans le centre de Java.</p><p>Au XIXe siècle, des industriels néerlandais mécanisent ce procédé. Josette Rivallain rattache la réserve à la cire au batik indonésien-malais et situe son passage vers la Côte-de-l'Or par un fort néerlandais. Le reste est une appropriation : ce sont les commerçantes ouest-africaines qui trient, commandent, refusent, imposent des dessins. Les veinures laissées par la cire fendue, longtemps tenues pour un raté d'atelier, sont devenues la signature du vrai wax.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Nommer, tisser, appliquer</h2></div></div></div><div class="woody-component-text"><p>Un pagne s'achète autant par son nom que par son dessin. Ces noms circulent oralement et changent d'un marché et d'une décennie à l'autre. Egbomi Ayina a montré à Lomé que certains motifs encodaient des conflits politiques et disparaissaient avec les mouvements qui les avaient inspirés. Demandez le nom à la vendeuse : la réponse vous en dira plus que la fiche produit.</p><p>À côté du wax imprimé subsiste le tissage sur métier à bandes étroites : de longs rubans de coton, ensuite cousus bord à bord pour former un pagne. Et il y a l'appliqué d'Abomey, des motifs découpés et cousus sur un fond de coton, emblèmes des rois du Danxomè. Joseph Adandé rattache cet art de cour à des corporations d'artisans, dont la famille Yèmadjè.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Acheter, puis faire coudre</h2></div></div></div><div class="woody-component-text"><p>À Cotonou, tout passe par le grand marché. On achète au métrage, en coupons de six ou douze yards selon l'usage. Un couturier de quartier prend ensuite vos mesures ; comptez plusieurs jours et prévoyez un essayage avant votre départ.</p><p>Ne repartez pas avec un pagne sans avoir demandé s'il s'agit d'un wax ou d'un imprimé fancy : la différence est visible au dos du tissu.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/pagne-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="S'immerger avec un guide"
+    title="Immersions culturelles"
+    :filters="['tourism_type' => 'immersion']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

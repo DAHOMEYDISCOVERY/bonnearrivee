@@ -18,7 +18,7 @@
 @verbatim
                         <div class="content-wrapper no-terms">
                                                     <div
-    class="woody-component woody-component-hero     tpl_02 isRel bgimg-op100  bg-black has-bgimg">
+    class="woody-component woody-component-hero has-title  has-subtitle  tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/zemidjan-1920x480.webp"
@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-title has-subtitle"><div class="hero-title" aria-hidden="true">Toutes les infos pratiques</div><span class="hero-subtitle block-span">Préparer son voyage au Bénin</span></div></div>                </div>
     
     
                     
@@ -54,7 +54,7 @@
                 
     <div class="page-main-titles">
                                     <div class="flex-container align-middle align-center">
-                <h1 class="page-main-title">
+                <h1 class="page-main-title show-for-sr">
                     Toutes les infos pratiques
                 </h1>
                             </div>
@@ -71,13 +71,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Visa, vaccins, argent, transports, climat, sécurité : les six pages qui suivent rassemblent ce qui se prépare avant le départ. Les informations réglementaires et sécuritaires évoluent — vérifiez toujours à la source officielle avant de partir.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.vehicles-transfers-block
-    pretitle="Facilité par Dahomey Discovery"
-    title="Transferts et location de véhicules"
-    description="Notre agence vous récupère à l'aéroport et vous accompagne partout au Bénin — navette privée, chauffeur professionnel, 4×4 pour la Pendjari, SUV Luxury pour vos rendez-vous."
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="cbeb0060-0e5e-4092-b6b2-4b3823a459b1" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-undefined tpl_undefined no-sessions" data-equalizer="data-equalizer"><div class="woody_base_grid_wrapper" ><div class="woody_list_grid tpl_401 grid-x align-stretch large-up-4 medium-up-2 grid-padding-x grid-padding-y " data-equalizer="data-equalizer" role="list"><div class="cell " role="listitem"><div class="card basicCard tpl_03 isRel basic_page has-not-card-image ratio_4_3"  data-postid="4491"  data-card-path="basic_card/tpl_03" data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link flex-container flex-dir-column" href="/sejourner/toutes-les-infos-pratiques/guides-et-brochures" target="_self"><div class="card-section" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title"><span class="card-title block-span">Guides et brochures</span></div></div></div></a></div></div><div class="cell " role="listitem"><div class="card basicCard tpl_03 isRel infos-pratiques has-not-card-image ratio_4_3"  data-postid="821"  data-card-path="basic_card/tpl_03" data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link flex-container flex-dir-column" href="/sejourner/toutes-les-infos-pratiques/les-liens-utiles" target="_self"><div class="card-section" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Les liens utiles</span><div class="card-description">Les adresses officielles à consulter vous-même. Sur les formalités, la santé et la sécurité, c'est la source qui fait foi, jamais un site tiers.</div></div></div></div></a></div></div><div class="cell " role="listitem"><div class="card basicCard tpl_03 isRel infos-pratiques has-not-card-image ratio_4_3"  data-postid="819"  data-card-path="basic_card/tpl_03" data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link flex-container flex-dir-column" href="/sejourner/toutes-les-infos-pratiques/comment-venir" target="_self"><div class="card-section" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Comment venir</span><div class="card-description">Un aéroport international à Cotonou, quatre frontières terrestres ouvertes, et un port. Voici les portes d'entrée du pays et ce qu'elles impliquent.</div></div></div></div></a></div></div><div class="cell " role="listitem"><div class="card basicCard tpl_03 isRel infos-pratiques has-not-card-image ratio_4_3"  data-postid="822"  data-card-path="basic_card/tpl_03" data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link flex-container flex-dir-column" href="/sejourner/toutes-les-infos-pratiques/vie-pratique" target="_self"><div class="card-section" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Vie pratique</span><div class="card-description">Décalage horaire, transports ou encore internet et réseau téléphonique… Le Bénin est bien équipée, et elle vous le fait savoir.
@@ -89,6 +83,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.vehicles-transfers-block
+    pretitle="Facilité par Dahomey Discovery"
+    title="Transferts et location de véhicules"
+    description="Notre agence vous récupère à l'aéroport et vous accompagne partout au Bénin — navette privée, chauffeur professionnel, 4×4 pour la Pendjari, SUV Luxury pour vos rendez-vous."
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

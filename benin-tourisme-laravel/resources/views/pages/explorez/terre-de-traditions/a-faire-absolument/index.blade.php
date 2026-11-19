@@ -18,7 +18,7 @@
 @verbatim
                         <div class="content-wrapper term-culture-béninoise term-en-famille term-metropolitains">
                                                     <div
-    class="woody-component woody-component-hero     tpl_02 isRel bgimg-op100  bg-black has-bgimg">
+    class="woody-component woody-component-hero has-title  has-subtitle  tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/danse-1920x480.webp"
@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-title has-subtitle"><div class="hero-title" aria-hidden="true">À faire absolument</div><span class="hero-subtitle block-span">Les expériences à ne pas manquer</span></div></div>                </div>
     
     
                     
@@ -54,7 +54,7 @@
                 
     <div class="page-main-titles">
                                     <div class="flex-container align-middle align-center">
-                <h1 class="page-main-title">
+                <h1 class="page-main-title show-for-sr">
                     A faire absolument
                 </h1>
                             </div>
@@ -76,13 +76,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Traverser le lac Nokoué en pirogue, marcher la Route de l'Esclave à Ouidah, lire les bas-reliefs d'Abomey, dormir sur la terrasse d'une tata. Quatre expériences qui n'existent qu'ici.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.dahomey-articles-block
-    pretitle="Pour comprendre"
-    title="À lire sur le Dahomey Mag"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="bdc4fa60-d465-4ee1-b919-5e660349e724" data-location-lat="" data-location-lng=""  class="section bg-motif padd-top-md padd-bottom-xlg marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  experience ratio_2_1" data-postid="752"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/sejourner/toutes-les-infos-pratiques/se-deplacer" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
@@ -167,6 +161,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.dahomey-articles-block
+    pretitle="Pour comprendre"
+    title="À lire sur le Dahomey Mag"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

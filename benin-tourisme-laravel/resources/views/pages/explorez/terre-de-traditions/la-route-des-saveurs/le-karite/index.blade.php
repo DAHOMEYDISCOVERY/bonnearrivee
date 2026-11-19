@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le karité, l'arbre et le travail des femmes</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">La route des saveurs</span><h1 class="hero-title">Le karité, l'arbre et le travail des femmes</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="S'immerger avec un guide"
-    title="Immersions culturelles"
-    :filters="['tourism_type' => 'immersion']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Un arbre qu'on ne plante presque jamais, des amandes ramassées à l'aube, un beurre baratté à la main. Au nord du Bénin, le karité est d'abord une économie de femmes.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Un arbre qu'on épargne</h2></div></div></div><div class="woody-component-text"><p>Le karité pousse spontanément dans la ceinture soudanienne d'Afrique de l'Ouest. On ne le cultive pratiquement pas : quand un champ est défriché, on le laisse debout. Le paysage du nord béninois, Borgou, Alibori, Atacora, Donga, doit à cette pratique ses parcs d'arbres isolés au milieu des cultures.</p><p>L'arbre pousse lentement et met de longues années avant de fructifier, ce qui explique qu'on le protège plutôt qu'on ne le replante. Le fruit est une baie charnue ; à l'intérieur, une noix, et dans la noix, l'amande qui donne le beurre.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Du ramassage au beurre</h2></div></div></div><div class="woody-component-text"><p>Les fruits tombent en saison des pluies. Le ramassage se fait tôt le matin, avant la chaleur et avant les animaux. La suite est longue : dépulpage, cuisson ou séchage des noix, concassage, torréfaction des amandes, mouture en pâte brune.</p><p>Vient le barattage : la pâte est travaillée à l'eau, à la main, jusqu'à ce qu'une émulsion blanche remonte. Elle est ensuite cuite, écumée, décantée. Le beurre artisanal qui en sort est ivoire à jaune, avec une odeur de noisette fumée. La collecte et la transformation relèvent traditionnellement des femmes, et les revenus qui en découlent leur reviennent.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Où voir et acheter</h2></div></div></div><div class="woody-component-text"><p>En saison, on croise le travail du karité en bord de route entre Parakou, Djougou et Natitingou : bassines, foyers en plein air, barattage collectif. Les marchés du nord vendent amandes et beurre au bol. Des groupements et coopératives féminines proposent savons, beurres parfumés et pommades, y compris à Cotonou.</p><p>Un repère à l'achat : un beurre parfaitement blanc et sans odeur a été raffiné industriellement. Le beurre artisanal sent, et sa couleur varie d'un lot à l'autre.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/karite-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="S'immerger avec un guide"
+    title="Immersions culturelles"
+    :filters="['tourism_type' => 'immersion']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

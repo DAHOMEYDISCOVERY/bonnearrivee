@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Se déplacer au Bénin</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Infos pratiques</span><h1 class="hero-title">Se déplacer au Bénin</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Prêt·e à partir ?"
-    title="Circuits accompagnés"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Zémidjan en ville, bus climatisés vers le nord, taxis-brousse partout ailleurs : le Bénin se traverse facilement du sud au nord, à condition de connaître les codes et les durées réelles.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>En ville, le zémidjan et quand lui préférer une voiture</h2></div></div></div><div class="woody-component-text"><p>Le zémidjan, « emmène-moi vite » en fon, est le taxi-moto qui structure la circulation urbaine béninoise. Les conducteurs portent une chemise de couleur numérotée, la teinte variant selon la ville. Il n'y a ni compteur ni tarif affiché : on annonce sa destination, on convient du prix avant de monter, on paie à l'arrivée. Demandez l'ordre de grandeur d'une course à votre hôtel plutôt que de le deviner.</p><p>Sur la sécurité, soyez lucide : le port du casque est prescrit de longue date, par un décret de 1972, pour le conducteur comme pour le passager, et les campagnes de répression se sont succédé. Dans les faits, beaucoup de conducteurs n'ont qu'un seul casque. Le ministère français des Affaires étrangères recommande d'utiliser les taxis-autos et d'éviter les taxis-motos ; s'il faut en prendre un, il conseille un casque de qualité.</p><p>Les applications de transport à la demande constituent l'alternative la plus simple : course tracée et prix affiché avant validation. Le soir, avec des bagages ou sous la pluie, prenez une voiture.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>D'une ville à l'autre : bus, taxis-brousse, voiture avec chauffeur</h2></div></div></div><div class="woody-component-text"><p>Le Bénin n'a plus de service ferroviaire voyageurs régulier. Tout passe par la route. Plusieurs compagnies privées de cars relient les grandes villes avec réservation en ligne. C'est la formule la plus confortable vers Parakou, Djougou ou Natitingou : départs le matin très tôt et en soirée, véhicules climatisés, bagages en soute.</p><p>Les taxis-brousse, berlines ou minibus qui partent une fois pleins, desservent les localités que les cars ignorent. Prix bas, départs aléatoires, chargement dense. Pour un circuit sud, Ouidah, Abomey, Ganvié, la location d'une voiture avec chauffeur reste le meilleur compromis : vous fixez vos horaires, le chauffeur gère les contrôles routiers et le stationnement.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Distances, durées et précautions</h2></div></div></div><div class="woody-component-text"><p>Les temps ci-dessous viennent de calculateurs d'itinéraires et supposent une chaussée correcte : ajoutez une à deux heures selon les travaux, la pluie et la sortie de Cotonou.</p><p>Cotonou-Ouidah, environ 40 km, 45 min à 1 h 15. Cotonou-Abomey par Bohicon, 135 à 145 km, 2 h à 3 h. Cotonou-Dassa-Zoumè, 200 à 210 km, environ 3 h. Cotonou-Parakou, 415 à 430 km, 5 h 30 à 7 h. Parakou-Natitingou par Djougou, environ 215 km, 3 h à 4 h. Cotonou-Natitingou, environ 550 km, plus de 7 h ; ce dernier chiffre reste à recouper.</p><p>L'axe nord-sud, la RNIE 2, est en reconstruction en deux fois deux voies entre Cotonou, Allada, Bohicon et Dassa. Attendez-vous à des déviations. Ne roulez pas de nuit hors agglomération. Enfin, la France déconseille formellement les parcs Pendjari et W, leurs abords et les zones frontalières du nord : vérifiez les avis officiels avant de programmer l'Atacora.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/zemidjan-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Prêt·e à partir ?"
+    title="Circuits accompagnés"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">La beauté béninoise, un langage social</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Terre de traditions</span><h1 class="hero-title">La beauté béninoise, un langage social</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="À faire sur place"
-    title="Ateliers et rencontres culturelles"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Une coiffure dit d'où l'on vient, une tenue dit à quelle famille on appartient, un pagne assorti dit qui célèbre quoi. Au Bénin, se préparer est un acte public.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>La coiffure, des heures et un vocabulaire</h2></div></div></div><div class="woody-component-text"><p>Une coiffure tressée n'est pas une parenthèse : c'est un rendez-vous. Comptez plusieurs heures assise, souvent à deux coiffeuses. Les grandes familles de gestes sont identifiables même sans en connaître les noms : tresses plaquées au cuir chevelu suivant un tracé dessiné à la raie, tresses libres montées sur mèches ajoutées, torsades à deux brins, cheveux enroulés au fil noir.</p><p>Les salons sont partout, dans les rues de Cotonou comme de Porto-Novo, souvent une pièce ouverte sur la rue avec un banc. Une visiteuse peut parfaitement s'y faire tresser ; prévenez qu'il s'agit d'une première fois et demandez que ce ne soit pas serré.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Les marques sur la peau</h2></div></div></div><div class="woody-component-text"><p>Les scarifications faciales ne sont ni un ornement pittoresque ni un secret. Ce sont des marques d'identification, tracées dans l'enfance, qui inscrivaient l'individu dans un lignage, un groupe, parfois un statut. L'historien béninois A. F. Iroko les traite comme des sources historiques à part entière : tel type de marque garde la trace d'un événement daté, une guerre, un déplacement de population.</p><p>La pratique est en net recul. Vous croiserez surtout des visages marqués chez les générations âgées. Cela impose une règle simple : on ne photographie pas un visage sans demander, et on ne commente pas des marques que l'on ne comprend pas.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Karité, huiles, et les jours de tenue</h2></div></div></div><div class="woody-component-text"><p>Le beurre de karité, tiré des amandes de l'arbre à karité, est produit dans le nord du pays, souvent par des groupements de femmes. On le trouve brut, jaune et odorant, sur les marchés ; il sert autant pour la peau que pour la cuisine. À côté, huiles de palmiste et de coco, savon noir.</p><p>Les jours de cérémonie, familles et associations font tailler leurs tenues dans un même pagne : on repère d'un coup d'œil qui est du côté de qui. S'y ajoutent le foulard de tête monté haut et repassé, et les bijoux sortis pour l'occasion.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/peuple-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="À faire sur place"
+    title="Ateliers et rencontres culturelles"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

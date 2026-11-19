@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Avant de partir au Bénin</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Infos pratiques</span><h1 class="hero-title">Avant de partir au Bénin</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.dahomey-articles-block
-    pretitle="À lire"
-    title="Guides pratiques Dahomey Mag"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Six semaines avant, deux semaines avant, la veille : ce qu'il faut avoir réglé, dans l'ordre. Une seule page à cocher avant de boucler la valise.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Six semaines avant</h2></div></div></div><div class="woody-component-text"><p>Prenez rendez-vous dans un centre de vaccinations internationales. La vaccination contre la fièvre jaune est une condition d'entrée au Bénin et doit être faite au moins dix jours avant l'arrivée ; d'autres vaccins peuvent demander plusieurs injections espacées. C'est le délai le plus contraignant de toute la préparation, réglez-le en premier.</p><p>Vérifiez la validité de votre passeport : il faut au moins six mois après la date de retour. Lancez ensuite la demande d'e-visa sur la plateforme gouvernementale, et souscrivez une assurance couvrant frais médicaux, hospitalisation et rapatriement sanitaire.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Deux semaines avant</h2></div></div></div><div class="woody-component-text"><p>Faites prescrire votre prophylaxie antipaludique et composez votre trousse avec votre pharmacien. Réservez vos hébergements, surtout si vous montez vers le nord ou si vous voyagez en janvier : l'offre y est très limitée.</p><p>Prévenez votre banque de votre départ et vérifiez vos plafonds de retrait hebdomadaires — c'est le blocage le plus courant sur place. Inscrivez-vous auprès de votre ambassade, c'est gratuit.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>La veille et le jour du départ</h2></div></div></div><div class="woody-component-text"><p>Relisez l'avis aux voyageurs de votre ministère des Affaires étrangères : le zonage du nord évolue. Imprimez le e-visa, sortez le carnet de vaccination du tiroir et rangez-le avec le passeport, pas dans la valise en soute.</p><p>Photographiez passeport, e-visa, ordonnances et attestation d'assurance, et envoyez-vous le tout par courriel. Prévoyez de quoi changer ou retirer dès l'arrivée, et demandez des petites coupures : un billet de 10 000 francs CFA est difficile à faire accepter dans un marché ou pour un trajet en zémidjan.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/cotonou-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.dahomey-articles-block
+    pretitle="À lire"
+    title="Guides pratiques Dahomey Mag"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

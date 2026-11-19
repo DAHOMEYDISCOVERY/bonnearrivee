@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Services en pratique</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Infos pratiques</span><h1 class="hero-title">Services en pratique</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Prêt·e à partir ?"
-    title="Circuits accompagnés"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Électricité, téléphone, internet, langues, décalage horaire, jours fériés : les détails qui ne se voient pas dans un guide et qui règlent une journée.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Courant, réseau, connexion</h2></div></div></div><div class="woody-component-text"><p>Le courant est en 220 volts, avec les prises de type européen à deux broches rondes. Les coupures sont fréquentes hors des grandes villes : la plupart des hôtels et maisons d'hôtes disposent d'un groupe électrogène, mais pas tous. Demandez avant de réserver si vous voyagez avec du matériel à recharger.</p><p>La téléphonie mobile couvre bien les villes et l'axe principal, plus inégalement les campagnes et le nord. Une carte SIM locale s'achète sur présentation d'une pièce d'identité et s'enregistre à votre nom ; c'est aussi la condition pour utiliser le paiement mobile, très répandu dans le pays.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Langues et usages</h2></div></div></div><div class="woody-component-text"><p>Le français est la langue officielle et celle de l'administration, de l'école et des médias. Dans la vie quotidienne, on parle fon et goun au sud, yoruba au sud-est, bariba et dendi au nord, peul dans les zones d'élevage, parmi une cinquantaine de langues.</p><p>Quelques mots de salutation en fon ou en yoruba changent l'accueil de façon disproportionnée. Et une règle qui vaut partout : on salue avant de demander. Entrer dans une boutique ou aborder quelqu'un sans saluer est perçu comme brusque.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Heure, calendrier, fermetures</h2></div></div></div><div class="woody-component-text"><p>Le Bénin est à UTC+1 toute l'année et ne pratique pas le changement d'heure saisonnier. En hiver, il n'y a donc aucun décalage avec la France métropolitaine ; en été, Paris compte une heure de plus.</p><p>Les administrations et beaucoup de commerces ferment tôt et travaillent peu le samedi après-midi. Les jours fériés incluent la fête nationale du 1er août, la fête des religions traditionnelles en janvier — dont la date a changé en 2024 et se calcule désormais sur le deuxième vendredi du mois — et les grandes fêtes chrétiennes et musulmanes.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/zemidjan-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Prêt·e à partir ?"
+    title="Circuits accompagnés"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

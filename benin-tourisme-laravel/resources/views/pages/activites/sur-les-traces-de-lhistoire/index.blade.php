@@ -69,13 +69,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Ouidah et sa Route de l'Esclave, les palais royaux d'Abomey, les forts de la côte, Porto-Novo et ses maisons afro-brésiliennes. Le Bénin porte une histoire lourde et l'a mise en mémoire, ce qui en fait l'une des destinations les plus fortes du continent pour le tourisme de mémoire.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Y aller accompagné"
-    title="Circuits liés à cette activité"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="5600f705-3076-4ff1-9825-dbf99c72cb0f" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-undefined tpl_undefined no-sessions" data-equalizer="data-equalizer"><div
@@ -97,6 +91,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Y aller accompagné"
+    title="Circuits liés à cette activité"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">L'anacarde, la noix et la pomme</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">La route des saveurs</span><h1 class="hero-title">L'anacarde, la noix et la pomme</h1></div></div>                </div>
     
     
                     
@@ -69,12 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.wanilo-articles-block
-    title="Regards du studio"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Derrière la noix de cajou, un fruit charnu que presque personne ne connaît hors d'Afrique, et une filière d'exportation majeure. Le centre du Bénin s'en couvre en saison sèche.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Deux fruits sur le même pédoncule</h2></div></div></div><div class="woody-component-text"><p>L'anacardier vient du nord-est du Brésil ; il a été diffusé en Afrique par les navigateurs portugais. Ce qui pend à ses branches surprend : une pomme cajou charnue, jaune ou rouge, très juteuse, et sous elle une petite noix grise recourbée, seul vrai fruit de l'arbre.</p><p>La noix n'est pas comestible en l'état. Sa coque contient un baume caustique qui brûle la peau et les lèvres : c'est pourquoi elle doit être décortiquée après cuisson ou torréfaction. Ne croquez jamais une noix ramassée au sol.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Une filière, deux destins pour la noix</h2></div></div></div><div class="woody-component-text"><p>L'anacarde compte parmi les principales filières agricoles d'exportation du Bénin, aux côtés du coton et du karité. Les plantations occupent surtout le centre et le nord, souvent en petites parcelles familiales.</p><p>L'essentiel des noix a longtemps été exporté brut vers l'Asie, où se fait le décorticage. Le pays a engagé une politique de transformation locale, avec des unités installées au Bénin. La pomme, elle, reste largement perdue faute de débouché : on la mange sur place, on en fait des jus et des boissons fermentées artisanales.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Où voir et goûter</h2></div></div></div><div class="woody-component-text"><p>En saison de récolte, la route de Cotonou à Parakou traverse les zones de production : vergers, sacs de noix en bord de route, tas de pommes cajou vendues à l'unité. C'est la seule occasion de goûter la pomme, juteuse, parfumée, avec une astringence qui sèche la bouche. Une pincée de sel l'atténue.</p><p>Les noix grillées se vendent en sachets sur les marchés et dans les gares routières, à un prix sans rapport avec celui des rayons européens.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/cajou-640x480.webp"
@@ -149,6 +144,12 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.wanilo-articles-block
+    title="Regards du studio"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

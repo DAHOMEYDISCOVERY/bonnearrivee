@@ -353,4 +353,5 @@
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}
+@verbatim<link rel="stylesheet" href="/assets/ba-recit.css?v=20261119c"><script type="application/json" class="ba-recit-cfg">[{"v": "atouts", "inline": true, "src": ".sr-alerte__carte p:not(.sr-alerte__liens)", "min": 900, "stats": [{"re": "(deux grandes réserves) classées", "l": "au patrimoine mondial de l’UNESCO"}, {"re": "environ ([\\d\\s ]+km²)", "l": "pour la Pendjari, gérée avec African Parks"}, {"re": "plus de (\\d+) espèces d[’']oiseaux", "l": "espèces d’oiseaux"}, {"re": "(\\d+[\\s ]?\\d*\\s?FCFA) par jour", "l": "l’entrée par jour (visiteurs étrangers)"}], "kw": ["savanes", "mares", "forêts-galeries", "massifs granitiques", "cascades", "Tatas Somba", "guidage villageois", "accueil communautaire"], "note": "<strong>Sécurité :</strong> les autorités françaises déconseillent formellement les parcs de la Pendjari et du W et leurs abords. Consultez les avis de votre pays avant tout projet et voyagez avec un opérateur agréé."}]</script><script src="/assets/ba-recit.js?v=20261119c" defer></script>@endverbatim
 @endsection

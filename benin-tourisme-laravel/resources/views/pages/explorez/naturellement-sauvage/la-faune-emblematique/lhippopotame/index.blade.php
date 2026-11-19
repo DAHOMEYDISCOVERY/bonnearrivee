@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">L'hippopotame de la Pendjari</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Naturellement sauvage</span><h1 class="hero-title">L'hippopotame de la Pendjari</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Explorer avec un guide"
-    title="Circuits safari & randonnée"
-    :filters="['tourism_type' => 'safari']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Dans les mares et le lit de la Pendjari, des groupes d'hippopotames passent la journée immergés. C'est l'un des rares endroits d'Afrique de l'Ouest où on les observe encore facilement.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Un animal d'eau douce qui sort la nuit</h2></div></div></div><div class="woody-component-text"><p>L'hippopotame commun organise sa journée autour de l'eau. Il y reste immergé aux heures chaudes, ne laissant dépasser que les yeux, les oreilles et les narines, alignés sur le même plan. C'est la nuit qu'il quitte la rivière pour brouter l'herbe sur les berges.</p><p>Cette routine explique ce que voit le visiteur : rarement un animal entier, souvent un radeau de dos gris et de bâillements, dans une mare résiduelle. Le bâillement n'est pas de la fatigue, c'est une démonstration entre mâles. Les traces de sortie nocturne, larges couloirs d'herbe rase menant à l'eau, se lisent facilement au petit matin.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Où le chercher dans la Pendjari</h2></div></div></div><div class="woody-component-text"><p>Le parc national de la Pendjari couvre 6 445 km² dans l'Atacora selon son gestionnaire, et fait partie du complexe transnational W-Arly-Pendjari inscrit au patrimoine mondial avec le Burkina Faso et le Niger. Il est géré depuis 2017 dans le cadre d'un partenariat entre le gouvernement béninois et African Parks.</p><p>Côté zones humides, la zone humide de la rivière Pendjari est un site Ramsar béninois, porté à 483 366 hectares lors de son extension en 2018, contre 144 774 auparavant. Ce sont ces mares permanentes qui concentrent la faune quand tout le reste s'assèche : c'est là qu'on se poste.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Vulnérable, et à ne pas approcher</h2></div></div></div><div class="woody-component-text"><p>L'espèce est classée Vulnérable sur la Liste rouge de l'UICN ; l'évaluation en vigueur est celle de Lewison et Pluháček, publiée dans la mise à jour 2017-2 de la Liste rouge. La catégorie est recoupée par les bases GBIF et iNaturalist.</p><p>Consigne de terrain : on observe depuis le véhicule ou un point aménagé, jamais depuis la berge à pied, et on ne se place jamais entre un hippopotame et l'eau. Un animal coupé de sa rivière charge pour y retourner. À l'aube et au crépuscule, des individus peuvent se trouver à terre, loin de l'eau. Le guide décide de la distance ; on ne descend pas pour la photo.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/pendjari-hippo-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Explorer avec un guide"
+    title="Circuits safari & randonnée"
+    :filters="['tourism_type' => 'safari']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

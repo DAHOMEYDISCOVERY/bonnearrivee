@@ -18,7 +18,7 @@
 @verbatim
                         <div class="content-wrapper no-terms">
                                                     <div
-    class="woody-component woody-component-hero     tpl_02 isRel bgimg-op100  bg-black has-bgimg">
+    class="woody-component woody-component-hero has-title  has-subtitle  tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/plage-grand-popo-1920x480.webp"
@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-title has-subtitle"><div class="hero-title" aria-hidden="true">Vie pratique</div><span class="hero-subtitle block-span">Le quotidien sur place</span></div></div>                </div>
     
     
                     
@@ -54,7 +54,7 @@
                 
     <div class="page-main-titles">
                                     <div class="flex-container align-middle">
-                <h1 class="page-main-title">
+                <h1 class="page-main-title show-for-sr">
                     Vie pratique
                 </h1>
                             </div>
@@ -76,13 +76,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.dahomey-articles-block
-    pretitle="À lire"
-    title="Guides pratiques Dahomey Mag"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="de8ba136-17ed-46dc-ab9e-0296411155fd" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_123 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_05 isRel  has-not-card-link ratio_4_3" data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;true&#x7D;"><div class="grid-x  "><div class="cell large-3">@endverbatim<x-media.figure
@@ -263,6 +257,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.dahomey-articles-block
+    pretitle="À lire"
+    title="Guides pratiques Dahomey Mag"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

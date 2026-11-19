@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le varan du Nil, sentinelle des berges</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Naturellement sauvage</span><h1 class="hero-title">Le varan du Nil, sentinelle des berges</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="Sur place"
-    title="Activités et rencontres nature"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>C'est le plus grand lézard d'Afrique, et le plus facile à voir au Bénin : lagunes, mangroves, berges de rivière. Il file dans l'eau dès qu'on approche.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Le plus grand lézard du continent</h2></div></div></div><div class="woody-component-text"><p>Le varan du Nil se reconnaît à sa longue queue comprimée latéralement, qui sert de rame, et à sa langue bifide qu'il projette en marchant. Les adultes peuvent atteindre 2,4 mètres de longueur totale ; les nouveau-nés mesurent une trentaine de centimètres.</p><p>C'est un carnivore opportuniste. Le régime documenté couvre grenouilles et crapauds, poissons, rongeurs, oiseaux et leurs œufs, petites tortues, crabes, insectes et mollusques à coquille dure ; il consomme aussi des œufs de crocodile. Il occupe savanes sèches, fourrés, marécages et mangroves, toujours près d'un point d'eau.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Niloticus ou ornatus ? La question, tranchée</h2></div></div></div><div class="woody-component-text"><p>Le débat existe depuis 1997 : Böhme et Ziegler ont alors élevé le varan orné au rang d'espèce distincte, Varanus ornatus, sur la base de différences de pigmentation, de couleur de langue et de comptages d'écailles. Ce nom est resté en usage chez plusieurs auteurs.</p><p>En 2015, Dowell et ses collaborateurs ont mis les deux formes en synonymie : elles sont génétiquement indiscernables et les caractères morphologiques se recouvrent largement. C'est cette position que suit aujourd'hui la Reptile Database, référence taxinomique standard. Pour un texte grand public, on écrit donc Varanus niloticus. Le dossier n'est pas clos pour autant : des publications récentes continuent d'employer l'autre nom.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Un animal commun, mais pas banal</h2></div></div></div><div class="woody-component-text"><p>L'espèce est classée en préoccupation mineure sur la Liste rouge de l'UICN ; l'évaluation en vigueur a été menée en 2019 et publiée dans la mise à jour 2021-2. Le Bénin figure dans l'aire de répartition, et les occurrences agrégées par le GBIF y confirment sa présence.</p><p>Le voir demande surtout du silence. Le varan chasse à découvert le long des berges, se chauffe sur un tronc ou un mur, puis disparaît dans l'eau en quelques secondes. Les meilleures chances sont en milieu de matinée, quand il sort thermoréguler.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/oiseau-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="Sur place"
+    title="Activités et rencontres nature"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

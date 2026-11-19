@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Guides et brochures</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Infos pratiques</span><h1 class="hero-title">Guides et brochures</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Prêt·e à partir ?"
-    title="Circuits accompagnés"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Ce que ce site met à disposition, ce qui existe ailleurs, et ce qu'il vaut mieux demander sur place plutôt que de télécharger.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce que vous trouvez sur ce site</h2></div></div></div><div class="woody-component-text"><p>Les pages de ce site sont conçues pour être lues avant le départ et emportées : chacune porte un encadré pratique avec le lieu, l'accès, la durée de visite, la meilleure période et un conseil concret.</p><p>Chaque page de contenu porte aussi ses sources et la liste de ses points à confirmer. C'est inhabituel dans une brochure touristique, et c'est délibéré : sur des sujets comme la traite atlantique, les effectifs de faune ou les dates d'ouverture d'un musée en chantier, les chiffres sont débattus ou périment vite.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Les cartes</h2></div></div></div><div class="woody-component-text"><p>La carte interactive de la page d'accueil situe vingt-neuf lieux sur les douze départements, avec le relief, les fleuves et les grands axes. Elle sert à comprendre les distances avant de composer un itinéraire : le Bénin fait sept cents kilomètres du nord au sud, et une journée de route sépare Cotonou de Natitingou.</p><p>Pour la navigation réelle, emportez une carte routière à jour ou une application avec fond de carte téléchargé : la couverture réseau est bonne dans les villes et très inégale ailleurs.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce qui se demande sur place</h2></div></div></div><div class="woody-component-text"><p>Les informations les plus utiles ne se téléchargent pas. Les jours de marché des communes rurales suivent souvent un cycle de quatre jours et non la semaine. Les sorties de masques, les cérémonies de couvent et les grandes fêtes de famille ne suivent aucun calendrier publié.</p><p>Demandez-les à votre hébergement ou à un guide agréé dès votre arrivée dans une région. C'est ce qui fait la différence entre voir un site et voir un lieu vivant.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/paysage-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Prêt·e à partir ?"
+    title="Circuits accompagnés"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">La dot et le mariage coutumier</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Terre de traditions</span><h1 class="hero-title">La dot et le mariage coutumier</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.dahomey-articles-block
-    pretitle="Pour comprendre"
-    title="À lire sur le Dahomey Mag"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Au Bénin, on ne se marie pas une fois mais trois : à la coutume, à la mairie, au culte. La première est celle qui engage les familles, et c'est souvent la plus longue.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Deux familles avant deux personnes</h2></div></div></div><div class="woody-component-text"><p>Dans le sud du pays, le mariage coutumier est d'abord une négociation entre deux lignages. La séquence, avec des variantes selon qu'on est en milieu fon, goun, aja ou yoruba, suit une logique constante. La famille du prétendant se manifeste d'abord par un intermédiaire, un aîné ou un ami de la maison. Chaque camp se renseigne alors sur l'autre.</p><p>Vient ensuite la demande officielle, faite au domicile de la famille de la jeune femme. Les deux groupes ne se parlent pas directement : chacun a son porte-parole, et les échanges passent par eux, souvent avec humour et proverbes. Le consentement de la future épouse est sollicité publiquement, devant l'assemblée.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>La remise de la dot</h2></div></div></div><div class="woody-component-text"><p>La dot est un ensemble de biens remis par la famille du marié à celle de la mariée. Sa composition varie fortement d'une famille et d'une localité à l'autre : boissons, noix de cola, pagnes, sel, huile, produits vivriers, et une somme d'argent. Chaque élément est présenté à voix haute, vérifié, accepté ou renvoyé pour complément.</p><p>Il ne s'agit pas d'un achat. C'est une reconnaissance publique de l'alliance et de ce que la famille de la mariée a investi dans son éducation ; elle scelle aussi les obligations réciproques entre les deux groupes. Le montant et le principe même de la dot font l'objet de débats au Bénin, notamment depuis l'adoption du Code des personnes et de la famille.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Mairie, culte, et vous qui êtes invité</h2></div></div></div><div class="woody-component-text"><p>Le mariage civil se célèbre devant l'officier d'état civil et donne l'acte que l'administration reconnaît. La bénédiction religieuse, à l'église, au temple ou à la mosquée, s'y ajoute selon la confession. Les trois cérémonies peuvent s'étaler sur des mois.</p><p>Si l'on vous invite : arrivez habillé, une tenue en pagne est le meilleur signe de respect qui soit. Demandez si la famille a choisi un pagne commun. Ne prenez pas la parole sans y être invité, ne photographiez pas la remise de la dot sans autorisation, et remettez votre cadeau au représentant désigné, jamais directement aux mariés.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/mariage-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.dahomey-articles-block
+    pretitle="Pour comprendre"
+    title="À lire sur le Dahomey Mag"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

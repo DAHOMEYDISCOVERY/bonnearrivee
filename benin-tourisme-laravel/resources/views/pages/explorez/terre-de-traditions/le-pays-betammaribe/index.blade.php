@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le pays betammaribe et les tata somba</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Terre de traditions</span><h1 class="hero-title">Le pays betammaribe et les tata somba</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="À faire sur place"
-    title="Ateliers et rencontres culturelles"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Dans l'Atacora, des maisons de terre à étage, greniers coiffés de paille, terrasse en guise de toit. On y lit une organisation sociale entière, et des familles y vivent toujours.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Betammaribe, et non Somba</h2></div></div></div><div class="woody-component-text"><p>Le peuple qui habite les collines de l'Atacora, autour de Boukoumbé, Natitingou et Tanguiéta, se nomme betammaribe ; un homme est un otammari. Sa langue est le ditammari. Côté togolais, on rencontre les appellations batammariba et tamberma : c'est la même aire culturelle, coupée par une frontière tracée à l'époque coloniale.</p><p>Le mot Somba, resté dans l'usage touristique et dans l'expression tata somba, est un exonyme. Selon les travaux de Laurick Zerbini, il vient du vocabulaire des conquérants bariba, qui distinguaient les groupes soumis de ceux qui échappaient à leur autorité, avant d'être repris par l'administration coloniale. Dites betammaribe devant vos hôtes ; tata somba reste compris, mais le nom local est le bon.</p><p>Le Koutammakou, inscrit à l'UNESCO en 2004 pour sa seule partie togolaise, a été étendu au Bénin le 17 septembre 2023. C'est désormais un bien transfrontalier Togo-Bénin, et le troisième bien béninois inscrit après Abomey et le complexe W-Arly-Pendjari.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Lire une maison</h2></div></div></div><div class="woody-component-text"><p>La takyènta, c'est-à-dire le tata, associe des tours cylindriques à toit conique de paille, reliées par des murs courbes en terre crue. Le rez-de-chaussée, sombre et bas de plafond, abrite le bétail, les réserves, la meule, et des autels près de l'entrée. On monte par une échelle taillée dans un tronc. À l'étage, une terrasse de terre battue où l'on sèche le mil, où l'on cuisine, où l'on dort à la saison chaude, bordée de greniers fermés par des chapeaux de paille amovibles.</p><p>La lecture coloniale n'y voyait qu'une forteresse contre les razzias. La fonction défensive est réelle, mais elle n'explique pas tout : les anthropologues insistent sur l'organisation symbolique du bâtiment, l'opposition entre le bas et le haut, entre côté masculin et côté féminin, entre le monde des vivants et celui des ancêtres. Une takyènta se construit par étapes rituelles, chacune marquée par une cérémonie.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Rites, scarifications, et comment visiter</h2></div></div></div><div class="woody-component-text"><p>Les initiations structurent la vie sociale : le difuani pour les garçons, le dikuntri pour les filles. Elles marquent l'entrée dans l'âge adulte et fondent l'autorité des aînés. Les scarifications faciales relèvent de la même logique : identité de clan, étape de vie, marque d'appartenance, et non un ornement. Leur pratique a fortement reculé ; on les voit surtout chez les générations âgées.</p><p>Un tata n'est pas un monument, c'est un domicile. On salue le chef de famille, on demande l'autorisation d'entrer, on ne photographie ni les personnes ni les autels sans accord explicite. Passer par un guide betammaribe du village change tout : il traduit, il négocie l'accueil et la contribution laissée à la famille. Le meilleur moment reste tôt le matin ou en fin d'après-midi, quand la maisonnée est sur la terrasse.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/tata-somba-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="À faire sur place"
+    title="Ateliers et rencontres culturelles"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

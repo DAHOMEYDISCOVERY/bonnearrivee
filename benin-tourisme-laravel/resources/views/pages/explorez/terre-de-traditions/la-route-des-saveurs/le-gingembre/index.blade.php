@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le gingembre, du champ au sachet glacé</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">La route des saveurs</span><h1 class="hero-title">Le gingembre, du champ au sachet glacé</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="S'immerger avec un guide"
-    title="Immersions culturelles"
-    :filters="['tourism_type' => 'immersion']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Rhizome râpé dans les sauces, jus vendu glacé au bord de la route : le gingembre est l'un des goûts les plus immédiats du Bénin. Encore faut-il savoir où le boire.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Une plante, un rhizome</h2></div></div></div><div class="woody-component-text"><p>Le gingembre n'est pas une racine mais un rhizome : une tige souterraine renflée, qu'on déterre après plusieurs mois de culture. La plante forme une touffe de feuilles étroites, plantée en début de saison des pluies et récoltée quand le feuillage jaunit.</p><p>Il demande des sols meubles, drainés, et un travail à la main pour l'arrachage. C'est une culture de complément, souvent conduite sur de petites parcelles, plutôt que sur de grandes exploitations.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce qu'on en fait</h2></div></div></div><div class="woody-component-text"><p>En cuisine, il est râpé ou pilé dans les marinades de poisson et de poulet, dans les sauces, et séché puis moulu pour la poudre. Il accompagne l'ail et l'oignon dans la base aromatique de beaucoup de plats.</p><p>Mais c'est en boisson qu'il est le plus visible. Le jus de gingembre, pressé, filtré, sucré, souvent allongé d'ananas ou de citron, se vend en bouteille recyclée ou en sachet noué, sorti glacé d'une glacière. Il est très fort : la première gorgée pique la gorge. Il existe des versions douces, il suffit de le demander.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Où le voir et le boire</h2></div></div></div><div class="woody-component-text"><p>Le rhizome frais se trouve en tas sur tous les grands marchés. Le jus se vend partout : stands de rue, vendeuses ambulantes, restaurants, gares routières.</p><p>Le point de vigilance est l'eau, pas le gingembre. Un jus artisanal en sachet est préparé avec l'eau du lieu de fabrication. Préférez les bouteilles capsulées, ou les stands qui affichent l'usage d'eau minérale. En poudre ou en rhizome séché, il se rapporte sans difficulté.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/epices-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="S'immerger avec un guide"
+    title="Immersions culturelles"
+    :filters="['tourism_type' => 'immersion']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

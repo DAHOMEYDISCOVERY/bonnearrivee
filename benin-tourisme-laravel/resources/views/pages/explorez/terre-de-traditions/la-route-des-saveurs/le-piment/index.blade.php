@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le piment, curseur de la table béninoise</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">La route des saveurs</span><h1 class="hero-title">Le piment, curseur de la table béninoise</h1></div></div>                </div>
     
     
                     
@@ -69,12 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.wanilo-articles-block
-    title="Regards du studio"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Au Bénin, le piment ne relève pas le plat : il le construit. Sauces, pâte rouge, bols posés à côté de l'aloko, voici comment le lire, et où l'acheter.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce qu'il fait dans l'assiette</h2></div></div></div><div class="woody-component-text"><p>Le piment est un ingrédient de base, pas un condiment ajouté après coup. Il est écrasé au mortier avec l'oignon et la tomate, puis cuit dans l'huile : cette base rouge sert la sauce du poisson, celle du poulet, les sauces d'arachide, de gombo et de feuilles.</p><p>On le retrouve dans l'amiwo, pâte de maïs cuite directement dans la sauce huilée, et dans le moyo, la sauce fraîche oignon-tomate-piment servie avec le poisson frit. Dans les maquis, un petit bol de piment écrasé arrive presque toujours à part : chacun se sert.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce qui pousse et sous quelle forme on l'achète</h2></div></div></div><div class="woody-component-text"><p>Les marchés vendent surtout de petits piments allongés très forts, des variétés plus charnues et douces, et des piments parfumés proches du habanero. La culture est essentiellement maraîchère : bas-fonds, jardins périurbains, parcelles de vallée.</p><p>Quatre formes coexistent sur les étals : frais en tas, séché entier, moulu en poudre rouge vendue au bol, et en pâte conservée sous l'huile. La poudre voyage bien et se garde ; c'est la forme la plus simple à rapporter.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Où le voir et le goûter</h2></div></div></div><div class="woody-component-text"><p>À Cotonou, le secteur des vivres du grand marché donne la vue la plus complète. À Porto-Novo, le marché Ouando joue le même rôle. Dans les campagnes, beaucoup de marchés ne se tiennent que certains jours, selon un cycle local : renseignez-vous la veille.</p><p>Pour goûter sans se brûler, prélevez une pointe de couteau et attendez trente secondes : la montée est progressive. Un plat déjà cuit ne peut plus être adouci, c'est à la commande que tout se joue.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/epices-640x480.webp"
@@ -149,6 +144,12 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.wanilo-articles-block
+    title="Regards du studio"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

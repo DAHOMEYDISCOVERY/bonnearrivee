@@ -78,13 +78,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="À faire sur place"
-    title="Ateliers et rencontres culturelles"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="f87e9d7a-aeb9-45bd-b174-7677186db4a3" data-location-lat="" data-location-lng=""  class="section isRel padd-top-lg padd-bottom-lg marg-top-none marg-bottom-none has-bgimg" ><div class="bgImageObject backgroundMedia fullcenterbox lazyload" data-title="MARCHÉ DE COTONOU" data-img-id="1987"></div><div class="content isRel"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_2col_tpl_01 grid-x large-up-2 align-center align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"></div></div></div></div><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_02 bg-white isRel padd-all-md large-padd-all-xlg no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><p class="h2">Carte d’identité</p><ul><li>Ingrédients principaux : manioc, banane, noix de coco, fruits à pain</li><li>Où déguster ? Sur les marchés, dans les restaurants, sur les plages</li><li>A ne pas manquer : les « mamas brochettis », qui font des brochettes</li></ul></div></div></div></div></div></article></div></section>
@@ -1595,6 +1589,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="À faire sur place"
+    title="Ateliers et rencontres culturelles"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

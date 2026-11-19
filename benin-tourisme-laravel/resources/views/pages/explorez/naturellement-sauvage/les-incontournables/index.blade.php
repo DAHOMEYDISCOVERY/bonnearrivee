@@ -69,12 +69,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Les chutes de l'Atacora, les collines de Dassa, les mangroves du Mono, la savane de la Pendjari. Quatre paysages, quatre climats, quatre façons de comprendre le pays.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.wanilo-articles-block
-    title="Regards sur la nature béninoise"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="8a8d913d-0f18-4043-aba4-e796ee679de5" data-location-lat="" data-location-lng=""  class="section bg-motif padd-top-md padd-bottom-sm marg-top-none marg-bottom-none" ><header class="section-header-wrapper grid-container grid-default container-min"><div class="section-header text-center"><div class="section-titles flex-container flex-dir-column align-middle align-center text-center"><div class="section-texts has-pretitle has-title"><span class="section-pretitle block-span">A la rencontre</span><h2 class="section-title">de la nature Béninoise</h2></div></div></div></header><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  experience ratio_2_1" data-postid="687"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/le-lac-nokoue" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
@@ -163,6 +158,12 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.wanilo-articles-block
+    title="Regards sur la nature béninoise"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

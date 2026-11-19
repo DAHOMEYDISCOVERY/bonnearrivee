@@ -21,7 +21,7 @@
 @verbatim
                         <div class="content-wrapper no-terms">
                                                     <div
-    class="woody-component woody-component-hero     tpl_02 isRel bgimg-op100  bg-black has-bgimg">
+    class="woody-component woody-component-hero has-title  has-subtitle  tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/restaurant-1920x480.webp"
@@ -38,7 +38,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-title has-subtitle"><div class="hero-title" aria-hidden="true">Restauration</div><span class="hero-subtitle block-span">Où et comment bien manger</span></div></div>                </div>
     
     
                     
@@ -57,7 +57,7 @@
                 
     <div class="page-main-titles">
                                     <div class="flex-container align-middle align-center">
-                <h1 class="page-main-title">
+                <h1 class="page-main-title show-for-sr">
                     Restauration
                 </h1>
                             </div>

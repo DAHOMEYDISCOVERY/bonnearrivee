@@ -69,13 +69,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Là où le fleuve Mono, la lagune et le lac Ahémé se rejoignent avant de percer le cordon de sable, la Bouche du Roy forme un delta de mangroves, de bancs de sable et d'îlots à oiseaux, classé réserve de biosphère par l'UNESCO et géré avec les villages riverains.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.attractions-block
-    pretitle="Sur place, avec Dahomey"
-    title="Activités et ateliers à découvrir"
-    :filters="['city' => 'cotonou']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="61580dae-41ef-491a-bb3a-6910add867d7" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-undefined tpl_undefined no-sessions" data-equalizer="data-equalizer"><div class="woody_base_grid_wrapper"   ><div class="woody_list_grid tpl_204 grid-x large-up-2 grid-padding-x grid-padding-y" data-equalizer="data-equalizer" role="list"><div class="cell" role="listitem">@endverbatim<x-card
@@ -192,6 +186,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.attractions-block
+    pretitle="Sur place, avec Dahomey"
+    title="Activités et ateliers à découvrir"
+    :filters="['city' => 'cotonou']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

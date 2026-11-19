@@ -69,14 +69,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Deux parcs nationaux inscrits au patrimoine mondial, une chaîne de montagnes qui traverse trois pays, des cascades qui coulent toute l'année et des mangroves à tortues. La nature béninoise est moins connue que celle de ses voisins — c'est précisément ce qui la rend intacte.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Ancrer la nature dans son voyage"
-    title="Safaris et grands espaces avec un guide"
-    description="Nos circuits Dahomey Discovery incluent la Pendjari, le complexe W-Arly-Pendjari (UNESCO), les chutes de Tanougou et les randonnées de l'Atacora. Chauffeur 4×4, guide-naturaliste local et hébergement en écolodge inclus — l'expérience sans avoir à tout organiser."
-    :filters="['tourism_type' => 'safari']"
-    :limit="6" />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 <x-aggregator.vehicles-transfers-block
     pretitle="Aller au parc, revenir en ville"
     title="Véhicules 4×4 et transferts vers l'Atacora"
@@ -315,9 +308,18 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Ancrer la nature dans son voyage"
+    title="Safaris et grands espaces avec un guide"
+    description="Nos circuits Dahomey Discovery incluent la Pendjari, le complexe W-Arly-Pendjari (UNESCO), les chutes de Tanougou et les randonnées de l'Atacora. Chauffeur 4×4, guide-naturaliste local et hébergement en écolodge inclus — l'expérience sans avoir à tout organiser."
+    :filters="['tourism_type' => 'safari']"
+    :limit="6" />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
+@verbatim<link rel="stylesheet" href="/assets/ba-recit.css?v=20261119c"><script type="application/json" class="ba-recit-cfg">[{"v": "chiffres", "src": ".page-main-description p", "hide": ".page-main-description-wrapper", "at": "avant-main", "min": 900, "kick": "La nature du Bénin en chiffres", "titre": "Une biodiversité qui se compte", "stats": [{"re": "plus de ([\\d\\s ]+) éléphants", "l": "éléphants"}, {"re": "près de ([\\d\\s ]+) buffles", "l": "buffles"}, {"re": "plus de ([\\d\\s ]+) hippopotames", "l": "hippopotames"}, {"re": "environ ([\\d\\s ]+) hippotragues", "l": "hippotragues"}, {"re": "environ ([\\d\\s ]+) lions", "l": "lions d’Afrique de l’Ouest"}, {"re": "(une quarantaine) de léopards", "v": "≈ 40", "l": "léopards (une quarantaine)"}, {"re": "(une quinzaine) de guépards", "v": "≈ 15", "l": "guépards (une quinzaine)"}, {"re": "environ ([\\d\\s ]+à[\\d\\s ]+) espèces végétales", "l": "espèces végétales"}, {"re": "plus de ([\\d\\s ]+) reptiles", "l": "espèces de reptiles"}, {"re": "environ ([\\d\\s ]+%) du territoire", "l": "du territoire en aires protégées"}]}, {"v": "fiches", "theme": "savane", "mode": "items", "src": ".woody-component-custom-text .woody-component-text p", "hide": ".page-section", "min": 1500, "kw": [{"k": "grands mammifères", "img": "/assets/img/pendjari-elephant-640x480.webp"}, {"k": "primates", "img": "/assets/img/pendjari-babouin-640x640.webp"}, {"k": "oiseaux", "img": "/assets/img/oiseau-640x480.webp"}, {"k": "arbres", "img": "/assets/img/karite-640x480.webp"}, {"k": "forêts", "img": "/assets/img/foret-sacree-640x480.webp"}]}]</script><script src="/assets/ba-recit.js?v=20261119c" defer></script>@endverbatim
 @endsection

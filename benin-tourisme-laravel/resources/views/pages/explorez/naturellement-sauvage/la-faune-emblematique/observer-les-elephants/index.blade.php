@@ -77,13 +77,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Explorer avec un guide"
-    title="Circuits safari & randonnée"
-    :filters="['tourism_type' => 'safari']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="a36be716-20ec-4d2a-9c04-a0d007156b62" data-location-lat="" data-location-lng=""  class="section isRel padd-top-lg padd-bottom-lg marg-top-none marg-bottom-none has-bgimg" ><div class="bgImageObject backgroundMedia fullcenterbox lazyload" data-title="Adansonia Digitata Bénin Baobab Soleil Rayon 0754 Original" data-img-id="1383"></div><div class="content isRel"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_2col_tpl_01 grid-x large-up-2 align-center align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"></div></div></div></div><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_02 bg-white isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2 class="generic-block-title">Carte d'identité</h2></div></div></div><ul><li>Taille : environ 50 cm (+ 60 cm pour la queue)</li><li>Poids : de 2 à 3 kg</li><li>Régime alimentaire principal : les fruits mûrs, fleurs et feuilles</li><li>Caractéristiques : ses mains porteraient des empreintes digitales, comme nous !</li></ul></div></div></div></div></div></article></div></section>
@@ -641,6 +635,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Explorer avec un guide"
+    title="Circuits safari & randonnée"
+    :filters="['tourism_type' => 'safari']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

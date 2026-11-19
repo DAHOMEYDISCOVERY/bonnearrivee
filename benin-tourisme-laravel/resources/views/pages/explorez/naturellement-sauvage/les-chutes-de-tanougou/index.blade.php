@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Les chutes de Tanougou, dans l'Atacora</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Naturellement sauvage</span><h1 class="hero-title">Les chutes de Tanougou, dans l'Atacora</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Explorer avec un guide"
-    title="Circuits safari & randonnée"
-    :filters="['tourism_type' => 'safari']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>À l'est de Tanguiéta, un torrent descend les quartzites de l'Atacora en une série de sauts et de vasques. On s'y baigne, mais le lieu obéit d'abord à des règles locales.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>De l'eau sur du quartzite</h2></div></div></div><div class="woody-component-text"><p>Le site se trouve dans le village de Tanougou, commune de Tanguiéta, département de l'Atacora. Le cours d'eau dévale le versant de la chaîne de l'Atacora, un relief allongé sur un axe sud-ouest / nord-est qui se poursuit au Togo et jusqu'au Ghana. Les roches sont ici des quartzites, des micaschistes et des schistes à quartz et muscovite. Ces formations résultent de l'orogenèse panafricaine, la collision continentale qui a bâti la chaîne des Dahomeyides il y a environ 600 millions d'années.</p><p>Concrètement, cela donne une roche dure, lisse, qui se débite en dalles et en gradins. L'eau ne creuse pas un canyon : elle saute de palier en palier. D'où la succession de bassins que l'on remonte à pied.</p><p>Sur la hauteur, les chiffres divergent. Les sources consultées annoncent une vingtaine de mètres pour la chute inférieure et environ 25 mètres pour la chute située plus en amont. Aucune mesure émanant d'un organisme scientifique ou officiel n'a pu être retrouvée. Prenez ces chiffres comme des ordres de grandeur, pas comme une donnée.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Les bassins, et ce qu'on y respecte</h2></div></div></div><div class="woody-component-text"><p>La vasque du bas se rejoint en quelques minutes de marche. Les bassins supérieurs demandent de grimper sur des rochers mouillés, souvent glissants ; des guides du village accompagnent les visiteurs sur cette portion.</p><p>Le site est tenu pour sacré par des communautés de la zone — on trouve dans l'Atacora les Berba, les Waaba et les Gourmantché. Les récits recueillis localement associent la cascade à des esprits protecteurs du terroir, et le lieu sert à des cérémonies. Des interdits encadrent l'accès : ils peuvent porter sur des jours précis, sur certaines zones, sur ce qu'on y apporte ou sur les comportements admis.</p><p>Ces règles ne sont pas un supplément d'ambiance. Demandez-les au guide ou au gardien du site avant d'entrer dans l'eau, et appliquez-les. Ne photographiez pas un rite en cours sans autorisation explicite.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Y aller, et à quel moment</h2></div></div></div><div class="woody-component-text"><p>Tanougou est à l'est de Tanguiéta, sur l'axe qui mène vers la Pendjari ; le village est donné à environ 81 km de Natitingou et à une dizaine de kilomètres de l'entrée du parc. Cette proximité explique sa fréquentation : la cascade s'intègre depuis longtemps aux circuits Pendjari.</p><p>Point décisif : les conseils aux voyageurs de France Diplomatie déconseillent formellement les zones frontalières du nord, parcs nationaux de la Pendjari et du W compris. Tanougou se situe dans cette aire. Vérifiez la situation avant tout projet et suivez les consignes des autorités béninoises.</p><p>Le débit dépend de la saison des pluies, grossièrement de juin à octobre dans le nord. L'eau est la plus abondante en fin de saison humide ; en fin de saison sèche, elle peut être réduite à un filet.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/chutes-tanougou-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Explorer avec un guide"
+    title="Circuits safari & randonnée"
+    :filters="['tourism_type' => 'safari']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

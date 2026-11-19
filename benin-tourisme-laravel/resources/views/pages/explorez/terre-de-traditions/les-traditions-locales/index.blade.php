@@ -18,7 +18,7 @@
 @verbatim
                         <div class="content-wrapper term-culture-béninoise term-en-famille term-metropolitains">
                                                     <div
-    class="woody-component woody-component-hero     tpl_02 isRel bgimg-op100  bg-black has-bgimg">
+    class="woody-component woody-component-hero has-title  has-subtitle  tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/peuple-1920x480.webp"
@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-title has-subtitle"><div class="hero-title" aria-hidden="true">Les traditions locales</div><span class="hero-subtitle block-span">Cultes, masques et grandes fêtes</span></div></div>                </div>
     
     
                     
@@ -54,7 +54,7 @@
                 
     <div class="page-main-titles">
                                     <div class="flex-container align-middle align-center">
-                <h1 class="page-main-title">
+                <h1 class="page-main-title show-for-sr">
                     Les traditions locales
                 </h1>
                             </div>
@@ -76,14 +76,27 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Sociétés de masques, cérémonies vodun, mariages, marchés à cycle de quatre jours : les traditions béninoises organisent encore le calendrier et la vie des quartiers. On les approche avec un guide, jamais en touriste pressé.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="S'immerger avec un guide"
-    title="Immersions culturelles"
-    :filters="['tourism_type' => 'immersion']"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
+<div class="page-section tlc"><style>.tlc{background:#5a2410;color:#fbeee0;position:relative;overflow:hidden}.tlc::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 46px);pointer-events:none}
+.tlc .tlc-in{position:relative;max-width:1200px;margin:0 auto;padding:clamp(3rem,6vw,5rem) 1.25rem}
+.tlc .tlc-k{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f3b45a}.tlc .tlc-k::before{content:"";width:28px;height:2px;background:currentColor}
+.tlc h2{color:#fff!important;text-transform:none!important;font-size:clamp(1.8rem,3.4vw,2.7rem)!important;margin:.8rem 0 2rem!important;text-align:left!important;font-weight:800!important;letter-spacing:-.01em}.tlc h2::after{display:none!important}
+.tlc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative}
+.tlc ol::before{content:"";position:absolute;left:0;right:0;top:1.35rem;height:2px;background:linear-gradient(90deg,#f3b45a,#e0603a,#8c6fd0,#2f8a5a)}
+.tlc li{position:relative;margin:0;padding:3rem 1.2rem 1.3rem;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:transform .5s cubic-bezier(.2,.8,.2,1),background .5s}
+.tlc li:hover{transform:translateY(-6px);background:rgba(243,180,90,.12)}
+.tlc li::before{content:"";position:absolute;left:1.2rem;top:.85rem;width:1.1rem;height:1.1rem;border-radius:50%;background:#f3b45a;box-shadow:0 0 0 5px rgba(243,180,90,.25)}
+.tlc li b{display:block;font-size:1.5rem;font-weight:800;color:#f3b45a;line-height:1.1}
+.tlc li strong{display:block;margin:.5rem 0 .3rem;font-size:1.05rem;color:#fff}
+.tlc li span{font-size:.9rem;line-height:1.5;color:#f1dcc8}
+@media (max-width:900px){.tlc ol{grid-template-columns:1fr 1fr}.tlc ol::before{display:none}}@media (max-width:520px){.tlc ol{grid-template-columns:1fr}}</style>
+<div class="tlc-in"><span class="tlc-k">Calendrier</span><h2>Quand vivre les grandes fêtes</h2><ol>
+<li><b>Janvier</b><strong>Vodun Days</strong><span>Ouidah, autour de la fête nationale du Vodun du 10 janvier.</span></li>
+<li><b>Pentecôte</b><strong>Nonvitcha</strong><span>Grand-Popo, sur la plage, pour les communautés Xwla et Xwéda.</span></li>
+<li><b>15 août</b><strong>Fête de l’Igname</strong><span>Savalou, sortie officielle de la nouvelle récolte chez les Mahi.</span></li>
+<li><b>Calendrier lunaire</b><strong>Gaani</strong><span>Nikki : la date change chaque année, renseignez-vous avant de partir.</span></li>
+</ol></div></div>
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="edfd3b95-e9a3-41d4-931f-65212c0e0ef4" data-location-lat="" data-location-lng=""  class="section bg-motif padd-top-md padd-bottom-xlg marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  incontournable ratio_2_1" data-postid="743"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/terre-de-traditions/les-traditions-locales" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
     src="/assets/img/tata-somba-640x320.webp"
@@ -204,9 +217,17 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="S'immerger avec un guide"
+    title="Immersions culturelles"
+    :filters="['tourism_type' => 'immersion']"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
+@verbatim<link rel="stylesheet" href="/assets/ba-recit.css?v=20261119c"><script type="application/json" class="ba-recit-cfg">[{"v": "fiches", "theme": "terre", "mode": "kw", "sauter": 1, "src": ".woody-component-custom-text .woody-component-text p", "hide": ".page-section", "min": 1500, "kw": [{"k": "Egungun", "t": "Les Egungun", "img": "/assets/img/egungun-640x480.webp"}, {"k": "Zangbeto", "t": "Le Zangbeto", "img": "/assets/img/zangbeto-640x480.webp"}, {"k": "Guèlèdè", "t": "Le Guèlèdè", "img": "/assets/img/gelede-640x480.webp"}, {"k": "Gaani", "t": "La Gaani de Nikki", "img": "/assets/img/fete-gaani-640x480.webp"}, {"k": "Igname", "t": "La fête de l’Igname à Savalou", "img": "/assets/img/marche-640x480.webp"}, {"k": "festival des Masques", "t": "Le festival des Masques", "img": "/assets/img/fete-masques-640x480.webp"}, {"k": "Nonvitcha", "t": "La Nonvitcha à Grand-Popo", "img": "/assets/img/plage-grand-popo-640x480.webp"}]}]</script><script src="/assets/ba-recit.js?v=20261119c" defer></script>@endverbatim
 @endsection

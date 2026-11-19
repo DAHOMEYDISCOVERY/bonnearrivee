@@ -69,9 +69,7 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Hôtels d'affaires à Cotonou, maisons d'hôtes sur la côte, écolodges près des parcs, nuit en tata dans l'Atacora. L'offre existe mais se concentre fortement au sud : dans le nord, on réserve à l'avance.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.accommodations-block title="Réserver un hébergement au Bénin" pretitle="Sélection Dahomey Discovery" :limit="6" />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @php
     // Images tirées en direct de l'écosystème Dahomey Discovery pour que
     // chaque card montre un vrai hébergement de la sélection actuelle.
@@ -212,6 +210,9 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.accommodations-block title="Réserver un hébergement au Bénin" pretitle="Sélection Dahomey Discovery" :limit="6" />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

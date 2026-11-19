@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Où dormir au Bénin</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Où dormir</span><h1 class="hero-title">Où dormir au Bénin</h1></div></div>                </div>
     
     
                     
@@ -69,15 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.accommodations-block
-    pretitle="Sélection Dahomey Discovery"
-    title="Hébergements réservables au Bénin"
-    description="Notre agence réceptive sélectionne et contrôle chaque hébergement — hôtels, gîtes, chambres d'hôtes, appartements meublés. Réservation directe sans intermédiaire."
-    :filters="[]"
-    :limit="6"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Du grand hôtel d'affaires de Cotonou à la chambre aménagée dans une tata de l'Atacora, l'offre béninoise est réelle mais très inégalement répartie. Voici ce qui existe, et où.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Cinq familles d'hébergement</h2></div></div></div><div class="woody-component-text"><p>Cotonou concentre l'offre dite de standing : hôtels d'affaires avec climatisation, groupe électrogène, salles de réunion et restaurant, utilisés autant par les séminaires que par les voyageurs de passage. Porto-Novo, Parakou, Ouidah et Grand-Popo en comptent quelques-uns, à une échelle plus modeste.</p><p>Vient ensuite le gros du parc : auberges, résidences et maisons d'hôtes tenues par des exploitants indépendants. Le seul recensement national d'ensemble publiquement accessible reste celui mené en 2008 par l'institut national de la statistique : 492 réceptifs hôteliers dénombrés sur tout le territoire, dont 38 % d'auberges, 26 % d'hôtels, 12 % de motels, 5 % de pensions et 1 % de campings. Ces chiffres ont près de vingt ans et ne décrivent plus la situation actuelle ; ils restent utiles pour une chose, la structure du secteur, dominée à 91 % par des entreprises individuelles.</p><p>Troisième famille : les écolodges et campements liés aux aires naturelles, autour de la Pendjari et sur le littoral. Quatrième : les hébergements communautaires, gérés par des associations villageoises. Cinquième : la chambre chez l'habitant, surtout en pays betammaribe.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Une carte très déséquilibrée</h2></div></div></div><div class="woody-component-text"><p>En 2008 déjà, le Littoral, c'est-à-dire Cotonou, rassemblait 25 % des établissements et l'Atlantique 14 %. À l'autre bout, l'Alibori et la Donga en comptaient une dizaine chacun. Ce déséquilibre nord-sud n'a pas disparu.</p><p>Concrètement : sur l'axe Cotonou, Ouidah, Grand-Popo et à Abomey, vous choisissez. À Natitingou, Tanguiéta, Nikki ou Kandi, l'offre se compte en quelques adresses, souvent complètes en haute saison, et il faut réserver longtemps à l'avance. Autour de la Pendjari, l'hébergement est saisonnier : la fréquentation suit l'ouverture du parc.</p><p>L'État travaille à combler ce déficit par le haut. Le Conseil des ministres du 5 février 2025 a fait le point sur deux chantiers : un complexe à la Marina de Ouidah avec un hôtel quatre étoiles de 130 chambres, et une opération à Cotonou portant environ 200 chambres de haut standing.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Classement, communautaire, et à quoi s'attendre</h2></div></div></div><div class="woody-component-text"><p>Un cadre réglementaire existe : le décret n° 2023-494 du 26 septembre 2023 réglemente les établissements d'hébergement touristique, et les documents officiels emploient une catégorisation en étoiles. En revanche, aucune liste publique d'établissements effectivement classés n'a pu être consultée : ne vous fiez pas aux étoiles affichées en façade.</p><p>Le tourisme communautaire offre les nuits les plus intéressantes du pays. À Koussoukoingou, dans l'Atacora, une association villageoise gère un écolodge d'une dizaine de chambres et propose de dormir dans une tata, la maison-forteresse betammaribe, ou sur sa terrasse. À Possotomé, sur le lac Ahémé, un gîte et un camping au bord de l'eau. On y comprend un habitat en y dormant, ce qu'aucun hôtel ne permet.</p><p>Attendez-vous, hors des grandes villes, à des coupures de courant, à une eau chaude non garantie et à des paiements en espèces.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/hotel-640x480.webp"
@@ -152,6 +144,15 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.accommodations-block
+    pretitle="Sélection Dahomey Discovery"
+    title="Hébergements réservables au Bénin"
+    description="Notre agence réceptive sélectionne et contrôle chaque hébergement — hôtels, gîtes, chambres d'hôtes, appartements meublés. Réservation directe sans intermédiaire."
+    :filters="[]"
+    :limit="6"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

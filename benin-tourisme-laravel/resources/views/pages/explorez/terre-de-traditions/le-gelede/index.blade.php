@@ -35,7 +35,7 @@
             
             
         <div class="fullcenterbox fcbCol grid-container padd-top-md padd-bottom-md">
-                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Les richesses du littoral</span><h1 class="hero-title">Le Gèlèdè, masques des mères</h1></div></div>                </div>
+                    <div class="hero-titles flex-container flex-dir-column align-center align-middle text-center"><div class="hero-texts has-pretitle has-title"><span class="hero-pretitle block-span">Terre de traditions</span><h1 class="hero-title">Le Gèlèdè, masques des mères</h1></div></div>                </div>
     
     
                     
@@ -69,13 +69,7 @@
             
                                         
                                         @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.dahomey-articles-block
-    pretitle="Pour comprendre"
-    title="À lire sur le Dahomey Mag"
-    :limit="3"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"></div></div></div><div class="woody-component-text"><p>Dans le sud-est du Bénin, une société de masques yoruba-nago rend hommage à la puissance des mères. Chants satiriques, tambours et masques sculptés : une nuit de Gèlèdè règle les comptes du village.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Honorer Iyà Nlà, la mère primordiale</h2></div></div></div><div class="woody-component-text"><p>Le Gèlèdè est une cérémonie masquée pratiquée par les communautés yoruba-nago. Selon la fiche de l'UNESCO, elle rend hommage à Iyà Nlà, la mère primordiale, et au rôle des femmes dans l'organisation sociale yoruba. La puissance attribuée aux mères y est considérée comme redoutable autant que bénéfique : le rite vise à l'honorer et à l'apaiser, pas à la conjurer.</p><p>L'UNESCO décrit le Gèlèdè comme la seule société de masques connue qui soit également dirigée par des femmes. Les sources béninoises désignent à sa tête l'Iyalashè, une mère âgée qui ouvre les prières adressées aux divinités locales, aux ancêtres et aux Iyà. Le partage concret des rôles varie selon les localités et selon les auteurs.</p><p>La tradition béninoise fait de Kétou, dans le département du Plateau, le berceau du Gèlèdè. Une datation au XVIIIe siècle circule largement, mais elle repose sur la tradition orale et reste discutée.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Ce qui se passe pendant une sortie</h2></div></div></div><div class="woody-component-text"><p>La cérémonie a lieu la nuit, sur une place publique. Les danseurs se préparent à l'écart. Chanteurs et percussionnistes ouvrent la séance ; suivent l'orchestre et les danseurs masqués en costumes de pagnes superposés.</p><p>Les chants sont en langue yoruba. Ils transmettent l'histoire et les mythes des Yoruba-nago, mais ils commentent aussi la vie du village de l'année écoulée. Le ton est souvent satirique : on moque un notable trop gourmand, un mari violent, une rumeur mal éteinte. Les masques sculptés, portés au-dessus de la tête, portent sur leur plateau des scènes entières qui prolongent le propos.</p><p>D'où la fonction sociale : le Gèlèdè dit publiquement ce qui ne se dit pas en face. C'est un outil de régulation, pas une revue de music-hall. L'UNESCO signale d'ailleurs que le tourisme menace l'élément en le transformant en produit folklorique.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>Un bien partagé entre trois pays</h2></div></div></div><div class="woody-component-text"><p>Le Gèlèdè n'est pas exclusivement béninois. L'élément est inscrit au nom du Bénin, du Nigeria et du Togo, sur toute l'aire yoruba-nago. Deux dates sont souvent confondues : le Gèlèdè a été proclamé chef-d'œuvre du patrimoine oral et immatériel de l'humanité en 2001, puis inscrit sur la Liste représentative en 2008, lors du transfert des chefs-d'œuvre vers la nouvelle liste.</p><p>Côté béninois, on parle surtout de Kétou, Savè, Kilibo et des communes du Plateau. Un plan d'action UNESCO mené d'octobre 2003 à novembre 2008, financé par le fonds-en-dépôt japonais, a soutenu des ateliers de sculpture, de danse et de costume à Kétou et Kilibo ; l'État béninois a fait construire une Maison internationale du Gèlèdè.</p><p>Les sorties suivent le calendrier communautaire : après les récoltes, lors de funérailles, d'installations ou en cas de sécheresse. Il n'existe pas d'horaire publié pour visiteurs. On y assiste parce qu'on a été invité, pas parce qu'on a acheté un billet.</p></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/gelede-640x480.webp"
@@ -150,6 +144,13 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.dahomey-articles-block
+    pretitle="Pour comprendre"
+    title="À lire sur le Dahomey Mag"
+    :limit="3"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

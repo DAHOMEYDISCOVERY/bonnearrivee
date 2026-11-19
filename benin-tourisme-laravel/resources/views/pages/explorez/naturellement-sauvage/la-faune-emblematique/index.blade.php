@@ -21,10 +21,10 @@
     class="woody-component woody-component-hero has-title has-pretitle   tpl_02 isRel bgimg-op90  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
-    src="/assets/img/pendjari-babouin-1920x480.webp"
-    alt="Babouin dans le parc de la Pendjari"
+    src="/assets/img/pendjari-elephant-1920x480.webp"
+    alt="Éléphants dans le parc national de la Pendjari"
     loading="eager"
-    srcset="/assets/img/pendjari-babouin-360x90.webp 360w, /assets/img/pendjari-babouin-640x160.webp 640w, /assets/img/pendjari-babouin-1200x300.webp 1200w, /assets/img/pendjari-babouin-1920x480.webp 1920w"
+    srcset="/assets/img/pendjari-elephant-360x90.webp 360w, /assets/img/pendjari-elephant-640x160.webp 640w, /assets/img/pendjari-elephant-1200x300.webp 1200w, /assets/img/pendjari-elephant-1920x480.webp 1920w"
     published="2021-12-10 13:13:52"
     description="Babouin dans le parc de la Pendjari"
     caption="Babouin dans le parc de la Pendjari"
@@ -69,19 +69,14 @@
             
                                         
                                         <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Éléphants, lions d'Afrique de l'Ouest, hippopotames, buffles, plus de cinq cents espèces d'oiseaux. La faune du Bénin se concentre dans le Grand Nord, autour des derniers points d'eau de la saison sèche.</p></div></div></div></div></article></section></div>@endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.vehicles-transfers-block
-    pretitle="S'y rendre"
-    title="Véhicules 4×4 et transferts"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="1a5bd178-59f5-416e-bc5d-2c40bf4abcc2" data-location-lat="" data-location-lng=""  class="section bg-motif padd-top-md padd-bottom-lg marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  incontournable ratio_2_1" data-postid="694"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/naturellement-sauvage/la-faune-emblematique/lhippopotame" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
-    src="/assets/img/sunset-640x320.webp"
-    alt="Coucher de soleil sur le Bénin"
+    src="/assets/img/pendjari-hippo-640x320.webp"
+    alt="Hippopotames de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
-    srcset="/assets/img/sunset-360x180.webp 360w, /assets/img/sunset-640x320.webp 640w, /assets/img/sunset-1200x600.webp 1200w, /assets/img/sunset-1920x960.webp 1920w"
+    srcset="/assets/img/pendjari-hippo-360x180.webp 360w, /assets/img/pendjari-hippo-640x320.webp 640w, /assets/img/pendjari-hippo-1200x600.webp 1200w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2022-01-03 13:52:32"
@@ -91,10 +86,9 @@
     :captionHidden="true"
     :nosnippet="true"
 />@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">L&#x27;hippopotame de la Pendjari</span><div class="card-description">Dans les mares et le lit de la Pendjari, des groupes d'hippopotames passent la journée immergés. C'est l'un des rares endroits d'Afrique de l'Ouest où on les observe encore facilement.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  incontournable ratio_2_1" data-postid="693"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/naturellement-sauvage/la-faune-emblematique/le-varan-du-nil" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
-    src="/assets/img/oiseau-640x320.webp"
-    alt="Faune sauvage du Bénin"
+    src="/assets/img/wikimedia/le-varan-du-nil-a-la-pendjari.webp"
+    alt="Varan du Nil à la Pendjari"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
-    srcset="/assets/img/oiseau-360x180.webp 360w, /assets/img/oiseau-640x320.webp 640w, /assets/img/oiseau-1200x600.webp 1200w, /assets/img/oiseau-1920x960.webp 1920w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-10 15:41:08"
@@ -104,10 +98,10 @@
     :captionHidden="true"
     :nosnippet="true"
 />@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Le varan du Nil</span><div class="card-description">C'est le plus grand lézard d'Afrique, et le plus facile à voir au Bénin : lagunes, mangroves, berges de rivière. Il file dans l'eau dès qu'on approche.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  experience ratio_2_1" data-postid="691"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/naturellement-sauvage/la-faune-emblematique/observer-les-elephants" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
-    src="/assets/img/pendjari-babouin-640x320.webp"
-    alt="Babouin dans le parc de la Pendjari"
+    src="/assets/img/pendjari-elephant-640x320.webp"
+    alt="Éléphants de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
-    srcset="/assets/img/pendjari-babouin-360x180.webp 360w, /assets/img/pendjari-babouin-640x320.webp 640w, /assets/img/pendjari-babouin-1200x600.webp 1200w, /assets/img/pendjari-babouin-1920x960.webp 1920w"
+    srcset="/assets/img/pendjari-elephant-360x180.webp 360w, /assets/img/pendjari-elephant-640x320.webp 640w, /assets/img/pendjari-elephant-1200x600.webp 1200w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-10 13:13:52"
@@ -145,10 +139,9 @@
     title="Les fleurs du Bénin"
 >
     <x-media.figure
-    src="/assets/img/ananas-640x640.webp"
-    alt="L’ananas du Bénin"
+    src="/assets/img/wikimedia/fleurs-du-benin.webp"
+    alt="Fleurs du Bénin"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/ananas-360x360.webp 360w, /assets/img/ananas-640x640.webp 640w, /assets/img/ananas-1200x1200.webp 1200w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-13 09:56:17"
@@ -171,10 +164,10 @@
     title="Les incontournables"
 >
     <x-media.figure
-    src="/assets/img/plage-grand-popo-640x640.webp"
-    alt="La plage de Grand-Popo"
+    src="/assets/img/pendjari-savane-640x640.webp"
+    alt="Savane de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/plage-grand-popo-360x360.webp 360w, /assets/img/plage-grand-popo-640x640.webp 640w, /assets/img/plage-grand-popo-1200x1200.webp 1200w"
+    srcset="/assets/img/pendjari-savane-360x360.webp 360w, /assets/img/pendjari-savane-640x640.webp 640w, /assets/img/pendjari-savane-1200x1200.webp 1200w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-10 13:01:21"
@@ -189,6 +182,12 @@
                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.vehicles-transfers-block
+    pretitle="S'y rendre"
+    title="Véhicules 4×4 et transferts"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}

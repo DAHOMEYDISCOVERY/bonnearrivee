@@ -66,13 +66,7 @@
 
                 </header>
 @endverbatim
-{{-- BEGIN aggregator top --}}
-<x-aggregator.circuits-block
-    pretitle="Y aller accompagné"
-    title="Circuits liés à cette activité"
-    :filters="[]"
- />
-{{-- END aggregator top --}}
+{{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="woody-component woody-component-custom-text tpl_02 no-sessions" data-equalizer="data-equalizer"><div class="grid-container padd-top-md padd-bottom-md"><div class="grid-x grid-padding-x align-center"><div class="cell large-10"><h2 class="section-title">Ce qu'un opérateur prend en charge</h2><p>Un opérateur de safari organise l'ensemble du séjour : <strong>véhicule 4×4</strong> avec <strong>chauffeur-guide</strong>, <strong>permis d'entrée</strong> dans le parc, <strong>hébergement</strong> (campement, lodge ou tente sous étoiles), repas, et sorties d'observation aux heures propices. Certains proposent aussi la <strong>location de matériel</strong> — jumelles, tentes, groupes électrogènes — utile pour les nuits loin des postes équipés.</p></div></div></div></div>
 <div class="woody-component woody-component-custom-text tpl_02 bg-primary bg-gradient bg-filigrane padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-container padd-top-md padd-bottom-md"><div class="grid-x grid-padding-x align-center"><div class="cell large-10"><h2 class="section-title">Comment choisir un opérateur agréé</h2><p>Vérifier trois choses avant de réserver. Un, l'<strong>agrément</strong> délivré par l'autorité de gestion du parc — la Pendjari est gérée depuis 2017 par l'ONG <strong>African Parks</strong>, qui liste ses partenaires sur son site. Deux, un <strong>chauffeur-guide francophone</strong> connaissant la faune : les opérateurs sérieux emploient des guides formés à Kandi ou à Cotonou. Trois, la couverture <strong>assurance</strong> et l'entretien du parc automobile, particulièrement sur des pistes qui n'aident pas les mécaniques.</p><p>Les tarifs varient sensiblement : compter, en 2025, entre <strong>150 000 et 350 000 F&nbsp;CFA par jour</strong> (~230-530&nbsp;€) selon le confort et la taille du groupe.</p></div></div></div></div>
@@ -88,6 +82,13 @@
                                         
                     </div>
 @endverbatim
+{{-- BEGIN aggregator top --}}
+<x-aggregator.circuits-block
+    pretitle="Y aller accompagné"
+    title="Circuits liés à cette activité"
+    :filters="[]"
+ />
+{{-- END aggregator top --}}
 {{-- BEGIN ecosysteme --}}
 <x-aggregator.ecosysteme-block />
 {{-- END ecosysteme --}}
