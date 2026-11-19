@@ -158,4 +158,5 @@
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
+@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119c"><script src="/assets/ba-org.js?v=20261119c" defer></script>@endverbatim
 @endsection

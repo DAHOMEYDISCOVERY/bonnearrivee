@@ -183,6 +183,32 @@
     return h;
   };
 
+  // 7. Triangle (trois villes reliées sur une carte)
+  V.triangle = function (bs, c) {
+    var cfgs = c.villes || [];
+    function cv(t) { for (var i = 0; i < cfgs.length; i++) if (low(t).indexOf(low(cfgs[i].k)) > -1) return cfgs[i]; return null; }
+    var L = bs.filter(function (b) { return cv(b.titre); });
+    if (L.length < 2) return '';
+    var pts = L.map(function (b) { return cv(b.titre); });
+    var svg = '<svg viewBox="0 0 300 300" aria-hidden="true"><defs><linearGradient id="bar-tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9a441"/><stop offset="1" stop-color="#b4552d"/></linearGradient></defs>' +
+      '<path class="bar-tri-cote" d="M10 262 C 80 255, 150 250, 290 238" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="4 6"/>' +
+      '<polygon class="bar-tri-l" points="' + pts.map(function (p) { return p.x + ',' + p.y; }).join(' ') + '" fill="rgba(217,164,65,.08)" stroke="url(#bar-tg)" stroke-width="2.5" stroke-linejoin="round"/>' +
+      (c.ref ? '<circle cx="' + c.ref.x + '" cy="' + c.ref.y + '" r="4" fill="rgba(255,255,255,.6)"/><text x="' + (c.ref.x + 8) + '" y="' + (c.ref.y + 4) + '" class="bar-tri-ref">' + esc(c.ref.t) + '</text>' : '') +
+      pts.map(function (p, i) { return '<g class="bar-tri-pt" data-i="' + i + '"><circle cx="' + p.x + '" cy="' + p.y + '" r="15" class="bar-tri-halo"/><circle cx="' + p.x + '" cy="' + p.y + '" r="7" class="bar-tri-dot"/><text x="' + (p.x + (p.lx || 0)) + '" y="' + (p.y + (p.ly || -22)) + '" text-anchor="middle">' + esc(p.k) + '</text></g>'; }).join('') +
+      '<text x="150" y="285" text-anchor="middle" class="bar-tri-ref">Golfe de Guinée</text></svg>';
+    var h = '<div class="bar-in"><header class="bar-tri-tete bar-rv"><span class="bar-kick">' + esc(c.kick || 'Le triangle historique') + '</span><h2>' + esc(c.titre || '') + '</h2>' + (c.chapo ? '<p class="bar-lead">' + esc(c.chapo) + '</p>' : '') + '</header><div class="bar-tri"><div class="bar-tri-carte">' + svg + '</div><div class="bar-tri-villes">';
+    L.forEach(function (b, i) {
+      var k = cv(b.titre), t = b.p.join(' '), ph = phrases(t), lead = ph.shift() || '', m = b.titre.match(/^([^,]+),\s*(.+)$/);
+      var mons = trouve(t, k.monuments || []);
+      h += '<article class="bar-ville bar-rv" data-i="' + i + '" style="--c:' + (k.c || '#d9a441') + '">' +
+        '<figure><img src="' + esc(k.img) + '" alt="' + esc(k.alt || k.k) + '" loading="lazy" decoding="async"><span class="bar-ville-n">0' + (i + 1) + '</span></figure>' +
+        '<div class="bar-ville-t"><span class="bar-kick">' + esc(k.role || '') + '</span><h3>' + esc(m ? m[1] : b.titre) + '</h3>' + (m ? '<p class="bar-sous">' + esc(cap(m[2])) + '</p>' : '') +
+        '<p class="bar-lead">' + esc(lead) + '</p>' + (mons.length ? '<ul class="bar-mons">' + mons.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
+        (ph.length ? '<details><summary>Lire la suite</summary><p>' + esc(ph.join(' ')) + '</p></details>' : '') + (k.lien ? '<a class="bar-ville-lien" href="' + esc(k.lien) + '">' + esc(k.lienTxt || 'Découvrir') + ' →</a>' : '') + '</div></article>';
+    });
+    return h + '</div></div></div>';
+  };
+
   /* ---------- Moteur ---------- */
   function animer(root) {
     D.documentElement.classList.add('bar-js');
@@ -202,6 +228,11 @@
       }, { threshold: 0.15 });
       o.observe(e);
     });
+    var tri = root.querySelectorAll('.bar-tri-pt');
+    if (tri.length && io) {
+      var o3 = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) tri.forEach(function (g) { g.classList.toggle('on', g.getAttribute('data-i') === x.target.getAttribute('data-i')); }); }); }, { rootMargin: '-40% 0px -50% 0px' });
+      root.querySelectorAll('.bar-ville').forEach(function (e) { o3.observe(e); });
+    }
     var rail = root.querySelector('.bar-rail');
     if (rail && io) {
       var lis = rail.querySelectorAll('li');

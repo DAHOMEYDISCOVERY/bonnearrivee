@@ -1,7 +1,7 @@
 {{-- Où manger au Bénin — répertoire libre des restaurants (refonte 2026-11).
      Tout est en accès libre : plus de paiement sur cette page. Les fiches
      viennent de l'administration (Restaurants). Les adresses cochées
-     « Testé par Dahomey Discovery » portent une étoile et sont mises en avant.
+     « Testé par notre agence » portent une étoile et sont mises en avant.
      L'ancienne page payante est conservée dans restaurants-wadunu-payant.blade.php
      (non reliée), et les liens personnels /mes-restos/… déjà vendus restent actifs. --}}
 @extends('layouts.app')
@@ -78,6 +78,10 @@
     $testes = $restos->where('coup_de_coeur', true)->values();
     $villes = $restos->pluck('ville')->filter()->unique()->sort()->values();
     $parCat = $restos->countBy('categorie');
+    // Carrousel publicitaire (back-office « Campagnes », emplacement « restaurants »).
+    $adCampaigns = collect();
+    try { if (\Illuminate\Support\Facades\Schema::hasTable('ad_campaigns')) { $adCampaigns = \App\Models\AdCampaign::visible()->where('placement', 'restaurants')->get(); } }
+    catch (\Throwable $e) { $adCampaigns = collect(); }
 @endphp
 
 @section('content')
@@ -308,7 +312,7 @@
           </nav>
           <p class="rs-eyebrow">Guide gourmand · Édition 2026</p>
           <h1 class="rs-hero__title" id="rs-title">Où manger <em>au Bénin</em></h1>
-          <p class="rs-hero__lead">Restaurants, maquis, cafés et bars&nbsp;: toutes nos adresses, en accès libre. Celles marquées d’une étoile <span class="rs-star">{!! $svgStar !!}</span> ont été testées sur place par l’équipe de Dahomey Discovery.</p>
+          <p class="rs-hero__lead">Restaurants, maquis, cafés et bars&nbsp;: toutes nos adresses, en accès libre. Celles marquées d’une étoile <span class="rs-star">{!! $svgStar !!}</span> ont été testées sur place par l’équipe de Bonne Arrivée.</p>
           <div class="rs-ctas">
             @if ($testes->count())<a class="rs-btn rs-btn--gold" href="#testes"><span class="rs-star" style="color:inherit">{!! $svgStar !!}</span> Les adresses testées</a>@endif
             <a class="rs-btn rs-btn--ghost" href="#repertoire">Parcourir le répertoire</a>
@@ -328,10 +332,74 @@
     </div>
   </section>
 
+  @verbatim<style>
+.rs-ads{background:var(--rs-paper,#f7f6f1);padding:40px 0 44px}
+.rs-ads__top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.rs-ads__eyebrow{margin:0;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rs-green,#00a05d)}
+.rs-ads__tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6f7873;border:1px solid #e7e9e4;border-radius:999px;padding:4px 10px;background:#fff}
+.rs-ads__viewport{position:relative;border-radius:18px;overflow:hidden;background:#0b3d2c;box-shadow:0 18px 40px -24px rgba(11,61,44,.45)}
+.rs-ads__track{display:flex;transition:transform .6s cubic-bezier(.4,.01,.2,1)}
+.rs-ads__slide{position:relative;flex:0 0 100%}
+.rs-ads__img{display:block;width:100%;height:clamp(240px,34vw,400px);object-fit:cover}
+.rs-ads__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,30,22,.92) 0%,rgba(7,30,22,.62) 42%,rgba(7,30,22,.06) 72%,transparent),linear-gradient(0deg,rgba(7,30,22,.5),transparent 55%)}
+.rs-ads__panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:clamp(22px,4vw,56px);padding-left:clamp(64px,6vw,88px);max-width:min(640px,74%);color:#fff}
+.rs-ads__advertiser{margin:0;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fcd116}
+.rs-ads__title{margin:0;font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.1;font-size:clamp(1.5rem,3.2vw,2.4rem);color:#fff}
+.rs-ads__desc{margin:0;font-size:clamp(.92rem,1.4vw,1.05rem);line-height:1.5;color:rgba(255,255,255,.9);max-width:46ch}
+.rs-ads__btn{align-self:flex-start;display:inline-flex;align-items:center;gap:.5em;margin-top:6px;background:#fcd116;color:#1a1405!important;font-weight:600;font-size:.96rem;text-decoration:none!important;padding:.72em 1.4em;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.2);transition:transform .2s}
+.rs-ads__btn:hover{transform:translateY(-2px)}
+.rs-ads__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);color:#0b3d2c;font-size:1.6rem;line-height:1;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.rs-ads__nav--prev{left:14px}.rs-ads__nav--next{right:14px}
+.rs-ads__dots{display:flex;gap:9px;justify-content:center;margin-top:14px}
+.rs-ads__dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;background:#d9ddd6;transition:all .25s}
+.rs-ads__dot[aria-selected="true"]{background:var(--rs-green,#00a05d);width:26px;border-radius:999px}
+.rs-ads__empty{border:1px dashed #d9ddd6;border-radius:18px;background:#fff;padding:clamp(24px,4vw,44px);text-align:center}
+.rs-ads__empty h3{margin:0 0 8px;font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.2rem,2.4vw,1.6rem);color:#0b3d2c}
+.rs-ads__empty p{margin:0 auto 18px;max-width:56ch;color:#4b5550}
+.rs-ads__empty a{display:inline-block;background:#0b3d2c;color:#fff!important;text-decoration:none!important;font-weight:600;padding:.7em 1.5em;border-radius:999px}
+@media (max-width:640px){.rs-ads__panel{max-width:100%;padding-left:24px;padding-right:24px}.rs-ads__nav{display:none}}
+@media (prefers-reduced-motion:reduce){.rs-ads__track{transition:none}}
+</style>@endverbatim
+  {{-- ================= ESPACE PUBLICITAIRE (carrousel) ================= --}}
+  <section class="rs-ads" data-ba-dynamique aria-label="Espace partenaires">
+    <div class="rs-wrap">
+      <div class="rs-ads__top"><p class="rs-ads__eyebrow">Espace partenaires</p><span class="rs-ads__tag">Publicité</span></div>
+      @if ($adCampaigns->count())
+        <div class="rs-ads__viewport">
+          <div class="rs-ads__track">
+            @foreach ($adCampaigns as $k => $c)
+              <div class="rs-ads__slide" role="group" aria-roledescription="diapositive" aria-label="{{ $k + 1 }} sur {{ $adCampaigns->count() }}">
+                <img class="rs-ads__img" src="{{ $c->image_url }}" alt="{{ $c->image_alt ?: $c->title }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}" decoding="async">
+                <div class="rs-ads__scrim"></div>
+                <div class="rs-ads__panel">
+                  @if ($c->advertiser)<p class="rs-ads__advertiser">{{ $c->advertiser }}</p>@endif
+                  <h3 class="rs-ads__title">{{ $c->title }}</h3>
+                  @if ($c->description)<p class="rs-ads__desc">{{ $c->description }}</p>@endif
+                  @if ($c->url)<a class="rs-ads__btn" href="{{ $c->url }}" target="_blank" rel="noopener sponsored">{{ $c->button_label ?: 'En savoir plus' }}<span aria-hidden="true">&rarr;</span></a>@endif
+                </div>
+              </div>
+            @endforeach
+          </div>
+          @if ($adCampaigns->count() > 1)
+            <button class="rs-ads__nav rs-ads__nav--prev" type="button" aria-label="Annonce précédente">&lsaquo;</button>
+            <button class="rs-ads__nav rs-ads__nav--next" type="button" aria-label="Annonce suivante">&rsaquo;</button>
+          @endif
+        </div>
+        @if ($adCampaigns->count() > 1)<div class="rs-ads__dots" role="tablist" aria-label="Choisir une annonce"></div>@endif
+      @else
+        <div class="rs-ads__empty">
+          <h3>Cet espace accueille les campagnes de nos partenaires</h3>
+          <p>Restaurants, maquis, bars, traiteurs : faites découvrir votre établissement aux visiteurs de Bonne Arrivée.</p>
+          <a href="/sejourner/toutes-les-infos-pratiques/nous-contacter">Devenir partenaire</a>
+        </div>
+      @endif
+    </div>
+  </section>
+
   {{-- ================= CE QUE SIGNIFIE L'ÉTOILE ================= --}}
   <section class="rs-legend" aria-label="Comment lire ce guide">
     <div class="rs-wrap rs-legend__in">
-      <div class="rs-legend__it"><span class="rs-legend__ic is-star">{!! $svgStar !!}</span><div><strong>L’étoile = testé par l’agence</strong><p>L’équipe de Dahomey Discovery s’y est attablée et la recommande à ses voyageurs.</p></div></div>
+      <div class="rs-legend__it"><span class="rs-legend__ic is-star">{!! $svgStar !!}</span><div><strong>L’étoile = testé par notre agence</strong><p>L’équipe de Bonne Arrivée s’y est attablée et la recommande à ses voyageurs.</p></div></div>
       <div class="rs-legend__it"><span class="rs-legend__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1 15-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg></span><div><strong>Gratuit, sans inscription</strong><p>Tout le répertoire est consultable librement, sur ordinateur comme sur téléphone.</p></div></div>
       <div class="rs-legend__it"><span class="rs-legend__ic">{!! $svgGo !!}</span><div><strong>Appeler, s’y rendre</strong><p>Chaque fiche donne le contact et l’itinéraire en un clic quand nous les avons.</p></div></div>
     </div>
@@ -343,8 +411,8 @@
     <div class="rs-wrap">
       <div class="rs-head">
         <div>
-          <p class="rs-eyebrow"><span class="rs-star">{!! $svgStar !!}</span> Sélection Dahomey Discovery</p>
-          <h2 class="rs-h2" id="rs-tested-title">Testés et approuvés par l’agence</h2>
+          <p class="rs-eyebrow"><span class="rs-star">{!! $svgStar !!}</span> Sélection Bonne Arrivée</p>
+          <h2 class="rs-h2" id="rs-tested-title">Testés et approuvés par notre agence</h2>
           <p class="rs-lead">Les tables où nous emmenons nos voyageurs, les yeux fermés.</p>
         </div>
       </div>
@@ -354,7 +422,7 @@
           <article class="rs-feat">
             <div class="rs-feat__media">
               {!! $visuel($r) !!}
-              <span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par Dahomey Discovery</span>
+              <span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par notre agence</span>
             </div>
             <div class="rs-feat__body">
               <div class="rs-meta">
@@ -452,14 +520,14 @@
           <article class="rs-card{{ $r->coup_de_coeur ? ' is-tested' : '' }}" data-ville="{{ $r->ville }}" data-cat="{{ $r->categorie }}" data-star="{{ $r->coup_de_coeur ? '1' : '0' }}" data-budget="{{ $budgetNiveau($r) }}" data-search="{{ $blob }}">
             <div class="rs-card__media">
               {!! $visuel($r) !!}
-              @if ($r->coup_de_coeur)<span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé</span>@endif
+              @if ($r->coup_de_coeur)<span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par notre agence</span>@endif
             </div>
             <div class="rs-card__body">
               <div class="rs-meta">
                 <span class="rs-meta__cat">{{ $cats[$r->categorie] ?? $r->categorie }}</span>
                 <span class="rs-loc">{!! $svgPin !!}{{ $r->ville }}@if ($r->quartier) · {{ $r->quartier }}@endif</span>
               </div>
-              <h3 class="rs-card__name">@if ($r->coup_de_coeur)<span class="rs-star" title="Testé par Dahomey Discovery">{!! $svgStar !!}<span class="show-for-sr">Testé par Dahomey Discovery&nbsp;:</span></span>@endif{{ $r->nom }}</h3>
+              <h3 class="rs-card__name">@if ($r->coup_de_coeur)<span class="rs-star" title="Testé par notre agence">{!! $svgStar !!}<span class="show-for-sr">Testé par notre agence&nbsp;:</span></span>@endif{{ $r->nom }}</h3>
               @if ($r->sous_titre)<p class="rs-card__sub">{{ $r->sous_titre }}</p>@endif
               @php $hasMore = $r->specialite || $r->adresse || $r->horaires || $r->budget_min || $r->budget_max || count($why) || $r->conseil_dahomey; @endphp
               @if ($hasMore)
@@ -576,4 +644,33 @@
 </script>
 @endverbatim
 </div>
+@verbatim<script>
+/* Où manger — carrousel des campagnes partenaires (autonome). */
+(function () {
+  var ads = document.querySelector('.rs-ads'); if (!ads) return;
+  var track = ads.querySelector('.rs-ads__track');
+  var slides = track ? Array.prototype.slice.call(track.children) : [];
+  var dotsWrap = ads.querySelector('.rs-ads__dots');
+  if (slides.length < 2 || !dotsWrap) return;
+  var i = 0, timer = null, paused = false;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function (_, n) {
+    var d = document.createElement('button'); d.className = 'rs-ads__dot'; d.type = 'button';
+    d.setAttribute('role', 'tab'); d.setAttribute('aria-label', 'Annonce ' + (n + 1));
+    d.addEventListener('click', function () { go(n); restart(); }); dotsWrap.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+  function go(n) { i = (n + slides.length) % slides.length; track.style.transform = 'translateX(' + (-i * 100) + '%)'; dots.forEach(function (d, k) { d.setAttribute('aria-selected', k === i ? 'true' : 'false'); }); }
+  function start() { if (reduce || paused) return; timer = setInterval(function () { go(i + 1); }, 6000); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function restart() { stop(); start(); }
+  var p = ads.querySelector('.rs-ads__nav--prev'), q = ads.querySelector('.rs-ads__nav--next');
+  if (p) p.addEventListener('click', function () { go(i - 1); restart(); });
+  if (q) q.addEventListener('click', function () { go(i + 1); restart(); });
+  ['mouseenter', 'focusin'].forEach(function (e) { ads.addEventListener(e, function () { paused = true; stop(); }); });
+  ['mouseleave', 'focusout'].forEach(function (e) { ads.addEventListener(e, function () { paused = false; start(); }); });
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  go(0); start();
+})();
+</script>@endverbatim
 @endsection
