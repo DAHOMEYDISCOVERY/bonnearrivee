@@ -425,7 +425,7 @@ final class ContentLayer
 
     /**
      * Zones affichées mais non modifiables depuis « Textes et images » :
-     * le fil d'Ariane.
+     * le fil d'Ariane (thème Woody, page « Où manger », héros « emerv »).
      *
      * @return list<array{0:int,1:int}>
      */
@@ -433,7 +433,7 @@ final class ContentLayer
     {
         $ranges = [];
         $region = substr($html, $from, $to - $from);
-        if (preg_match_all('#<([a-z][a-z0-9]*)\b[^>]*\bclass="[^"]*\b(?:woody-component-breadcrumb|breadcrumb-wrapper)\b[^"]*"[^>]*>#i', $region, $mm, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+        if (preg_match_all('#<([a-z][a-z0-9]*)\b[^>]*\bclass="[^"]*\b(?:woody-component-breadcrumb|breadcrumb-wrapper|rs-crumb|emerv-hero__breadcrumb)\b[^"]*"[^>]*>#i', $region, $mm, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
             foreach ($mm as $m) {
                 $start = $from + $m[0][1];
                 $ranges[] = [$start, self::closingTagEnd($html, strtolower($m[1][0]), $start + strlen($m[0][0]), $to)];

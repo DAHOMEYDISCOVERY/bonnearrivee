@@ -396,6 +396,41 @@
     </div>
   </section>
 
+  {{-- ================= GUIDE EXPRESS : budgets et adresses ================= --}}
+  @verbatim<style>
+.rs-guide{background:#fff;padding:64px 0 72px}
+.rs-guide__lead{max-width:860px;font-size:1.08rem;line-height:1.75;color:var(--rs-soft,#4b5550);margin:0 0 34px}
+.rs-guide__tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px}
+.rs-tier{border-radius:20px;padding:26px 24px;background:var(--rs-paper,#f7f6f1);border-top:5px solid var(--c)}
+.rs-tier small{display:block;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.rs-tier h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:1.45rem;line-height:1.15;margin:.5rem 0 .3rem;color:var(--rs-ink,#14201a)}
+.rs-tier b{display:block;font-size:1.05rem;color:var(--rs-ink,#14201a);margin-bottom:.7rem}
+.rs-tier p{margin:0;font-size:.92rem;line-height:1.6;color:var(--rs-soft,#4b5550)}
+.rs-guide__addr{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.rs-addr{border:1px solid var(--rs-line,#e7e9e4);border-radius:20px;padding:24px}
+.rs-addr h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:1.25rem;margin:0 0 .8rem;color:var(--rs-ink,#14201a)}
+.rs-addr dl{margin:0;display:grid;gap:.7rem}
+.rs-addr dt{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-green,#00a05d)}
+.rs-addr dd{margin:.15rem 0 0;font-size:.93rem;line-height:1.55;color:var(--rs-ink,#14201a)}
+@media (max-width:900px){.rs-guide__tiers,.rs-guide__addr{grid-template-columns:1fr}}
+</style>@endverbatim
+  <section class="rs-guide" aria-labelledby="rs-guide-title">
+    <div class="rs-wrap">
+      <p class="rs-eyebrow">Le guide express</p>
+      <h2 class="rs-h2" id="rs-guide-title">Bien manger au Bénin, à chaque budget</h2>
+      <p class="rs-guide__lead">Au Bénin, l’offre de restauration s’étend des maquis populaires aux restaurants locaux et internationaux, à Cotonou comme à Porto-Novo, Ouidah ou Grand-Popo, et jusqu’en bord de mer.</p>
+      <div class="rs-guide__tiers">
+        <div class="rs-tier" style="--c:#c2562b"><small>Maquis et cuisine locale</small><h3>Les saveurs béninoises</h3><b>≈ 500 à 6 000 F CFA</b><p>Akassa, pâte d’arachide, atassi, gbègiri, poulet bicyclette : les spécialités du pays à petit prix, dans une atmosphère détendue.</p></div>
+        <div class="rs-tier" style="--c:#1d5c8a"><small>Gamme moyenne et internationale</small><h3>Le confort en ville</h3><b>≈ 3 000 à 8 500 F CFA</b><p>Très présents à Cotonou (Haie Vive, Cadjèhoun, Fidjrossè) : cuisines africaine, française, italienne, asiatique, libanaise, adaptées aux familles et aux rendez-vous professionnels.</p></div>
+        <div class="rs-tier" style="--c:#b8902e"><small>Tables gastronomiques et bord de mer</small><h3>L’océan en toile de fond</h3><b>≈ 10 000 à 25 000 F CFA</b><p>À Fidjrossè et le long de la côte : l’ambiance, la vue sur l’océan, les grillades et les produits de la mer.</p></div>
+      </div>
+      <div class="rs-guide__addr">
+        <div class="rs-addr"><h3>Quelques adresses à Cotonou</h3><dl><div><dt>Cuisine locale et petit budget</dt><dd>Maquis Super Pili Pili (boulevard Saint-Michel), Maquis du Port, Karim 24</dd></div><div><dt>Plage et grillades, à Fidjrossè</dt><dd>La Cabane du Pêcheur, Face à la Mer, Jaaba – Grill &amp; Bar</dd></div><div><dt>International et lounge</dt><dd>L’Orangerie (Cadjèhoun), Le Karé Électrique (Haie Vive), Bangkok Terrasse, Shamiana</dd></div></dl></div>
+        <div class="rs-addr"><h3>En dehors de Cotonou</h3><dl><div><dt>Porto-Novo</dt><dd>Restaurant Art Residence, L’Escale Zevougnon, AfricanFoodseum</dd></div><div><dt>Ouidah</dt><dd>Hakuna Matata Restaurant Grillades, Kolè</dd></div><div><dt>Grand-Popo</dt><dd>Boca del Rio</dd></div></dl></div>
+      </div>
+    </div>
+  </section>
+
   {{-- ================= CE QUE SIGNIFIE L'ÉTOILE ================= --}}
   <section class="rs-legend" aria-label="Comment lire ce guide">
     <div class="rs-wrap rs-legend__in">
