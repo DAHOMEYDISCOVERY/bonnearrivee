@@ -474,12 +474,20 @@ main .card.basicCard:hover,main .card.splitCard:hover{transform:translateY(-4px)
 .bao-nav{border-left:0!important}
 .bao-nav a{border-left:0!important;margin-left:0!important;padding:.6rem .9rem!important;border-radius:14px;transition:background .3s,color .3s}
 .bao-nav a.on,.bao-nav a:hover{background:rgba(255,255,255,.75);box-shadow:0 10px 24px -18px rgba(13,59,44,.5)}
+/* Récits mis en forme (ba-recit) et pages d'exploration : mêmes principes, pas de liseré. */
+.bar-carte,.bar-t-savane .bar-carte,.bar-t-terre .bar-carte{border:0!important;box-shadow:0 1px 0 rgba(16,40,28,.05),0 22px 46px -30px rgba(16,40,28,.45)!important;border-radius:24px!important}
+.bar-carte:hover{box-shadow:0 1px 0 rgba(16,40,28,.05),0 34px 60px -30px rgba(16,40,28,.5)!important}
+.bar-carte>div{padding:1.5rem 1.6rem 1.6rem!important}
+.bar-etape,.bar-parcours .bar-etape{border:0!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c,#00844d) 22%,transparent),0 30px 60px -40px rgba(58,31,10,.5)!important}
+.bar-note,.bar-atouts .bar-note{border-left:0!important;padding:1rem 1.2rem!important;border-radius:16px!important;background:rgba(200,60,30,.07)!important;box-shadow:inset 0 0 0 1px rgba(200,69,43,.18)}
+.ltr-lead{border-left:0!important;padding-left:0!important}
+.br-sun li{border-top:0!important}
 /* 5. Textes courants des cartes et encadrés : justifiés, avec césure, et jamais collés au bord. */
 .bao-step .woody-component-text p,.bao-step>p,
 main .woody-component-custom-text .woody-component-text p,
 main .benin-page-block p,.bf-lead,.bf-faq details p,
 .vd-dieu__txt p,.vd-piliers p,.vd-station p,.vd-orig__txt p,.wl-bloc p,.wl-track p,.wl-hist p,
-.fm-salle p,.fm-hist p,.jn-fiche p,.jn-page p,.jn-hist p,.ga-chron__txt p,.ga-mot dd,.ga-bloc p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.bar-carte p,.bar-etape p,.bar-note,.fm-salle p,.fm-hist p,.jn-fiche p,.jn-page p,.jn-hist p,.ga-chron__txt p,.ga-mot dd,.ga-bloc p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
 .gnv .gnv-arret,.abm .abm-k,.rs-tier,.ptn .ptn-j,.ba-timeline__era,.ba-agenda__event{border:0!important}
 .gnv .gnv-arret{background:color-mix(in srgb,var(--turq,#16a3a0) 7%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--turq,#16a3a0) 22%,transparent),0 14px 30px -24px rgba(4,38,45,.5)!important}
 .abm .abm-k{background:color-mix(in srgb,var(--sang,#8b1e24) 6%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sang,#8b1e24) 20%,transparent),0 14px 30px -24px rgba(74,15,18,.5)!important}
