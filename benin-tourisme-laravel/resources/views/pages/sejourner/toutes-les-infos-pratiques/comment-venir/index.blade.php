@@ -226,7 +226,7 @@
             <span class="benin-page-block__num">01</span>
             <h2 class="benin-page-block__title">À l'arrivée à Cadjèhoun</h2>
             <p>À l'aérogare, on présente le <strong>passeport</strong>, l'<strong>e-visa</strong> imprimé, le <strong>certificat de vaccination contre la fièvre jaune</strong> et le billet de retour. Le détail des formalités figure sur la <a href="/sejourner/toutes-les-infos-pratiques/formalites-et-visa">page qui leur est consacrée</a>.</p>
-            <p>L'aéroport est situé dans le quartier de <strong>Cadjèhoun</strong>, à environ <strong>4 km du centre de Cotonou</strong> — 15 à 30 minutes selon le trafic. Prévoyez un accueil : taxi officiel, VTC (Yango, Gozem), transfert privé Dahomey Discovery ou navette de votre hôtel.</p>
+            <p>L'aéroport est situé dans le quartier de <strong>Cadjèhoun</strong>, à environ <strong>4 km du centre de Cotonou</strong> — 15 à 30 minutes selon le trafic. Prévoyez un accueil : taxi officiel, VTC (Yango, Gozem), transfert privé (notre partenaire Dahomey Discovery) ou navette de votre hôtel.</p>
         </article>
 
     </section>
@@ -376,7 +376,7 @@
                 <div class="benin-related-tiles__body">
                     <span class="benin-related-tiles__eyebrow-mini">Étape 06</span>
                     <h3>Nous contacter</h3>
-                    <p>Une question qui n'a pas trouvé sa réponse ? L'équipe Dahomey Discovery répond en 24 h ouvrées.</p>
+                    <p>Une question qui n'a pas trouvé sa réponse ? L'équipe Bonne Arrivée répond en 24 h ouvrées.</p>
                     <span class="benin-related-tiles__arrow" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </span>
@@ -388,5 +388,5 @@
 @endverbatim
 
 <x-aggregator.ecosysteme-block />
-@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119d"><script src="/assets/ba-org.js?v=20261119d" defer></script>@endverbatim
+@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119e"><script src="/assets/ba-org.js?v=20261119e" defer></script>@endverbatim
 @endsection

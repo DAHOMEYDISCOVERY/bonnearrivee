@@ -161,9 +161,9 @@
 @endverbatim
 
     <x-aggregator.circuits-block
-        pretitle="Réserver avec Dahomey Discovery"
-        title="Circuits proposés par notre agence réceptive"
-        description="Itinéraires clés en main conçus par Dahomey Discovery — véhicule, chauffeur, guide local et hébergement inclus."
+        pretitle="Avec notre partenaire Dahomey Discovery"
+        title="Circuits proposés par notre agence partenaire"
+        description="Itinéraires clés en main conçus par notre partenaire Dahomey Discovery — véhicule, chauffeur, guide local et hébergement inclus."
         :filters="[]"
         :limit="6" />
 

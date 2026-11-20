@@ -1,0 +1,53 @@
+/* Bénin en fête — socle commun des fiches événement.
+   Chaque fiche (resources/views/pages/benin-en-fete/designs/{slug}.blade.php) pose
+   ensuite sa propre mise en page, sa typographie et sa palette. Aucun liseré de
+   couleur sur un seul côté : l'accent passe par les fonds, les chiffres et les images. */
+.bf{--bf-ink:#15120f;--bf-soft:#5f5a55;--bf-bg:#fff;--bf-surface:#f6f3ee;--bf-accent:#00844d;--bf-on-accent:#fff;
+    font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--bf-ink);background:var(--bf-bg);overflow:hidden;line-height:1.6}
+.bf *,.bf *::before,.bf *::after{box-sizing:border-box}
+.bf img{display:block;max-width:100%;height:auto}
+.bf h1,.bf h2,.bf h3,.bf h4,.bf p,.bf ul,.bf ol,.bf dl,.bf dd,.bf figure{margin:0;padding:0}
+.bf ul,.bf ol{list-style:none}
+.bf a{color:inherit}
+.bf-in{max-width:1220px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.bf-sec{padding:clamp(64px,9vw,128px) 0}
+.bf-k{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bf-accent)}
+.bf-lead{font-size:clamp(1.02rem,1.4vw,1.15rem);color:var(--bf-soft);max-width:62ch}
+.bf-rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1);transition-delay:var(--d,0ms)}
+.bf-rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.bf-rv{opacity:1;transform:none;transition:none}.bf *{animation:none!important}}
+
+/* Questions fréquentes */
+.bf-faq{display:grid;gap:12px;max-width:880px}
+.bf-faq details{background:var(--bf-surface);border-radius:18px;padding:0 24px;transition:background .3s}
+.bf-faq details[open]{background:color-mix(in srgb,var(--bf-accent) 9%,var(--bf-surface))}
+.bf-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font-weight:600;font-size:1.02rem}
+.bf-faq summary::-webkit-details-marker{display:none}
+.bf-faq summary i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bf-accent);color:var(--bf-on-accent);font-style:normal;font-weight:400;transition:transform .3s}
+.bf-faq details[open] summary i{transform:rotate(45deg)}
+.bf-faq details p{padding:0 0 22px;color:var(--bf-soft);max-width:70ch}
+
+/* Combiner avec */
+.bf-combi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.bf-combi a{position:relative;display:block;min-height:340px;border-radius:24px;overflow:hidden;text-decoration:none;color:#fff;isolation:isolate}
+.bf-combi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.bf-combi a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.82))}
+.bf-combi a:hover img{transform:scale(1.06)}
+.bf-combi div{position:absolute;left:0;right:0;bottom:0;padding:26px}
+.bf-combi small{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
+.bf-combi h3{font-size:1.5rem;font-weight:700;margin-bottom:6px}
+.bf-combi p{font-size:.95rem;opacity:.9}
+
+/* Appel final */
+.bf-cta{position:relative;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;padding:clamp(40px,6vw,80px)}
+.bf-cta>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.bf-cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.55) 60%,rgba(10,10,10,.2))}
+.bf-cta h2{font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.12;max-width:20ch;margin:10px 0 16px}
+.bf-cta p{max-width:58ch;opacity:.92}
+.bf-cta .bf-k{color:#fff;opacity:.8}
+.bf-cta__btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.bf-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none!important;transition:transform .25s,background .25s}
+.bf-btn:hover{transform:translateY(-2px)}
+.bf-btn--main{background:var(--bf-accent);color:var(--bf-on-accent)!important}
+.bf-btn--ghost{background:rgba(255,255,255,.14);color:#fff!important;backdrop-filter:blur(6px)}
+.bf-partner{margin-top:22px;font-size:.86rem;opacity:.8}

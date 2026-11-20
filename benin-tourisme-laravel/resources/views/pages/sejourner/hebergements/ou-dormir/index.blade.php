@@ -143,7 +143,7 @@
 @endverbatim
 {{-- BEGIN aggregator top --}}
 <x-aggregator.accommodations-block
-    pretitle="Sélection Dahomey Discovery"
+    pretitle="Sélection de notre partenaire Dahomey Discovery"
     title="Hébergements réservables au Bénin"
     description="Notre agence réceptive sélectionne et contrôle chaque hébergement — hôtels, gîtes, chambres d'hôtes, appartements meublés. Réservation directe sans intermédiaire."
     :filters="[]"
@@ -155,5 +155,5 @@
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
-@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119d"><script src="/assets/ba-org.js?v=20261119d" defer></script>@endverbatim
+@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119e"><script src="/assets/ba-org.js?v=20261119e" defer></script>@endverbatim
 @endsection

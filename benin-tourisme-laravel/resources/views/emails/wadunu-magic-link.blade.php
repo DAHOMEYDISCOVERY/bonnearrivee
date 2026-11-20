@@ -16,7 +16,7 @@
             <p style="margin:0 0 16px;font-size:1rem;line-height:1.6">Bonjour,</p>
             <p style="margin:0 0 20px;font-size:1rem;line-height:1.6">
                 Merci pour votre achat. Vous avez maintenant accès au carnet d'adresses gourmandes du Bénin
-                — <strong>{{ \App\Models\Restaurant::published()->count() }} restaurants</strong> soigneusement sélectionnés par l'équipe éditoriale de Dahomey Discovery.
+                — <strong>{{ \App\Models\Restaurant::published()->count() }} restaurants</strong> soigneusement sélectionnés par l'équipe éditoriale de Bonne Arrivée.
             </p>
             <div style="text-align:center;margin:32px 0">
                 <a href="{{ $magicLink }}"
@@ -41,7 +41,7 @@
             </p>
         </td></tr>
         <tr><td style="background:#0b3d2c;padding:16px 32px;color:rgba(255,255,255,.75);font-size:.72rem;text-align:center">
-            Wa Dùnù · Voyagez avec goût · Édité par <strong style="color:#fff">Dahomey Discovery</strong>
+            Wa Dùnù · Voyagez avec goût · Édité par <strong style="color:#fff">Bonne Arrivée</strong>
         </td></tr>
     </table>
     </td></tr>

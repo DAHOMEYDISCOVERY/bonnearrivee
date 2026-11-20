@@ -60,7 +60,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M5.6 5.6l2.8 2.8M2 12h4m1.6 6.4l2.8-2.8M12 22v-4m6.4 3.4l-2.8-2.8M22 12h-4m-1.6-6.4l-2.8 2.8"/></svg>
                 </div>
                 <h2>Catalogue en cours de mise à jour</h2>
-                <p>Aucun PDF n'est disponible pour le moment. L'équipe Dahomey Discovery est en train de finaliser une nouvelle édition — revenez sur ce lien dans quelques heures.</p>
+                <p>Aucun PDF n'est disponible pour le moment. L'équipe Bonne Arrivée est en train de finaliser une nouvelle édition — revenez sur ce lien dans quelques heures.</p>
                 <p class="wv-empty__contact">
                     Un souci ? Écrivez-nous sur
                     <a href="https://wa.me/2290167110220" target="_blank" rel="noopener">WhatsApp</a>.

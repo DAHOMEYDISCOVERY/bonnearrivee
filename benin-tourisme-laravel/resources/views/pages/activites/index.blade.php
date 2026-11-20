@@ -110,14 +110,14 @@
             <span class="benin-page-block__num">03</span>
             <h2 class="benin-page-block__title">Y aller avec un guide</h2>
             <p>Un guide francophone local n'est pas un luxe au Bénin — c'est ce qui transforme une visite touristique en <strong>rencontre</strong>. Les palais d'Abomey, la Route de l'Esclave, une cérémonie vodun, un village tata somba : sans médiation, on passe à côté du sens.</p>
-            <p>Notre équipe <strong><a href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Dahomey Discovery</a></strong> conçoit des circuits sur mesure avec chauffeur, guide et hébergement inclus. Écrivez-nous depuis la <a href="/sejourner/toutes-les-infos-pratiques/nous-contacter">page contact</a>.</p>
+            <p>Notre partenaire <strong><a href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Dahomey Discovery</a></strong> conçoit des circuits sur mesure avec chauffeur, guide et hébergement inclus. Écrivez-nous depuis la <a href="/sejourner/toutes-les-infos-pratiques/nous-contacter">page contact</a>.</p>
         </article>
     </section>
 @endverbatim
 
     <x-aggregator.circuits-block
-        pretitle="Réserver avec Dahomey Discovery"
-        title="Circuits proposés par notre agence réceptive"
+        pretitle="Avec notre partenaire Dahomey Discovery"
+        title="Circuits proposés par notre agence partenaire"
         description="Itinéraires clés en main — véhicule, chauffeur, guide local et hébergement inclus."
         :filters="[]"
         :limit="6" />

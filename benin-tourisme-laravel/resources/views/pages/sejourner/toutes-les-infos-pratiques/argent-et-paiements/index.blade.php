@@ -145,7 +145,7 @@
 @endverbatim
 {{-- BEGIN aggregator top --}}
 <x-aggregator.vehicles-transfers-block
-    pretitle="Facilité par Dahomey Discovery"
+    pretitle="Avec notre partenaire Dahomey Discovery"
     title="Transferts et véhicules"
  />
 {{-- END aggregator top --}}
@@ -154,5 +154,5 @@
 {{-- END ecosysteme --}}
 @verbatim
     @endverbatim
-@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119d"><script src="/assets/ba-org.js?v=20261119d" defer></script>@endverbatim
+@verbatim<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"><link rel="stylesheet" href="/assets/ba-org.css?v=20261119e"><script src="/assets/ba-org.js?v=20261119e" defer></script>@endverbatim
 @endsection

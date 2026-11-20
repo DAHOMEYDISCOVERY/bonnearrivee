@@ -207,19 +207,19 @@ return [
             [
                 'icon' => 'wicon-000-facebook',
                 'url' => 'https://www.facebook.com/dahomeydiscovery',
-                'label' => 'Dahomey Discovery sur Facebook (nouvel onglet)',
+                'label' => 'Notre partenaire Dahomey Discovery sur Facebook (nouvel onglet)',
             ],
             [
                 'icon' => 'wicon-011-instagram',
                 'url' => 'https://www.instagram.com/dahomeydiscovery/',
-                'label' => 'Dahomey Discovery sur Instagram (nouvel onglet)',
+                'label' => 'Notre partenaire Dahomey Discovery sur Instagram (nouvel onglet)',
             ],
         ],
-        'company' => 'Dahomey Discovery',
+        'company' => 'Bonne Arrivée',
         'address' => 'Rond-point Akpakpa, Ciné Concorde
 Cotonou — Bénin',
         'phone' => '+229 01 67 11 02 20',
-        'email' => 'reservations@dahomeydiscovery.com',
+        'email' => 'contact@bonnearrivee.bj',
         'buttons' => [
             [
                 'label' => 'Comment venir',
@@ -239,7 +239,7 @@ Cotonou — Bénin',
             [
                 'label' => 'À propos',
                 'url' => '/a-propos',
-                'title' => 'À propos de Dahomey Discovery',
+                'title' => 'À propos de Bonne Arrivée',
             ],
             [
                 'label' => 'Nous contacter',

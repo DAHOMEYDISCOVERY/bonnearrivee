@@ -312,7 +312,7 @@
 <x-aggregator.circuits-block
     pretitle="Ancrer la nature dans son voyage"
     title="Safaris et grands espaces avec un guide"
-    description="Nos circuits Dahomey Discovery incluent la Pendjari, le complexe W-Arly-Pendjari (UNESCO), les chutes de Tanougou et les randonnées de l'Atacora. Chauffeur 4×4, guide-naturaliste local et hébergement en écolodge inclus — l'expérience sans avoir à tout organiser."
+    description="Les circuits de notre partenaire Dahomey Discovery incluent la Pendjari, le complexe W-Arly-Pendjari (UNESCO), les chutes de Tanougou et les randonnées de l'Atacora. Chauffeur 4×4, guide-naturaliste local et hébergement en écolodge inclus — l'expérience sans avoir à tout organiser."
     :filters="['tourism_type' => 'safari']"
     :limit="6" />
 {{-- END aggregator top --}}

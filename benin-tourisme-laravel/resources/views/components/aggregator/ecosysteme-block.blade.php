@@ -9,7 +9,7 @@
             'brand' => '#00844d',   // vert
             'ink'   => '#ffffff',
             'title' => 'Dahomey Discovery',
-            'sub'   => 'Agence réceptive',
+            'sub'   => 'Agence partenaire',
             'icon'  => 'compass',
         ],
         [
@@ -37,7 +37,7 @@
     ];
 @endphp
 
-<nav class="ba-ecolaunch" aria-label="Notre écosystème">
+<nav class="ba-ecolaunch" aria-label="Nos partenaires">
     @foreach($ecoLinks as $l)
         <a class="ba-ecolaunch__btn"
            href="{{ $l['href'] }}"

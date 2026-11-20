@@ -26,7 +26,7 @@
                 </h2>
                 <p style="max-width:56ch;margin:0 auto 1.5rem;color:#555;line-height:1.6">
                     Les coordonnées détaillées ne sont plus fournies par notre ancien
-                    service. Contactez Dahomey Discovery pour obtenir des informations actualisées
+                    service. Contactez Bonne Arrivée pour obtenir des informations actualisées
                     ou une recommandation adaptée à votre séjour.
                 </p>
                 <a class="button primary" href="/sejourner/toutes-les-infos-pratiques/nous-contacter">
@@ -63,7 +63,7 @@
                 </div>
             </header>
             <article class="section-layout-wrapper grid-container grid-default">
-                <div class="woody-component woody-component-custom-text tpl_02 bg-primary bg-gradient bg-filigrane padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-container padd-top-md padd-bottom-md"><div class="grid-x grid-padding-x align-center"><div class="cell large-8 text-center"><h2 class="section-title">Fiche en cours de mise à jour</h2><p>Le détail de cette offre — coordonnées, horaires, photographies, avis — était fourni par un service extérieur qui n'est plus disponible pour ce site. Nous reconstruisons progressivement l'annuaire des <strong>établissements béninois</strong> à partir de nos propres sources.</p><p>En attendant, pour obtenir des informations à jour sur cet établissement ou une recommandation adaptée à votre séjour, contactez l'<a href="/sejourner/toutes-les-infos-pratiques/nous-contacter"><strong>Dahomey Discovery, éditeur du portail Bonne Arrivée</strong></a> — nous vous répondrons sous deux jours ouvrés.</p></div></div></div></div>
+                <div class="woody-component woody-component-custom-text tpl_02 bg-primary bg-gradient bg-filigrane padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-container padd-top-md padd-bottom-md"><div class="grid-x grid-padding-x align-center"><div class="cell large-8 text-center"><h2 class="section-title">Fiche en cours de mise à jour</h2><p>Le détail de cette offre — coordonnées, horaires, photographies, avis — était fourni par un service extérieur qui n'est plus disponible pour ce site. Nous reconstruisons progressivement l'annuaire des <strong>établissements béninois</strong> à partir de nos propres sources.</p><p>En attendant, pour obtenir des informations à jour sur cet établissement ou une recommandation adaptée à votre séjour, contactez l'<a href="/sejourner/toutes-les-infos-pratiques/nous-contacter"><strong>équipe Bonne Arrivée</strong></a> — nous vous répondrons sous deux jours ouvrés.</p></div></div></div></div>
             </article>
         </section>
     </div>

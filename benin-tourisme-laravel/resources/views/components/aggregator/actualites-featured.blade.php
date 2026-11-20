@@ -49,7 +49,7 @@
                                     $it = $row['it'];
                                     $kind = $row['kind'];
                                     $imgSrc = $it->image ?: $fallbacks[crc32($it->id) % count($fallbacks)];
-                                    $tag = $kind === 'actualite' ? 'Actualité — Dahomey Discovery' : 'Regard — Wanilo Studio';
+                                    $tag = $kind === 'actualite' ? 'Actualité — Dahomey Discovery (partenaire)' : 'Regard — Wanilo Studio';
                                     $tagBg = $kind === 'actualite' ? 'rgba(0,132,77,.92)' : 'rgba(17,17,17,.9)';
                                     $tagColor = $kind === 'actualite' ? '#fff' : '#f6d047';
                                     $cta = $kind === 'actualite' ? 'Lire l’article' : 'Voir sur wanilo.studio';

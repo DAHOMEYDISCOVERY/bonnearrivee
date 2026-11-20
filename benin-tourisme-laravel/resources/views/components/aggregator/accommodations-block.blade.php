@@ -9,7 +9,7 @@
     Usage :
         <x-aggregator.accommodations-block
             title="Notre sélection d'hôtels au Bénin"
-            pretitle="Réserver avec Dahomey Discovery"
+            pretitle="Avec notre partenaire Dahomey Discovery"
             :filters="['accommodation_type' => 'hotel']"
             :limit="6"
             ctaHref="https://dahomeydiscovery.com/hebergements/" />
@@ -57,7 +57,7 @@
                                 @else
                                     <div class="benin-agg-heb__media-fallback"></div>
                                 @endif
-                                <span class="benin-agg-heb__badge">Dahomey Discovery</span>
+                                <span class="benin-agg-heb__badge">Partenaire · Dahomey Discovery</span>
                             </div>
                             <div class="benin-agg-heb__body">
                                 <h3 class="benin-agg-heb__name">{{ $item->title }}</h3>

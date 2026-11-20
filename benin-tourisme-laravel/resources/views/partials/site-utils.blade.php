@@ -439,3 +439,85 @@
 </script>
 
 <script src="/assets/benin-zoom-galerie.js?v=1" defer></script>
+
+{{-- Réglages d'affichage communs à toutes les pages (novembre 2026) :
+     1. Liens vers les réseaux sociaux et boutons de partage masqués pour le moment.
+        Le balisage reste en place : retirer la règle suffit à les remettre.
+     2. Crédits photo superposés aux images (« © … / CC BY-SA … ») masqués.
+        Les attributions complètes restent publiées sur /credits-photos.
+     3. Le fil d'Ariane ne se pose jamais sur la photo d'un héros : il passe dans
+        une barre blanche juste sous celui-ci (le nœud est déplacé, pas réécrit). --}}
+<style>
+.social-networks,.shares-wrapper,.sharing-links,.emerv-share{display:none!important}
+.imageObject-caption,.emerv-hero__credit,.ltr-credit,.ptn-credit,.abm-credit,.ba-credit-masque{display:none!important}
+.emerv-hero .emerv-hero__breadcrumb,.event-hero .event-hero__breadcrumb,.ba-page-hero .ba-page-hero__breadcrumb{visibility:hidden}
+.ba-crumbbar{background:#fff;border-bottom:1px solid rgba(0,0,0,.08);padding:.85rem 0;position:relative;z-index:2}
+.ba-crumbbar>nav{position:static!important;inset:auto!important;transform:none!important;visibility:visible!important;margin:0 auto!important;max-width:1180px;padding:0 1.25rem!important;background:none!important}
+.ba-crumbbar ol{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem;margin:0;padding:0;list-style:none;font-size:.82rem;color:#5d6b64!important}
+.ba-crumbbar li{margin:0}
+.ba-crumbbar a{color:#3d4a43!important;text-decoration:none!important;border-bottom-color:transparent!important}
+.ba-crumbbar a:hover{color:#00844d!important}
+.ba-crumbbar [aria-current]{color:#00844d!important}
+.ba-crumbbar [aria-hidden="true"]{color:#9aa59f!important}
+/* 4. Plus de liserés de couleur posés en haut ou à gauche des blocs.
+      L'accent passe dans un fond teinté, un contour fin tout autour et une ombre douce. */
+.bg-white::before,[class*="bg-"] .bg-white::before,
+.card.basicCard .card-section::before,.card.splitCard .card-section::before,
+.benin-newsletter::before,.benin-related-tiles__card::after,.ba-eco-card__body::before,.wd-pricing__inner::before,
+.bao .bao-pratique .woody-component-custom-text.tpl_02::before,.bao-step::before,
+.tdt-traditions .tdt-cta::before,.ba-dir__card::before{display:none!important}
+main .woody-component-custom-text.bg-white{border-radius:22px;box-shadow:0 1px 0 rgba(16,40,28,.04),0 18px 40px -26px rgba(16,40,28,.35);outline:1px solid rgba(16,40,28,.06);outline-offset:-1px}
+main .card.basicCard,main .card.splitCard{border-radius:18px;overflow:hidden;box-shadow:0 1px 0 rgba(16,40,28,.05),0 16px 36px -24px rgba(16,40,28,.38);transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s}
+main .card.basicCard:hover,main .card.splitCard:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(16,40,28,.05),0 26px 46px -24px rgba(16,40,28,.45)}
+.benin-related-tiles__card{border-radius:18px}
+.bao-step{padding-left:0!important}
+.gnv .gnv-arret,.abm .abm-k,.rs-tier,.ptn .ptn-j,.ba-timeline__era,.ba-agenda__event{border:0!important}
+.gnv .gnv-arret{background:color-mix(in srgb,var(--turq,#16a3a0) 7%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--turq,#16a3a0) 22%,transparent),0 14px 30px -24px rgba(4,38,45,.5)!important}
+.abm .abm-k{background:color-mix(in srgb,var(--sang,#8b1e24) 6%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sang,#8b1e24) 20%,transparent),0 14px 30px -24px rgba(74,15,18,.5)!important}
+.rs-tier{background:color-mix(in srgb,var(--c,#00844d) 9%,var(--rs-paper,#f7f6f1))!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c,#00844d) 22%,transparent)}
+.ptn .ptn-j{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c,var(--turq,#16a3a0)) 25%,transparent)}
+.ba-timeline__era{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--era-color,#00844d) 22%,transparent),0 18px 40px -28px rgba(11,61,44,.35)!important;border-radius:22px!important}
+.ba-agenda__event{background:color-mix(in srgb,var(--e-color,#00844d) 8%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--e-color,#00844d) 20%,transparent);border-radius:16px!important}
+.tdt-traditions .tdt-intro{border-left:0!important;padding-left:0!important}
+.cr-note{border-left:0!important;padding-left:0!important}
+.ba-safety{border-left-width:1px!important}
+</style>
+<script>
+(function () {
+    'use strict';
+    var CREDITS = location.pathname.indexOf('/credits-photos') === 0;
+    var MOTIF = /©|\bCC[ -]?(BY|0)\b|Wikimedia|licences? libres?/i;
+
+    function filDAriane() {
+        var navs = document.querySelectorAll('.emerv-hero__breadcrumb,.event-hero__breadcrumb,main nav[aria-label*="riane" i],main [class*="crumb"]');
+        Array.prototype.forEach.call(navs, function (nav) {
+            if (nav.closest('.ba-crumbbar,.bao-crumbbar,.rs-crumbbar,.woody-component-breadcrumb') || nav.parentElement.closest('[class*="crumb"]')) return;
+            var hero = nav.closest('.emerv-hero') || nav.closest('.event-hero') || nav.closest('.woody-component-hero');
+            for (var p = nav.parentElement; !hero && p && p.tagName !== 'MAIN' && p !== document.body; p = p.parentElement) {
+                if (/(^|\s)[a-z0-9-]*hero(\s|$)/.test(p.className)) hero = p;
+            }
+            if (!hero) return;
+            var bar = document.createElement('div');
+            bar.className = 'ba-crumbbar bao-crumbbar';
+            hero.parentNode.insertBefore(bar, hero.nextSibling);
+            bar.appendChild(nav);
+        });
+    }
+
+    function credits() {
+        if (CREDITS) return;
+        var els = document.querySelectorAll('main figcaption,main small,main p,main span,main div');
+        Array.prototype.forEach.call(els, function (e) {
+            if (e.children.length > 3 || e.closest('.ba-credit-masque,.benin-sources,footer,.site-footer-container')) return;
+            var t = e.textContent;
+            if (t.length > 220 || !MOTIF.test(t) || e.querySelector('a[href*="credits-photos"]')) return;
+            /* Seulement les mentions posées sur ou sous une image, pas les textes de la page. */
+            if (e.tagName !== 'FIGCAPTION' && !e.closest('figure') && !/cr(e|é)dit|caption|legende|légende|source/i.test(e.className + ' ' + t.slice(0, 12))) return;
+            e.classList.add('ba-credit-masque');
+        });
+    }
+
+    function lancer() { filDAriane(); credits(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancer); else lancer();
+})();
+</script>

@@ -440,7 +440,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <x-aggregator.circuits-block
     pretitle="Prêt·e à partir ?"
     title="Réservez votre circuit accompagné dans le sud"
-    description="Des itinéraires clés en main conçus par notre agence réceptive Dahomey Discovery — véhicule, chauffeur, guide local et hébergement inclus. Ganvié, Ouidah, Bouche du Roy, Grand-Popo ou Cotonou : vous choisissez la formule, on s'occupe de tout."
+    description="Des itinéraires clés en main conçus par notre agence partenaire Dahomey Discovery — véhicule, chauffeur, guide local et hébergement inclus. Ganvié, Ouidah, Bouche du Roy, Grand-Popo ou Cotonou : vous choisissez la formule, on s'occupe de tout."
     :filters="['city' => 'cotonou']"
     :limit="6" />
 <x-aggregator.petit-train-block title="Découvrir Cotonou en petit train" />

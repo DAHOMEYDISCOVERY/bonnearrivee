@@ -115,7 +115,7 @@
     <section class="ba-cta-simple">
         <p>Envie d'entendre ces phrases prononcées correctement ?</p>
         <a class="ba-cta-simple__btn" href="https://wa.me/2290167110220" target="_blank" rel="noopener noreferrer">
-            En parler avec un guide Dahomey Discovery <span aria-hidden="true">↗</span>
+            En parler avec l’équipe Bonne Arrivée <span aria-hidden="true">↗</span>
         </a>
     </section>
 </div>

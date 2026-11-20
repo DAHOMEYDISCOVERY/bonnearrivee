@@ -35,7 +35,7 @@
             <div class="wd-hero__content">
                 <p class="wd-hero__eyebrow">
                     <span class="wd-hero__pill">Wa Dùnù · Édition 2026</span>
-                    <span class="wd-hero__by">Édité par <strong>Dahomey Discovery</strong></span>
+                    <span class="wd-hero__by">Édité par <strong>Bonne Arrivée</strong></span>
                 </p>
                 <h1 class="wd-hero__title">
                     Le carnet d'adresses<br>
@@ -95,7 +95,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
                 <div>
                     <strong>Sélection éditoriale</strong>
-                    <span>Chaque adresse est testée par l'équipe Dahomey Discovery</span>
+                    <span>Chaque adresse est testée par l'équipe Bonne Arrivée</span>
                 </div>
             </div>
             <div class="wd-trust__item">
@@ -145,7 +145,7 @@
             @foreach($previewRestos as $r)
                 <article class="wd-card" style="--i: {{ $loop->index }}">
                     @if($r->coup_de_coeur)
-                        <span class="wd-card__coeur" aria-label="Coup de cœur Dahomey Discovery">
+                        <span class="wd-card__coeur" aria-label="Coup de cœur Bonne Arrivée">
                             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.8-9.4C.5 7.7 3.2 4 6.6 4c1.9 0 3.6 1 4.4 2.5.8-1.5 2.5-2.5 4.4-2.5 3.4 0 6.1 3.7 4.4 7.6C19.5 16.3 12 21 12 21z"/></svg>
                         </span>
                     @endif
@@ -390,7 +390,7 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                                 <div>
                                     <strong>Conseils signés</strong>
-                                    <span>Dahomey Discovery — le petit mot qui change le dîner</span>
+                                    <span>Bonne Arrivée — le petit mot qui change le dîner</span>
                                 </div>
                             </li>
                             <li>
@@ -428,7 +428,7 @@
                     <span>Le catalogue est-il vraiment mis à jour ?</span>
                     <span class="wd-faq__chevron">+</span>
                 </summary>
-                <p>Oui. L'équipe éditoriale Dahomey Discovery met le catalogue à jour toute l'année : nouvelles ouvertures, cartes revisitées, horaires modifiés, fermetures. Quand nous ajoutons ou modifions une adresse, votre catalogue reflète le changement <strong>immédiatement</strong>, sans que vous ayez à faire quoi que ce soit.</p>
+                <p>Oui. L'équipe éditoriale Bonne Arrivée met le catalogue à jour toute l'année : nouvelles ouvertures, cartes revisitées, horaires modifiés, fermetures. Quand nous ajoutons ou modifions une adresse, votre catalogue reflète le changement <strong>immédiatement</strong>, sans que vous ayez à faire quoi que ce soit.</p>
             </details>
             <details class="wd-faq__item">
                 <summary>
@@ -456,7 +456,7 @@
                     <span>J'ai un problème, comment vous joindre ?</span>
                     <span class="wd-faq__chevron">+</span>
                 </summary>
-                <p>Écrivez-nous sur <a href="https://wa.me/2290167110220" target="_blank" rel="noopener noreferrer">WhatsApp</a> — nous répondons dans la journée. Ou par email à reservations@dahomeydiscovery.com.</p>
+                <p>Écrivez-nous sur <a href="https://wa.me/2290167110220" target="_blank" rel="noopener noreferrer">WhatsApp</a> — nous répondons dans la journée. Ou par email à contact@bonnearrivee.bj.</p>
             </details>
         </div>
     </section>

@@ -1,5 +1,6 @@
 {{-- Fiche détaillée d'un événement de Bénin en Fête.
-     Structure partagée pour Vodun Days / Weloveya / Festival des Masques / JISTNA / La Gaani. --}}
+     Chaque événement a sa propre mise en page : designs/{slug}.blade.php (socle : public/assets/bef.css).
+     La structure commune d'origine reste servie pour un événement sans mise en page dédiée. --}}
 @extends('layouts.app')
 
 @section('bodyClass', 'page menus-v2 prod gabarit-basic_page benin-event-page')
@@ -71,6 +72,14 @@
     ];
     // Icone fallback (cercle neutre) si un label n'est pas dans le mapping.
     $eventIconFallback = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+
+    // Mise en page propre à chaque fiche (designs/{slug}.blade.php) ; sans fichier,
+    // la structure commune d'origine ci-dessous reste servie.
+    $design = view()->exists('pages.benin-en-fete.designs.' . $slug) ? 'pages.benin-en-fete.designs.' . $slug : null;
+    // Titres d'une section : réglage de la fiche (benin-events-identite.php), sinon titre d'origine.
+    $T = fn (string $section, string $cle, string $defaut = '') => $event['titres'][$section][$cle] ?? $defaut;
+    $pad = fn (int $i) => str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT);
+    $icon = fn (string $label) => $eventIcons[$label] ?? $eventIconFallback;
 @endphp
 
 @section('headGlobals'){!! '<script>window.globals=' . $globalsJson . ';</script>' !!}@endsection
@@ -78,6 +87,12 @@
 @section('headImageOg'){!! '<meta property="og:image" content="' . e($event['hero']) . '"/>' !!}@endsection
 
 @section('content')
+@if ($design)
+<link rel="stylesheet" href="/assets/bef.css?v=20261120a">
+<div class="content-wrapper no-terms event-page event-page--{{ $slug }} event-page--design">
+    @include($design)
+</div>
+@else
 <div class="content-wrapper no-terms event-page event-page--{{ $slug }}" style="--event-color: {{ $event['accent'] ?? $event['themeCouleur'] }}">
 
     {{-- HERO --}}
@@ -134,10 +149,10 @@
     <section class="event-cta" data-anim-reveal>
         <div>
             <p class="event-cta__eyebrow">Composer votre séjour</p>
-            <h2>Vivre {{ $event['title'] }} avec Dahomey Discovery</h2>
+            <h2>Vivre {{ $event['title'] }} avec Bonne Arrivée</h2>
             <p>Notre équipe organise chaque année des circuits sur mesure pendant l'événement — accueil aéroport, hébergement, transport, guide francophone, accès aux moments-clés du programme.</p>
             <div class="event-cta__buttons">
-                <a class="event-cta__btn event-cta__btn--primary" href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">
+                <a class="event-cta__btn event-cta__btn--primary" href="/sejourner/toutes-les-infos-pratiques/nous-contacter">
                     Nous confier votre séjour <span aria-hidden="true">↗</span>
                 </a>
                 <a class="event-cta__btn event-cta__btn--ghost" href="/benin-en-fete">
@@ -148,6 +163,7 @@
     </section>
 
 </div>
+@endif
 
 {{-- Écosystème --}}
 <x-aggregator.ecosysteme-block />
@@ -155,6 +171,16 @@
 {{-- Reveal-on-scroll + compteur anime des statistiques (leger, vanilla) --}}
 <script>
 (function(){
+  // 0) Fiches à mise en page propre : apparitions et compteurs
+  var rv = document.querySelectorAll('.bf-rv');
+  if (rv.length) {
+    if (!('IntersectionObserver' in window)) { rv.forEach(function(el){ el.classList.add('on'); }); }
+    else {
+      var bo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('on'); bo.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      rv.forEach(function(el){ bo.observe(el); });
+      setTimeout(function(){ document.querySelectorAll('.bf-rv:not(.on)').forEach(function(el){ if (el.getBoundingClientRect().top < innerHeight) el.classList.add('on'); }); }, 1200);
+    }
+  }
   // 1) Reveal-on-scroll
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('[data-anim-reveal]').forEach(function(el){ el.classList.add('is-revealed'); });
@@ -204,6 +230,11 @@
       }
     }
     requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { animateCounter(e.target); co.unobserve(e.target); } }); }, { threshold: 0.6 });
+    document.querySelectorAll('[data-bf-count]').forEach(function(el){ co.observe(el); });
   }
 
   var statsSection = document.querySelector('.event-stats');

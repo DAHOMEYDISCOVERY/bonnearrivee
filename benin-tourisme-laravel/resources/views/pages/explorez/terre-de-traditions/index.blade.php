@@ -437,7 +437,7 @@ Les siècles précédant...</div></div></div></div></div></a></div></div><div cl
 <x-aggregator.circuits-block
     pretitle="Vivre la culture, pas juste la voir"
     title="Immersions et circuits culturels au Bénin"
-    description="Nos immersions Dahomey Discovery vous ouvrent les portes des cérémonies vodun, des palais royaux d'Abomey, des ateliers d'artisans (bronze, pagne, tissage) et des grandes fêtes annuelles comme les Vodun Days. Guides locaux, familles d'accueil et rencontres réelles — pas de folklore de vitrine."
+    description="Les immersions de notre partenaire Dahomey Discovery vous ouvrent les portes des cérémonies vodun, des palais royaux d'Abomey, des ateliers d'artisans (bronze, pagne, tissage) et des grandes fêtes annuelles comme les Vodun Days. Guides locaux, familles d'accueil et rencontres réelles — pas de folklore de vitrine."
     :filters="['tourism_type' => 'immersion']"
     :limit="6" />
 {{-- END aggregator top --}}

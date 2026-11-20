@@ -54,7 +54,7 @@
                 
 
     <div class="page-main-description-wrapper">
-        <div class="page-main-description"><p>Retrouvez ici toutes les actualités de l’Dahomey Discovery. Appel à projets, grands évènements… Au Bénin, ça bouge !</p>
+        <div class="page-main-description"><p>Retrouvez ici toutes les actualités de Bonne Arrivée. Appel à projets, grands évènements… Au Bénin, ça bouge !</p>
 </div>
     </div>
                                                     </div>
@@ -68,12 +68,12 @@
             
             
                                         
-                                        <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Grands rendez-vous du calendrier, chantiers patrimoniaux, ouvertures de musées, campagnes de promotion : ce que fait Dahomey Discovery.</p></div></div></div></div></article></section></div>@endverbatim
+                                        <div class="page-section"><section class="section padd-top-md padd-bottom-none marg-top-none marg-bottom-none"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_01 benin-chapo no-sessions"><div class="woody-component-text"><p>Grands rendez-vous du calendrier, chantiers patrimoniaux, ouvertures de musées, campagnes de promotion : ce que fait Bonne Arrivée.</p></div></div></div></div></article></section></div>@endverbatim
 {{-- BEGIN aggregator top --}}
 <x-aggregator.dahomey-articles-block
     pretitle="À la une du Dahomey Mag"
     title="Actualités & guides du Bénin"
-    description="Le blog éditorial de Dahomey Discovery — décryptage des grandes questions du voyage au Bénin : formalités, patrimoine, saisons, culture, gastronomie. Mis à jour chaque semaine par notre équipe locale."
+    description="Le Dahomey Mag, blog de notre partenaire Dahomey Discovery — décryptage des grandes questions du voyage au Bénin : formalités, patrimoine, saisons, culture, gastronomie. Mis à jour chaque semaine par notre équipe locale."
     :limit="6" />
 <x-aggregator.wanilo-articles-block
     :showBanner="true"

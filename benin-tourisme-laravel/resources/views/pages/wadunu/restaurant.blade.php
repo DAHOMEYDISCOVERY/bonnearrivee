@@ -10,7 +10,7 @@
 
         <header class="wadunu-fiche__head">
             @if($restaurant->coup_de_coeur)
-                <span class="wadunu-fiche__coeur">♥ Coup de cœur Dahomey Discovery</span>
+                <span class="wadunu-fiche__coeur">♥ Coup de cœur Bonne Arrivée</span>
             @endif
             <p class="wadunu-fiche__ville">{{ $restaurant->ville }}@if($restaurant->quartier) · {{ $restaurant->quartier }}@endif</p>
             <h1 class="wadunu-fiche__nom">{{ $restaurant->nom }}</h1>
@@ -49,7 +49,7 @@
 
         @if($restaurant->conseil_dahomey)
             <section class="wadunu-fiche__conseil">
-                <p class="wadunu-fiche__conseil-eyebrow">Conseil Dahomey Discovery</p>
+                <p class="wadunu-fiche__conseil-eyebrow">Le conseil de Bonne Arrivée</p>
                 <p>{{ $restaurant->conseil_dahomey }}</p>
             </section>
         @endif

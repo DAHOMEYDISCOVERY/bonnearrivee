@@ -66,7 +66,7 @@
                 'Copie numérique de tous les documents (mail à soi-même)',
                 'Contact ambassade de France à Cotonou noté',
                 'Numéro assistance carte bancaire noté',
-                'Contact urgence Dahomey Discovery : +229 01 67 11 02 20',
+                'Contact Bonne Arrivée : +229 01 67 11 02 20',
                 'Prévenir un proche de ses dates et itinéraire',
                 'Vérifier retour à J-1 sur l\'appli de la compagnie aérienne',
             ],

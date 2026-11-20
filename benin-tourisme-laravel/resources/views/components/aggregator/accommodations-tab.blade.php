@@ -56,7 +56,7 @@
                                                 str_contains($lower, 'hôtel') || str_contains($lower, 'hotel') =>
                                                     'Hôtel classé avec restaurant, chambres climatisées et petit-déjeuner inclus. Idéal pour affaires ou tourisme à ' . ($item->city ?: 'Cotonou') . '.',
                                                 default =>
-                                                    'Hébergement sélectionné par Dahomey Discovery, contrôlé par notre équipe locale. Réservation directe sans intermédiaire.',
+                                                    'Hébergement sélectionné par notre partenaire Dahomey Discovery. Réservation directe sans intermédiaire.',
                                             };
                                         }
                                     @endphp

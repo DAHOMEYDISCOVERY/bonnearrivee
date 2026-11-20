@@ -44,7 +44,7 @@
         @forelse($restos as $r)
             <a class="wadunu-card" href="{{ route('wadunu.restaurant', ['token' => $token, 'slug' => $r->slug]) }}">
                 @if($r->coup_de_coeur)
-                    <span class="wadunu-card__coeur" aria-label="Coup de cœur Dahomey Discovery">♥</span>
+                    <span class="wadunu-card__coeur" aria-label="Coup de cœur Bonne Arrivée">♥</span>
                 @endif
                 <div class="wadunu-card__media">
                     @if(!empty($r->photos) && count($r->photos))
@@ -74,7 +74,7 @@
     </section>
 
     <footer class="wadunu-footer">
-        <p>Édité par <strong>Dahomey Discovery</strong> · Mise à jour continue · Une question ? <a href="https://wa.me/2290167110220" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+        <p>Édité par <strong>Bonne Arrivée</strong> · Mise à jour continue · Une question ? <a href="https://wa.me/2290167110220" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
     </footer>
 </div>
 @endsection

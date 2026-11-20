@@ -71,7 +71,7 @@ return [
     '/actualites' => [
         'view' => 'pages.actualites.index',
         'title' => 'Actualités | Bonne Arrivée',
-        'description' => 'Retrouvez ici toutes les actualités de Dahomey Discovery. Appel à projets, grands évènements… Au Bénin, ça bouge !',
+        'description' => 'Retrouvez ici toutes les actualités de Bonne Arrivée. Appel à projets, grands évènements… Au Bénin, ça bouge !',
         'headProfile' => 'standard',
     ],
     '/credits-photos' => [
@@ -584,7 +584,7 @@ Ouvert toute l\'année sauf les vacances de Noël.',
     '/sejourner/toutes-les-infos-pratiques/nous-contacter' => [
         'view' => 'pages.sejourner.toutes-les-infos-pratiques.nous-contacter.index',
         'title' => 'Nous contacter | Bonne Arrivée',
-        'description' => 'Contactez Dahomey Discovery, éditeur du portail Bonne Arrivée : formulaire, téléphone, WhatsApp, e-mail, adresse à Cotonou et horaires. Réponse sous 48 h ouvrées.',
+        'description' => 'Contactez l’équipe Bonne Arrivée : formulaire, téléphone, WhatsApp, e-mail, adresse à Cotonou et horaires. Réponse sous 48 h ouvrées.',
         'activeMenu' => '796',
         'headProfile' => 'standard',
     ],
