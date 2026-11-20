@@ -5,7 +5,7 @@
     Usage :
         <x-aggregator.dahomey-articles-block
             pretitle="À la une du Dahomey Mag"
-            title="Le Bénin, décrypté par notre agence"
+            title="Le Bénin, décrypté par notre partenaire Dahomey Discovery"
             description="..." />
 --}}
 @props([

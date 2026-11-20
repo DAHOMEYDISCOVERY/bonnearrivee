@@ -148,12 +148,12 @@
     {{-- CTA FINALE --}}
     <section class="event-cta" data-anim-reveal>
         <div>
-            <p class="event-cta__eyebrow">Composer votre séjour</p>
-            <h2>Vivre {{ $event['title'] }} avec Bonne Arrivée</h2>
-            <p>Notre équipe organise chaque année des circuits sur mesure pendant l'événement — accueil aéroport, hébergement, transport, guide francophone, accès aux moments-clés du programme.</p>
+            <p class="event-cta__eyebrow">Préparer votre venue</p>
+            <h2>Vivre {{ $event['title'] }} avec les partenaires de l’écosystème</h2>
+            <p>Bonne Arrivée vous informe ; les séjours se réservent directement auprès des professionnels de l’écosystème. L’agence réceptive Dahomey Discovery organise chaque année des circuits pendant l’événement.</p>
             <div class="event-cta__buttons">
-                <a class="event-cta__btn event-cta__btn--primary" href="/sejourner/toutes-les-infos-pratiques/nous-contacter">
-                    Nous confier votre séjour <span aria-hidden="true">↗</span>
+                <a class="event-cta__btn event-cta__btn--primary" href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">
+                    Réserver avec Dahomey Discovery <span aria-hidden="true">↗</span>
                 </a>
                 <a class="event-cta__btn event-cta__btn--ghost" href="/benin-en-fete">
                     Voir tous les événements

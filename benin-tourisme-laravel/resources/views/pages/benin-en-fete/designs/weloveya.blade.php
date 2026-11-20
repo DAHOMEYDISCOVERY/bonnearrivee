@@ -231,8 +231,8 @@
     <section class="bf-sec" style="padding-top:0">
         <div class="bf-in">
             <span class="bf-k bf-rv">{{ $T('tips', 'eyebrow', 'Bon à savoir') }}</span>
-            <h2 class="wl-d wl-h2 bf-rv">{{ $T('tips', 'titre', 'Les conseils de nos guides') }}</h2>
-            <p class="bf-lead bf-rv">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent le séjour plus fluide. Notre équipe les rappelle systématiquement à chaque groupe.') }}</p>
+            <h2 class="wl-d wl-h2 bf-rv">{{ $T('tips', 'titre', 'Les conseils pratiques') }}</h2>
+            <p class="bf-lead bf-rv">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent la visite plus fluide.') }}</p>
             <div class="wl-tickets">
                 @foreach ($event['tips'] as $i => $tip)
                     <div class="wl-ticket bf-rv" style="--d: {{ $i * 70 }}ms"><span aria-hidden="true">{!! $icon($tip['label']) !!}</span><h3>{{ $tip['label'] }}</h3><p>{{ $tip['texte'] }}</p></div>

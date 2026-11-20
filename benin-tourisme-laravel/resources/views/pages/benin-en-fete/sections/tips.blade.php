@@ -4,8 +4,8 @@
 <section class="event-tips" data-anim-reveal aria-label="Bon à savoir">
     <div class="event-section-head">
         <p class="event-section-eyebrow">{{ $t['eyebrow'] ?? 'Bon à savoir' }}</p>
-        <h2 class="event-section-title">{{ $t['titre'] ?? 'Les conseils de nos guides' }}</h2>
-        <p class="event-section-lead">{{ $t['lead'] ?? 'Ces règles évitent les faux pas et rendent le séjour plus fluide. Notre équipe les rappelle systématiquement à chaque groupe.' }}</p>
+        <h2 class="event-section-title">{{ $t['titre'] ?? 'Les conseils pratiques' }}</h2>
+        <p class="event-section-lead">{{ $t['lead'] ?? 'Ces règles évitent les faux pas et rendent la visite plus fluide.' }}</p>
     </div>
     <div class="event-tips__grid">
         @foreach($event['tips'] as $i => $tip)

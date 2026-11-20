@@ -45,7 +45,7 @@
         <div class="benin-littoral__head">
             <p class="benin-littoral__eyebrow">Quatre façons de vivre le pays</p>
             <h2 class="benin-littoral__title">Choisir votre expérience</h2>
-            <p class="benin-littoral__lead">Chaque rubrique regroupe les activités concrètes que nos guides organisent — dates conseillées, saisons, opérateurs locaux, ce qu'il faut prévoir.</p>
+            <p class="benin-littoral__lead">Chaque rubrique regroupe les activités concrètes que proposent les guides et opérateurs locaux — dates conseillées, saisons, opérateurs locaux, ce qu'il faut prévoir.</p>
         </div>
         <div class="benin-littoral__grid">
 
@@ -81,7 +81,7 @@
                 <div class="benin-littoral__card-inner">
                     <span class="benin-littoral__cat">Guides &amp; agences</span>
                     <h3>Les opérateurs de safari</h3>
-                    <p>Notre sélection d'opérateurs locaux pour la Pendjari et le parc W : accompagnement, transport 4×4, hébergement en campement.</p>
+                    <p>Une sélection d'opérateurs locaux pour la Pendjari et le parc W : accompagnement, transport 4×4, hébergement en campement.</p>
                 </div>
             </a>
 
@@ -110,7 +110,7 @@
             <span class="benin-page-block__num">03</span>
             <h2 class="benin-page-block__title">Y aller avec un guide</h2>
             <p>Un guide francophone local n'est pas un luxe au Bénin — c'est ce qui transforme une visite touristique en <strong>rencontre</strong>. Les palais d'Abomey, la Route de l'Esclave, une cérémonie vodun, un village tata somba : sans médiation, on passe à côté du sens.</p>
-            <p>Notre partenaire <strong><a href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Dahomey Discovery</a></strong> conçoit des circuits sur mesure avec chauffeur, guide et hébergement inclus. Écrivez-nous depuis la <a href="/sejourner/toutes-les-infos-pratiques/nous-contacter">page contact</a>.</p>
+            <p>Notre partenaire <strong><a href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Dahomey Discovery</a></strong> conçoit des circuits sur mesure avec chauffeur, guide et hébergement inclus : la réservation se fait directement auprès de l’agence. Bonne Arrivée vous informe, ses partenaires organisent.</p>
         </article>
     </section>
 @endverbatim

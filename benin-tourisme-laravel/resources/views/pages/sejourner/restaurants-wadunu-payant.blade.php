@@ -95,7 +95,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
                 <div>
                     <strong>Sélection éditoriale</strong>
-                    <span>Chaque adresse est testée par l'équipe Bonne Arrivée</span>
+                    <span>Chaque adresse est testée par la rédaction Bonne Arrivée</span>
                 </div>
             </div>
             <div class="wd-trust__item">
@@ -198,7 +198,7 @@
                 <p class="wd-locked__desc">
                     Vous accédez ci-dessous à un aperçu des noms de restaurants, cafés, maquis et bars
                     du catalogue. Débloquez pour découvrir chaque fiche complète : adresse, contact,
-                    spécialité, budget, horaires et le conseil personnalisé de nos guides.
+                    spécialité, budget, horaires et le conseil personnalisé de la rédaction.
                 </p>
                 <ul class="wd-locked__names" aria-hidden="true" data-ba-dynamique>
                     @foreach($previewNames as $name)

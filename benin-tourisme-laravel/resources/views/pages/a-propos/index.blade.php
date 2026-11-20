@@ -5,7 +5,7 @@
 @section('mainAttributes')role="main" class="content-type-page basic_page" id="main-content"@endsection
 
 @section('headGlobals')@verbatim<script>window.globals={"ancestors":{"chapter1":"À propos","chapter2":null,"chapter3":null},"context":"website","current_lang":"fr","current_locale":"fr","current_locale_region":"fr_FR","env":"prod","languages":["fr","nl"],"page_type":"basic_page","post_id":9002,"post_title":"À propos","post_type":"page","site_key":"benin","tags":{"places":[],"seasons":[],"themes":[],"targets":[]},"woody_options_pages":{"search_url":2043,"weather_url":0},"woody_timezone":"Europe/Paris","search":{"api":{"uri":"","args":{"size":15,"threshold":0.5}}},"sheet_bordereaux_with_dates":[],"short_date_bordereaux":["FMA","ASC"],"tmaps":{"url_api":"","url_api_lazy":""},"hawwwai":{"sheet_options":{"nearby_distance_max":5000}}}</script>@endverbatim@endsection
-@section('headSchema')@verbatim<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.bonnearrivee.bj/a-propos","name":"À propos — Bonne Arrivée","description":"Bonne Arrivée, le portail du tourisme au Bénin, et ses partenaires."}</script>@endverbatim@endsection
+@section('headSchema')@verbatim<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.bonnearrivee.bj/a-propos","name":"À propos — Bonne Arrivée","description":"Bonne Arrivée, Portail du Tourisme et de l’Attractivité au Bénin : un site d’information, et les partenaires de son écosystème."}</script>@endverbatim@endsection
 
 @section('content')
 @verbatim
@@ -30,7 +30,7 @@
                         </div>
                         <div class="page-main-description-wrapper">
                             <div class="page-main-description">
-                                <p><strong>Bonne Arrivée</strong> est le portail du tourisme au Bénin. Nous aidons chaque année des voyageurs venus d'Europe, d'Afrique et d'Amérique à découvrir, organiser et vivre le berceau du vodun.</p>
+                                <p><strong>Bonne Arrivée</strong> est le Portail du Tourisme et de l'Attractivité au Bénin. C'est un site d'information : il fait connaître le pays, ses destinations, sa culture et ses infos pratiques, et oriente les visiteurs vers les professionnels de son écosystème.</p>
                             </div>
                         </div>
                     </div>
@@ -49,25 +49,24 @@
                             <div class="woody-component-text">
 
                                 <h2>Un portail né du terroir</h2>
-                                <p>Bonne Arrivée est porté par <strong>Mme Zoulfati HASSAN DERBY</strong>, avec une conviction simple : le Bénin mérite d'être raconté et accompagné par les Béninois eux-mêmes. Depuis Cotonou, notre équipe fait découvrir des séjours qui vont au-delà de la carte postale — vodun vécu, palais royaux d'Abomey, village lacustre de Ganvié, parc de la Pendjari, plages de Grand-Popo — avec des guides locaux qui parlent la langue de chaque région.</p>
+                                <p>Bonne Arrivée est porté par <strong>Mme Zoulfati HASSAN DERBY</strong>, avec une conviction simple : le Bénin mérite d'être raconté par les Béninois eux-mêmes. Depuis Cotonou, la rédaction du portail fait découvrir un Bénin qui va au-delà de la carte postale — vodun vécu, palais royaux d'Abomey, village lacustre de Ganvié, parc de la Pendjari, plages de Grand-Popo — avec des informations vérifiées sur le terrain.</p>
 
-                                <h2>Ce que nous proposons, avec nos partenaires</h2>
+                                <h2>Ce que fait le portail</h2>
                                 <ul>
-                                    <li><strong>Circuits sur mesure</strong> — itinéraires accompagnés de 3 à 15 jours, avec chauffeur, guide et hébergement inclus, organisés avec notre agence partenaire Dahomey Discovery.</li>
-                                    <li><strong>Réservation d'hébergements</strong> — hôtels, écolodges, guest houses, villas et appartements contrôlés par notre équipe.</li>
-                                    <li><strong>Transferts</strong> — accueil aéroport, navettes VTC, chauffeur privé, 4×4 pour la Pendjari.</li>
-                                    <li><strong>Immersions culturelles</strong> — cérémonies vodun, ateliers d'artisans, rencontres avec les rois d'Abomey.</li>
-                                    <li><strong>Assurance voyage</strong> — DD Care, l'assurance proposée par notre partenaire Dahomey Discovery, en trois formules adaptées aux circuits au Bénin.</li>
+                                    <li><strong>Informer</strong> — destinations, patrimoine, traditions, nature, agenda des fêtes et infos pratiques (visa, santé, argent, sécurité).</li>
+                                    <li><strong>Orienter</strong> — vers les professionnels de l'écosystème : agences réceptives, hébergeurs, restaurateurs, transporteurs, guides.</li>
+                                    <li><strong>Valoriser</strong> — l'attractivité du Bénin auprès des visiteurs, des médias et des investisseurs.</li>
                                 </ul>
+                                <p><strong>Bonne Arrivée n'est pas une agence et ne vend aucune prestation</strong> : ni circuit, ni hébergement, ni transport, ni assurance. Tout ce qui est pratique (réservations, séjours, services) se fait directement auprès des partenaires de l'écosystème, qui en sont seuls responsables.</p>
 
-                                <h2>Nos partenaires</h2>
-                                <p>Bonne Arrivée s'appuie sur des partenaires de confiance :</p>
+                                <h2>L'écosystème</h2>
+                                <p>Les services pratiques sont assurés par les partenaires de l'écosystème :</p>
                                 <ul>
                                     <li><a href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer"><strong>Dahomey Discovery</strong></a> — agence réceptive au Bénin : circuits sur mesure, hébergements, transferts et immersions culturelles.</li>
                                     <li><a href="https://www.petit-train-cotonou.com" target="_blank" rel="noopener noreferrer"><strong>Le Petit Train de Cotonou</strong></a> — trois circuits commentés (15 min, 30 min, 1 h) pour découvrir la capitale économique du Bénin en famille, en groupe ou en privatisation.</li>
                                     <li><a href="https://www.wanilo.studio" target="_blank" rel="noopener noreferrer"><strong>Wanilo Studio</strong></a> — studio audiovisuel béninois basé à Cotonou : production vidéo, podcast, photo, décors professionnels et équipe technique.</li>
                                 </ul>
-                                <p><strong>Bonne Arrivée</strong> réunit leurs offres dans un portail unique de découverte du Bénin.</p>
+                                <p><strong>Bonne Arrivée</strong> les fait connaître ; chaque réservation se fait directement auprès d'eux.</p>
 
                                 <h2>Nous rencontrer</h2>
                                 <p>

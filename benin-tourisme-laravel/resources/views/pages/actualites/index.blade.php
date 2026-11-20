@@ -73,7 +73,7 @@
 <x-aggregator.dahomey-articles-block
     pretitle="À la une du Dahomey Mag"
     title="Actualités & guides du Bénin"
-    description="Le Dahomey Mag, blog de notre partenaire Dahomey Discovery — décryptage des grandes questions du voyage au Bénin : formalités, patrimoine, saisons, culture, gastronomie. Mis à jour chaque semaine par notre équipe locale."
+    description="Le Dahomey Mag, blog de notre partenaire Dahomey Discovery — décryptage des grandes questions du voyage au Bénin : formalités, patrimoine, saisons, culture, gastronomie. Mis à jour chaque semaine par la rédaction du portail."
     :limit="6" />
 <x-aggregator.wanilo-articles-block
     :showBanner="true"

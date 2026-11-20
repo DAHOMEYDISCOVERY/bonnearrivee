@@ -180,8 +180,8 @@ r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-bent
 {{-- aggregator top déplacé en bas de page --}}
 <x-aggregator.dahomey-articles-block
     pretitle="Lire pour comprendre"
-    title="Le Bénin culturel, décrypté par notre agence"
-    description="Vodun, palais royaux, artisanat, mariage traditionnel : nos guides éditoriaux publiés sur le Dahomey Mag préparent votre voyage et vous aident à comprendre ce que vous verrez sur place."
+    title="Le Bénin culturel, décrypté par notre partenaire Dahomey Discovery"
+    description="Vodun, palais royaux, artisanat, mariage traditionnel : ses guides éditoriaux publiés sur le Dahomey Mag préparent votre voyage et vous aident à comprendre ce que vous verrez sur place."
     :limit="3" />
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">

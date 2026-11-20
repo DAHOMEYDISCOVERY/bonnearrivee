@@ -138,14 +138,14 @@
         <div class="bf-in">
             <div class="bf-cta bf-rv">
                 <img src="/assets/img/danse-1920x960.webp" alt="" loading="lazy" decoding="async">
-                <span class="bf-k">Composer votre séjour</span>
+                <span class="bf-k">Préparer votre venue</span>
                 <h2>Caler votre voyage sur une fête du Bénin</h2>
-                <p>Bonne Arrivée organise des séjours sur mesure autour de chaque rendez-vous : accueil, hébergement, transport et guide francophone.</p>
+                <p>Bonne Arrivée vous informe sur chaque rendez-vous ; les séjours (accueil, hébergement, transport, guide francophone) se réservent directement auprès des partenaires de l’écosystème, comme l’agence réceptive Dahomey Discovery.</p>
                 <div class="bf-cta__btns">
-                    <a class="bf-btn bf-btn--main" href="/sejourner/toutes-les-infos-pratiques/nous-contacter">Nous confier votre séjour <span aria-hidden="true">→</span></a>
+                    <a class="bf-btn bf-btn--main" href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Réserver avec Dahomey Discovery <span aria-hidden="true">↗</span></a>
                     <a class="bf-btn bf-btn--ghost" href="/agenda">Voir l'agenda complet</a>
                 </div>
-                <p class="bf-partner">Séjours réalisés avec notre agence partenaire Dahomey Discovery.</p>
+                <p class="bf-partner">Bonne Arrivée est un site d’information et ne vend aucune prestation.</p>
             </div>
         </div>
     </section>

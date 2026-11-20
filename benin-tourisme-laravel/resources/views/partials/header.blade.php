@@ -18,7 +18,7 @@
                     <button class="menu-icon" data-toggle="main-menu" type="button" aria-label="Ouvrir/Fermer le menu principal" aria-controls="main-menu"><div class="title-bar-title" title="Accès au menu principal"><span class="menu-btn-title" data-menu-close="Menu" data-menu-open="Fermer">Menu</span></div><div class="menu-icon-bars-wrapper"><div class="menu-icon-bar top"></div><div class="menu-icon-bar middle middle-one"></div><div class="menu-icon-bar middle middle-two"></div><div class="menu-icon-bar bottom"></div></div></button>            <div class="is-brand-logo {{ ($activeMenu ?? null) === 'accueil' ? 'is-active' : '' }} ">
     <a class="menuLogo" href="/" target="_self" data-post-id="86">
         <span class="no-visible-text menu-logo-site-name isAbs">Bonne Arrivée</span>
-        <span class="brand-logo"><img src="/assets/site/divers/app/themes/benin/src/img/logo/logo.png" alt="Bonne Arrivée — Portail du tourisme au Bénin" /></span>
+        <span class="brand-logo"><img src="/assets/site/divers/app/themes/benin/src/img/logo/logo.png" alt="Bonne Arrivée — Portail du Tourisme et de l’Attractivité au Bénin" /></span>
     </a>
 </div>
 

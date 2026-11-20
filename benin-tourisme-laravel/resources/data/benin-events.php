@@ -33,7 +33,7 @@ return [
             ],
             [
                 'titre' => 'Y aller',
-                'texte' => 'Ouidah est à 42 km à l\'ouest de Cotonou, soit 45 min à 1 h en voiture par la route côtière. Réservez votre hébergement dès l\'annonce du programme : les hôtels de Ouidah et Grand-Popo se remplissent très vite pendant la semaine. Bonne Arrivée et son agence partenaire Dahomey Discovery organisent des séjours en immersion pour toute la durée du festival.',
+                'texte' => 'Ouidah est à 42 km à l\'ouest de Cotonou, soit 45 min à 1 h en voiture par la route côtière. Réservez votre hébergement dès l\'annonce du programme : les hôtels de Ouidah et Grand-Popo se remplissent très vite pendant la semaine. L’agence partenaire Dahomey Discovery propose des séjours en immersion pour toute la durée du festival.',
             ],
         ],
 
@@ -519,7 +519,7 @@ return [
             ],
             [
                 'titre' => 'Y aller',
-                'texte' => 'Nikki est à 620 km au nord de Cotonou : compter 8 à 10 h de route, ou un vol régional jusqu\'à Parakou puis 2 h de piste. L\'hébergement est simple (guest houses, campements) et se remplit dès l\'annonce des dates. Bonne Arrivée et son agence partenaire Dahomey Discovery organisent chaque année un circuit combiné Gaani + Pendjari, la façon la plus confortable de découvrir le nord du pays.',
+                'texte' => 'Nikki est à 620 km au nord de Cotonou : compter 8 à 10 h de route, ou un vol régional jusqu\'à Parakou puis 2 h de piste. L\'hébergement est simple (guest houses, campements) et se remplit dès l\'annonce des dates. L’agence partenaire Dahomey Discovery organise chaque année un circuit combiné Gaani + Pendjari, la façon la plus confortable de découvrir le nord du pays.',
             ],
         ],
 

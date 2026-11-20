@@ -259,8 +259,8 @@
     <section class="vd-code bf-sec">
         <div class="bf-in">
             <span class="bf-k bf-rv">{{ $T('tips', 'eyebrow', 'Bon à savoir') }}</span>
-            <h2 class="vd-head2 bf-rv" style="margin-bottom:12px">{{ $T('tips', 'titre', 'Les conseils de nos guides') }}</h2>
-            <p class="bf-lead bf-rv">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent le séjour plus fluide. Notre équipe les rappelle systématiquement à chaque groupe.') }}</p>
+            <h2 class="vd-head2 bf-rv" style="margin-bottom:12px">{{ $T('tips', 'titre', 'Les conseils pratiques') }}</h2>
+            <p class="bf-lead bf-rv">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent la visite plus fluide.') }}</p>
             <div class="vd-code__grid">
                 @foreach ($event['tips'] as $i => $tip)
                     <div class="vd-regle bf-rv" style="--d: {{ $i * 70 }}ms"><span aria-hidden="true">{!! $icon($tip['label']) !!}</span><h3>{{ $tip['label'] }}</h3><p>{{ $tip['texte'] }}</p></div>

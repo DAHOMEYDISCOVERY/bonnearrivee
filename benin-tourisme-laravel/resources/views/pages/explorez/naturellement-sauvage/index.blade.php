@@ -73,7 +73,7 @@
 <x-aggregator.vehicles-transfers-block
     pretitle="Aller au parc, revenir en ville"
     title="Véhicules 4×4 et transferts vers l'Atacora"
-    description="Notre agence organise votre transfert de l'aéroport de Cotonou jusqu'aux portes de la Pendjari, en 4×4 tout terrain avec chauffeur. Retour aussi couvert — vous n'avez qu'à profiter du safari."
+    description="Notre partenaire Dahomey Discovery organise votre transfert de l'aéroport de Cotonou jusqu'aux portes de la Pendjari, en 4×4 tout terrain avec chauffeur. Retour aussi couvert — vous n'avez qu'à profiter du safari."
     bgClass="bg-motif" />
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">

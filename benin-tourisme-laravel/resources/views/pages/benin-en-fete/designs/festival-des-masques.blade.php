@@ -158,8 +158,8 @@
             <div class="fm-cercle bf-rv" aria-hidden="true"><i></i><i></i><i></i><b>Zone des percussions</b><em>3 à 4 mètres</em><span>Le<br>masque</span></div>
             <div>
                 <span class="bf-k bf-rv">{{ $T('tips', 'eyebrow', 'Bon à savoir') }}</span>
-                <h2 class="fm-h2 bf-rv">{{ $T('tips', 'titre', 'Les conseils de nos guides') }}</h2>
-                <p class="bf-lead bf-rv" style="margin-bottom:26px">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent le séjour plus fluide. Notre équipe les rappelle systématiquement à chaque groupe.') }}</p>
+                <h2 class="fm-h2 bf-rv">{{ $T('tips', 'titre', 'Les conseils pratiques') }}</h2>
+                <p class="bf-lead bf-rv" style="margin-bottom:26px">{{ $T('tips', 'lead', 'Ces règles évitent les faux pas et rendent la visite plus fluide.') }}</p>
                 <ol>
                     @foreach ($event['tips'] as $i => $tip)
                         <li class="bf-rv" style="--d: {{ $i * 60 }}ms"><span aria-hidden="true">{!! $icon($tip['label']) !!}</span><div><h3>{{ $tip['label'] }}</h3><p>{{ $tip['texte'] }}</p></div></li>

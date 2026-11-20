@@ -145,7 +145,7 @@
 <x-aggregator.accommodations-block
     pretitle="Sélection de notre partenaire Dahomey Discovery"
     title="Hébergements réservables au Bénin"
-    description="Notre agence réceptive sélectionne et contrôle chaque hébergement — hôtels, gîtes, chambres d'hôtes, appartements meublés. Réservation directe sans intermédiaire."
+    description="Notre partenaire Dahomey Discovery sélectionne et contrôle chaque hébergement — hôtels, gîtes, chambres d'hôtes, appartements meublés. Réservation directe sans intermédiaire."
     :filters="[]"
     :limit="6"
  />

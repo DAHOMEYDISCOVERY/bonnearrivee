@@ -30,7 +30,7 @@ class RestaurantResource extends Resource
                 Forms\Components\Select::make('categorie')
                     ->options(Restaurant::CATEGORIES)->required()->default('maquis'),
                 Forms\Components\Toggle::make('coup_de_coeur')
-                    ->label('Testé par notre agence (étoile ★ sur le site)')
+                    ->label('Testé par la rédaction (étoile ★ sur le site)')
                     ->helperText('Cochez si l’équipe a testé ce restaurant : il est mis en avant en haut de la page « Où manger ».'),
                 Forms\Components\Toggle::make('published')->default(true),
             ])->columns(2),
@@ -59,7 +59,7 @@ class RestaurantResource extends Resource
                     ->addActionLabel('Ajouter une raison')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('conseil_dahomey')
-                    ->label('Le conseil de l’agence')->rows(4)->columnSpanFull(),
+                    ->label('Le conseil de la rédaction')->rows(4)->columnSpanFull(),
             ]),
 
             Forms\Components\Section::make('Photos & tri')->schema([

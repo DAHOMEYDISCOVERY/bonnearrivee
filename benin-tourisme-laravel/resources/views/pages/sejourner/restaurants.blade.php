@@ -1,7 +1,7 @@
 {{-- Où manger au Bénin — répertoire libre des restaurants (refonte 2026-11).
      Tout est en accès libre : plus de paiement sur cette page. Les fiches
      viennent de l'administration (Restaurants). Les adresses cochées
-     « Testé par notre agence » portent une étoile et sont mises en avant.
+     « Testé par la rédaction » portent une étoile et sont mises en avant.
      L'ancienne page payante est conservée dans restaurants-wadunu-payant.blade.php
      (non reliée), et les liens personnels /mes-restos/… déjà vendus restent actifs. --}}
 @extends('layouts.app')
@@ -435,7 +435,7 @@
   {{-- ================= CE QUE SIGNIFIE L'ÉTOILE ================= --}}
   <section class="rs-legend" aria-label="Comment lire ce guide">
     <div class="rs-wrap rs-legend__in">
-      <div class="rs-legend__it"><span class="rs-legend__ic is-star">{!! $svgStar !!}</span><div><strong>L’étoile = testé par notre agence</strong><p>L’équipe de Bonne Arrivée s’y est attablée et la recommande à ses voyageurs.</p></div></div>
+      <div class="rs-legend__it"><span class="rs-legend__ic is-star">{!! $svgStar !!}</span><div><strong>L’étoile = testé par la rédaction</strong><p>La rédaction de Bonne Arrivée s’y est attablée et la recommande.</p></div></div>
       <div class="rs-legend__it"><span class="rs-legend__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1 15-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg></span><div><strong>Gratuit, sans inscription</strong><p>Tout le répertoire est consultable librement, sur ordinateur comme sur téléphone.</p></div></div>
       <div class="rs-legend__it"><span class="rs-legend__ic">{!! $svgGo !!}</span><div><strong>Appeler, s’y rendre</strong><p>Chaque fiche donne le contact et l’itinéraire en un clic quand nous les avons.</p></div></div>
     </div>
@@ -448,8 +448,8 @@
       <div class="rs-head">
         <div>
           <p class="rs-eyebrow"><span class="rs-star">{!! $svgStar !!}</span> Sélection Bonne Arrivée</p>
-          <h2 class="rs-h2" id="rs-tested-title">Testés et approuvés par notre agence</h2>
-          <p class="rs-lead">Les tables où nous emmenons nos voyageurs, les yeux fermés.</p>
+          <h2 class="rs-h2" id="rs-tested-title">Testés et approuvés par la rédaction</h2>
+          <p class="rs-lead">Les tables que la rédaction recommande les yeux fermés.</p>
         </div>
       </div>
       <div class="rs-tested__grid" data-ba-dynamique>
@@ -458,7 +458,7 @@
           <article class="rs-feat">
             <div class="rs-feat__media">
               {!! $visuel($r) !!}
-              <span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par notre agence</span>
+              <span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par la rédaction</span>
             </div>
             <div class="rs-feat__body">
               <div class="rs-meta">
@@ -471,7 +471,7 @@
                 <ul class="rs-why">@foreach ($why as $w)<li>{{ $w }}</li>@endforeach</ul>
               @endif
               @if ($r->conseil_dahomey)
-                <div class="rs-tip"><span class="rs-tip__ic">{!! $svgInfo !!}</span><p style="margin:0"><b>Le conseil de l’agence</b>{{ $r->conseil_dahomey }}</p></div>
+                <div class="rs-tip"><span class="rs-tip__ic">{!! $svgInfo !!}</span><p style="margin:0"><b>Le conseil de la rédaction</b>{{ $r->conseil_dahomey }}</p></div>
               @endif
               <div class="rs-facts">
                 @if ($r->specialite)<span class="rs-fact">{!! $svgFork !!}<span>{{ $r->specialite }}</span></span>@endif
@@ -556,14 +556,14 @@
           <article class="rs-card{{ $r->coup_de_coeur ? ' is-tested' : '' }}" data-ville="{{ $r->ville }}" data-cat="{{ $r->categorie }}" data-star="{{ $r->coup_de_coeur ? '1' : '0' }}" data-budget="{{ $budgetNiveau($r) }}" data-search="{{ $blob }}">
             <div class="rs-card__media">
               {!! $visuel($r) !!}
-              @if ($r->coup_de_coeur)<span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par notre agence</span>@endif
+              @if ($r->coup_de_coeur)<span class="rs-badge"><span class="rs-star">{!! $svgStar !!}</span> Testé par la rédaction</span>@endif
             </div>
             <div class="rs-card__body">
               <div class="rs-meta">
                 <span class="rs-meta__cat">{{ $cats[$r->categorie] ?? $r->categorie }}</span>
                 <span class="rs-loc">{!! $svgPin !!}{{ $r->ville }}@if ($r->quartier) · {{ $r->quartier }}@endif</span>
               </div>
-              <h3 class="rs-card__name">@if ($r->coup_de_coeur)<span class="rs-star" title="Testé par notre agence">{!! $svgStar !!}<span class="show-for-sr">Testé par notre agence&nbsp;:</span></span>@endif{{ $r->nom }}</h3>
+              <h3 class="rs-card__name">@if ($r->coup_de_coeur)<span class="rs-star" title="Testé par la rédaction">{!! $svgStar !!}<span class="show-for-sr">Testé par la rédaction&nbsp;:</span></span>@endif{{ $r->nom }}</h3>
               @if ($r->sous_titre)<p class="rs-card__sub">{{ $r->sous_titre }}</p>@endif
               @php $hasMore = $r->specialite || $r->adresse || $r->horaires || $r->budget_min || $r->budget_max || count($why) || $r->conseil_dahomey; @endphp
               @if ($hasMore)
@@ -577,7 +577,7 @@
                     @if ($r->telephone)<div><dt>Téléphone</dt><dd>{{ $r->telephone }}</dd></div>@endif
                   </dl>
                   @if (count($why))<ul class="rs-why" style="margin-top:12px">@foreach ($why as $w)<li>{{ $w }}</li>@endforeach</ul>@endif
-                  @if ($r->conseil_dahomey)<div class="rs-tip"><span class="rs-tip__ic">{!! $svgInfo !!}</span><p style="margin:0"><b>Le conseil de l’agence</b>{{ $r->conseil_dahomey }}</p></div>@endif
+                  @if ($r->conseil_dahomey)<div class="rs-tip"><span class="rs-tip__ic">{!! $svgInfo !!}</span><p style="margin:0"><b>Le conseil de la rédaction</b>{{ $r->conseil_dahomey }}</p></div>@endif
                 </details>
               @endif
               <div class="rs-actions">

@@ -143,7 +143,7 @@ Route::get('/sejourner/restaurants', function () {
 
     return view('pages.sejourner.restaurants', [
         'title' => 'Où manger au Bénin — restaurants, maquis, cafés | Bonne Arrivée',
-        'description' => 'Le répertoire gratuit des restaurants, maquis, cafés et bars du Bénin. Les adresses marquées d’une étoile ont été testées par notre agence.',
+        'description' => 'Le répertoire gratuit des restaurants, maquis, cafés et bars du Bénin. Les adresses marquées d’une étoile ont été testées par la rédaction.',
         'activeMenu' => null,
         'headProfile' => 'standard',
         'customContent' => null,
@@ -217,7 +217,7 @@ Route::view('/checklist', 'pages.checklist', [
 
 Route::view('/a-propos', 'pages.a-propos.index', [
     'title' => 'À propos — Bonne Arrivée',
-    'description' => 'Bonne Arrivée, le portail du tourisme au Bénin : découvrir, organiser et vivre le pays avec des partenaires de confiance.',
+    'description' => 'Bonne Arrivée, Portail du Tourisme et de l’Attractivité au Bénin : un site d’information ; les services pratiques sont assurés par les partenaires de son écosystème.',
     'activeMenu' => null,
     'headProfile' => 'standard',
     'customContent' => null,

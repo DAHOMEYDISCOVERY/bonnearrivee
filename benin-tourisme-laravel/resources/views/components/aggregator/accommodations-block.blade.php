@@ -8,7 +8,7 @@
 
     Usage :
         <x-aggregator.accommodations-block
-            title="Notre sélection d'hôtels au Bénin"
+            title="Hôtels proposés par nos partenaires"
             pretitle="Avec notre partenaire Dahomey Discovery"
             :filters="['accommodation_type' => 'hotel']"
             :limit="6"
