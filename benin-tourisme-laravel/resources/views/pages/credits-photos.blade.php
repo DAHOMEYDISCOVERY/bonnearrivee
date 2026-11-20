@@ -56,7 +56,7 @@
 <main>
 
   <div class="note">
-    <strong>72 photographies</strong> composent la photothèque du site et
+    <strong>78 photographies</strong> composent la photothèque du site et
     <strong>29</strong> illustrent la carte interactive. Toutes viennent de
     <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Wikimedia&nbsp;Commons</a>.
     Les licences CC&nbsp;BY et CC&nbsp;BY-SA imposent de citer l’auteur et la licence :
@@ -81,7 +81,7 @@
     </dl>
   </div>
 
-  <h2>Photothèque du site — 72 visuels</h2>
+  <h2>Photothèque du site — 78 visuels</h2>
   <p style="color:var(--muted);margin-top:0">Chaque image du site est un recadrage de l’un de ces originaux.</p>
   <div class="wrap"><table>
     <thead><tr><th>Visuel</th><th>Sujet</th><th>Auteur</th><th>Licence</th><th>Source</th></tr></thead>
@@ -589,6 +589,48 @@
       <td>Rachad sanoussi</td>
       <td><span class="lic">CC BY-SA 4.0</span></td>
       <td><a href="/assets/img/wikimedia/zemidjan-de-cotonou-benin.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-legba-900x1125.webp" alt="Legba, gardien des seuils (Savalou)" loading="lazy"></td>
+      <td><strong>Legba, gardien des seuils (Savalou)</strong><br><span class="file">File:VODOUN LEGBA DANS UNE LOCALITE DE LA VILLE DE SAVALOU AU BENIN.jpg</span></td>
+      <td>Ahya ATINDEHOU</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:VODOUN_LEGBA_DANS_UNE_LOCALITE_DE_LA_VILLE_DE_SAVALOU_AU_BENIN.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-dan-900x1125.webp" alt="Dan : pythons royaux" loading="lazy"></td>
+      <td><strong>Dan : pythons royaux</strong><br><span class="file">File:Python royal.jpg</span></td>
+      <td>Padonou Dotou</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Python_royal.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-heviosso-900x1125.webp" alt="Hèviosso au musée Honmè" loading="lazy"></td>
+      <td><strong>Hèviosso au musée Honmè</strong><br><span class="file">File:Représentation du Hèviosso au Musée Honmè.jpg</span></td>
+      <td>Rachad sanoussi</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Repr%C3%A9sentation_du_H%C3%A8viosso_au_Mus%C3%A9e_Honm%C3%A8.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-sakpata-900x1125.webp" alt="Autel de Sakpata" loading="lazy"></td>
+      <td><strong>Autel de Sakpata</strong><br><span class="file">File:Divinité Béninoise Sakpata 07.jpg</span></td>
+      <td>Mhope2010</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Divinit%C3%A9_B%C3%A9ninoise_Sakpata_07.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-mami-wata-900x1125.webp" alt="Mami Wata (chromolithographie ancienne)" loading="lazy"></td>
+      <td><strong>Mami Wata (chromolithographie ancienne)</strong><br><span class="file">File:Mami Wata poster.png</span></td>
+      <td>Auteur inconnu</td>
+      <td><span class="lic">Domaine public</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Mami_Wata_poster.png" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/dieu-fa-900x1125.webp" alt="Plateau de divination du Fa" loading="lazy"></td>
+      <td><strong>Plateau de divination du Fa</strong><br><span class="file">File:Fa divination tray ritual Réplica of Gedegbe Fa tray1.jpg</span></td>
+      <td>Cargostperes</td>
+      <td><span class="lic">CC0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Fa_divination_tray_ritual_R%C3%A9plica_of_Gedegbe_Fa_tray1.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
     </tr>
     </tbody>
   </table></div>

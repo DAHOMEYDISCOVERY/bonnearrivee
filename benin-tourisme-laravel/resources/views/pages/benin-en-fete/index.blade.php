@@ -20,7 +20,15 @@
     $befDesc = [
         'vodun-days' => 'Les Vodun Days, le premier rendez-vous international autour des arts, de la culture et de la spiritualité Vodun.',
     ];
-    $befImg = ['vodun-days' => '/assets/img/vodun-1200x900.webp', 'weloveya' => '/assets/img/plage-fidjrosse-1200x1200.webp', 'festival-des-masques' => '/assets/img/egungun-1200x1200.webp', 'jistna' => '/assets/img/jistna-ceremonie-1024x682.webp', 'la-gaani' => '/assets/img/la-gaani-1024x682.jpg'];
+    // Photos des cartes : mêmes fichiers (src, srcset, alt) que l'ancienne grille, pour que les
+    // images remplacées dans l'admin (« Textes et images ») continuent de s'appliquer.
+    $befImg = [
+        'vodun-days' => ['/assets/img/vodun-640x480.webp', '/assets/img/vodun-640x480.webp 640w, /assets/img/vodun-1200x900.webp 1200w', 'Vodun Days — ceremonie'],
+        'weloveya' => ['/assets/img/danse-640x480.webp', '/assets/img/danse-640x480.webp 640w, /assets/img/danse-1200x900.webp 1200w', 'Weloveya — danses et musique'],
+        'festival-des-masques' => ['/assets/img/gelede-640x480.webp', '/assets/img/gelede-640x480.webp 640w, /assets/img/gelede-1200x675.webp 1200w', 'Festival des Masques — gelede'],
+        'jistna' => ['/assets/img/jistna-ceremonie-1024x682.webp', null, 'JISTNA'],
+        'la-gaani' => ['/assets/img/la-gaani-1024x682.jpg', null, 'La Gaani'],
+    ];
     $befStyle = ['vodun-days' => ['#0e0b0c', '#f3ece1', '#d9a441'], 'weloveya' => ['#fcd116', '#16112b', '#ff4f2e'], 'festival-des-masques' => ['#f3ebe0', '#24170f', '#a2582a'], 'jistna' => ['#e9efd9', '#1f2a1a', '#3f7f22'], 'la-gaani' => ['#1b2140', '#f4ead7', '#c98b2b']];
 @endphp
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,12 +36,8 @@
 <link rel="stylesheet" href="/assets/bef.css?v=20261120a">
 <style>
 .bfx{--bf-bg:#f7f3ec;--bf-accent:#00844d}
-.bfx .bfx-hero{padding:150px 0 70px;text-align:center;background:radial-gradient(60% 70% at 50% 0%,rgba(252,209,22,.22),transparent 70%),var(--bf-bg)}
-.bfx .bfx-hero .bf-k{color:#b0232a}
-.bfx .bfx-hero h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(2.8rem,7vw,6rem);line-height:.98;letter-spacing:-.02em;margin:16px auto 20px;max-width:14ch}
-.bfx .bfx-hero h1 em{font-style:italic;font-weight:500;color:#00844d}
-.bfx .bfx-hero p{max-width:52ch;margin:0 auto;color:#5f5a55;font-size:1.1rem}
-.bfx .bfx-saison{margin-top:60px;background:#fff;border-radius:30px;padding:30px clamp(18px,3vw,36px) 26px;box-shadow:0 30px 60px -44px rgba(30,25,15,.5)}
+.bfx .bfx-intro{padding:clamp(40px,6vw,70px) 0 clamp(50px,7vw,90px);background:var(--bf-bg)}
+.bfx .bfx-saison{margin-top:0;background:#fff;border-radius:30px;padding:30px clamp(18px,3vw,36px) 26px;box-shadow:0 30px 60px -44px rgba(30,25,15,.5)}
 .bfx .bfx-mois{display:grid;grid-template-columns:repeat(9,1fr);gap:6px}
 .bfx .bfx-mois span{text-align:center;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a938a;padding-bottom:12px}
 .bfx .bfx-ligne{position:relative;height:6px;border-radius:6px;background:linear-gradient(90deg,#00844d 0 33.3%,#fcd116 33.3% 66.6%,#e8112d 66.6%)}
@@ -65,12 +69,32 @@
 }
 </style>
 <div class="content-wrapper no-terms">
+    <div class="emerv-hero">
+        <img class="emerv-hero__img"
+             src="/assets/img/zangbeto-1920x960.webp"
+             srcset="/assets/img/zangbeto-640x320.webp 640w, /assets/img/zangbeto-1200x600.webp 1200w, /assets/img/zangbeto-1920x960.webp 1920w"
+             sizes="100vw"
+             alt="Sortie de zangbéto"
+             fetchpriority="high">
+        <div class="emerv-hero__overlay">
+            <nav class="emerv-hero__breadcrumb" aria-label="Fil d'ariane">
+                <ol>
+                    <li><a href="/">Accueil</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page">Bénin en Fête</li>
+                </ol>
+            </nav>
+            <div class="emerv-hero__center">
+                <p class="emerv-hero__eyebrow">Les événements à découvrir au Bénin</p>
+                <h1 class="emerv-hero__title">L'agenda qui rythme la destination</h1>
+                <p class="emerv-hero__lead">Fêtes traditionnelles, grands rendez-vous : la saison culturelle du Bénin ne s'arrête jamais.</p>
+            </div>
+        </div>
+    </div>
+
 <div class="bf bfx" id="evenements">
-    <header class="bfx-hero">
+    <section class="bfx-intro">
         <div class="bf-in">
-            <span class="bf-k">Les événements à découvrir au Bénin</span>
-            <h1>L'agenda qui rythme <em>la destination</em></h1>
-            <p>Fêtes traditionnelles, grands rendez-vous : la saison culturelle du Bénin ne s'arrête jamais.</p>
             <div class="bfx-saison bf-rv on" aria-label="La saison des fêtes, de décembre à août">
                 <div>
                     <div class="bfx-mois">@foreach ($befMois as $m)<span>{{ $m }}</span>@endforeach</div>
@@ -89,7 +113,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     @foreach ($befOrdre as $n => $slug)
         @continue(! isset($befEvents[$slug]))
@@ -98,7 +122,7 @@
             [$bg, $fg, $ac] = $befStyle[$slug];
         @endphp
         <section class="bfx-ev" id="fete-{{ $slug }}" style="--bg: {{ $bg }}; --fg: {{ $fg }}; --ac: {{ $ac }}">
-            <div class="bfx-ev__img"><img src="{{ $befImg[$slug] ?? $e['hero'] }}" alt="{{ $e['title'] }}" loading="{{ $n === 0 ? 'eager' : 'lazy' }}" decoding="async"></div>
+            <div class="bfx-ev__img"><img src="{{ $befImg[$slug][0] ?? $e['hero'] }}" @if (! empty($befImg[$slug][1])) srcset="{{ $befImg[$slug][1] }}" sizes="(max-width: 900px) 100vw, 52vw" @endif alt="{{ $befImg[$slug][2] ?? $e['title'] }}" loading="{{ $n === 0 ? 'eager' : 'lazy' }}" decoding="async"></div>
             <div class="bfx-ev__txt bf-rv">
                 <span class="bfx-ev__n" aria-hidden="true">{{ str_pad((string) ($n + 1), 2, '0', STR_PAD_LEFT) }}</span>
                 <span class="bfx-ev__date">{{ $e['dates'] }} · {{ $e['lieu'] }}</span>

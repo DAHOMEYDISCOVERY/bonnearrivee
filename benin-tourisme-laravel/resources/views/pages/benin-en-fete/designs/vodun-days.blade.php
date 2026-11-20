@@ -41,7 +41,7 @@
 .vd .vd-pan__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
 .vd .vd-pan__head h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.02;font-weight:600;margin-top:12px}
 .vd .vd-pan{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.vd .vd-dieu{position:relative;padding:34px 30px 32px;border-radius:26px;background:radial-gradient(120% 90% at 0% 0%,rgba(217,164,65,.14),rgba(255,255,255,.03) 55%);transition:transform .5s cubic-bezier(.2,.7,.3,1),background .5s}
+.vd .vd-dieu{position:relative;padding:0;overflow:hidden;border-radius:26px;background:radial-gradient(120% 90% at 0% 0%,rgba(217,164,65,.14),rgba(255,255,255,.03) 55%);transition:transform .5s cubic-bezier(.2,.7,.3,1),background .5s}
 .vd .vd-dieu:hover{transform:translateY(-6px);background:radial-gradient(120% 90% at 0% 0%,rgba(216,38,61,.22),rgba(255,255,255,.04) 60%)}
 .vd .vd-dieu i{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:rgba(217,164,65,.16);color:var(--or);font-family:"Cormorant Garamond",serif;font-style:normal;font-size:1.5rem;font-weight:700;margin-bottom:22px}
 .vd .vd-dieu h3{font-family:"Cormorant Garamond",serif;font-size:1.9rem;font-weight:600;margin-bottom:10px;color:#fff}
@@ -104,6 +104,14 @@
 .vd .vd-prat__box b{display:block;margin-bottom:4px}
 .vd .vd-prat__box p{color:var(--bf-soft);font-size:.94rem}
 .vd .vd-head2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;font-weight:600;margin:12px 0 36px}
+.vd .vd-dieu__img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.vd .vd-dieu__img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.vd .vd-dieu__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,12,0) 45%,rgba(14,11,12,.85))}
+.vd .vd-dieu:hover .vd-dieu__img img{transform:scale(1.06)}
+.vd .vd-dieu__txt{position:relative;padding:0 30px 32px}
+.vd .vd-dieu__img+.vd-dieu__txt{margin-top:-30px}
+.vd .vd-dieu__txt>i{position:relative;z-index:1;background:#2a1d14!important;box-shadow:0 0 0 4px rgba(14,11,12,.6)}
+.vd .vd-dieu__txt:first-child{padding-top:34px}
 @media (max-width:900px){
  .vd .vd-hero{grid-template-columns:1fr;min-height:0}
  .vd .vd-hero__img{clip-path:none;height:56vh;order:-1}
@@ -168,10 +176,16 @@
             </div>
             <div class="vd-pan">
                 @foreach ($event['signature']['items'] as $i => $it)
+                    @php($vdPhoto = '/assets/img/dieu-' . \Illuminate\Support\Str::slug($it['t']) . '-900x1125.webp')
                     <article class="vd-dieu bf-rv" style="--d: {{ ($i % 3) * 100 }}ms">
-                        <i aria-hidden="true">{{ mb_substr($it['t'], 0, 1) }}</i>
-                        <h3>{{ $it['t'] }}</h3>
-                        <p>{{ $it['d'] }}</p>
+                        @if (is_file(public_path(ltrim($vdPhoto, '/'))))
+                            <figure class="vd-dieu__img"><img src="{{ $vdPhoto }}" alt="{{ $it['t'] }}" loading="lazy" decoding="async"></figure>
+                        @endif
+                        <div class="vd-dieu__txt">
+                            <i aria-hidden="true">{{ mb_substr($it['t'], 0, 1) }}</i>
+                            <h3>{{ $it['t'] }}</h3>
+                            <p>{{ $it['d'] }}</p>
+                        </div>
                     </article>
                 @endforeach
             </div>
