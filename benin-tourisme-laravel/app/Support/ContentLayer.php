@@ -84,9 +84,33 @@ final class ContentLayer
             return $html;
         }
 
+        $items = self::extract($html, $forTranslation);
+
+        // Une modification est rattachée à « type:empreinte:rang ». Si la page a été
+        // remaniée (un bloc ajouté plus haut, une image reprise ailleurs), le rang peut
+        // changer : la modification orpheline se reporte alors sur un élément de même
+        // type et de même contenu d'origine resté sans modification.
+        $present = [];
+        foreach ($items as $item) {
+            $present[$item['key']] = true;
+        }
+        $orphans = [];
+        foreach ($edits as $key => $edit) {
+            if (! isset($present[$key]) && is_array($edit) && preg_match('#^([a-z]+:[0-9a-f]{16}):(\d+)$#', (string) $key, $m)) {
+                $orphans[$m[1]][(int) $m[2]] = $edit;
+            }
+        }
+        foreach ($orphans as &$list) {
+            ksort($list);
+        }
+        unset($list);
+
         $replacements = [];
-        foreach (self::extract($html, $forTranslation) as $item) {
+        foreach ($items as $item) {
             $edit = $edits[$item['key']] ?? null;
+            if (! is_array($edit) && $orphans !== [] && preg_match('#^([a-z]+:[0-9a-f]{16}):\d+$#', $item['key'], $m) && ! empty($orphans[$m[1]])) {
+                $edit = array_shift($orphans[$m[1]]);
+            }
             if (! is_array($edit)) {
                 continue;
             }

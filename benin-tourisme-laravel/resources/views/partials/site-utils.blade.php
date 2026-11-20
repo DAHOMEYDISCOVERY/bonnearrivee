@@ -482,6 +482,21 @@ main .card.basicCard:hover,main .card.splitCard:hover{transform:translateY(-4px)
 .bar-note,.bar-atouts .bar-note{border-left:0!important;padding:1rem 1.2rem!important;border-radius:16px!important;background:rgba(200,60,30,.07)!important;box-shadow:inset 0 0 0 1px rgba(200,69,43,.18)}
 .ltr-lead{border-left:0!important;padding-left:0!important}
 .br-sun li{border-top:0!important}
+/* 6. Plus de petits traits décoratifs (devant les surtitres, sous les titres, autour des citations).
+      Les surtitres restent en capitales espacées, sans ornement, comme sur les grands sites éditoriaux. */
+.card.overlayedCard .card-titles .card-texts::after,.card.overlayedCard .card-titles .card-town::after,
+.hero-titles>[class*="-texts"]::after,.hero-titles>[class*="-texts"]>[class*="-description"]::before,
+.section-titles>[class*="-texts"]::after,.section-titles>[class*="-texts"]>[class*="-description"]::before,
+.focus-header .focus-block-titles>[class*="-texts"]::after,.focus-header .focus-block-titles>[class*="-texts"]>[class*="-description"]::before,
+.woody-component-custom-text .generic-block-header .generic-block-titles>[class*="-texts"]::after,
+.woody-component-landswpr .landswpr-titles>[class*="-texts"]::after,.page-main-titles::after,
+.benin-littoral__eyebrow::before,.benin-littoral__eyebrow::after,.benin-newsletter__eyebrow::after,
+.benin-airlines__eyebrow::before,.benin-airlines__eyebrow::after,.benin-gateway__eyebrow::before,.benin-gateway__eyebrow::after,
+.ba-intro__title::after,.bao .benin-page-chapo::after,.bao-k::before,
+.bar .bar-kick::before,.slc-tete span::before,.trc .trc-k::before,.rte .rte-cit::before,.ltr .ltr-kick::before,
+.tdt-traditions .tdt-pre::before,.tdt-traditions .tdt-txt::before,.vdn .vdn-orn::before,.vdn .vdn-orn::after,.vdn .vdn-kicker::before,
+.tlq .tlq-k::before,.bb-l::before{display:none!important;content:none!important}
+.bag__filet,.tdt-bar{display:none!important}
 /* 5. Textes courants des cartes et encadrés : justifiés, avec césure, et jamais collés au bord. */
 .bao-step .woody-component-text p,.bao-step>p,
 main .woody-component-custom-text .woody-component-text p,
@@ -536,5 +551,28 @@ main .benin-page-block p,.bf-lead,.bf-faq details p,
 
     function lancer() { filDAriane(); credits(); }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancer); else lancer();
+})();
+</script>
+
+{{-- Navigation plus rapide : la page visée est préchargée dès que le pointeur s'attarde sur
+     un lien interne (ou au premier appui sur mobile). Rien n'est chargé sans intention de clic. --}}
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/admin*"}},{"not":{"href_matches":"/livewire*"}},{"not":{"href_matches":"/*\\?*"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"selector_matches":"[download],[target=_blank],[rel~=nofollow]"}}]},"eagerness":"moderate"}]}
+</script>
+<script>
+(function () {
+    'use strict';
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) return;
+    var vus = {}, n = 0;
+    function precharger(e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || n > 20 || a.target === '_blank' || a.hasAttribute('download')) return;
+        var u = a.href;
+        if (a.origin !== location.origin || u.indexOf('?') > -1 || /\/admin|\.pdf$|#/.test(u) || u === location.href || vus[u]) return;
+        vus[u] = 1; n++;
+        var l = document.createElement('link'); l.rel = 'prefetch'; l.href = u; document.head.appendChild(l);
+    }
+    document.addEventListener('mouseover', function (e) { clearTimeout(precharger.t); precharger.t = setTimeout(function () { precharger(e); }, 120); }, { passive: true });
+    document.addEventListener('touchstart', precharger, { passive: true });
 })();
 </script>
