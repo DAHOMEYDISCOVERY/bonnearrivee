@@ -7,6 +7,7 @@ namespace App\Services\Aggregator;
 use App\Services\Aggregator\Contracts\Source;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Collection;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -23,6 +24,21 @@ use Throwable;
  */
 final class WaniloSource implements Source
 {
+
+    /**
+     * Magasin de cache des sources externes. Il est séparé du cache général
+     * pour que `php artisan cache:clear` / `optimize:clear` (lancés à chaque
+     * déploiement) ne vident pas les dernières réponses connues : sinon le
+     * premier visiteur de chaque page attend l'appel réseau (jusqu'à 12 s).
+     */
+    private static function cache(): Repository
+    {
+        if (app()->environment('testing') || ! is_array(config('cache.stores.aggregator'))) {
+            return Cache::store();
+        }
+
+        return Cache::store('aggregator');
+    }
     private const SOURCE = 'wanilo';
     private const SITE_URL = 'https://www.wanilo.studio';
     private const SITEMAP = 'https://www.wanilo.studio/sitemap.xml';
@@ -43,10 +59,10 @@ final class WaniloSource implements Source
         unset($filters);
         // Un sitemap vide (site injoignable) n'est gardé que 10 minutes : sinon
         // le bloc restait masqué 6 h après une simple coupure.
-        $urls = Cache::get('agg:wanilo:sitemap');
+        $urls = self::cache()->get('agg:wanilo:sitemap');
         if (! is_array($urls)) {
             $urls = $this->parseSitemap();
-            Cache::put('agg:wanilo:sitemap', $urls, $urls === [] ? 600 : self::CACHE_TTL);
+            self::cache()->put('agg:wanilo:sitemap', $urls, $urls === [] ? 600 : self::CACHE_TTL);
         }
 
         // On garde les URLs sous /actualites/... (sauf l'index /actualites lui-même)
@@ -101,7 +117,7 @@ final class WaniloSource implements Source
         // toute évolution du DTO n'invalide pas les caches sérialisés.
         $cacheKey = 'agg:wanilo:page:' . md5($url);
 
-        $data = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($url): ?array {
+        $data = self::cache()->remember($cacheKey, self::CACHE_TTL, function () use ($url): ?array {
             try {
                 $html = Http::timeout(self::TIMEOUT)
                     ->connectTimeout(self::TIMEOUT)

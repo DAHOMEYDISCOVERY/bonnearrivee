@@ -10,5 +10,4 @@
         <a class="bf-btn bf-btn--ghost" href="/sejourner/toutes-les-infos-pratiques/les-liens-utiles">Toutes les agences agréées</a>
         <a class="bf-btn bf-btn--ghost" href="/benin-en-fete">Voir tous les événements</a>
     </div>
-    <p class="bf-partner">Bonne Arrivée est un site d’information et ne vend aucune prestation.</p>
 </div>

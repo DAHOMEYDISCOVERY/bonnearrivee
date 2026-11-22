@@ -53,6 +53,15 @@ return [
             'lock_path' => storage_path('framework/cache/data'),
         ],
 
+        // Réponses des sites partenaires (agrégateur). Dossier distinct :
+        // `cache:clear` ne vide que le magasin par défaut, ces données
+        // survivent donc aux déploiements.
+        'aggregator' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/aggregator'),
+            'lock_path' => storage_path('framework/cache/aggregator'),
+        ],
+
         'storage' => [
             'driver' => 'storage',
             'disk' => env('CACHE_STORAGE_DISK'),

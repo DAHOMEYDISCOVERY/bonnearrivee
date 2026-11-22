@@ -678,4 +678,81 @@ html:not(#ba) body:not(#ba) main .home-slider .landswprMediaWrapper img{width:10
 .ba-teaser-crumb .woody-component-breadcrumb{background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
 .ba-teaser-crumb .woody-component-breadcrumb ol{justify-content:center}
 @media (max-width:767.98px){.ba-teaser-hero{min-height:100vh;min-height:100svh;padding-bottom:calc(3rem + env(safe-area-inset-bottom,0px))}.ba-teaser-hero .page-main-title{font-size:clamp(2.2rem,10vw,3rem)!important}}
+
+/* Cartes superposées avec bouton « Lire la suite » : bouton compact, centré, dans la carte */
+html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button{justify-content:flex-end!important;align-items:center!important;gap:.55rem;padding:1rem 1rem 1.1rem!important;box-sizing:border-box!important}
+html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button .card-titles{width:100%}
+html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button .card-description{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3;overflow:hidden!important}
+html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button .card-button{position:relative!important;inset:auto!important;flex:0 0 auto!important;width:auto!important;max-width:calc(100% - .5rem)!important;align-self:center!important;margin:0!important;padding:.5rem 2.4rem .5rem 1.3rem!important;min-height:0!important;border-radius:999px!important;white-space:nowrap!important;font-size:.9rem!important;line-height:1.3!important;transform:none!important}
+@media (hover:none){html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button .card-button{opacity:1!important;visibility:visible!important}}
+@media (max-width:1199.98px){html:not(#ba) body:not(#ba) main .overlayedCard .card-section.has-button .card-description{-webkit-line-clamp:2}}
+@media (max-width:767.98px){
+/* Héros sur mobile : texte centré au milieu de l'écran */
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .fullcenterbox{justify-content:center!important;text-align:center!important;padding:calc(var(--ba-header-h,84px) + .5rem) 1.4rem 2.5rem!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-titles,html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-texts{align-items:center!important;text-align:center!important}
+html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__overlay{justify-content:center!important;padding:calc(var(--ba-header-h,84px) + .5rem) 1.4rem 2.5rem!important}
+html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__center{justify-content:center!important;text-align:center!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header)::after,html:not(#ba) body:not(#ba) main .emerv-hero::after{background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.28) 28%,rgba(0,0,0,.42) 50%,rgba(0,0,0,.28) 72%,rgba(0,0,0,.5) 100%)!important}
+html:not(#ba) body:not(#ba) main .ba-teaser-hero{justify-content:center!important;padding-bottom:2.5rem!important}
+html:not(#ba) body:not(#ba) main .ofr-hero{align-items:center!important}
+html:not(#ba) body:not(#ba) main .ofr-hero .section-header-wrapper,html:not(#ba) body:not(#ba) main .ofr-hero .section-header{text-align:center!important}
+html:not(#ba) body:not(#ba) main .bf :is(.vd-hero,.wl-hero,.fm-hero,.jn-hero,.ga-hero) :is(h1,h2,p,span,small,em,strong){text-align:center!important}
+html:not(#ba) body:not(#ba) main .bf .vd-hero__txt{justify-content:center!important;align-items:center!important}
+html:not(#ba) body:not(#ba) main .bf :is(.wl-hero__grid,.fm-hero__grid,.jn-hero__grid){align-items:center!important;justify-items:center!important}
+html:not(#ba) body:not(#ba) main .bf .ga-hero{align-items:center!important}
+html:not(#ba) body:not(#ba) main .bf :is(.vd-hero,.wl-hero,.fm-hero,.jn-hero,.ga-hero) :is(div,ul,p,nav){justify-content:center}
+}
+/* Introductions longues (souvent rédigées dans l'admin) : lecture confortable, repliées au-delà de quelques lignes */
+html:not(#ba) body:not(#ba) main .page-main-description.ba-intro-long{max-width:780px!important;margin-left:auto!important;margin-right:auto!important;text-align:left!important}
+html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{position:relative;overflow:hidden;max-height:11.2em;transition:max-height .6s cubic-bezier(.2,.8,.2,1)}
+html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body p,html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{text-align:left!important;line-height:1.85!important}
+html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5.5em;background:linear-gradient(180deg,rgba(255,255,255,0),var(--ba-intro-bg,#fff) 88%);pointer-events:none;transition:opacity .4s}
+html:not(#ba) body:not(#ba) main .ba-intro-long.is-open .ba-intro-body{max-height:none}
+html:not(#ba) body:not(#ba) main .ba-intro-long.is-open .ba-intro-body::after{opacity:0}
+html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body>p:first-child::first-letter,html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body>p:first-child>span:first-child::first-letter{float:left;font-size:3.6em;line-height:.82;margin:.06em .14em 0 0;font-weight:800;color:#00844d}
+html:not(#ba) body:not(#ba) main .ba-intro-more{display:flex;align-items:center;gap:.55rem;margin:1.1rem auto 0;padding:.62rem 1.35rem;border:0;border-radius:999px;background:#00844d;color:#fff;font:700 .92rem/1 Montserrat,Helvetica,Arial,sans-serif;cursor:pointer;box-shadow:0 10px 24px -14px rgba(0,80,45,.8);transition:transform .25s,background .25s}
+html:not(#ba) body:not(#ba) main .ba-intro-more:hover{transform:translateY(-2px);background:#006b3f}
+html:not(#ba) body:not(#ba) main .ba-intro-more svg{transition:transform .35s}
+html:not(#ba) body:not(#ba) main .ba-intro-long.is-open+.ba-intro-more svg{transform:rotate(180deg)}
+@media (max-width:767.98px){html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{max-height:9.3em}}
 </style>
+<script>
+(function () {
+    /* Pas dans un aperçu de l'admin : le texte doit y rester tel quel. */
+    if (window.self !== window.top) return;
+    function fond(el) {
+        while (el && el !== document.documentElement) {
+            var c = getComputedStyle(el).backgroundColor;
+            if (c && c !== 'transparent' && !/rgba\(\d+,\s*\d+,\s*\d+,\s*0\)/.test(c)) return c;
+            el = el.parentElement;
+        }
+        return '#fff';
+    }
+    function init() {
+        document.querySelectorAll('main .page-main-description').forEach(function (d) {
+            if (d.closest('.ba-teaser-hero') || d.classList.contains('ba-intro-long')) return;
+            if (d.textContent.replace(/\s+/g, ' ').trim().length < 650) return;
+            var body = document.createElement('div');
+            body.className = 'ba-intro-body';
+            while (d.firstChild) body.appendChild(d.firstChild);
+            d.appendChild(body);
+            d.classList.add('ba-intro-long');
+            d.style.setProperty('--ba-intro-bg', fond(d));
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'ba-intro-more';
+            b.setAttribute('aria-expanded', 'false');
+            b.innerHTML = '<span>Lire la suite</span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            d.insertAdjacentElement('afterend', b);
+            b.addEventListener('click', function () {
+                var ouvert = d.classList.toggle('is-open');
+                b.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+                b.firstChild.textContent = ouvert ? 'Réduire' : 'Lire la suite';
+                if (!ouvert) d.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            });
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+

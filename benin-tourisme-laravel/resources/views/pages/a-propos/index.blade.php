@@ -7,7 +7,7 @@
 @section('mainAttributes')role="main" class="content-type-page basic_page" id="main-content"@endsection
 
 @section('headGlobals')@verbatim<script>window.globals={"ancestors":{"chapter1":"À propos","chapter2":null,"chapter3":null},"context":"website","current_lang":"fr","current_locale":"fr","current_locale_region":"fr_FR","env":"prod","languages":["fr","nl"],"page_type":"basic_page","post_id":9002,"post_title":"À propos","post_type":"page","site_key":"benin","tags":{"places":[],"seasons":[],"themes":[],"targets":[]},"woody_options_pages":{"search_url":2043,"weather_url":0},"woody_timezone":"Europe/Paris","search":{"api":{"uri":"","args":{"size":15,"threshold":0.5}}},"sheet_bordereaux_with_dates":[],"short_date_bordereaux":["FMA","ASC"],"tmaps":{"url_api":"","url_api_lazy":""},"hawwwai":{"sheet_options":{"nearby_distance_max":5000}}}</script>@endverbatim@endsection
-@section('headSchema')@verbatim<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.bonnearrivee.bj/a-propos","name":"À propos — Bonne Arrivée","description":"Bonne Arrivée, Portail du Tourisme et de l’Attractivité au Bénin : un site d’information, et les partenaires de son écosystème."}</script>@endverbatim@endsection
+@section('headSchema')@verbatim<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.bonnearrivee.bj/a-propos","name":"À propos — Bonne Arrivée","description":"Bonne Arrivée, Portail du Tourisme et de l’Attractivité au Bénin : découvrir le pays, préparer son voyage et rencontrer les partenaires de son écosystème."}</script>@endverbatim@endsection
 
 @section('headImageOg')@verbatim<meta property="og:image" content="/assets/img/cotonou-1920x960.webp"/>@endverbatim@endsection
 
@@ -31,7 +31,7 @@
                 <p class="emerv-hero__eyebrow">Portail du Tourisme et de l'Attractivité</p>
                 <h1 class="emerv-hero__title page-main-title">Qui sommes-nous ?</h1>
                 <div class="emerv-hero__lead page-main-description">
-                    <p><strong>Bonne Arrivée</strong> est le Portail du Tourisme et de l'Attractivité au Bénin. C'est un site d'information : il fait connaître le pays, ses destinations, sa culture et ses infos pratiques, et oriente les visiteurs vers les professionnels de son écosystème.</p>
+                    <p><strong>Bonne Arrivée</strong> est le Portail du Tourisme et de l'Attractivité au Bénin. Il fait connaître le pays, ses destinations, sa culture et ses infos pratiques, et oriente les visiteurs vers les professionnels de son écosystème.</p>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
                     <li><img src="/assets/img/hotel-640x480.webp" alt="Une chambre d'hôtel au Bénin" loading="lazy" decoding="async"><div><strong>Orienter</strong> — vers les professionnels de l'écosystème : agences réceptives, hébergeurs, restaurateurs, transporteurs, guides.</div></li>
                     <li><img src="/assets/img/wikimedia/lever-de-soleil-sur-l-esplanade-de-l-amazone-a-cotonou.webp" alt="Lever de soleil sur l'esplanade de l'Amazone, à Cotonou" loading="lazy" decoding="async"><div><strong>Valoriser</strong> — l'attractivité du Bénin auprès des visiteurs, des médias et des investisseurs.</div></li>
                 </ul>
-                <div class="apo-pas"><b aria-hidden="true">!</b><p><strong>Bonne Arrivée n'est pas une agence et ne vend aucune prestation</strong> : ni circuit, ni hébergement, ni transport, ni assurance. Tout ce qui est pratique (réservations, séjours, services) se fait directement auprès des partenaires de l'écosystème, qui en sont seuls responsables.</p></div>
+                <div class="apo-pas"><b aria-hidden="true">→</b><p><strong>Le portail vous inspire, nos partenaires vous accueillent.</strong> Circuits, hébergements, transports, assurances : pour passer de l'envie au voyage, vous réservez directement auprès des professionnels de l'écosystème, qui vous accompagnent de bout en bout.</p></div>
             </div>
         </section>
 

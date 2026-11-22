@@ -145,7 +145,6 @@
                     <a class="bf-btn bf-btn--main" href="https://dahomeydiscovery.com" target="_blank" rel="noopener noreferrer">Réserver avec Dahomey Discovery <span aria-hidden="true">↗</span></a>
                     <a class="bf-btn bf-btn--ghost" href="/agenda">Voir l'agenda complet</a>
                 </div>
-                <p class="bf-partner">Bonne Arrivée est un site d’information et ne vend aucune prestation.</p>
             </div>
         </div>
     </section>

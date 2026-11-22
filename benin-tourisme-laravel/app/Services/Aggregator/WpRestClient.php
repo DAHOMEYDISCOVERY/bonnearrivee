@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Aggregator;
 
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -42,6 +43,21 @@ final class WpRestClient
     }
 
     /**
+     * Magasin de cache des sources externes. Il est séparé du cache général
+     * pour que `php artisan cache:clear` / `optimize:clear` (lancés à chaque
+     * déploiement) ne vident pas les dernières réponses connues : sinon le
+     * premier visiteur de chaque page attend l'appel réseau (jusqu'à 12 s).
+     */
+    private static function cache(): Repository
+    {
+        if (app()->environment('testing') || ! is_array(config('cache.stores.aggregator'))) {
+            return Cache::store();
+        }
+
+        return Cache::store('aggregator');
+    }
+
+    /**
      * Retourne le JSON décodé, tableau vide en cas d'échec ou d'absence.
      *
      * @param  array<string, scalar|null>  $query
@@ -52,8 +68,8 @@ final class WpRestClient
         $cacheKey = 'agg:' . md5($this->baseUrl . '|' . $path . '|' . http_build_query($query));
         $stampKey = $cacheKey . ':fresh_until';
 
-        $data       = Cache::get($cacheKey);
-        $freshUntil = (int) Cache::get($stampKey, 0);
+        $data       = self::cache()->get($cacheKey);
+        $freshUntil = (int) self::cache()->get($stampKey, 0);
         $now        = time();
 
         // Cas nominal : on a de la donnée en cache.
@@ -73,7 +89,7 @@ final class WpRestClient
         // Échec récent sans donnée en cache : on ne refait pas attendre chaque
         // visiteur (jusqu'à TIMEOUT secondes par bloc) ; nouvel essai après
         // FAILED_FOR secondes.
-        if (Cache::has($cacheKey . ':failed')) {
+        if (self::cache()->has($cacheKey . ':failed')) {
             return [];
         }
 
@@ -115,9 +131,9 @@ final class WpRestClient
             $json = $response->json();
             $data = is_array($json) ? $json : [];
 
-            Cache::put($cacheKey, $data, self::STORE_FOR);
-            Cache::put($stampKey, time() + self::FRESH_FOR, self::STORE_FOR);
-            Cache::forget($cacheKey . ':failed');
+            self::cache()->put($cacheKey, $data, self::STORE_FOR);
+            self::cache()->put($stampKey, time() + self::FRESH_FOR, self::STORE_FOR);
+            self::cache()->forget($cacheKey . ':failed');
 
             return $data;
         } catch (ConnectionException $e) {
@@ -140,12 +156,12 @@ final class WpRestClient
      */
     private function lastGoodOrMarkFailed(string $cacheKey): array
     {
-        $data = Cache::get($cacheKey);
+        $data = self::cache()->get($cacheKey);
         if (is_array($data)) {
             return $data;
         }
 
-        Cache::put($cacheKey . ':failed', 1, self::FAILED_FOR);
+        self::cache()->put($cacheKey . ':failed', 1, self::FAILED_FOR);
 
         return [];
     }
@@ -174,17 +190,17 @@ final class WpRestClient
 
         // Verrou anti-concurrence : un seul refresh à la fois, 30 s max.
         $lockKey = $cacheKey . ':refreshing';
-        if (Cache::get($lockKey)) {
+        if (self::cache()->get($lockKey)) {
             return;
         }
-        Cache::put($lockKey, 1, 30);
+        self::cache()->put($lockKey, 1, 30);
 
         register_shutdown_function(function () use ($cacheKey, $stampKey, $lockKey, $path, $query): void {
             fastcgi_finish_request();
             try {
                 $this->fetchAndStore($cacheKey, $stampKey, $path, $query);
             } finally {
-                Cache::forget($lockKey);
+                self::cache()->forget($lockKey);
             }
         });
     }

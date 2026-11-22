@@ -81,7 +81,7 @@
     </dl>
   </div>
 
-  <h2>Photothèque du site — 93 visuels</h2>
+  <h2>Photothèque du site — 100 visuels</h2>
   <p style="color:var(--muted);margin-top:0">Chaque image du site est un recadrage de l’un de ces originaux.</p>
   <div class="wrap"><table>
     <thead><tr><th>Visuel</th><th>Sujet</th><th>Auteur</th><th>Licence</th><th>Source</th></tr></thead>
@@ -947,6 +947,55 @@
       <td>Vital aimavo</td>
       <td><span class="lic">CC BY-SA 4.0</span></td>
       <td><a href="https://commons.wikimedia.org/wiki/File:R%C3%A9coltes_d%27igname_%C3%A0_Savalou_au_B%C3%A9nin.png" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-estuaire-du-mono-a-avloh.webp" alt="L’estuaire du Mono à Avloh, Grand-Popo" loading="lazy"></td>
+      <td><strong>L’estuaire du Mono à Avloh, Grand-Popo</strong><br><span class="file">File:Mono river estuary in Avloh, Grand-Popo, Benin.jpg</span></td>
+      <td>Kulttuurinavigaattori</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Mono_river_estuary_in_Avloh%2C_Grand-Popo%2C_Benin.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-barque-sur-le-mono.webp" alt="Une barque sur le Mono, près de la Bouche du Roy" loading="lazy"></td>
+      <td><strong>Une barque sur le Mono, près de la Bouche du Roy</strong><br><span class="file">File:Barque motorisée à la bouche du Roy sur le fleuve Mono.jpg</span></td>
+      <td>Minyimin</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Barque_motoris%C3%A9e_%C3%A0_la_bouche_du_Roy_sur_le_fleuve_Mono.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-pecheur-a-l-epervier.webp" alt="Pêche à l’épervier à l’embouchure du Mono" loading="lazy"></td>
+      <td><strong>Pêche à l’épervier à l’embouchure du Mono</strong><br><span class="file">File:Casting the net.jpg</span></td>
+      <td>Kulttuurinavigaattori</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Casting_the_net.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-jonc-au-sechage.webp" alt="Jonc disposé en éventail pour sécher" loading="lazy"></td>
+      <td><strong>Jonc disposé en éventail pour sécher</strong><br><span class="file">File:Jonc disposé en éventail pour séchage.jpg</span></td>
+      <td>Padonou Dotou</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Jonc_dispos%C3%A9_en_%C3%A9ventail_pour_s%C3%A9chage.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-tortue-marine.webp" alt="Une tortue marine" loading="lazy"></td>
+      <td><strong>Une tortue marine</strong><br><span class="file">File:Tortue de mer.jpg</span></td>
+      <td>Sunday Berlioz KAKPO</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Tortue_de_mer.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-fumage-du-poisson.webp" alt="Unité de fumage du poisson" loading="lazy"></td>
+      <td><strong>Unité de fumage du poisson</strong><br><span class="file">File:Unité de fumage de poisson.jpg</span></td>
+      <td>Jolyane01</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Unit%C3%A9_de_fumage_de_poisson.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/bdr-lever-du-soleil-a-l-embouchure.webp" alt="Lever du soleil à l’embouchure de la Bouche du Roy" loading="lazy"></td>
+      <td><strong>Lever du soleil à l’embouchure de la Bouche du Roy</strong><br><span class="file">File:Sunrise à l'embouchure de la Bouche du Roy.jpg</span></td>
+      <td>Padonou Dotou</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Sunrise_%C3%A0_l%27embouchure_de_la_Bouche_du_Roy.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
     </tr>
     </tbody>
   </table></div>
