@@ -47,7 +47,10 @@ final class SiteLayoutTest extends TestCase
     {
         $html = $this->get('/explorez')->assertOk()->getContent();
 
-        $this->assertStringContainsString('class="menu-item is-submenu-parent is-active" role="button">', $html);
+        // Le <li> ne porte plus role="button" : un rôle de bouton sur un élément de liste
+        // casse la structure lue par les lecteurs d'écran (audit d'accessibilité PageSpeed).
+        $this->assertStringContainsString('class="menu-item is-submenu-parent is-active">', $html);
+        $this->assertStringNotContainsString('<li class="menu-item is-submenu-parent is-active" role="button">', $html);
     }
 
     public function test_une_version_enregistree_au_back_office_est_publiee(): void

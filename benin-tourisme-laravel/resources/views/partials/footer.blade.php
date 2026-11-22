@@ -13,7 +13,7 @@
     <div class="brand-block align-middle align-center grid-y small-12 medium-6 large-3 padd-all-md">
         <div class="brand-wrapper flex-container align-center">
             <a class="brand-logo isRel" href="/" aria-label="Bonne Arrivée — retour à l'accueil">
-                <img src="/assets/site/divers/app/themes/benin/src/img/logo/logo.png" alt="Bonne Arrivée — Portail du Tourisme et de l’Attractivité au Bénin">
+                <img src="/assets/img/logo-bonne-arrivee-180.webp" width="180" height="189" loading="lazy" decoding="async" alt="Bonne Arrivée — Portail du Tourisme et de l’Attractivité au Bénin">
             </a>
         </div>
 @if (! empty($__footer['tagline']))

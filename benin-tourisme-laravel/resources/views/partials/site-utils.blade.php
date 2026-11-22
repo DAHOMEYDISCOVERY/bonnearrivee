@@ -713,7 +713,35 @@ html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body>p:first-child::fi
 html:not(#ba) body:not(#ba) main .ba-intro-more{display:flex;align-items:center;gap:.55rem;margin:1.1rem auto 0;padding:.62rem 1.35rem;border:0;border-radius:999px;background:#00844d;color:#fff;font:700 .92rem/1 Montserrat,Helvetica,Arial,sans-serif;cursor:pointer;box-shadow:0 10px 24px -14px rgba(0,80,45,.8);transition:transform .25s,background .25s}
 html:not(#ba) body:not(#ba) main .ba-intro-more:hover{transform:translateY(-2px);background:#006b3f}
 html:not(#ba) body:not(#ba) main .ba-intro-more svg{transition:transform .35s}
-html:not(#ba) body:not(#ba) main .ba-intro-long.is-open+.ba-intro-more svg{transform:rotate(180deg)}
+html:not(#ba) body:not(#ba) main .ba-intro-more:hover svg{transform:translateX(3px)}
+html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{cursor:pointer}
+/* Fenêtre de lecture des longues introductions */
+html.ba-read-open,html.ba-read-open body{overflow:hidden!important}
+dialog.ba-read{position:fixed;inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:clamp(.75rem,3vw,2rem);border:0;background:transparent;display:none;place-items:center;z-index:2147483000}
+dialog.ba-read[open]{display:grid;animation:baReadIn .28s ease-out}
+dialog.ba-read::backdrop{background:rgba(8,26,20,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.ba-read__box{display:flex;flex-direction:column;width:min(760px,100%);max-height:min(86vh,900px);max-height:min(86dvh,900px);border-radius:24px;background:#fffdf8;box-shadow:0 40px 90px -30px rgba(0,0,0,.55);overflow:hidden;font-family:Montserrat,Helvetica,Arial,sans-serif}
+.ba-read__head{position:relative;padding:1.4rem 4.2rem 1.1rem 1.6rem;background:#00844d;color:#fff}
+.ba-read__k{display:block;font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#f8d55a}
+.ba-read__t{margin:.35rem 0 0!important;font-size:clamp(1.2rem,2.6vw,1.6rem)!important;font-weight:800;line-height:1.2!important;color:#fff!important}
+.ba-read__x{position:absolute;top:1rem;right:1rem;display:grid;place-items:center;width:2.6rem;height:2.6rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;transition:background .2s,transform .2s}
+.ba-read__x:hover,.ba-read__x:focus-visible{background:#fff;color:#00844d;transform:rotate(90deg);outline:none}
+.ba-read__body{flex:1 1 auto;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:1.5rem 1.6rem}
+.ba-read__text,.ba-read__text p{color:#2b3530!important;font-size:1.02rem!important;line-height:1.85!important;text-align:left!important}
+.ba-read__text p{margin:0 0 1em!important}.ba-read__text p:last-child{margin-bottom:0!important}
+.ba-read__text>p:first-child::first-letter{float:left;margin:.08em .12em 0 0;font-size:3.2em;line-height:.85;font-weight:800;color:#00844d}
+.ba-read__text a{color:#00844d!important;text-decoration:underline}
+.ba-read__foot{display:flex;justify-content:flex-end;padding:.9rem 1.6rem;background:#f4efe4}
+.ba-read__close{padding:.65rem 1.5rem;border:0;border-radius:999px;background:#00844d;color:#fff;font:700 .92rem Montserrat,Helvetica,Arial,sans-serif;cursor:pointer}
+.ba-read__close:hover{background:#006b3f}
+@keyframes baReadIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (max-width:767.98px){dialog.ba-read{padding:0;place-items:end center}.ba-read__box{width:100%;max-height:92vh;max-height:92dvh;border-radius:22px 22px 0 0}.ba-read__head{padding:1.2rem 4rem 1rem 1.2rem}.ba-read__body{padding:1.2rem}.ba-read__foot{padding:.8rem 1.2rem calc(.8rem + env(safe-area-inset-bottom))}.ba-read__close{width:100%}}
+@media (prefers-reduced-motion:reduce){dialog.ba-read[open]{animation:none}}
+/* Accessibilité (PageSpeed) : vert plus soutenu là où le vert clair #00a05d manquait de contraste */
+html body .section-pretitle{color:#00754a!important}
+html body .site-footer .infos-block.bg-primary,html body .infos-block.bg-primary{background-color:#00754a!important}
+/* Zones tactiles du pied de page assez grandes (24 px minimum) */
+html body .infos-block a[href^="tel:"],html body .infos-block a[href^="mailto:"]{display:inline-block;min-height:24px;line-height:24px;padding:2px 0}
 @media (max-width:767.98px){html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{max-height:9.3em}}
 </style>
 <script>
@@ -741,16 +769,44 @@ html:not(#ba) body:not(#ba) main .ba-intro-long.is-open+.ba-intro-more svg{trans
             var b = document.createElement('button');
             b.type = 'button';
             b.className = 'ba-intro-more';
-            b.setAttribute('aria-expanded', 'false');
-            b.innerHTML = '<span>Lire la suite</span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            b.setAttribute('aria-haspopup', 'dialog');
+            b.innerHTML = '<span>Lire la suite</span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
             d.insertAdjacentElement('afterend', b);
-            b.addEventListener('click', function () {
-                var ouvert = d.classList.toggle('is-open');
-                b.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
-                b.firstChild.textContent = ouvert ? 'Réduire' : 'Lire la suite';
-                if (!ouvert) d.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            });
+            b.addEventListener('click', function () { ouvrir(body, b); });
+            /* Le texte tronqué lui-même ouvre aussi la fenêtre. */
+            body.addEventListener('click', function (e) { if (!e.target.closest('a')) ouvrir(body, b); });
         });
+    }
+    /* Fenêtre de lecture : tout le texte, une croix pour fermer, Échap et clic à l'extérieur aussi. */
+    var dlg;
+    function ouvrir(body, from) {
+        if (!dlg) {
+            dlg = document.createElement('dialog');
+            dlg.className = 'ba-read';
+            dlg.setAttribute('aria-labelledby', 'ba-read-t');
+            dlg.innerHTML = '<div class="ba-read__box"><div class="ba-read__head"><span class="ba-read__k">À lire</span><p class="ba-read__t" id="ba-read-t"></p>'
+                + '<button type="button" class="ba-read__x" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>'
+                + '<div class="ba-read__body"></div><div class="ba-read__foot"><button type="button" class="ba-read__close">Fermer</button></div></div>';
+            document.body.appendChild(dlg);
+            var fermer = function () { dlg.close(); };
+            dlg.querySelector('.ba-read__x').addEventListener('click', fermer);
+            dlg.querySelector('.ba-read__close').addEventListener('click', fermer);
+            dlg.addEventListener('click', function (e) { if (e.target === dlg) fermer(); });
+            dlg.addEventListener('close', function () {
+                document.documentElement.classList.remove('ba-read-open');
+                if (dlg._from) dlg._from.focus({ preventScroll: true });
+            });
+        }
+        var h1 = document.querySelector('main h1');
+        dlg.querySelector('.ba-read__t').textContent = h1 ? h1.textContent.replace(/\s+/g, ' ').trim() : document.title;
+        var cible = dlg.querySelector('.ba-read__body');
+        cible.innerHTML = '';
+        cible.appendChild(body.cloneNode(true)).className = 'ba-read__text';
+        dlg._from = from;
+        document.documentElement.classList.add('ba-read-open');
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+        cible.scrollTop = 0;
+        dlg.querySelector('.ba-read__x').focus({ preventScroll: true });
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

@@ -42,6 +42,78 @@
         <p>Le <strong>Bénin</strong> tient sur 700 kilomètres du nord au sud, et change trois fois de visage. Les <strong>lagunes et le cordon littoral</strong> au sud, les <strong>collines et les royaumes</strong> au centre, la <strong>savane et les montagnes de l'Atacora</strong> au nord. Choisissez par où commencer.</p>
     </section>
 
+    <section class="exz" aria-label="Le Bénin du sud au nord">
+        <style>
+        .exz{--sud:#0f6e7a;--centre:#2f7d3b;--nord:#c0782b;--ink:#13241d;--soft:#4f5d56;--fond:#f7f2e8;max-width:1220px;margin:clamp(2.5rem,6vw,4.5rem) auto;padding:0 clamp(1.15rem,4vw,2.8rem);font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--ink)}
+        .exz *{box-sizing:border-box}
+        .exz-k{display:block;margin:0 0 .7rem;font-size:.74rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--nord)}
+        .exz-h{margin:0 0 1.6rem!important;font-size:clamp(1.8rem,3.8vw,2.8rem)!important;line-height:1.08!important;font-weight:800!important;text-transform:none!important;color:var(--ink)!important;max-width:820px}
+        .exz-route{position:relative;display:grid;grid-template-columns:repeat(3,1fr);border-radius:28px;overflow:hidden;box-shadow:0 34px 70px -50px rgba(19,36,29,.75)}
+        .exz-zone{position:relative;padding:clamp(1.3rem,3vw,2rem) clamp(1.1rem,2.4vw,1.7rem) clamp(1.5rem,3vw,2.2rem);color:#fff;min-height:250px;display:flex;flex-direction:column}
+        .exz-zone--sud{background:linear-gradient(160deg,#127f8c,#0b5560)}
+        .exz-zone--centre{background:linear-gradient(160deg,#3a8f45,#22612c)}
+        .exz-zone--nord{background:linear-gradient(160deg,#d08a3a,#9c5a1d)}
+        .exz-zone b{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+        .exz-zone strong{display:block;margin:.35rem 0 .5rem;font-size:clamp(1.35rem,2.4vw,1.75rem);line-height:1.1}
+        .exz-zone p{margin:0 0 1.1rem!important;font-size:.95rem!important;line-height:1.55!important;color:rgba(255,255,255,.88)!important}
+        .exz-zone ul{list-style:none;margin:auto 0 0!important;padding:0!important;display:flex;flex-wrap:wrap;gap:.45rem}
+        .exz-zone li{margin:0!important}
+        .exz-zone a{display:inline-flex;align-items:center;gap:.4rem;padding:.48rem .9rem;border-radius:999px;background:rgba(255,255,255,.16);color:#fff!important;font-size:.86rem;font-weight:700;text-decoration:none!important;transition:background .25s,color .25s}
+        .exz-zone a:hover,.exz-zone a:focus-visible{background:#fff;color:var(--ink)!important}
+        .exz-zone svg.exz-ic{position:absolute;right:1.1rem;top:1.1rem;width:52px;height:52px;opacity:.28}
+        .exz-axe{display:flex;align-items:center;gap:.8rem;margin:1.1rem .4rem 0;font-size:.8rem;font-weight:700;color:var(--soft)}
+        .exz-axe i{flex:1;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--sud),var(--centre),var(--nord))}
+        .exz-chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:clamp(1.6rem,3vw,2.4rem)}
+        .exz-chiffres div{padding:1.15rem 1.2rem;border-radius:20px;background:var(--fond)}
+        .exz-chiffres em{display:block;font-style:normal;font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;line-height:1;color:var(--ink)}
+        .exz-chiffres span{display:block;margin-top:.45rem;font-size:.86rem;line-height:1.45;color:var(--soft)}
+        .exz-rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--dl,0ms)}
+        .exz-rv.is-in{opacity:1;transform:none}
+        @media (max-width:900px){.exz-route{grid-template-columns:1fr}.exz-zone{min-height:0}.exz-axe{display:none}.exz-chiffres{grid-template-columns:1fr 1fr}}
+        @media (prefers-reduced-motion:reduce){.exz-rv{opacity:1;transform:none;transition:none}}
+        /* Cartes des cinq régions : numéro, arche, survol */
+        main .benin-regions__grid{counter-reset:exzr}
+        main .benin-regions__card{counter-increment:exzr;position:relative;padding:0 0 1.1rem;border-radius:26px;background:#fff;box-shadow:0 22px 44px -36px rgba(19,36,29,.65);text-decoration:none!important;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+        main .benin-regions__card img{border-radius:140px 140px 18px 18px!important;aspect-ratio:4/5;object-fit:cover;width:100%;transition:transform .6s}
+        main .benin-regions__card::before{content:counter(exzr,decimal-leading-zero);position:absolute;z-index:2;top:.8rem;left:50%;transform:translateX(-50%);display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;background:#f8d55a;color:#13241d;font:800 .8rem Montserrat,Helvetica,Arial,sans-serif;box-shadow:0 6px 16px -6px rgba(0,0,0,.45)}
+        main .benin-regions__card:hover,main .benin-regions__card:focus-visible{transform:translateY(-6px);box-shadow:0 34px 60px -38px rgba(19,36,29,.8)}
+        main .benin-regions__card h3,main .benin-regions__card p{padding:0 .7rem}
+        @media (max-width:640px){main .benin-regions__card img{aspect-ratio:4/3;border-radius:22px 22px 14px 14px!important}}
+        </style>
+        <span class="exz-k">Du golfe de Guinée au fleuve Niger</span>
+        <h2 class="exz-h">Trois Bénin sur un même axe</h2>
+        <div class="exz-route">
+            <div class="exz-zone exz-zone--sud exz-rv">
+                <svg class="exz-ic" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 30c5-4 9-4 14 0s9 4 14 0 9-4 12-1M4 38c5-4 9-4 14 0s9 4 14 0 9-4 12-1" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="14" r="6" fill="#fff"/></svg>
+                <b>Le sud</b><strong>Lagunes et océan</strong>
+                <p>Cordon de sable, lacs et villages sur pilotis, mémoire de la traite à Ouidah.</p>
+                <ul><li><a href="/explorez/les-cinq-benin/la-cote-memorielle">Côte mémorielle →</a></li><li><a href="/explorez/les-cinq-benin/le-littoral-atlantique">Littoral atlantique →</a></li></ul>
+            </div>
+            <div class="exz-zone exz-zone--centre exz-rv" style="--dl:110ms">
+                <svg class="exz-ic" viewBox="0 0 48 48" aria-hidden="true"><path d="M2 40 14 20l8 10 8-16 16 26z" fill="#fff"/></svg>
+                <b>Le centre</b><strong>Royaumes et collines</strong>
+                <p>Palais d'Abomey, Porto-Novo la capitale, puis les collines sacrées de Dassa.</p>
+                <ul><li><a href="/explorez/les-cinq-benin/le-plateau-royal">Plateau royal →</a></li><li><a href="/explorez/les-cinq-benin/le-centre-mystique">Centre mystique →</a></li></ul>
+            </div>
+            <div class="exz-zone exz-zone--nord exz-rv" style="--dl:220ms">
+                <svg class="exz-ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8" fill="#fff"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+                <b>Le nord</b><strong>Savane et Atacora</strong>
+                <p>Tata somba, chutes et parcs nationaux de la Pendjari et du W.</p>
+                <ul><li><a href="/explorez/les-cinq-benin/le-grand-nord">Le grand Nord →</a></li><li><a href="/explorez/naturellement-sauvage">Nature &amp; parcs →</a></li></ul>
+            </div>
+        </div>
+        <div class="exz-axe" aria-hidden="true"><span>Cotonou</span><i></i><span>Malanville</span></div>
+        <div class="exz-chiffres">
+            <div class="exz-rv"><em>≈ 700 km</em><span>du nord au sud</span></div>
+            <div class="exz-rv" style="--dl:80ms"><em>≈ 125 km</em><span>de côte sur l'Atlantique</span></div>
+            <div class="exz-rv" style="--dl:160ms"><em>5</em><span>régions à parcourir, du littoral à l'Atacora</span></div>
+            <div class="exz-rv" style="--dl:240ms"><em>2</em><span>parcs nationaux, Pendjari et W, au patrimoine mondial</span></div>
+        </div>
+        <script>
+        (function(){var el=document.querySelectorAll('.exz-rv');if(!('IntersectionObserver' in window)){el.forEach(function(e){e.classList.add('is-in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:.15});el.forEach(function(e){io.observe(e)})})();
+        </script>
+    </section>
+
     <section class="benin-littoral" aria-label="Le littoral béninois">
         <div class="benin-littoral__head">
             <p class="benin-littoral__eyebrow">Zoom sur le littoral</p>

@@ -18,14 +18,14 @@
                     <button class="menu-icon" data-toggle="main-menu" type="button" aria-label="Ouvrir/Fermer le menu principal" aria-controls="main-menu"><div class="title-bar-title" title="Accès au menu principal"><span class="menu-btn-title" data-menu-close="Menu" data-menu-open="Fermer">Menu</span></div><div class="menu-icon-bars-wrapper"><div class="menu-icon-bar top"></div><div class="menu-icon-bar middle middle-one"></div><div class="menu-icon-bar middle middle-two"></div><div class="menu-icon-bar bottom"></div></div></button>            <div class="is-brand-logo {{ ($activeMenu ?? null) === 'accueil' ? 'is-active' : '' }} ">
     <a class="menuLogo" href="/" target="_self" data-post-id="86">
         <span class="no-visible-text menu-logo-site-name isAbs">Bonne Arrivée</span>
-        <span class="brand-logo"><img src="/assets/site/divers/app/themes/benin/src/img/logo/logo.png" alt="Bonne Arrivée — Portail du Tourisme et de l’Attractivité au Bénin" /></span>
+        <span class="brand-logo"><img src="/assets/img/logo-bonne-arrivee-180.webp" width="180" height="189" alt="Bonne Arrivée — Portail du Tourisme et de l’Attractivité au Bénin" /></span>
     </a>
 </div>
 
         <nav role="navigation" class="top-bar title-bar sliding-menu" id="main-menu">
             <ul class="main-menu-list flex-container vertical flex-dir-column">
 @foreach ($__header['menu'] as $__item)
-                        <li class="menu-item is-submenu-parent{{ ($activeMenu ?? null) !== null && (string) ($activeMenu ?? '') === (string) ($__item['post_id'] ?? '') ? ' is-active' : '' }}" role="button">
+                        <li class="menu-item is-submenu-parent{{ ($activeMenu ?? null) !== null && (string) ($activeMenu ?? '') === (string) ($__item['post_id'] ?? '') ? ' is-active' : '' }}">
                         <a class="menuLink" href="{{ $__item['url'] }}" target="_self" data-post-id="{{ $__item['post_id'] ?? '' }}">
                                                 <span class="menuLink-title">{{ $__item['label'] }}</span>
                                                     </a>
