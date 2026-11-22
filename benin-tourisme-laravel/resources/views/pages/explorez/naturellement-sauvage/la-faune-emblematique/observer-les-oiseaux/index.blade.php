@@ -79,7 +79,7 @@
     author="Wikimedia Commons"
 />@verbatim</div><div class="cell">@endverbatim<x-media.figure
     src="/assets/img/lac-aheme-640x480.webp"
-    alt="Le lac Ahémé"
+    alt="Le lac Ahémé, zone humide du sud"
     loading="native"
     caption="Le lac Ahémé"
     author="Rachad sanoussi / CC BY-SA 4.0 — Wikimedia Commons"

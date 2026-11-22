@@ -576,3 +576,106 @@ main .benin-page-block p,.bf-lead,.bf-faq details p,
     document.addEventListener('touchstart', precharger, { passive: true });
 })();
 </script>
+
+{{-- Mobile (novembre 2026) :
+     1. Le héros d'en-tête couvre tout l'écran, titre posé en bas sur un dégradé, sans invite de défilement.
+     2. Le fil d'Ariane n'est plus abrégé en « [...] » : il garde tous ses niveaux, sur une seule ligne
+        qui défile au doigt et s'ouvre calée sur la page en cours.
+     3. Les extraits coupés au milieu d'une phrase (« … pachydermes de... ») s'arrêtent à la dernière phrase complète. --}}
+<style>
+@media (max-width:767.98px){
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header),html:not(#ba) body:not(#ba) main .emerv-hero{position:relative!important;height:100vh!important;height:100svh!important;min-height:560px!important;max-height:none!important;overflow:hidden!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-bg,html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-bg figure,html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .backgroundMedia{position:absolute!important;inset:0!important;height:100%!important;width:100%!important;margin:0!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-bg img,html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;transform:none!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header)::after,html:not(#ba) body:not(#ba) main .emerv-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 42%,rgba(0,0,0,.72) 100%)}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .fullcenterbox{position:absolute!important;inset:0!important;top:0!important;bottom:0!important;height:100%!important;transform:none!important;z-index:2!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;padding:0 1.4rem calc(5.2rem + env(safe-area-inset-bottom,0px))!important}
+html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__overlay{position:absolute!important;inset:0!important;z-index:2!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;align-items:center!important;background:none!important;padding:0 1.4rem calc(5.2rem + env(safe-area-inset-bottom,0px))!important}
+html:not(#ba) body:not(#ba) main>.content-wrapper>.woody-component-hero.has-bgimg:not(.hero-split):not(.hero-blog-header) .hero-title,html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__title{font-size:clamp(2.2rem,10vw,3rem)!important;line-height:1.04!important;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__center{flex:0 0 auto!important;height:auto!important;min-height:0!important;justify-content:flex-end!important;padding:0!important}
+html:not(#ba) body:not(#ba) main .emerv-hero .emerv-hero__lead{font-size:1.02rem!important;line-height:1.55!important}
+html.ba-hero-vu .ba-ecolaunch{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.ba-ecolaunch{transition:opacity .35s ease,visibility .35s}
+html:not(#ba) body:not(#ba) main .home-slider .woody-component-landswpr,html:not(#ba) body:not(#ba) main .home-slider .woody-landing-swiper,html:not(#ba) body:not(#ba) main .home-slider .swiper-wrapper,html:not(#ba) body:not(#ba) main .home-slider .swiper-slide,html:not(#ba) body:not(#ba) main .home-slider .landswprMediaWrapper{height:100vh!important;height:100svh!important;min-height:560px!important;max-height:none!important}
+html:not(#ba) body:not(#ba) main .home-slider .landswprMediaWrapper img{width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important}
+.al-in{grid-template-columns:minmax(0,1fr)!important}.al-k{gap:.8rem!important;padding:1rem 1.1rem!important}.al-k b{font-size:2.3rem!important;min-width:0!important}.al-k i{width:44px!important;height:44px!important}
+.woody-component-breadcrumb ol,.ba-crumbbar ol{flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 1rem,#000 calc(100% - 1rem),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 1rem,#000 calc(100% - 1rem),transparent 100%);padding:0 1rem!important}
+.woody-component-breadcrumb ol::-webkit-scrollbar,.ba-crumbbar ol::-webkit-scrollbar{display:none}
+.woody-component-breadcrumb li,.ba-crumbbar li{flex:0 0 auto;white-space:nowrap}
+}
+.woody-component-breadcrumb li[style*="none"],.woody-component-breadcrumb .breadcrumb-icon-separator[style*="none"]{display:inline-flex!important}
+</style>
+<script>
+(function () {
+    'use strict';
+    /* Le thème remplace, sous 768 px, les niveaux intermédiaires du fil d'Ariane par « [...] ».
+       Les intitulés d'origine sont notés ici, avant son passage, puis remis en place. */
+    var noms = [];
+    var fil = document.querySelector('.woody-component-breadcrumb');
+    if (fil) Array.prototype.forEach.call(fil.querySelectorAll('[property="name"]'), function (s) { noms.push([s, s.textContent]); });
+
+    function remettre() {
+        noms.forEach(function (n) { if (/^\s*\[(\.\.\.|…)\]\s*$/.test(n[0].textContent)) n[0].textContent = n[1]; });
+        if (window.innerWidth < 768) {
+            Array.prototype.forEach.call(document.querySelectorAll('.woody-component-breadcrumb ol,.ba-crumbbar ol'), function (ol) { ol.scrollLeft = ol.scrollWidth; });
+        }
+    }
+
+    function extraits() {
+        var els = document.querySelectorAll('main .card p,main .card-description,main [class*="card"] [class*="desc"],main .card-texts p');
+        Array.prototype.forEach.call(els, function (e) {
+            if (e.children.length) return;
+            var t = e.textContent.replace(/\s+$/, '');
+            if (!/(\.\.\.|…)$/.test(t)) return;
+            if (/[^.]\.{4}$/.test(t)) { e.textContent = t.replace(/\.+$/, '.'); return; }
+            var base = t.replace(/(\.{3,}|…)+$/, '').replace(/[\s,;:]+$/, '');
+            var i = Math.max(base.lastIndexOf('. '), base.lastIndexOf('! '), base.lastIndexOf('? '));
+            e.textContent = i > 30 ? base.slice(0, i + 1) : base + '…';
+        });
+    }
+
+    /* Sous le héros plein écran, les boutons partenaires flottants attendent qu'on ait commencé à défiler. */
+    function heros() {
+        var h = document.querySelector('main>.content-wrapper>.woody-component-hero.has-bgimg,main .emerv-hero,main .home-slider');
+        if (!h || !('IntersectionObserver' in window)) return;
+        var mq = window.matchMedia('(max-width: 767.98px)');
+        /* En plein écran vertical, une photo en 2:1 est trop étirée : on prend le même cliché en format carré ou portrait s'il existe. */
+        var img = h.querySelector('.hero-bg img,.emerv-hero__img');  /* le carrousel d'accueil garde ses propres images */
+        var m = img && mq.matches && (img.currentSrc || img.src).match(/^(.*\/assets\/img\/.+?)-\d+x\d+\.(webp|jpe?g|png)$/i);
+        if (m) {
+            var f = ['1200x1200', '1920x1440', '1200x900', '640x854'], i = 0;
+            (function essai() {
+                if (i >= f.length) return;
+                var u = m[1] + '-' + f[i++] + '.' + m[2], x = new Image();
+                x.onload = function () { img.removeAttribute('srcset'); img.removeAttribute('sizes'); img.src = u; };
+                x.onerror = essai; x.src = u;
+            })();
+        }
+        new IntersectionObserver(function (es) {
+            document.documentElement.classList.toggle('ba-hero-vu', mq.matches && es[0].intersectionRatio > 0.45);
+        }, { threshold: [0, 0.45, 0.6, 1] }).observe(h);
+    }
+
+    function lancer() { remettre(); extraits(); heros(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancer); else lancer();
+    window.addEventListener('load', remettre);
+})();
+</script>
+
+{{-- En-tête photo des pages sans héros (contact, mentions légales, plan du site…) : la photo couvre
+     l'en-tête, titre et chapô en blanc dessus ; le fil d'Ariane passe dans la barre blanche dessous. --}}
+<style>
+.ba-teaser-hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(440px,64vh,660px);padding:calc(var(--ba-header-h,96px) + 2.5rem) 0 clamp(2.5rem,5vw,4rem);overflow:hidden;background:#0b3d2c}
+.ba-teaser-hero>.ba-teaser-hero__img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;object-fit:cover}
+.ba-teaser-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,24,17,.55) 0%,rgba(6,24,17,.25) 38%,rgba(6,24,17,.78) 100%)}
+.ba-teaser-hero .woody-component-teaser{background:none!important;padding-bottom:0!important}
+.ba-teaser-hero .bgImageObject{display:none!important}
+.ba-teaser-hero .texts-wrapper{text-align:center!important;margin:0 auto!important;max-width:860px}
+.ba-teaser-hero .page-main-titles .flex-container{justify-content:center}
+.ba-teaser-hero .page-main-title{color:#fff!important;font-size:clamp(2.3rem,5vw,4rem)!important;line-height:1.05!important;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.ba-teaser-hero .page-main-description,.ba-teaser-hero .page-main-description p{color:rgba(255,255,255,.92)!important;font-size:clamp(1rem,1.4vw,1.18rem)!important;line-height:1.6!important}
+.ba-teaser-hero .page-main-description strong{color:#fff!important}
+.ba-teaser-hero .page-main-description a{color:#fcd116!important}
+.ba-teaser-crumb .woody-component-breadcrumb{background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+.ba-teaser-crumb .woody-component-breadcrumb ol{justify-content:center}
+@media (max-width:767.98px){.ba-teaser-hero{min-height:100vh;min-height:100svh;padding-bottom:calc(3rem + env(safe-area-inset-bottom,0px))}.ba-teaser-hero .page-main-title{font-size:clamp(2.2rem,10vw,3rem)!important}}
+</style>

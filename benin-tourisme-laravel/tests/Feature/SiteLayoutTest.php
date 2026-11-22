@@ -39,7 +39,7 @@ final class SiteLayoutTest extends TestCase
         $this->assertStringContainsString('aria-label="Gîtes et lodges"', $html);
         $this->assertStringContainsString('data-srcset="/assets/img/menu-ou-dormir-360x180.webp 360w', $html);
         $this->assertStringContainsString('<a href="tel:+2290167110220"', $html);
-        $this->assertStringContainsString('reservations@dahomeydiscovery.com', $html);
+        $this->assertStringContainsString('contact@bonnearrivee.bj', $html);
         $this->assertStringNotContainsString('{{', $html);
     }
 
@@ -73,7 +73,7 @@ final class SiteLayoutTest extends TestCase
         SiteSetting::write(SiteLayout::FOOTER_KEY, ['company' => 'Temporaire'] + SiteLayout::defaultFooter());
         SiteSetting::forgetKey(SiteLayout::FOOTER_KEY);
 
-        $this->get('/quand-partir')->assertOk()->assertSee('<strong>Dahomey Discovery</strong>', false);
+        $this->get('/quand-partir')->assertOk()->assertSee('<strong>Bonne Arrivée</strong>', false);
     }
 
     public function test_l_ancien_bloc_footer_modifie_est_repris_et_son_telephone_repare(): void

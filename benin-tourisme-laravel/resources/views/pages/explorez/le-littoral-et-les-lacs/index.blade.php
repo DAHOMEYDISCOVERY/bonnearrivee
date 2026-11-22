@@ -338,15 +338,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         data-wgtype="img"
         data-wgid="page-gallery-6a8c5f8cad208"
     >@endverbatim<x-media.figure
-    src="/assets/img/pendjari-hippo-640x360.webp"
-    alt="Hippopotames de la Pendjari"
+    src="/assets/img/pecheur-640x360.webp"
+    alt="Pêcheurs sur la lagune"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/pendjari-hippo-360x203.webp 360w, /assets/img/pendjari-hippo-640x360.webp 640w, /assets/img/pendjari-hippo-1200x675.webp 1200w, /assets/img/pendjari-hippo-1920x1080.webp 1920w"
+    srcset="/assets/img/pecheur-640x360.webp 640w"
     classes="isRel imageObject thumb"
     published="2021-12-24 19:04:26"
-    description="Hippopotames de la Pendjari"
-    caption="Hippopotames de la Pendjari"
-    author="Ji-Elle / CC BY-SA 4.0 — Wikimedia Commons"
+    description="Pêcheurs sur la lagune"
+    caption="Pêcheurs sur la lagune"
+    author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
     :nosnippet="true"
 />@verbatim</span></div></div></div></div></div></div></article></section>
         </div>

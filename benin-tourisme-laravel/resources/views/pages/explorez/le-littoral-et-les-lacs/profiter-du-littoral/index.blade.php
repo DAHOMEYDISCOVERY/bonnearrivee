@@ -79,32 +79,32 @@
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="0d7938c9-f615-4f91-b8dd-302bcd7295ae" data-location-lat="" data-location-lng=""  class="section bg-motif padd-top-md padd-bottom-xlg marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  experience ratio_2_1" data-postid="729"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/peche-et-pirogue" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
-    src="/assets/img/pendjari-hippo-640x320.webp"
-    alt="Hippopotames de la Pendjari"
+    src="/assets/img/pirogue-640x320.webp"
+    alt="Pirogue de pêche"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
-    srcset="/assets/img/pendjari-hippo-360x180.webp 360w, /assets/img/pendjari-hippo-640x320.webp 640w, /assets/img/pendjari-hippo-1200x600.webp 1200w, /assets/img/pendjari-hippo-1920x960.webp 1920w"
+    srcset="/assets/img/pirogue-640x320.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-17 13:20:41"
-    description="Hippopotames de la Pendjari"
-    caption="Hippopotames de la Pendjari"
-    author="Ji-Elle / CC BY-SA 4.0 — Wikimedia Commons"
+    description="Pirogue de pêche"
+    caption="Pirogue de pêche"
+    author="Ahya ATINDEHOU / CC BY-SA 4.0 — Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
-/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Pêche et pirogue</span><span class="card-title block-span">La safari, un tête-à-tête avec Bénin</span><div class="card-description">Senne tirée sur le sable, branchages plantés dans le lac, nasses au fond d'un chenal : chaque plan d'eau béninois a sa technique. Voici quoi regarder, où, et à quelle heure.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  topito ratio_2_1" data-postid="730"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/profiter-du-littoral" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
-    src="/assets/img/hotel-640x320.webp"
-    alt="Hébergement au Bénin"
+/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Pêche et pirogue</span><span class="card-title block-span">La pêche, un tête-à-tête avec l’océan</span><div class="card-description">Senne tirée sur le sable, branchages plantés dans le lac, nasses au fond d'un chenal : chaque plan d'eau béninois a sa technique. Voici quoi regarder, où, et à quelle heure.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  topito ratio_2_1" data-postid="730"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/profiter-du-littoral" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
+    src="/assets/img/pendjari-savane-640x320.webp"
+    alt="La savane de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
-    srcset="/assets/img/hotel-360x180.webp 360w, /assets/img/hotel-640x320.webp 640w, /assets/img/hotel-1200x600.webp 1200w, /assets/img/hotel-1920x960.webp 1920w"
+    srcset="/assets/img/pendjari-savane-640x320.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-26 20:32:03"
-    description="Hébergement au Bénin"
-    caption="Hébergement au Bénin"
-    author="Adoscam / CC BY-SA 4.0 — Wikimedia Commons"
+    description="La savane de la Pendjari"
+    caption="La savane de la Pendjari"
+    author="Marco Schmidt / CC BY-SA 3.0 — Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
-/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-subtitle has-desc"><span class="card-title block-span">10 plus beaux sites de la Pendjari</span><span class="card-subtitle block-span">Le Top 10 des plus beaux sites de safari</span><div class="card-description">Pour découvrir le Bénin, il y a les randonnées, la culture béninoise… Pour explorer le littoral, rien de mieux que la safari. On vous emmène à la découverte des 10 meilleurs...</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  topito ratio_2_1" data-postid="721"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/profiter-du-littoral/10-plus-belles-plages-du-benin" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
+/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-subtitle has-desc"><span class="card-title block-span">10 plus beaux sites de la Pendjari</span><span class="card-subtitle block-span">Le Top 10 des plus beaux sites de safari</span><div class="card-description">Pour découvrir le Bénin, il y a les randonnées, la culture béninoise… Pour explorer le littoral, rien de mieux qu’une sortie en pirogue avec les pêcheurs.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  topito ratio_2_1" data-postid="721"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/profiter-du-littoral/10-plus-belles-plages-du-benin" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
     src="/assets/img/plage-grand-popo-640x320.webp"
     alt="La plage de Grand-Popo"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
@@ -117,7 +117,7 @@
     author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
-/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-subtitle has-desc"><span class="card-title block-span">10 plus belles plages du Bénin</span><span class="card-subtitle block-span">Le Top 12 des meilleurs plages du Bénin</span><div class="card-description">Le meilleur moyen de profiter du littoral béninois, c’est bien de s’autoriser à un peu de farniente sur les plus belles plages du pays. Chacune a son charme, et...</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  page-hub ratio_2_1" data-postid="722"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/peche-et-pirogue" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
+/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-subtitle has-desc"><span class="card-title block-span">10 plus belles plages du Bénin</span><span class="card-subtitle block-span">Le Top 12 des meilleurs plages du Bénin</span><div class="card-description">Le meilleur moyen de profiter du littoral béninois, c’est bien de s’autoriser à un peu de farniente sur les plus belles plages du pays.</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  page-hub ratio_2_1" data-postid="722"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;pretitle&quot;,&quot;subtitle&quot;,&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/le-littoral-et-les-lacs/peche-et-pirogue" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
     src="/assets/img/plage-fidjrosse-640x320.webp"
     alt="La plage de Fidjrossè à Cotonou"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"

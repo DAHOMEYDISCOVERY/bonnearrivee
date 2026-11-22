@@ -24,14 +24,14 @@
     class="woody-component woody-component-hero has-title    tpl_02 isRel bgimg-op100  bg-black has-bgimg">
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
-    src="/assets/img/marche-rue-1920x480.webp"
-    alt="Pêcheurs sur le lac Nokoué"
+    src="/assets/img/parc-w-1920x480.webp"
+    alt="La savane du parc W"
     loading="eager"
-    srcset="/assets/img/marche-rue-360x90.webp 360w, /assets/img/marche-rue-640x160.webp 640w, /assets/img/marche-rue-1200x300.webp 1200w, /assets/img/marche-rue-1920x480.webp 1920w"
+    srcset="/assets/img/parc-w-360x90.webp 360w, /assets/img/parc-w-640x160.webp 640w, /assets/img/parc-w-1200x300.webp 1200w, /assets/img/parc-w-1920x480.webp 1920w"
     published="2021-12-16 15:42:17"
-    description="Pêcheurs sur le lac Nokoué"
-    caption="Pêcheurs sur le lac Nokoué"
-    author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
+    description="La savane du parc W"
+    caption="La savane du parc W"
+    author="Wikimedia Commons"
     :nosnippet="true"
 />@verbatim                
                         </div>

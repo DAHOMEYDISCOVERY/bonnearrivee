@@ -84,16 +84,16 @@
     button="Lire la suite"
 >
     <x-media.figure
-    src="/assets/img/pendjari-hippo-640x480.webp"
-    alt="Hippopotames de la Pendjari"
+    src="/assets/img/oiseau-640x480.webp"
+    alt="Oiseaux du delta du Mono"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
-    srcset="/assets/img/pendjari-hippo-360x270.webp 360w, /assets/img/pendjari-hippo-640x480.webp 640w, /assets/img/pendjari-hippo-1200x900.webp 1200w, /assets/img/pendjari-hippo-1920x1440.webp 1920w"
+    srcset="/assets/img/oiseau-640x480.webp 640w"
     classes="isRel imageObject 1 cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-24 18:54:55"
-    description="Hippopotames de la Pendjari"
-    caption="Hippopotames de la Pendjari"
-    author="Ji-Elle / CC BY-SA 4.0 — Wikimedia Commons"
+    description="Oiseaux du delta du Mono"
+    caption="Oiseaux du delta du Mono"
+    author="Florentin66 / CC BY 4.0 — Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
 />

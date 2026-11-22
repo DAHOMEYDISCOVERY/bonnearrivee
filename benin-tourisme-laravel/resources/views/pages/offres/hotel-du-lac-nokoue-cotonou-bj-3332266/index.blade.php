@@ -51,7 +51,8 @@
 @section('content')
 @verbatim<div class="content-wrapper">
     <div class="page-section page-section-0" id="pageSection-0">
-        <section class="section padd-top-md padd-bottom-md">
+        <style>.ofr-sec{position:relative;padding-top:0!important}.ofr-hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(420px,62vh,640px);margin-bottom:clamp(2rem,5vw,3.5rem);overflow:hidden;background:#0b3d2c}.ofr-hero>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;object-fit:cover}.ofr-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,24,17,.5) 0%,rgba(6,24,17,.2) 40%,rgba(6,24,17,.8) 100%)}.ofr-hero .section-header-wrapper{width:100%;padding:0 1.25rem clamp(2.2rem,5vw,3.5rem)!important}.ofr-hero .section-title{color:#fff!important;font-size:clamp(2.2rem,5vw,3.8rem)!important;line-height:1.05;text-shadow:0 2px 24px rgba(0,0,0,.35)}.ofr-hero .section-subtitle{margin-top:.6rem;color:rgba(255,255,255,.9)!important;font-size:clamp(1rem,1.6vw,1.2rem)!important}.ofr-hero figcaption{position:absolute;right:1rem;top:calc(var(--ba-header-h,96px) + .5rem);font-size:.75rem;color:rgba(255,255,255,.75)}.ofr-sec .woody-component-custom-text{border-radius:26px;overflow:hidden}@media (max-width:767.98px){.ofr-hero{min-height:100vh;min-height:100svh}}</style><section class="section padd-top-md padd-bottom-md ofr-sec">
+            <div class="ofr-hero"><img src="/assets/img/pirogue-1920x960.webp" alt="Pirogue sur le lac Nokoué" fetchpriority="high" decoding="async">
             <header class="section-header-wrapper grid-container grid-default container-min">
                 <div class="section-header text-center">
                     <div class="section-titles flex-container flex-dir-column align-middle align-center text-center">
@@ -61,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            </header>
+            </header></div>
             <article class="section-layout-wrapper grid-container grid-default">
                 <div class="woody-component woody-component-custom-text tpl_02 bg-primary bg-gradient bg-filigrane padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-container padd-top-md padd-bottom-md"><div class="grid-x grid-padding-x align-center"><div class="cell large-8 text-center"><h2 class="section-title">Fiche en cours de mise à jour</h2><p>Le détail de cette offre — coordonnées, horaires, photographies, avis — était fourni par un service extérieur qui n'est plus disponible pour ce site. Nous reconstruisons progressivement l'annuaire des <strong>établissements béninois</strong> à partir de nos propres sources.</p><p>En attendant, pour obtenir des informations à jour sur cet établissement ou signaler une erreur, contactez l'<a href="/sejourner/toutes-les-infos-pratiques/nous-contacter"><strong>équipe Bonne Arrivée</strong></a> — nous vous répondrons sous deux jours ouvrés.</p></div></div></div></div>
             </article>

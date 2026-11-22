@@ -81,7 +81,7 @@
     </dl>
   </div>
 
-  <h2>Photothèque du site — 78 visuels</h2>
+  <h2>Photothèque du site — 93 visuels</h2>
   <p style="color:var(--muted);margin-top:0">Chaque image du site est un recadrage de l’un de ces originaux.</p>
   <div class="wrap"><table>
     <thead><tr><th>Visuel</th><th>Sujet</th><th>Auteur</th><th>Licence</th><th>Source</th></tr></thead>
@@ -632,6 +632,41 @@
       <td><span class="lic">CC0</span></td>
       <td><a href="https://commons.wikimedia.org/wiki/File:Fa_divination_tray_ritual_R%C3%A9plica_of_Gedegbe_Fa_tray1.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
     </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-amiwo-au-poisson.webp" alt="Un plat d&#x27;amiwo au poisson" loading="lazy"></td>
+      <td><strong>Un plat d&#x27;amiwo au poisson</strong><br><span class="file">File:Un plats d&#x27;amiwo au poisson au benin.jpg</span></td>
+      <td>Adoscam</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Un_plats_d%27amiwo_au_poisson_au_benin.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-plat-d-akassa.webp" alt="Un plat d&#x27;akassa et sa sauce" loading="lazy"></td>
+      <td><strong>Un plat d&#x27;akassa et sa sauce</strong><br><span class="file">File:Plat d&#x27;akassa.jpg</span></td>
+      <td>Ciaro pictures</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Plat_d%27akassa.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-poisson-gari-et-aloko.webp" alt="Poisson braisé, gari et aloko" loading="lazy"></td>
+      <td><strong>Poisson braisé, gari et aloko</strong><br><span class="file">File:Arts culinaire du Bénin - Les plats de la cuisine béninoise 05.jpg</span></td>
+      <td>Saliousoft</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Arts_culinaire_du_B%C3%A9nin_-_Les_plats_de_la_cuisine_b%C3%A9ninoise_05.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-ninnouwi-et-pate-de-mais.webp" alt="Ninnouwi et pâte de maïs" loading="lazy"></td>
+      <td><strong>Ninnouwi et pâte de maïs</strong><br><span class="file">File:Ninnouwi avec la pâte du maïs.jpg</span></td>
+      <td>Aimeabibis</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Ninnouwi_avec_la_p%C3%A2te_du_ma%C3%AFs.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cotonou-boulevard-de-la-marina.webp" alt="Le boulevard de la Marina, à Cotonou" loading="lazy"></td>
+      <td><strong>Le boulevard de la Marina, à Cotonou</strong><br><span class="file">File:Boulevard de la Marina.jpg</span></td>
+      <td>Osia ZANNOU</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Boulevard_de_la_Marina.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
     </tbody>
   </table></div>
 
@@ -842,6 +877,76 @@
       <td>Saliousoft</td>
       <td><span class="lic">CC BY-SA 4.0</span></td>
       <td><a href="/assets/img/wikimedia/scene-de-marche-commune-de-tchaourou-01.webp" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/faune-varan-du-nil.webp" alt="Varan du Nil" loading="lazy"></td>
+      <td><strong>Varan du Nil</strong><br><span class="file">File:Nile monitor (Varanus niloticus) 2.jpg</span></td>
+      <td>Charles J. Sharp</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Nile_monitor_%28Varanus_niloticus%29_2.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/collines-marche-de-dassa.webp" alt="Le marché de Dassa-Zoumè" loading="lazy"></td>
+      <td><strong>Le marché de Dassa-Zoumè</strong><br><span class="file">File:Marché de Dassa.jpg</span></td>
+      <td>FaauBenin</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:March%C3%A9_de_Dassa.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/plateau-foret-de-la-lama.webp" alt="La forêt dense de la Lama" loading="lazy"></td>
+      <td><strong>La forêt dense de la Lama</strong><br><span class="file">File:Forêt dense semi-décidue de la Lama.jpg</span></td>
+      <td>Gloria SOSSA</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:For%C3%AAt_dense_semi-d%C3%A9cidue_de_la_Lama.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/plateau-singe-a-ventre-rouge.webp" alt="Singe à ventre rouge" loading="lazy"></td>
+      <td><strong>Singe à ventre rouge</strong><br><span class="file">File:Cercopithecus erythrogaster.jpg</span></td>
+      <td>KAKPO Sunday Berlioz</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Cercopithecus_erythrogaster.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cote-salines-de-djegbadji.webp" alt="Djègbadji, entre lagune et mer, à Ouidah" loading="lazy"></td>
+      <td><strong>Djègbadji, entre lagune et mer, à Ouidah</strong><br><span class="file">File:Djègbadji.jpg</span></td>
+      <td>Padonou Dotou</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Dj%C3%A8gbadji.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-pate-noire-telibo.webp" alt="Pâte noire (télibo) et légumes" loading="lazy"></td>
+      <td><strong>Pâte noire (télibo) et légumes</strong><br><span class="file">File:Plate de Pate noire au légumes au Benin.jpg</span></td>
+      <td>Adoscam</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Plate_de_Pate_noire_au_l%C3%A9gumes_au_Benin.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-wagassi.webp" alt="Le wagassi, fromage de lait peul" loading="lazy"></td>
+      <td><strong>Le wagassi, fromage de lait peul</strong><br><span class="file">File:Fromage de lait wagassi 03.jpg</span></td>
+      <td>Fhadel ALOU</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Fromage_de_lait_wagassi_03.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/cuisine-poisson-braise-et-piron.webp" alt="Poisson braisé et piron" loading="lazy"></td>
+      <td><strong>Poisson braisé et piron</strong><br><span class="file">File:Plat de piron avec bar braisé.jpg</span></td>
+      <td>Chado07</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Plat_de_piron_avec_bar_brais%C3%A9.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/collines-grotte-mariale-dassa.webp" alt="La grotte mariale de Dassa-Zoumè" loading="lazy"></td>
+      <td><strong>La grotte mariale de Dassa-Zoumè</strong><br><span class="file">File:Grotte-Mariale-Dassa.jpg</span></td>
+      <td>SMKMAYER</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:Grotte-Mariale-Dassa.jpg" target="_blank" rel="noopener noreferrer">Commons</a></td>
+    </tr>
+    <tr>
+      <td class="thumb"><img src="/assets/img/wikimedia/collines-recolte-igname-savalou.webp" alt="Récolte d’igname à Savalou" loading="lazy"></td>
+      <td><strong>Récolte d’igname à Savalou</strong><br><span class="file">File:Récoltes d'igname à Savalou au Bénin.png</span></td>
+      <td>Vital aimavo</td>
+      <td><span class="lic">CC BY-SA 4.0</span></td>
+      <td><a href="https://commons.wikimedia.org/wiki/File:R%C3%A9coltes_d%27igname_%C3%A0_Savalou_au_B%C3%A9nin.png" target="_blank" rel="noopener noreferrer">Commons</a></td>
     </tr>
     </tbody>
   </table></div>

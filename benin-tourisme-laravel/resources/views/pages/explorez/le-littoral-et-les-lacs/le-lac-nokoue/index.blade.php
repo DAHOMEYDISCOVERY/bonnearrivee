@@ -22,12 +22,12 @@
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/lac-nokoue-hero-2026-11-06-1920x480.webp"
-    alt="Le lac Ahémé"
+    alt="Le lac Nokoué"
     loading="eager"
     srcset="/assets/img/lac-nokoue-hero-2026-11-06-360x90.webp 360w, /assets/img/lac-nokoue-hero-2026-11-06-640x160.webp 640w, /assets/img/lac-nokoue-hero-2026-11-06-1200x300.webp 1200w, /assets/img/lac-nokoue-hero-2026-11-06-1920x480.webp 1920w"
     published="2021-12-16 15:42:17"
     description="Pêcheurs sur le lac Nokoué"
-    caption="Le lac Ahémé"
+    caption="Le lac Nokoué"
     author="Rachad sanoussi / CC BY-SA 4.0 — Wikimedia Commons"
     :nosnippet="true"
 />@verbatim                

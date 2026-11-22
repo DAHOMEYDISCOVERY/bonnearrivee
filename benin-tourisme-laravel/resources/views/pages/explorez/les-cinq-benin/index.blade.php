@@ -111,7 +111,7 @@
             <span class="benin-page-block__num">02</span>
             <h2 class="benin-page-block__title">Trois climats en une frontière</h2>
             <p>Sur la côte, un climat <strong>équatorial</strong> avec deux saisons des pluies (avril-juin et septembre-octobre) et une chaleur humide constante. Sur le plateau et les collines, un climat <strong>sub-équatorial</strong> plus contrasté. Au nord, un climat <strong>soudanien</strong> avec une longue saison sèche (novembre-avril) et une saison des pluies concentrée en été.</p>
-            <p>La conséquence : le nord est <strong>ouvert d'octobre à mai</strong> pour les safaris (Pendjari), tandis que la côte se visite <strong>toute l'année</strong>, avec un pic entre novembre et février.</p>
+            <p>La conséquence : le nord se découvre surtout en saison sèche, de <strong>novembre à mai</strong> — les parcs de la Pendjari et du W restent toutefois formellement déconseillés aujourd'hui —, tandis que la côte se visite <strong>toute l'année</strong>, avec un pic entre novembre et février.</p>
         </article>
 
         <article class="benin-page-block">

@@ -84,11 +84,11 @@
     caption="Savane du parc national de la Pendjari"
     author="Marco Schmidt / CC BY-SA 3.0 — Wikimedia Commons"
 />@verbatim</div><div class="cell">@endverbatim<x-media.figure
-    src="/assets/img/oiseau-640x480.webp"
-    alt="Faune sauvage du Bénin"
+    src="/assets/img/pendjari-hippo-640x640.webp"
+    alt="Hippopotames dans une mare"
     loading="native"
-    caption="Faune sauvage du Bénin"
-    author="Wikimedia Commons"
+    caption="Hippopotames dans une mare"
+    author="Ji-Elle / CC BY-SA 4.0 — Wikimedia Commons"
 />@verbatim</div></div></article></section></div><div class="page-section"><section class="section bg-motif padd-top-md padd-bottom-md marg-top-md marg-bottom-md"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell"><div class="woody-component woody-component-custom-text tpl_02 bg-white isRel padd-all-md no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>En pratique</h2></div></div></div><div class="woody-component-text benin-pratique"><ul><li><strong>Où</strong>parc national de la Pendjari, département de l'Atacora</li><li><strong>Y aller</strong>depuis Cotonou, route vers le nord via Bohicon, Parakou et Natitingou ; Tanguiéta est la ville-porte la plus proche</li><li><strong>Compter</strong>deux nuits sur place au minimum pour deux sorties à l'aube</li><li><strong>Meilleure période</strong>saison sèche, quand les animaux se concentrent sur les mares</li><li><strong>Bon à savoir</strong>visez les mares en fin de saison sèche plutôt que le lit de la rivière : moins d'eau disponible, donc plus d'animaux par point d'eau, et une observation plus rapprochée sans quitter le véhicule.</li></ul></div></div></div></div></article></section></div><div class="page-section"><section class="section padd-top-md padd-bottom-md marg-top-md marg-bottom-md"><article class="section-layout-wrapper grid-container grid-default"><div class="woody-component woody-component-custom-text tpl_01 no-sessions"><div class="generic-block-header marg-bottom-md"><div class="generic-block-titles flex-container flex-dir-column align-center text-left"><div class="generic-block-texts has-title"><h2>À lire aussi</h2></div></div></div></div><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch grid-padding-x grid-padding-y"><div class="cell">@endverbatim<x-card
     classes="card basicCard tpl_02 isRel ratio_4_3"
     href="/explorez/naturellement-sauvage/le-parc-de-la-pendjari"

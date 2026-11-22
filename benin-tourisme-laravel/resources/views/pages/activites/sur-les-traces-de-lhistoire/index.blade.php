@@ -22,12 +22,12 @@
                     <div class="hero-bg backgroundMedia img">
                                                                                                             @endverbatim<x-media.figure
     src="/assets/img/ouidah-musee-1920x480.webp"
-    alt="Les paysages de l’Atacora"
+    alt="Le musée d’histoire de Ouidah"
     loading="eager"
     srcset="/assets/img/ouidah-musee-360x90.webp 360w, /assets/img/ouidah-musee-640x160.webp 640w, /assets/img/ouidah-musee-1200x300.webp 1200w, /assets/img/ouidah-musee-1920x480.webp 1920w"
     published="2021-12-13 14:15:59"
-    description="Les paysages de l’Atacora"
-    caption="Les paysages de l’Atacora"
+    description="Le musée d’histoire de Ouidah"
+    caption="Le musée d’histoire de Ouidah"
     author="KOUAGOU Damien / CC BY-SA 4.0 — Wikimedia Commons"
     :nosnippet="true"
 />@verbatim                

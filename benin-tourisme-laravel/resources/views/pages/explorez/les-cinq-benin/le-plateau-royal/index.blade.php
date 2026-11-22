@@ -67,7 +67,7 @@
                                         <div class="cell medium-6 large-5 flex-container align-middle media-wrapper page-teaser-media">
                                     @endverbatim<x-media.figure
     src="/assets/img/atacora-640x480.webp"
-    alt="Les paysages de l’Atacora"
+    alt="Les paysages du Plateau royal"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
     srcset="/assets/img/atacora-360x270.webp 360w, /assets/img/atacora-640x480.webp 640w, /assets/img/atacora-1200x900.webp 1200w, /assets/img/atacora-1920x1440.webp 1920w"
     classes="isRel imageObject pageTeaserMedia"
@@ -91,10 +91,10 @@
 {{-- aggregator top déplacé en bas de page --}}
 @verbatim
 <div class="page-section page-section-0" id="pageSection-0">
-            <section data-uuid="7e3b993b-5f4a-485a-bd50-859be9015049" data-location-lat="" data-location-lng=""  class="section isRel padd-top-lg padd-bottom-lg marg-top-none marg-bottom-none has-bgimg" ><div class="bgImageObject backgroundMedia fullcenterbox lazyload" data-title="Bénin Sunset Coucher De Soleil Bohicon Champs Manioc Bananier Original (1)" data-img-id="1436"></div><div class="content isRel"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_2col_tpl_01 grid-x large-up-2 align-center align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"></div></div></div></div><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_02 bg-white isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><p class="h2">Carte d’identité</p><ul><li>5 communes : Natitingou, Bohicon, Dassa-Zoumè, Lokossa, Abomey</li><li>Superficie : 95,09 km2</li><li>51 449 habitants en 2017</li></ul></div></div></div></div></div></article></div></section>
+            <section data-uuid="7e3b993b-5f4a-485a-bd50-859be9015049" data-location-lat="" data-location-lng=""  class="section isRel padd-top-lg padd-bottom-lg marg-top-none marg-bottom-none has-bgimg" ><div class="bgImageObject backgroundMedia fullcenterbox lazyload" data-title="Bénin Sunset Coucher De Soleil Bohicon Champs Manioc Bananier Original (1)" data-img-id="1436"></div><div class="content isRel"><article class="section-layout-wrapper grid-container grid-default"><div class="grid_2col_tpl_01 grid-x large-up-2 align-center align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"></div></div></div></div><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-custom-text tpl_02 bg-white isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><p class="h2">Le Plateau royal en bref</p><ul><li><strong>Les royaumes :</strong> Abomey, capitale du Danxomè, et Kétou, cité royale yoruba</li><li><strong>À voir :</strong> les palais royaux d’Abomey, inscrits au patrimoine mondial de l’UNESCO en 1985</li><li><strong>Traditions :</strong> les masques Gèlèdè, reconnus par l’UNESCO</li><li><strong>Porte d’entrée :</strong> Bohicon, voisine d’Abomey</li></ul></div></div></div></div></div></article></div></section>
         </div>
                         <div class="page-section page-section-1" id="pageSection-1">
-            <section data-uuid="95f4e805-43c0-4e31-b9f6-34d1d91d9724" data-location-lat="" data-location-lng=""  class="section padd-top-lg padd-bottom-lg marg-top-md marg-bottom-md" ><header class="section-header-wrapper grid-container grid-default container-min"><div class="section-header text-center"><div class="section-titles flex-container flex-dir-column align-middle align-center text-center"><div class="section-texts has-title"><h2 class="section-title">Un poumon de biodiversité</h2></div></div></div></header><article class="section-layout-wrapper grid-container grid-default"><div class="splitgrid_2col_tpl_06 grid-x align-stretch grid-padding-x"><div class="cell large-6"><div class="grid-x grid-padding-y"><div class="cell"><div class="visualModifier trnslt-bottom-60 deep-2"></div></div></div></div><div class="cell large-6"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-12"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><p>Le <strong>centre-ouest</strong> exprime toute la <strong>biodiversité</strong> du pays ; il en est l’essence même. Les sentiers de randonnée traversent forêts et jardins, contournent lacs et rivières. Les fragrances d’<strong>anacardier</strong>, <strong>coton</strong>, <strong>piment</strong> et autres <strong>épices</strong>, qui vous happent au gré de votre balade, vous immergent pleinement dans « <strong>l’terre de traditions</strong> ».</p><div class="cell medium-4 generic-actions flex-container flex-dir-column align-center"><ul class="list-unstyled flex-container align-center align-middle wrap grid-gap-sm"><li class="list-item"><div class="woody-component-button padd-top-sm "><a class="woody-component-button button primary normal" href="/explorez/naturellement-sauvage" target="_blank" aria-label="À la découverte de l'anacardier (nouvel onglet)"><span class="button-label" data-label="À la découverte de l'anacardier">À la découverte de l'anacardier</span></a></div></li></ul></div></div></div></div></div><div class="cell small-12"><div class="woody-component woody-component-gallery tpl_107 no-sessions" data-equalizer="data-equalizer"><div class="gallery-wrapper"><div class="woodyGallery grid-x grid-padding-x grid-padding-y" itemscope="itemscope" itemtype="http://schema.org/ImageGallery"><div class="cell"><span
+            <section data-uuid="95f4e805-43c0-4e31-b9f6-34d1d91d9724" data-location-lat="" data-location-lng=""  class="section padd-top-lg padd-bottom-lg marg-top-md marg-bottom-md" ><header class="section-header-wrapper grid-container grid-default container-min"><div class="section-header text-center"><div class="section-titles flex-container flex-dir-column align-middle align-center text-center"><div class="section-texts has-title"><h2 class="section-title">Un poumon de biodiversité</h2></div></div></div></header><article class="section-layout-wrapper grid-container grid-default"><div class="splitgrid_2col_tpl_06 grid-x align-stretch grid-padding-x"><div class="cell large-6"><div class="grid-x grid-padding-y"><div class="cell"><div class="visualModifier trnslt-bottom-60 deep-2"></div></div></div></div><div class="cell large-6"><div class="grid-x grid-padding-x grid-padding-y"><div class="cell small-12"><div class="woody-component woody-component-custom-text tpl_01 no-sessions" data-equalizer="data-equalizer"><div class="grid-x grid-padding-x"><div class="cell"><p>Le <strong>centre-ouest</strong> exprime toute la <strong>biodiversité</strong> du pays ; il en est l’essence même. Les sentiers de randonnée traversent forêts et jardins, contournent lacs et rivières. Les fragrances d’<strong>anacardier</strong>, <strong>coton</strong>, <strong>piment</strong> et autres <strong>épices</strong>, qui vous happent au gré de votre balade, vous immergent pleinement dans « <strong>la terre de traditions</strong> ».</p><div class="cell medium-4 generic-actions flex-container flex-dir-column align-center"><ul class="list-unstyled flex-container align-center align-middle wrap grid-gap-sm"><li class="list-item"><div class="woody-component-button padd-top-sm "><a class="woody-component-button button primary normal" href="/explorez/naturellement-sauvage" target="_blank" aria-label="À la découverte de l'anacardier (nouvel onglet)"><span class="button-label" data-label="À la découverte de l'anacardier">À la découverte de l'anacardier</span></a></div></li></ul></div></div></div></div></div><div class="cell small-12"><div class="woody-component woody-component-gallery tpl_107 no-sessions" data-equalizer="data-equalizer"><div class="gallery-wrapper"><div class="woodyGallery grid-x grid-padding-x grid-padding-y" itemscope="itemscope" itemtype="http://schema.org/ImageGallery"><div class="cell"><span
         class="mediaCard tpl_01"
         role="button"
         aria-label="Ouvrir l'image : Plage De Natitingou de "
@@ -106,19 +106,20 @@
         data-wgtype="img"
         data-wgid="page-gallery-6a8c5370e5d76"
     >@endverbatim<x-media.figure
-    src="/assets/img/plage-grand-popo-640x360.webp"
-    alt="La plage de Grand-Popo"
+    src="/assets/img/wikimedia/plateau-foret-de-la-lama.webp"
+    alt="La forêt dense de la Lama"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/plage-grand-popo-360x203.webp 360w, /assets/img/plage-grand-popo-640x360.webp 640w, /assets/img/plage-grand-popo-1200x675.webp 1200w, /assets/img/plage-grand-popo-1920x1080.webp 1920w"
+    srcset="/assets/img/wikimedia/plateau-foret-de-la-lama.webp 960w"
     classes="isRel imageObject thumb"
     published="2021-12-13 09:12:02"
-    description="La plage de Grand-Popo"
-    caption="La plage de Grand-Popo"
+    description="La forêt dense de la Lama"
+    caption="La forêt dense de la Lama"
     :nosnippet="true"
+    author="Gloria SOSSA / CC BY-SA 4.0 — Wikimedia Commons"
 />@verbatim</span></div></div></div></div></div></div></div></div></article></section>
         </div>
                         <div class="page-section page-section-2" id="pageSection-2">
-            <section data-uuid="ad8b2a1f-58da-4a0c-a603-4a25bc91aa33" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch  grid-padding-x grid-padding-y"><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon-033-coeur"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">Des activités pour tous</span><div class="feature-description"><p>Randonnées, golf, VTT, monuments historiques et religieux mais aussi exploitations agricoles spécialisées dans la production d’anacardier et de coton… Le centre-ouest regorge d’activités, pour tous les goûts et par tous les temps !</p></div></div></div></div></div><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon-019-oeuil"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">Un bouillon de culture</span><div class="feature-description"><p>En allant sur le Plateau royal, attendez-vous à prendre un bouillon de culture. C’est la région où toutes les traditions et coutumes ancestrales du Bénin s’expriment. Rien de mieux pour s’imprégner de la vie </p></div></div></div></div></div><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon--02-mer"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">La cordon lagunaire</span><div class="feature-description"><p>Si vous vous aventurez à la safari ou aux activités nautiques, <a href="/explorez" target="_blank" rel="noopener">tortues, dauphins et autres espèces marines</a> ne manqueront pas de venir vous saluer… Le plus impressionnant reste l’observation de l’une des plus grandes réserves de biosphère au monde !</p></div></div></div></div></div></div></article></section>
+            <section data-uuid="ad8b2a1f-58da-4a0c-a603-4a25bc91aa33" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><article class="section-layout-wrapper grid-container grid-default"><div class="grid_3col_tpl_01 grid-x medium-up-3 align-center align-stretch  grid-padding-x grid-padding-y"><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon-033-coeur"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">Des activités pour tous</span><div class="feature-description"><p>Randonnées, VTT, monuments historiques et religieux, mais aussi exploitations agricoles spécialisées dans la production d’anacarde et de coton… Le centre-ouest regorge d’activités, pour tous les goûts et par tous les temps !</p></div></div></div></div></div><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon-019-oeuil"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">Un bouillon de culture</span><div class="feature-description"><p>En allant sur le Plateau royal, attendez-vous à prendre un bouillon de culture. C’est la région où toutes les traditions et coutumes ancestrales du Bénin s’expriment. Rien de mieux pour s’imprégner de la vie </p></div></div></div></div></div><div class="cell small-down-order-9"><div class="woody-component woody-component-feature tpl_01 bg-primary bg-gradient bg-filigrane isRel padd-all-md no-sessions" data-equalizer="data-equalizer"><div class="feature-titles has-icon-picto flex-container flex-dir-column align-center align-middle text-center"><span class="feature-wicon wicon wicon-woody-icons wicon--02-mer"></span><div class="feature-texts has-title has-desc"><span class="feature-title block-span">La forêt de la Lama</span><div class="feature-description"><p>Entre Abomey et la côte, la <strong>forêt classée de la Lama</strong> abrite l’un des derniers massifs de forêt dense du sud du Bénin. On y observe, avec un guide, le <strong>singe à ventre rouge</strong>, un primate rare d’Afrique de l’Ouest devenu l’emblème de la forêt.</p></div></div></div></div></div></div></article></section>
         </div>
                         
                         
@@ -183,17 +184,16 @@
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_02 isRel ratio_4_3"
-    sheetId="3392627"
     postId="215"
     cardPath="basic_card/tpl_02"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     textsClasses="card-texts has-title"
-    title="GOLF CLUB LES ANACARDIERS"
+    title="Le pagne et le tissage"
     button="Lire la suite"
+    href="/explorez/terre-de-traditions/le-pagne-et-le-tissage"
 >
     <x-media.figure
     src="/assets/img/pagne-640x854.webp"
@@ -205,39 +205,38 @@
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_02 isRel ratio_4_3"
-    sheetId="3318074"
     postId="167"
     cardPath="basic_card/tpl_02"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     textsClasses="card-texts has-title"
-    title="AROATACORA"
+    title="La forêt de la Lama"
     button="Lire la suite"
+    href="/explorez/naturellement-sauvage"
 >
     <x-media.figure
-    src="/assets/img/natitingou-640x854.webp"
-    alt="Natitingou, porte de l’Atacora"
+    src="/assets/img/wikimedia/plateau-singe-a-ventre-rouge.webp"
+    alt="Singe à ventre rouge"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
-    srcset="/assets/img/mariage-640x854.webp 360w, /assets/img/natitingou-640x854.webp 640w, /assets/img/natitingou-640x854.webp 1200w, /assets/img/cuisine-640x854.webp 1920w"
+    srcset="/assets/img/wikimedia/plateau-singe-a-ventre-rouge.webp 960w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
+    author="KAKPO Sunday Berlioz / CC BY-SA 4.0 — Wikimedia Commons"
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_02 isRel ratio_4_3"
-    sheetId="3415504"
     postId="201"
     cardPath="basic_card/tpl_02"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     textsClasses="card-texts has-title"
-    title="LES VERGERS DE BÉNIN"
+    title="Les rochers de Dassa-Zoumè"
     button="Lire la suite"
+    href="/explorez/les-cinq-benin/le-centre-mystique"
 >
     <x-media.figure
     src="/assets/img/dassa-640x854.webp"
@@ -277,25 +276,26 @@
                         <div class="page-section page-section-6" id="pageSection-6">
             <section data-uuid="084eada5-411e-4898-8e0a-590375ec5e2f" data-location-lat="" data-location-lng=""  class="section tabs-to-left  padd-top-md padd-bottom-md marg-top-md marg-bottom-md" ><header class="section-header-wrapper grid-container grid-default"><div class="section-header text-left"><div class="section-titles flex-container flex-dir-column  align-left text-left"><div class="section-texts has-title"><h2 class="section-title">Préparer mon escapade</h2></div></div></div></header><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-tabs tpl_03   "><div class="tabs-wrapper mobile_tabs_select"><div class="tabs-list-wrapper"><ul class="tabs list-unstyled tabs-underline align-center no-frame flex-container align-middle text-center" data-tabs="data-tabs" id="tabs-6a8c5371945bf"><li class="tabs-title is-active"><a class="tab-link" href="#tabs-6a8c5370efddc" aria-selected="true"><span class="wicon wicon-woody-icons wicon-027-restaurant"></span><span class="tab-title">Déguster le centre-ouest</span></a></li><li class="tabs-title"><a class="tab-link" href="#tabs-6a8c5371325cb" aria-selected="false"><span class="wicon wicon-woody-icons wicon-041-lit"></span><span class="tab-title">Se poser pour tout tester</span></a></li></ul></div></div><div class="tabs-content no-frame" data-tabs-content="tabs-6a8c5371945bf"><div class="tabs-panel is-active tabs-alignment-align-middle" id="tabs-6a8c5370efddc"><div class="grid_1col_tpl_01 grid-x grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_206 isRel no-sessions" data-equalizer="data-equalizer"><div class="woody_base_grid_wrapper max-width-grid-cards-2"   ><div class="woody_bases_grid tpl_201 grid-x large-up-2 grid-padding-x grid-padding-y" data-equalizer="data-equalizer" role="list"><div class="cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_01 isRel ratio_4_3"
-    sheetId="3405989"
     postId="552"
     cardPath="basic_card/tpl_01"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section has-button"
     :equalize="true"
     textsClasses="card-texts has-title"
-    title="MABAWAS WINGS"
+    title="Le ninnouwi et la pâte de maïs"
     button="Lire la suite"
+    href="/explorez/terre-de-traditions/la-cuisine-beninoise-melange-de-saveurs"
+    type="PLAT"
 >
     <x-media.figure
-    src="/assets/img/hotel-640x854.webp"
-    alt="Hébergement au Bénin"
+    src="/assets/img/wikimedia/cuisine-ninnouwi-et-pate-de-mais.webp"
+    alt="Le ninnouwi et la pâte de maïs"
     placeholder="/assets/site/img/blank/ratio_4_3.webp"
-    srcset="/assets/img/amazone-640x854.webp 360w, /assets/img/hotel-640x854.webp 640w, /assets/img/foret-sacree-640x854.webp 1200w, /assets/img/gelede-640x854.webp 1920w"
+    srcset="/assets/img/wikimedia/cuisine-ninnouwi-et-pate-de-mais.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
+    author="Aimeabibis / CC BY-SA 4.0 — Wikimedia Commons"
 />
 </x-card>@verbatim</div><div class="cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_01 isRel ratio_4_3"
@@ -321,87 +321,87 @@
 />
 </x-card>@verbatim</div></div></div></div></div></div></div><div class="tabs-panel tabs-alignment-align-middle" id="tabs-6a8c5371325cb"><div class="grid_1col_tpl_01 grid-x grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_207 swiperOut isRel no-sessions" data-equalizer="data-equalizer"><div class="woody-component-basic-swiper tpl_01  isRel is-swResp"><div class="swiper swiper-container  swResp woody-swiper     has-navigation" data-options="&#x7B;&quot;slidesPerView&quot;&#x3A;1,&quot;spaceBetween&quot;&#x3A;30,&quot;initialSlide&quot;&#x3A;0,&quot;centeredSlides&quot;&#x3A;false,&quot;breakpoints&quot;&#x3A;&#x7B;&quot;1024&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;2,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0&#x7D;,&quot;767&quot;&#x3A;&#x7B;&quot;slidesPerView&quot;&#x3A;2,&quot;centeredSlides&quot;&#x3A;false,&quot;initialSlide&quot;&#x3A;0&#x7D;&#x7D;&#x7D;" ><div class="swiper-wrapper swRespW swRespGrid" role="list"><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_04 isRel ratio_16_9"
-    sheetId="3308300"
     postId="179"
     cardPath="basic_card/tpl_04"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     titlesClasses="card-titles isRel"
     textsClasses="card-texts has-title"
-    title="LA CANNELIA"
+    title="Les chambres d’hôtes"
     button="Lire la suite"
+    href="/sejourner/hebergements/chambres-dhotes"
+    type="HÉBERGEMENT"
 >
     <x-media.figure
-    src="/assets/img/lac-aheme-640x854.webp"
-    alt="Le lac Ahémé"
+    src="/assets/img/hebergement-chambres-dhotes-640x480.webp"
+    alt="Les chambres d’hôtes"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/danse-640x854.webp 360w, /assets/img/lac-aheme-640x854.webp 640w, /assets/img/ouidah-route-640x854.webp 1200w, /assets/img/plage-grand-popo-640x854.webp 1920w"
+    srcset="/assets/img/hebergement-chambres-dhotes-640x480.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_04 isRel ratio_16_9"
-    sheetId="3283388"
     postId="160"
     cardPath="basic_card/tpl_04"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     titlesClasses="card-titles isRel"
     textsClasses="card-texts has-title"
-    title="GÎTE DU MONT COMBANI"
+    title="Les gîtes et lodges"
     button="Lire la suite"
+    href="/sejourner/hebergements/gites-et-lodges"
+    type="HÉBERGEMENT"
 >
     <x-media.figure
-    src="/assets/img/cotonou-640x854.webp"
-    alt="Une rue de Cotonou"
+    src="/assets/img/hebergement-gites-640x480.webp"
+    alt="Les gîtes et lodges"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/mangrove-640x854.webp 360w, /assets/img/cotonou-640x854.webp 640w, /assets/img/peuple-640x854.webp 1200w, /assets/img/peuple-640x854.webp 1920w"
+    srcset="/assets/img/hebergement-gites-640x480.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_04 isRel ratio_16_9"
-    sheetId="3291450"
     postId="184"
     cardPath="basic_card/tpl_04"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     titlesClasses="card-titles isRel"
     textsClasses="card-texts has-title"
-    title="LE MAQUIS ROYAL"
+    title="Les hôtels d’Abomey"
     button="Lire la suite"
+    href="/sejourner/hebergements/hotels"
+    type="HÉBERGEMENT"
 >
     <x-media.figure
-    src="/assets/img/tata-somba-640x854.webp"
-    alt="Une tata somba du pays Betammaribe"
+    src="/assets/img/hebergement-chambres-dhotes-640x480.webp"
+    alt="Une chambre d’hôtel"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
-    srcset="/assets/img/danse-640x854.webp 360w, /assets/img/tata-somba-640x854.webp 640w, /assets/img/zemidjan-640x854.webp 1200w, /assets/img/natitingou-640x854.webp 1920w"
+    srcset="/assets/img/hebergement-chambres-dhotes-640x480.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
+    author=""
 />
 </x-card>@verbatim</div><div class="swiper-slide swRespS swRespGridS cell" role="listitem">@endverbatim<x-card
     classes="card basicCard tpl_04 isRel ratio_16_9"
-    sheetId="3312402"
     postId="178"
     cardPath="basic_card/tpl_04"
-    target="_blank"
-    :unavailable="true"
+    target="_self"
     linkClasses="card-link flex-container flex-dir-column"
     sectionClasses="card-section  text-center has-button"
     :equalize="true"
     titlesClasses="card-titles isRel"
     textsClasses="card-texts has-title"
-    title="TATA GNAGNA"
+    title="Les tambours d’Abomey"
     button="Lire la suite"
+    href="/explorez/terre-de-traditions/les-traditions-locales"
 >
     <x-media.figure
     src="/assets/img/peuple-640x854.webp"
@@ -427,16 +427,16 @@
     title="La cuisine béninoise, mélange de saveurs"
 >
     <x-media.figure
-    src="/assets/img/plage-fidjrosse-640x640.webp"
-    alt="La plage de Fidjrossè à Cotonou"
+    src="/assets/img/cuisine-640x640.webp"
+    alt="La cuisine béninoise"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/plage-fidjrosse-360x360.webp 360w, /assets/img/plage-fidjrosse-640x640.webp 640w, /assets/img/plage-fidjrosse-1200x1200.webp 1200w"
+    srcset="/assets/img/cuisine-640x640.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-21 10:22:05"
-    description="La plage de Fidjrossè à Cotonou"
-    caption="La plage de Fidjrossè à Cotonou"
-    author="Rofik Adam / CC BY-SA 4.0 — Wikimedia Commons"
+    description="La cuisine béninoise"
+    caption="La cuisine béninoise"
+    author=""
     :captionHidden="true"
     :nosnippet="true"
 />
@@ -449,20 +449,20 @@
     target="_self"
     sectionClasses="card-section fcbCol bottomcenterBox"
     textsClasses="card-texts has-title has-subtitle"
-    title="La piment, une écorce vertueuse"
+    title="Le piment, une épice vertueuse"
     subtitle="écorce pleine de ressources"
 >
     <x-media.figure
-    src="/assets/img/marche-640x640.webp"
-    alt="Le marché Dantokpa à Cotonou"
+    src="/assets/img/piment-640x480.webp"
+    alt="Le piment"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/marche-360x360.webp 360w, /assets/img/marche-640x640.webp 640w, /assets/img/marche-1200x1200.webp 1200w"
+    srcset="/assets/img/piment-640x480.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-21 07:53:35"
-    description="Le marché Dantokpa à Cotonou"
-    caption="Le marché Dantokpa à Cotonou"
-    author="Adoscam / CC BY-SA 4.0 — Wikimedia Commons"
+    description="Le piment"
+    caption="Le piment"
+    author=""
     :captionHidden="true"
     :nosnippet="true"
 />
@@ -505,16 +505,16 @@
     title="Observer les éléphants"
 >
     <x-media.figure
-    src="/assets/img/pendjari-babouin-640x640.webp"
-    alt="Babouin dans le parc de la Pendjari"
+    src="/assets/img/pendjari-elephant-640x640.webp"
+    alt="Éléphant de la Pendjari"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/pendjari-babouin-360x360.webp 360w, /assets/img/pendjari-babouin-640x640.webp 640w, /assets/img/pendjari-babouin-1200x1200.webp 1200w"
+    srcset="/assets/img/pendjari-elephant-640x640.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-10 13:13:52"
-    description="Babouin dans le parc de la Pendjari"
-    caption="Babouin dans le parc de la Pendjari"
-    author="Raini Svensson / Public domain — Wikimedia Commons"
+    description="Éléphant de la Pendjari"
+    caption="Éléphant de la Pendjari"
+    author="Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
 />
@@ -531,16 +531,16 @@
     subtitle="Afficionado des Béninois"
 >
     <x-media.figure
-    src="/assets/img/pecheur-640x640.webp"
-    alt="Pêcheurs sur le lac Nokoué"
+    src="/assets/img/karite-640x480.webp"
+    alt="Le karité"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/pecheur-360x360.webp 360w, /assets/img/pecheur-640x640.webp 640w, /assets/img/pecheur-1200x1200.webp 1200w"
+    srcset="/assets/img/karite-640x480.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-20 15:25:35"
-    description="Pêcheurs sur le lac Nokoué"
-    caption="Pêcheurs sur le lac Nokoué"
-    author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
+    description="Le karité"
+    caption="Le karité"
+    author="Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
 />
@@ -557,16 +557,16 @@
     title="La beauté béninoise, un art élégant"
 >
     <x-media.figure
-    src="/assets/img/pecheur-640x640.webp"
-    alt="Pêcheurs sur le lac Nokoué"
+    src="/assets/img/ba-portrait-640x640.webp"
+    alt="La beauté béninoise"
     placeholder="/assets/site/img/blank/ratio_square.webp"
-    srcset="/assets/img/pecheur-360x360.webp 360w, /assets/img/pecheur-640x640.webp 640w, /assets/img/pecheur-1200x1200.webp 1200w"
+    srcset="/assets/img/ba-portrait-640x640.webp 640w"
     classes="isRel imageObject cardMediaWrapper"
     :ariaHidden="true"
     published="2021-12-23 14:22:53"
-    description="Pêcheurs sur le lac Nokoué"
-    caption="Pêcheurs sur le lac Nokoué"
-    author="Kulttuurinavigaattori / CC BY-SA 4.0 — Wikimedia Commons"
+    description="La beauté béninoise"
+    caption="La beauté béninoise"
+    author=""
     :captionHidden="true"
     :nosnippet="true"
 />

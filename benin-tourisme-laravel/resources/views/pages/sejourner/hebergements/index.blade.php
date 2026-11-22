@@ -92,7 +92,7 @@
                     <span class="benin-heb-choice__source">Partenaire · Dahomey Discovery</span>
                     <div class="benin-heb-choice__body">
                         <h2>Hôtels</h2>
-                        <p>Les hôtels de <strong>Bénin</strong> vous accueillent pour un séjour ressourçant. Piscine, restaurants, petits-déjeuners traditionnels ou occidentaux — les hôteliers vous rendent la vie plus facile.</p>
+                        <p>Les hôtels du <strong>Bénin</strong> vous accueillent pour un séjour ressourçant. Piscine, restaurants, petits-déjeuners traditionnels ou occidentaux — les hôteliers vous rendent la vie plus facile.</p>
                         <span class="benin-heb-choice__cta">
                             Voir les hôtels <span aria-hidden="true">→</span>
                         </span>

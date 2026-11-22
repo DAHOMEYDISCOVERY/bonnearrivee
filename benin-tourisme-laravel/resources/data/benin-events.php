@@ -359,7 +359,7 @@ return [
         'surPlace' => [
             'titre' => 'Sur place',
             'points' => [
-                ['ic' => '🍽️', 'label' => 'Manger', 'texte' => 'Petits restaurants créoles autour de la place royale — cuisine afro-brésilienne, poissons frais.'],
+                ['ic' => '🍽️', 'label' => 'Manger', 'texte' => 'Petits restaurants autour de la place royale — cuisine afro-brésilienne, dite agouda, poissons frais.'],
                 ['ic' => '🩹', 'label' => 'Sécurité', 'texte' => 'Ville tranquille, mais gardez vos distances avec les masques en action — jamais devant, jamais dans leur trajectoire.'],
                 ['ic' => '♿', 'label' => 'Accessibilité', 'texte' => 'Centre historique en dur, praticable. Concessions traditionnelles avec seuils — accompagnement recommandé.'],
                 ['ic' => '💳', 'label' => 'Paiement', 'texte' => 'Cash prioritaire au marché et dans les concessions. Distributeurs BOA et Ecobank sur l\'axe principal.'],
