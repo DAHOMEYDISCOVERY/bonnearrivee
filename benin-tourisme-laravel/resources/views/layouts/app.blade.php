@@ -36,7 +36,7 @@
                         
         <div class="site-content">
                            
-    @endverbatim<main @yield('mainAttributes')>@yield('content')@include('partials.alerte-nord')</main>@verbatim
+    @endverbatim<main @yield('mainAttributes')>@yield('content')</main>@verbatim
                 
                                                 @endverbatim@yield('aside')@verbatim<div class="site-footer-container">
     @endverbatim@include('partials.footer')@verbatim
