@@ -30,16 +30,16 @@
                                                 <span class="menuLink-title">{{ $__item['label'] }}</span>
                                                     </a>
 @if (! empty($__item['blocks']))
-                                                    <div class="submenu-wrapper" aria-expanded="false">
-                                <ul class="submenu-grid one-by-one " data-link-parent="{{ $__item['post_id'] ?? '' }}" data-title="{{ $__item['label'] }}" role="menu">
+                                                    <div class="submenu-wrapper">
+                                <ul class="submenu-grid one-by-one " data-link-parent="{{ $__item['post_id'] ?? '' }}" data-title="{{ $__item['label'] }}">
 @foreach ($__item['blocks'] as $__block)
 @if (($__block['type'] ?? '') === 'cards')
-<li class="submenu-block submenu-block-images-list tpl_07 " data-position="{{ $__block['position'] ?? 'grid-col-start-1 grid-col-end-13 grid-row-start-1 grid-row-end-13' }}" role="menuitem" aria-label="menuitem">
-        <ul class="submenu-block-content " data-columns="{{ $__block['columns'] ?? '2cols' }}" role="menu">
+<li class="submenu-block submenu-block-images-list tpl_07 " data-position="{{ $__block['position'] ?? 'grid-col-start-1 grid-col-end-13 grid-row-start-1 grid-row-end-13' }}">
+        <ul class="submenu-block-content " data-columns="{{ $__block['columns'] ?? '2cols' }}">
 @foreach ($__block['items'] ?? [] as $__card)
 @php($__img = \App\Support\SiteLayout::image($__card['image'] ?? ''))
                     <li class="card overlayedCard submenu-item submenu-item-delay">
-            <a class="card-link isRel bg-black" href="{{ $__card['url'] }}" target="_self" data-post-id="{{ $__card['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__card['title']) }}" role="menuitem">
+            <a class="card-link isRel bg-black" href="{{ $__card['url'] }}" target="_self" data-post-id="{{ $__card['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__card['title']) }}">
                                                             <figure itemscope itemtype="http://schema.org/ImageObject" aria-hidden="true" class="isRel imageObject cardMediaWrapper"
     ><noscript><img class="imageObject-img img-responsive a42-ac-replace-img" src="{{ $__img['src'] }}" alt="{{ $__card['alt'] ?? '' }}" itemprop="thumbnail"/></noscript><img class="imageObject-img img-responsive lazyload a42-ac-replace-img" src="/assets/site/img/blank/ratio_2_1.webp" data-src="{{ $__img['src'] }}" data-sizes="auto" @if ($__img['srcset']) data-srcset="{{ $__img['srcset'] }}" @endif alt="{{ $__card['alt'] ?? '' }}" itemprop="thumbnail"/>@if (! empty($__card['published']))<meta itemprop="datePublished" content="{{ $__card['published'] }}">@endif<p class="hide imageObject-description spanned" itemprop="description" aria-hidden="true" data-nosnippet>{{ $__card['description'] ?? ($__card['alt'] ?? '') }}</p><figcaption class="imageObject-caption flex-container align-middle isAbs bottom left hide" data-nosnippet><span class="imageObject-icon copyright-icon flex-container align-center align-middle">©</span><p class="spanned imageObject-text imageObject-description" itemprop="caption">{{ $__card['caption'] ?? ($__card['alt'] ?? '') }}</p></figcaption></figure>                                                    <div class="card-section submenu-item-section fullcenterbox">
                     <div class="card-titles"><div class="card-texts flex-container flex-dir-column"><span class="card-title">{{ $__card['title'] }}</span></div></div>                </div>
@@ -49,28 +49,28 @@
         </ul>
     </li>
 @elseif (($__block['type'] ?? '') === 'links')
-<li class="submenu-block submenu-block-links-list tpl_01 " data-position="{{ $__block['position'] ?? '' }}" role="menuitem" aria-label="menuitem">
+<li class="submenu-block submenu-block-links-list tpl_01 " data-position="{{ $__block['position'] ?? '' }}">
 @if (! empty($__block['title']))
         <div class="submenu-block-header text-left submenu-item-delay">
                     <a class="submenu-block-link" href="{{ $__block['url'] ?? '#' }}" target="_self" data-post-id="{{ $__block['post_id'] ?? '' }}">
                 <div class="submenu-titles"><div class="submenu-texts flex-container flex-dir-column"><span class="submenu-title">{{ $__block['title'] }}</span></div></div>            </a>
             </div>
 @endif
-    <ul class="submenu-block-content justify-items-left" data-columns="{{ $__block['columns'] ?? '1cols' }}" role="menu">
+    <ul class="submenu-block-content justify-items-left" data-columns="{{ $__block['columns'] ?? '1cols' }}">
 @foreach ($__block['items'] ?? [] as $__link)
                     <li class="submenu-item submenu-item-delay">
-            <a href="{{ $__link['url'] }}" target="_self" data-post-id="{{ $__link['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__link['title']) }}" role="menuitem">
+            <a href="{{ $__link['url'] }}" target="_self" data-post-id="{{ $__link['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__link['title']) }}">
                  <div class="submenu-titles"><div class="submenu-texts flex-container align-middle"><span class="submenu-title">{{ $__link['title'] }}</span></div></div>            </a>
         </li>
 @endforeach
         </ul>
     </li>
 @elseif (($__block['type'] ?? '') === 'buttons')
-<li class="submenu-block submenu-block-buttons-list tpl_01 " data-position="{{ $__block['position'] ?? '' }}" role="menuitem" aria-label="menuitem">
-        <ul class="submenu-block-content justify-items-left" data-columns="{{ $__block['columns'] ?? '1cols' }}" role="menu">
+<li class="submenu-block submenu-block-buttons-list tpl_01 " data-position="{{ $__block['position'] ?? '' }}">
+        <ul class="submenu-block-content justify-items-left" data-columns="{{ $__block['columns'] ?? '1cols' }}">
 @foreach ($__block['items'] ?? [] as $__button)
                     <li class="submenu-item submenu-item-delay">
-            <a class="button {{ ($__button['style'] ?? 'primary') === 'secondary' ? 'secondary' : 'primary' }}" href="{{ $__button['url'] }}" target="_self" data-post-id="{{ $__button['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__button['title']) }}" role="menuitem">
+            <a class="button {{ ($__button['style'] ?? 'primary') === 'secondary' ? 'secondary' : 'primary' }}" href="{{ $__button['url'] }}" target="_self" data-post-id="{{ $__button['post_id'] ?? '' }}" aria-label="{{ \App\Support\SiteLayout::aria($__button['title']) }}">
                                 <span class="button-label" data-label="{{ $__button['title'] }}">{{ $__button['title'] }}</span>
             </a>
         </li>

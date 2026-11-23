@@ -6,7 +6,7 @@
                         
 
                                                 <div class="home-slider">
-                        <div class="woody-component-landswpr isRel tpl_03 bg-black" ><div class="swiper swiper-container woody-landing-swiper" data-options="&#x7B;&quot;loop&quot;&#x3A;true,&quot;autoplay&quot;&#x3A;&#x7B;&quot;delay&quot;&#x3A;5500,&quot;disableOnInteraction&quot;&#x3A;false&#x7D;,&quot;speed&quot;&#x3A;900,&quot;effect&quot;&#x3A;&quot;fade&quot;,&quot;fadeEffect&quot;&#x3A;&#x7B;&quot;crossFade&quot;&#x3A;true&#x7D;&#x7D;"><div class="swiper-wrapper"><div class="swiper-slide slide-1 media-op90 slide-type-img">@endverbatim<x-media.figure
+                        <div class="woody-component-landswpr isRel tpl_03 bg-black" ><div class="swiper swiper-container woody-landing-swiper" data-options="&#x7B;&quot;loop&quot;&#x3A;true,&quot;autoplay&quot;&#x3A;&#x7B;&quot;delay&quot;&#x3A;5500,&quot;disableOnInteraction&quot;&#x3A;false&#x7D;,&quot;speed&quot;&#x3A;900,&quot;effect&quot;&#x3A;&quot;fade&quot;,&quot;fadeEffect&quot;&#x3A;&#x7B;&quot;crossFade&quot;&#x3A;true&#x7D;&#x7D;"><div class="swiper-wrapper" role="list"><div class="swiper-slide slide-1 media-op90 slide-type-img">@endverbatim<x-media.figure
     src="/assets/img/cotonou-1920x1080.webp?v=amazone-2026-11-06"
     alt="Cotonou, la vitrine moderne du Bénin"
     loading="eager"
@@ -17,7 +17,8 @@
     caption="Cotonou, la vitrine moderne du Bénin"
     :nosnippet="true"
 />@verbatim<div class="landswpr-titles-wrapper" data-pagination-title="" data-pagination-wicon=""><div class="grid-container grid-y align-center align-middle"><div class="landswpr-titles"><div class="landswpr-texts flex-container flex-dir-column align-center align-middle has-pretitle has-title"><span class="landswpr-pretitle block-span">Vous n'êtes pas au bout de vos surprises...</span><span class="landswpr-title block-span">La vie s'émerveille au Bénin</span></div></div><div class="landswpr-links-wrapper flex-container"><a class="woody-component-button eskalad button primary normal landswpr-link" href="/explorez" target="_self" data-event="click_diaporama" data-name="Découvrez le littoral"><span class="title button-label" data-label="Découvrez le littoral">Découvrez le littoral</span></a></div></div></div></div><div class="swiper-slide slide-2 media-op90 slide-type-img">@endverbatim<x-media.figure
-    src="/assets/img/cathedrale-porto-novo.jpg"
+    src="/assets/img/cathedrale-porto-novo-1376x768.webp"
+    srcset="/assets/img/cathedrale-porto-novo-480x268.webp 480w, /assets/img/cathedrale-porto-novo-800x447.webp 800w, /assets/img/cathedrale-porto-novo-1376x768.webp 1376w"
     alt="Cathédrale Notre-Dame-de-l'Immaculée-Conception de Porto-Novo"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
     classes="isRel imageObject landswprMediaWrapper"
@@ -26,7 +27,8 @@
     caption="Cathédrale de Porto-Novo"
     :nosnippet="true"
 />@verbatim<div class="landswpr-titles-wrapper" data-pagination-title="" data-pagination-wicon=""><div class="grid-container grid-y align-center align-middle"><div class="landswpr-titles"><div class="landswpr-texts flex-container flex-dir-column align-center align-middle has-pretitle has-title"><span class="landswpr-pretitle block-span">Vous n'êtes pas au bout de vos surprises</span><span class="landswpr-title block-span">La vie s'invente au Bénin</span></div></div><div class="landswpr-links-wrapper flex-container"><a class="woody-component-button eskalad button primary normal landswpr-link" href="/explorez/terre-de-traditions" target="_self" data-event="click_diaporama" data-name="Découvrez les traditions béninoises"><span class="title button-label" data-label="Découvrez les traditions béninoises">Découvrez les traditions béninoises</span></a></div></div></div></div><div class="swiper-slide slide-3 media-op100 slide-type-img">@endverbatim<x-media.figure
-    src="/assets/img/porte-non-retour-ouidah.jpg"
+    src="/assets/img/porte-non-retour-ouidah-1376x768.webp"
+    srcset="/assets/img/porte-non-retour-ouidah-480x268.webp 480w, /assets/img/porte-non-retour-ouidah-800x447.webp 800w, /assets/img/porte-non-retour-ouidah-1376x768.webp 1376w"
     alt="Porte du Non-Retour, mémorial de la Route des Esclaves à Ouidah"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
     classes="isRel imageObject landswprMediaWrapper"

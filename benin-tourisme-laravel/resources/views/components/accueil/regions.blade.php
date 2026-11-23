@@ -13,7 +13,8 @@
     subtitle="Cap sur Ouidah !"
 >
     <x-media.figure
-    src="/assets/img/foret-sacree-kpasse-ouidah.jpg"
+    src="/assets/img/foret-sacree-kpasse-ouidah-800x447.webp"
+    srcset="/assets/img/foret-sacree-kpasse-ouidah-480x268.webp 480w, /assets/img/foret-sacree-kpasse-ouidah-800x447.webp 800w, /assets/img/foret-sacree-kpasse-ouidah-1376x768.webp 1376w"
     alt="Forêt sacrée de Kpassè, Ouidah"
     placeholder="/assets/site/img/blank/ratio_16_9.webp"
     classes="isRel imageObject 1 cardMediaWrapper"

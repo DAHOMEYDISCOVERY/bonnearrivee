@@ -739,7 +739,7 @@ dialog.ba-read::backdrop{background:rgba(8,26,20,.62);backdrop-filter:blur(4px);
 @media (prefers-reduced-motion:reduce){dialog.ba-read[open]{animation:none}}
 /* Accessibilité (PageSpeed) : vert plus soutenu là où le vert clair #00a05d manquait de contraste */
 html body .section-pretitle{color:#00754a!important}
-html body .site-footer .infos-block.bg-primary,html body .infos-block.bg-primary{background-color:#00754a!important}
+html body .site-footer .bg-primary,html body .infos-block.bg-primary,html body .buttons-block.bg-primary{background-color:#00754a!important}
 /* Zones tactiles du pied de page assez grandes (24 px minimum) */
 html body .infos-block a[href^="tel:"],html body .infos-block a[href^="mailto:"]{display:inline-block;min-height:24px;line-height:24px;padding:2px 0}
 @media (max-width:767.98px){html:not(#ba) body:not(#ba) main .ba-intro-long .ba-intro-body{max-height:9.3em}}
