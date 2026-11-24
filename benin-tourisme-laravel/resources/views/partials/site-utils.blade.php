@@ -812,3 +812,98 @@ html body .infos-block a[href^="tel:"],html body .infos-block a[href^="mailto:"]
 })();
 </script>
 
+
+{{-- Cartes « splitCard » : quand l'admin y a saisi un long texte (titre ou description), la carte
+     montre un extrait et un bouton « Voir plus » qui ouvre le texte complet dans la fenêtre de lecture.
+     Les cartes déjà traitées par une page (ex. Terre de traditions, .ttx) sont ignorées. --}}
+<style>
+html:not(#ba) body:not(#ba) main .ba-cl-long{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:6!important;overflow:hidden!important;max-height:none!important}
+html:not(#ba) body:not(#ba) main .card-title.ba-cl-long{font-weight:400!important;font-size:1rem!important;line-height:1.75!important;text-transform:none!important;letter-spacing:0!important}
+html:not(#ba) body:not(#ba) main .ba-cl-h{display:block;margin:0 0 .7rem;font:800 clamp(1.3rem,2.2vw,1.75rem)/1.2 Montserrat,Helvetica,Arial,sans-serif;color:#10261a}
+html:not(#ba) body:not(#ba) main .ba-cl-hors-sujet{display:none!important}
+html:not(#ba) body:not(#ba) main .ba-cl-plus{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.7rem 1.3rem;border:0;border-radius:999px;background:#00754a;color:#fff!important;font:700 .9rem Montserrat,Helvetica,Arial,sans-serif;cursor:pointer;transition:background .25s,transform .25s;align-self:center}
+html:not(#ba) body:not(#ba) main .ba-cl-plus:hover,html:not(#ba) body:not(#ba) main .ba-cl-plus:focus-visible{background:#005c3a;transform:translateY(-2px)}
+@media (max-width:767.98px){html:not(#ba) body:not(#ba) main .ba-cl-long{-webkit-line-clamp:7!important}}
+</style>
+<script>
+(function () {
+    if (window.self !== window.top) return;
+    var dlg;
+    function ouvrir(titre, src, from) {
+        if (!dlg) {
+            dlg = document.createElement('dialog');
+            dlg.className = 'ba-read';
+            dlg.setAttribute('aria-labelledby', 'ba-cl-t');
+            dlg.innerHTML = '<div class="ba-read__box"><div class="ba-read__head"><span class="ba-read__k">À lire</span><p class="ba-read__t" id="ba-cl-t"></p>'
+                + '<button type="button" class="ba-read__x" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>'
+                + '<div class="ba-read__body"><div class="ba-read__text"></div></div><div class="ba-read__foot"><button type="button" class="ba-read__close">Fermer</button></div></div>';
+            document.body.appendChild(dlg);
+            var fermer = function () { dlg.close(); };
+            dlg.querySelector('.ba-read__x').addEventListener('click', fermer);
+            dlg.querySelector('.ba-read__close').addEventListener('click', fermer);
+            dlg.addEventListener('click', function (e) { if (e.target === dlg) fermer(); });
+            dlg.addEventListener('close', function () {
+                document.documentElement.classList.remove('ba-read-open');
+                if (dlg._from) dlg._from.focus({ preventScroll: true });
+            });
+        }
+        dlg.querySelector('.ba-read__t').textContent = titre;
+        var box = dlg.querySelector('.ba-read__text');
+        box.innerHTML = '';
+        src.innerHTML.split(/<br\s*\/?>\s*(?:&nbsp;|\s)*<br\s*\/?>|<\/p>/i).forEach(function (part) {
+            var tmp = document.createElement('div');
+            tmp.innerHTML = part;
+            var txt = tmp.textContent.replace(/\s+/g, ' ').trim();
+            if (!txt) return;
+            var p = document.createElement('p');
+            p.textContent = txt;
+            box.appendChild(p);
+        });
+        dlg._from = from;
+        document.documentElement.classList.add('ba-read-open');
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+        dlg.querySelector('.ba-read__body').scrollTop = 0;
+        dlg.querySelector('.ba-read__x').focus({ preventScroll: true });
+    }
+    function init() {
+        document.querySelectorAll('main .card.splitCard').forEach(function (card) {
+            if (card.closest('.ttx') || card.querySelector('.ttx-actions, .ba-cl-plus')) return;
+            var t = card.querySelector('.card-title'), d = card.querySelector('.card-description');
+            var texts = card.querySelector('.card-texts') || (t && t.parentNode);
+            if (!texts) return;
+            var titre = t ? t.textContent.replace(/\s+/g, ' ').trim() : '';
+            var longEl = null;
+            if (t && titre.length > 140) {
+                var leg = card.querySelector('.imageObject-description');
+                var court = leg && leg.textContent.trim().length < 90 ? leg.textContent.trim() : ((card.querySelector('img') || {}).alt || '');
+                if (court.length > 3) {
+                    var h = document.createElement('span');
+                    h.className = 'ba-cl-h';
+                    h.textContent = court;
+                    t.parentNode.insertBefore(h, t);
+                    titre = court;
+                }
+                if (d) d.classList.add('ba-cl-hors-sujet');
+                longEl = t;
+            } else if (d && d.textContent.replace(/\s+/g, ' ').trim().length > 420) {
+                longEl = d;
+            }
+            if (!longEl) return;
+            longEl.classList.add('ba-cl-long');
+            card.querySelectorAll('[data-equalizer-watch]').forEach(function (e) { e.style.height = 'auto'; });
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ba-cl-plus';
+            btn.setAttribute('aria-haspopup', 'dialog');
+            btn.innerHTML = 'Voir plus <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            longEl.insertAdjacentElement('afterend', btn);
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                ouvrir(titre || document.title, longEl, btn);
+            });
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
