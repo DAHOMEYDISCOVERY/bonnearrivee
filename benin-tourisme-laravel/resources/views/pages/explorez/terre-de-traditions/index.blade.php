@@ -184,6 +184,145 @@ r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-bent
     description="Vodun, palais royaux, artisanat, mariage traditionnel : ses guides éditoriaux publiés sur le Dahomey Mag préparent votre voyage et vous aident à comprendre ce que vous verrez sur place."
     :limit="3" />
 @verbatim
+<style>
+/* « Il y en a pour tous les goûts ! » : cartes éditoriales. Les longs textes saisis dans l'admin
+   s'affichent en extrait, le reste s'ouvre dans la fenêtre de lecture (bouton « Voir plus »). */
+html:not(#ba) body:not(#ba) main .ttx .woody-component-focus .grid-x[role="list"]{display:grid!important;gap:clamp(1.4rem,3vw,2.2rem);margin:0!important}
+html:not(#ba) body:not(#ba) main .ttx .woody-component-focus .grid-x[role="list"]>.cell{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard{border-radius:26px!important;overflow:hidden!important;background:#fffaf2!important;box-shadow:0 26px 60px -42px rgba(16,38,26,.7)!important;height:auto!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard>a.card-link{display:block;color:inherit!important;text-decoration:none!important;height:auto!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard>a>.grid-x{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;min-height:0!important;height:auto!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard.media-right>a>.grid-x{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+html:not(#ba) body:not(#ba) main .ttx .splitCard.media-right>a>.grid-x>.cell.large-8{order:2}
+html:not(#ba) body:not(#ba) main .ttx .splitCard>a>.grid-x>.cell{width:auto!important;max-width:none!important;height:auto!important;flex:none!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .cardMediaWrapper{position:relative!important;height:100%!important;min-height:300px;margin:0!important;overflow:hidden}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .cardMediaWrapper img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;transform:none!important;transition:transform 1.2s cubic-bezier(.16,.84,.24,1)}
+html:not(#ba) body:not(#ba) main .ttx .splitCard:hover .cardMediaWrapper img{transform:scale(1.05)!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .card-section{height:auto!important;padding:clamp(1.6rem,3.2vw,2.6rem)!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;text-align:left!important;background:none!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .card-titles,html:not(#ba) body:not(#ba) main .ttx .splitCard .card-texts{width:100%;text-align:left!important;align-items:flex-start!important}
+html:not(#ba) body:not(#ba) main .ttx .ttx-num{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 .8rem;font:800 .74rem/1 Montserrat,Helvetica,Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#00754a}
+html:not(#ba) body:not(#ba) main .ttx .ttx-num b{display:grid;place-items:center;width:2.1rem;height:2.1rem;border-radius:50%;background:#00754a;color:#fff;letter-spacing:0;font-size:.78rem}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .card-title:not(.ttx-long),html:not(#ba) body:not(#ba) main .ttx .ttx-h{display:block;margin:0 0 .9rem!important;font:800 clamp(1.35rem,2.3vw,1.85rem)/1.15 Montserrat,Helvetica,Arial,sans-serif!important;color:#10261a!important;text-transform:none!important;text-align:left!important}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .card-description,html:not(#ba) body:not(#ba) main .ttx .ttx-long{display:block;margin:0 0 .6rem!important;font:400 1rem/1.75 Montserrat,Helvetica,Arial,sans-serif!important;color:#3d4a42!important;text-align:left!important;text-transform:none!important;letter-spacing:0!important;max-height:none!important;-webkit-line-clamp:unset}
+html:not(#ba) body:not(#ba) main .ttx .ttx-long{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:5!important;overflow:hidden!important}
+html:not(#ba) body:not(#ba) main .ttx .ttx-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.2rem;margin-top:.9rem}
+html:not(#ba) body:not(#ba) main .ttx .ttx-plus{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.25rem;border:0;border-radius:999px;background:#00754a;color:#fff;font:700 .9rem Montserrat,Helvetica,Arial,sans-serif;cursor:pointer;transition:background .25s,transform .25s}
+html:not(#ba) body:not(#ba) main .ttx .ttx-plus:hover,html:not(#ba) body:not(#ba) main .ttx .ttx-plus:focus-visible{background:#005c3a;transform:translateY(-2px)}
+html:not(#ba) body:not(#ba) main .ttx .ttx-hors-sujet{display:none!important}
+html:not(#ba) body:not(#ba) main .ttx .ttx-lien{font:700 .9rem Montserrat,Helvetica,Arial,sans-serif;color:#10261a;text-decoration:underline;text-underline-offset:.25em}
+@media (max-width:900px){
+html:not(#ba) body:not(#ba) main .ttx .splitCard>a>.grid-x,html:not(#ba) body:not(#ba) main .ttx .splitCard.media-right>a>.grid-x{grid-template-columns:1fr}
+html:not(#ba) body:not(#ba) main .ttx .splitCard.media-right>a>.grid-x>.cell.large-8{order:0}
+html:not(#ba) body:not(#ba) main .ttx .splitCard .cardMediaWrapper{height:auto!important;min-height:0;aspect-ratio:16/10}
+html:not(#ba) body:not(#ba) main .ttx .ttx-long{-webkit-line-clamp:6!important}
+}
+</style>
+<script>
+(function () {
+    function init() {
+        var sec = document.getElementById('pageSection-0');
+        if (!sec || sec.classList.contains('ttx')) return;
+        sec.classList.add('ttx');
+        var cards = sec.querySelectorAll('.card.splitCard');
+        var n = 0;
+        cards.forEach(function (card) {
+            n++;
+            var t = card.querySelector('.card-title'), d = card.querySelector('.card-description');
+            var texts = card.querySelector('.card-texts');
+            if (!texts) return;
+            card.querySelectorAll('[data-equalizer-watch]').forEach(function (e) { e.style.height = 'auto'; });
+            var num = document.createElement('span');
+            num.className = 'ttx-num';
+            num.innerHTML = '<b>' + String(n).padStart(2, '0') + '</b>Art de vivre';
+            texts.parentNode.insertBefore(num, texts);
+            var longEl = null, titre = t ? t.textContent.trim() : '';
+            if (t && titre.length > 140) {
+                /* Un long texte a été saisi à la place du titre : on lui donne un vrai titre court
+                   (la légende de la photo) et il devient le texte de la carte. */
+                var leg = card.querySelector('.imageObject-description');
+                var court = leg && leg.textContent.trim().length < 90 ? leg.textContent.trim() : (card.querySelector('img') || {}).alt || '';
+                if (court && court.length > 3) {
+                    var h = document.createElement('span');
+                    h.className = 'ttx-h';
+                    h.textContent = court;
+                    titre = court;
+                    t.parentNode.insertBefore(h, t);
+                }
+                t.classList.add('ttx-long');
+                longEl = t;
+                /* La description d'origine parle d'un autre sujet que le texte saisi : on ne l'affiche pas. */
+                if (d) d.classList.add('ttx-hors-sujet');
+            } else if (d && d.textContent.trim().length > 320) {
+                d.classList.add('ttx-long');
+                longEl = d;
+            }
+            if (!longEl) return;
+            /* Le lien annonce la page vers laquelle la carte mène réellement. */
+            var a = card.querySelector('a.card-link');
+            var slug = a ? (a.getAttribute('href') || '').replace(/\/+$/, '').split('/').pop() : '';
+            var noms = {
+                'les-traditions-locales': 'Les traditions locales',
+                'la-route-des-saveurs': 'La route des saveurs',
+                'la-dot-et-le-mariage': 'La dot et le mariage',
+                'a-faire-absolument': 'À faire absolument',
+                'la-cuisine-beninoise-melange-de-saveurs': 'La cuisine béninoise'
+            };
+            var dest = noms[slug] || (slug ? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ') : '');
+            var simple = function (x) { return x.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); };
+            var lien = dest && simple(dest) !== simple(titre) ? 'Lire aussi : ' + dest : 'Découvrir la rubrique';
+            var act = document.createElement('span');
+            act.className = 'ttx-actions';
+            act.innerHTML = '<button type="button" class="ttx-plus" aria-haspopup="dialog">Voir plus <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="ttx-lien"></span>';
+            act.querySelector('.ttx-lien').textContent = lien;
+            texts.appendChild(act);
+            var btn = act.querySelector('.ttx-plus');
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                ouvrir(titre, longEl, btn);
+            });
+        });
+    }
+    var dlg;
+    function ouvrir(titre, src, from) {
+        if (!dlg) {
+            dlg = document.createElement('dialog');
+            dlg.className = 'ba-read';
+            dlg.setAttribute('aria-labelledby', 'ttx-read-t');
+            dlg.innerHTML = '<div class="ba-read__box"><div class="ba-read__head"><span class="ba-read__k">Terre de traditions</span><p class="ba-read__t" id="ttx-read-t"></p>'
+                + '<button type="button" class="ba-read__x" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>'
+                + '<div class="ba-read__body"><div class="ba-read__text"></div></div><div class="ba-read__foot"><button type="button" class="ba-read__close">Fermer</button></div></div>';
+            document.body.appendChild(dlg);
+            var fermer = function () { dlg.close(); };
+            dlg.querySelector('.ba-read__x').addEventListener('click', fermer);
+            dlg.querySelector('.ba-read__close').addEventListener('click', fermer);
+            dlg.addEventListener('click', function (e) { if (e.target === dlg) fermer(); });
+            dlg.addEventListener('close', function () {
+                document.documentElement.classList.remove('ba-read-open');
+                if (dlg._from) dlg._from.focus({ preventScroll: true });
+            });
+        }
+        dlg.querySelector('.ba-read__t').textContent = titre;
+        var box = dlg.querySelector('.ba-read__text');
+        box.innerHTML = '';
+        src.innerHTML.split(/<br\s*\/?>\s*(?:&nbsp;|\s)*<br\s*\/?>/i).forEach(function (part) {
+            var tmp = document.createElement('div');
+            tmp.innerHTML = part;
+            var txt = tmp.textContent.trim();
+            if (!txt) return;
+            var p = document.createElement('p');
+            p.textContent = txt;
+            box.appendChild(p);
+        });
+        dlg._from = from;
+        document.documentElement.classList.add('ba-read-open');
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+        dlg.querySelector('.ba-read__body').scrollTop = 0;
+        dlg.querySelector('.ba-read__x').focus({ preventScroll: true });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
 <div class="page-section page-section-0" id="pageSection-0">
             <section data-uuid="190a8613-6641-497f-8e98-e7ead0859455" data-location-lat="" data-location-lng=""  class="section padd-top-md padd-bottom-md marg-top-none marg-bottom-none" ><header class="section-header-wrapper grid-container grid-default container-min"><div class="section-header text-center"><div class="section-titles flex-container flex-dir-column align-middle align-center text-center"><div class="section-texts has-pretitle has-title"><span class="section-pretitle block-span">Des traditions aux saveurs</span><h2 class="section-title">Il y en a pour tous les goûts !</h2></div></div></div></header><article class="section-layout-wrapper grid-container grid-default"><div class="grid_1col_tpl_01 grid-x align-middle grid-padding-x grid-padding-y"><div class="cell xmedium-down-order-9"><div class="woody-component woody-component-focus tpl_121 no-sessions" data-equalizer="data-equalizer"><div class="woody-mobile-swiper swiper swiper-container " ><div class="grid-x grid-padding-x grid-padding-y  " data-equalizer="data-equalizer" role="list"><div class="cell swRespS " role="listitem"><div class="card splitCard media-right tpl_03 isRel  entree-de-rubrique ratio_2_1" data-postid="742"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/terre-de-traditions/les-traditions-locales" target="_self"><div class="grid-x  flex-dir-row-reverse"><div class="cell large-8">@endverbatim<x-media.figure
     src="/assets/img/peuple-640x320.webp"
@@ -198,7 +337,7 @@ r.querySelectorAll('.tdt-rv').forEach(function(el,i){var g=el.closest('.tdt-bent
     author="Adoscam / CC BY-SA 4.0 — Wikimedia Commons"
     :captionHidden="true"
     :nosnippet="true"
-/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Les traditions locales</span><div class="card-description">Sociétés de masques, cérémonies vodun, mariages, marchés à cycle de quatre jours : les traditions béninoises organisent encore le calendrier et la vie des quartiers. On les approche avec un guide, jamais en…</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  entree-de-rubrique ratio_2_1" data-postid="758"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/terre-de-traditions/la-route-des-saveurs" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
+/>@verbatim</div><div class="cell card-section flex-container flex-dir-column large-4 align-center align-top" data-equalizer-watch><div class="card-titles"><div class="card-texts has-title has-desc"><span class="card-title block-span">Les traditions locales</span><div class="card-description">Sociétés de masques, cérémonies vodun, mariages, marchés à cycle de quatre jours : les traditions béninoises organisent encore le calendrier et la vie des quartiers. On les approche avec un guide, jamais en…</div></div></div></div></div></a></div></div><div class="cell swRespS " role="listitem"><div class="card splitCard media-left tpl_03 isRel  entree-de-rubrique ratio_2_1" data-postid="758"  data-card-display-options="&#x7B;&quot;display_elements&quot;&#x3A;&#x5B;&quot;description&quot;&#x5D;,&quot;display_button&quot;&#x3A;false&#x7D;"><a class="card-link" href="/explorez/terre-de-traditions/la-dot-et-le-mariage" target="_self"><div class="grid-x  "><div class="cell large-8">@endverbatim<x-media.figure
     src="/assets/img/mariage-640x320.webp"
     alt="Un mariage traditionnel au Bénin"
     placeholder="/assets/site/img/blank/ratio_2_1.webp"
