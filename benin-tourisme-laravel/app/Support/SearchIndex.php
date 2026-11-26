@@ -36,7 +36,7 @@ final class SearchIndex
     private const MAX_TEXT = 40000;
 
     /** Langues indexées (le français est la source). */
-    public const LOCALES = ['fr', 'en'];
+    public const LOCALES = ['fr', 'en', 'es', 'pt'];
 
     /**
      * Pages qui ne répondent à aucune recherche de visiteur : la fiche de

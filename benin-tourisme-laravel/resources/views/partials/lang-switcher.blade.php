@@ -1,21 +1,21 @@
 @php
-    $__loc = $baLocale ?? app()->getLocale();
-    $__fr  = $baUrlFr ?? '/';
-    $__en  = $baUrlEn ?? '/en';
-    // On passe par /langue/{loc} : le cookie de langue est (re)positionné, donc
+    $__loc  = $baLocale ?? app()->getLocale();
+    $__fr   = $baUrlFr ?? '/';
+    $__langs = \App\Support\Locales::ALL;
+    $__cur  = $__langs[$__loc] ?? $__langs['fr'];
+    // On passe par /langue/{code} : le cookie de langue est (re)positionné, donc
     // le choix est conservé sur tout le site et on peut revenir au français.
-    $__toFr = '/langue/fr?to=' . rawurlencode($__fr);
-    $__toEn = '/langue/en?to=' . rawurlencode($__fr);
 @endphp
 <div class="ba-lang" data-ba-dynamique>
     <button type="button" class="ba-lang__toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{ __('messages.language') }}">
-        <span class="ba-lang__flag" aria-hidden="true">{{ $__loc === 'en' ? '🇬🇧' : '🇫🇷' }}</span>
+        <span class="ba-lang__flag" aria-hidden="true">{{ $__cur['flag'] }}</span>
         <span class="ba-lang__code">{{ strtoupper($__loc) }}</span>
         <span class="ba-lang__caret" aria-hidden="true">▾</span>
     </button>
     <ul class="ba-lang__menu" role="menu">
-        <li role="none"><a role="menuitem" href="{{ $__toFr }}" hreflang="fr" class="ba-lang__item{{ $__loc === 'fr' ? ' is-active' : '' }}"><span aria-hidden="true">🇫🇷</span> Français</a></li>
-        <li role="none"><a role="menuitem" href="{{ $__toEn }}" hreflang="en" class="ba-lang__item{{ $__loc === 'en' ? ' is-active' : '' }}"><span aria-hidden="true">🇬🇧</span> English</a></li>
+@foreach ($__langs as $__code => $__l)
+        <li role="none"><a role="menuitem" href="{{ '/langue/' . $__code . '?to=' . rawurlencode($__fr) }}" hreflang="{{ $__l['hreflang'] }}" lang="{{ $__l['hreflang'] }}" class="ba-lang__item{{ $__loc === $__code ? ' is-active' : '' }}"><span aria-hidden="true">{{ $__l['flag'] }}</span> {{ $__l['name'] }}</a></li>
+@endforeach
     </ul>
 </div>
 <script>
@@ -31,25 +31,33 @@
   document.addEventListener('click',function(){w.classList.remove('is-open');b.setAttribute('aria-expanded','false');});
 })();
 </script>
-@if (($baLocale ?? app()->getLocale()) === 'en')
-{{-- En anglais : libellés d'interface portés par des attributs (placeholder,
+@if (\App\Support\Locales::isTarget($baLocale ?? app()->getLocale()))
+{{-- Hors français : libellés d'interface portés par des attributs (placeholder,
      aria-label…) et libellés du menu de recherche produits par le JavaScript
      Woody — hors de portée du traducteur serveur, traduits côté client. --}}
 <script>
 (function(){
+  var L = document.documentElement.getAttribute('lang') || 'en';
+  var I = {
+    en: {close:'Close', ph:'What are you looking for?', search:'Search',
+         attr:{'Fermer la recherche':'Close search','Effacer':'Clear','Lancer la recherche':'Search','Recherche':'Search'},
+         text:{'Voir tous les résultats sur la page recherche':'See all results on the search page','Voir tous les résultats':'See all results','Aucun résultat':'No results','Fermer':'Close'}},
+    es: {close:'Cerrar', ph:'¿Qué está buscando?', search:'Buscar',
+         attr:{'Fermer la recherche':'Cerrar la búsqueda','Effacer':'Borrar','Lancer la recherche':'Buscar','Recherche':'Buscar'},
+         text:{'Voir tous les résultats sur la page recherche':'Ver todos los resultados en la página de búsqueda','Voir tous les résultats':'Ver todos los resultados','Aucun résultat':'Ningún resultado','Fermer':'Cerrar'}},
+    pt: {close:'Fechar', ph:'O que o senhor procura?', search:'Pesquisar',
+         attr:{'Fermer la recherche':'Fechar a pesquisa','Effacer':'Apagar','Lancer la recherche':'Pesquisar','Recherche':'Pesquisar'},
+         text:{'Voir tous les résultats sur la page recherche':'Ver todos os resultados na página de pesquisa','Voir tous les résultats':'Ver todos os resultados','Aucun résultat':'Nenhum resultado','Fermer':'Fechar'}}
+  }[L.slice(0,2)];
+  if(!I) return;
   // Libellés d'attributs (statiques).
-  var ATTR = {'Fermer la recherche':'Close search','Effacer':'Clear','Lancer la recherche':'Search','Recherche':'Search'};
+  var ATTR = I.attr;
   // Textes insérés dynamiquement par le menu de recherche.
-  var TEXT = {
-    'Voir tous les résultats sur la page recherche':'See all results on the search page',
-    'Voir tous les résultats':'See all results',
-    'Aucun résultat':'No results',
-    'Fermer':'Close'
-  };
+  var TEXT = I.text;
   function fixAttrs(root){
     try{
-      root.querySelectorAll('[data-menu-open]').forEach(function(el){ el.setAttribute('data-menu-open','Close'); });
-      var ph='What are you looking for?';
+      root.querySelectorAll('[data-menu-open]').forEach(function(el){ el.setAttribute('data-menu-open',I.close); });
+      var ph=I.ph;
       root.querySelectorAll('[data-ba-search-overlay] input[type="search"], .woody-component-esSearch-block input[type="search"]').forEach(function(el){ el.setAttribute('placeholder',ph); el.setAttribute('title',ph); });
       root.querySelectorAll('[aria-label],[title],[data-label]').forEach(function(el){
         var a=el.getAttribute('aria-label'); if(a&&ATTR[a]) el.setAttribute('aria-label',ATTR[a]);
@@ -57,7 +65,7 @@
         var d=el.getAttribute('data-label'); if(d&&ATTR[d]) el.setAttribute('data-label',ATTR[d]);
       });
       // Libellé visible de l'outil Recherche (span rempli par CSS/JS depuis data-label).
-      root.querySelectorAll('.woody-component-esSearch-block .button-label, .woody-component-esSearch-block .show-for-sr').forEach(function(el){ if(el.textContent.trim()==='Recherche'){ el.textContent='Search'; } });
+      root.querySelectorAll('.woody-component-esSearch-block .button-label, .woody-component-esSearch-block .show-for-sr').forEach(function(el){ if(el.textContent.trim()==='Recherche'){ el.textContent=I.search; } });
     }catch(e){}
   }
   function fixText(node){

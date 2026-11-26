@@ -632,8 +632,8 @@ const SITES  = [
 "when": "Toute l’année. Le port ne se visite pas librement : il se regarde depuis la Marina."
 }
 ];
-/* ---------- traduction anglaise des donnees (dictionnaire injecte sur /en) ---------- */
-var __ATLAS_EN = /^en/i.test((document.documentElement.getAttribute('lang')||''));
+/* ---------- traduction des donnees (dictionnaire injecte sur /en, /es, /pt) ---------- */
+var __ATLAS_EN = !/^fr/i.test((document.documentElement.getAttribute('lang')||'fr'));
 var __ATLAS_D  = (typeof window!=='undefined' && window.__ATLAS_I18N) ? window.__ATLAS_I18N : null;
 function TR(s){ return (__ATLAS_EN && __ATLAS_D && typeof s==='string' && __ATLAS_D[s]) ? __ATLAS_D[s] : s; }
 if (__ATLAS_EN && __ATLAS_D){

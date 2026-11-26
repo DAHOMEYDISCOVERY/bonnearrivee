@@ -29,7 +29,7 @@ class SearchController extends Controller
         }
 
         $locale = $this->locale($request);
-        $prefix = $locale === 'en' ? '/en' : '';
+        $prefix = \App\Support\Locales::isTarget($locale) ? '/'.$locale : '';
 
         $flat = array_merge(
             array_slice($this->searchRestaurants($q, $locale), 0, 4),
@@ -45,13 +45,19 @@ class SearchController extends Controller
     }
 
     /**
-     * Langue de la recherche : anglais si la page courante est en anglais
-     * (app locale) ou si l'utilisateur a choisi l'anglais (cookie) — ce dernier
-     * cas couvre l'appel AJAX /recherche/suggest, servi sans préfixe /en.
+     * Langue de la recherche : celle de la page courante (app locale) ou, à
+     * défaut, celle choisie par l'utilisateur (cookie) — ce dernier cas couvre
+     * l'appel AJAX /recherche/suggest, servi sans préfixe de langue.
      */
     private function locale(Request $request): string
     {
-        return (app()->getLocale() === 'en' || $request->cookie('ba_locale') === 'en') ? 'en' : 'fr';
+        $app = app()->getLocale();
+        if (\App\Support\Locales::isTarget($app)) {
+            return $app;
+        }
+        $cookie = (string) $request->cookie('ba_locale');
+
+        return \App\Support\Locales::isTarget($cookie) ? $cookie : 'fr';
     }
 
     public function index(Request $request)
@@ -95,10 +101,44 @@ class SearchController extends Controller
         'international'  => 'International',
     ];
 
+    /** Libellés de catégorie par langue étrangère. */
+    private const CATEGORIES_I18N = [
+        'es' => [
+            'gastronomique' => 'Alta cocina',
+            'maquis'        => 'Cocina local (maquis)',
+            'cafe_bar'      => 'Café / bar',
+            'fast_food'     => 'Comida rápida',
+            'international' => 'Internacional',
+        ],
+        'pt' => [
+            'gastronomique' => 'Alta gastronomia',
+            'maquis'        => 'Cozinha local (maquis)',
+            'cafe_bar'      => 'Café / bar',
+            'fast_food'     => 'Fast-food',
+            'international' => 'Internacional',
+        ],
+    ];
+
+    /** Petits libellés d'interface des résultats, par langue étrangère. */
+    private const UI_I18N = [
+        'en' => ['top' => 'Top pick',             'event' => 'Event'],
+        'es' => ['top' => 'Nuestra selección',    'event' => 'Evento'],
+        'pt' => ['top' => 'Nossa seleção',        'event' => 'Evento'],
+    ];
+
+    private static function categorie(string $locale, string $code): string
+    {
+        if ($locale === 'en') {
+            return self::CATEGORIES_EN[$code] ?? $code;
+        }
+
+        return self::CATEGORIES_I18N[$locale][$code] ?? (Restaurant::CATEGORIES[$code] ?? $code);
+    }
+
     private function searchRestaurants(string $q, string $locale = 'fr'): array
     {
-        $en = $locale === 'en';
-        $prefix = $en ? '/en' : '';
+        $en = \App\Support\Locales::isTarget($locale); // langue étrangère
+        $prefix = $en ? '/'.$locale : '';
 
         return Restaurant::published()
             ->where(function ($w) use ($q) {
@@ -112,15 +152,15 @@ class SearchController extends Controller
             ->orderBy('sort_order')
             ->limit(10)
             ->get(['id', 'nom', 'sous_titre', 'ville', 'categorie', 'coup_de_coeur'])
-            ->map(function ($r) use ($en, $prefix) {
+            ->map(function ($r) use ($en, $prefix, $locale) {
                 $cat = $r->categorie
-                    ? ($en ? (self::CATEGORIES_EN[$r->categorie] ?? $r->categorie) : (Restaurant::CATEGORIES[$r->categorie] ?? $r->categorie))
+                    ? ($en ? self::categorie($locale, (string) $r->categorie) : (Restaurant::CATEGORIES[$r->categorie] ?? $r->categorie))
                     : '';
 
-                // Le sous-titre est du texte libre en base : en anglais, on
-                // réutilise sa traduction déjà faite sur la page restaurants.
+                // Le sous-titre est du texte libre en base : dans une langue
+                // étrangère, on réutilise sa traduction déjà faite sur la page restaurants.
                 $subtitle = $en
-                    ? \App\Support\PageTextMap::translate('en', '/sejourner/restaurants', $r->sous_titre)
+                    ? \App\Support\PageTextMap::translate($locale, '/sejourner/restaurants', $r->sous_titre)
                     : $r->sous_titre;
 
                 return [
@@ -128,7 +168,7 @@ class SearchController extends Controller
                     'subtitle' => $subtitle,
                     'excerpt'  => ($r->ville ?: '') . ($cat ? ' · ' . $cat : ''),
                     'url'      => $prefix . '/sejourner/restaurants',
-                    'badge'    => $r->coup_de_coeur ? ($en ? 'Top pick' : 'Coup de cœur') : null,
+                    'badge'    => $r->coup_de_coeur ? ($en ? (self::UI_I18N[$locale]['top'] ?? 'Top pick') : 'Coup de cœur') : null,
                 ];
             })->all();
     }
@@ -139,7 +179,7 @@ class SearchController extends Controller
         // a été construit ; les fiches événements ont leur propre rubrique.
         // En anglais, on interroge l'index anglais (repli fr automatique).
         if (\App\Support\SearchIndex::exists($locale) || \App\Support\SearchIndex::exists()) {
-            $prefix = $locale === 'en' ? '/en' : '';
+            $prefix = \App\Support\Locales::isTarget($locale) ? '/'.$locale : '';
             $hits = array_filter(
                 \App\Support\SearchIndex::search($q, 20, $locale),
                 static fn (array $h) => ! str_starts_with($h['path'], '/benin-en-fete/'),
@@ -173,14 +213,15 @@ class SearchController extends Controller
 
     private function searchEvents(string $q, string $locale = 'fr'): array
     {
-        $en = $locale === 'en';
+        $en = \App\Support\Locales::isTarget($locale); // langue étrangère
+        $badge = $en ? (self::UI_I18N[$locale]['event'] ?? 'Event') : 'Événement';
 
-        // En anglais, les fiches événements traduites viennent de l'index
-        // anglais (titres et extraits déjà traduits), avec repli sur les
-        // données françaises si l'index anglais n'existe pas encore.
-        if ($en && \App\Support\SearchIndex::exists('en')) {
+        // Dans une langue étrangère, les fiches événements traduites viennent de
+        // l'index de cette langue (titres et extraits déjà traduits), avec repli
+        // sur les données françaises si cet index n'existe pas encore.
+        if ($en && \App\Support\SearchIndex::exists($locale)) {
             $hits = array_filter(
-                \App\Support\SearchIndex::search($q, 10, 'en'),
+                \App\Support\SearchIndex::search($q, 10, $locale),
                 static fn (array $h) => str_starts_with($h['path'], '/benin-en-fete/'),
             );
 
@@ -188,8 +229,8 @@ class SearchController extends Controller
                 'title'    => $h['title'],
                 'subtitle' => null,
                 'excerpt'  => $h['excerpt'],
-                'url'      => '/en' . $h['path'],
-                'badge'    => 'Event',
+                'url'      => '/' . $locale . $h['path'],
+                'badge'    => $badge,
             ], array_slice($hits, 0, 10)));
         }
 
@@ -213,8 +254,8 @@ class SearchController extends Controller
                     'title'    => self::titre((string) ($e['title'] ?? $slug)),
                     'subtitle' => $e['subtitle'] ?? ($e['lieu'] ?? null),
                     'excerpt'  => self::extrait($e['description'] ?? null),
-                    'url'      => ($en ? '/en' : '') . '/benin-en-fete/' . $slug,
-                    'badge'    => $en ? 'Event' : 'Événement',
+                    'url'      => ($en ? '/' . $locale : '') . '/benin-en-fete/' . $slug,
+                    'badge'    => $badge,
                 ];
             }
             if (count($hits) >= 10) break;

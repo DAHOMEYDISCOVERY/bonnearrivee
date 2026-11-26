@@ -17,7 +17,7 @@
 --}}
 <!doctype html>
 <html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>@include('partials.head.' . $headProfile)<link rel="alternate" hreflang="fr" href="{{ url($baUrlFr ?? '/') }}"><link rel="alternate" hreflang="en" href="{{ url($baUrlEn ?? '/en') }}"><link rel="alternate" hreflang="x-default" href="{{ url($baUrlFr ?? '/') }}"></head>
+<head>@include('partials.head.' . $headProfile)@foreach (\App\Support\Locales::ALL as $__code => $__l)<link rel="alternate" hreflang="{{ $__l['hreflang'] }}" href="{{ url(($baUrls ?? [])[$__code] ?? \App\Support\Locales::path($__code, $baUrlFr ?? '/')) }}">@endforeach<link rel="alternate" hreflang="x-default" href="{{ url($baUrlFr ?? '/') }}"></head>
 <body class="@yield('bodyClass')">@verbatim
             
         

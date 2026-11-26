@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 /**
- * Traduit UNE page juste après son enregistrement au back-office, pour que la
- * version anglaise suive sans attendre la synchro de nuit (trad:sync).
+ * Traduit UNE page dans UNE langue (en, es ou pt) juste après son enregistrement
+ * au back-office, pour que la version traduite suive sans attendre la synchro de nuit (trad:sync).
  *
  * Lancé via dispatchAfterResponse() : s'exécute après l'envoi de la réponse,
  * dans le même processus — aucun worker de file d'attente requis. La sauvegarde
@@ -62,12 +62,12 @@ class TranslatePageJob implements ShouldQueue
                 if ($fr === '') {
                     continue;
                 }
-                $en = $existing[$item['key']]['value'] ?? null;
+                $tr = $existing[$item['key']]['value'] ?? null;
                 $page[$item['key']] = [
                     'type' => $item['type'],
                     'group' => (string) ($item['group'] ?? ''),
                     'fr' => $fr,
-                    'en' => is_string($en) ? $en : null,
+                    $this->locale => is_string($tr) ? $tr : null,
                 ];
             }
             if ($page === []) {
@@ -82,7 +82,7 @@ class TranslatePageJob implements ShouldQueue
             file_put_contents($tmp, json_encode([$path => $page], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
             // Traduction DeepL (seuls les segments vides) puis import dans le magasin.
-            Artisan::call('trad:translate', ['file' => $tmp, '--target' => 'EN-GB']);
+            Artisan::call('trad:translate', ['file' => $tmp, '--locale' => $this->locale]);
             Artisan::call('trad:import', ['file' => $tmp, '--locale' => $this->locale]);
             @unlink($tmp);
 

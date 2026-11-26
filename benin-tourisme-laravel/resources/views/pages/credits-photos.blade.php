@@ -3,8 +3,8 @@
     Page autonome : elle n'utilise pas le gabarit Woody. Écrite à la main lors de
     la rédaction du site, elle porte son propre <head> et ses propres styles.
 --}}
-@verbatim<!doctype html>
-<html lang="fr"><head><meta charset="utf-8">
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">@verbatim<head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Crédits — Bonne Arrivée</title>
 <meta name="description" content="Crédits photos et cartographie du portail Bonne Arrivée — sources Wikimedia Commons, geoBoundaries, OpenStreetMap, Natural Earth.">

@@ -59,15 +59,16 @@ class TranslationsExtract extends Command
                 if ($fr === '') {
                     continue;
                 }
-                $en = $existing[$item['key']]['value'] ?? null;
+                $tr = $existing[$item['key']]['value'] ?? null;
                 $pageOut[$item['key']] = [
                     'type' => $item['type'],
                     'group' => (string) ($item['group'] ?? ''),
                     'fr' => $fr,
-                    'en' => is_string($en) ? $en : null,
+                    // Champ nommé d'après la langue cible (en, es, pt).
+                    $locale => is_string($tr) ? $tr : null,
                 ];
                 $total++;
-                if ($en === null) {
+                if ($tr === null) {
                     $missing++;
                 }
             }

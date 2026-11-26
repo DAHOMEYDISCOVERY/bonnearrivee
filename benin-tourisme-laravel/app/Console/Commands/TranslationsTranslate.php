@@ -6,8 +6,9 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Remplit automatiquement les champs « en » d'un fichier de traduction via
- * l'API DeepL (FR -> EN), en préservant le HTML et les noms propres béninois.
+ * Remplit automatiquement les champs de langue (« en », « es », « pt ») d'un
+ * fichier de traduction via l'API DeepL (FR -> langue), en préservant le HTML
+ * et les noms propres béninois. Cible et registre DeepL : App\Support\Locales.
  *
  * - Clé API : config('services.deepl.key') (DEEPL_API_KEY dans .env, jamais
  *   exposée). Les clés gratuites se terminent par « :fx » (endpoint api-free).
@@ -17,15 +18,17 @@ use Illuminate\Support\Facades\Http;
  *   réécrit après chaque lot, donc une interruption se reprend sans perte.
  *
  *   php artisan trad:translate storage/app/translations/extract-en.json
+ *   php artisan trad:translate storage/app/translations/extract-es.json --locale=es
  */
 class TranslationsTranslate extends Command
 {
     protected $signature = 'trad:translate {file : Fichier JSON produit par trad:extract}
-        {--target=EN-GB : Langue cible DeepL (EN-GB ou EN-US)}
+        {--locale=en : Langue du site à remplir (en, es, pt)}
+        {--target= : Langue cible DeepL (par défaut celle de la langue : EN-GB, ES, PT-BR)}
         {--batch=40 : Nombre de segments par requête}
         {--force : Retraduire même les segments déjà remplis}';
 
-    protected $description = 'Traduit les segments FR->EN d\'un fichier de traduction via DeepL.';
+    protected $description = 'Traduit les segments FR -> en/es/pt d\'un fichier de traduction via DeepL.';
 
     /** Noms propres, marques et termes culturels béninois laissés intacts. */
     private const PROTECT = [
@@ -51,6 +54,14 @@ class TranslationsTranslate extends Command
 
             return self::FAILURE;
         }
+
+        $locale = (string) $this->option('locale');
+        if (! \App\Support\Locales::isTarget($locale)) {
+            $this->error("Langue inconnue : {$locale} (attendu : ".implode(', ', \App\Support\Locales::targets()).').');
+
+            return self::FAILURE;
+        }
+        $field = $locale; // champ du fichier à remplir
 
         $file = (string) $this->argument('file');
         if (! is_file($file)) {
@@ -79,7 +90,7 @@ class TranslationsTranslate extends Command
                 if (! is_array($entry) || trim((string) ($entry['fr'] ?? '')) === '') {
                     continue;
                 }
-                if ($this->option('force') || ($entry['en'] ?? null) === null) {
+                if ($this->option('force') || ($entry[$field] ?? null) === null) {
                     $refs[] = &$entry;
                 }
                 unset($entry);
@@ -97,7 +108,8 @@ class TranslationsTranslate extends Command
         $endpoint = str_ends_with($key, ':fx')
             ? 'https://api-free.deepl.com/v2/translate'
             : 'https://api.deepl.com/v2/translate';
-        $target = (string) $this->option('target');
+        $target = (string) ($this->option('target') ?: \App\Support\Locales::deepl($locale));
+        $formality = \App\Support\Locales::formality($locale);
         $batch = max(1, (int) $this->option('batch'));
 
         // Certificat racine : sous WAMP, curl.cainfo pointe parfois vers un
@@ -136,13 +148,15 @@ class TranslationsTranslate extends Command
                     ->withHeaders(['Authorization' => 'DeepL-Auth-Key '.$key])
                     ->timeout(60)
                     ->retry(2, 1500)
-                    ->post($endpoint, [
+                    ->post($endpoint, array_filter([
                         'text' => array_values($texts),
                         'source_lang' => 'FR',
                         'target_lang' => $target,
                         'tag_handling' => 'html',
                         'ignore_tags' => 'keep',
-                    ]);
+                        // Vouvoiement en espagnol et en portugais (cohérent avec le « vous » du site).
+                        'formality' => $formality,
+                    ], static fn ($v) => $v !== null));
             } catch (\Throwable $e) {
                 $this->newLine();
                 $this->error('Erreur réseau DeepL : '.$e->getMessage().' — progression enregistrée, relancez pour reprendre.');
@@ -171,9 +185,9 @@ class TranslationsTranslate extends Command
             foreach ($chunk as $fr) {
                 $t = $translations[$i]['text'] ?? null;
                 if (is_string($t)) {
-                    $en = $this->unprotect($t);
+                    $tr = $this->unprotect($t);
                     foreach ($byFr[$fr] as $idx) {
-                        $refs[$idx]['en'] = $en;
+                        $refs[$idx][$field] = $tr;
                         $done++;
                     }
                 }
@@ -187,7 +201,7 @@ class TranslationsTranslate extends Command
         $bar->finish();
         $this->newLine(2);
         $this->info("Traduits : {$done}/{$pending}. Fichier mis à jour : {$file}");
-        $this->line("Puis : php artisan trad:import {$file}");
+        $this->line("Puis : php artisan trad:import {$file} --locale={$locale}");
 
         return self::SUCCESS;
     }

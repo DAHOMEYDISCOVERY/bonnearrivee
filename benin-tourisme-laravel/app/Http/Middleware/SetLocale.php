@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\Locales;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -13,13 +14,16 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 /**
  * Détermine la langue de la requête et la MAINTIENT d'une page à l'autre.
  *
- * - URL préfixée /en  -> anglais : on retire le préfixe (les routes FR
- *   matchent), on mémorise le choix dans un cookie, et on réécrit les liens
- *   internes de la page en /en pour que la navigation reste en anglais.
- * - URL sans préfixe  -> si l'anglais a été choisi (cookie), on redirige vers
- *   la version /en (le rafraîchissement et les liens oubliés restent anglais) ;
- *   sinon français (langue par défaut, URLs inchangées).
- * - Bascule explicite via la route /langue/{fr|en} (voir routes/web.php) qui
+ * Langues : voir App\Support\Locales (fr source ; en, es, pt traduites).
+ *
+ * - URL préfixée /en, /es ou /pt -> cette langue : on retire le préfixe (les
+ *   routes FR matchent), on mémorise le choix dans un cookie, et on réécrit les
+ *   liens internes de la page avec le même préfixe pour que la navigation reste
+ *   dans la langue choisie.
+ * - URL sans préfixe -> si une langue étrangère a été choisie (cookie), on
+ *   redirige vers sa version (rafraîchissement et liens oubliés restent dans la
+ *   langue) ; sinon français (langue par défaut, URLs inchangées).
+ * - Bascule explicite via la route /langue/{code} (voir routes/web.php) qui
  *   repositionne le cookie : on peut donc toujours revenir au français.
  *
  * Sécurité : en cas d'anomalie, on retombe silencieusement sur le français.
@@ -27,7 +31,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class SetLocale
 {
     /** @var string[] */
-    public const SUPPORTED = ['fr', 'en'];
+    public const SUPPORTED = ['fr', 'en', 'es', 'pt'];
     public const DEFAULT = 'fr';
 
     /** Cookie de langue (1 an). */
@@ -41,7 +45,7 @@ class SetLocale
      * @var string[]
      */
     private const SKIP = [
-        'en', 'langue', 'admin', 'livewire', 'filament', 'storage', 'build',
+        'en', 'es', 'pt', 'langue', 'admin', 'livewire', 'filament', 'storage', 'build',
         'assets', 'css', 'js', 'img', 'images', 'fonts', 'media', 'vendor',
         'api', 'sanctum', 'up', 'mes-restos', 'restaurants',
         'sitemap.xml', 'robots.txt', 'favicon.ico',
@@ -54,12 +58,12 @@ class SetLocale
         try {
             $path = '/'.ltrim($request->getPathInfo(), '/');
 
-            // Anglais explicite par l'URL.
-            if ($path === '/en' || str_starts_with($path, '/en/')) {
-                $locale = 'en';
-                Cookie::queue(self::COOKIE, 'en', self::COOKIE_MIN);
+            // Langue étrangère explicite par l'URL (/en, /es, /pt).
+            if (preg_match('#^/('.Locales::prefixPattern().')(?:/|$)#', $path, $lm)) {
+                $locale = $lm[1];
+                Cookie::queue(self::COOKIE, $locale, self::COOKIE_MIN);
 
-                $stripped = substr($path, 3);
+                $stripped = substr($path, strlen($locale) + 1);
                 $stripped = ($stripped === '' || $stripped === false) ? '/' : $stripped;
                 $qs = $request->getQueryString();
                 $newUri = $stripped.($qs ? '?'.$qs : '');
@@ -70,18 +74,18 @@ class SetLocale
                 $rebuilt = $request->duplicate(null, null, null, null, null, $server);
 
                 app()->instance('request', $rebuilt);
-                app()->setLocale('en');
-                $this->share('en', $stripped);
+                app()->setLocale($locale);
+                $this->share($locale, $stripped);
 
-                return $this->injectAtlasI18n($this->localiseLinks($next($rebuilt)));
+                return $this->injectAtlasI18n($this->localiseLinks($next($rebuilt), $locale), $locale);
             }
 
-            // Pas de préfixe : si l'anglais a été choisi, on y renvoie pour que
-            // la langue reste la même (navigation, rafraîchissement, lien FR).
-            if ($this->prefersEnglish($request, $path)) {
+            // Pas de préfixe : si une langue étrangère a été choisie, on y renvoie
+            // pour que la langue reste la même (navigation, rafraîchissement, lien FR).
+            if ($pref = $this->preferredForeign($request, $path)) {
                 $qs = $request->getQueryString();
 
-                return redirect('/en'.($path === '/' ? '' : $path).($qs ? '?'.$qs : ''), 302);
+                return redirect(Locales::path($pref, $path).($qs ? '?'.$qs : ''), 302);
             }
 
             Cookie::queue(self::COOKIE, 'fr', self::COOKIE_MIN);
@@ -96,30 +100,31 @@ class SetLocale
         return $next($request);
     }
 
-    /** Vrai si l'utilisateur a choisi l'anglais et que la page peut être redirigée. */
-    private function prefersEnglish(Request $request, string $path): bool
+    /** Langue étrangère choisie (cookie) si la page peut y être redirigée, sinon null. */
+    private function preferredForeign(Request $request, string $path): ?string
     {
         if (! $request->isMethod('GET')) {
-            return false;
+            return null;
         }
-        if ($request->cookie(self::COOKIE) !== 'en') {
-            return false;
+        $pref = (string) $request->cookie(self::COOKIE);
+        if (! Locales::isTarget($pref)) {
+            return null;
         }
         if ($this->isSkipped($path)) {
-            return false;
+            return null;
         }
         if (preg_match('#\.[a-z0-9]{2,5}$#i', $path)) {
-            return false; // fichier (.css, .js, .png, .pdf…)
+            return null; // fichier (.css, .js, .png, .pdf…)
         }
         $accept = (string) $request->headers->get('Accept', '');
         if ($accept !== '' && ! str_contains($accept, 'text/html') && ! str_contains($accept, '*/*')) {
-            return false;
+            return null;
         }
 
-        return true;
+        return $pref;
     }
 
-    /** Le chemin tombe-t-il dans une zone à ne jamais préfixer /en ? */
+    /** Le chemin tombe-t-il dans une zone à ne jamais préfixer (/en, /es, /pt) ? */
     private function isSkipped(string $path): bool
     {
         $p = preg_split('/[?#]/', $path)[0];
@@ -132,8 +137,8 @@ class SetLocale
         return false;
     }
 
-    /** En anglais, réécrit les liens internes de la page (<body>) en /en. */
-    private function localiseLinks(Response $response): Response
+    /** Dans une langue étrangère, réécrit les liens internes de la page (<body>) avec son préfixe. */
+    private function localiseLinks(Response $response, string $locale): Response
     {
         try {
             if ($response instanceof StreamedResponse || $response instanceof BinaryFileResponse) {
@@ -162,7 +167,7 @@ class SetLocale
             $body = substr($html, $start, $end - $start);
             $body = preg_replace_callback(
                 '#\b(href|action)\s*=\s*"(/[^"]*)"#i',
-                fn ($mm) => $mm[1].'="'.$this->prefixPath($mm[2]).'"',
+                fn ($mm) => $mm[1].'="'.$this->prefixPath($mm[2], $locale).'"',
                 $body
             ) ?? $body;
 
@@ -176,10 +181,10 @@ class SetLocale
 
     /**
      * Sur les pages portant la carte interactive, injecte le dictionnaire de
-     * traduction (public/assets/benin-atlas.en.json) juste avant le script de
-     * la carte, pour que benin-atlas.js affiche ses fiches en anglais.
+     * traduction (public/assets/benin-atlas.{langue}.json) juste avant le script
+     * de la carte, pour que benin-atlas.js affiche ses fiches dans la langue.
      */
-    private function injectAtlasI18n(Response $response): Response
+    private function injectAtlasI18n(Response $response, string $locale): Response
     {
         try {
             if ($response instanceof StreamedResponse || $response instanceof BinaryFileResponse) {
@@ -193,7 +198,7 @@ class SetLocale
             if (! preg_match('#<script[^>]*\bbenin-atlas\.js\b[^>]*>#i', $html, $m, PREG_OFFSET_CAPTURE)) {
                 return $response; // pas de carte sur cette page
             }
-            $file = public_path('assets/benin-atlas.en.json');
+            $file = public_path('assets/benin-atlas.'.$locale.'.json');
             if (! is_file($file)) {
                 return $response;
             }
@@ -212,14 +217,14 @@ class SetLocale
         return $response;
     }
 
-    /** Préfixe un chemin interne de /en, sauf assets, ancres et zones techniques. */
-    private function prefixPath(string $url): string
+    /** Préfixe un chemin interne avec la langue, sauf assets, ancres et zones techniques. */
+    private function prefixPath(string $url, string $locale): string
     {
         if ($url === '' || $url[0] !== '/' || str_starts_with($url, '//')) {
             return $url; // externe ou protocole-relatif
         }
-        if ($url === '/en' || str_starts_with($url, '/en/')) {
-            return $url; // déjà anglais
+        if (preg_match('~^/('.Locales::prefixPattern().')(?:[/?#]|$)~', $url)) {
+            return $url; // déjà dans une langue
         }
         $pathOnly = preg_split('/[?#]/', $url)[0];
         if ($this->isSkipped($pathOnly)) {
@@ -229,19 +234,23 @@ class SetLocale
             return $url; // lien vers un fichier
         }
 
-        return '/en'.($url === '/' ? '' : $url);
+        return '/'.$locale.($url === '/' ? '' : $url);
     }
 
     /** Partage la langue courante et les URLs alternées (sélecteur + hreflang). */
     private function share(string $locale, string $frPath): void
     {
         $frPath = '/'.ltrim($frPath, '/');
-        $enPath = $frPath === '/' ? '/en' : '/en'.$frPath;
+        $urls = [];
+        foreach (Locales::codes() as $code) {
+            $urls[$code] = Locales::path($code, $frPath);
+        }
 
         View::share([
             'baLocale' => $locale,
             'baUrlFr' => $frPath,
-            'baUrlEn' => $enPath,
+            'baUrlEn' => $urls['en'],
+            'baUrls' => $urls,
         ]);
     }
 }

@@ -12,13 +12,14 @@ use Illuminate\Console\Command;
  *
  * Chaîne : extraction des chaînes françaises -> traduction DeepL (via
  * trad:translate, mêmes glossaire et quota) -> écriture du dictionnaire
- * public/assets/benin-atlas.en.json, chargé par la carte quand lang="en".
+ * public/assets/benin-atlas.{langue}.json, chargé par la carte quand la page
+ * est dans cette langue (en, es, pt).
  *
- *   php artisan trad:atlas
+ *   php artisan trad:atlas --locale=es
  */
 class TranslationsAtlas extends Command
 {
-    protected $signature = 'trad:atlas {--target=EN-GB : Variante DeepL} {--force : Retraduire tout}';
+    protected $signature = 'trad:atlas {--locale=en : Langue cible (en, es, pt)} {--target= : Variante DeepL (par défaut celle de la langue)} {--force : Retraduire tout}';
     protected $description = 'Traduit les textes de la carte interactive (benin-atlas.js) via DeepL.';
 
     /** Libellés d'interface (hors données) à traduire. */
@@ -40,6 +41,13 @@ class TranslationsAtlas extends Command
             return self::FAILURE;
         }
 
+        $locale = (string) $this->option('locale');
+        if (! \App\Support\Locales::isTarget($locale)) {
+            $this->error("Langue inconnue : {$locale}");
+
+            return self::FAILURE;
+        }
+
         $strings = $this->extractStrings((string) file_get_contents($js));
         if ($strings === []) {
             $this->warn('Aucune chaîne extraite de la carte.');
@@ -47,9 +55,9 @@ class TranslationsAtlas extends Command
             return self::SUCCESS;
         }
 
-        // Fichier d'extraction au format trad:translate ({path:{key:{fr,en}}}),
+        // Fichier d'extraction au format trad:translate ({path:{key:{fr,<langue>}}}),
         // fusionné avec l'existant pour préserver les traductions déjà faites.
-        $file = storage_path('app/translations/extract-atlas-en.json');
+        $file = storage_path('app/translations/extract-atlas-'.$locale.'.json');
         $data = is_file($file) ? json_decode((string) file_get_contents($file), true) : [];
         $data = is_array($data) ? $data : [];
         $page = is_array($data['__atlas'] ?? null) ? $data['__atlas'] : [];
@@ -59,9 +67,9 @@ class TranslationsAtlas extends Command
             $k = md5($fr);
             $wanted[$k] = true;
             if (! isset($page[$k])) {
-                $page[$k] = ['type' => 'rich', 'group' => 'atlas', 'fr' => $fr, 'en' => null];
+                $page[$k] = ['type' => 'rich', 'group' => 'atlas', 'fr' => $fr, $locale => null];
             } else {
-                $page[$k]['fr'] = $fr; // garde la traduction 'en' existante
+                $page[$k]['fr'] = $fr; // garde la traduction existante
             }
         }
         // Retire les clés qui ne sont plus dans la carte.
@@ -75,7 +83,10 @@ class TranslationsAtlas extends Command
 
         // Traduction DeepL (mêmes glossaire, quota et reprise que les pages).
         if ((string) config('services.deepl.key') !== '') {
-            $args = ['file' => $file, '--target' => (string) $this->option('target')];
+            $args = ['file' => $file, '--locale' => $locale];
+            if ($this->option('target')) {
+                $args['--target'] = (string) $this->option('target');
+            }
             if ($this->option('force')) {
                 $args['--force'] = true;
             }
@@ -84,16 +95,16 @@ class TranslationsAtlas extends Command
             $this->warn('DEEPL_API_KEY absente : traduction DeepL sautée.');
         }
 
-        // Écriture du dictionnaire { "texte fr" : "english text" }.
+        // Écriture du dictionnaire { "texte fr" : "texte traduit" }.
         $data = json_decode((string) file_get_contents($file), true);
         $map = [];
         foreach (($data['__atlas'] ?? []) as $entry) {
-            $en = $entry['en'] ?? null;
-            if (is_string($en) && trim($en) !== '') {
-                $map[$entry['fr']] = $en;
+            $tr = $entry[$locale] ?? null;
+            if (is_string($tr) && trim($tr) !== '') {
+                $map[$entry['fr']] = $tr;
             }
         }
-        $out = public_path('assets/benin-atlas.en.json');
+        $out = public_path('assets/benin-atlas.'.$locale.'.json');
         file_put_contents($out, json_encode($map, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
         $this->info(sprintf('Carte : %d/%d libellés traduits → %s', count($map), count($strings), $out));

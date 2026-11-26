@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 
 /**
  * Importe les traductions depuis un fichier JSON (format produit par
- * trad:extract, champ « en » rempli). N'écrase jamais le français ; fusionne
+ * trad:extract, champ de la langue — « en », « es » ou « pt » — rempli). N'écrase jamais le français ; fusionne
  * avec les traductions déjà présentes.
  *
  *   php artisan trad:import storage/app/translations/extract-en.json
@@ -46,11 +46,14 @@ class TranslationsImport extends Command
             $items = TranslationStore::get($locale, (string) $path);
             $changed = false;
             foreach ($map as $key => $entry) {
-                $en = is_array($entry) ? ($entry['en'] ?? $entry['value'] ?? null) : $entry;
-                if (! is_string($en) || trim($en) === '') {
+                // Champ de la langue ; « en » / « value » acceptés pour les anciens fichiers.
+                $tr = is_array($entry)
+                    ? ($entry[$locale] ?? ($locale === 'en' ? ($entry['en'] ?? null) : null) ?? $entry['value'] ?? null)
+                    : $entry;
+                if (! is_string($tr) || trim($tr) === '') {
                     continue;
                 }
-                $items[(string) $key] = ['value' => $en];
+                $items[(string) $key] = ['value' => $tr];
                 $count++;
                 $changed = true;
             }

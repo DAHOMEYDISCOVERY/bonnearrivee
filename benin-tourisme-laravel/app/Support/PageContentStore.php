@@ -62,9 +62,12 @@ final class PageContentStore
         ]);
         SearchIndex::refresh($path);
 
-        // Met l'anglais à jour juste après la réponse (aucun worker requis).
+        // Met les langues étrangères (en, es, pt) à jour juste après la réponse
+        // (aucun worker requis).
         if ((string) config('services.deepl.key') !== '') {
-            \App\Jobs\TranslatePageJob::dispatchAfterResponse($path);
+            foreach (\App\Support\Locales::targets() as $loc) {
+                \App\Jobs\TranslatePageJob::dispatchAfterResponse($path, $loc);
+            }
         }
     }
 

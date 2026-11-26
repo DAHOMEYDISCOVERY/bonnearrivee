@@ -10,8 +10,9 @@ use Illuminate\Http\Response;
 /**
  * Génère /sitemap.xml à partir du registre des pages.
  *
- * Sortie conforme au protocole sitemaps.org 0.9 : une <url> par page,
- * chaque URL construite en absolu à partir de APP_URL. Pas de lastmod
+ * Sortie conforme au protocole sitemaps.org 0.9 : une <url> par page et par
+ * langue (fr, en, es, pt), avec ses versions alternées (hreflang), chaque URL
+ * construite en absolu à partir de APP_URL. Pas de lastmod
  * (les entrées du registre n'ont pas de date de modification stable)
  * ni de priority (Google les ignore).
  */
@@ -27,13 +28,12 @@ final class SitemapController extends Controller
         // pour ne pas gaspiller le crawl budget.
         $excluded = ['/fiche-de-relecture'];
 
-        $urls = [];
+        $paths = [];
         foreach ($this->pages->all() as $path => $_page) {
             if (in_array($path, $excluded, true)) {
                 continue;
             }
-            $absolute = $base.($path === '/' ? '/' : $path);
-            $urls[] = '  <url><loc>'.htmlspecialchars($absolute, ENT_XML1 | ENT_QUOTES, 'UTF-8').'</loc></url>';
+            $paths[] = $path === '' ? '/' : $path;
         }
         // Routes publiées en dehors du registre (voir routes/web.php).
         foreach ([
@@ -45,11 +45,26 @@ final class SitemapController extends Controller
             '/benin-en-fete/jistna',
             '/benin-en-fete/la-gaani',
         ] as $extra) {
-            $urls[] = '  <url><loc>'.htmlspecialchars($base.$extra, ENT_XML1 | ENT_QUOTES, 'UTF-8').'</loc></url>';
+            $paths[] = $extra;
+        }
+
+        // Une <url> par langue (fr, en, es, pt), chacune listant toutes ses
+        // versions (xhtml:link hreflang) : format multilingue recommandé par Google.
+        $esc = static fn (string $u): string => htmlspecialchars($u, ENT_XML1 | ENT_QUOTES, 'UTF-8');
+        $urls = [];
+        foreach (array_unique($paths) as $path) {
+            $alts = '';
+            foreach (\App\Support\Locales::ALL as $code => $l) {
+                $alts .= "\n    <xhtml:link rel=\"alternate\" hreflang=\"{$l['hreflang']}\" href=\"".$esc($base.\App\Support\Locales::path($code, $path))."\"/>";
+            }
+            $alts .= "\n    <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"".$esc($base.$path)."\"/>";
+            foreach (\App\Support\Locales::codes() as $code) {
+                $urls[] = '  <url><loc>'.$esc($base.\App\Support\Locales::path($code, $path)).'</loc>'.$alts."\n  </url>";
+            }
         }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n"
-             .'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n"
+             .'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'."\n"
              .implode("\n", $urls)."\n"
              .'</urlset>'."\n";
 

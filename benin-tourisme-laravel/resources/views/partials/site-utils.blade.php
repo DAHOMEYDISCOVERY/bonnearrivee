@@ -907,3 +907,247 @@ html:not(#ba) body:not(#ba) main .ba-cl-plus:hover,html:not(#ba) body:not(#ba) m
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
+
+{{-- Textes longs (tout le site) : au-delà de quelques lignes, le texte est coupé et un bouton « Voir plus »
+     ouvre le texte complet dans la fenêtre de lecture. Les « Lire le texte complet » qui dépliaient
+     le texte sur place ouvrent désormais cette même fenêtre. Les FAQ restent en accordéon.
+     Cartes à image décalée (« D'autres envies ? ») : plus de texte posé sur l'image, le chevauchement le coupait. --}}
+<style>
+html:not(#ba) body:not(#ba) main .ba-lp{overflow:hidden!important;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 3.2em),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 3.2em),transparent)}
+html:not(#ba) body:not(#ba) main .ba-lp-details{display:none!important}
+html:not(#ba) body:not(#ba) main .ba-lp-plus{display:inline-flex;align-items:center;gap:.5rem;margin:.75rem 0 .25rem;padding:.65rem 1.25rem;border:0;border-radius:999px;background:#00754a;color:#fff!important;font:700 .9rem/1.2 Montserrat,Helvetica,Arial,sans-serif;text-transform:none;letter-spacing:0;cursor:pointer;transition:background .25s,transform .25s}
+html:not(#ba) body:not(#ba) main .ba-lp-plus:hover,html:not(#ba) body:not(#ba) main .ba-lp-plus:focus-visible{background:#005c3a;transform:translateY(-2px)}
+html:not(#ba) body:not(#ba) main .ba-lp-plus svg{flex:0 0 auto}
+html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .card-section,html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .card-titles,html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .card-texts{display:none!important}
+html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .cardMediaWrapper::before,html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .cardMediaWrapper::after,html:not(#ba) body:not(#ba) main .overlayedCard.img-offset .card-link::after{background:none!important;opacity:0!important}
+html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles ol{gap:.85rem!important}
+html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles li{flex-direction:column!important;align-items:flex-start!important;gap:.55rem!important;padding:1.05rem 1.15rem 1.1rem!important}
+html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles li span{font-size:1.3rem!important}
+html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles li p{font-size:.95rem!important;line-height:1.55!important;display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3!important;overflow:hidden!important}
+html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles .ba-lp-mini{margin-top:auto;padding:0;border:0;background:none;color:#f0c45a;font:700 .85rem/1.2 Montserrat,Helvetica,Arial,sans-serif;text-decoration:underline;text-underline-offset:.25em;cursor:pointer}
+.ba-read__text ul,.ba-read__text ol{margin:0 0 1em 1.2em!important;padding:0!important;color:#2b3530!important;line-height:1.75!important}
+.ba-read__text li{margin:0 0 .4em!important}
+.ba-read__text h2,.ba-read__text h3,.ba-read__text h4{margin:1.1em 0 .5em!important;font:800 1.1rem/1.3 Montserrat,Helvetica,Arial,sans-serif!important;color:#10261a!important;text-transform:none!important}
+.ba-read__text img,.ba-read__text figure,.ba-read__text script,.ba-read__text style,.ba-read__text button{display:none!important}
+</style>
+<script>
+(function () {
+    if (window.self !== window.top) return;
+    var dlg;
+    function texte(el) { return (el.textContent || '').replace(/\s+/g, ' ').trim(); }
+    /* Fenêtre de lecture commune : titre + contenu (nœud ou texte), fermeture par croix, bouton, Échap, clic dehors. */
+    function lire(titre, contenu, from) {
+        if (!dlg) {
+            dlg = document.createElement('dialog');
+            dlg.className = 'ba-read';
+            dlg.setAttribute('aria-labelledby', 'ba-lp-t');
+            dlg.innerHTML = '<div class="ba-read__box"><div class="ba-read__head"><span class="ba-read__k">À lire</span><p class="ba-read__t" id="ba-lp-t"></p>'
+                + '<button type="button" class="ba-read__x" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>'
+                + '<div class="ba-read__body"><div class="ba-read__text"></div></div><div class="ba-read__foot"><button type="button" class="ba-read__close">Fermer</button></div></div>';
+            document.body.appendChild(dlg);
+            var fermer = function () { dlg.close(); };
+            dlg.querySelector('.ba-read__x').addEventListener('click', fermer);
+            dlg.querySelector('.ba-read__close').addEventListener('click', fermer);
+            dlg.addEventListener('click', function (e) { if (e.target === dlg) fermer(); });
+            dlg.addEventListener('close', function () {
+                document.documentElement.classList.remove('ba-read-open');
+                if (dlg._from) dlg._from.focus({ preventScroll: true });
+            });
+        }
+        dlg.querySelector('.ba-read__t').textContent = titre || (document.querySelector('main h1') ? texte(document.querySelector('main h1')) : document.title);
+        var box = dlg.querySelector('.ba-read__text');
+        box.innerHTML = '';
+        if (typeof contenu === 'string') {
+            contenu.split(/\n{2,}/).forEach(function (t) { if (t.trim()) { var p = document.createElement('p'); p.textContent = t.trim(); box.appendChild(p); } });
+        } else {
+            var c = contenu.cloneNode(true);
+            c.querySelectorAll('.ba-lp-plus, summary').forEach(function (x) { x.remove(); });
+            var tag = c.tagName;
+            if (tag === 'P' || tag === 'LI' || tag === 'SPAN') {
+                c.innerHTML.split(/<br\s*\/?>\s*(?:&nbsp;|\s)*<br\s*\/?>/i).forEach(function (part) {
+                    var p = document.createElement('p');
+                    p.innerHTML = part.trim();
+                    if (texte(p)) box.appendChild(p);
+                });
+            } else {
+                while (c.firstChild) box.appendChild(c.firstChild);
+            }
+            box.querySelectorAll('[class]').forEach(function (x) { x.removeAttribute('class'); });
+            box.querySelectorAll('[style]').forEach(function (x) { x.removeAttribute('style'); });
+        }
+        dlg._from = from;
+        document.documentElement.classList.add('ba-read-open');
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+        dlg.querySelector('.ba-read__body').scrollTop = 0;
+        dlg.querySelector('.ba-read__x').focus({ preventScroll: true });
+    }
+    window.baLire = lire;
+    /* Titre de la fenêtre : dernier titre (h2-h4) qui précède le texte dans sa section, sinon le h1. */
+    function titreDe(el) {
+        var sec = el.closest('section, .page-section, article, .woody-component') || document.querySelector('main');
+        var hs = sec ? sec.querySelectorAll('h2, h3, h4, .section-title, .generic-block-title') : [];
+        var best = null;
+        for (var i = 0; i < hs.length; i++) {
+            if (hs[i].compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING && texte(hs[i]).length < 140) best = hs[i];
+        }
+        return best ? texte(best) : '';
+    }
+    function bouton(libelle) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ba-lp-plus';
+        b.setAttribute('aria-haspopup', 'dialog');
+        b.innerHTML = '<span></span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        b.firstChild.textContent = libelle;
+        return b;
+    }
+    var EXCLU = 'header, footer, nav, dialog, details, table, form, .card, .ttx, .ba-read, .ba-intro-long, .ba-intro-body, .imageObject-caption, .imageObject-description, .hide, .tooltip-text, [aria-hidden="true"], .ba-dir, .bar-roles, .faq, [class*="faq"]';
+    function visible(el) { return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length); }
+    function couper(el) {
+        if (el.classList.contains('ba-lp') || el.querySelector('.ba-lp')) return;
+        var cs = getComputedStyle(el.tagName === 'P' ? el : (el.querySelector('p') || el));
+        var lh = parseFloat(cs.lineHeight);
+        if (!lh || isNaN(lh)) lh = parseFloat(cs.fontSize) * 1.6 || 26;
+        var lignes = window.innerWidth < 768 ? 8 : 7;
+        var max = Math.round(lh * lignes);
+        if (el.scrollHeight <= max + lh * 2.5) return;
+        /* Liste ou bloc : on coupe un conteneur placé à l'intérieur, pour que le bouton reste
+           dans la colonne du texte (et que la puce d'un élément de liste reste visible). */
+        var cible = el;
+        if (el.tagName !== 'P') {
+            /* descend jusqu'à la vraie colonne de texte (enveloppes à un seul enfant) */
+            var hote = el;
+            while (hote.children.length === 1 && !/\S/.test(Array.prototype.map.call(hote.childNodes, function (n) { return n.nodeType === 3 ? n.textContent : ''; }).join('')) && hote.firstElementChild.tagName !== 'P') {
+                hote = hote.firstElementChild;
+            }
+            cible = document.createElement('div');
+            while (hote.firstChild) cible.appendChild(hote.firstChild);
+            hote.appendChild(cible);
+        }
+        cible.classList.add('ba-lp');
+        cible.style.maxHeight = max + 'px';
+        var b = bouton('Voir plus');
+        cible.insertAdjacentElement('afterend', b);
+        b.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            lire(titreDe(el), cible, b);
+        });
+    }
+    function init() {
+        var main = document.querySelector('main');
+        if (!main) return;
+        /* 1. « Lire le texte complet » / « Voir plus » qui dépliaient sur place → fenêtre de lecture */
+        main.querySelectorAll('details').forEach(function (d) {
+            var s = d.querySelector('summary');
+            if (!s || d.closest('.ba-read')) return;
+            var lib = texte(s);
+            if (!/(lire|voir|afficher|tout)\b.*\b(plus|suite|complet|texte|tout)|en savoir plus|lire la suite/i.test(lib)) return;
+            var b = bouton(lib.replace(/[+−–-]\s*$/, '').trim() || 'Voir plus');
+            d.insertAdjacentElement('beforebegin', b);
+            d.classList.add('ba-lp-details');
+            b.addEventListener('click', function (e) {
+                e.preventDefault();
+                lire(titreDe(d), d, b);
+            });
+        });
+        /* 2. Textes longs : blocs de texte éditoriaux, puis paragraphes isolés */
+        var cands = [];
+        main.querySelectorAll('.woody-component-text').forEach(function (c) {
+            if (c.closest(EXCLU) || !visible(c)) return;
+            if (texte(c).length > 1000) cands.push(c);
+        });
+        main.querySelectorAll('p, li').forEach(function (e) {
+            if (e.closest(EXCLU) || !visible(e)) return;
+            for (var i = 0; i < cands.length; i++) if (cands[i].contains(e)) return;
+            if (e.querySelector('p, ul, ol, div, table, figure')) return;
+            if (texte(e).length > 700) cands.push(e);
+        });
+        cands.forEach(couper);
+        /* 4. Cartes « Au-delà de leur dimension symbolique… » (01 à 05) : 3 lignes, le reste dans la fenêtre */
+        main.querySelectorAll('.bar-roles').forEach(function (bloc) {
+            var h = bloc.querySelector('h3, h2');
+            bloc.querySelectorAll('li').forEach(function (li) {
+                var p = li.querySelector('p');
+                if (!p || li.querySelector('.ba-lp-mini') || p.scrollHeight <= p.clientHeight + 2) return;
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'ba-lp-mini';
+                b.setAttribute('aria-haspopup', 'dialog');
+                b.textContent = 'Voir plus';
+                li.appendChild(b);
+                b.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    lire(h ? texte(h) : '', p, b);
+                });
+            });
+        });
+        /* 3. Cartes à image décalée : le titre n'est plus affiché sur l'image, il reste lisible par les lecteurs d'écran */
+        main.querySelectorAll('.overlayedCard.img-offset').forEach(function (card) {
+            var a = card.querySelector('a.card-link');
+            var t = card.querySelector('.card-title, .card-titles');
+            if (a && t && !a.getAttribute('aria-label')) a.setAttribute('aria-label', texte(t));
+            if (a && t && !a.getAttribute('title')) a.setAttribute('title', texte(t));
+        });
+    }
+    function demarrer() { requestAnimationFrame(function () { setTimeout(init, 60); }); }
+    if (document.readyState === 'complete') demarrer(); else window.addEventListener('load', demarrer);
+})();
+</script>
+
+{{-- Libellés des boutons et fenêtres ajoutés par les scripts ci-dessus (« Voir plus », « Lire la suite »,
+     « Fermer »…) : traduits selon la langue de la page (en, es, pt). Le français reste la source. --}}
+<script>
+(function () {
+    var L = (document.documentElement.getAttribute('lang') || 'fr').slice(0, 2);
+    var D = {
+        en: {'Lire la suite': 'Read more', 'Réduire': 'Show less', 'Voir plus': 'Read more', 'À lire': 'Read', 'Fermer': 'Close',
+             'Lire le texte complet': 'Read the full text', 'Découvrir la rubrique': 'Explore the section', 'Art de vivre': 'Way of life',
+             'Terre de traditions': 'Land of traditions', 'Lire aussi': 'Explore the section'},
+        es: {'Lire la suite': 'Leer más', 'Réduire': 'Ver menos', 'Voir plus': 'Ver más', 'À lire': 'Para leer', 'Fermer': 'Cerrar',
+             'Lire le texte complet': 'Leer el texto completo', 'Découvrir la rubrique': 'Descubrir la sección', 'Art de vivre': 'Arte de vivir',
+             'Terre de traditions': 'Tierra de tradiciones', 'Lire aussi': 'Descubrir la sección'},
+        pt: {'Lire la suite': 'Ler mais', 'Réduire': 'Ver menos', 'Voir plus': 'Ver mais', 'À lire': 'Para ler', 'Fermer': 'Fechar',
+             'Lire le texte complet': 'Ler o texto completo', 'Découvrir la rubrique': 'Descobrir a seção', 'Art de vivre': 'Arte de viver',
+             'Terre de traditions': 'Terra de tradições', 'Lire aussi': 'Descobrir a seção'}
+    }[L];
+    if (!D) return;
+    var SEL = '.ba-intro-more, .ba-cl-plus, .ba-lp-plus, .ba-lp-mini, .ttx-plus, .ttx-lien, .ttx-num, .ba-read__k, .ba-read__close, .ba-read__x';
+    function tr(s) {
+        var t = s.trim();
+        if (!t) return null;
+        if (D[t]) return s.replace(t, D[t]);
+        if (/^Lire aussi\s*:/.test(t)) return s.replace(t, D['Lire aussi']);
+        return null;
+    }
+    function fix(root) {
+        try {
+            var els = [];
+            if (root.matches && root.matches(SEL)) els.push(root);
+            if (root.querySelectorAll) els = els.concat([].slice.call(root.querySelectorAll(SEL)));
+            els.forEach(function (el) {
+                var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+                var n;
+                while ((n = w.nextNode())) {
+                    var r = tr(n.nodeValue);
+                    if (r !== null) n.nodeValue = r;
+                }
+                var a = el.getAttribute('aria-label');
+                if (a && D[a]) el.setAttribute('aria-label', D[a]);
+            });
+        } catch (e) {}
+    }
+    function run() {
+        fix(document.body);
+        try {
+            new MutationObserver(function (ms) {
+                ms.forEach(function (m) {
+                    m.addedNodes && m.addedNodes.forEach(function (n) { if (n.nodeType === 1) fix(n); });
+                    if (m.type === 'characterData' && m.target.parentElement && m.target.parentElement.closest(SEL)) fix(m.target.parentElement.closest(SEL));
+                });
+            }).observe(document.body, { childList: true, subtree: true, characterData: true });
+        } catch (e) {}
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
+</script>
