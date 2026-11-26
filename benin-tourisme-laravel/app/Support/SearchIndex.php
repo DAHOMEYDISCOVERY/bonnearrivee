@@ -202,9 +202,9 @@ final class SearchIndex
             return null;
         }
 
-        if ($locale === 'fr') {
-            $html = ContentLayer::apply($html, PageContentStore::edits($path));
-        } else {
+        // Toutes les langues partent du français actuel (modifications du back-office).
+        $html = ContentLayer::apply($html, PageContentStore::edits($path));
+        if ($locale !== 'fr') {
             // Texte réellement affiché dans la langue cible : on applique les
             // traductions sur toute la page (mode traduction). Sans traduction,
             // on garde le français (la page reste trouvable par ses noms propres).

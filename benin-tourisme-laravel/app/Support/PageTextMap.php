@@ -36,6 +36,15 @@ final class PageTextMap
             if ($html === null) {
                 return [];
             }
+            // Même base que l'affichage : le français actuel, avec les modifications du back-office.
+            $edits = \App\Support\PageContentStore::edits($path);
+            if ($edits !== []) {
+                try {
+                    $html = ContentLayer::apply($html, $edits);
+                } catch (\Throwable $e) {
+                    report($e);
+                }
+            }
 
             $map = [];
             foreach (ContentLayer::extract($html, true) as $item) {

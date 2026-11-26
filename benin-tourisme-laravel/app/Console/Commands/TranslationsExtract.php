@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Support\ContentLayer;
+use App\Support\PageContentStore;
 use App\Support\PageSnapshot;
 use App\Support\SitePages;
 use App\Support\TranslationStore;
@@ -48,6 +49,17 @@ class TranslationsExtract extends Command
             if ($html === null) {
                 $failed[] = $page['path'];
                 continue;
+            }
+            // On traduit la page telle qu'elle est affichée en français, avec les
+            // modifications « Textes et images » du back-office (sinon les textes
+            // modifiés ne seraient jamais traduits).
+            $edits = PageContentStore::edits($page['path']);
+            if ($edits !== []) {
+                try {
+                    $html = ContentLayer::apply($html, $edits);
+                } catch (\Throwable $e) {
+                    report($e);
+                }
             }
             $existing = TranslationStore::get($locale, $page['path']);
             $pageOut = [];

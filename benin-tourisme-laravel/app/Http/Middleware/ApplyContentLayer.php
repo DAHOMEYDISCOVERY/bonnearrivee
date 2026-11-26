@@ -44,12 +44,15 @@ final class ApplyContentLayer
         $path = $request->getPathInfo();
         $locale = app()->getLocale();
 
-        // Version traduite : la traduction s'applique sur TOUTE la page
-        // (en-tête, pied et blocs dynamiques inclus) via le mode « traduction »
-        // de ContentLayer, indépendamment des modifications FR du back-office.
+        // Version traduite : on part de la page FRANÇAISE ACTUELLE (avec les
+        // modifications « Textes et images » du back-office, dont dépendent aussi
+        // certains designs), puis la traduction s'applique sur toute la page
+        // (en-tête, pied et blocs dynamiques inclus) via le mode « traduction ».
+        // Ce qui n'est pas encore traduit reste en français actuel.
         if ($locale !== 'fr') {
+            $edits = PageContentStore::edits($path);
             $translations = \App\Support\TranslationStore::get($locale, $path);
-            if ($translations === []) {
+            if ($edits === [] && $translations === []) {
                 return $response;
             }
 
@@ -58,11 +61,23 @@ final class ApplyContentLayer
                 return $response;
             }
 
-            try {
-                $response->setContent(ContentLayer::apply($html, $translations, true));
-            } catch (\Throwable $e) {
-                report($e);
+            if ($edits !== []) {
+                try {
+                    $html = ContentLayer::apply($html, $edits);
+                } catch (\Throwable $e) {
+                    report($e);
+                }
             }
+
+            if ($translations !== []) {
+                try {
+                    $html = ContentLayer::apply($html, $translations, true);
+                } catch (\Throwable $e) {
+                    report($e);
+                }
+            }
+
+            $response->setContent($html);
 
             return $response;
         }
