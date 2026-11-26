@@ -35,7 +35,7 @@
 {{-- Hors français : libellés d'interface portés par des attributs (placeholder,
      aria-label…) et libellés du menu de recherche produits par le JavaScript
      Woody — hors de portée du traducteur serveur, traduits côté client. --}}
-<script>
+<script data-i18n-skip>
 (function(){
   var L = document.documentElement.getAttribute('lang') || 'en';
   var I = {

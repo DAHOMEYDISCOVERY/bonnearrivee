@@ -34,10 +34,30 @@
             'logo2' => 'https://www.petit-train-cotonou.com/icons/client-180.png',
         ],
     ];
+
+    // Textes de l'interface dans la langue de la page (fr, en, es, pt). Les textes générés
+    // en JavaScript (bulle d'invite, libellé du bouton) ne passent pas par DeepL : ils viennent d'ici.
+    $ecoLoc = app()->getLocale();
+    $ecoT = [
+        'fr' => ['nav' => 'Notre écosystème', 'bulle' => 'Besoin d’autres services ?', 'voir' => 'Voir nos sociétés', 'fermer' => 'Fermer', 'decouvrez' => 'Découvrez', 'onglet' => ' (nouvel onglet)',
+                 'subs' => []],
+        'en' => ['nav' => 'Our ecosystem', 'bulle' => 'Need other services?', 'voir' => 'See our companies', 'fermer' => 'Close', 'decouvrez' => 'Discover', 'onglet' => ' (new tab)',
+                 'subs' => ['The partner agency: accommodation, vehicles, tours and transfers all over Benin.', 'Podcast, video and photo studio in Cotonou. Professional equipment and a dedicated team.', 'The guided tour of Cotonou, from Place de l’Amazone to the Route des Pêches.']],
+        'es' => ['nav' => 'Nuestro ecosistema', 'bulle' => '¿Necesita otros servicios?', 'voir' => 'Ver nuestras empresas', 'fermer' => 'Cerrar', 'decouvrez' => 'Descubra', 'onglet' => ' (nueva pestaña)',
+                 'subs' => ['La agencia asociada: alojamiento, vehículos, circuitos y traslados en todo Benín.', 'Estudio de pódcast, vídeo y fotografía en Cotonú. Equipo profesional y personal dedicado.', 'La visita guiada de Cotonú, de la plaza de la Amazona a la Ruta de la Pesca.']],
+        'pt' => ['nav' => 'Nosso ecossistema', 'bulle' => 'Precisa de outros serviços?', 'voir' => 'Ver nossas empresas', 'fermer' => 'Fechar', 'decouvrez' => 'Descubra', 'onglet' => ' (nova aba)',
+                 'subs' => ['A agência parceira: hospedagem, veículos, circuitos e traslados em todo o Benin.', 'Estúdio de podcast, vídeo e foto em Cotonou. Equipamento profissional e equipe dedicada.', 'O passeio guiado por Cotonou, da Praça da Amazona à Rota da Pesca.']],
+    ][$ecoLoc] ?? null;
+    $ecoT ??= ['nav' => 'Notre écosystème', 'bulle' => 'Besoin d’autres services ?', 'voir' => 'Voir nos sociétés', 'fermer' => 'Fermer', 'decouvrez' => 'Découvrez', 'onglet' => ' (nouvel onglet)', 'subs' => []];
+    foreach ($ecoLinks as $i => $l) {
+        if (! empty($ecoT['subs'][$i])) {
+            $ecoLinks[$i]['sub'] = $ecoT['subs'][$i];
+        }
+    }
 @endphp
 
-<div class="ba-eco" data-ba-eco>
-    <nav class="ba-eco__nav" id="ba-eco-liste" aria-label="Notre écosystème" hidden>
+<div class="ba-eco" data-ba-eco data-t-voir="{{ $ecoT['voir'] }}" data-t-fermer="{{ $ecoT['fermer'] }}" data-t-bulle="{{ $ecoT['bulle'] }}" data-t-decouvrez="{{ $ecoT['decouvrez'] }}">
+    <nav class="ba-eco__nav" id="ba-eco-liste" aria-label="{{ $ecoT['nav'] }}" hidden>
         <ul>
             @foreach($ecoLinks as $i => $l)
                 <li style="--d: {{ (count($ecoLinks) - 1 - $i) * 60 }}ms; --brand: {{ $l['brand'] }};">
@@ -45,15 +65,15 @@
                         <span class="ba-eco__logo"><img src="{{ $l['logo'] }}" data-secours="{{ $l['logo2'] }}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.secours){this.src=this.dataset.secours;this.removeAttribute('data-secours')}else{this.parentNode.classList.add('is-vide');this.remove()}"></span>
                         <span class="ba-eco__txt"><span class="ba-eco__nom"><i aria-hidden="true"></i>{{ $l['title'] }}</span><span class="ba-eco__sub">{{ $l['sub'] }}</span></span>
                         <svg class="ba-eco__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        <span class="ba-eco__sr"> (nouvel onglet)</span>
+                        <span class="ba-eco__sr">{{ $ecoT['onglet'] }}</span>
                     </a>
                 </li>
             @endforeach
         </ul>
     </nav>
     <div class="ba-eco__pied">
-        <span class="ba-eco__bulle" aria-hidden="true"><i></i><img alt="" hidden><span class="ba-eco__bulle-t">Besoin d’autres services ?</span></span>
-        <button type="button" class="ba-eco__btn" aria-expanded="false" aria-controls="ba-eco-liste" aria-label="Voir nos sociétés">
+        <span class="ba-eco__bulle" aria-hidden="true"><i></i><img alt="" hidden><span class="ba-eco__bulle-t">{{ $ecoT['bulle'] }}</span></span>
+        <button type="button" class="ba-eco__btn" aria-expanded="false" aria-controls="ba-eco-liste" aria-label="{{ $ecoT['voir'] }}">
             <svg class="ba-eco__ic ba-eco__ic--ouvrir" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.486 2 2 5.94 2 10.75c0 2.64 1.36 5.01 3.5 6.6V22l3.9-2.14c.83.2 1.71.3 2.6.3 5.514 0 10-3.94 10-8.75S17.514 2 12 2zm1 11.75l-2.5-2.67-4.88 2.67 5.38-5.75 2.56 2.67 4.82-2.67-5.38 5.75z"></path></svg>
             <svg class="ba-eco__ic ba-eco__ic--fermer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
         </button>
@@ -116,7 +136,7 @@
       el.classList.remove('is-bulle');
       nav.hidden = !oui;
       btn.setAttribute('aria-expanded', oui ? 'true' : 'false');
-      btn.setAttribute('aria-label', oui ? 'Fermer' : 'Voir nos sociétés');
+      btn.setAttribute('aria-label', oui ? (el.dataset.tFermer || 'Fermer') : (el.dataset.tVoir || 'Voir nos sociétés'));
     }
     btn.addEventListener('click', function(){ ouvrir(btn.getAttribute('aria-expanded') !== 'true'); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && el.classList.contains('is-ouvert')) { ouvrir(false); btn.focus(); } });
@@ -125,10 +145,10 @@
     /* Bulle d'invite, comme sur petit-train-cotonou.com : un message général, puis chaque marque
        à tour de rôle avec son logo. Elle tourne tant que la liste est fermée et l'onglet visible. */
     var bulle = el.querySelector('.ba-eco__bulle'), bImg = bulle.querySelector('img'), bTxt = bulle.querySelector('.ba-eco__bulle-t'), bPoint = bulle.querySelector('i');
-    var msgs = [{ t: 'Besoin d’autres services ?' }];
+    var msgs = [{ t: el.dataset.tBulle || 'Besoin d’autres services ?' }];
     Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
         var nom = a.querySelector('.ba-eco__nom').textContent.trim(), im = a.querySelector('.ba-eco__logo img');
-        msgs.push({ t: 'Découvrez ' + nom, img: im ? im.getAttribute('src') : '' });
+        msgs.push({ t: (el.dataset.tDecouvrez || 'Découvrez') + ' ' + nom, img: im ? im.getAttribute('src') : '' });
     });
     var n = 0, minuteur = null;
     function suivant() {

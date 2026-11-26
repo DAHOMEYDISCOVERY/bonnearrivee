@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Support\ContentLayer;
+use App\Support\JsDictionary;
+use App\Support\JsStrings;
 use App\Support\PageContentStore;
 use App\Support\PageSnapshot;
 use App\Support\SitePages;
@@ -40,6 +42,7 @@ class TranslationsExtract extends Command
         }
 
         $out = [];
+        $jsTexts = [];
         $total = 0;
         $missing = 0;
         $failed = [];
@@ -60,6 +63,11 @@ class TranslationsExtract extends Command
                 } catch (\Throwable $e) {
                     report($e);
                 }
+            }
+            // Textes écrits dans les scripts de la page (titres de blocs, chiffres
+            // clés, légendes…) : invisibles dans le HTML, traduits à part.
+            foreach (JsStrings::fromHtml($html) as $t) {
+                $jsTexts[$t] = true;
             }
             $existing = TranslationStore::get($locale, $page['path']);
             $pageOut = [];
@@ -87,6 +95,24 @@ class TranslationsExtract extends Command
             if ($pageOut !== []) {
                 $out[$page['path']] = $pageOut;
             }
+        }
+
+        if ($jsTexts !== []) {
+            $dict = JsDictionary::get($locale);
+            $jsOut = [];
+            $jsMissing = 0;
+            foreach (array_keys($jsTexts) as $fr) {
+                $fr = (string) $fr;
+                $tr = $dict[$fr] ?? null;
+                $jsOut[substr(sha1($fr), 0, 16)] = ['type' => 'js', 'group' => '', 'fr' => $fr, $locale => $tr];
+                if ($tr === null) {
+                    $jsMissing++;
+                }
+            }
+            $out[JsDictionary::PATH] = $jsOut;
+            $total += count($jsOut);
+            $missing += $jsMissing;
+            $this->info('Textes des scripts : '.count($jsOut)." (à traduire : {$jsMissing})");
         }
 
         $dir = storage_path('app/translations');

@@ -52,7 +52,8 @@ final class ApplyContentLayer
         if ($locale !== 'fr') {
             $edits = PageContentStore::edits($path);
             $translations = \App\Support\TranslationStore::get($locale, $path);
-            if ($edits === [] && $translations === []) {
+            $jsDict = \App\Support\JsDictionary::get($locale);
+            if ($edits === [] && $translations === [] && $jsDict === []) {
                 return $response;
             }
 
@@ -72,6 +73,21 @@ final class ApplyContentLayer
             if ($translations !== []) {
                 try {
                     $html = ContentLayer::apply($html, $translations, true);
+                } catch (\Throwable $e) {
+                    report($e);
+                }
+            }
+
+            // Textes affichés par le JavaScript des pages : on joint à la page les
+            // traductions dont elle a besoin, appliquées à l'affichage.
+            if ($jsDict !== []) {
+                try {
+                    $needed = array_intersect_key($jsDict, array_flip(\App\Support\JsStrings::fromHtml($html)));
+                    $tag = \App\Support\JsDictionary::script($needed);
+                    if ($tag !== '' && preg_match('#<head\b[^>]*>#i', $html, $hm, PREG_OFFSET_CAPTURE)) {
+                        $at = $hm[0][1] + strlen($hm[0][0]);
+                        $html = substr($html, 0, $at).$tag.substr($html, $at);
+                    }
                 } catch (\Throwable $e) {
                     report($e);
                 }

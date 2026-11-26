@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Support\JsDictionary;
 use App\Support\TranslationStore;
 use Illuminate\Console\Command;
 
@@ -41,6 +42,21 @@ class TranslationsImport extends Command
         $count = 0;
         foreach ($data as $path => $map) {
             if (! is_array($map)) {
+                continue;
+            }
+            if ((string) $path === JsDictionary::PATH) {
+                // Textes des scripts : dictionnaire commun « français => traduction ».
+                $pairs = [];
+                foreach ($map as $entry) {
+                    $tr = is_array($entry) ? ($entry[$locale] ?? null) : null;
+                    if (is_array($entry) && is_string($tr) && trim($tr) !== '' && isset($entry['fr'])) {
+                        $pairs[(string) $entry['fr']] = $tr;
+                    }
+                }
+                if ($pairs !== []) {
+                    $count += JsDictionary::merge($locale, $pairs);
+                }
+
                 continue;
             }
             $items = TranslationStore::get($locale, (string) $path);

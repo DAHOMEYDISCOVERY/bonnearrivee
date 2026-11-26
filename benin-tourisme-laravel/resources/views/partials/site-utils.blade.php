@@ -1097,7 +1097,7 @@ html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles .ba-lp-mini{margin-to
 
 {{-- Libellés des boutons et fenêtres ajoutés par les scripts ci-dessus (« Voir plus », « Lire la suite »,
      « Fermer »…) : traduits selon la langue de la page (en, es, pt). Le français reste la source. --}}
-<script>
+<script data-i18n-skip>
 (function () {
     var L = (document.documentElement.getAttribute('lang') || 'fr').slice(0, 2);
     var D = {
