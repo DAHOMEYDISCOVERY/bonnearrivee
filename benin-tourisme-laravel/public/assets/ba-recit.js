@@ -443,19 +443,23 @@
     return true;
   }
 
+  // Lève le masquage posé par le serveur (RecitPreHide) : la mise en forme est faite.
+  function pret() { D.documentElement.classList.add('ba-recit-pret'); }
+
   function run() {
     var cfgs = [];
     D.querySelectorAll('script.ba-recit-cfg').forEach(function (s) {
       var cfg; try { cfg = JSON.parse(s.textContent); } catch (e) { return; }
       (Array.isArray(cfg) ? cfg : [cfg]).forEach(function (c) { cfgs.push(c); });
     });
-    if (!cfgs.length) return;
+    if (!cfgs.length) { pret(); return; }
     var tous = function (fr) {
       cfgs.forEach(function (c) {
         var ok = false;
         try { ok = un(c, fr); } catch (e) { /* on laisse le texte tel quel */ }
         if (!ok && c.__attente) c.__attente.classList.remove('bar-cache'); // rien construit : on réaffiche
       });
+      pret();
     };
     if (!ETR || !window.fetch || !window.DOMParser) { tous(null); return; }
     // Page traduite : on masque tout de suite le texte d'origine (sinon l'ancienne mise en

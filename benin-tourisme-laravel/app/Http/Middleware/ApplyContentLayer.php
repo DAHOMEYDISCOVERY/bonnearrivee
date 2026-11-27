@@ -59,7 +59,7 @@ final class ApplyContentLayer
                 $jsDict = [];
             }
             if ($edits === [] && $translations === [] && $jsDict === []) {
-                return $response;
+                return self::masquerAttente($response);
             }
 
             $html = (string) $response->getContent();
@@ -107,7 +107,7 @@ final class ApplyContentLayer
                 $html = substr($html, 0, $at).$lien.substr($html, $at);
             }
 
-            $response->setContent($html);
+            $response->setContent(\App\Support\RecitPreHide::inject($html));
 
             return $response;
         }
@@ -115,7 +115,7 @@ final class ApplyContentLayer
         // Version française : modifications « Textes et images » uniquement.
         $edits = PageContentStore::edits($path);
         if ($edits === []) {
-            return $response;
+            return self::masquerAttente($response);
         }
 
         $html = (string) $response->getContent();
@@ -125,6 +125,21 @@ final class ApplyContentLayer
 
         try {
             $response->setContent(ContentLayer::apply($html, $edits));
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        return self::masquerAttente($response);
+    }
+
+    /** Masque d'emblée le texte que ba-recit.js va remettre en forme (voir RecitPreHide). */
+    private static function masquerAttente(Response $response): Response
+    {
+        try {
+            $html = (string) $response->getContent();
+            if (str_contains($html, 'ba-recit-cfg') && stripos($html, '<html') !== false) {
+                $response->setContent(\App\Support\RecitPreHide::inject($html));
+            }
         } catch (\Throwable $e) {
             report($e);
         }
