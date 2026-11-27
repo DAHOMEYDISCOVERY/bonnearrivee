@@ -52,7 +52,12 @@ final class ApplyContentLayer
         if ($locale !== 'fr') {
             $edits = PageContentStore::edits($path);
             $translations = \App\Support\TranslationStore::get($locale, $path);
-            $jsDict = \App\Support\JsDictionary::get($locale);
+            try {
+                $jsDict = class_exists(\App\Support\JsDictionary::class) ? \App\Support\JsDictionary::get($locale) : [];
+            } catch (\Throwable $e) {
+                report($e);
+                $jsDict = [];
+            }
             if ($edits === [] && $translations === [] && $jsDict === []) {
                 return $response;
             }
@@ -91,6 +96,15 @@ final class ApplyContentLayer
                 } catch (\Throwable $e) {
                     report($e);
                 }
+            }
+
+            // Pages dont la mise en page est construite par ba-recit.js : il a besoin
+            // de la version française de la page. On la demande dès l'en-tête, pour
+            // qu'elle soit prête quand le script s'exécute (pas d'ancienne mise en page).
+            if (str_contains($html, 'ba-recit-cfg') && preg_match('#<head\b[^>]*>#i', $html, $hm, PREG_OFFSET_CAPTURE)) {
+                $at = $hm[0][1] + strlen($hm[0][0]);
+                $lien = '<link rel="preload" as="fetch" href="'.e($path).'" crossorigin>';
+                $html = substr($html, 0, $at).$lien.substr($html, $at);
             }
 
             $response->setContent($html);

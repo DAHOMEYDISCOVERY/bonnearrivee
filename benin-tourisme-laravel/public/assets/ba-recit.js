@@ -258,7 +258,9 @@
   function frDoc() {
     if (!frDocP) {
       var chemin = location.pathname.replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/';
-      frDocP = fetch(chemin, { credentials: 'same-origin', headers: { Accept: 'text/html' } })
+      // Même requête que le <link rel="preload"> placé dans l'en-tête : la réponse est réutilisée.
+      var dl = new Promise(function (ok, ko) { setTimeout(function () { ko('délai'); }, 4000); });
+      frDocP = Promise.race([fetch(chemin, { credentials: 'same-origin' }), dl])
         .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
         .then(function (t) {
           var d = new DOMParser().parseFromString(t, 'text/html');
@@ -429,7 +431,7 @@
           try { html = V[c.v](bsF, c); } catch (e) { return; }
           if (!html) return;
           poser(c, html, trSrc, carte(bsF, bsT, c));
-          return;
+          return true;
         }
       }
     }
@@ -438,6 +440,7 @@
     try { html = V[c.v](bs, c); } catch (e) { return; }
     if (!html) return;
     poser(c, html, src, null);
+    return true;
   }
 
   function run() {
@@ -447,8 +450,23 @@
       (Array.isArray(cfg) ? cfg : [cfg]).forEach(function (c) { cfgs.push(c); });
     });
     if (!cfgs.length) return;
-    var tous = function (fr) { cfgs.forEach(function (c) { try { un(c, fr); } catch (e) { /* on laisse le texte tel quel */ } }); };
+    var tous = function (fr) {
+      cfgs.forEach(function (c) {
+        var ok = false;
+        try { ok = un(c, fr); } catch (e) { /* on laisse le texte tel quel */ }
+        if (!ok && c.__attente) c.__attente.classList.remove('bar-cache'); // rien construit : on réaffiche
+      });
+    };
     if (!ETR || !window.fetch || !window.DOMParser) { tous(null); return; }
+    // Page traduite : on masque tout de suite le texte d'origine (sinon l'ancienne mise en
+    // page s'affiche le temps de lire la version française).
+    cfgs.forEach(function (c) {
+      var cur = choisir(D, c);
+      if (cur.i < 0 || norm(cur.l[cur.i].textContent).length < (c.min || 600) * 0.5) return;
+      var src = cur.l[cur.i], cache = c.hide ? (src.closest(c.hide) || src) : src;
+      cache.classList.add('bar-cache');
+      c.__attente = cache;
+    });
     frDoc().then(tous, function () { tous(null); });
   }
   window.baRecit = { run: run, blocs: blocs };
