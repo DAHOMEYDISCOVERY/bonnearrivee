@@ -96,7 +96,9 @@ final class DahomeyDiscoverySource implements Source
 
         $image = $this->extractFeaturedImage($row);
         $city = $this->extractTerm($row, 'city');
-        $excerpt = strip_tags((string) ($row['excerpt']['rendered'] ?? ''));
+        // Les extraits WordPress arrivent avec des entités (&rsquo;, &nbsp;…) : on les décode,
+        // l'affichage se charge d'échapper le texte.
+        $excerpt = html_entity_decode(strip_tags((string) ($row['excerpt']['rendered'] ?? '')), ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $excerpt = trim(preg_replace('/\s+/', ' ', $excerpt)) ?: null;
 
         return new ExternalItem(

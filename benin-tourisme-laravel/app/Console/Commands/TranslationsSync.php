@@ -17,7 +17,7 @@ use Illuminate\Console\Command;
  */
 class TranslationsSync extends Command
 {
-    protected $signature = 'trad:sync {--locale=all : Langue cible (en, es, pt) ou « all »} {--target= : Variante DeepL (une seule langue)} {--force : Retraduire tous les segments (corrige les traductions existantes)}';
+    protected $signature = 'trad:sync {--locale=all : Langue cible (en, es, pt) ou « all »} {--target= : Variante DeepL (une seule langue)} {--force : Retraduire tous les segments (corrige les traductions existantes)} {--refaire= : Retraduire seulement les segments contenant ces mots (séparés par des virgules)}';
     protected $description = 'Extrait, traduit (DeepL) puis importe les nouveaux contenus dans chaque langue étrangère.';
 
     public function handle(): int
@@ -49,6 +49,9 @@ class TranslationsSync extends Command
                 }
                 if ($this->option('force')) {
                     $args['--force'] = true;
+                }
+                if ($this->option('refaire')) {
+                    $args['--refaire'] = (string) $this->option('refaire');
                 }
                 if ($this->call('trad:translate', $args) !== self::SUCCESS) {
                     // Quota ou réseau : on importe ce qui est déjà traduit et on s'arrête là

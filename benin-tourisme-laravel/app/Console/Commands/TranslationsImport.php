@@ -50,7 +50,7 @@ class TranslationsImport extends Command
                 foreach ($map as $entry) {
                     $tr = is_array($entry) ? ($entry[$locale] ?? null) : null;
                     if (is_array($entry) && is_string($tr) && trim($tr) !== '' && isset($entry['fr'])) {
-                        $pairs[(string) $entry['fr']] = $tr;
+                        $pairs[(string) $entry['fr']] = self::texteBrut($tr);
                     }
                 }
                 if ($pairs !== []) {
@@ -69,6 +69,11 @@ class TranslationsImport extends Command
                 if (! is_string($tr) || trim($tr) === '') {
                     continue;
                 }
+                // Texte simple (pas « rich ») : DeepL renvoie « & » sous forme « &amp; » ;
+                // l'affichage échappe déjà le texte, on garde donc le caractère brut.
+                if (! is_array($entry) || ($entry['type'] ?? 'text') !== 'rich') {
+                    $tr = self::texteBrut($tr);
+                }
                 $items[(string) $key] = ['value' => $tr];
                 $count++;
                 $changed = true;
@@ -82,5 +87,11 @@ class TranslationsImport extends Command
         $this->info("Traductions importées : {$count} segments sur {$pages} pages (langue : {$locale}).");
 
         return self::SUCCESS;
+    }
+
+    private static function texteBrut(string $s): string
+    {
+        // Deux passes : rattrape aussi les « &amp;amp; » déjà enregistrés.
+        return html_entity_decode(html_entity_decode($s, ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 }

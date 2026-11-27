@@ -26,7 +26,8 @@ class TranslationsTranslate extends Command
         {--locale=en : Langue du site à remplir (en, es, pt)}
         {--target= : Langue cible DeepL (par défaut celle de la langue : EN-GB, ES, PT-BR)}
         {--batch=40 : Nombre de segments par requête}
-        {--force : Retraduire même les segments déjà remplis}';
+        {--force : Retraduire même les segments déjà remplis}
+        {--refaire= : Retraduire seulement les segments dont le texte français contient ces mots (séparés par des virgules)}';
 
     protected $description = 'Traduit les segments FR -> en/es/pt d\'un fichier de traduction via DeepL.';
 
@@ -35,7 +36,8 @@ class TranslationsTranslate extends Command
         // Marques et noms de site (jamais traduits).
         'Le Petit Train de Cotonou', 'Petit Train de Cotonou', 'Dahomey Discovery', 'Bonne Arrivée',
         'Wanilo Studio', 'Amazone Airlines', 'Bénin Tours', 'Benin Tours', 'DD Care', 'Zoulfati Hassan Derby',
-        'BonneArrivee', 'Bienvenue',
+        // « Bienvenue » n'est pas protégé : dans une phrase, il doit être traduit.
+        'BonneArrivee',
         // Toponymes et termes culturels béninois.
         'Porto-Novo', 'Grand-Popo', 'Abomey-Calavi', 'Sô-Ava', 'Danxomè', 'Dahomey', 'Pendjari',
         'Atacora', 'Natitingou', 'Ouidah', 'Abomey', 'Ganvié', 'Cotonou', 'Nokoué', 'Akpakpa',
@@ -90,7 +92,7 @@ class TranslationsTranslate extends Command
                 if (! is_array($entry) || trim((string) ($entry['fr'] ?? '')) === '') {
                     continue;
                 }
-                if ($this->option('force') || ($entry[$field] ?? null) === null) {
+                if ($this->option('force') || ($entry[$field] ?? null) === null || $this->aRefaire((string) $entry['fr'])) {
                     $refs[] = &$entry;
                 }
                 unset($entry);
@@ -232,6 +234,19 @@ class TranslationsTranslate extends Command
         $alt = implode('|', array_map(static fn ($t) => preg_quote($t, '/'), $terms));
 
         return '/(?<![\p{L}\-])('.$alt.')(?![\p{L}\-])/ui';
+    }
+
+    /** --refaire=mot1,mot2 : le segment contient-il l'un de ces mots (sans tenir compte de la casse) ? */
+    private function aRefaire(string $fr): bool
+    {
+        $mots = array_filter(array_map('trim', explode(',', (string) $this->option('refaire'))));
+        foreach ($mots as $m) {
+            if (mb_stripos($fr, $m) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function unprotect(string $text): string
