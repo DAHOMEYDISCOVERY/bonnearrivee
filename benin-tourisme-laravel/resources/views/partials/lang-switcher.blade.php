@@ -17,6 +17,10 @@
 .woody-component-headnavs .tools .lang-tool .ba-lang__code{color:inherit;letter-spacing:.04em}
 .woody-component-headnavs .tools .lang-tool .ba-lang__caret{color:inherit;opacity:.85}
 .woody-component-headnavs .tools .lang-tool.is-sombre .ba-lang__toggle{text-shadow:none}
+/* Libellé « Recherche » écrit en dur dans la feuille du thème (content: "Recherche") : traduit ici. */
+html[lang^="en"] .woody-component-headnavs .tools .woody-component-esSearch-block .esSearch-button::before{content:"Search"}
+html[lang^="es"] .woody-component-headnavs .tools .woody-component-esSearch-block .esSearch-button::before{content:"Buscar"}
+html[lang^="pt"] .woody-component-headnavs .tools .woody-component-esSearch-block .esSearch-button::before{content:"Pesquisar"}
 </style>
 <div class="ba-lang" data-ba-dynamique>
     <button type="button" class="ba-lang__toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{ __('messages.language') }}">

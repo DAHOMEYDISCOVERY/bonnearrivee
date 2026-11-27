@@ -1151,3 +1151,55 @@ html:not(#ba) body:not(#ba) main .bar-manifeste .bar-roles .ba-lp-mini{margin-to
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
 })();
 </script>
+
+{{--
+    Titres dans les langues traduites (en, es, pt) : les traductions sont souvent 15 à 30 %
+    plus longues que le français. Méthode des grands sites : on ne rapetisse pas tout, on
+    laisse le texte passer à la ligne proprement (lignes équilibrées, pas de mot qui
+    déborde), et seuls les grands titres trop longs sont légèrement réduits,
+    juste ce qu'il faut (au plus -25 %) : 2 lignes au plus sur ordinateur, 3 sur mobile. Le français n'est pas concerné.
+--}}
+<style>
+html:not([lang^="fr"]) :is(main h1, main h2, main h3, main h4, .landswpr-title, .section-title, .card-title, .bar h2, .bar h3) {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+html:not([lang^="fr"]) main :is(p, li, figcaption) { text-wrap: pretty; }
+@media (max-width: 767.98px) {
+    html:is([lang^="es"], [lang^="pt"]) main :is(p, li) { hyphens: auto; -webkit-hyphens: auto; }
+}
+/* Diaporama de l'accueil : le titre ne passe plus sous les flèches. */
+html:not([lang^="fr"]) .landswpr-texts { padding-left: clamp(12px, 6vw, 110px); padding-right: clamp(12px, 6vw, 110px); box-sizing: border-box; }
+</style>
+<script data-i18n-skip>
+(function () {
+    var html = document.documentElement;
+    if (/^fr/i.test(html.lang || 'fr')) return;
+    var SEL = '.landswpr-title, main h1, main .section-title, [class*="hero"] h1, [class*="hero"] h2, .wl-d, .bar-intro h2';
+    var MIN = 0.75;
+    function lignes(e) {
+        var cs = getComputedStyle(e), lh = parseFloat(cs.lineHeight);
+        if (!lh) lh = parseFloat(cs.fontSize) * 1.15;
+        return Math.round(e.getBoundingClientRect().height / lh);
+    }
+    function deborde(e) { return e.scrollWidth > e.clientWidth + 2; }
+    function ajuster(e) {
+        if (!e.offsetWidth || e.closest('.show-for-sr')) return;
+        e.style.fontSize = '';
+        var base = parseFloat(getComputedStyle(e).fontSize);
+        if (base < 22) return; // seuls les grands titres
+        var max = window.innerWidth < 768 ? 3 : 2, f = 1;
+        while ((lignes(e) > max || deborde(e)) && f > MIN) {
+            f = Math.round((f - 0.05) * 100) / 100;
+            e.style.fontSize = (base * f) + 'px';
+        }
+    }
+    function tout() { document.querySelectorAll(SEL).forEach(ajuster); }
+    var t;
+    function plusTard() { clearTimeout(t); t = setTimeout(tout, 150); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tout); else tout();
+    window.addEventListener('load', tout);
+    window.addEventListener('resize', plusTard, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(tout);
+})();
+</script>
