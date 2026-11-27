@@ -95,13 +95,26 @@
     var ic = document.querySelector('.woody-component-headnavs .search-icon');
     if (!ic) return;
     var c = getComputedStyle(ic).color, m = c.match(/\d+/g);
+    var sombre = !!m && (+m[0] * 299 + +m[1] * 587 + +m[2] * 114) / 1000 < 140;
     el.style.color = c;
-    el.classList.toggle('is-sombre', !!m && (+m[0] * 299 + +m[1] * 587 + +m[2] * 114) / 1000 < 140);
+    el.classList.toggle('is-sombre', sombre);
+    // Le sélecteur de langue voisin suit la même couleur.
+    var lg = document.querySelector('.woody-component-headnavs .lang-tool');
+    if (lg) { lg.style.color = c; lg.classList.toggle('is-sombre', sombre); }
   }
   teinte();
   document.addEventListener('DOMContentLoaded', teinte);
   window.addEventListener('load', teinte);
-  window.addEventListener('scroll', function () { requestAnimationFrame(teinte); }, { passive: true });
+  // La loupe change de couleur avec une transition quand l'en-tête change d'état :
+  // on relit sa couleur à la fin de la transition (et par sécurité un peu après).
+  var tmr = null;
+  function plusTard() { requestAnimationFrame(teinte); clearTimeout(tmr); tmr = setTimeout(teinte, 600); }
+  window.addEventListener('scroll', plusTard, { passive: true });
+  window.addEventListener('resize', plusTard, { passive: true });
+  document.addEventListener('transitionend', function (e) {
+    if (e.target && e.target.closest && e.target.closest('.woody-component-headnavs, header')) teinte();
+  }, true);
+  try { new MutationObserver(plusTard).observe(document.body || document.documentElement, { attributes: true, attributeFilter: ['class'] }); } catch (e) {}
   maj();
   setInterval(maj, 15000);
 })();

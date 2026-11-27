@@ -6,6 +6,18 @@
     // On passe par /langue/{code} : le cookie de langue est (re)positionné, donc
     // le choix est conservé sur tout le site et on peut revenir au français.
 @endphp
+<style>
+/* Dans les outils de l'en-tête : même style transparent que la météo (texte posé sur la
+   photo, couleur reprise de la loupe par le script de partials.meteo-heure). Prioritaire
+   sur benin-overrides.min.css, qu'on ne régénère pas. */
+.woody-component-headnavs .tools .lang-tool .ba-lang__toggle{background:none;border:0;box-shadow:none;padding:4px 2px;gap:5px;color:inherit;font:600 15px/1 Montserrat,Helvetica,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.45);backdrop-filter:none}
+.woody-component-headnavs .tools .lang-tool .ba-lang__toggle:hover{background:none;border:0;box-shadow:none;opacity:.8}
+.woody-component-headnavs .tools .lang-tool .ba-lang__toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
+.woody-component-headnavs .tools .lang-tool .ba-lang__flag{display:none}
+.woody-component-headnavs .tools .lang-tool .ba-lang__code{color:inherit;letter-spacing:.04em}
+.woody-component-headnavs .tools .lang-tool .ba-lang__caret{color:inherit;opacity:.85}
+.woody-component-headnavs .tools .lang-tool.is-sombre .ba-lang__toggle{text-shadow:none}
+</style>
 <div class="ba-lang" data-ba-dynamique>
     <button type="button" class="ba-lang__toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{ __('messages.language') }}">
         <span class="ba-lang__flag" aria-hidden="true">{{ $__cur['flag'] }}</span>
