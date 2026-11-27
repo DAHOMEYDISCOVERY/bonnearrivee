@@ -42,6 +42,39 @@ final class RecitPreHide
         return substr($html, 0, $at).$tag.substr($html, $at);
     }
 
+    /**
+     * Rechargement d'une page sur laquelle on était descendu : le navigateur remet aussitôt
+     * la position de lecture, alors que les scripts n'ont pas encore mis les textes en forme
+     * (on voyait l'ancienne présentation, puis la vue sautait). On garde la page en haut le
+     * temps de la mise en forme, puis on revient d'un coup à la position enregistrée.
+     */
+    public static function defilement(string $html): string
+    {
+        if (str_contains($html, 'id="ba-defilement"') || ! preg_match('#<head\b[^>]*>#i', $html, $hm, PREG_OFFSET_CAPTURE)) {
+            return $html;
+        }
+        $js = '<script id="ba-defilement">(function(){try{'
+            .'if(!("scrollRestoration" in history)||!window.sessionStorage)return;'
+            .'var k="ba-y:"+location.pathname,d=document.documentElement;'
+            .'history.scrollRestoration="manual";'
+            .'addEventListener("pagehide",function(){try{sessionStorage.setItem(k,String(Math.round(scrollY)))}catch(e){}});'
+            .'var n=performance.getEntriesByType?performance.getEntriesByType("navigation")[0]:null;'
+            .'if(location.hash||!n||(n.type!=="reload"&&n.type!=="back_forward"))return;'
+            .'var y=+sessionStorage.getItem(k)||0;if(y<50)return;'
+            .'var fait=false;function aller(){if(fait)return;fait=true;try{scrollTo({top:y,left:0,behavior:"instant"})}catch(e){scrollTo(0,y)}}'
+            .'function attendre(){'
+            // Page avec mise en forme ba-recit : on attend qu'elle soit prête (au plus 4 s).
+            .'if(document.querySelector("script.ba-recit-cfg")&&!d.classList.contains("ba-recit-pret")){'
+            .'var mo=new MutationObserver(function(){if(d.classList.contains("ba-recit-pret")){mo.disconnect();setTimeout(aller,60);}});'
+            .'mo.observe(d,{attributes:true,attributeFilter:["class"]});setTimeout(aller,4000);}'
+            .'else setTimeout(aller,60);}'
+            .'if(document.readyState==="complete")attendre();else addEventListener("load",attendre);'
+            .'}catch(e){}})();</script>';
+        $at = $hm[0][1] + strlen($hm[0][0]);
+
+        return substr($html, 0, $at).$js.substr($html, $at);
+    }
+
     private static function css(string $html): string
     {
         $doc = self::parse($html);

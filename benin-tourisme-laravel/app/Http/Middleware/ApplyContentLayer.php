@@ -107,7 +107,7 @@ final class ApplyContentLayer
                 $html = substr($html, 0, $at).$lien.substr($html, $at);
             }
 
-            $response->setContent(\App\Support\RecitPreHide::inject($html));
+            $response->setContent(\App\Support\RecitPreHide::defilement(\App\Support\RecitPreHide::inject($html)));
 
             return $response;
         }
@@ -137,8 +137,8 @@ final class ApplyContentLayer
     {
         try {
             $html = (string) $response->getContent();
-            if (str_contains($html, 'ba-recit-cfg') && stripos($html, '<html') !== false) {
-                $response->setContent(\App\Support\RecitPreHide::inject($html));
+            if (stripos($html, '<html') !== false) {
+                $response->setContent(\App\Support\RecitPreHide::defilement(\App\Support\RecitPreHide::inject($html)));
             }
         } catch (\Throwable $e) {
             report($e);
