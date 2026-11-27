@@ -40,16 +40,21 @@
     flush();
     return out;
   }
-  function blocs(el) {
-    var L = lignes(el), aGras = L.some(function (l) { return l.h; }), res = [], b = null;
-    L.forEach(function (l, i) {
-      var court = !aGras && l.t.length <= 110 && !/[.!?;:,]$/.test(l.t) && l.t.split(' ').length <= 16 && i < L.length - 1;
-      if (l.h || court) { b = { titre: l.t.replace(/\s*:\s*$/, ''), p: [] }; res.push(b); return; }
+  /* Découpe en blocs (intertitre + paragraphes). R : lignes de référence qui décident
+     du découpage (la version française d'une page traduite), L : lignes affichées. */
+  function blocsDe(L, R) {
+    R = R || L;
+    var aGras = R.some(function (l) { return l.h; }), res = [], b = null;
+    R.forEach(function (r, i) {
+      var l = L[i];
+      var court = !aGras && r.t.length <= 110 && !/[.!?;:,]$/.test(r.t) && r.t.split(' ').length <= 16 && i < R.length - 1;
+      if (r.h || court) { b = { titre: l.t.replace(/\s*:\s*$/, ''), p: [] }; res.push(b); return; }
       if (!b) { b = { titre: '', p: [] }; res.push(b); }
       b.p.push(l.t);
     });
     return res.filter(function (x) { return x.p.length; });
   }
+  function blocs(el) { return blocsDe(lignes(el)); }
   function item(p) { var m = p.match(/^([^:]{3,70}?)\s?:\s+(.+)$/); return m ? { label: norm(m[1]), texte: norm(m[2]) } : null; }
 
   /* ---------- Variantes ---------- */
@@ -91,7 +96,7 @@
     h += '<details class="bar-texte bar-rv"><summary>Lire le texte complet</summary><p>' + marquer(esc(a), [].concat.apply([], (c.piliers || []).map(function (p) { return p.kw; }))) + '</p></details>';
     if (b) {
       var parts = b.split(/,?\s(?:et\s)?en\s(?=[a-zéèêà]+ant\b)/), tete = parts.shift();
-      if (parts.length >= 2) {
+      if (parts.length >= 2 && !c.__etr) {
         h += '<div class="bar-roles"><h3 class="bar-rv">' + esc(cap(tete.replace(/[,:]\s*$/, ''))) + '</h3><ol>' + parts.map(function (r, i) {
           return '<li class="bar-rv" style="--d:' + (i * 80) + 'ms"><span>0' + (i + 1) + '</span><p>' + esc(cap(r.replace(/[.,;]\s*$/, ''))) + '</p></li>';
         }).join('') + '</ol></div>';
@@ -105,13 +110,14 @@
     var t = fix(bs.map(function (b) { return b.p.join(' '); }).join(' ')), ps = [];
     bs.forEach(function (b) { b.p.forEach(function (p) { ps.push(p); }); });
     var stats = (c.stats || []).map(function (s) { var m = t.match(new RegExp(s.re, 'i')); return m ? { v: s.v || norm(m[1]), l: s.l, k: s.k || '' } : null; }).filter(Boolean);
-    var men = (t.match(/menaces[^—–-]*[—–-]\s*([^—–]+)[—–]/i) || [])[1];
+    var men = (t.match(/menaces[^—–-]*[—–-]\s*([^—–]+)[—–]/i) || [])[1], menSep = /,\s|\set\s/;
+    if (c.__etr) { men = ((c.__tr || '').match(/(?:menaces|threat\w*|amenaza\w*|amea[çc]a\w*)[^—–-]*[—–-]\s*([^—–]+)[—–]/i) || [])[1]; menSep = /,\s|\s(?:and|y|e|et)\s/; }
     var h = '<div class="bar-in"><div class="bar-chif-tete bar-rv"><span class="bar-kick">' + esc(c.kick || 'En chiffres') + '</span><h2>' + esc(c.titre || '') + '</h2><p class="bar-lead">' + esc((ps[0] || '').split(/\s[—–]\s/)[0].replace(/[,;]\s*$/, '')) + '.</p></div>';
     if (stats.length) h += '<div class="bar-stats">' + stats.map(function (s, i) {
       var n = s.v.replace(/[^\d]/g, ''), simple = /^\d[\d\s]*$/.test(s.v);
       return '<div class="bar-stat bar-rv' + (s.v.length > 7 ? ' bar-stat-l' : '') + '" style="--d:' + (i * 70) + 'ms">' + (s.k ? '<i class="bar-ic bar-ic-' + s.k + '"></i>' : '') + '<b' + (simple ? ' data-c="' + n + '"' : '') + '>' + esc(s.v) + '</b><span>' + esc(s.l) + '</span></div>';
     }).join('') + '</div>';
-    if (men) h += '<div class="bar-menaces bar-rv"><b>Sous pression</b>' + men.split(/,\s|\set\s/).map(function (m) { return '<span>' + esc(cap(m.replace(/\(.*?\)/g, ''))) + '</span>'; }).join('') + '</div>';
+    if (men) h += '<div class="bar-menaces bar-rv"><b>Sous pression</b>' + men.split(menSep).map(function (m) { return '<span>' + esc(cap(m.replace(/\(.*?\)/g, ''))) + '</span>'; }).join('') + '</div>';
     h += '<details class="bar-texte bar-rv"><summary>Lire le texte complet</summary>' + ps.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</details>';
     return h + '</div>';
   };
@@ -243,28 +249,207 @@
     }
   }
 
-  function un(c) {
-    var src = [].slice.call(D.querySelectorAll(c.src)).filter(function (e) { return !e.closest('.bar'); })
-      .sort(function (a, b) { return b.textContent.length - a.textContent.length; })[0];
-    if (!src || norm(src.textContent).length < (c.min || 600)) return;
-    var bs = blocs(src); if (!bs.length || !V[c.v]) return;
-    var html; try { html = V[c.v](bs, c); } catch (e) { return; }
-    if (!html) return;
+  /* ---------- Pages traduites ----------
+     Les variantes reconnaissent le texte français (mots-clés, régions, unités…). Sur une page
+     traduite, on lit aussi la version française de la même page : les décisions (découpage,
+     région, photo, chiffres) sont prises sur le français, puis chaque morceau affiché est
+     remplacé par le morceau traduit correspondant (même paragraphe, même phrase). */
+  var LANG = (D.documentElement.getAttribute('lang') || 'fr').slice(0, 2).toLowerCase(), ETR = LANG !== 'fr', frDocP = null;
+  function frDoc() {
+    if (!frDocP) {
+      var chemin = location.pathname.replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/';
+      frDocP = fetch(chemin, { credentials: 'same-origin', headers: { Accept: 'text/html' } })
+        .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+        .then(function (t) {
+          var d = new DOMParser().parseFromString(t, 'text/html');
+          if ((d.documentElement.getAttribute('lang') || 'fr').slice(0, 2).toLowerCase() !== 'fr') throw new Error('pas fr');
+          return d;
+        });
+    }
+    return frDocP;
+  }
+  function choisir(doc, c) {
+    var l = [].slice.call(doc.querySelectorAll(c.src)).filter(function (e) { return !e.closest('.bar'); }), best = -1, len = -1;
+    l.forEach(function (e, i) { var n = e.textContent.length; if (n > len) { len = n; best = i; } });
+    return { l: l, i: best };
+  }
+  function couperComme(part, tout, tr) {
+    part = norm(part); tout = norm(tout); tr = norm(tr);
+    if (!tr) return '';
+    if (part === tout || !tout.length) return tr;
+    var cible = part.length / tout.length * tr.length, best = -1, ecart = 1e9, re = /[,;.!?—–]/g, m;
+    while ((m = re.exec(tr))) { var d = Math.abs(m.index - cible); if (d < ecart) { ecart = d; best = m.index; } }
+    if (best < 0) return tr;
+    return tr.slice(0, /[.!?]/.test(tr.charAt(best)) ? best + 1 : best).replace(/[\s,;—–-]+$/, '');
+  }
+  function carte(bsF, bsT, c) {
+    var M = {};
+    function A(f, t, vide) { f = norm(f); t = norm(t || ''); if (!f || f === t || (!t && !vide)) return; if (!(f in M)) M[f] = t; }
+    function LR(f, t) {
+      var pf = phrases(f), pt = phrases(t || '');
+      A(f, t);
+      A(pf[0], pt[0]); A(pf.slice(1).join(' '), pt.slice(1).join(' '));
+      if (pf.length === pt.length) pf.forEach(function (x, i) { A(x, pt[i]); });
+    }
+    bsF.forEach(function (bf, i) {
+      var bt = bsT[i] || { titre: '', p: [] };
+      A(bf.titre, bt.titre);
+      var mf = bf.titre.match(/^(.*?),\s*(.+)$/), mt = bt.titre.match(/^(.*?),\s*(.+)$/);
+      if (mf) { if (mt) { A(mf[1], mt[1]); A(mf[2], mt[2]); A(cap(mf[2]), cap(mt[2])); } else { A(mf[1], bt.titre); A(mf[2], '', true); A(cap(mf[2]), '', true); } }
+      A(bf.titre.split(',')[0], bt.titre.split(',')[0]);
+      var nf = bf.titre.match(/^(.*?)(?:\s(?:et|,|entre)\s)(.+)$/), nt = bt.titre.match(/^(.*?)(?:\s(?:and|y|e|et|between|entre)\s|,\s)(.+)$/);
+      if (nf) { var a1 = nf[1].replace(/,\s*$/, ''); if (nt) { A(a1, nt[1].replace(/,\s*$/, '')); A(cap(nf[2]), cap(nt[2])); } else { A(a1, bt.titre); A(cap(nf[2]), '', true); } }
+      bf.p.forEach(function (p, j) {
+        var q = bt.p[j] || '';
+        LR(p, q);
+        var itf = item(p), itt = item(q);
+        if (itf && itt) { A(itf.label, itt.label); A(cap(itf.label), cap(itt.label)); LR(itf.texte, itt.texte); }
+      });
+      LR(bf.p.join(' '), bt.p.join(' '));
+      var p0 = bf.p[0] || '', d0 = p0.split(/\s[—–]\s/)[0].replace(/[,;]\s*$/, '');
+      A(d0, couperComme(d0, p0, bt.p[0] || '').replace(/[,;]\s*$/, ''));
+    });
+    // Libellés courts des régions (parcours) : tirés du titre traduit de la même région.
+    if (c.regions) {
+      bsF.slice(1).forEach(function (bf, r) {
+        var k = null;
+        for (var i = 0; i < c.regions.length; i++) if (low(bf.titre).indexOf(low(c.regions[i].k)) > -1) { k = c.regions[i]; break; }
+        var bt = bsT[r + 1];
+        if (!k || !k.court || !bt || !bt.titre) return;
+        var tc = cap(bt.titre.split(/[,:\u2014\u2013]/)[0].replace(/^(the|el|la|los|las|lo|o|a|os|as|le|les|l['\u2019])\s*/i, ''));
+        if (!tc || tc.length > 40) return;
+        A(k.court, tc);
+        A('0' + (r + 1) + ' \u00b7 ' + k.court, '0' + (r + 1) + ' \u00b7 ' + tc);
+      });
+    }
+    var tf = fix(bsF.map(function (b) { return (b.titre ? b.titre + ' ' : '') + b.p.join(' '); }).join(' ')), tt = c.__tr || '';
+    A(tf, tt);
+    var cut = tf.search(/Au-del[àa]/), a = cut > 0 ? tf.slice(0, cut) : tf;
+    if (cut > 0) { var ta = couperComme(a, tf, tt); A(a, ta); A(tf.slice(cut), norm(tt.slice(ta.length))); }
+    var ta2 = cut > 0 ? couperComme(a, tf, tt) : tt, lead = phrases(a)[0] || a, tl = phrases(ta2)[0] || ta2, acc = lead.split(/\s[—-]\s/)[0];
+    A(acc.replace(/[,;]\s*$/, ''), couperComme(acc, lead, tl).replace(/[,;]\s*$/, ''));
+    var al = (tf.split(/\s[—–]\s|,\s(?=s['’]appuyant)/)[0] || '').replace(/[,;]\s*$/, '');
+    A(al, couperComme(al, tf, tt).replace(/[,;]\s*$/, ''));
+    return M;
+  }
+  function traduire(el, M) {
+    var ML = {};
+    Object.keys(M).forEach(function (k) { ML[k.charAt(0).toLowerCase() + k.slice(1)] = M[k]; });
+    function voir(v) {
+      var k = norm(v);
+      if (k in M) return M[k];
+      var pt = /\.$/.test(k) && k.slice(0, -1) in M;
+      if (pt) return M[k.slice(0, -1)] + (M[k.slice(0, -1)] ? '.' : '');
+      var kl = k.charAt(0).toLowerCase() + k.slice(1);
+      if (kl in ML) { var r = ML[kl]; return k.charAt(0) !== kl.charAt(0) ? r.charAt(0).toUpperCase() + r.slice(1) : r; }
+      return null;
+    }
+    [].slice.call(el.querySelectorAll('*')).forEach(function (e) {
+      if (e.querySelector('mark') && !e.querySelector('p, div, li, article, section, h2, h3, h4, figure')) { var r = voir(e.textContent); if (r !== null) e.textContent = r; }
+    });
+    var w = D.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, todo = [];
+    while ((n = w.nextNode())) todo.push(n);
+    todo.forEach(function (n) { var r = voir(n.nodeValue); if (r !== null) n.nodeValue = n.nodeValue.match(/^\s*/)[0] + r + n.nodeValue.match(/\s*$/)[0]; });
+    [].slice.call(el.querySelectorAll('img[alt], figcaption')).forEach(function (e) { if (e.alt) { var r = voir(e.alt); if (r !== null) e.alt = r; } });
+    [].slice.call(el.querySelectorAll('a[href^="/"]')).forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (!new RegExp('^/' + LANG + '(/|$)').test(h) && !/^\/(assets|storage|langue)\//.test(h)) a.setAttribute('href', '/' + LANG + (h === '/' ? '' : h));
+    });
+  }
+  function poser(c, html, src, M) {
     var cache = c.hide ? (src.closest(c.hide) || src) : src;
-    var el = D.createElement(c.inline ? 'div' : 'div');
+    var el = D.createElement('div');
     el.className = (c.inline ? '' : 'page-section ') + 'bar bar-' + c.v + (c.theme ? ' bar-t-' + c.theme : '');
     el.innerHTML = html;
+    if (M) traduire(el, M);
     if (c.at === 'avant-main') { var m = D.querySelector('main .page-section, main section'); (m && m.parentNode ? m.parentNode.insertBefore(el, m) : cache.parentNode.insertBefore(el, cache)); }
     else cache.parentNode.insertBefore(el, cache.nextSibling);
     cache.classList.add('bar-cache');
     animer(el);
   }
 
+  /* Aligne les lignes traduites sur les lignes françaises. DeepL peut déplacer un saut de
+     ligne ou couper un intertitre gras en deux : on raisonne par sections (intertitre +
+     paragraphes), les intertitres gras consécutifs étant fusionnés. */
+  function sections(L) {
+    var S = [], s = null;
+    L.forEach(function (l) {
+      if (l.h) { if (s && s.h !== null && !s.p.length) { s.h += ' ' + l.t; return; } s = { h: l.t, p: [] }; S.push(s); return; }
+      if (!s) { s = { h: null, p: [] }; S.push(s); }
+      s.p.push(l.t);
+    });
+    return S;
+  }
+  function repartir(textes, n, poids) {
+    if (textes.length === n) return textes;
+    var ph = phrases(textes.join(' ')), tot = poids.reduce(function (x, y) { return x + y; }, 0) || 1;
+    var long = ph.reduce(function (x, y) { return x + y.length + 1; }, 0), out = [], k = 0, fait = 0, cible = 0;
+    for (var i = 0; i < n; i++) {
+      cible += poids[i] / tot * long;
+      var acc = [];
+      while (k < ph.length && (i === n - 1 || !acc.length || fait + ph[k].length / 2 <= cible)) { acc.push(ph[k]); fait += ph[k].length + 1; k++; }
+      out.push(norm(acc.join(' ')));
+    }
+    return out;
+  }
+  /* Renvoie { f, t } : lignes françaises et traduites de même structure, ou null. */
+  function aligner(Lf, Lt) {
+    if (Lf.length === Lt.length && Lf.every(function (l, i) { return !l.h === !Lt[i].h; })) return { f: Lf, t: Lt };
+    if (!Lf.some(function (l) { return l.h; })) return Lf.length === Lt.length ? { f: Lf, t: Lt } : null;
+    var Sf = sections(Lf), St = sections(Lt);
+    if (Sf.length !== St.length) return null;
+    var f = [], t = [];
+    for (var i = 0; i < Sf.length; i++) {
+      if ((Sf[i].h === null) !== (St[i].h === null)) return null;
+      if (Sf[i].h !== null) { f.push({ t: Sf[i].h, h: 1 }); t.push({ t: St[i].h, h: 1 }); }
+      if (!Sf[i].p.length) continue;
+      var pt = repartir(St[i].p, Sf[i].p.length, Sf[i].p.map(function (x) { return x.length; }));
+      Sf[i].p.forEach(function (x, j) { f.push({ t: x }); t.push({ t: pt[j] || '' }); });
+    }
+    return { f: f, t: t };
+  }
+
+  function un(c, fr) {
+    if (!V[c.v]) return;
+    var cur = choisir(D, c);
+    if (cur.i < 0) return;
+    var src = cur.l[cur.i], html, bs;
+    if (ETR && fr) {
+      var f = choisir(fr, c);
+      if (f.i >= 0) {
+        var frSrc = f.l[f.i], trSrc = cur.l.length === f.l.length ? cur.l[f.i] : src;
+        if (norm(frSrc.textContent).length < (c.min || 600)) return;
+        var al = aligner(lignes(frSrc), lignes(trSrc));
+        if (al) {
+          var Lf = al.f, Lt = al.t;
+          var bsF = blocsDe(Lf), bsT = blocsDe(Lt, Lf);
+          if (!bsF.length) return;
+          c.__etr = true;
+          c.__tr = fix(bsT.map(function (b) { return (b.titre ? b.titre + ' ' : '') + b.p.join(' '); }).join(' '));
+          try { html = V[c.v](bsF, c); } catch (e) { return; }
+          if (!html) return;
+          poser(c, html, trSrc, carte(bsF, bsT, c));
+          return;
+        }
+      }
+    }
+    if (norm(src.textContent).length < (c.min || 600)) return;
+    bs = blocs(src); if (!bs.length) return;
+    try { html = V[c.v](bs, c); } catch (e) { return; }
+    if (!html) return;
+    poser(c, html, src, null);
+  }
+
   function run() {
+    var cfgs = [];
     D.querySelectorAll('script.ba-recit-cfg').forEach(function (s) {
       var cfg; try { cfg = JSON.parse(s.textContent); } catch (e) { return; }
-      (Array.isArray(cfg) ? cfg : [cfg]).forEach(function (c) { try { un(c); } catch (e) { /* on laisse le texte tel quel */ } });
+      (Array.isArray(cfg) ? cfg : [cfg]).forEach(function (c) { cfgs.push(c); });
     });
+    if (!cfgs.length) return;
+    var tous = function (fr) { cfgs.forEach(function (c) { try { un(c, fr); } catch (e) { /* on laisse le texte tel quel */ } }); };
+    if (!ETR || !window.fetch || !window.DOMParser) { tous(null); return; }
+    frDoc().then(tous, function () { tous(null); });
   }
   window.baRecit = { run: run, blocs: blocs };
   if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', run); else run();

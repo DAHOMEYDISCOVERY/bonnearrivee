@@ -17,14 +17,14 @@ use Symfony\Component\HttpFoundation\Response;
  * pouvait apparaître sur une page et rester invisible sur une autre.
  *
  * Ce middleware réécrit, dans chaque page HTML servie, le paramètre `?v=` de
- * `/assets/benin-*.css|js` avec la date de modification réelle du fichier.
+ * `/assets/benin-*.css|js` et `/assets/ba-*.css|js` avec la date de modification réelle du fichier.
  * Il agit au même endroit pour toutes les sources de rendu (vues, contenu
  * personnalisé en base, blocs header/footer en base). Une URL sans `?v=` est
  * laissée telle quelle.
  */
 final class VersionProjectAssets
 {
-    private const PATTERN = '#(/assets/(benin-[a-z0-9.-]+\.(?:css|js)))\?v=[A-Za-z0-9_-]+#';
+    private const PATTERN = '#(/assets/((?:benin|ba)-[a-z0-9.-]+\.(?:css|js)))\?v=[A-Za-z0-9_-]+#';
 
     /** @var array<string, string> */
     private array $versions = [];
@@ -39,7 +39,7 @@ final class VersionProjectAssets
         }
 
         $html = $response->getContent();
-        if (! is_string($html) || ! str_contains($html, '/assets/benin-')) {
+        if (! is_string($html) || (! str_contains($html, '/assets/benin-') && ! str_contains($html, '/assets/ba-'))) {
             return $response;
         }
 
