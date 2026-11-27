@@ -53,13 +53,16 @@
     </div>
 </li>
 <style>
-.ba-meteo{display:inline-flex;align-items:center;gap:.55em;height:29px;padding:0 .8em;border-radius:999px;background:rgba(255,255,255,.92);color:#0b3d2c;font:600 13.5px/1 Montserrat,Helvetica,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.ba-meteo{display:inline-flex;align-items:center;gap:.75em;height:29px;padding:0 .3em;background:none;color:#fff;font:600 15px/1 Montserrat,Helvetica,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+/* Sur fond clair, le script reprend la couleur de la loupe et retire l'ombre. */
+.ba-meteo.is-sombre{text-shadow:none}
+.ba-meteo.is-sombre .ba-meteo__ic{filter:none}
 .ba-meteo__temp{display:inline-flex;align-items:center;gap:.35em}
-.ba-meteo__ic{width:17px;height:17px;flex:none;color:#c8862b}
-.ba-meteo__sep{width:1px;height:13px;background:currentColor;opacity:.25}
+.ba-meteo__ic{width:19px;height:19px;flex:none;color:currentColor;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.ba-meteo__sep{width:1px;height:15px;background:currentColor;opacity:.5}
 .ba-meteo-tool{margin-right:.6rem}
 @media (max-width:767.98px){
-  .ba-meteo{height:26px;padding:0 .6em;font-size:12px;gap:.4em}
+  .ba-meteo{height:26px;padding:0 .2em;font-size:13px;gap:.5em}
   .ba-meteo__ic{width:15px;height:15px}
   .ba-meteo-tool{margin-right:.35rem}
 }
@@ -87,6 +90,18 @@
       el.setAttribute('title', titre); el.setAttribute('aria-label', titre);
     }
   }
+  // Même couleur que la loupe voisine (blanche sur photo, foncée sur fond clair).
+  function teinte() {
+    var ic = document.querySelector('.woody-component-headnavs .search-icon');
+    if (!ic) return;
+    var c = getComputedStyle(ic).color, m = c.match(/\d+/g);
+    el.style.color = c;
+    el.classList.toggle('is-sombre', !!m && (+m[0] * 299 + +m[1] * 587 + +m[2] * 114) / 1000 < 140);
+  }
+  teinte();
+  document.addEventListener('DOMContentLoaded', teinte);
+  window.addEventListener('load', teinte);
+  window.addEventListener('scroll', function () { requestAnimationFrame(teinte); }, { passive: true });
   maj();
   setInterval(maj, 15000);
 })();
